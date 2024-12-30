@@ -13,4 +13,6 @@ public class CollisionHandler : MonoBehaviour
     private void HandleCollision()
     {
     }
+
+    //Метод врагов для урона Player
 }

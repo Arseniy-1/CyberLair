@@ -41,3 +41,5 @@ public class Player : MonoBehaviour, ITarget, IDamagable
         _weaponHolder.Shoot();
     }
 }
+
+
