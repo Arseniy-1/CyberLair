@@ -23,11 +23,13 @@ public class PlayerInputController : MonoBehaviour
     private void OnEnable()
     {
         _payerInput.Player.Shoot.performed += OnShootPreformed;
+        _payerInput.Player.Jump.performed += OnJumpPerformed;
     }
 
     private void OnDisable()
     {
         _payerInput.Player.Shoot.performed -= OnShootPreformed;
+        _payerInput.Player.Jump.performed -= OnJumpPerformed;
     }
 
     private void Update()

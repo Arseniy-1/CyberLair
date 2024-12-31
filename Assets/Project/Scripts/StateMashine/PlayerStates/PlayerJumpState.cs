@@ -1,0 +1,50 @@
+﻿using UnityEngine;
+
+namespace StateMashineSytem.PlayerStateMashine
+{
+    public class PlayerJumpState : IState
+    {
+        private Player _player;
+        private Jumper _jumper;
+        private PlayerInputController _playerInputController;
+        private Collider2D _collider2D;
+
+        private IStateSwitcher _stateSwitcher;
+
+        public PlayerJumpState(Player player, PlayerInputController playerInputController, Collider2D collider2D, Jumper jumper)
+        {
+            _player = player;
+            _playerInputController = playerInputController;
+            _collider2D = collider2D;
+            _jumper = jumper;
+        }
+
+        public void Initialize(IStateSwitcher stateSwitcher)
+        {
+            _stateSwitcher = stateSwitcher;
+        }
+
+        public virtual void Enter()
+        {
+            _collider2D.enabled = false;
+            _jumper.Jump(_playerInputController.InputDirection);
+            _jumper.JumpPerformed += OnJumpPerformed;
+        }
+
+        public virtual void Exit()
+        {
+            _collider2D.enabled = true;
+            _jumper.JumpPerformed -= OnJumpPerformed;
+        }
+
+        public virtual void Update()
+        {
+
+        }
+
+        public void OnJumpPerformed()
+        {
+            _stateSwitcher.SwitchState<PlayerIdleState>();
+        }
+    }
+}

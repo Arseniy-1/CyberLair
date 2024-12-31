@@ -1,8 +1,10 @@
-using System;
+﻿using System;
 using UnityEngine;
 
-public class ExperienceParticle : MonoBehaviour, IInteractable, IDestoyable<ExperienceParticle>
+public class AidKit: MonoBehaviour, IInteractable, IDestoyable<ExperienceParticle>
 {
+    public int HealAmount { get; private set; }
+ 
     public event Action<ExperienceParticle> OnDestroyed;
 
     public void Interact()
