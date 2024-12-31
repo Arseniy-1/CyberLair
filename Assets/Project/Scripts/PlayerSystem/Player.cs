@@ -36,10 +36,13 @@ public class Player : MonoBehaviour, ITarget, IDamagable
         _health.TakeDamage(amount);
     }
 
+    public void Heal(int amount)
+    {
+        _health.Heal(amount);
+    }
+
     private void Shoot()
     {
         _weaponHolder.Shoot();
     }
 }
-
-

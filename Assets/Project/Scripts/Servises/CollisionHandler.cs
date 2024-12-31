@@ -1,18 +1,16 @@
 using UnityEngine;
 
-public class CollisionHandler : MonoBehaviour
+public abstract class CollisionHandler : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        HandleCollision(collision);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        HandleCollision(collision.collider);
     }
 
-    private void HandleCollision()
-    {
-    }
-
-    //Метод врагов для урона Player
+    protected abstract void HandleCollision(Collider2D collider);
 }

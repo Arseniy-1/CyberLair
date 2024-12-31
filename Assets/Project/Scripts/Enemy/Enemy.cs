@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, ITarget, IDamagable
@@ -14,5 +13,4 @@ public class Enemy : MonoBehaviour, ITarget, IDamagable
     {
         _health.TakeDamage(amount);
     }
-
 }

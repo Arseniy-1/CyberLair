@@ -19,11 +19,6 @@ public class PlayerMover : MonoBehaviour
         _playerInputController.OnMoveButtonPressed -= Run;
     }
 
-    private void Update()
-    {
-        Run();
-    }
-
     public void Initialize(PlayerInputController playerInputController, Rigidbody2D rigidbody2D)
     {
         _playerInputController = playerInputController;
