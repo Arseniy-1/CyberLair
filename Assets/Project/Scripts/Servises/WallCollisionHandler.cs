@@ -3,16 +3,18 @@
 public class WallCollisionHandler : CollisionHandler
 {
     [SerializeField] private float _pushForce;
+    [SerializeField] private float _stunTime;
+
     protected override void HandleCollision(Collider2D collider)
     {
-        if (collider.TryGetComponent(out Player player))
+        if (collider.TryGetComponent(out Rigidbody2D rigidbody2D))
         {
-            if (player.TryGetComponent(out Rigidbody2D rigidbody2D))
+            if (rigidbody2D.TryGetComponent(out IStunable stunable))
             {
-                Vector3 pushDirection = (player.transform.position - transform.position).normalized;
+                stunable.TakeStun(_stunTime);
+                Vector3 pushDirection = transform.up;
 
-                rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Impulse);
-                Debug.Log(pushDirection * _pushForce);
+                rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
             }
         }
     }

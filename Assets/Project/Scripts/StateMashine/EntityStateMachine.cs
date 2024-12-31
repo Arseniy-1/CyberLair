@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EntityStateMashine
+namespace StateMashineSytem
 {
     public class EntityStateMachine : IStateSwitcher
     {

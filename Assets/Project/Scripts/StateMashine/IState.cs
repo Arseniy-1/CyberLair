@@ -1,4 +1,4 @@
-﻿namespace EntityStateMashine
+﻿namespace StateMashineSytem
 {
     public interface IState
     {

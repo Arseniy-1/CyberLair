@@ -1549,6 +1549,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990c07498d2e2a449b38800535e9d2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1037852794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037852779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bd482925914d24399bd426bdef06e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 1
+  _jumpTime: 1
 --- !u!1 &1079256132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,7 +2767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1865178802
 Rigidbody2D:
   serializedVersion: 4
@@ -2895,12 +2909,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8021d24aa7ac6645bb9d5bd3293f3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionHandler: {fileID: 0}
+  _playerCollisionHandler: {fileID: 0}
   _playerMover: {fileID: 0}
   _weaponHolder: {fileID: 0}
   _playerInputController: {fileID: 0}
   _rigidbody2D: {fileID: 0}
   _health: {fileID: 0}
+  _experienceStorage: {fileID: 0}
+  _jumper: {fileID: 0}
 --- !u!1 &1919683542
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,11 +3208,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 154409902}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _jumper
+      value: 
+      objectReference: {fileID: 1037852794}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _weaponHolder
       value: 
       objectReference: {fileID: 1993700742}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _collisionHandler
+      value: 
+      objectReference: {fileID: 1037852787}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _experienceStorage
+      value: 
+      objectReference: {fileID: 731102063}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _playerCollisionHandler
       value: 
       objectReference: {fileID: 1037852787}
     - target: {fileID: 2815475925280034325, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
@@ -3276,6 +3304,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1913337487105414619, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1037852787}
+    - targetCorrespondingSourceObject: {fileID: 1913337487105414619, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1037852794}
   m_SourcePrefab: {fileID: 100100000, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
 --- !u!1001 &4666162291280635081
 PrefabInstance:
