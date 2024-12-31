@@ -8,14 +8,13 @@ namespace Project.Scripts.CompositionRoot
     public class CompositionRoot : MonoBehaviour
     {
         [SerializeField] List<WaveConfig> _wavesConfigs;
+        [SerializeField] private Arena.Arena _arena;
         
-        private Arena.Arena _arena;
         private EnemyFabric _fabric;
 
         private void Start()
         {
-            _arena = Instantiate(new GameObject("Arena").AddComponent<Arena.Arena>());
-            _fabric = Instantiate(new GameObject("EnemyFabric").AddComponent<EnemyFabric>());
+            _fabric = new EnemyFabric();
             
             var waves = new Queue<Wave>(_wavesConfigs.Select(config => new Wave(config, _fabric)));
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Scripts.Arena
 {
@@ -8,7 +9,7 @@ namespace Project.Scripts.Arena
     public class WaveConfig : SerializedScriptableObject
     {
         [SerializeField] private Dictionary<Enemy,int> _enemies;
-        [SerializeField] private float _allottedTime;
+        [SerializeField] private float _duration;
         
         public IReadOnlyDictionary<Enemy,int> Enemies => _enemies;
     }

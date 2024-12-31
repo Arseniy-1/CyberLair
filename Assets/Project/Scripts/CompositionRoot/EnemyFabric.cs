@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Project.Scripts.CompositionRoot
 {
-    public class EnemyFabric : MonoBehaviour
+    public class EnemyFabric
     {
         public Enemy Create(Enemy enemy)
         {
