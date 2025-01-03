@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using Project.Scripts.EnemySystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Project.Scripts.Arena
+namespace Project.Scripts.ArenaSystem
 {
     [CreateAssetMenu(fileName = "New Wave Config", menuName = "Wave/Create new wave config", order = 51)]
     public class WaveConfig : SerializedScriptableObject

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project.Scripts.Arena
+namespace Project.Scripts.ArenaSystem
 {
     public class Arena : MonoBehaviour
     {
@@ -29,10 +29,11 @@ namespace Project.Scripts.Arena
                 return;
             }
             
-            var wave = _waves.Dequeue();
+            Wave wave = _waves.Dequeue();
 
             wave.OnWaveFinished += HandleWavesEnd;
             wave.Begin();
+            
         }
 
         private void HandleWavesEnd(Wave wave)

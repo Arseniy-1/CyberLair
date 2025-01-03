@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.CompositionRoot;
+using Project.Scripts.EnemySystem;
+using UnityEngine;
 using Random = System.Random;
 
-namespace Project.Scripts.Arena
+namespace Project.Scripts.ArenaSystem
 {
     public class Wave
     {
@@ -23,13 +25,17 @@ namespace Project.Scripts.Arena
 
         public void Begin()
         {
+            
             var enemies = new List<Enemy>();
             var random = new Random();
                 
             foreach (KeyValuePair<Enemy, int> pair in _config.Enemies)
             {
-                for(var i = 0; i < pair.Value; i++)
+
+                for (var i = 0; i < pair.Value; i++)
+                {
                     enemies.Add(pair.Key);
+                }
             }
             
             _enemyCounter = enemies.Count;
@@ -45,8 +51,8 @@ namespace Project.Scripts.Arena
         {
             _enemyCounter--;
             enemy.OnDeath -= HandleDeath;
-
-            if (_enemyCounter <= 0)
+            
+            if(_enemyCounter <= 0)
                 OnWaveFinished?.Invoke(this);
         }
     }

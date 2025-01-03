@@ -1,22 +1,27 @@
 using System.Collections.Generic;
 using System.Linq;
-using Project.Scripts.Arena;
+using Project.Scripts.ArenaSystem;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Project.Scripts.CompositionRoot
 {
     public class CompositionRoot : MonoBehaviour
     {
-        [SerializeField] List<WaveConfig> _wavesConfigs;
-        [SerializeField] private Arena.Arena _arena;
-        
-        private EnemyFabric _fabric;
+        [SerializeField] private List<WaveConfig> _wavesConfigs;
+        [SerializeField] private List<Transform> _spawnPoints;
+        [SerializeField] private Arena _arena;
+        [SerializeField] private EnemyFabric _fabric;
+        [SerializeField] private Player _player;
 
-        private void Start()
+        private void Awake()
         {
-            _fabric = new EnemyFabric();
+            _fabric.Initialize(_player, _spawnPoints);
             
-            var waves = new Queue<Wave>(_wavesConfigs.Select(config => new Wave(config, _fabric)));
+            if (_wavesConfigs.IsNullOrEmpty()) 
+                return;
+            
+            var waves = new Queue<Wave>(_wavesConfigs.Select(config => new Wave(config, _fabric)).ToList());
 
             _arena.Initialize(waves);
             _arena.Work();
