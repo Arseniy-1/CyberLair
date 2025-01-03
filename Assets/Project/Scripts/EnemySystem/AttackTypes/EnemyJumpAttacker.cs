@@ -5,7 +5,6 @@ namespace Project.Scripts.EnemySystem.AttackTypes
     [RequireComponent(typeof(Jumper))]
     public class EnemyJumpAttacker : EnemyAttacker
     {
-        
         private Jumper _jumper;
 
         private void Awake()

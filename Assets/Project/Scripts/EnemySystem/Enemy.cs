@@ -18,22 +18,14 @@ namespace Project.Scripts.EnemySystem
 
         protected List<IState> States;
         private EntityStateMachine _stateMachine;
-        protected Player Player;
+        private Player _player;
     
         public event Action<Enemy> OnDeath;
         
         public Vector2 Position => transform.position;
         public bool IsStunned { get; private set; }
-        public bool HasPlayer => Player != null;
-        public bool IsPlayerInRange
-        {
-            get
-            {
-                Debug.Log($"{Vector2.Distance(Position, Player.Position)} is in range");
-                
-                return Vector2.Distance(Position, Player.Position) < _attackDistance;
-            }
-        }
+        public bool HasPlayer => _player != null;
+        public bool IsPlayerInRange => Vector2.Distance(Position, _player.Position) < _attackDistance;
 
         private void Update()
         {
@@ -42,7 +34,7 @@ namespace Project.Scripts.EnemySystem
 
         public virtual void Initialize(Player player)
         {
-            Player = player;
+            _player = player;
             
             _stateMachine = new EntityStateMachine(States);
 
@@ -51,7 +43,7 @@ namespace Project.Scripts.EnemySystem
                 state.Initialize(_stateMachine);
             }
             
-            Mover.Initialize(this, Player, EnemyRigidbody);
+            Mover.Initialize(this, _player, EnemyRigidbody);
         }
         
         public void TakeDamage(int amount)

@@ -16,11 +16,11 @@ namespace Project.Scripts.EnemySystem
             Move();
         }
 
-        public void Initialize(Enemy enemy, Player player, Rigidbody2D rigidbody)
+        public void Initialize(Enemy enemy, Player player, Rigidbody2D enemyRigidbody)
         {
             EnemyPrefab = enemy;
             PlayerPrefab = player;
-            EnemyRigidbody = rigidbody;
+            EnemyRigidbody = enemyRigidbody;
         }
 
         protected abstract void Move();

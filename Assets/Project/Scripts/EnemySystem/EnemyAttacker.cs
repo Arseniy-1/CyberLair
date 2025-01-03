@@ -5,8 +5,8 @@ namespace Project.Scripts.EnemySystem
 {
     public abstract class EnemyAttacker : MonoBehaviour
     {
-        protected Player Player;
-        protected Transform EnemyTransform;
+        private Player Player;
+        private Transform EnemyTransform;
         
         public event Action AttackPerformed;
         

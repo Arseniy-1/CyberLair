@@ -19,8 +19,6 @@ namespace StateMashineSytem.EnemyStates
 
         public void Enter()
         {
-            Debug.Log("Attack State entered");
-            
             _mover.enabled = false;
             _attacker.AttackPerformed += OnAttackPerformed;
             _attacker.Attack();
