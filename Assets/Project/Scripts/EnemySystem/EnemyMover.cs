@@ -11,6 +11,8 @@ namespace Project.Scripts.EnemySystem
         protected Player PlayerPrefab;
         protected Rigidbody2D EnemyRigidbody;
         
+        protected Vector2 Direction => (PlayerPrefab.Position - EnemyPrefab.Position).normalized;
+        
         private void FixedUpdate()
         {
             Move();

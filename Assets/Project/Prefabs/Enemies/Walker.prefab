@@ -42,11 +42,11 @@ GameObject:
   - component: {fileID: 2522299794617721286}
   - component: {fileID: 7203213127982778909}
   - component: {fileID: 6764518690129484611}
-  - component: {fileID: 8442926375216949396}
   - component: {fileID: 2127047212072642651}
   - component: {fileID: 6300912649283175769}
   - component: {fileID: 442572439295423526}
   - component: {fileID: 4219066298249808052}
+  - component: {fileID: -4304947118811211038}
   m_Layer: 3
   m_Name: Walker
   m_TagString: Untagged
@@ -142,23 +142,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8442926375216949396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5359367708107569414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1386074ba9e4c66a57ac522f371f9a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mover: {fileID: 442572439295423526}
-  EnemyRigidbody: {fileID: 7203213127982778909}
-  _health: {fileID: 4219066298249808052}
-  _attackDistance: 3
-  _attacker: {fileID: 6300912649283175769}
 --- !u!114 &2127047212072642651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 32
+  _attackDelay: 0.5
+  _attackRecovery: 0.5
+  _attackCount: 1
 --- !u!114 &442572439295423526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +199,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxValue: 100
   CurrentValue: 100
+--- !u!114 &-4304947118811211038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359367708107569414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mover: {fileID: 442572439295423526}
+  _enemyRigidbody: {fileID: 7203213127982778909}
+  _attacker: {fileID: 6300912649283175769}
+  _health: {fileID: 4219066298249808052}
+  _attackDistance: 3
 --- !u!1 &8334475162931949207
 GameObject:
   m_ObjectHideFlags: 0

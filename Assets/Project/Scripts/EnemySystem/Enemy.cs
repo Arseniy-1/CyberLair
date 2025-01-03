@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using StateMashineSytem;
+using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,8 +11,9 @@ namespace Project.Scripts.EnemySystem
     public class Enemy : MonoBehaviour, ITarget, IDamagable
     {
         // [SerializeField] private CollisionHandler _collisionHandler;
-        [SerializeField] protected EnemyMover Mover;
-        [SerializeField] protected Rigidbody2D EnemyRigidbody;
+        [SerializeField] protected EnemyMover _mover;
+        [SerializeField] protected Rigidbody2D _enemyRigidbody;
+        [SerializeField] private EnemyAttacker _attacker;
         // [SerializeField] private WeaponHolder _weaponHolder;
         [SerializeField] private Health _health;
         [SerializeField] private float _attackDistance;
@@ -29,12 +31,22 @@ namespace Project.Scripts.EnemySystem
 
         private void Update()
         {
-            _stateMachine.Update();
+            _stateMachine?.Update();
         }
 
-        public virtual void Initialize(Player player)
+        public void Initialize(Player player)
         {
             _player = player;
+            
+            States = new List<IState>
+            {
+                new EnemyIdleState(this, _enemyRigidbody),
+                new EnemyMoveState(this, _mover),
+                new EnemyAttackState(this, _mover, _attacker),
+                new EnemyStunnedState(this, _mover)
+            };
+            
+            _attacker.Initialize(_player);
             
             _stateMachine = new EntityStateMachine(States);
 
@@ -43,7 +55,7 @@ namespace Project.Scripts.EnemySystem
                 state.Initialize(_stateMachine);
             }
             
-            Mover.Initialize(this, _player, EnemyRigidbody);
+            _mover.Initialize(this, _player, _enemyRigidbody);
         }
         
         public void TakeDamage(int amount)

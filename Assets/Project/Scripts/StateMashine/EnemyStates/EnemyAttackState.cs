@@ -21,7 +21,7 @@ namespace StateMashineSytem.EnemyStates
         {
             _mover.enabled = false;
             _attacker.AttackPerformed += OnAttackPerformed;
-            _attacker.Attack();
+            _attacker.PerformAttack();
         }
 
         public void Update() { }

@@ -12,17 +12,9 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             _jumper = GetComponent<Jumper>();
         }
         
-        public override void Attack()
+        protected override void Attack()
         {
-            _jumper.JumpPerformed += EndAttack;
             _jumper.Jump(Direction);
-        }
-
-        protected override void EndAttack()
-        {
-            _jumper.JumpPerformed -= EndAttack;
-            
-            base.EndAttack();
         }
     }
 }
