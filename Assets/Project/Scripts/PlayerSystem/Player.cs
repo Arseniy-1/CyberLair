@@ -19,6 +19,8 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable
     private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
 
+    public Rigidbody2D Rigidbody2D => _rigidbody2D;
+    
     public bool IsStunned { get; private set; } = false;
 
     public Vector2 Position => transform.position;
@@ -69,7 +71,7 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable
     {
         _health.TakeDamage(amount);
     }
-
+    
     public void TakeStun(float time)
     {
         StartCoroutine(TakingStun(time));

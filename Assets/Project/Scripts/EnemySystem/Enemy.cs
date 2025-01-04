@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
-using UnityEngine.Serialization;
+using System;
 
 namespace Project.Scripts.EnemySystem
 {
@@ -14,14 +12,15 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] protected EnemyMover _mover;
         [SerializeField] protected Rigidbody2D _enemyRigidbody;
         [SerializeField] private EnemyAttacker _attacker;
+        [SerializeField] private Destroyer _destroyer;
+        
         // [SerializeField] private WeaponHolder _weaponHolder;
         [SerializeField] private Health _health;
         [SerializeField] private float _attackDistance;
 
-        protected List<IState> States;
         private EntityStateMachine _stateMachine;
         private Player _player;
-    
+        
         public event Action<Enemy> OnDeath;
         
         public Vector2 Position => transform.position;
@@ -38,7 +37,7 @@ namespace Project.Scripts.EnemySystem
         {
             _player = player;
             
-            States = new List<IState>
+            var states = new List<IState>
             {
                 new EnemyIdleState(this, _enemyRigidbody),
                 new EnemyMoveState(this, _mover),
@@ -47,10 +46,11 @@ namespace Project.Scripts.EnemySystem
             };
             
             _attacker.Initialize(_player);
+            _destroyer.Initialize(_health, this);
             
-            _stateMachine = new EntityStateMachine(States);
+            _stateMachine = new EntityStateMachine(states);
 
-            foreach (IState state in States)
+            foreach (IState state in states)
             {
                 state.Initialize(_stateMachine);
             }
@@ -63,17 +63,7 @@ namespace Project.Scripts.EnemySystem
             _health.TakeDamage(amount);
         }
 
-        private void OnEnable()
-        {
-            _health.LostHealth += Die;
-        }
-
-        private void OnDisable()
-        {
-            _health.LostHealth += Die;
-        }
-
-        private void Die()
+        public void Die()
         {
             OnDeath?.Invoke(this);
         }
