@@ -4,11 +4,11 @@ namespace Project.Scripts.EnemySystem.AttackTypes
 {
     public class EnemyShootAttacker : EnemyAttacker
     {
-        [SerializeField] private Weapon _gun;
+        [SerializeField] private WeaponHolder _gun;
 
         protected override void Attack()
         {
-            _gun.TryAttack();
+            _gun.Shoot();
         }
     }
 }

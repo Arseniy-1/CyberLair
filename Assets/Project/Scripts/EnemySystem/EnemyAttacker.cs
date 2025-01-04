@@ -12,12 +12,11 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private float _attackRecovery;
         [SerializeField] private int _attackCount;
         
-        private Player _player;
+        protected Player Player;
         private Transform _transform;
         
         public event Action AttackPerformed;
         
-        protected Vector2 Direction => (_player.Position - Position).normalized;
         protected Vector2 Position => _transform.position;
 
         public void PerformAttack()
@@ -27,7 +26,7 @@ namespace Project.Scripts.EnemySystem
         
         public void Initialize(Player player)
         {
-            _player = player;
+            Player = player;
             _transform = transform;
         }
         

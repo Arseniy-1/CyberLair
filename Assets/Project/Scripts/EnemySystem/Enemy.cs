@@ -18,7 +18,6 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private Health _health;
         [SerializeField] private float _attackDistance;
 
-        protected List<IState> States;
         private EntityStateMachine _stateMachine;
         private Player _player;
     
@@ -38,7 +37,7 @@ namespace Project.Scripts.EnemySystem
         {
             _player = player;
             
-            States = new List<IState>
+            var states = new List<IState>
             {
                 new EnemyIdleState(this, _enemyRigidbody),
                 new EnemyMoveState(this, _mover),
@@ -47,15 +46,14 @@ namespace Project.Scripts.EnemySystem
             };
             
             _attacker.Initialize(_player);
+            _mover.Initialize(this, _player, _enemyRigidbody);
             
-            _stateMachine = new EntityStateMachine(States);
+            _stateMachine = new EntityStateMachine(states);
 
-            foreach (IState state in States)
+            foreach (IState state in states)
             {
                 state.Initialize(_stateMachine);
             }
-            
-            _mover.Initialize(this, _player, _enemyRigidbody);
         }
         
         public void TakeDamage(int amount)
@@ -75,7 +73,7 @@ namespace Project.Scripts.EnemySystem
 
         private void Die()
         {
-            OnDeath?.Invoke(this);
+            OnDeath?.Invoke(this); //TODO: убрать компонент
         }
         
         private void OnDrawGizmos()
