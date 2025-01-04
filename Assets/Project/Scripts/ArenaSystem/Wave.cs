@@ -25,13 +25,11 @@ namespace Project.Scripts.ArenaSystem
 
         public void Begin()
         {
-            
             var enemies = new List<Enemy>();
             var random = new Random();
                 
             foreach (KeyValuePair<Enemy, int> pair in _config.Enemies)
             {
-
                 for (var i = 0; i < pair.Value; i++)
                 {
                     enemies.Add(pair.Key);

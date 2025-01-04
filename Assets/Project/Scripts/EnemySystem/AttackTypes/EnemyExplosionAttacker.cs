@@ -10,7 +10,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
         
         protected override void Attack()
         {
-            foreach (Health health in GetCollidedBodies(Position))
+            foreach (IDamagable health in GetCollidedBodies(Position))
             {
                 health.TakeDamage(Damage);
             }
@@ -21,17 +21,17 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             Destroy(gameObject);
         }
 
-        private List<Health> GetCollidedBodies(Vector3 position)
+        private List<IDamagable> GetCollidedBodies(Vector3 position)
         {
             Collider[] hits = Physics.OverlapSphere(position, _explosionRange, _layerMask);
 
-            List<Health> affected = new List<Health>();
+            List<IDamagable> affected = new List<IDamagable>();
 
             foreach (Collider hit in hits)
             {
-                if (hit.TryGetComponent(out Health health))
+                if (hit.TryGetComponent(out IDamagable damagable))
                 {
-                    affected.Add(health);
+                    affected.Add(damagable);
                 }
             }
 

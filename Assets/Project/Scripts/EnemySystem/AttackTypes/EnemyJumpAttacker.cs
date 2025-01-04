@@ -6,6 +6,8 @@ namespace Project.Scripts.EnemySystem.AttackTypes
     public class EnemyJumpAttacker : EnemyAttacker
     {
         private Jumper _jumper;
+        
+        private Vector2 Direction => (Player.Position - Position).normalized;
 
         private void Awake()
         {
