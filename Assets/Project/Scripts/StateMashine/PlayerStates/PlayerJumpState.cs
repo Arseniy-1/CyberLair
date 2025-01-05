@@ -4,16 +4,14 @@ namespace StateMashineSytem.PlayerStateMashine
 {
     public class PlayerJumpState : IState
     {
-        private Player _player;
         private Jumper _jumper;
         private PlayerInputController _playerInputController;
         private Collider2D _collider2D;
 
         private IStateSwitcher _stateSwitcher;
 
-        public PlayerJumpState(Player player, PlayerInputController playerInputController, Collider2D collider2D, Jumper jumper)
+        public PlayerJumpState(PlayerInputController playerInputController, Collider2D collider2D, Jumper jumper)
         {
-            _player = player;
             _playerInputController = playerInputController;
             _collider2D = collider2D;
             _jumper = jumper;
