@@ -19,6 +19,7 @@ public class TargetScanner : MonoBehaviour
         _delay = new WaitForSeconds(_scanDelay);
         StartCoroutine(Scaning());
     }
+    
     private IEnumerator Scaning()
     {
         while (enabled)

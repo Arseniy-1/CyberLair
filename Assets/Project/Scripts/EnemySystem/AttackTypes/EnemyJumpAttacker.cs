@@ -7,7 +7,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
     {
         private Jumper _jumper;
         
-        private Vector2 Direction => (Player.Position - Position).normalized;
+        private Vector2 Direction => (EnemyTargetProvider.Player.Position - Position).normalized;
 
         private void Awake()
         {

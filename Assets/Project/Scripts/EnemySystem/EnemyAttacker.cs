@@ -12,7 +12,7 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private float _attackRecovery;
         [SerializeField] private int _attackCount;
         
-        protected Player Player;
+        protected EnemyTargetProvider EnemyTargetProvider;
         private Transform _transform;
         
         public event Action AttackPerformed;
@@ -24,9 +24,9 @@ namespace Project.Scripts.EnemySystem
             StartCoroutine(Performing());
         }
         
-        public void Initialize(Player player)
+        public void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
-            Player = player;
+            EnemyTargetProvider = enemyTargetProvider;
             _transform = transform;
         }
         

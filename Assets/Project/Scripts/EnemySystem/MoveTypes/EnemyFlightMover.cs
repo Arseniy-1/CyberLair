@@ -6,7 +6,7 @@ namespace Project.Scripts.EnemySystem.MoveTypes
     {
         protected override void Move()
         {
-            if(!PlayerPrefab)
+            if(EnemyTargetProvider.HasPlayer == false)
                 return;
             
             EnemyRigidbody.velocity += Direction * (Speed * Time.fixedDeltaTime);

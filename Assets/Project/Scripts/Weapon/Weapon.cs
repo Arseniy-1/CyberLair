@@ -6,9 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField, Range(0.01f, 20)] private float _reloadTime;
     [SerializeField] private Transform _shootPoint;
-    [SerializeField] private Bullet _bulletPrefab;
     [SerializeField, Range(0, 1)] private float _spread;
-
     [SerializeField] private Animator _weaponAnimator;
 
     [SerializeField] private AmmoSpawner _ammoSpawner;

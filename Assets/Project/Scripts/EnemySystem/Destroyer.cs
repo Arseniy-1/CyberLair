@@ -5,7 +5,7 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     private Health _health;
-    private Enemy _enemy;
+    private IDieable _dieable;
     
     private void OnEnable()
     {
@@ -17,14 +17,14 @@ public class Destroyer : MonoBehaviour
         _health.LostHealth -= RaiseDeath;
     }
 
-    public void Initialize(Health health, Enemy enemy)
+    public void Initialize(Health health, IDieable dieable)
     {
         _health = health;
-        _enemy = enemy;
+        _dieable = dieable;
     }
     
     private void RaiseDeath()
     {
-        _enemy.Die();
+        _dieable.Die();
     }
 }

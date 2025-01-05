@@ -3,30 +3,29 @@ using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 namespace Project.Scripts.EnemySystem
 {
-    public class Enemy : MonoBehaviour, ITarget, IDamagable
+    public class Enemy : MonoBehaviour, ITarget, IDamagable, IDieable
     {
         [SerializeField] private EnemyCollisionHandler _collisionHandler;
         [SerializeField] protected EnemyMover _mover;
         [SerializeField] protected Rigidbody2D _enemyRigidbody;
         [SerializeField] private EnemyAttacker _attacker;
         [SerializeField] private Destroyer _destroyer;
+        [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         
-        // [SerializeField] private WeaponHolder _weaponHolder;
+        [SerializeField] private WeaponHolder _weaponHolder;
         [SerializeField] private Health _health;
         [SerializeField] private float _attackDistance;
 
         private EntityStateMachine _stateMachine;
-        private Player _player;
         
         public event Action<Enemy> OnDeath;
         
         public Vector2 Position => transform.position;
         public bool IsStunned { get; private set; }
-        public bool HasPlayer => _player != null;
-        public bool IsPlayerInRange => Vector2.Distance(Position, _player.Position) < _attackDistance;
 
         private void Update()
         {
@@ -35,17 +34,16 @@ namespace Project.Scripts.EnemySystem
 
         public void Initialize(Player player)
         {
-            _player = player;
-            
             var states = new List<IState>
             {
-                new EnemyIdleState(this, _enemyRigidbody),
-                new EnemyMoveState(this, _mover),
+                new EnemyIdleState(this, _enemyRigidbody, _enemyTargetProvider),
+                new EnemyMoveState(this, _mover, _enemyTargetProvider),
                 new EnemyAttackState(this, _mover, _attacker),
                 new EnemyStunnedState(this, _mover)
             };
             
-            _attacker.Initialize(_player);
+            _enemyTargetProvider.Initialize(player, _attackDistance);
+            _attacker.Initialize(_enemyTargetProvider);
             _destroyer.Initialize(_health, this);
             
             _stateMachine = new EntityStateMachine(states);
@@ -55,7 +53,7 @@ namespace Project.Scripts.EnemySystem
                 state.Initialize(_stateMachine);
             }
             
-            _mover.Initialize(this, _player, _enemyRigidbody);
+            _mover.Initialize(this, _enemyTargetProvider, _enemyRigidbody);
         }
         
         public void TakeDamage(int amount)

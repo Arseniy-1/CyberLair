@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Player : MonoBehaviour, ITarget, IDamagable, IStunable
+public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
 {
     [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
     [SerializeField] private PlayerMover _playerMover;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable
     [SerializeField] private ExperienceStorage _experienceStorage;
     [SerializeField] private Jumper _jumper;
     [SerializeField] private TargetScanner _targetScanner;
+    [SerializeField] private Destroyer _destroyer;
 
     private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable
             state.Initialize(_entityStateMachine);
         }
 
+        _destroyer.Initialize(_health, this);
         _playerMover.Initialize(_playerInputController, _rigidbody2D);
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
     }
@@ -94,5 +97,10 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable
     private void Shoot()
     {
         _weaponHolder.Shoot();
+    }
+
+    public void Die()
+    {
+        Debug.Log("Player Die");
     }
 }

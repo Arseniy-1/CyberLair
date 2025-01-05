@@ -8,20 +8,20 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] protected float Speed;
         
         protected Enemy EnemyPrefab;
-        protected Player PlayerPrefab;
+        protected EnemyTargetProvider EnemyTargetProvider;
         protected Rigidbody2D EnemyRigidbody;
         
-        protected Vector2 Direction => (PlayerPrefab.Position - EnemyPrefab.Position).normalized;
+        protected Vector2 Direction => (EnemyTargetProvider.Player.Position - EnemyPrefab.Position).normalized;
         
         private void FixedUpdate()
         {
             Move();
         }
 
-        public void Initialize(Enemy enemy, Player player, Rigidbody2D enemyRigidbody)
+        public void Initialize(Enemy enemy, EnemyTargetProvider enemyTargetProvider, Rigidbody2D enemyRigidbody)
         {
             EnemyPrefab = enemy;
-            PlayerPrefab = player;
+            EnemyTargetProvider = enemyTargetProvider;
             EnemyRigidbody = enemyRigidbody;
         }
 

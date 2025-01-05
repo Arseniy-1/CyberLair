@@ -8,11 +8,13 @@ namespace StateMashineSytem.EnemyStates
         private IStateSwitcher _stateSwitcher;
         private Enemy _enemy;
         private Rigidbody2D _rigidbody;
+        private EnemyTargetProvider _enemyTargetProvider;
 
-        public EnemyIdleState(Enemy enemy, Rigidbody2D rigidbody)
+        public EnemyIdleState(Enemy enemy, Rigidbody2D rigidbody, EnemyTargetProvider enemyTargetProvider)
         {
             _enemy = enemy;
             _rigidbody = rigidbody;
+            _enemyTargetProvider = enemyTargetProvider;
         }
         
         public void Enter()
@@ -25,7 +27,7 @@ namespace StateMashineSytem.EnemyStates
             if (_enemy.IsStunned)
                 _stateSwitcher.SwitchState<EnemyStunnedState>();
             
-            if(_enemy.HasPlayer)
+            if(_enemyTargetProvider.HasPlayer)
                 _stateSwitcher.SwitchState<EnemyMoveState>();
         }
 
