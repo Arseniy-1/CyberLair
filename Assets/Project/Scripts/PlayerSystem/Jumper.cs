@@ -4,8 +4,8 @@ using System;
 
 public class Jumper : MonoBehaviour
 {
-    [SerializeField] private float _distance = 1f;
-    [SerializeField] private float _jumpTime = 1f;
+    private float _distance = 1f;
+    private float _jumpTime = 1f;
 
     private Vector3 _targetPosition;
     private bool _isMoving = false;

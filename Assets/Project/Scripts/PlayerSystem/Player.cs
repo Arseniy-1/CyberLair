@@ -104,11 +104,3 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
         Debug.Log("Player Die");
     }
 }
-
-public class PlayerStats
-{
-    public PlayerStats(Player player)
-    {
-        
-    }
-}
