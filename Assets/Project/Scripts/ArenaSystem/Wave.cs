@@ -4,7 +4,8 @@ using System.Linq;
 using Project.Scripts.CompositionRoot;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
-using Random = System.Random;
+using Cysharp.Threading.Tasks;
+using Random = UnityEngine.Random;
 
 namespace Project.Scripts.ArenaSystem
 {
@@ -25,8 +26,9 @@ namespace Project.Scripts.ArenaSystem
 
         public void Begin()
         {
+            WaitUntilEnd();
+            
             var enemies = new List<Enemy>();
-            var random = new Random();
                 
             foreach (KeyValuePair<Enemy, int> pair in _config.Enemies)
             {
@@ -37,12 +39,18 @@ namespace Project.Scripts.ArenaSystem
             }
             
             _enemyCounter = enemies.Count;
-            enemies = enemies.OrderBy(x=> random.Next()).ToList();
+            enemies = enemies.OrderBy(x=> Random.value).ToList();
 
             foreach (Enemy enemy in enemies.Select(en => _fabric.Create(en)))
             {
                 enemy.OnDeath += HandleDeath;
             }
+        }
+
+        private async UniTaskVoid WaitUntilEnd()
+        {
+            await UniTask.Delay(_config.Duration);
+            OnWaveFinished?.Invoke(this);
         }
 
         private void HandleDeath(Enemy enemy)

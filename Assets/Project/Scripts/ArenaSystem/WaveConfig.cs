@@ -9,8 +9,9 @@ namespace Project.Scripts.ArenaSystem
     public class WaveConfig : SerializedScriptableObject
     {
         [SerializeField] private Dictionary<Enemy,int> _enemies;
-        [SerializeField] private float _duration;
+        [SerializeField] private int _duration;
         
         public IReadOnlyDictionary<Enemy,int> Enemies => _enemies;
+        public int Duration => _duration;
     }
 }
