@@ -1,14 +1,13 @@
 using Sirenix.OdinInspector;
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField, Range(0.01f, 20)] private float _reloadTime;
-    [SerializeField, Header("(Точка спавна пуль)")] private Transform _shootPoint;
+    [SerializeField] private Transform _shootPoint;
     [SerializeField] private Bullet _bulletPrefab;
-    [SerializeField, Range(0, 1), Header("(Разброс) Среднее значение: 0,2")] private float _spread;
+    [SerializeField, Range(0, 1)] private float _spread;
 
     [SerializeField] private Animator _weaponAnimator;
 
@@ -63,7 +62,7 @@ public class Weapon : MonoBehaviour
    
     private void ShowAttackAnimation()
     {
-        int attackAnim = Animator.StringToHash("Attack"); //TODO: хардкод
+        int attackAnim = Animator.StringToHash("Attack"); //TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         _weaponAnimator.Play(attackAnim);
     }
 }
