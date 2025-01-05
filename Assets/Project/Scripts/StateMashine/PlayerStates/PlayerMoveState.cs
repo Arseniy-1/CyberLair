@@ -5,14 +5,19 @@
         private Player _player;
         private PlayerMover _playerMover;
         private PlayerInputController _playerInputController;
-
+        private WeaponHolder _weaponHolder;
+        private TargetScanner _targetScanner;
+        
         private IStateSwitcher _stateSwitcher;
 
-        public PlayerMoveState(Player player, PlayerInputController playerInputController, PlayerMover playerMover)
+        public PlayerMoveState(Player player, PlayerInputController playerInputController, PlayerMover playerMover,
+            WeaponHolder weaponHolder, TargetScanner targetScanner)
         {
             _player = player;
             _playerMover = playerMover;
             _playerInputController = playerInputController;
+            _weaponHolder = weaponHolder;
+            _targetScanner = targetScanner;
         }
 
         public void Initialize(IStateSwitcher stateSwitcher)
@@ -34,6 +39,9 @@
 
         public virtual void Update()
         {
+            if (_targetScanner.HasTarget)
+                _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);
+            
             if (_player.IsStunned)
                 _stateSwitcher.SwitchState<PlayerStunnedState>();
 

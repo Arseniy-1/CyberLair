@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable
     [SerializeField] private Health _health;
     [SerializeField] private ExperienceStorage _experienceStorage;
     [SerializeField] private Jumper _jumper;
+    [SerializeField] private TargetScanner _targetScanner;
 
     private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
@@ -50,8 +51,8 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable
     {
         List<IState> playerStates = new List<IState>
         {
-            new PlayerIdleState(this, _playerMover, _rigidbody2D),
-            new PlayerMoveState(this,_playerInputController, _playerMover),
+            new PlayerIdleState(this, _playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
+            new PlayerMoveState(this,_playerInputController, _playerMover, _weaponHolder, _targetScanner),
             new PlayerJumpState(this, _playerInputController, _collider, _jumper),
             new PlayerStunnedState(this, _playerMover)
         };

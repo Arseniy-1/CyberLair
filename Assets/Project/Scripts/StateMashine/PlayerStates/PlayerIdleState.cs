@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace StateMashineSytem.PlayerStateMashine
@@ -7,14 +8,19 @@ namespace StateMashineSytem.PlayerStateMashine
         private Player _player;
         private PlayerMover _playerMover;
         private Rigidbody2D _rigidbody2D;
+        private WeaponHolder _weaponHolder;
+        private TargetScanner _targetScanner;
 
         private IStateSwitcher _stateSwitcher;
 
-        public PlayerIdleState(Player player, PlayerMover playerMover, Rigidbody2D rigidbody2D)
+        public PlayerIdleState(Player player, PlayerMover playerMover, Rigidbody2D rigidbody2D,
+            WeaponHolder weaponHolder, TargetScanner targetScanner)
         {
             _player = player;
             _playerMover = playerMover;
             _rigidbody2D = rigidbody2D;
+            _weaponHolder = weaponHolder;
+            _targetScanner = targetScanner;
         }
 
         public void Initialize(IStateSwitcher stateSwitcher)
@@ -33,6 +39,9 @@ namespace StateMashineSytem.PlayerStateMashine
 
         public virtual void Update()
         {
+            if (_targetScanner.HasTarget)
+                _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);
+
             if (_player.IsStunned)
                 _stateSwitcher.SwitchState<PlayerStunnedState>();
 

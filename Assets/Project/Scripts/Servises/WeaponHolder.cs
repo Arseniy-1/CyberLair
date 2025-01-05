@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
-    [SerializeField] private TargetScanner _targetScaner;
-
     [SerializeField] private Weapon _currentWeapon;
 
     public event Action OnWeaponChanged;
-
-    private void FixedUpdate()
-    {
-        SpotTarget();
-    }
 
     [Button]
     public void Shoot()
@@ -21,14 +14,11 @@ public class WeaponHolder : MonoBehaviour
         _currentWeapon.TryAttack();
     }
 
-    private void SpotTarget()
+    public void SpotTarget(ITarget target)
     {
-        if (_targetScaner.HasTarget)
-        {
-            Vector3 targetPosition = _targetScaner.ClosestTarget.Position;
-            var direction = targetPosition - transform.position;
-            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
+        Vector3 targetPosition = target.Position;
+        var direction = targetPosition - transform.position;
+        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }
