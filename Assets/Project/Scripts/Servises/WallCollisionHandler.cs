@@ -7,15 +7,12 @@ public class WallCollisionHandler : CollisionHandler
 
     protected override void HandleCollision(Collider2D collider)
     {
-        if (collider.TryGetComponent(out Rigidbody2D rigidbody2D))
-        {
-            if (rigidbody2D.TryGetComponent(out IStunable stunable))
-            {
-                stunable.TakeStun(_stunTime);
-                Vector3 pushDirection = transform.up;
+        if (collider.TryGetComponent(out IStunable stunable))
+            return;
 
-                rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
-            }
-        }
+        stunable.TakeStun(_stunTime);
+        Vector3 pushDirection = transform.up;
+
+        stunable.Rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
     }
 }
