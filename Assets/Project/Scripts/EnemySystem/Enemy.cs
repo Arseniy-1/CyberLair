@@ -8,7 +8,7 @@ namespace Project.Scripts.EnemySystem
 {
     public class Enemy : MonoBehaviour, ITarget, IDamagable
     {
-        // [SerializeField] private CollisionHandler _collisionHandler;
+        [SerializeField] private EnemyCollisionHandler _collisionHandler;
         [SerializeField] protected EnemyMover _mover;
         [SerializeField] protected Rigidbody2D _enemyRigidbody;
         [SerializeField] private EnemyAttacker _attacker;
