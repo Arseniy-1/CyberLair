@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdd584729c4d589389ef4c8cc6b3bb, type: 3}
+  m_Name: FireSpheres
+  m_EditorClassIdentifier: 
+  <SkillInfo>k__BackingField:
+    <SkillName>k__BackingField: 11
+    <Description>k__BackingField: 
+    <Icon>k__BackingField: {fileID: 0}
+  WeaponPrefab: {fileID: 5006296289634881662, guid: de1816e96bbb7784d9c4c2c1d4e72f71, type: 3}

@@ -1,12 +1,16 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillView : MonoBehaviour
 {
     [SerializeField] private Button _button;
+    [SerializeField] private TextMeshProUGUI _nameText;
     
-    private Skill _skill;
+    private ISkill _skill;
+    
+    public event Action<ISkill> OnClicked;
 
     private void OnEnable()
     {
@@ -18,16 +22,14 @@ public class SkillView : MonoBehaviour
         _button.onClick.RemoveListener(HandleClick);
     }
     
-    public event Action<Skill> OnClicked;
-
     private void HandleClick()
     {
         OnClicked?.Invoke(_skill);
     }
     
-    public void SetSkill(Skill skill)
+    public void SetSkill(ISkill skill)
     {
         _skill = skill;
-           // skill.SkillInfo
+        _nameText.text = _skill.SkillInfo.SkillName.ToString();
     }
 }

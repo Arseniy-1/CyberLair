@@ -1,27 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using Sirenix.OdinInspector;
 
 public class Mediator : MonoBehaviour
 {
-    [SerializeField] private List<SkillView> _skillViews;
     [SerializeField] private List<Skill> _skills;
-    
+    [SerializeField] private List<SkillView> _skillViews;
+
     [SerializeField] private Player _player;
+    [SerializeField] private Level _level;
     [SerializeField] private PlayerConfig _playerConfig;
-    [SerializeField]private WeaponHolder _playerWeaponHolder;
-    
+    [SerializeField] private WeaponHolder _playerWeaponHolder;
+
     private SkillHolder _skillHolder = new SkillHolder();
+    private int _skillsCount = 3;
 
     private void OnEnable()
     {
+        _level.LevelRaised += ShowSkills;
+
         foreach (var skillView in _skillViews)
         {
             skillView.OnClicked += OnSkillApplyed;
-            skillView.SetSkill(_skills[0]);
+        }
+
+        ShowSkills();
+    }
+
+    private void OnDisable()
+    {
+        _level.LevelRaised -= ShowSkills;
+
+        foreach (var skillView in _skillViews)
+        {
+            skillView.OnClicked -= OnSkillApplyed;
         }
     }
 
-    private void OnSkillApplyed(Skill skill)
+    private void OnSkillApplyed(ISkill skill)
     {
         _skillHolder.AddSkill(skill);
 
@@ -33,15 +50,30 @@ public class Mediator : MonoBehaviour
         {
             activeSkill.Apply(_playerWeaponHolder);
         }
+
+        HideSkills();
     }
 
-    private void ShowSkills(int skillCount)
+    private void ShowSkills()
     {
-        //skillViews - отображаем на сцене
+        var availableSkills = _skills.ToList();
 
-        for (int i = 0; i < skillCount; i++)
+        for (int i = 0; i < _skillsCount; i++)
         {
-            _skillViews[i].SetSkill(_skills[Random.Range(0, _skills.Count)]);
+            int randomIndex = Random.Range(0, availableSkills.Count);
+
+            _skillViews[i].gameObject.SetActive(true);
+            _skillViews[i].SetSkill(availableSkills[randomIndex]);
+
+            availableSkills.RemoveAt(randomIndex);
+        }
+    }
+
+    private void HideSkills()
+    {
+        for (int i = 0; i < _skillViews.Count; i++)
+        {
+            _skillViews[i].gameObject.SetActive(false);
         }
     }
 }

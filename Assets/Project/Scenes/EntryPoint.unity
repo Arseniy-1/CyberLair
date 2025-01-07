@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 457796978}
+  _nameText: {fileID: 764313078}
 --- !u!222 &457796981
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1204,13 +1205,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb061a729cc24cc1a24b0482f33515af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skills:
+  - {fileID: 11400000, guid: a5647d7e54d0f0242b029a1ca14aa9ee, type: 2}
+  - {fileID: 11400000, guid: 2c28ab043e651c6478268a9a01b33aae, type: 2}
+  - {fileID: 11400000, guid: 48f02393e3f902048b721a887e99c03e, type: 2}
   _skillViews:
   - {fileID: 1803681456}
   - {fileID: 457796980}
   - {fileID: 876918390}
   _player: {fileID: 2821466748545313527}
-  _playerConfig: {fileID: 0}
-  _playerWeaponHolder: {fileID: 0}
+  _playerConfig: {fileID: 2821466748545313534}
+  _playerWeaponHolder: {fileID: 1993700742}
 --- !u!4 &685309815
 Transform:
   m_ObjectHideFlags: 0
@@ -1654,6 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 876918388}
+  _nameText: {fileID: 650931230}
 --- !u!222 &876918391
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2393,6 +2399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1803681453}
+  _nameText: {fileID: 175021485}
 --- !u!1 &1812358125
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1816758619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2699,8 +2706,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 0
-  CurrentValue: 0
+  MaxValue: 100
+  CurrentValue: 100
 --- !u!114 &2027142892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,6 +2905,10 @@ PrefabInstance:
       propertyPath: _destroyer
       value: 
       objectReference: {fileID: 2821466748545313533}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _playerConfig
+      value: 
+      objectReference: {fileID: 2821466748545313534}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _weaponHolder
       value: 

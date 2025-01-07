@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class FireSpheresSkill : ActiveSkill
+[CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Active/Shield", order = 51)]
+public class ShieldSkill : ActiveSkill
 {
     public override void Apply(WeaponHolder weaponHolder)
     {
@@ -8,4 +9,3 @@ public class FireSpheresSkill : ActiveSkill
         weaponHolder.EquipWeapon(weapon);
     }
 }
-

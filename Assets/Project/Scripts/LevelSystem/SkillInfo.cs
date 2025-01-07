@@ -6,8 +6,8 @@ using Image = Microsoft.Unity.VisualStudio.Editor.Image;
 [Serializable]
 public class SkillInfo
 {
-    [SerializeField] private string _skillName;    
-    [SerializeField] private string _description;    
-    [SerializeField] private Sprite _icon;
+    [field: SerializeField] public string SkillName {get; private set;}    
+    [field: SerializeField] public string Description {get; private set;}    
+    [field: SerializeField] public Sprite Icon {get; private set;}
     
 }
