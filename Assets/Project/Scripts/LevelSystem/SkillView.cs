@@ -6,7 +6,7 @@ public class SkillView : MonoBehaviour
 {
     [SerializeField] private Button _button;
     
-    private ISkill _skill;
+    private Skill _skill;
 
     private void OnEnable()
     {
@@ -18,14 +18,14 @@ public class SkillView : MonoBehaviour
         _button.onClick.RemoveListener(HandleClick);
     }
     
-    public event Action<ISkill> OnClicked;
+    public event Action<Skill> OnClicked;
 
     private void HandleClick()
     {
         OnClicked?.Invoke(_skill);
     }
     
-    public void SetSkill(ISkill skill)
+    public void SetSkill(Skill skill)
     {
         _skill = skill;
            // skill.SkillInfo

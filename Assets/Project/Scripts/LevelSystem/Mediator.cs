@@ -4,12 +4,7 @@ using System.Collections.Generic;
 public class Mediator : MonoBehaviour
 {
     [SerializeField] private List<SkillView> _skillViews;
-    
-    private List<ISkill> _skills = new List<ISkill>
-    {
-        new HealthSkill(),
-        new FireSpheresSkill()
-    };
+    [SerializeField] private List<Skill> _skills;
     
     [SerializeField] private Player _player;
     [SerializeField] private PlayerConfig _playerConfig;
@@ -26,7 +21,7 @@ public class Mediator : MonoBehaviour
         }
     }
 
-    private void OnSkillApplyed(ISkill skill)
+    private void OnSkillApplyed(Skill skill)
     {
         _skillHolder.AddSkill(skill);
 
