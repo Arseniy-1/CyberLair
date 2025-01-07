@@ -1,35 +1,21 @@
 ﻿using UnityEngine;
 
-public class PlayerStats 
+public class PlayerStats
 {
-    [field: SerializeField] public float JumpDistance { get; private set; }
-    [field: SerializeField] public float JumpTime{ get; private set; }
-    
-    [field: SerializeField] public float Damage{ get; private set; }
-    [field: SerializeField] public float ReloadTime{ get; private set; }
-    [field: SerializeField] public Bullet BulletPrefab{ get; private set; }
-}
+    [field: SerializeField] public float Damage;
 
-// TODO: SO
-public class PlayerConfig
-{
-    [field: SerializeField] public float JumpDistance { get; private set; }
-    [field: SerializeField] public float JumpTime{ get; private set; }
-    
-    [field: SerializeField] public float Damage{ get; private set; }
-    [field: SerializeField] public float ReloadTime{ get; private set; }
-    [field: SerializeField] public Bullet BulletPrefab{ get; private set; }
-}
+    [field: SerializeField] public float JumpDistance; 
+    [field: SerializeField] public float JumpTime;
 
-public class PlayerStatsService
-{
-    private PlayerConfig _config;
-    private PlayerStats _playerStats;
+    [field: SerializeField] public float ReloadTime;
+    [field: SerializeField] public Bullet BulletPrefab;
 
-    public PlayerStats GetStats()
+    public void Initialize(PlayerConfig playerConfig)
     {
-        return _playerStats;
+        Damage = playerConfig.Damage;
+        JumpDistance = playerConfig.JumpDistance;
+        JumpTime = playerConfig.JumpTime;
+        ReloadTime = playerConfig.ReloadTime;
+        BulletPrefab = playerConfig.BulletPrefab;
     }
-    
-    
 }

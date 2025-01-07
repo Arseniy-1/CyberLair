@@ -14,11 +14,24 @@ public class WeaponHolder : MonoBehaviour
         _currentWeapon.TryAttack();
     }
 
+    [Button]
     public void SpotTarget(ITarget target)
     {
         Vector3 targetPosition = target.Position;
         var direction = targetPosition - transform.position;
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        _currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    public void EquipWeapon(Weapon pickedWeapon)
+    {
+        if (pickedWeapon.gameObject.activeSelf)
+        {
+            return;
+        }
+
+        _currentWeapon = pickedWeapon;
+
+        OnWeaponChanged?.Invoke();
     }
 }

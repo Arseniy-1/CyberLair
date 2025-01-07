@@ -18,10 +18,12 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
     [SerializeField] private Jumper _jumper;
     [SerializeField] private TargetScanner _targetScanner;
     [SerializeField] private Destroyer _destroyer;
+    [SerializeField] private PlayerConfig _playerConfig;
 
     private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
 
+    public PlayerStats PlayerStats { get; private set; } = new PlayerStats();
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     
     public bool IsStunned { get; private set; } = false;
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
             state.Initialize(_entityStateMachine);
         }
 
+        PlayerStats.Initialize(_playerConfig);
         _destroyer.Initialize(_health, this);
         _playerMover.Initialize(_playerInputController, _rigidbody2D);
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
