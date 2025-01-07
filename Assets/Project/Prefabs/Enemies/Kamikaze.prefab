@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8914670022210950017}
   - component: {fileID: 6014211762987851508}
   - component: {fileID: 1802045359912388367}
+  - component: {fileID: 8686971915878680572}
   m_Layer: 3
   m_Name: Kamikaze
   m_TagString: Untagged
@@ -156,9 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionHandler: {fileID: 0}
   _mover: {fileID: 1802045359912388367}
   _enemyRigidbody: {fileID: 667147929308886583}
   _attacker: {fileID: 1909045439452979584}
+  _destroyer: {fileID: 8686971915878680572}
   _health: {fileID: 8914670022210950017}
   _attackDistance: 3
 --- !u!114 &1802045359912388367
@@ -174,6 +177,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
+--- !u!114 &8686971915878680572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229772452010772433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40159f6e955494ba80fba0d457f7f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3740714730047742225
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5847268309454507736}
   - component: {fileID: 5094553024444767120}
+  - component: {fileID: 5960583800311349661}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -290,3 +306,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5960583800311349661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036182046258370948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -1, y: 1, z: 1}
+  _rigidbody: {fileID: 667147929308886583}

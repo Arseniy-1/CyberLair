@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 4679022288187799651}
   - component: {fileID: 8327977833412635372}
   - component: {fileID: 2262976181833518466}
+  - component: {fileID: 1921386407451914822}
   m_Layer: 3
   m_Name: Trooper
   m_TagString: Untagged
@@ -187,9 +188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionHandler: {fileID: 0}
   _mover: {fileID: 4679022288187799651}
   _enemyRigidbody: {fileID: 338829131333349496}
   _attacker: {fileID: 8327977833412635372}
+  _destroyer: {fileID: 1921386407451914822}
   _health: {fileID: 2262976181833518466}
   _attackDistance: 10
 --- !u!114 &4679022288187799651
@@ -236,6 +239,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxValue: 32
   CurrentValue: 32
+--- !u!114 &1921386407451914822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537806147820285303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40159f6e955494ba80fba0d457f7f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8266974789114446711
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8110797425291762515}
   - component: {fileID: 3475711263964595441}
+  - component: {fileID: 2124434345771584073}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -321,6 +337,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2124434345771584073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266974789114446711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -1, y: 1, z: 1}
+  _rigidbody: {fileID: 338829131333349496}
 --- !u!1001 &7376032523827113166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,14 +406,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7417804407769913341, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6863152580221005642}
   m_SourcePrefab: {fileID: 100100000, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+--- !u!1 &48901118411062067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7417804407769913341, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+  m_PrefabInstance: {fileID: 7376032523827113166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6863152580221005642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48901118411062067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fd2856b6da4b8fb950f093fd115da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: 1, y: -1, z: 1}
 --- !u!114 &810290520881984158 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
   m_PrefabInstance: {fileID: 7376032523827113166}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 48901118411062067}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7b7ec6bcce3aa74dba4f974330e9379, type: 3}

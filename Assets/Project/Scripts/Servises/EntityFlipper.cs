@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Servises
 {
-    public class PlayerFlipper : Flipper
+    public class EntityFlipper : Flipper
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         

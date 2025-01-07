@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 705212269321072690}
   - component: {fileID: 6933681626514605583}
   - component: {fileID: 4382913821471026158}
+  - component: {fileID: -5505748180618561715}
   m_Layer: 3
   m_Name: The Blight
   m_TagString: Untagged
@@ -180,11 +181,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionHandler: {fileID: 0}
   _mover: {fileID: 705212269321072690}
   _enemyRigidbody: {fileID: 9187278981319853839}
   _attacker: {fileID: 2255569116647932330}
+  _destroyer: {fileID: -5505748180618561715}
   _health: {fileID: 6933681626514605583}
   _attackDistance: 5
+--- !u!114 &-5505748180618561715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481004086066805629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40159f6e955494ba80fba0d457f7f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &786434052027316470
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2543074565528694283}
   - component: {fileID: 3948316353497071274}
+  - component: {fileID: 7395558879303651648}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -270,6 +286,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7395558879303651648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786434052027316470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -1, y: 1, z: 1}
+  _rigidbody: {fileID: 9187278981319853839}
 --- !u!1 &1889057684960242127
 GameObject:
   m_ObjectHideFlags: 0

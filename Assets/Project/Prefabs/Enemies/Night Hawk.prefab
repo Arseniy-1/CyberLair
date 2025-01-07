@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844212250073056721}
   - component: {fileID: 1422075624549261699}
+  - component: {fileID: 3631751708166126751}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -85,6 +86,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3631751708166126751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780023936938558337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -1, y: 1, z: 1}
+  _rigidbody: {fileID: 26766439269764555}
 --- !u!1 &5760608619745149670
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +146,7 @@ GameObject:
   - component: {fileID: 9010007184260890335}
   - component: {fileID: 6052317746550728024}
   - component: {fileID: 263878080555140060}
+  - component: {fileID: 8242470380431142326}
   m_Layer: 3
   m_Name: Night Hawk
   m_TagString: Untagged
@@ -285,8 +301,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionHandler: {fileID: 0}
   _mover: {fileID: 9010007184260890335}
   _enemyRigidbody: {fileID: 26766439269764555}
   _attacker: {fileID: 4695786123440549315}
+  _destroyer: {fileID: 8242470380431142326}
   _health: {fileID: 6052317746550728024}
   _attackDistance: 3
+--- !u!114 &8242470380431142326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321936822601242699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40159f6e955494ba80fba0d457f7f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

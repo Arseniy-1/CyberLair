@@ -6,25 +6,19 @@ public class Destroyer : MonoBehaviour
 {
     private Health _health;
     private Enemy _enemy;
-    
-    private void OnEnable()
-    {
-        _health.LostHealth += RaiseDeath;
-    }
-
-    private void OnDisable()
-    {
-        _health.LostHealth -= RaiseDeath;
-    }
 
     public void Initialize(Health health, Enemy enemy)
     {
         _health = health;
         _enemy = enemy;
+        
+        _health.LostHealth += RaiseDeath;
     }
     
     private void RaiseDeath()
     {
+        _health.LostHealth -= RaiseDeath;
+        
         _enemy.Die();
     }
 }

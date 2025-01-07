@@ -7,6 +7,6 @@ public class StatsBar : StatsView
 
     protected override void ShowStats(int currentValue, int maxValue)
     {
-        StatsBarView.value = currentValue / maxValue;
+        StatsBarView.value = (float)currentValue / maxValue;
     }
 }
