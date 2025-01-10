@@ -1,8 +1,7 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Weapon.ActiveSkills;
+using UnityEngine;
 
 public abstract class ActiveSkill : Skill
 {
-    [SerializeField] protected Weapon WeaponPrefab;
-
-    public abstract void Apply(WeaponHolder weaponHolder, int level);
+    public abstract void Apply(WeaponHolder weaponHolder);
 }
