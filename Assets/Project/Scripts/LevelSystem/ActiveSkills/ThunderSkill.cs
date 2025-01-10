@@ -10,10 +10,20 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
         [SerializeField] private Thunder _thunderPrefab;
         [SerializeField] private float _radius;
         
+        [SerializeField] private PassiveSkillConfig _radiusConfig;
+        [SerializeField] private PassiveSkillConfig _damageConfig;
+        [SerializeField] private PassiveSkillConfig _countConfig;
+        
         private Thunder _thunderInstance;
         
-        public override void Apply(WeaponHolder weaponHolder)
+        public override void Apply(WeaponHolder weaponHolder, int level)
         {
+            if (_thunderInstance != null)
+            {
+                var radius = _radiusConfig.Multipliers[level];
+                // _thunderInstance.ApllyStats(radius, damage, count);
+            }
+            
             _thunderInstance = Instantiate(_thunderPrefab, weaponHolder.transform);
             _thunderInstance.Initialize(_radius, weaponHolder.transform);
         }

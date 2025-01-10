@@ -3,5 +3,5 @@ using UnityEngine;
 
 public abstract class ActiveSkill : Skill
 {
-    public abstract void Apply(WeaponHolder weaponHolder);
+    public abstract void Apply(WeaponHolder weaponHolder, int level);
 }

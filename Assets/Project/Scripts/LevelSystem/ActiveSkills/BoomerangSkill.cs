@@ -11,13 +11,19 @@ public class BoomerangSkill : ActiveSkill
     
     private readonly List<Boomerang> _boomerangs = new();
     
-    public override void Apply(WeaponHolder weaponHolder)
+    public override void Apply(WeaponHolder weaponHolder, int level)
     {
+        if (level == 5)
+        {
+            //Increase Speed
+        }
+        
         Boomerang activeWeapon = Instantiate(_boomerangPrefab, weaponHolder.transform);
         activeWeapon.Initialize(_radius, weaponHolder.transform);
             
         _boomerangs.Add(activeWeapon);
         DistributeEqually(weaponHolder.transform);
+        
     }
     
     private void DistributeEqually(Transform holder)
