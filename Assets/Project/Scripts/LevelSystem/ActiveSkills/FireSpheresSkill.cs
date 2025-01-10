@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Active/FireSpheres", order = 51)]
 public class FireSpheresSkill : ActiveSkill
 {
-    public override void Apply(WeaponHolder weaponHolder)
+    public override void Apply(WeaponHolder weaponHolder, int level)
     {
         Weapon weapon = Instantiate(WeaponPrefab, weaponHolder.transform);
         weaponHolder.EquipWeapon(weapon);

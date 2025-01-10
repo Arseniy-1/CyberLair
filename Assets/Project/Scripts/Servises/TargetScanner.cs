@@ -33,11 +33,11 @@ public class TargetScanner : MonoBehaviour
     {
         Vector2 position = transform.position;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _scanRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _scanRadius, _targetLayer);
         HashSet<ITarget> targets = new HashSet<ITarget>();
 
         foreach (Collider2D hit in hits)
-            if (hit.TryGetComponent(out ITarget target) && (_targetLayer & (1 << hit.gameObject.layer)) != 0)
+            if (hit.TryGetComponent(out ITarget target))
                 targets.Add(target);
 
         List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - position).magnitude).ToList();

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
+
 public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 {
     [SerializeField] private int _damage;
     [SerializeField] private float _speed;
     [SerializeField] private float _lifeTime;
-
+    
     private Rigidbody2D _rigidbody2D;
     private Coroutine _coroutine;
     private WaitForSeconds _waitLife;
@@ -35,8 +36,9 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
         _rigidbody2D.velocity = transform.right * _speed;
     }
 
-    public void Init(Vector3 startPosition, Quaternion rotation)
+    public void Init(Vector3 startPosition, Quaternion rotation, int damage)
     {
+        _damage = damage;
         transform.position = startPosition;
         transform.rotation = rotation;
 
@@ -45,7 +47,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 
         _coroutine = StartCoroutine(WaitDestroy());
     }
-
+    
     private void Destory()
     {
         OnDestroyed?.Invoke(this);

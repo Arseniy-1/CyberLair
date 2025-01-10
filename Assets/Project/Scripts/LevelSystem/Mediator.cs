@@ -48,7 +48,7 @@ public class Mediator : MonoBehaviour
         }
         else if (skill is ActiveSkill activeSkill)
         {
-            activeSkill.Apply(_playerWeaponHolder);
+            activeSkill.Apply(_playerWeaponHolder, _skillHolder.Skills[skill]);
         }
 
         HideSkills();
