@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 
 public class Mediator : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class Mediator : MonoBehaviour
     {
         _level.LevelRaised += ShowSkills;
 
+        if (_skillViews.IsNullOrEmpty())
+            return;
+
         foreach (var skillView in _skillViews)
         {
             skillView.OnClicked += OnSkillApplyed;
@@ -37,18 +41,20 @@ public class Mediator : MonoBehaviour
             skillView.OnClicked -= OnSkillApplyed;
         }
     }
-
+    
+    [Button]
     private void OnSkillApplyed(ISkill skill)
     {
         _skillHolder.AddSkill(skill);
 
-        if (skill is PassiveSkill passiveSkill)
+        switch (skill)
         {
-            passiveSkill.Apply(_player.PlayerStats, _playerConfig, _skillHolder.Skills[skill]);
-        }
-        else if (skill is ActiveSkill activeSkill)
-        {
-            activeSkill.Apply(_playerWeaponHolder);
+            case PassiveSkill passiveSkill:
+                passiveSkill.Apply(_player.PlayerStats, _playerConfig, _skillHolder.Skills[skill]);
+                break;
+            case ActiveSkill activeSkill:
+                activeSkill.Apply(_playerWeaponHolder);
+                break;
         }
 
         HideSkills();

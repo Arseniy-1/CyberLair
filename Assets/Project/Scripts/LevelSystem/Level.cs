@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    private ExperienceStorage _experienceStorage;
+    [SerializeField] private ExperienceStorage _experienceStorage;
     private int _currentLevel;
 
     public event Action LevelRaised;

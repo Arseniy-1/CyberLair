@@ -22,16 +22,4 @@ public class WeaponHolder : MonoBehaviour
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         _currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
-
-    public void EquipWeapon(Weapon pickedWeapon)
-    {
-        if (pickedWeapon.gameObject.activeSelf)
-        {
-            return;
-        }
-
-        _currentWeapon = pickedWeapon;
-
-        OnWeaponChanged?.Invoke();
-    }
 }

@@ -7,7 +7,7 @@ public class WallCollisionHandler : CollisionHandler
 
     protected override void HandleCollision(Collider2D collider)
     {
-        if (collider.TryGetComponent(out IStunable stunable))
+        if (collider.TryGetComponent(out IStunable stunable) == false)
             return;
 
         stunable.TakeStun(_stunTime);
