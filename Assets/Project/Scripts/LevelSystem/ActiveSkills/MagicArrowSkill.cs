@@ -7,7 +7,7 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
     public class MagicArrowSkill : ActiveSkill
     {
         [SerializeField] private MagicArrowSpawner _arrow;
-        [SerializeField] private PassiveSkillConfig _damageConfig;
+        [SerializeField] private SkillConfig _damageConfig;
         
         private MagicArrowSpawner _spawnerInstance;
         

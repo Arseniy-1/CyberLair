@@ -19,6 +19,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         private Vector3 FindEnemyPosition()
         {
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, _radius, _layerMask);
+            
             return enemies[Random.Range(0, enemies.Length)].transform.position;
         }
 

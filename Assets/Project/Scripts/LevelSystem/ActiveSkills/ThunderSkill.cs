@@ -9,9 +9,9 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
         [SerializeField] private Thunder _thunderPrefab;
         [SerializeField] private float _radius;
         
-        [SerializeField] private PassiveSkillConfig _radiusConfig;
-        [SerializeField] private PassiveSkillConfig _damageConfig;
-        [SerializeField] private PassiveSkillConfig _countConfig;
+        [SerializeField] private SkillConfig _radiusConfig;
+        [SerializeField] private SkillConfig _damageConfig;
+        [SerializeField] private SkillConfig _countConfig;
         
         private Thunder _thunderInstance;
         

@@ -8,7 +8,7 @@ public class BoomerangSkill : ActiveSkill
 {
     [SerializeField] private Boomerang _boomerangPrefab;
     [SerializeField] private float _radius;
-    [SerializeField] private PassiveSkillConfig _speedConfig;
+    [SerializeField] private SkillConfig _speedConfig;
     
     private readonly List<Boomerang> _boomerangs = new();
     

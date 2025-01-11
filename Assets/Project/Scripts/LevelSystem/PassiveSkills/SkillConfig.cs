@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [Serializable]
-public class PassiveSkillConfig
+public class SkillConfig
 {
     [SerializeField] private List<float> _multipliers;
     

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class PassiveSkill : Skill
 {
-    [field: SerializeField] protected PassiveSkillConfig PassiveSkillConfig;
+    [FormerlySerializedAs("PassiveSkillConfig")] [field: SerializeField] protected SkillConfig skillConfig;
 
     public abstract void Apply(PlayerStats playerStats, PlayerConfig playerConfig, int level);
 }

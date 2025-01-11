@@ -5,7 +5,7 @@ public class HealthSkill : PassiveSkill
 {
     public override void Apply(PlayerStats playerStats, PlayerConfig playerConfig, int level)//TODO: попробовать связать общим классом
     {
-        playerStats.Damage = playerConfig.Damage * PassiveSkillConfig.Multipliers[level];
+        playerStats.Damage = playerConfig.Damage * skillConfig.Multipliers[level];
         Debug.Log("Health Skill Applied");
     }
 }

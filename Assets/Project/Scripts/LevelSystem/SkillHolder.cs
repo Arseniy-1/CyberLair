@@ -6,7 +6,7 @@ public class SkillHolder
     private Dictionary<ISkill, int> _skills = new Dictionary<ISkill, int>();
     private int _maxSkillsCount = 5;
 
-    public IReadOnlyDictionary<ISkill, int> Skills;
+    public IReadOnlyDictionary<ISkill, int> Skills => _skills;
 
     public void AddSkill(ISkill skill)
     {
