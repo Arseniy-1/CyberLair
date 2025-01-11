@@ -5,10 +5,9 @@ namespace Project.Scripts.Weapon.ActiveSkills
 {
     public class ActiveWeapon : MonoBehaviour
     {
-        [SerializeField] private int _damage;
+        [SerializeField] protected int Damage;
+        [SerializeField] protected float ActionRadius;
 
-        protected int Damage => _damage;
-        protected float ActionRadius { get; private set; }
         protected Transform TargetTransform { get; private set; }
 
         public void Initialize(float actionRadius, Transform targetTransform)

@@ -8,25 +8,22 @@ public class BoomerangSkill : ActiveSkill
 {
     [SerializeField] private Boomerang _boomerangPrefab;
     [SerializeField] private float _radius;
+    [SerializeField] private PassiveSkillConfig _speedConfig;
     
     private readonly List<Boomerang> _boomerangs = new();
     
     public override void Apply(WeaponHolder weaponHolder, int level)
     {
-        if (level == 5)
-        {
-            //Increase Speed
-        }
-        
         Boomerang activeWeapon = Instantiate(_boomerangPrefab, weaponHolder.transform);
         activeWeapon.Initialize(_radius, weaponHolder.transform);
-            
-        _boomerangs.Add(activeWeapon);
-        DistributeEqually(weaponHolder.transform);
+
+        var speed = _speedConfig.Multipliers[level];
         
+        _boomerangs.Add(activeWeapon);
+        DistributeEqually(weaponHolder.transform, speed);
     }
     
-    private void DistributeEqually(Transform holder)
+    private void DistributeEqually(Transform holder, float speed)
     {
         if (_boomerangs.IsNullOrEmpty()) return;
 
@@ -35,11 +32,14 @@ public class BoomerangSkill : ActiveSkill
 
         for (int i = 0; i < count; i++)
         {
+            var currentBoomerang = _boomerangs[i];
+            
             float angle = i * angleStep;
             Vector3 position = CalculatePosition(angle, holder);
             
-            _boomerangs[i].transform.position = position;
-            _boomerangs[i].CalculateOffset();
+            currentBoomerang.transform.position = position;
+            currentBoomerang.CalculateOffset();
+            currentBoomerang.ApplyStats(speed);
         }
     }
     

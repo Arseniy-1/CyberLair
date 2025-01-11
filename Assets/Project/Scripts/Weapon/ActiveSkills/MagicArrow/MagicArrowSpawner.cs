@@ -1,0 +1,49 @@
+using System.Collections;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
+{
+    public class MagicArrowSpawner : Spawner<MagicArrow>
+    {
+        [SerializeField] private float _delay;
+        [SerializeField] private LayerMask _layerMask;
+
+        private float _radius;
+        
+        private void OnEnable()
+        {
+            StartCoroutine(SpawnIterating());
+        }
+
+        private Vector3 FindEnemyPosition()
+        {
+            Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, _radius, _layerMask);
+            return enemies[Random.Range(0, enemies.Length)].transform.position;
+        }
+
+        private Quaternion CalculateRotation(Vector3 target)
+        {
+            Vector2 direction = (target - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            return Quaternion.Euler(0, 0, angle);
+        }
+
+        private IEnumerator SpawnIterating()
+        {
+            var delay = new WaitForSeconds(_delay);
+            
+            while (isActiveAndEnabled)
+            {
+                yield return delay;
+
+                var enemyPosition = FindEnemyPosition();
+                var rotation = CalculateRotation(enemyPosition);
+                var magicArrow = Spawn();
+                
+                magicArrow.transform.rotation = rotation;
+            }
+        }
+    }
+}

@@ -15,25 +15,22 @@ namespace Project.Scripts.Weapon.ActiveSkills
         
         private void OnEnable()
         {
-            StartCoroutine(ThunderTimer());
+            StartCoroutine(StrikeIterating());
         }
 
-        [Button]
-        public void IncreaseStrikesCount(int count)
+        public void ApplyStats(float radius, float damage, float count)
         {
-            _strikesCount += count;
+            ActionRadius = radius;
+            Damage = (int)damage;
+            _strikesCount = (int)count;
         }
 
         private void Strike()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(TargetPosition, ActionRadius, _layerMask);
-            
-            Debug.Log(colliders.Length);
 
             for (int i = 0; i < _strikesCount; i++)
             {
-                Debug.Log(Random.Range(0, colliders.Length));
-                
                 Collider2D strickenCollider = colliders[Random.Range(0, colliders.Length)];
 
                 if (strickenCollider.TryGetComponent(out Health health))
@@ -43,7 +40,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
             }
         }
 
-        private IEnumerator ThunderTimer()
+        private IEnumerator StrikeIterating()
         {
             WaitForSeconds wait = new(_delay);
             

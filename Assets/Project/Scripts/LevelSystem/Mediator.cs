@@ -13,7 +13,7 @@ public class Mediator : MonoBehaviour
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
 
-    private SkillHolder _skillHolder = new SkillHolder();
+    private SkillHolder _skillHolder = new();
     private int _skillsCount = 3;
 
     private void OnEnable()
@@ -38,17 +38,22 @@ public class Mediator : MonoBehaviour
         }
     }
 
+    [Button]
     private void OnSkillApplyed(ISkill skill)
     {
+        Debug.Log($"{skill.GetType()}");
+        
         _skillHolder.AddSkill(skill);
 
-        if (skill is PassiveSkill passiveSkill)
+        switch (skill)
         {
-            passiveSkill.Apply(_player.PlayerStats, _playerConfig, _skillHolder.Skills[skill]);
-        }
-        else if (skill is ActiveSkill activeSkill)
-        {
-            activeSkill.Apply(_playerWeaponHolder, _skillHolder.Skills[skill]);
+            case PassiveSkill passiveSkill:
+                passiveSkill.Apply(_player.PlayerStats, _playerConfig, _skillHolder.Skills[skill]);
+                break;
+            case ActiveSkill activeSkill:
+                Debug.Log($"{_skillHolder.Skills[skill]}");
+                activeSkill.Apply(_playerWeaponHolder, _skillHolder.Skills[skill]);
+                break;
         }
 
         HideSkills();

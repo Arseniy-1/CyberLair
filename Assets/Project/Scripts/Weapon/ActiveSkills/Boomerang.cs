@@ -27,5 +27,10 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
             _angle = Mathf.Atan2(offset.y, offset.x);
         }
+
+        public void ApplyStats(float speed)
+        {
+            _speed = speed;
+        }
     }
 }

@@ -1,6 +1,5 @@
 using Project.Scripts.Weapon.ActiveSkills;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Project.Scripts.LevelSystem.ActiveSkills
 {
@@ -21,7 +20,9 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
             if (_thunderInstance != null)
             {
                 var radius = _radiusConfig.Multipliers[level];
-                // _thunderInstance.ApllyStats(radius, damage, count);
+                var damage = _damageConfig.Multipliers[level];
+                var count = _countConfig.Multipliers[level];
+                _thunderInstance.ApplyStats(radius, damage, count);
             }
             
             _thunderInstance = Instantiate(_thunderPrefab, weaponHolder.transform);
