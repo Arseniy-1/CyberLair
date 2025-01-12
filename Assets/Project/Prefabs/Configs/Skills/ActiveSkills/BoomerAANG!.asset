@@ -14,8 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: Boomerang
-    <Description>k__BackingField: "It sis good because there is Aang in it \u2013
+    <Description>k__BackingField: "It is good because there is Aang in it \u2013
       Boomer Aang"
     <Icon>k__BackingField: {fileID: 0}
-  WeaponPrefab: {fileID: -8994743883427961744, guid: de1816e96bbb7784d9c4c2c1d4e72f71, type: 3}
-  _radius: 5
+  <MaxLevel>k__BackingField: 5
+  _boomerangPrefab: {fileID: -8994743883427961744, guid: de1816e96bbb7784d9c4c2c1d4e72f71, type: 3}
+  _speedConfig:
+    _multipliers:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 2

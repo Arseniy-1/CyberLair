@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: MagicArrow
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: 
+    <SkillName>k__BackingField: Magic arrow
     <Description>k__BackingField: 
     <Icon>k__BackingField: {fileID: 0}
+  <MaxLevel>k__BackingField: 5
   _arrow: {fileID: 362275917253705133, guid: 0e624a019d57a43c6a096bd62032b21e, type: 3}
   _damageConfig:
-    _multipliers: []
+    _multipliers:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1

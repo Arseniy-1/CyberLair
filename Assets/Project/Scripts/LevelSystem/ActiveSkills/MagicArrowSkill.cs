@@ -13,6 +13,9 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
         
         public override void Apply(WeaponHolder weaponHolder, int level)
         {
+            if (_spawnerInstance)
+                return;
+            
             _spawnerInstance = Instantiate(_arrow, weaponHolder.transform);
         }
     }

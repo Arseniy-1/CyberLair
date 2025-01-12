@@ -17,16 +17,20 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
         
         public override void Apply(WeaponHolder weaponHolder, int level)
         {
+            if (level > MaxLevel && level < 1)
+                return;
+            
             if (_thunderInstance != null)
             {
-                var radius = _radiusConfig.Multipliers[level];
-                var damage = _damageConfig.Multipliers[level];
-                var count = _countConfig.Multipliers[level];
+                var radius = _radiusConfig.Multipliers[level - 1];
+                var damage = _damageConfig.Multipliers[level - 1];
+                var count = _countConfig.Multipliers[level - 1];
                 _thunderInstance.ApplyStats(radius, damage, count);
+
+                return;
             }
             
             _thunderInstance = Instantiate(_thunderPrefab, weaponHolder.transform);
-            _thunderInstance.Initialize(_radius, weaponHolder.transform);
         }
     }
 }

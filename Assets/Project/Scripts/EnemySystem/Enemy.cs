@@ -3,7 +3,6 @@ using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 
 namespace Project.Scripts.EnemySystem
 {
@@ -16,7 +15,6 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private Destroyer _destroyer;
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         
-        [SerializeField] private WeaponHolder _weaponHolder;
         [SerializeField] private Health _health;
         [SerializeField] private float _attackDistance;
 

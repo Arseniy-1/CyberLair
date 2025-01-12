@@ -7,19 +7,22 @@ using UnityEngine;
 public class BoomerangSkill : ActiveSkill
 {
     [SerializeField] private Boomerang _boomerangPrefab;
-    [SerializeField] private float _radius;
+    // [SerializeField] private float _radius;
     [SerializeField] private SkillConfig _speedConfig;
     
     private readonly List<Boomerang> _boomerangs = new();
     
     public override void Apply(WeaponHolder weaponHolder, int level)
     {
-        Boomerang activeWeapon = Instantiate(_boomerangPrefab, weaponHolder.transform);
-        activeWeapon.Initialize(_radius, weaponHolder.transform);
-
-        var speed = _speedConfig.Multipliers[level];
+        if (level > MaxLevel && level < 1)
+            return;
         
-        _boomerangs.Add(activeWeapon);
+        Boomerang boomerang = Instantiate(_boomerangPrefab, weaponHolder.transform);
+        boomerang.Initialize(weaponHolder.transform.position);
+
+        var speed = _speedConfig.Multipliers[level - 1];
+        
+        _boomerangs.Add(boomerang);
         DistributeEqually(weaponHolder.transform, speed);
     }
     
@@ -46,8 +49,11 @@ public class BoomerangSkill : ActiveSkill
     private Vector3 CalculatePosition(float angle, Transform holder)
     {
         float radians = angle * Mathf.Deg2Rad;
-        float x = Mathf.Cos(radians) * _radius;
-        float y = Mathf.Sin(radians) * _radius;
+        // float x = Mathf.Cos(radians) * _radius;
+        // float y = Mathf.Sin(radians) * _radius;
+        
+        float x = Mathf.Cos(radians);
+        float y = Mathf.Sin(radians);
         
         Vector3 localPosition = new Vector3(x, y, 0);
         return holder.position + localPosition;

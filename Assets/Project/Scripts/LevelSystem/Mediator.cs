@@ -13,7 +13,7 @@ public class Mediator : MonoBehaviour
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
 
-    private SkillHolder _skillHolder = new();
+    private readonly SkillHolder _skillHolder = new();
     private int _skillsCount = 3;
 
     private void OnEnable()
@@ -22,7 +22,7 @@ public class Mediator : MonoBehaviour
 
         foreach (var skillView in _skillViews)
         {
-            skillView.OnClicked += OnSkillApplyed;
+            skillView.OnClicked += OnSkillApplied;
         }
 
         ShowSkills();
@@ -34,12 +34,12 @@ public class Mediator : MonoBehaviour
 
         foreach (var skillView in _skillViews)
         {
-            skillView.OnClicked -= OnSkillApplyed;
+            skillView.OnClicked -= OnSkillApplied;
         }
     }
 
     [Button]
-    private void OnSkillApplyed(ISkill skill)
+    private void OnSkillApplied(ISkill skill)
     {
         Debug.Log($"{skill.GetType()}");
         
@@ -76,9 +76,9 @@ public class Mediator : MonoBehaviour
 
     private void HideSkills()
     {
-        for (int i = 0; i < _skillViews.Count; i++)
+        foreach (var t in _skillViews)
         {
-            _skillViews[i].gameObject.SetActive(false);
+            t.gameObject.SetActive(false);
         }
     }
 }

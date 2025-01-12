@@ -27,7 +27,7 @@ public class SummonSkill : ActiveSkill
         }
         else
         {
-            _summon.ApplyStats();
+            // _summon.ApplyStats();
         }
     }
 }
@@ -84,7 +84,7 @@ public class Summon : MonoBehaviour
     private void MoveToNextPosition()
     {
         // Плавное перемещение объекта к следующей позиции
-        Vector3 targetPosition = new Vector3(_nextPosition.x, transform.position.y, _nextPosition.y);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
+        // Vector3 targetPosition = new Vector3(_nextPosition.x, transform.position.y, _nextPosition.y);
+        // transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
     }
 }

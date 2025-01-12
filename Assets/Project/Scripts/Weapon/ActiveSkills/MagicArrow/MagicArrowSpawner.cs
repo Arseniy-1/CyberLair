@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,17 +9,23 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
     {
         [SerializeField] private float _delay;
         [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private float _radius;
 
-        private float _radius;
+        private Transform _transform;
         
         private void OnEnable()
         {
+            _transform = transform;
+            
             StartCoroutine(SpawnIterating());
         }
 
         private Vector3 FindEnemyPosition()
         {
             Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, _radius, _layerMask);
+            
+            if(enemies == null || enemies.Length == 0)
+                return Vector3.zero;
             
             return enemies[Random.Range(0, enemies.Length)].transform.position;
         }
@@ -43,8 +50,14 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
                 var rotation = CalculateRotation(enemyPosition);
                 var magicArrow = Spawn();
                 
+                magicArrow.transform.position = _transform.position;
                 magicArrow.transform.rotation = rotation;
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, _radius);
         }
     }
 }
