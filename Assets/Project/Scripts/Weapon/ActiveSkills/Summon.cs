@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Summon : MonoBehaviour
 {
-    private Transform _targetTransform;
-
     [SerializeField] private float _speed;
     [SerializeField] private int _damage;
     [SerializeField] private int _spread;
@@ -17,7 +15,25 @@ public class Summon : MonoBehaviour
     [SerializeField] private WeaponHolder _weaponholder;
     [SerializeField] private TargetScanner _targetScanner;
 
-    private Vector2 GetRandomPointOnCircleEdge => Random.insideUnitCircle.normalized * _moveRadius;
+    private Vector2 _currentMovePosition;
+    private Transform _targetTransform;
+    
+    private Vector2 SelfPosition => transform.position;
+    private Vector2 TargetPosition => _targetTransform.position;
+    private Vector2 RandomPointAroundTarget => TargetPosition + Random.insideUnitCircle.normalized * _moveRadius;
+    
+    private void FixedUpdate()
+    {
+        ITarget target = _targetScanner.ClosestTarget;
+
+        if (target != null)
+        {
+            _weaponholder.SpotTarget(target);
+            _weapon.TryAttack();
+        }
+
+        MoveToNextPosition();
+    }
     
     public void Initialize(Transform targetTransform)
     {
@@ -34,25 +50,19 @@ public class Summon : MonoBehaviour
 
     public void ApplyWeapon(Weapon weapon)
     {
-    }
+        if (weapon == _weapon && !weapon)
+            return;
+        
+        _weapon.gameObject.SetActive(false);
 
-    private void FixedUpdate()
-    {
-        ITarget target = _targetScanner.ClosestTarget;
-
-        if (target != null)
-        {
-            _weaponholder.SpotTarget(target);
-            _weapon.TryAttack();
-        }
-
-        MoveToNextPosition();
+        _weapon = weapon;
     }
 
     private void MoveToNextPosition()
     {
-        // Плавное перемещение объекта к следующей позиции
-        // Vector3 targetPosition = new Vector3(_nextPosition.x, transform.position.y, _nextPosition.y);
-        // transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
+        if (SelfPosition == _currentMovePosition)
+            _currentMovePosition = RandomPointAroundTarget;
+
+        transform.position = Vector2.MoveTowards(transform.position, _currentMovePosition, _speed * Time.deltaTime);
     }
 }
