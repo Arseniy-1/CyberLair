@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 546349155007184792}
   - component: {fileID: 5352164223180223869}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6157298552591322656}
   - component: {fileID: 5006296289634881662}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadTime: 3.6
-  _shootPoint: {fileID: 0}
+  _damage: 0
   _spread: 0
+  _shootPoint: {fileID: 0}
   _weaponAnimator: {fileID: 0}
   _ammoSpawner: {fileID: 0}

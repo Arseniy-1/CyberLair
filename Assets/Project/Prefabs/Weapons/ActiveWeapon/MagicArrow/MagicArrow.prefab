@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8056698977683394992}
   - component: {fileID: 6966984513860249003}
   - component: {fileID: 2790034736549358457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagicArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,8 +123,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9091217991042246640}
   - component: {fileID: 1945830240390710710}
-  m_Layer: 0
-  m_Name: GameObject
+  m_Layer: 6
+  m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

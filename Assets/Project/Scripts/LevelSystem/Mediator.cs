@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 
 public class Mediator : MonoBehaviour
 {
@@ -61,6 +62,9 @@ public class Mediator : MonoBehaviour
 
     private void ShowSkills()
     {
+        if(_skillViews.IsNullOrEmpty())
+            return;
+        
         var availableSkills = _skills.ToList();
 
         for (int i = 0; i < _skillsCount; i++)

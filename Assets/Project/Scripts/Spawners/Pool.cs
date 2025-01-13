@@ -39,7 +39,7 @@ public abstract class Pool<T> where T : MonoBehaviour
     {
         if (_stack.TryPop(out T template) == false)
         {
-            Create();
+            _stack.Push(Create());
             template = _stack.Pop();
         }
 

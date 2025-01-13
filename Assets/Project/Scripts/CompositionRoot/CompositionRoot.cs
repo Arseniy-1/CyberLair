@@ -11,18 +11,16 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private List<WaveConfig> _wavesConfigs;
         [SerializeField] private List<Transform> _spawnPoints;
         [SerializeField] private Arena _arena;
-        [SerializeField] private EnemyFabric _fabric;
         [SerializeField] private Player _player;
         [SerializeField] private MainEnemySpawner _mainEnemySpawner;
 
         private void Awake()
         {
-            _fabric.Initialize(_player, _spawnPoints);
-            
             if (_wavesConfigs.IsNullOrEmpty()) 
                 return;
             
-            var waves = new Queue<Wave>(_wavesConfigs.Select(config => new Wave(config, _fabric, _mainEnemySpawner)).ToList());
+            _mainEnemySpawner.Initialize(_player);
+            var waves = new Queue<Wave>(_wavesConfigs.Select(config => new Wave(config, _mainEnemySpawner, _spawnPoints)).ToList());
 
             _arena.Initialize(waves);
             _arena.Work();

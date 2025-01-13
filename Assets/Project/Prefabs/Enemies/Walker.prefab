@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 32
+  Damage: 0
   _attackDelay: 0.5
   _attackRecovery: 0.5
   _attackCount: 1
@@ -232,9 +232,9 @@ MonoBehaviour:
   _attacker: {fileID: 6300912649283175769}
   _destroyer: {fileID: 4789583573764484402}
   _enemyTargetProvider: {fileID: 363723337743644631}
-  _weaponHolder: {fileID: 0}
   _health: {fileID: 4219066298249808052}
   _attackDistance: 3
+  <EnemyType>k__BackingField: 0
 --- !u!114 &3709468705532820958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,9 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 0
-  _stunTime: 0
-  _collisionDamage: 0
+  _pushForce: 4
+  _stunTime: 0.7
+  _collisionDamage: 32
 --- !u!114 &4789583573764484402
 MonoBehaviour:
   m_ObjectHideFlags: 0

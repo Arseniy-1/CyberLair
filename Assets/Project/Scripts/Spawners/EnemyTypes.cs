@@ -1,6 +1,8 @@
 ﻿public enum EnemyTypes
 {
-    A,
-    B,
-    C
+    Walker,
+    Hawk,
+    Kamikaze,
+    Blight,
+    Trooper
 }

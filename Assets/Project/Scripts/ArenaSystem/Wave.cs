@@ -9,20 +9,20 @@ using Random = UnityEngine.Random;
 
 namespace Project.Scripts.ArenaSystem
 {
-    public class Wave
+    public class Wave //TODO: расставлять врагов по местам из списка SpawnPoint
     {
         private readonly WaveConfig _config;
-        private readonly EnemyFabric _fabric;
 
-        private MainEnemySpawner _mainEnemySpawner;
+        private readonly MainEnemySpawner _mainEnemySpawner;
+        private readonly IReadOnlyList<Transform> _spawnPoints;
         
         private int _enemyCounter;
 
-        public Wave(WaveConfig config, EnemyFabric fabric, MainEnemySpawner mainEnemySpawner) // _mainSpawner - получить через конструктор
+        public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner, List<Transform> spawnPoints)
         {
             _config = config;
-            _fabric = fabric;
             _mainEnemySpawner = mainEnemySpawner;
+            _spawnPoints = spawnPoints;
         }
         
         public event Action<Wave> OnWaveFinished;
@@ -46,6 +46,7 @@ namespace Project.Scripts.ArenaSystem
 
             foreach (Enemy enemy in enemies.Select(en =>  _mainEnemySpawner.Spawn(en.EnemyType)))
             {
+                enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
                 enemy.OnDeath += HandleDeath;
             }
         }

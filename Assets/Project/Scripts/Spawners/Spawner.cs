@@ -14,6 +14,8 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, IDestoyable<T>
 
     public T Spawn()
     {
+        Debug.Log($"Spawning {Prefab.name}");
+        
         T spawnedObject = Pool.Get();
 
         spawnedObject.OnDestroyed += OnSpawnedDestroed;

@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 705212269321072690}
   - component: {fileID: 6933681626514605583}
   - component: {fileID: 4382913821471026158}
+  - component: {fileID: -6442682817018359020}
+  - component: {fileID: 6311730808988131680}
+  - component: {fileID: 6391322191596903747}
   m_Layer: 3
   m_Name: The Blight
   m_TagString: Untagged
@@ -123,8 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bd482925914d24399bd426bdef06e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distance: 3
-  _jumpTime: 0.2
 --- !u!114 &2255569116647932330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 48
+  Damage: 0
   _attackDelay: 0.5
   _attackRecovery: 0.5
   _attackCount: 3
@@ -180,11 +181,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionHandler: {fileID: -6442682817018359020}
   _mover: {fileID: 705212269321072690}
   _enemyRigidbody: {fileID: 9187278981319853839}
   _attacker: {fileID: 2255569116647932330}
+  _destroyer: {fileID: 6391322191596903747}
+  _enemyTargetProvider: {fileID: 6311730808988131680}
   _health: {fileID: 6933681626514605583}
   _attackDistance: 5
+  <EnemyType>k__BackingField: 3
+--- !u!114 &-6442682817018359020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481004086066805629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pushForce: 3
+  _stunTime: 0.5
+  _collisionDamage: 48
+--- !u!114 &6311730808988131680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481004086066805629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294005d492b641c98a4afcfa012cabd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6391322191596903747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481004086066805629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40159f6e955494ba80fba0d457f7f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &786434052027316470
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,25 +8,33 @@ public class MainEnemySpawner : MonoBehaviour
 
     private Dictionary<EnemyTypes, EnemySpawner> _spawners = new();
 
-    private void Awake()
+    // private void Awake()
+    // {
+    //     foreach (EnemySpawner enemySpawner in _enemySpawners)
+    //     {
+    //         _spawners.Add(enemySpawner.EnemyType, enemySpawner);
+    //     }
+    //
+    //     //var bullets =  Resources.LoadAll("Bullets"); TODO: попробовать подгрузку из папки
+    // }
+    
+    public Enemy Spawn(EnemyTypes type)
     {
-        foreach (EnemySpawner enemySpawner in _enemySpawners)
-        {
-            _spawners[enemySpawner.EnemyType] = enemySpawner;
-        }
+        Debug.Log($"Enemy Type is {type}");
+        
+        var spawner = _spawners[type];
+        
+        Debug.Log($"Spawner {spawner.name} will spawn it");
 
-        //var bullets =  Resources.LoadAll("Bullets"); TODO: попробовать подгрузку из папки
+        return spawner.Spawn();
     }
 
     public void Initialize(Player player)
     {
-        
-    }
-    
-    public Enemy Spawn(EnemyTypes type)
-    {
-        var spawner = _spawners[type];
-
-        return spawner.Spawn();
+        foreach (EnemySpawner enemySpawner in _enemySpawners)
+        {
+            enemySpawner.Initialize(player);
+            _spawners.Add(enemySpawner.EnemyType, enemySpawner);
+        }
     }
 }

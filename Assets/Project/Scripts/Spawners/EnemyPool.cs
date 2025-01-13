@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPool : Pool<Enemy>
 {
-    private EnemyFabric _enemyFabric;
+    private readonly EnemyFabric _enemyFabric;
 
     public EnemyPool(Enemy prefab, Transform container, int startAmount, EnemyFabric enemyFabric) : base(prefab, container, startAmount)
     {

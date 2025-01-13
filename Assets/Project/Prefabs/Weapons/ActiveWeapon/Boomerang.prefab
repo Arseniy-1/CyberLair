@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 546349155007184792}
   - component: {fileID: 5352164223180223869}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6481151802767048650}
   - component: {fileID: 8215136111857204795}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 6157298552591322656}
   - component: {fileID: -8994743883427961744}
   - component: {fileID: -1055722217495513255}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}

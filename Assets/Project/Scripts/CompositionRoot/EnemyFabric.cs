@@ -13,9 +13,9 @@ namespace Project.Scripts.CompositionRoot
             _player = player;
         }
         
-        public Enemy Create(Enemy enemy, Transform spawnPoint)
+        public Enemy Create(Enemy enemy)
         {
-            Enemy doneEnemy = Object.Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+            Enemy doneEnemy = Object.Instantiate(enemy);
             
             doneEnemy.Initialize(_player);
 
