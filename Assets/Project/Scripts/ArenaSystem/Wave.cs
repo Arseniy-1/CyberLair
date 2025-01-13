@@ -14,12 +14,15 @@ namespace Project.Scripts.ArenaSystem
         private readonly WaveConfig _config;
         private readonly EnemyFabric _fabric;
 
+        private MainEnemySpawner _mainEnemySpawner;
+        
         private int _enemyCounter;
 
-        public Wave(WaveConfig config, EnemyFabric fabric)
+        public Wave(WaveConfig config, EnemyFabric fabric, MainEnemySpawner mainEnemySpawner) // _mainSpawner - получить через конструктор
         {
             _config = config;
             _fabric = fabric;
+            _mainEnemySpawner = mainEnemySpawner;
         }
         
         public event Action<Wave> OnWaveFinished;
@@ -41,7 +44,7 @@ namespace Project.Scripts.ArenaSystem
             _enemyCounter = enemies.Count;
             enemies = enemies.OrderBy(x=> Random.value).ToList();
 
-            foreach (Enemy enemy in enemies.Select(en => _fabric.Create(en)))
+            foreach (Enemy enemy in enemies.Select(en =>  _mainEnemySpawner.Spawn(en.EnemyType)))
             {
                 enemy.OnDeath += HandleDeath;
             }

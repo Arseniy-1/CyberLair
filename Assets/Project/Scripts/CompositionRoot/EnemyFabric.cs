@@ -4,20 +4,18 @@ using UnityEngine;
 
 namespace Project.Scripts.CompositionRoot
 {
-    public class EnemyFabric : MonoBehaviour
+    public class EnemyFabric
     {
         private Player _player;
-        private List<Transform> _spawnPoints;
         
-        public void Initialize(Player player, List<Transform> spawnPoints)
+        public void Initialize(Player player)
         {
             _player = player;
-            _spawnPoints = spawnPoints;
         }
         
-        public Enemy Create(Enemy enemy)
+        public Enemy Create(Enemy enemy, Transform spawnPoint)
         {
-            Enemy doneEnemy = Instantiate(enemy, _spawnPoints[Random.Range(0, _spawnPoints.Count)]);
+            Enemy doneEnemy = Object.Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
             
             doneEnemy.Initialize(_player);
 

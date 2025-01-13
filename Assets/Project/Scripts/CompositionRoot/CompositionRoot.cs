@@ -13,6 +13,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Arena _arena;
         [SerializeField] private EnemyFabric _fabric;
         [SerializeField] private Player _player;
+        [SerializeField] private MainEnemySpawner _mainEnemySpawner;
 
         private void Awake()
         {
@@ -21,7 +22,7 @@ namespace Project.Scripts.CompositionRoot
             if (_wavesConfigs.IsNullOrEmpty()) 
                 return;
             
-            var waves = new Queue<Wave>(_wavesConfigs.Select(config => new Wave(config, _fabric)).ToList());
+            var waves = new Queue<Wave>(_wavesConfigs.Select(config => new Wave(config, _fabric, _mainEnemySpawner)).ToList());
 
             _arena.Initialize(waves);
             _arena.Work();

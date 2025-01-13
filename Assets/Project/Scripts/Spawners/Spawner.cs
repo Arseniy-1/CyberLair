@@ -1,36 +1,31 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, IDestoyable<T>
 {
-    [SerializeField] private T _prefab;
-    [SerializeField] private int _startAmount = 1;
+    [SerializeField] protected T Prefab;
+    [SerializeField] protected int StartAmount = 1;
 
-    protected Pool<T> _pool;
+    protected Pool<T> Pool;
 
-    public event Action<int, int, int> CounterChanged;
-
-    public Type PrefabType => _prefab.GetType();
-
-    protected virtual void Awake()
-    {
-        _pool = new Pool<T>(_prefab, transform, transform, _startAmount);
-    }
+    public event Action<int, int, int> CountChanged;
+    
 
     public T Spawn()
     {
-        T spawnedObject = _pool.Get();
+        T spawnedObject = Pool.Get();
 
-        spawnedObject.OnDestroyed += OnSpawnedDestroy;
+        spawnedObject.OnDestroyed += OnSpawnedDestroed;
         spawnedObject.gameObject.SetActive(true);
 
         return spawnedObject;
     }
 
-    protected void OnSpawnedDestroy(T spawnableObject)
+    protected void OnSpawnedDestroed(T spawnableObject)
     {
-        spawnableObject.OnDestroyed -= OnSpawnedDestroy;
+        spawnableObject.OnDestroyed -= OnSpawnedDestroed;
         spawnableObject.gameObject.SetActive(false);
-        _pool.Release(spawnableObject);
+        Pool.Release(spawnableObject);
     }
 }

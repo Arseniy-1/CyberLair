@@ -6,7 +6,7 @@ using System;
 
 namespace Project.Scripts.EnemySystem
 {
-    public class Enemy : MonoBehaviour, ITarget, IDamagable, IDieable
+    public class Enemy : MonoBehaviour, ITarget, IDamagable, IDieable, IDestoyable<Enemy>
     {
         [SerializeField] private EnemyCollisionHandler _collisionHandler;
         [SerializeField] protected EnemyMover _mover;
@@ -20,7 +20,10 @@ namespace Project.Scripts.EnemySystem
 
         private EntityStateMachine _stateMachine;
         
+        public event Action<Enemy> OnDestroyed;
         public event Action<Enemy> OnDeath;
+
+        [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
         
         public Vector2 Position => transform.position;
         public bool IsStunned { get; private set; }
