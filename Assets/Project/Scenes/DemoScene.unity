@@ -1038,8 +1038,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wavesConfigs:
   - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 424a03beaf6f842459ee607b683c42e9, type: 2}
-  - {fileID: 11400000, guid: 008d18ac3c9ba4075aeb7b3bac59cf23, type: 2}
   _spawnPoints:
   - {fileID: 640204611}
   - {fileID: 1160610146}
@@ -3116,7 +3114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67273f7244f6cf41801953e5a2d55cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
   StartAmount: 1
 --- !u!4 &1464822041
 Transform:

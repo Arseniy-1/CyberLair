@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4783027384808543349}
   - component: {fileID: 3777322196449997574}
   - component: {fileID: 8502437403070517348}
-  - component: {fileID: 479784836254168285}
   m_Layer: 0
   m_Name: BlueLazer
   m_TagString: Untagged
@@ -175,23 +174,3 @@ MonoBehaviour:
   _damage: 5
   _speed: 25
   _lifeTime: 3
---- !u!114 &479784836254168285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3490869259686107784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce47920fa08d45f79e48854c16a59242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _chainRadius: 10
-  _maxBounces: 5
-  _initialDamage: 10
-  _damageFalloff: 0.8
-  _linePrefab: {fileID: 0}
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8

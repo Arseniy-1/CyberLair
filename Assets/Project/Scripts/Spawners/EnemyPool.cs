@@ -6,13 +6,17 @@ public class EnemyPool : Pool<Enemy>
 {
     private readonly EnemyFabric _enemyFabric;
 
-    public EnemyPool(Enemy prefab, Transform container, int startAmount, EnemyFabric enemyFabric) : base(prefab, container, startAmount)
+    public EnemyPool(Enemy prefab, EnemyFabric enemyFabric) : base(prefab)
     {
         _enemyFabric = enemyFabric;
+        CreateStartCount();
     }
 
     protected override Enemy Create()
     {
-        return _enemyFabric.Create(Prefab);
+        var enemy =  _enemyFabric.Create(Prefab);
+        Stack.Push(enemy);
+
+        return enemy;
     }
 }

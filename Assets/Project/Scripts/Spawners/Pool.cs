@@ -1,49 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public abstract class Pool<T> where T : MonoBehaviour
 {
-    private readonly List<T> _templates = new();
+    [SerializeField] private int _startAmount = 5;
+
     protected T Prefab;
-    private readonly Transform _container;
-    private readonly Transform _spawnPoint;
-    private readonly int _startAmount;
-    private Stack<T> _stack = new();
-    
-    
+    protected Stack<T> Stack = new();
 
-    private int _entitiesCount = 0;
-
-    public int EntitiesCount => _entitiesCount;
-    private int PoolCount => _templates.Count;
-
-    public Pool(T prefab, Transform container, int startAmount)
+    public Pool(T prefab)
     {
         Prefab = prefab;
-        _container = container;
-        _spawnPoint = container;
-        _startAmount = startAmount;
-
-        for (int i = 0; i < _startAmount; i++)
-        {
-            Create();
-        }
     }
 
     public void Release(T template)
     {
-        _stack.Push(template);
+        Stack.Push(template);
     }
 
     public T Get()
     {
-        if (_stack.TryPop(out T template) == false)
+        if (Stack.TryPop(out T template) == false)
         {
-            _stack.Push(Create());
-            template = _stack.Pop();
+            Stack.Push(Create());
+            template = Stack.Pop();
         }
 
         return template;
+    }
+
+    protected void CreateStartCount()
+    {
+        for (int i = 0; i < _startAmount; i++)
+        {
+            Create();
+        }
     }
 
     protected abstract T Create();

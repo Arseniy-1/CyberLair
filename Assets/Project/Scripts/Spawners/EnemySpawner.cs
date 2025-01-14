@@ -14,6 +14,6 @@ public class EnemySpawner : Spawner<Enemy>
         var fabric = new EnemyFabric();
         fabric.Initialize(player);
         
-        Pool = new EnemyPool(Prefab, transform, StartAmount, fabric);
+        Pool = new EnemyPool(Prefab, fabric);
     }
 }

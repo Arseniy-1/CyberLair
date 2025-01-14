@@ -10,12 +10,10 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, IDestoyable<T>
     protected Pool<T> Pool;
 
     public event Action<int, int, int> CountChanged;
-    
+
 
     public T Spawn()
     {
-        Debug.Log($"Spawning {Prefab.name}");
-        
         T spawnedObject = Pool.Get();
 
         spawnedObject.OnDestroyed += OnSpawnedDestroed;
