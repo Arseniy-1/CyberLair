@@ -1,14 +1,16 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Summon Skill", menuName = "Skill/Active/Summon", order = 51)]
 public class SummonSkill : ActiveSkill
 {
     [SerializeField] private Summon _summonPrefab;
-    [SerializeField] private SkillConfig _damageSkillConfig;
+    
+    [SerializeField, Header("Configs")] private SkillConfig _damageSkillConfig;
     [SerializeField] private SkillConfig _speedSkillConfig;
     [SerializeField] private SkillConfig _realoadSkillConfig;
     [SerializeField] private SkillConfig _spreadSkillConfig;
 
-    [SerializeField] private Weapon _finalWeaponPrefab;
+    [SerializeField, Header("Final Weapon")] private Weapon _finalWeaponPrefab;
 
     private Summon _summon;
 
@@ -19,9 +21,15 @@ public class SummonSkill : ActiveSkill
             _summon = Instantiate(_summonPrefab);
             _summon.Initialize(weaponHolder.transform);
         }
-        else
-        {
-            // _summon.ApplyStats();
-        }
+        
+        if(level == MaxLevel)
+            _summon.ApplyWeapon(_finalWeaponPrefab);
+
+        var speed = _speedSkillConfig.Multipliers[level - 1];
+        var damage = (int)_damageSkillConfig.Multipliers[level - 1];
+        var reload = (int)_realoadSkillConfig.Multipliers[level - 1];
+        var spread = (int)_spreadSkillConfig.Multipliers[level - 1];
+            
+        _summon.ApplyStats(speed, damage, reload, spread);
     }
 }

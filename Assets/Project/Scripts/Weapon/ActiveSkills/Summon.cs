@@ -1,35 +1,51 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Summon : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private int _damage;
-    [SerializeField] private int _spread;
-    [SerializeField] private int _reloadTime;
+    [Header("Summon Settings")]
+    [SerializeField] private Rigidbody2D _rigidbody;
+    
+    [SerializeField] private float _nominalSpeed;
+    [SerializeField] private int _nominalDamage;
+    [SerializeField, Range(0.01f, 20)] private float _nominalSpread;
+    [SerializeField, Range(0.01f, 1)] private float _nominalReloadTime;
 
     [SerializeField] private float _moveRadius = 5f;
     [SerializeField] private float _moveDelay = 2f;
 
+    [Header("Summon Weapon")]
     [SerializeField] private Weapon _weapon;
 
-    [SerializeField] private WeaponHolder _weaponholder;
+    [SerializeField] private WeaponHolder _weaponHolder;
     [SerializeField] private TargetScanner _targetScanner;
 
     private Vector2 _currentMovePosition;
-    private Transform _targetTransform;
+    [SerializeField ]private Transform _targetTransform;
+
+    private float _currentSpeed;
+    private int _currentDamage;
+    private float _currentSpread;
+    private float _currentReloadTime;
+
+    private float _moveOffset = 0.5f;
     
     private Vector2 SelfPosition => transform.position;
     private Vector2 TargetPosition => _targetTransform.position;
     private Vector2 RandomPointAroundTarget => TargetPosition + Random.insideUnitCircle.normalized * _moveRadius;
-    
+
     private void FixedUpdate()
     {
         ITarget target = _targetScanner.ClosestTarget;
 
         if (target != null)
         {
-            _weaponholder.SpotTarget(target);
-            _weapon.TryAttack();
+            _weaponHolder.SpotTarget(target);
+            _weaponHolder.Shoot();
         }
 
         MoveToNextPosition();
@@ -38,14 +54,18 @@ public class Summon : MonoBehaviour
     public void Initialize(Transform targetTransform)
     {
         _targetTransform = targetTransform;
+        
+        StartCoroutine(ChangePosition());
     }
 
-    public void ApplyStats(float speed, int damage)
+    public void ApplyStats(float speedMultiplier, float damageMultiplier, float reloadTimeMultiplier, float spreadMultiplier)
     {
-        _speed = speed;
-        _damage = damage;
+        _currentSpeed = _nominalSpeed * speedMultiplier;
+        _currentDamage = (int)(_nominalDamage * damageMultiplier);
+        _currentSpread = _nominalSpread * spreadMultiplier;
+        _currentReloadTime = _nominalReloadTime * reloadTimeMultiplier;
 
-        _weapon.ApplyStats(_damage, _spread, _reloadTime);
+        _weapon.ApplyStats(_currentDamage, _currentSpread, _currentReloadTime);
     }
 
     public void ApplyWeapon(Weapon weapon)
@@ -60,9 +80,22 @@ public class Summon : MonoBehaviour
 
     private void MoveToNextPosition()
     {
-        if (SelfPosition == _currentMovePosition)
+        if (Vector2.Distance(_currentMovePosition, SelfPosition) <= _moveOffset)
+            return;
+        
+        Vector2 direction = (_currentMovePosition - SelfPosition).normalized;
+        _rigidbody.MovePosition(_rigidbody.position + direction * (_currentSpeed * Time.fixedDeltaTime));
+    }
+
+    private IEnumerator ChangePosition()
+    {
+        var wait = new WaitForSeconds(_moveDelay);
+        
+        while (isActiveAndEnabled)
+        {
             _currentMovePosition = RandomPointAroundTarget;
 
-        transform.position = Vector2.MoveTowards(transform.position, _currentMovePosition, _speed * Time.deltaTime);
+            yield return wait;
+        }
     }
 }

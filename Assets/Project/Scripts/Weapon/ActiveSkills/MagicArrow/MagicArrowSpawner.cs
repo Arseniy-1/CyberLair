@@ -11,6 +11,9 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _radius;
 
+        private float _speedMultiplier;
+        private int _damageMultiplier;
+        
         private Transform _transform;
         
         private void OnEnable()
@@ -18,6 +21,11 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             _transform = transform;
             
             StartCoroutine(SpawnIterating());
+        }
+
+        public void ChangeArrowPrefab(MagicArrow magicArrow)
+        {
+            Prefab = magicArrow;
         }
 
         private Vector3 FindEnemyPosition()
@@ -50,6 +58,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
                 var rotation = CalculateRotation(enemyPosition);
                 var magicArrow = Spawn();
                 
+                magicArrow.ApplyStats(_speedMultiplier, _damageMultiplier);
                 magicArrow.transform.position = _transform.position;
                 magicArrow.transform.rotation = rotation;
             }

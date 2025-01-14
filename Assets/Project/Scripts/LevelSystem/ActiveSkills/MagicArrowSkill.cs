@@ -9,14 +9,19 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
         [SerializeField] private MagicArrowSpawner _arrow;
         [SerializeField] private SkillConfig _damageConfig;
         
+        [SerializeField] private MagicArrow _finalForm;
+        
         private MagicArrowSpawner _spawnerInstance;
         
         public override void Apply(WeaponHolder weaponHolder, int level)
         {
-            if (_spawnerInstance)
-                return;
+            if (!_spawnerInstance)
+                _spawnerInstance = Instantiate(_arrow, weaponHolder.transform);
             
-            _spawnerInstance = Instantiate(_arrow, weaponHolder.transform);
+            if(level == MaxLevel)
+                _spawnerInstance.ChangeArrowPrefab(_finalForm);
+            
+            
         }
     }
 }

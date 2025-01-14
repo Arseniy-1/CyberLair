@@ -14,6 +14,12 @@ public class WeaponHolder : MonoBehaviour
         _currentWeapon.TryAttack();
     }
 
+    public void EquipWeapon(Weapon newWeapon)
+    {
+        _currentWeapon.gameObject.SetActive(false);
+        _currentWeapon = newWeapon;
+    }
+
     [Button]
     public void SpotTarget(ITarget target)
     {
