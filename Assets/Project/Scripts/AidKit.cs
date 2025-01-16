@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-public class AidKit: MonoBehaviour, IInteractable, IDestoyable<ExperienceParticle>
+public class AidKit: MonoBehaviour, IInteractable, IDestoyable<AidKit>
 {
-    public int HealAmount { get; private set; }
+    [field: SerializeField] public int HealAmount { get; private set; }
  
-    public event Action<ExperienceParticle> OnDestroyed;
+    public event Action<AidKit> OnDestroyed;
 
     public void Interact()
     {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Weapon.ActiveSkills.Vampirism;
+using UnityEngine;
 
 public class PlayerCollisionHandler : CollisionHandler
 {
@@ -20,6 +21,10 @@ public class PlayerCollisionHandler : CollisionHandler
         else if (collider.TryGetComponent(out ExperienceParticle experienceParticle))
         {
             _experienceStorage.AddExperience();
+        }
+        else if (collider.TryGetComponent(out HealthSphere sphere))
+        {
+            _health.Heal(sphere.CurrentHealth);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Project.Scripts.ArenaSystem
             foreach (Enemy enemy in enemies.Select(en =>  _mainEnemySpawner.Spawn(en.EnemyType)))
             {
                 enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
-                enemy.OnDeath += HandleDeath;
+                enemy.OnDestroyed += HandleDeath;
             }
         }
 
@@ -60,7 +60,7 @@ namespace Project.Scripts.ArenaSystem
         private void HandleDeath(Enemy enemy)
         {
             _enemyCounter--;
-            enemy.OnDeath -= HandleDeath;
+            enemy.OnDestroyed -= HandleDeath;
             
             if(_enemyCounter <= 0)
                 OnWaveFinished?.Invoke(this);

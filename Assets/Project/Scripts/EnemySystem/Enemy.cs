@@ -3,6 +3,7 @@ using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
 namespace Project.Scripts.EnemySystem
 {
@@ -14,14 +15,15 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private EnemyAttacker _attacker;
         [SerializeField] private Destroyer _destroyer;
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
-        
-        [SerializeField] private Health _health;
+
+        [field: SerializeField] public Health _health {get; private set; }
         [SerializeField] private float _attackDistance;
 
         private EntityStateMachine _stateMachine;
-        
+            
+            
         public event Action<Enemy> OnDestroyed;
-        public event Action<Enemy> OnDeath;
+        public static event Action<Enemy> OnDeath;
 
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
         
@@ -62,8 +64,10 @@ namespace Project.Scripts.EnemySystem
             _health.TakeDamage(amount);
         }
 
+        [Button]
         public void Die()
         {
+            OnDestroyed?.Invoke(this);
             OnDeath?.Invoke(this);
         }
         

@@ -7,7 +7,6 @@ namespace Project.Scripts.Weapon.ActiveSkills
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private float _speed;
         [SerializeField] private float _radius;
-        [SerializeField] private int _damage;
         
         private float _angle;
         private Vector3 _centerPosition;

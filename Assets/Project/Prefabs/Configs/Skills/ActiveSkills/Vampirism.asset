@@ -9,20 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dbbc9875e344514b9fb59b340832d31, type: 3}
-  m_Name: MagicArrow
+  m_Script: {fileID: 11500000, guid: 73ab5063f9274f039f10dfcd85f4f5dd, type: 3}
+  m_Name: Vampirism
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: Magic arrow
+    <SkillName>k__BackingField: 
     <Description>k__BackingField: 
     <Icon>k__BackingField: {fileID: 0}
   <MaxLevel>k__BackingField: 5
-  _arrow: {fileID: 362275917253705133, guid: 0e624a019d57a43c6a096bd62032b21e, type: 3}
-  _damageConfig:
+  _spawnerPrefab: {fileID: 2010311650479378471, guid: 6eb18aec416284378a8b2983f9c999b1, type: 3}
+  _skillConfig:
     _multipliers:
-    - 1
-    - 1.5
-    - 2
-    - 2.5
-    - 3
-  _finalForm: {fileID: 8056698977683394992, guid: 5cd212adc3e1d4d8dbbc05a2dac6bbff, type: 3}
+    - 0.05
+    - 0.075
+    - 0.1
+    - 0.125
+    - 0.15

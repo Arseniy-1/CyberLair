@@ -80,9 +80,9 @@ public class Mediator : MonoBehaviour
 
     private void HideSkills()
     {
-        foreach (var t in _skillViews)
+        foreach (SkillView skillView in _skillViews)
         {
-            t.gameObject.SetActive(false);
+            skillView.gameObject.SetActive(false);
         }
     }
 }

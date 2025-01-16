@@ -11,7 +11,6 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, IDestoyable<T>
 
     public event Action<int, int, int> CountChanged;
 
-
     public T Spawn()
     {
         T spawnedObject = Pool.Get();

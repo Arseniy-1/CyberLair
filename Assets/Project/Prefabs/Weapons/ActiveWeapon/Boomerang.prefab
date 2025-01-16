@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6157298552591322656}
   - component: {fileID: -8994743883427961744}
+  - component: {fileID: 5542015353773409134}
   - component: {fileID: -1055722217495513255}
   m_Layer: 6
   m_Name: Boomerang
@@ -218,7 +219,19 @@ MonoBehaviour:
   _rigidbody: {fileID: -1055722217495513255}
   _speed: 2
   _radius: 3
-  _damage: 0
+--- !u!114 &5542015353773409134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754860673084273321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e404160b702429397a8cacf68ab3629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionDamage: 30
 --- !u!50 &-1055722217495513255
 Rigidbody2D:
   serializedVersion: 4
