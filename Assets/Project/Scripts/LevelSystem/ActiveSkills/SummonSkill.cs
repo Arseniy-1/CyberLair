@@ -1,3 +1,4 @@
+using Project.Scripts.Weapon;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Summon Skill", menuName = "Skill/Active/Summon", order = 51)]

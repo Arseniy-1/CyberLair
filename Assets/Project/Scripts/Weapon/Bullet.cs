@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 {
+    [SerializeField] protected float Speed;
+    [SerializeField] protected float LifeTime;
     [SerializeField] private int _damage;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _lifeTime;
     
     private Rigidbody2D _rigidbody2D;
     private Coroutine _coroutine;
@@ -18,7 +19,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _waitLife = new WaitForSeconds(_lifeTime);
+        _waitLife = new WaitForSeconds(LifeTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +34,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 
     public void Activate()
     {
-        _rigidbody2D.velocity = transform.right * _speed;
+        _rigidbody2D.velocity = transform.right * Speed;
     }
 
     public void Init(Vector3 startPosition, Quaternion rotation, int damage)

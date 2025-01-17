@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Project.Scripts.Weapon;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -73,9 +74,8 @@ public class Summon : MonoBehaviour
         if (weapon == _weapon && !weapon)
             return;
         
-        _weapon.gameObject.SetActive(false);
-
-        _weapon = weapon;
+        var currentWeapon = Instantiate(weapon, _weaponHolder.transform);
+        _weaponHolder.EquipWeapon(currentWeapon);
     }
 
     private void MoveToNextPosition()

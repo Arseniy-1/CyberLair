@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System;
+using Project.Scripts.Weapon;
 using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour

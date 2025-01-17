@@ -232,8 +232,8 @@ MonoBehaviour:
   _attacker: {fileID: 6300912649283175769}
   _destroyer: {fileID: 4789583573764484402}
   _enemyTargetProvider: {fileID: 363723337743644631}
-  _health: {fileID: 4219066298249808052}
   _attackDistance: 3
+  <Health>k__BackingField: {fileID: 4219066298249808052}
   <EnemyType>k__BackingField: 0
 --- !u!114 &3709468705532820958
 MonoBehaviour:

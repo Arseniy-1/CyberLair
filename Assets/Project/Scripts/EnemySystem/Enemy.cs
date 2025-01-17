@@ -15,16 +15,14 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private EnemyAttacker _attacker;
         [SerializeField] private Destroyer _destroyer;
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
-
-        [field: SerializeField] public Health _health {get; private set; }
         [SerializeField] private float _attackDistance;
 
         private EntityStateMachine _stateMachine;
-            
-            
+        
         public event Action<Enemy> OnDestroyed;
         public static event Action<Enemy> OnDeath;
 
+        [field: SerializeField] public Health Health {get; private set; }
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
         
         public Vector2 Position => transform.position;
@@ -47,7 +45,7 @@ namespace Project.Scripts.EnemySystem
             
             _enemyTargetProvider.Initialize(player, _attackDistance);
             _attacker.Initialize(_enemyTargetProvider);
-            _destroyer.Initialize(_health, this);
+            _destroyer.Initialize(Health, this);
             
             _stateMachine = new EntityStateMachine(states);
 
@@ -61,7 +59,7 @@ namespace Project.Scripts.EnemySystem
         
         public void TakeDamage(int amount)
         {
-            _health.TakeDamage(amount);
+            Health.TakeDamage(amount);
         }
 
         [Button]
