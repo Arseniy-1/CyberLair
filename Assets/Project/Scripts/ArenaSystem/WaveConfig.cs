@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Scripts.ArenaSystem
 {
@@ -9,9 +10,11 @@ namespace Project.Scripts.ArenaSystem
     public class WaveConfig : SerializedScriptableObject
     {
         [SerializeField] private Dictionary<Enemy,int> _enemies;
-        [SerializeField] private int _duration;
+        [SerializeField, Range(1, 1000)] private int _waveDuration;
+        [SerializeField,Range(0.01f, 10)] private float _spawnDuration;
         
         public IReadOnlyDictionary<Enemy,int> Enemies => _enemies;
-        public int Duration => _duration;
+        public int WaveDuration => _waveDuration;
+        public float SpawnDuration => _spawnDuration;
     }
 }

@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace Project.Scripts.ArenaSystem
 {
-    public class Wave //TODO: расставлять врагов по местам из списка SpawnPoint
+    public class Wave
     {
         private readonly WaveConfig _config;
 
@@ -29,7 +29,7 @@ namespace Project.Scripts.ArenaSystem
 
         public void Begin()
         {
-            WaitUntilEnd();
+            WaitingEnd();
             
             var enemies = new List<Enemy>();
                 
@@ -40,20 +40,33 @@ namespace Project.Scripts.ArenaSystem
                     enemies.Add(pair.Key);
                 }
             }
-            
+
+            SpawningEnemys(enemies);
+        }
+
+        private async UniTaskVoid SpawningEnemys(List<Enemy> enemies)
+        {
             _enemyCounter = enemies.Count;
             enemies = enemies.OrderBy(x=> Random.value).ToList();
 
-            foreach (Enemy enemy in enemies.Select(en =>  _mainEnemySpawner.Spawn(en.EnemyType)))
+            foreach (var enemyPrefab in enemies)
             {
+                int secondMultiplyer = 1000;
+
+                int delay = Convert.ToInt32(_config.SpawnDuration * secondMultiplyer);
+                await UniTask.Delay(delay);
+                
+                Enemy enemy = _mainEnemySpawner.Spawn(enemyPrefab.EnemyType);
                 enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
                 enemy.OnDestroyed += HandleDeath;
             }
-        }
+        } 
 
-        private async UniTaskVoid WaitUntilEnd()
+        private async UniTaskVoid WaitingEnd()
         {
-            await UniTask.Delay(_config.Duration);
+            int secondMultiplyer = 1000;
+            
+            await UniTask.Delay(_config.WaveDuration * secondMultiplyer);
             OnWaveFinished?.Invoke(this);
         }
 
