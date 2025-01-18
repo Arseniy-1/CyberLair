@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chainRadius: 5
   _maxBounces: 5
-  _initialDamage: 10
   _damageFalloff: 0.8
-  _linePrefab: {fileID: 0}
+  _linePrefab: {fileID: 1058705675161308876, guid: 665688c73c4abd4489377eadcb9465f7, type: 3}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 8

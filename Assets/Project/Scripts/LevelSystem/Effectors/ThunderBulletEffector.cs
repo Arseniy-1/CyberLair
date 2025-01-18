@@ -15,6 +15,8 @@ public class ThunderBulletEffector : BulletEffector
     [SerializeField] private LineRenderer _linePrefab; // Префаб LineRenderer для молнии
     [SerializeField] private LayerMask _enemyLayer; // Слой врагов
 
+    private Enemy _lastHitedTarget;
+    
     public override void Initialize(Weapon weapon)
     {
         Weapon = weapon;
@@ -30,27 +32,31 @@ public class ThunderBulletEffector : BulletEffector
     {
         bullet.OnDestroyed -= CastLightning;
         
-        List<Enemy> hitTargets = new List<Enemy>();
+        List<Enemy> hitenTargets = new List<Enemy>();
         Vector2 currentPosition = bullet.transform.position;
-        Enemy currentTarget = FindClosestTarget(currentPosition, hitTargets);
+        Enemy currentTarget;
 
-        for (int bounce = 0; bounce < _maxBounces && currentTarget != null; bounce++)
+        for (int bounce = 0; bounce < 5; bounce++)
         {
+            currentTarget = FindClosestTarget(currentPosition, hitenTargets);
             Debug.Log("Bounce");
-            // Добавляем цель в список пораженных
-            hitTargets.Add(currentTarget);
+            
+            hitenTargets.Add(currentTarget);
 
             // Наносим урон
             int currentDamage = Mathf.RoundToInt(bullet.Damage * Mathf.Pow(_damageFalloff, bounce));
             currentTarget.TakeDamage(currentDamage);
 
-            // Рисуем молнию
-            DrawLightning(currentPosition, currentTarget.transform.position, bullet);
+            if(_lastHitedTarget != null)
+                DrawLightning(_lastHitedTarget.transform.position, currentTarget.transform.position, bullet);
 
             // Переход к следующей цели
             currentPosition = currentTarget.transform.position;
-            currentTarget = FindClosestTarget(currentPosition, hitTargets);
+
+            _lastHitedTarget = currentTarget;
         }
+        
+        _lastHitedTarget = null;
     }
 
     private Enemy FindClosestTarget(Vector3 position, List<Enemy> excludedTargets)
@@ -59,7 +65,7 @@ public class ThunderBulletEffector : BulletEffector
         HashSet<Enemy> targets = new HashSet<Enemy>();
 
         foreach (Collider2D hit in hits)
-            if (hit.TryGetComponent(out Enemy target))
+            if (hit.TryGetComponent(out Enemy target) && excludedTargets.Contains(target) == false)
                 targets.Add(target);
 
         List<Enemy> sortedTargets =
@@ -71,11 +77,14 @@ public class ThunderBulletEffector : BulletEffector
 
     private void DrawLightning(Vector2 start, Vector2 end, Bullet bullet)
     {
-        LineRenderer line = Object.Instantiate(_linePrefab, bullet.transform);
+        Debug.Log(start);
+        Debug.Log(end);
+        Gizmos.DrawSphere(bullet.transform.position, _chainRadius);
+        LineRenderer line = Object.Instantiate(_linePrefab, bullet.transform.position, bullet.transform.rotation);
         line.SetPosition(0, start);
         line.SetPosition(1, end);
 
         // Удаляем линию после небольшой задержки
-        Object.Destroy(line.gameObject, 0.2f);
+        Object.Destroy(line.gameObject, 5f);
     }
 }
