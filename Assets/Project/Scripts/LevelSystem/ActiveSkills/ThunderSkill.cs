@@ -19,7 +19,7 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
             if (level > MaxLevel || level < 1)
                 return;
             
-            if (_thunder != null)
+            if (_thunder)
             {
                 var radius = _radiusConfig.Multipliers[level - 1];
                 var damage = _damageConfig.Multipliers[level - 1];
