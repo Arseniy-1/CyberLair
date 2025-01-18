@@ -16,7 +16,8 @@ public class EnemyPool : Pool<Enemy>
     {
         var enemy =  _enemyFabric.Create(Prefab);
         Stack.Push(enemy);
-
+        enemy.gameObject.SetActive(false);
+        
         return enemy;
     }
 }

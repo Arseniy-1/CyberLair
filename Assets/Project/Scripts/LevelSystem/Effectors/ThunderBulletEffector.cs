@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.EnemySystem;
 using Project.Scripts.Weapon;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
+[CreateAssetMenu(fileName = "New ThunderBulletEffector", menuName = "Skill/BulletEffectors/ThunderBulletEffector", order = 51)]
 public class ThunderBulletEffector : BulletEffector
 {
     [SerializeField] private float _chainRadius = 5f; // Радиус поиска следующей цели
     [SerializeField] private int _maxBounces = 5; // Количество отскоков молнии
-    [SerializeField] private int _initialDamage = 10; // Урон первой цели
     [SerializeField] private float _damageFalloff = 0.8f; // Уменьшение урона с каждым отскоком
     [SerializeField] private LineRenderer _linePrefab; // Префаб LineRenderer для молнии
     [SerializeField] private LayerMask _enemyLayer; // Слой врагов
@@ -40,7 +41,7 @@ public class ThunderBulletEffector : BulletEffector
             hitTargets.Add(currentTarget);
 
             // Наносим урон
-            int currentDamage = Mathf.RoundToInt(_initialDamage * Mathf.Pow(_damageFalloff, bounce));
+            int currentDamage = Mathf.RoundToInt(bullet.Damage * Mathf.Pow(_damageFalloff, bounce));
             currentTarget.TakeDamage(currentDamage);
 
             // Рисуем молнию

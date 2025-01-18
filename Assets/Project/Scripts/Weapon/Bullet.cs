@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 {
     [SerializeField] protected float Speed;
     [SerializeField] protected float LifeTime;
-    [SerializeField] private int _damage;
+    [SerializeField] private int _damage = 0;
     
     private Rigidbody2D _rigidbody2D;
     private Coroutine _coroutine;
@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 
     public event Action<Bullet> OnDestroyed;
 
+    public int Damage => _damage;
+    
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();

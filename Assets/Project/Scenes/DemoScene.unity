@@ -424,8 +424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 100
-  CurrentValue: 100
+  MaxValue: 21890
+  CurrentValue: 21890
 --- !u!4 &156483564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4579364475423813543, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
@@ -1036,8 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7760457bd3bc4cc791de0ecb995ba785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wavesConfigs:
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  _wavesConfigs: []
   _spawnPoints:
   - {fileID: 640204611}
   - {fileID: 1160610146}
@@ -4269,9 +4268,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1037852799}
     - target: {fileID: 2815475925280034325, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815475925280034325, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _ammoSpawner
       value: 
       objectReference: {fileID: 1464822040}
+    - target: {fileID: 2815475925280034325, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _bulletEffectors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815475925280034325, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _bulletEffectors.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e64c929d606a914493e8c4ef0b4d8c1, type: 2}
+    - target: {fileID: 2815475925280034325, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _bulletEffector._enemyLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3610522453060248735, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _currentWeapon
       value: 
@@ -4328,6 +4343,10 @@ PrefabInstance:
       propertyPath: _scanRadius
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 9223203624221166733, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: Prefab
+      value: 
+      objectReference: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
     m_RemovedComponents:
     - {fileID: 3847884133535460667, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
     m_RemovedGameObjects: []

@@ -4,8 +4,8 @@ using System;
 
 public class Jumper : MonoBehaviour
 {
-    private float _distance = 1f;
-    private float _jumpTime = 1f;
+    private float _distance = 3f;
+    private float _jumpTime = 0.5f;
 
     private Vector3 _targetPosition;
     private bool _isMoving = false;

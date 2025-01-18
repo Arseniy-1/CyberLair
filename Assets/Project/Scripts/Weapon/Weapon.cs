@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,18 +12,26 @@ namespace Project.Scripts.Weapon
         [SerializeField, Range(0.01f, 20)] private float _reloadTime;
         [SerializeField] private int _damage;
         [SerializeField, Range(0, 1)] private float _spread;
-    
+
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private Animator _weaponAnimator;
 
         [SerializeField] private AmmoSpawner _ammoSpawner;
         [SerializeField] private List<BulletEffector> _bulletEffectors;
-    
+
         private float _currentTime = 0;
 
         public event Action<Bullet> OnShooted;
-    
+
         public bool IsReloaded { get; private set; }
+
+        private void Awake()
+        {
+            foreach (var effector in _bulletEffectors)
+            {
+                effector.Initialize(this);
+            }
+        }
 
         private void FixedUpdate()
         {
@@ -50,18 +59,18 @@ namespace Project.Scripts.Weapon
             _spread = spread;
             _reloadTime = reloadTime;
         }
-    
+
         public void ApplyEffector(BulletEffector bulletEffector)
         {
             _bulletEffectors.Add(bulletEffector);
             bulletEffector.Initialize(this);
         }
-    
+
         private void Attack()
         {
             Bullet bullet = _ammoSpawner.Spawn();
             bullet.Init(_shootPoint.transform.position, GetBulletDirection(), _damage);
-        
+
             OnShooted?.Invoke(bullet);
 
             bullet.Activate();
@@ -81,7 +90,7 @@ namespace Project.Scripts.Weapon
             _currentTime = 0;
             IsReloaded = true;
         }
-   
+
         private void ShowAttackAnimation()
         {
             int attackAnim = Animator.StringToHash("Attack"); //TODO: �������

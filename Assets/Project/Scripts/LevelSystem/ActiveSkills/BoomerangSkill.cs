@@ -7,7 +7,6 @@ using UnityEngine;
 public class BoomerangSkill : ActiveSkill
 {
     [SerializeField] private Boomerang _boomerangPrefab;
-    // [SerializeField] private float _radius;
     [SerializeField] private SkillConfig _speedConfig;
     
     private readonly List<Boomerang> _boomerangs = new();
@@ -49,9 +48,7 @@ public class BoomerangSkill : ActiveSkill
     private Vector3 CalculatePosition(float angle, Transform holder)
     {
         float radians = angle * Mathf.Deg2Rad;
-        // float x = Mathf.Cos(radians) * _radius;
-        // float y = Mathf.Sin(radians) * _radius;
-        
+
         float x = Mathf.Cos(radians);
         float y = Mathf.Sin(radians);
         

@@ -3,10 +3,10 @@ using System.Collections;
 using Project.Scripts.Weapon;
 using UnityEngine;
 
-[Serializable]
-public abstract class BulletEffector
+
+public abstract class BulletEffector : ScriptableObject
 {
     protected Weapon Weapon;
-
+    
     public abstract void Initialize(Weapon weapon);
 }
