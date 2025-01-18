@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Project.Scripts.Servises;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,6 +12,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         [SerializeField] private float _nominalSpeed;
         [SerializeField] private int _nominalDamage;
         [SerializeField] private float _timeToDespawn;
+        [SerializeField] private SkillCollisionHandler _collisionHandler;
         
         private float _currentSpeed;
         private int _currentDamage;
@@ -23,6 +25,8 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
         private void OnEnable()
         {
+            _collisionHandler.ContactLimitExpired += Return;
+            
             _transform = transform;
             
             StartCoroutine(Lifetime());
@@ -30,15 +34,20 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
         private void FixedUpdate()
         {
-            Vector2 newPosition = _rigidbody.position + Forward * (_nominalSpeed * Time.fixedDeltaTime);
-            
-            _rigidbody.MovePosition(newPosition);
+            _rigidbody.MovePosition(_rigidbody.position + Forward * (_currentSpeed * Time.fixedDeltaTime));
+        }
+
+        private void OnDisable()
+        {
+            _collisionHandler.ContactLimitExpired -= Return;
         }
 
         public void ApplyStats(float speedMultiplier, int damageMultiplier)
         {
             _currentSpeed = _nominalSpeed * speedMultiplier;
             _currentDamage = _nominalDamage * damageMultiplier;
+            
+            _collisionHandler.ApplyStats(_currentDamage);
         }
 
         private IEnumerator Lifetime()

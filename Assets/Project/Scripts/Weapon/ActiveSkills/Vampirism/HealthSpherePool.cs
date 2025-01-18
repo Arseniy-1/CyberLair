@@ -8,10 +8,10 @@ namespace Project.Scripts.Weapon.ActiveSkills.Vampirism
 
         protected override HealthSphere Create()
         {
-            var enemy =  Object.Instantiate(Prefab);
-            Stack.Push(enemy);
+            var healthSphere =  Object.Instantiate(Prefab);
+            Stack.Push(healthSphere);
 
-            return enemy;
+            return healthSphere;
         }
     }
 }

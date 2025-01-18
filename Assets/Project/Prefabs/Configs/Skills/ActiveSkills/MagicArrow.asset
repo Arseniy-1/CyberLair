@@ -17,7 +17,14 @@ MonoBehaviour:
     <Description>k__BackingField: 
     <Icon>k__BackingField: {fileID: 0}
   <MaxLevel>k__BackingField: 5
-  _arrow: {fileID: 362275917253705133, guid: 0e624a019d57a43c6a096bd62032b21e, type: 3}
+  _arrowSpawner: {fileID: 362275917253705133, guid: 0e624a019d57a43c6a096bd62032b21e, type: 3}
+  _speedConfig:
+    _multipliers:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
   _damageConfig:
     _multipliers:
     - 1

@@ -32,9 +32,9 @@ namespace Project.Scripts.Weapon
             bullet.OnDestroyed -= Explode;
 
             List<Health> affected = Physics2D.OverlapCircleAll(bullet.transform.position, _range, _layerMask)
-                .Select(collider =>
+                .Select(hit =>
                 {
-                    collider.TryGetComponent(out Health health);
+                    hit.TryGetComponent(out Health health);
                     return health;
                 }).Where(health => health).ToList();
 

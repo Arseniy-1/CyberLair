@@ -13,11 +13,11 @@ public class BoomerangSkill : ActiveSkill
     
     public override void Apply(WeaponHolder weaponHolder, int level)
     {
-        if (level > MaxLevel && level < 1)
+        if (level > MaxLevel || level < 1)
             return;
         
         Boomerang boomerang = Instantiate(_boomerangPrefab, weaponHolder.transform);
-        boomerang.Initialize(weaponHolder.transform.position);
+        boomerang.Initialize(weaponHolder.transform);
 
         var speed = _speedConfig.Multipliers[level - 1];
         

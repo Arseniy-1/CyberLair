@@ -15,6 +15,11 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         private int _damageMultiplier;
         
         private Transform _transform;
+
+        private void Awake()
+        {
+            Pool = new MagicArrowPool(Prefab);
+        }
         
         private void OnEnable()
         {
@@ -25,7 +30,13 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
         public void ChangeArrowPrefab(MagicArrow magicArrow)
         {
-            Prefab = magicArrow;
+            Pool = new MagicArrowPool(magicArrow);
+        }
+
+        public void ApplyStats(float speed, int damage)
+        {
+            _speedMultiplier = speed;
+            _damageMultiplier = damage;
         }
 
         private Vector3 FindEnemyPosition()
@@ -62,11 +73,6 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
                 magicArrow.transform.position = _transform.position;
                 magicArrow.transform.rotation = rotation;
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, _radius);
         }
     }
 }

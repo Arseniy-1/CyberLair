@@ -49,9 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6966984513860249003}
-  _nominalSpeed: 0
-  _nominalDamage: 0
+  _nominalSpeed: 4
+  _nominalDamage: 30
   _timeToDespawn: 2
+  _collisionHandler: {fileID: -5008895013172540786}
 --- !u!114 &-5008895013172540786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionDamage: 15
+  _contactLimit: 0
 --- !u!50 &6966984513860249003
 Rigidbody2D:
   serializedVersion: 4

@@ -49,9 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6966984513860249003}
-  _nominalSpeed: 0
-  _nominalDamage: 0
+  _nominalSpeed: 2
+  _nominalDamage: 15
   _timeToDespawn: 2
+  _collisionHandler: {fileID: -5008895013172540786}
 --- !u!114 &-5008895013172540786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionDamage: 15
+  _contactLimit: 1
 --- !u!50 &6966984513860249003
 Rigidbody2D:
   serializedVersion: 4
@@ -80,7 +82,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

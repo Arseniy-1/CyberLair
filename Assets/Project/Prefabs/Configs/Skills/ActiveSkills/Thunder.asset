@@ -21,7 +21,13 @@ MonoBehaviour:
     <Icon>k__BackingField: {fileID: 0}
   <MaxLevel>k__BackingField: 5
   _thunderPrefab: {fileID: 257799198162151130, guid: 96ff3884ff4f8436296ce4aff53ce157, type: 3}
-  _radius: 5
+  _delayConfig:
+    _multipliers:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 0.75
   _radiusConfig:
     _multipliers:
     - 1

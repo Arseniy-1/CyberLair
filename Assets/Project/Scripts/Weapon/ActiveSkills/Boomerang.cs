@@ -9,11 +9,13 @@ namespace Project.Scripts.Weapon.ActiveSkills
         [SerializeField] private float _radius;
         
         private float _angle;
-        private Vector3 _centerPosition;
+        private Transform _targetTransform;
+        
+        private Vector3 CenterPosition => _targetTransform.position;
 
-        public void Initialize(Vector3 centerPosition)
+        public void Initialize(Transform targetTransform)
         {
-            _centerPosition = centerPosition;
+            _targetTransform = targetTransform;
         }
 
         private void FixedUpdate()
@@ -21,14 +23,14 @@ namespace Project.Scripts.Weapon.ActiveSkills
             _angle += _speed * Time.fixedDeltaTime;
 
             Vector3 offset = new Vector2(Mathf.Cos(_angle) * _radius, Mathf.Sin(_angle) * _radius);
-            Vector3 newPosition = _centerPosition + offset;
+            Vector3 newPosition = CenterPosition + offset;
 
             _rigidbody.MovePosition(newPosition);
         }
 
         public void CalculateOffset()
         {
-            Vector3 offset = transform.position - _centerPosition;
+            Vector3 offset = transform.position - CenterPosition;
 
             _angle = Mathf.Atan2(offset.y, offset.x);
         }
