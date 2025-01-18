@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6966984513860249003}
-  _nominalSpeed: 0
+  _nominalSpeed: 4
   _nominalDamage: 0
   _timeToDespawn: 2
 --- !u!114 &-5008895013172540786

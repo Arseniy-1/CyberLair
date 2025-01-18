@@ -1,18 +1,20 @@
 using System.Collections;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Project.Scripts.Weapon.ActiveSkills
 {
     public class Thunder : MonoBehaviour
     {
-        [SerializeField] private float _delay;
+        [SerializeField] private float _nominalDelay;
         [SerializeField] private LayerMask _layerMask;
-        [SerializeField] private float _actionRadius;
-        [SerializeField] private int _damage;
+        [SerializeField] private float _nominalActionRadius;
+        [SerializeField] private int _nominalDamage;
         
+        private float _currentDelay;
         private int _strikesCount = 1;
+        private float _currentActionRadius;
+        private int _currentDamage;
+        private WaitForSeconds _waitDelay;
         
         private Vector2 TargetPosition => transform.position;
         
@@ -21,16 +23,19 @@ namespace Project.Scripts.Weapon.ActiveSkills
             StartCoroutine(StrikeIterating());
         }
 
-        public void ApplyStats(float radiusMultiplier, float damageMultiplier, float countMultiplier)
+        public void ApplyStats(float delayMultiplier, float radiusMultiplier, float damageMultiplier, float countMultiplier)
         {
-            _actionRadius *= radiusMultiplier;
-            _damage *= (int)damageMultiplier;
+            _currentDelay = _nominalDelay * delayMultiplier;
+            _currentActionRadius = _nominalActionRadius * radiusMultiplier;
+            _currentDamage = (int)(_nominalDamage * damageMultiplier);
             _strikesCount *= (int)countMultiplier;
+            
+            _waitDelay = new WaitForSeconds(_currentDelay);
         }
 
         private void Strike()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(TargetPosition, _actionRadius, _layerMask);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(TargetPosition, _currentActionRadius, _layerMask);
             
             if(colliders.Length == 0)
                 return;
@@ -38,31 +43,22 @@ namespace Project.Scripts.Weapon.ActiveSkills
             for (int i = 0; i < _strikesCount; i++)
             {
                 Collider2D strickenCollider = colliders[Random.Range(0, colliders.Length)];
-                Debug.Log(strickenCollider.name);
 
                 if (strickenCollider.TryGetComponent(out Health health))
                 {
-                    health.TakeDamage(_damage);
-                    Debug.Log($"{health.gameObject.name} was striked");
+                    health.TakeDamage(_currentDamage);
                 }
             }
         }
 
         private IEnumerator StrikeIterating()
         {
-            WaitForSeconds wait = new(_delay);
-            
-            while (isActiveAndEnabled)
-            {
-                yield return wait;
+           while (isActiveAndEnabled)
+           {
+               yield return _waitDelay;
                 
-                Strike();
-            }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(TargetPosition, _actionRadius);
+               Strike();
+           }
         }
     }
 }
