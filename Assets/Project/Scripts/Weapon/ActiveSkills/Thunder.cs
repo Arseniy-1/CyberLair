@@ -31,7 +31,6 @@ namespace Project.Scripts.Weapon.ActiveSkills
         private void Strike()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(TargetPosition, _actionRadius, _layerMask);
-            Debug.Log(colliders.Length);
             
             if(colliders.Length == 0)
                 return;
@@ -44,6 +43,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
                 if (strickenCollider.TryGetComponent(out Health health))
                 {
                     health.TakeDamage(_damage);
+                    Debug.Log($"{health.gameObject.name} was striked");
                 }
             }
         }

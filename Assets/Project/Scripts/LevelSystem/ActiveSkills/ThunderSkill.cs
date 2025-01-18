@@ -7,30 +7,29 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
     public class ThunderSkill : ActiveSkill
     {
         [SerializeField] private Thunder _thunderPrefab;
-        [SerializeField] private float _radius;
         
         [SerializeField] private SkillConfig _radiusConfig;
         [SerializeField] private SkillConfig _damageConfig;
         [SerializeField] private SkillConfig _countConfig;
         
-        private Thunder _thunderInstance;
+        private Thunder _thunder;
         
         public override void Apply(WeaponHolder weaponHolder, int level)
         {
-            if (level > MaxLevel && level < 1)
+            if (level > MaxLevel || level < 1)
                 return;
             
-            if (_thunderInstance != null)
+            if (_thunder != null)
             {
                 var radius = _radiusConfig.Multipliers[level - 1];
                 var damage = _damageConfig.Multipliers[level - 1];
                 var count = _countConfig.Multipliers[level - 1];
-                _thunderInstance.ApplyStats(radius, damage, count);
+                _thunder.ApplyStats(radius, damage, count);
 
                 return;
             }
             
-            _thunderInstance = Instantiate(_thunderPrefab, weaponHolder.transform);
+            _thunder = Instantiate(_thunderPrefab, weaponHolder.transform);
         }
     }
 }
