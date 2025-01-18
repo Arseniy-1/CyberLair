@@ -20,18 +20,14 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
             if (level > MaxLevel || level < 1)
                 return;
             
-            if (_thunder)
-            {
-                var delay = _delayConfig.Multipliers[level - 1];
-                var radius = _radiusConfig.Multipliers[level - 1];
-                var damage = _damageConfig.Multipliers[level - 1];
-                var count = _countConfig.Multipliers[level - 1];
-                _thunder.ApplyStats(delay, radius, damage, count);
+            if(!_thunder)
+                _thunder = Instantiate(_thunderPrefab, weaponHolder.transform);
 
-                return;
-            }
-            
-            _thunder = Instantiate(_thunderPrefab, weaponHolder.transform);
+            var delay = _delayConfig.Multipliers[level - 1];
+            var radius = _radiusConfig.Multipliers[level - 1];
+            var damage = _damageConfig.Multipliers[level - 1];
+            var count = _countConfig.Multipliers[level - 1];
+            _thunder.ApplyStats(delay, radius, damage, count);
         }
     }
 }
