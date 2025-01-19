@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 4213689946170667695}
   - component: {fileID: 6256532833530675330}
   - component: {fileID: 4177437872860269052}
+  - component: {fileID: 5652720108971927089}
   m_Layer: 3
   m_Name: Summon
   m_TagString: Untagged
@@ -167,16 +168,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 338829131333349496}
-  _nominalSpeed: 4
+  _mover: {fileID: 5652720108971927089}
   _nominalDamage: 0
   _nominalSpread: 0.57
   _nominalReloadTime: 1
-  _moveRadius: 2
-  _moveDelay: 3
   _weapon: {fileID: 810290520881984158}
   _weaponHolder: {fileID: 6737547138716812977}
   _targetScanner: {fileID: 4177437872860269052}
-  _targetTransform: {fileID: 0}
 --- !u!114 &4177437872860269052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +192,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _scanDelay: 1
+--- !u!114 &5652720108971927089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537806147820285303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac56ce684cd748b0b3437bb2490d3658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nominalSpeed: 3
+  _moveRadius: 2
+  _moveDelay: 2
 --- !u!1 &8266974789114446711
 GameObject:
   m_ObjectHideFlags: 0
