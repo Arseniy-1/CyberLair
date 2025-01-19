@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce47920fa08d45f79e48854c16a59242, type: 3}
   m_Name: TBE
   m_EditorClassIdentifier: 
-  _chainRadius: 2
-  _maxBounces: 5
+  _chainRadius: 45.66
+  _maxBounces: 44
   _damageFalloff: 0.8
   _linePrefab: {fileID: 1058705675161308876, guid: 665688c73c4abd4489377eadcb9465f7, type: 3}
   _enemyLayer:

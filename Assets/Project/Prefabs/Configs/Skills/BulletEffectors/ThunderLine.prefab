@@ -85,7 +85,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.14122804
+        value: 0.022384644
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -93,8 +93,17 @@ LineRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
+        time: 0.5178721
+        value: 0.19172329
+        inSlope: -0.09646959
+        outSlope: -0.09646959
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
-        value: 0.07461661
+        value: 0.029846191
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -107,15 +116,15 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0, g: 0.6910958, b: 1, a: 1}
-      key1: {r: 0.8396226, g: 0.6925672, b: 0.13861692, a: 0.58431375}
-      key2: {r: 0, g: 0.21522045, b: 1, a: 0}
+      key1: {r: 0.08957815, g: 0.42515913, b: 0.5754717, a: 1}
+      key2: {r: 0, g: 0.6901961, b: 0.9960785, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
+      ctime1: 33153
       ctime2: 65535
       ctime3: 0
       ctime4: 0
@@ -132,7 +141,7 @@ LineRenderer:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0

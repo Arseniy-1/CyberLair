@@ -24,6 +24,7 @@ namespace StateMashineSytem.PlayerStateMashine
 
         public virtual void Enter()
         {
+            _playerInputController.enabled = false;
             _collider2D.enabled = false;
             _jumper.Jump(_playerInputController.InputDirection);
             _jumper.JumpPerformed += OnJumpPerformed;
@@ -31,6 +32,7 @@ namespace StateMashineSytem.PlayerStateMashine
 
         public virtual void Exit()
         {
+            _playerInputController.enabled = true;
             _collider2D.enabled = true;
             _jumper.JumpPerformed -= OnJumpPerformed;
         }
