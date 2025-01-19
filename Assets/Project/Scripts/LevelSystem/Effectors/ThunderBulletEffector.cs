@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Cysharp.Threading.Tasks; // Не забудьте подключить UniTask
 using Project.Scripts.EnemySystem;
 using Project.Scripts.Weapon;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 [CreateAssetMenu(fileName = "New ThunderBulletEffector", menuName = "Skill/BulletEffectors/ThunderBulletEffector", order = 51)]
 public class ThunderBulletEffector : BulletEffector
@@ -45,8 +44,8 @@ public class ThunderBulletEffector : BulletEffector
             int currentDamage = Mathf.RoundToInt(bullet.Damage * Mathf.Pow(_damageFalloff, bounce));
             currentTarget.TakeDamage(currentDamage);
 
-            if(bounce != 0)
-                DrawLightning(currentPosition, currentTarget.transform.position, bullet);
+            if (bounce != 0) // Эффект молнии только для последующих отскоков
+                DrawLightning(currentPosition, currentTarget.transform.position, bullet).Forget();
 
             // Переходим к следующей цели
             currentPosition = currentTarget.transform.position;
@@ -77,13 +76,41 @@ public class ThunderBulletEffector : BulletEffector
         return closestTarget;
     }
 
-    private void DrawLightning(Vector2 start, Vector2 end, Bullet bullet)
+    private async UniTaskVoid DrawLightning(Vector2 start, Vector2 end, Bullet bullet)
     {
         LineRenderer line = Instantiate(_linePrefab, bullet.transform.position, Quaternion.identity);
-        line.SetPosition(0, start);
-        line.SetPosition(1, end);
 
-        // Удаляем линию после небольшой задержки
-        Destroy(line.gameObject, 0.1f);
+        // Устанавливаем извилистость
+        int segments = 20;
+        line.positionCount = segments;
+
+        for (int i = 0; i < segments; i++)
+        {
+            float t = i / (float)(segments - 1);
+            Vector2 point = Vector2.Lerp(start, end, t);
+            float offset = UnityEngine.Random.Range(-0.2f, 0.2f);
+            point += Vector2.Perpendicular(end - start).normalized * offset;
+            line.SetPosition(i, point);
+        }
+
+        // Применяем текстуру молнии
+        line.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
+
+        // Эффект мигания
+        float duration = 0.1f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float alpha = Mathf.PingPong(elapsed * 10f, 1f); // Колебания прозрачности
+            Color color = line.material.color;
+            color.a = alpha;
+            line.material.color = color;
+
+            elapsed += Time.deltaTime;
+            await UniTask.Yield();
+        }
+
+        Destroy(line.gameObject);
     }
 }
