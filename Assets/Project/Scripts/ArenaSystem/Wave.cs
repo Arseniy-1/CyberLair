@@ -26,22 +26,23 @@ namespace Project.Scripts.ArenaSystem
         }
         
         public event Action<Wave> OnWaveFinished;
+        public event Action<Enemy> EnemySpawned;
 
         public void Begin()
         {
             WaitingEnd();
             
-            var enemies = new List<Enemy>();
+            var enemyPrefabs = new List<Enemy>();
                 
             foreach (KeyValuePair<Enemy, int> pair in _config.Enemies)
             {
                 for (var i = 0; i < pair.Value; i++)
                 {
-                    enemies.Add(pair.Key);
+                    enemyPrefabs.Add(pair.Key);
                 }
             }
 
-            SpawningEnemys(enemies);
+            SpawningEnemys(enemyPrefabs);
         }
 
         private async UniTaskVoid SpawningEnemys(List<Enemy> enemies)
@@ -59,6 +60,7 @@ namespace Project.Scripts.ArenaSystem
                 Enemy enemy = _mainEnemySpawner.Spawn(enemyPrefab.EnemyType);
                 enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
                 enemy.OnDestroyed += HandleDeath;
+                EnemySpawned?.Invoke(enemy);
             }
         } 
 

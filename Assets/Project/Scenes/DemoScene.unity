@@ -342,6 +342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trooper 1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -481,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 21890
+  maxHealthValue: 0
   CurrentValue: 21890
 --- !u!4 &156483564 stripped
 Transform:
@@ -936,6 +940,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trooper 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1069,6 +1077,10 @@ PrefabInstance:
     - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
       propertyPath: m_Name
       value: Trooper 1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1207,7 +1219,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7760457bd3bc4cc791de0ecb995ba785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wavesConfigs: []
+  _wavesConfigs:
+  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
   _spawnPoints:
   - {fileID: 640204611}
   - {fileID: 1160610146}
@@ -1691,7 +1708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad0a08695c8631479b80a0b12aa88a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 100
+  maxHealthValue: 0
   CurrentValue: 29
 --- !u!1001 &732552548
 PrefabInstance:
@@ -1744,6 +1761,10 @@ PrefabInstance:
     - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
       propertyPath: m_Name
       value: Trooper 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2036,6 +2057,10 @@ PrefabInstance:
     - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
       propertyPath: m_Name
       value: Trooper 1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2336,6 +2361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trooper 1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2392,6 +2421,10 @@ PrefabInstance:
     - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
       propertyPath: m_Name
       value: Trooper 1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2479,7 +2512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad0a08695c8631479b80a0b12aa88a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 10
+  maxHealthValue: 0
   CurrentValue: 0
 --- !u!114 &1037852798
 MonoBehaviour:
@@ -2496,6 +2529,7 @@ MonoBehaviour:
   <JumpDistance>k__BackingField: 4
   <JumpTime>k__BackingField: 0.5
   <Damage>k__BackingField: 12
+  <Health>k__BackingField: {fileID: 0}
   <ReloadTime>k__BackingField: 3
   <BulletPrefab>k__BackingField: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
 --- !u!114 &1037852799
@@ -3991,6 +4025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trooper 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4371,6 +4409,10 @@ PrefabInstance:
     - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
       propertyPath: m_Name
       value: Trooper 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

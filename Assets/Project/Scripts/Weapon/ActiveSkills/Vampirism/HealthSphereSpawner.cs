@@ -32,7 +32,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
             HealthSphere sphere = Spawn();
             
             sphere.transform.position = enemy.transform.position;
-            sphere.ApplyStats((int)(enemy.Health.Max * _healthMultiplier));
+            // sphere.ApplyStats((int)(enemy.Health.MaxHealth * _healthMultiplier));
         }
     }
 }

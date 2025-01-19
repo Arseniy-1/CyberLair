@@ -1,18 +1,19 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Stats : MonoBehaviour
 {
-    [SerializeField] protected int MaxValue;
+    [SerializeField] protected int maxHealthValue;
     [SerializeField] protected int CurrentValue;
 
-    public int Max => MaxValue;
+    public int MaxValue => maxHealthValue;
     
     public event Action<int, int> AmountChanged;
 
     protected void RaiseAmountChanged()
     {
-        AmountChanged?.Invoke(CurrentValue, MaxValue);
+        AmountChanged?.Invoke(CurrentValue, maxHealthValue);
     }
 }
 

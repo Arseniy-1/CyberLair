@@ -3,6 +3,7 @@
 public class PlayerStats
 {
     [field: SerializeField] public float Damage;
+    [field: SerializeField] public Health Health;
 
     [field: SerializeField] public float JumpDistance; 
     [field: SerializeField] public float JumpTime;

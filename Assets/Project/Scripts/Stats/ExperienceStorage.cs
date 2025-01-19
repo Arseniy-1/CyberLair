@@ -8,7 +8,7 @@ public class ExperienceStorage : Stats
     {
         CurrentValue++;
 
-        if (CurrentValue >= MaxValue)
+        if (CurrentValue >= maxHealthValue)
             LevelRaised?.Invoke();
 
         RaiseAmountChanged();
