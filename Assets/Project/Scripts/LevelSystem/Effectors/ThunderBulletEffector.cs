@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks; // Не забудьте подключить UniTask
+﻿using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using Project.Scripts.Weapon;
 using UnityEngine;
+using DG.Tweening; // Подключаем DoTween
 
 [CreateAssetMenu(fileName = "New ThunderBulletEffector", menuName = "Skill/BulletEffectors/ThunderBulletEffector", order = 51)]
 public class ThunderBulletEffector : BulletEffector
@@ -45,7 +44,7 @@ public class ThunderBulletEffector : BulletEffector
             currentTarget.TakeDamage(currentDamage);
 
             if (bounce != 0) // Эффект молнии только для последующих отскоков
-                DrawLightning(currentPosition, currentTarget.transform.position, bullet).Forget();
+                DrawLightning(currentPosition, currentTarget.transform.position, bullet);
 
             // Переходим к следующей цели
             currentPosition = currentTarget.transform.position;
@@ -76,7 +75,7 @@ public class ThunderBulletEffector : BulletEffector
         return closestTarget;
     }
 
-    private async UniTaskVoid DrawLightning(Vector2 start, Vector2 end, Bullet bullet)
+    private void DrawLightning(Vector2 start, Vector2 end, Bullet bullet)
     {
         LineRenderer line = Instantiate(_linePrefab, bullet.transform.position, Quaternion.identity);
 
@@ -88,7 +87,7 @@ public class ThunderBulletEffector : BulletEffector
         {
             float t = i / (float)(segments - 1);
             Vector2 point = Vector2.Lerp(start, end, t);
-            float offset = UnityEngine.Random.Range(-0.2f, 0.2f);
+            float offset = Random.Range(-0.2f, 0.2f);
             point += Vector2.Perpendicular(end - start).normalized * offset;
             line.SetPosition(i, point);
         }
@@ -96,21 +95,12 @@ public class ThunderBulletEffector : BulletEffector
         // Применяем текстуру молнии
         line.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
 
-        // Эффект мигания
-        float duration = 0.1f;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
+        // Анимация мигания с помощью DoTween
+        Color initialColor = line.material.color;
+        float duration = 0.2f; // Длительность жизни линии
+        line.material.DOFade(0f, duration).SetEase(Ease.InOutFlash).OnComplete(() =>
         {
-            float alpha = Mathf.PingPong(elapsed * 10f, 1f); // Колебания прозрачности
-            Color color = line.material.color;
-            color.a = alpha;
-            line.material.color = color;
-
-            elapsed += Time.deltaTime;
-            await UniTask.Yield();
-        }
-
-        Destroy(line.gameObject);
+            Destroy(line.gameObject); // Удаление линии после анимации
+        });
     }
 }
