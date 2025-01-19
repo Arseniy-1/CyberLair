@@ -296,8 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67273f7244f6cf41801953e5a2d55cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
-  _startAmount: 1
+  Prefab: {fileID: 0}
+  StartAmount: 1
 --- !u!1 &4291330248111781278
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 4087383731586587309}
   - component: {fileID: 7881955136329227856}
   - component: {fileID: 234075640184994089}
+  - component: {fileID: 7926036898708774552}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -546,11 +547,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadTime: 0.4
-  _shootPoint: {fileID: 8704551961970842611}
-  _bulletPrefab: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
+  _damage: 0
   _spread: 0.068
+  _shootPoint: {fileID: 8704551961970842611}
   _weaponAnimator: {fileID: 234075640184994089}
   _ammoSpawner: {fileID: 3859486835601267912}
+  _bulletEffectors: []
 --- !u!95 &234075640184994089
 Animator:
   serializedVersion: 5
@@ -572,6 +574,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7926036898708774552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417804407769913341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fd2856b6da4b8fb950f093fd115da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: 1, y: -1, z: 1}
 --- !u!1 &8523679823643724054
 GameObject:
   m_ObjectHideFlags: 0
