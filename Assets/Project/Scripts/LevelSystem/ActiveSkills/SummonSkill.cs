@@ -6,7 +6,7 @@ public class SummonSkill : ActiveSkill
 {
     [SerializeField] private Summon _summonPrefab;
     
-    [SerializeField, Header("Configs"), Tooltip("")] private SkillConfig _damageSkillConfig;
+    [SerializeField, Header("Configs")] private SkillConfig _damageSkillConfig;
     [SerializeField] private SkillConfig _speedSkillConfig;
     [SerializeField] private SkillConfig _realoadSkillConfig;
     [SerializeField] private SkillConfig _spreadSkillConfig;

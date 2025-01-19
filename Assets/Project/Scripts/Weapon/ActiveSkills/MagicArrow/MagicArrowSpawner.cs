@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,6 +14,8 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
         private float _speedMultiplier;
         private int _damageMultiplier;
+        
+        private List<MagicArrow> _magicArrows = new ();
         
         private Transform _transform;
 
@@ -30,6 +33,8 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
         public void ChangeArrowPrefab(MagicArrow magicArrow)
         {
+            Unsubscribe();
+            
             Pool = new MagicArrowPool(magicArrow);
         }
 
@@ -69,10 +74,28 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
                 var rotation = CalculateRotation(enemyPosition);
                 var magicArrow = Spawn();
                 
+                if(_magicArrows.Contains(magicArrow) == false)
+                    _magicArrows.Add(magicArrow);
+                
                 magicArrow.ApplyStats(_speedMultiplier, _damageMultiplier);
                 magicArrow.transform.position = _transform.position;
                 magicArrow.transform.rotation = rotation;
             }
+        }
+        
+        private void Unsubscribe()
+        {
+            foreach (MagicArrow arrow in _magicArrows)
+            {
+                arrow.OnDestroyed -= OnSpawnedDestroed;
+
+                arrow.OnDestroyed += DestroyArrow;
+            }
+        }
+
+        private void DestroyArrow(MagicArrow magicArrow)
+        {
+            Destroy(magicArrow.gameObject);
         }
     }
 }
