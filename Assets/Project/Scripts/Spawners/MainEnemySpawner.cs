@@ -24,7 +24,7 @@ public class MainEnemySpawner : MonoBehaviour
         
         var spawner = _spawners[type];
         
-        Debug.Log($"Spawner {spawner.name} will spawn it");
+        // Debug.Log($"Spawner {spawner.name} will spawn it");
 
         return spawner.Spawn();
     }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, IDestoyable<T>
+[Serializable]
+public class Spawner<T> where T : MonoBehaviour, IDestoyable<T>
 {
     [SerializeField] protected T Prefab;
     [SerializeField] protected int StartAmount = 1;

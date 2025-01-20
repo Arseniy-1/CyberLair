@@ -4,8 +4,8 @@ using Project.Scripts.Weapon;
 using UnityEngine;
 using DG.Tweening; // Подключаем DoTween
 
-[CreateAssetMenu(fileName = "New ThunderBulletEffector", menuName = "Skill/BulletEffectors/ThunderBulletEffector", order = 51)]
-public class ThunderBulletEffector : BulletEffector
+[CreateAssetMenu(fileName = "New ZapEffector", menuName = "Skill/BulletEffectors/ZapEffector", order = 51)]
+public class ZapEffector : BulletEffector
 {
     [SerializeField] private float _chainRadius = 5f; // Радиус поиска следующей цели
     [SerializeField] private int _maxBounces = 5; // Максимальное количество отскоков
@@ -16,10 +16,10 @@ public class ThunderBulletEffector : BulletEffector
     public override void Initialize(Weapon weapon)
     {
         Weapon = weapon;
-        weapon.OnShooted += RegisterBullet;
+        weapon.OnShooted += OnShooted;
     }
 
-    private void RegisterBullet(Bullet bullet)
+    private void OnShooted(Bullet bullet)
     {
         bullet.OnDestroyed += CastLightning;
     }

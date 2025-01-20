@@ -1,0 +1,28 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using Project.Scripts.Weapon;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New FireZoneEffector", menuName = "Skill/BulletEffectors/FireZoneEffector",order = 51)]
+public class FireZoneEffector : BulletEffector
+{
+    [SerializeField] private FireZone _fireZonePrefab;
+    [SerializeField] private FireZoneSpawner _fireZoneSpawner;
+    public override void Initialize(Weapon weapon)
+    {
+        Weapon = weapon;
+        weapon.OnShooted += OnShooted;
+    }
+
+    private void OnShooted(Bullet bullet)
+    {
+        bullet.OnDestroyed += Explode;
+    }
+
+    private void Explode(Bullet bullet)
+    {
+        bullet.OnDestroyed -= Explode;
+
+        _fireZoneSpawner.Spawn();
+    }
+}
