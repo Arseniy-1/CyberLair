@@ -7,6 +7,8 @@ public class SkillView : MonoBehaviour
 {
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _nameText;
+    [SerializeField] private TextMeshProUGUI _descriptionText;
+    [SerializeField] private Image _image;
     
     private Skill _skill;
     
@@ -30,6 +32,8 @@ public class SkillView : MonoBehaviour
     public void SetSkill(Skill skill)
     {
         _skill = skill;
-        _nameText.text = _skill.SkillInfo.SkillName.ToString();
+        _nameText.text = _skill.SkillInfo.SkillName;
+        _descriptionText.text = _skill.SkillInfo.Description;
+        _image.sprite = _skill.SkillInfo.Icon;
     }
 }
