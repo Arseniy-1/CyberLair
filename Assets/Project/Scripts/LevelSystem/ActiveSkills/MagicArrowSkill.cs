@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 namespace Project.Scripts.LevelSystem.ActiveSkills
 {
     [CreateAssetMenu(fileName = "New Magic Arrow Skill", menuName = "Skill/Active/MagicArrow", order = 51)]
-    public class MagicArrowSkill : ActiveSkill
+    public class MagicArrowSkill : Skill
     {
         [SerializeField] private MagicArrowSpawner _arrowSpawner;
         [SerializeField] private SkillConfig _speedConfig;
@@ -15,19 +15,19 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
         
         private MagicArrowSpawner _spawner;
         
-        public override void Apply(WeaponHolder weaponHolder, int level)
+        public override void Apply(SkillData skillData)
         {
-            if (level > MaxLevel || level < 1)
+            if (skillData.Level > MaxLevel || skillData.Level < 1)
                 return;
             
             if(!_spawner)
-                _spawner = Instantiate(_arrowSpawner, weaponHolder.transform);
+                _spawner = Instantiate(_arrowSpawner, skillData.WeaponHolder.transform);
             
-            if(level == MaxLevel)
+            if(skillData.Level == MaxLevel)
                 _spawner.ChangeArrowPrefab(_finalForm);
 
-            var speed = _speedConfig.Multipliers[level - 1];
-            var damage = (int)_damageConfig.Multipliers[level - 1];
+            var speed = _speedConfig.Multipliers[skillData.Level - 1];
+            var damage = (int)_damageConfig.Multipliers[skillData.Level - 1];
                 
             _spawner.ApplyStats(speed, damage);
         }

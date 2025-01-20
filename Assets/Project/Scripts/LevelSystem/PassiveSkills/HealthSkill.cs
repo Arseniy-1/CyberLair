@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Passive/Health", order = 51)]
-public class HealthSkill : PassiveSkill
+public class HealthSkill : Skill
 {
-    public override void Apply(PlayerStats playerStats, PlayerConfig playerConfig, int level)//TODO: попробовать связать общим классом
+    [SerializeField] private SkillConfig _skillConfig;
+    
+    public override void Apply(SkillData skillData)//TODO: попробовать связать общим классом
     {
-        playerStats.Health.IncreaseHealth((int)(playerConfig.Health.MaxValue * skillConfig.Multipliers[level]) - playerConfig.Health.MaxValue);
+        skillData.PlayerStats.Health.IncreaseHealth((int)(skillData.PlayerConfig.Health.MaxValue *
+                                                          _skillConfig.Multipliers[skillData.Level]) - skillData.PlayerConfig.Health.MaxValue);
         Debug.Log("Health Skill Applied");
     }
 }

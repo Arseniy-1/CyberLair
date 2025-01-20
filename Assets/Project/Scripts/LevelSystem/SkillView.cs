@@ -8,9 +8,9 @@ public class SkillView : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _nameText;
     
-    private ISkill _skill;
+    private Skill _skill;
     
-    public event Action<ISkill> OnClicked;
+    public event Action<Skill> OnClicked;
 
     private void OnEnable()
     {
@@ -27,7 +27,7 @@ public class SkillView : MonoBehaviour
         OnClicked?.Invoke(_skill);
     }
     
-    public void SetSkill(ISkill skill)
+    public void SetSkill(Skill skill)
     {
         _skill = skill;
         _nameText.text = _skill.SkillInfo.SkillName.ToString();

@@ -4,25 +4,25 @@ using Sirenix.Utilities;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Boomerang Skill", menuName = "Skill/Active/Boomerang", order = 51)]
-public class BoomerangSkill : ActiveSkill
+public class BoomerangSkill : Skill
 {
     [SerializeField] private Boomerang _boomerangPrefab;
     [SerializeField] private SkillConfig _speedConfig;
     
     private readonly List<Boomerang> _boomerangs = new();
     
-    public override void Apply(WeaponHolder weaponHolder, int level)
+    public override void Apply(SkillData skillData)
     {
-        if (level > MaxLevel || level < 1)
+        if (skillData.Level > MaxLevel || skillData.Level < 1)
             return;
         
-        Boomerang boomerang = Instantiate(_boomerangPrefab, weaponHolder.transform);
-        boomerang.Initialize(weaponHolder.transform);
+        Boomerang boomerang = Instantiate(_boomerangPrefab, skillData.WeaponHolder.transform);
+        boomerang.Initialize(skillData.WeaponHolder.transform);
 
-        var speed = _speedConfig.Multipliers[level - 1];
+        var speed = _speedConfig.Multipliers[skillData.Level - 1];
         
         _boomerangs.Add(boomerang);
-        DistributeEqually(weaponHolder.transform, speed);
+        DistributeEqually(skillData.WeaponHolder.transform, speed);
     }
     
     private void DistributeEqually(Transform holder, float speed)

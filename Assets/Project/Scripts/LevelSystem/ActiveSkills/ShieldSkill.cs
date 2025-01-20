@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 [CreateAssetMenu(fileName = "New Shield Skill", menuName = "Skill/Active/Shield", order = 51)]
-public class ShieldSkill : ActiveSkill
+public class ShieldSkill : Skill
 {
-    public override void Apply(WeaponHolder weaponHolder, int level)
+    public override void Apply(SkillData skillData)
     {
         // Instantiate(WeaponPrefab, weaponHolder.transform);
         

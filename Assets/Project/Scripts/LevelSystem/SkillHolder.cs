@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class SkillHolder
 {
-    private Dictionary<ISkill, int> _skills = new Dictionary<ISkill, int>();
+    private Dictionary<Skill, int> _skills = new Dictionary<Skill, int>();
     private int _maxSkillsCount = 5;
 
-    public IReadOnlyDictionary<ISkill, int> Skills => _skills;
+    public IReadOnlyDictionary<Skill, int> Skills => _skills;
 
-    public void AddSkill(ISkill skill)
+    public void AddSkill(Skill skill)
     {
         int startSkillLevel = 1;
 

@@ -40,23 +40,16 @@ public class Mediator : MonoBehaviour
     }
 
     [Button]
-    private void OnSkillApplied(ISkill skill)
+    private void OnSkillApplied(Skill skill)
     {
         Debug.Log($"{skill.GetType()}");
         
         _skillHolder.AddSkill(skill);
 
-        switch (skill)
-        {
-            case PassiveSkill passiveSkill:
-                passiveSkill.Apply(_player.PlayerStats, _playerConfig, _skillHolder.Skills[skill]);
-                break;
-            case ActiveSkill activeSkill:
-                Debug.Log($"{_skillHolder.Skills[skill]}");
-                activeSkill.Apply(_playerWeaponHolder, _skillHolder.Skills[skill]);
-                break;
-        }
-
+        var skillData = new SkillData(_playerWeaponHolder, _playerConfig, _player.PlayerStats, _skillHolder.Skills[skill]);
+        
+        skill.Apply(skillData);
+        
         HideSkills();
     }
 
