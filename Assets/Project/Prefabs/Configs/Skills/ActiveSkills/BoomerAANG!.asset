@@ -16,7 +16,7 @@ MonoBehaviour:
     <SkillName>k__BackingField: Boomerang
     <Description>k__BackingField: "It is good because there is Aang in it \u2013
       Boomer Aang"
-    <Icon>k__BackingField: {fileID: 0}
+    <Icon>k__BackingField: {fileID: 21300000, guid: 16dc816a19300458ab97f9cc7b1be125, type: 3}
   <MaxLevel>k__BackingField: 5
   _boomerangPrefab: {fileID: -8994743883427961744, guid: de1816e96bbb7784d9c4c2c1d4e72f71, type: 3}
   _speedConfig:
