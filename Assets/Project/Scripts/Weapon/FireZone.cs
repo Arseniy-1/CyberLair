@@ -19,21 +19,20 @@ public class FireZone : MonoBehaviour, IDestoyable<FireZone>
 
     private void OnEnable()
     {
-        if (_waitingDestroy != null)
             _waitingDestroy = StartCoroutine(WaitingDestroy());
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.TryGetComponent(out IDamagable damagable) & (_targetLayer << other.gameObject.layer) != 0)
+        if (collision.TryGetComponent(out IDamagable damagable) & (_targetLayer << collision.gameObject.layer) != 0)
         {
             _damagableTargets.Add(damagable);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.TryGetComponent(out IDamagable damagable) & (_targetLayer << other.gameObject.layer) != 0)
+        if (collision.TryGetComponent(out IDamagable damagable) & (_targetLayer << collision.gameObject.layer) != 0)
         {
             _damagableTargets.Remove(damagable);
         }
@@ -50,9 +49,9 @@ public class FireZone : MonoBehaviour, IDestoyable<FireZone>
 
     private void ApplyFireDamage()
     {
-        foreach (IDamagable damagable in _damagableTargets)
+        for (int i = 0; i < _damagableTargets.Count; i++)
         {
-            damagable.TakeDamage(_damagePerIteration);
+            _damagableTargets[i].TakeDamage(_damagePerIteration);
             Debug.Log("Нанес урон огнем ^_^");
         }
     }
@@ -60,6 +59,6 @@ public class FireZone : MonoBehaviour, IDestoyable<FireZone>
     private IEnumerator WaitingDestroy()
     {
         yield return new WaitForSeconds(_lifeTime);
-        OnDestroyed.Invoke(this);
+        OnDestroyed?.Invoke(this);
     }
 }

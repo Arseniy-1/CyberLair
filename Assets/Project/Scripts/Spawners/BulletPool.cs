@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class BulletPool : Pool<Bullet>
 {
-    public BulletPool(Bullet prefab) : base(prefab)
+    public BulletPool(Bullet prefab, int startAmount) : base(prefab, startAmount)
     {
-        CreateStartCount();
+        // CreateStartCount();
     }
 
     protected override Bullet Create()

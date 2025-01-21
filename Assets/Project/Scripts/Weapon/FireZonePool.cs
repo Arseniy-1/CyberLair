@@ -2,7 +2,7 @@
 
 public class FireZonePool : Pool<FireZone>
 {
-    public FireZonePool(FireZone prefab) : base(prefab)
+    public FireZonePool(FireZone prefab, int startAmount) : base(prefab, startAmount)
     {
         CreateStartCount();
     }

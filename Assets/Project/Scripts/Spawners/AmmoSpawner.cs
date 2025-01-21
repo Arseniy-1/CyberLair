@@ -1,7 +1,12 @@
-﻿public class AmmoSpawner : Spawner<Bullet>
+﻿using System;
+using UnityEngine;
+
+[Serializable]
+public class AmmoSpawner : Spawner<Bullet>
 {
-    private void Awake()
+    public AmmoSpawner(Bullet bulletPrefab)
     {
-        Pool = new BulletPool(Prefab);
+        Prefab = bulletPrefab;
+        Pool = new BulletPool(Prefab, StartAmount);
     }
 }

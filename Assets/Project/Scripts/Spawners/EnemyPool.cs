@@ -6,7 +6,7 @@ public class EnemyPool : Pool<Enemy>
 {
     private readonly EnemyFabric _enemyFabric;
 
-    public EnemyPool(Enemy prefab, EnemyFabric enemyFabric) : base(prefab)
+    public EnemyPool(Enemy prefab, EnemyFabric enemyFabric, int startAmount) : base(prefab, startAmount)
     {
         _enemyFabric = enemyFabric;
         CreateStartCount();
@@ -14,10 +14,10 @@ public class EnemyPool : Pool<Enemy>
 
     protected override Enemy Create()
     {
-        var enemy =  _enemyFabric.Create(Prefab);
+        var enemy = _enemyFabric.Create(Prefab);
         Stack.Push(enemy);
         enemy.gameObject.SetActive(false);
-        
+
         return enemy;
     }
 }

@@ -1,7 +1,11 @@
-﻿public class FireZoneSpawner : Spawner<FireZone>
+﻿using System;
+
+[Serializable]
+public class FireZoneSpawner : Spawner<FireZone>
 {
-    private void Awake()
+    public FireZoneSpawner(FireZone prefab)
     {
-        Pool = new FireZonePool(Prefab);
+        Prefab = prefab;
+        Pool = new FireZonePool(Prefab, StartAmount);
     }
 }

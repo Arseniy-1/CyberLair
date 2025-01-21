@@ -5,14 +5,15 @@ using UnityEngine;
 [Serializable]
 public abstract class Pool<T> where T : MonoBehaviour
 {
-    [SerializeField] private int _startAmount = 5;
+    private int _startAmount = 5;
 
     protected T Prefab;
     protected Stack<T> Stack = new();
 
-    public Pool(T prefab)
+    public Pool(T prefab, int startAmount)
     {
         Prefab = prefab;
+        _startAmount = startAmount;
     }
 
     public void Release(T template)

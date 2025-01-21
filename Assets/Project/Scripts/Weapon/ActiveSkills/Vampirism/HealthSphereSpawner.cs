@@ -19,7 +19,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
         public void Initialize()
         {
-            Pool = new HealthSpherePool(Prefab);
+            Pool = new HealthSpherePool(Prefab, StartAmount);
         }
 
         public void ApplyMultiplier(float healthMultiplier)

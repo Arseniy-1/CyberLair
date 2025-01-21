@@ -6,10 +6,10 @@ using UnityEngine.Serialization;
 [Serializable]
 public class Spawner<T> where T : MonoBehaviour, IDestoyable<T>
 {
-    [SerializeField] protected T Prefab;
-    [SerializeField] protected int StartAmount = 1;
+    protected T Prefab;
+    [SerializeField] protected int StartAmount = 5;
 
-    protected Pool<T> Pool;
+    [SerializeField] protected Pool<T> Pool;
 
     public event Action<int, int, int> CountChanged;
 
@@ -17,14 +17,14 @@ public class Spawner<T> where T : MonoBehaviour, IDestoyable<T>
     {
         T spawnedObject = Pool.Get();
 
-        spawnedObject.OnDestroyed += OnSpawnedDestroed;
+        spawnedObject.OnDestroyed += OnSpawnedDestroyed;
 
         return spawnedObject;
     }
 
-    protected void OnSpawnedDestroed(T spawnableObject)
+    protected void OnSpawnedDestroyed(T spawnableObject)
     {
-        spawnableObject.OnDestroyed -= OnSpawnedDestroed;
+        spawnableObject.OnDestroyed -= OnSpawnedDestroyed;
         spawnableObject.gameObject.SetActive(false);
         Pool.Release(spawnableObject);
     }

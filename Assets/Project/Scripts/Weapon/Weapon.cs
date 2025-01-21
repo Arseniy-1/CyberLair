@@ -13,6 +13,8 @@ namespace Project.Scripts.Weapon
         [SerializeField] private int _damage;
         [SerializeField, Range(0, 1)] private float _spread;
 
+        [SerializeField] private Bullet _bulletPrefab; 
+        
         [SerializeField] private Transform _shootPoint;
         [SerializeField] private Animator _weaponAnimator;
 
@@ -27,6 +29,7 @@ namespace Project.Scripts.Weapon
 
         private void Awake()
         {
+            _ammoSpawner = new AmmoSpawner(_bulletPrefab);
             foreach (var effector in _bulletEffectors)
             {
                 effector.Initialize(this);

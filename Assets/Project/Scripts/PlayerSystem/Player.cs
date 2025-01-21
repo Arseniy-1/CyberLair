@@ -23,9 +23,9 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
     private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
 
-    public PlayerStats PlayerStats { get; private set; } = new PlayerStats();
+    [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
-    
+
     public bool IsStunned { get; private set; } = false;
 
     public Vector2 Position => transform.position;
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
 
     private void OnDisable()
     {
-        _playerInputController.OnShootButtonPressed -= Shoot;   
+        _playerInputController.OnShootButtonPressed -= Shoot;
     }
 
     private void Update()
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
         List<IState> playerStates = new List<IState>
         {
             new PlayerIdleState(this, _playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
-            new PlayerMoveState(this,_playerInputController, _playerMover, _weaponHolder, _targetScanner),
+            new PlayerMoveState(this, _playerInputController, _playerMover, _weaponHolder, _targetScanner),
             new PlayerJumpState(_playerInputController, _collider, _jumper),
             new PlayerStunnedState(this, _playerMover)
         };
@@ -72,13 +72,14 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
         _destroyer.Initialize(_health, this);
         _playerMover.Initialize(_playerInputController, _rigidbody2D);
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
+        _jumper.Initialize(_playerConfig);
     }
 
     public void TakeDamage(int amount)
     {
         _health.TakeDamage(amount);
     }
-    
+
     public void TakeStun(float time)
     {
         StartCoroutine(TakingStun(time));

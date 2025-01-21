@@ -103,7 +103,7 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 8
-  _lifeTime: 10
+  _lifeTime: 2
 --- !u!58 &6674531773034760119
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -4,7 +4,10 @@ namespace Project.Scripts.Weapon.ActiveSkills.Vampirism
 {
     public class HealthSpherePool : Pool<HealthSphere>
     {
-        public HealthSpherePool(HealthSphere prefab) : base(prefab) { }
+        public HealthSpherePool(HealthSphere prefab, int startAmount) : base(prefab, startAmount)
+        {
+            
+        }
 
         protected override HealthSphere Create()
         {

@@ -10,6 +10,7 @@ public class FireZoneEffector : BulletEffector
     [SerializeField] private FireZoneSpawner _fireZoneSpawner;
     public override void Initialize(Weapon weapon)
     {
+        _fireZoneSpawner = new FireZoneSpawner(_fireZonePrefab);
         Weapon = weapon;
         weapon.OnShooted += OnShooted;
     }
@@ -23,6 +24,7 @@ public class FireZoneEffector : BulletEffector
     {
         bullet.OnDestroyed -= Explode;
 
-        _fireZoneSpawner.Spawn();
+        var fireZone = _fireZoneSpawner.Spawn();
+        fireZone.transform.position = bullet.transform.position;
     }
 }
