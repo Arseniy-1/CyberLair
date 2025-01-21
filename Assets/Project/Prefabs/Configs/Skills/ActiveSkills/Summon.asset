@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Summon
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: 
-    <Description>k__BackingField: 
-    <Icon>k__BackingField: {fileID: 0}
+    <SkillName>k__BackingField: "\u0425\u043E\u043C\u044F\u043A"
+    <Description>k__BackingField: "\u0425\u043E\u043C\u044F\u043A \u0431\u0435\u0433\u0430\u0435\u0442
+      \u0432\u043E\u043A\u0440\u0443\u0433 \u0438\u0433\u0440\u043E\u043A\u0430 \u0438
+      \u0441\u0442\u0440\u0435\u043B\u044F\u0435\u0442 \u0432\u043E \u0432\u0440\u0430\u0433\u043E\u0432"
+    <Icon>k__BackingField: {fileID: 21300000, guid: b4c2b1656616444e6bae44f02d6f7950, type: 3}
   <MaxLevel>k__BackingField: 5
   _summonPrefab: {fileID: 6256532833530675330, guid: 7c672519fd6fc450dbedcb5fd9a074aa, type: 3}
   _damageSkillConfig:
