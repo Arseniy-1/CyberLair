@@ -6,7 +6,7 @@ using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
+public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 {
     [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
     [SerializeField] private PlayerMover _playerMover;
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour, ITarget, IDamagable, IStunable, IDieable
         }
 
         _destroyer.Initialize(_health, this);
-        _playerMover.Initialize(_playerInputController, _rigidbody2D);
+        _playerMover.Initialize(_playerInputController, _rigidbody2D, PlayerStats);
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
         _jumper.Initialize(PlayerStats);
     }

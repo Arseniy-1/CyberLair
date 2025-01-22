@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainEnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<Enemy> _enemyPrefabs;
+    [SerializeField] private int _startPoolCount;
     
     private List<EnemySpawner> _enemySpawners;
 
@@ -21,7 +22,7 @@ public class MainEnemySpawner : MonoBehaviour
     {
         foreach (var enemyPrefab in _enemyPrefabs)
         {
-            var enemySpawner = new EnemySpawner(enemyPrefab, player);
+            var enemySpawner = new EnemySpawner(enemyPrefab, player, _startPoolCount);
             _spawners.Add(enemySpawner.EnemyType, enemySpawner);
         }
     }

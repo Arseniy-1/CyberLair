@@ -5,7 +5,7 @@ namespace Project.Scripts.EnemySystem
 {
     public abstract class EnemyMover : MonoBehaviour
     {
-        [SerializeField] protected float Speed;
+        protected IMoverStats MoverStats;
         
         protected Enemy EnemyPrefab;
         protected EnemyTargetProvider EnemyTargetProvider;
@@ -18,8 +18,9 @@ namespace Project.Scripts.EnemySystem
             Move();
         }
 
-        public void Initialize(Enemy enemy, EnemyTargetProvider enemyTargetProvider, Rigidbody2D enemyRigidbody)
+        public void Initialize(Enemy enemy, EnemyTargetProvider enemyTargetProvider, Rigidbody2D enemyRigidbody, IMoverStats moverStats)
         {
+            MoverStats = moverStats;
             EnemyPrefab = enemy;
             EnemyTargetProvider = enemyTargetProvider;
             EnemyRigidbody = enemyRigidbody;

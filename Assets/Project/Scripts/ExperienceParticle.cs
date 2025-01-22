@@ -7,6 +7,6 @@ public class ExperienceParticle : MonoBehaviour, IInteractable, IDestoyable<Expe
 
     public void Interact()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 }

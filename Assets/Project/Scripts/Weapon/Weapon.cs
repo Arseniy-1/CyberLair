@@ -30,6 +30,7 @@ namespace Project.Scripts.Weapon
         private void Awake()
         {
             _ammoSpawner = new AmmoSpawner(_bulletPrefab);
+            
             foreach (var effector in _bulletEffectors)
             {
                 effector.Initialize(this);

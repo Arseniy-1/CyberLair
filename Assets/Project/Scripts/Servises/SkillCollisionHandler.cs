@@ -29,7 +29,7 @@ namespace Project.Scripts.Servises
             
             if (!collider.TryGetComponent(out Enemy enemy)) return;
 
-            if (enemy is not IDamagable damagable) return;
+            if (enemy is not IDamageable damagable) return;
             
             damagable.TakeDamage(_collisionDamage);
 

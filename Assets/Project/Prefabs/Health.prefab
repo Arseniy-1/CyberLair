@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7848566052565946314}
   - component: {fileID: 1340754762909373170}
+  - component: {fileID: 1770546755804863852}
   - component: {fileID: 6904933391936264249}
   m_Layer: 0
   m_Name: Health
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.28267336, b: 0.12549019, a: 1}
   m_FlipX: 0
@@ -85,6 +86,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1770546755804863852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3746108781540814397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce16a17a141540f2a414adfa50f91ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <HealAmount>k__BackingField: 50
 --- !u!58 &6904933391936264249
 CircleCollider2D:
   m_ObjectHideFlags: 0

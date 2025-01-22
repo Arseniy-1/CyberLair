@@ -4,14 +4,17 @@
 public class DamageSkill : Skill
 {
     [SerializeField] private SkillConfig _skillConfig;
+    [SerializeField] private ScaleEffector _scaleEffector;
     
     public override void Apply(SkillData skillData)
     {
+        Debug.Log(skillData.Level);
         skillData.PlayerStats.SetDamage((int)(skillData.StartPlayerStats.Damage *
                                                    _skillConfig.Multipliers[skillData.Level]) - skillData.StartPlayerStats.Damage);
         
-        Debug.Log(ReferenceEquals(skillData.StartPlayerStats, skillData.PlayerStats));
-        Debug.Log(skillData.StartPlayerStats.Damage);
-        Debug.Log(skillData.PlayerStats.Damage);
+        if (skillData.Level == MaxLevel)
+        {
+            skillData.WeaponHolder.Weapon.ApplyEffector(_scaleEffector);
+        }
     }
 }

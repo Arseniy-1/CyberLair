@@ -9,6 +9,8 @@ public class WeaponHolder : MonoBehaviour
 
     public event Action OnWeaponChanged;
 
+    public Weapon Weapon => _currentWeapon;
+    
     [Button]
     public void Shoot()
     {

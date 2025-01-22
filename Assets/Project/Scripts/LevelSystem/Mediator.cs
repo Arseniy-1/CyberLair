@@ -47,8 +47,6 @@ public class Mediator : MonoBehaviour
     [Button]
     private void OnSkillApplied(Skill skill)
     {
-        Debug.Log($"{skill.GetType()}");
-
         _skillHolder.AddSkill(skill);
 
         var skillData = new SkillData(_playerWeaponHolder, _playerStats, _startPlayerStats,

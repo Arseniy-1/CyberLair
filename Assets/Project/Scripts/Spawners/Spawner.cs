@@ -25,6 +25,7 @@ public class Spawner<T> where T : MonoBehaviour, IDestoyable<T>
     protected void OnSpawnedDestroyed(T spawnableObject)
     {
         spawnableObject.OnDestroyed -= OnSpawnedDestroyed;
+
         spawnableObject.gameObject.SetActive(false);
         Pool.Release(spawnableObject);
     }

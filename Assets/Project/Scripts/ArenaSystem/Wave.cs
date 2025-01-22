@@ -52,6 +52,7 @@ namespace Project.Scripts.ArenaSystem
 
             foreach (var enemyPrefab in enemies)
             {
+                Debug.Log(enemies.Count);
                 int secondMultiplyer = 1000;
 
                 int delay = Convert.ToInt32(_config.SpawnDuration * secondMultiplyer);

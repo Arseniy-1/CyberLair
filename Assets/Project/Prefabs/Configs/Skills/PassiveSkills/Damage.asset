@@ -24,3 +24,5 @@ MonoBehaviour:
     - 4
     - 5
     - 6
+    - 0
+  _scaleEffector: {fileID: 11400000, guid: fadc824746346024e8877fd9f967aaa7, type: 2}

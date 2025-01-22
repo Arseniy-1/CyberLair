@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 1
   _attackDelay: 0.5
   _attackRecovery: 0.5
   _attackCount: 3
@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9772ab76624152b07c49e6f142712b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
 --- !u!114 &6933681626514605583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 50
-  CurrentValue: 50
+  maxHealthValue: 100
+  CurrentValue: 100
 --- !u!114 &4382913821471026158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +190,14 @@ MonoBehaviour:
   _attackDistance: 5
   <Health>k__BackingField: {fileID: 6933681626514605583}
   <EnemyType>k__BackingField: 3
+  <EnemyStats>k__BackingField:
+    <Damage>k__BackingField: 5
+    <Health>k__BackingField: {fileID: 6933681626514605583}
+    <JumpDistance>k__BackingField: 3
+    <JumpTime>k__BackingField: 0.5
+    <ReloadTime>k__BackingField: 1
+    <BulletPrefab>k__BackingField: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
+    <Speed>k__BackingField: 3
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
   m_ObjectHideFlags: 0

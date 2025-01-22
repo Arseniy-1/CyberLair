@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public abstract class Pool<T> where T : MonoBehaviour
 {
-    private int _startAmount = 5;
+    private int _startAmount;
 
     protected T Prefab;
     protected Stack<T> Stack = new();
@@ -26,9 +26,9 @@ public abstract class Pool<T> where T : MonoBehaviour
         if (Stack.TryPop(out T template) == false)
         {
             Stack.Push(Create());
-            template = Stack.Pop();
         }
-        
+
+        template = Stack.Pop();
         template.gameObject.SetActive(true);
 
         return template;

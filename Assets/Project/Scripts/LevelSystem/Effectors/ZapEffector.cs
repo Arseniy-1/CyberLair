@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using Project.Scripts.Weapon;
 using UnityEngine;
-using DG.Tweening; // Подключаем DoTween
+using DG.Tweening;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random; // Подключаем DoTween
 
 [CreateAssetMenu(fileName = "New ZapEffector", menuName = "Skill/BulletEffectors/ZapEffector", order = 51)]
 public class ZapEffector : BulletEffector

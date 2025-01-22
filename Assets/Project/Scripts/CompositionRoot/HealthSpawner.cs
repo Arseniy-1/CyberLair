@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using Project.Scripts.ArenaSystem;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
-public class ExperienceSpawner : Spawner<ExperienceParticle>
+public class HealthSpawner : Spawner<HealingHeart>
 {
+    private int _spawnChance;
+
     private List<Wave> _waves;
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
-
-    private float _experienceMultiplier;
 
     private void OnDisable()
     {
@@ -22,14 +21,13 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
             enemy.OnDestroyed -= OnEnemySpawned;
     }
 
-    public void Initialize(List<Wave> waves, float experienceMultiplier, ExperienceParticle prefab)
+    public void Initialize(List<Wave> waves, HealingHeart heartPrefab, int spawnChance)
     {
-        Prefab = prefab;
-        _experienceMultiplier = experienceMultiplier;
-        
-        Pool = new ExperiencePaticlePool(Prefab, StartAmount);
-        
+        Prefab = heartPrefab;
+        Pool = new HealthPool(Prefab, StartAmount);
+
         _waves = waves;
+        _spawnChance = spawnChance;
 
         foreach (var wave in _waves)
             wave.EnemySpawned += OnEnemySpawned;

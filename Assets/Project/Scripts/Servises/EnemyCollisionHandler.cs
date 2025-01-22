@@ -18,7 +18,7 @@ public class EnemyCollisionHandler : CollisionHandler
                 stunable.Rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
             }
 
-            if (player is IDamagable damagable)
+            if (player is IDamageable damagable)
             {
                 damagable.TakeDamage(_collisionDamage);
             }

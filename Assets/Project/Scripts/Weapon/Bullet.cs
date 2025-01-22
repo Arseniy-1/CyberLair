@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
     private WaitForSeconds _waitLife;
 
     public event Action<Bullet> OnDestroyed;
-    public event Action<IDamagable> OnDamagableCollided;
+    public event Action<IDamageable> OnDamagableCollided;
     
     public int Damage => _damage;
     
@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IDamagable damagable))
+        if (collision.TryGetComponent(out IDamageable damagable))
         {
             damagable.TakeDamage(_damage);
 

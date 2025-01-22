@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-
     private PlayerInputController _playerInputController;
     private Rigidbody2D _rigidbody2D;
-
+    private IMoverStats _moverStats;
     public bool IsRunning => _playerInputController.InputDirection != Vector2.zero;
 
     private void OnEnable()
@@ -19,14 +17,15 @@ public class PlayerMover : MonoBehaviour
         _playerInputController.OnMoveButtonPressed -= Run;
     }
 
-    public void Initialize(PlayerInputController playerInputController, Rigidbody2D rigidbody2D)
+    public void Initialize(PlayerInputController playerInputController, Rigidbody2D rigidbody2D, IMoverStats moverStats)
     {
         _playerInputController = playerInputController;
         _rigidbody2D = rigidbody2D;
+        _moverStats = moverStats;
     }
 
     public void Run()
     {
-        _rigidbody2D.velocity = _playerInputController.InputDirection.normalized * _speed;
+        _rigidbody2D.velocity = _playerInputController.InputDirection.normalized * _moverStats.Speed;
     }
 }

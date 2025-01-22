@@ -9,7 +9,7 @@ namespace Project.Scripts.EnemySystem.MoveTypes
             if(EnemyTargetProvider.HasPlayer == false)
                 return;
             
-            EnemyRigidbody.velocity += Direction * (Speed * Time.fixedDeltaTime);
+            EnemyRigidbody.velocity += Direction * (MoverStats.Speed * Time.fixedDeltaTime);
         }
     }
 }

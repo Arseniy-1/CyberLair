@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 
 namespace Project.Scripts.EnemySystem
 {
-    public class Enemy : MonoBehaviour, ITarget, IDamagable, IDieable, IDestoyable<Enemy>
+    public class Enemy : MonoBehaviour, ITarget, IDamageable, IDieable, IDestoyable<Enemy>
     {
         [SerializeField] private EnemyCollisionHandler _collisionHandler;
         [SerializeField] protected EnemyMover _mover;
@@ -24,6 +24,7 @@ namespace Project.Scripts.EnemySystem
 
         [field: SerializeField] public Health Health {get; private set; }
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
+        [field: SerializeField] public EnemyStats EnemyStats { get; private set; }
         
         public Vector2 Position => transform.position;
         public bool IsStunned { get; private set; }
@@ -54,7 +55,8 @@ namespace Project.Scripts.EnemySystem
                 state.Initialize(_stateMachine);
             }
             
-            _mover.Initialize(this, _enemyTargetProvider, _enemyRigidbody);
+            
+            _mover.Initialize(this, _enemyTargetProvider, _enemyRigidbody, EnemyStats);
         }
         
         public void TakeDamage(int amount)

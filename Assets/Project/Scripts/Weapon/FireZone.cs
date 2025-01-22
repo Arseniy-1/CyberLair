@@ -10,7 +10,7 @@ public class FireZone : MonoBehaviour, IDestoyable<FireZone>
     [SerializeField] private LayerMask _targetLayer;
     [SerializeField] private float _lifeTime = 10f;
 
-    private List<IDamagable> _damagableTargets = new List<IDamagable>();
+    private List<IDamageable> _damagableTargets = new List<IDamageable>();
     private float _currentTime = 0f;
 
     private Coroutine _waitingDestroy;
@@ -19,12 +19,12 @@ public class FireZone : MonoBehaviour, IDestoyable<FireZone>
 
     private void OnEnable()
     {
-            _waitingDestroy = StartCoroutine(WaitingDestroy());
+        _waitingDestroy = StartCoroutine(WaitingDestroy());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IDamagable damagable) & (_targetLayer << collision.gameObject.layer) != 0)
+        if (collision.TryGetComponent(out IDamageable damagable) & (_targetLayer << collision.gameObject.layer) != 0)
         {
             _damagableTargets.Add(damagable);
         }
@@ -32,7 +32,7 @@ public class FireZone : MonoBehaviour, IDestoyable<FireZone>
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IDamagable damagable) & (_targetLayer << collision.gameObject.layer) != 0)
+        if (collision.TryGetComponent(out IDamageable damagable) & (_targetLayer << collision.gameObject.layer) != 0)
         {
             _damagableTargets.Remove(damagable);
         }

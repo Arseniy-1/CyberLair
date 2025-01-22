@@ -9,8 +9,9 @@ public class EnemySpawner : Spawner<Enemy>
 
     public EnemyTypes EnemyType => Prefab.EnemyType;
 
-    public EnemySpawner(Enemy enemyPrefab, Player player)
+    public EnemySpawner(Enemy enemyPrefab, Player player, int startCount)
     {
+        StartAmount = startCount;
         var fabric = new EnemyFabric();
         fabric.Initialize(player);
 

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3a2cf564434b49b218339914f347cf, type: 3}
-  m_Name: FZE
+  m_Script: {fileID: 11500000, guid: 04159a306a9d4fadb90b94790ecfce6d, type: 3}
+  m_Name: ScaleEffector
   m_EditorClassIdentifier: 
-  _fireZonePrefab: {fileID: 9040316264659818666, guid: 78e6c3f922bf5e74ba479b9f9f58783b, type: 3}
-  _fireZoneSpawner:
-    StartAmount: 3
+  _scaleMultiplier: 1.5

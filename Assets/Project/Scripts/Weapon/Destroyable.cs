@@ -12,7 +12,7 @@ public abstract class Destroyable<T> : MonoBehaviour
 
     private void HandleCollision(Collider2D collider2D)
     {
-        if (collider2D.TryGetComponent(out IDamagable damagable))
+        if (collider2D.TryGetComponent(out IDamageable damagable))
         {
 
         }
