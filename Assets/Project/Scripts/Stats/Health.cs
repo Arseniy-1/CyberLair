@@ -41,4 +41,15 @@ public class Health : Stats
         maxHealthValue += amount;
         // CurrentValue += amount;
     }
+
+    public Health Copy()
+    {
+        Health copy = new Health
+        {
+            maxHealthValue = this.maxHealthValue,
+            CurrentValue = this.CurrentValue
+        };
+        
+        return copy;
+    }
 }

@@ -15,7 +15,8 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
     private WaitForSeconds _waitLife;
 
     public event Action<Bullet> OnDestroyed;
-
+    public event Action<IDamagable> OnDamagableCollided;
+    
     public int Damage => _damage;
     
     private void Awake()
@@ -31,6 +32,8 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
             damagable.TakeDamage(_damage);
 
             Destory();
+            
+            OnDamagableCollided?.Invoke(damagable);
         }
     }
 
@@ -60,5 +63,17 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
     {
         yield return _waitLife;
         Destory();
+    }
+
+    public Bullet Copy()
+    {
+        Bullet copy = new Bullet
+        {
+            Speed = this.Speed,
+            LifeTime = this.LifeTime,
+            _damage = this._damage
+        };
+
+        return copy;
     }
 }

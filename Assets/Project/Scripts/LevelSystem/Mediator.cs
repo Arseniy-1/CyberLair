@@ -11,14 +11,19 @@ public class Mediator : MonoBehaviour
 
     [SerializeField] private Player _player;
     [SerializeField] private Level _level;
-    [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
 
     private readonly SkillHolder _skillHolder = new();
     private int _skillsCount = 3;
 
+    private PlayerStats _playerStats;
+    private PlayerStats _startPlayerStats;
+
     private void OnEnable()
     {
+        _playerStats = _player.PlayerStats;
+        _startPlayerStats = _player.PlayerStats.DeepCopy();
+        
         _level.LevelRaised += ShowSkills;
 
         foreach (var skillView in _skillViews)
@@ -43,21 +48,22 @@ public class Mediator : MonoBehaviour
     private void OnSkillApplied(Skill skill)
     {
         Debug.Log($"{skill.GetType()}");
-        
+
         _skillHolder.AddSkill(skill);
 
-        var skillData = new SkillData(_playerWeaponHolder, _playerConfig, _player.PlayerStats, _skillHolder.Skills[skill]);
-        
+        var skillData = new SkillData(_playerWeaponHolder, _playerStats, _startPlayerStats,
+            _skillHolder.Skills[skill]);
+
         skill.Apply(skillData);
-        
+
         HideSkills();
     }
 
     private void ShowSkills()
     {
-        if(_skillViews.IsNullOrEmpty())
+        if (_skillViews.IsNullOrEmpty())
             return;
-        
+
         var availableSkills = _skills.ToList();
 
         for (int i = 0; i < _skillsCount; i++)

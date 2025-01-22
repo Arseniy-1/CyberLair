@@ -1,15 +1,15 @@
 ﻿public class SkillData
 {
-    public SkillData(WeaponHolder weaponHolder, PlayerConfig playerConfig, PlayerStats playerStats, int level)
+    public SkillData(WeaponHolder weaponHolder, PlayerStats playerStats, PlayerStats startPlayerStats, int level)
     {
         WeaponHolder = weaponHolder;
-        PlayerConfig = playerConfig;
+        StartPlayerStats = startPlayerStats;
         PlayerStats = playerStats;
         Level = level;
     }
 
     public WeaponHolder WeaponHolder { get; private set;}
-    public PlayerConfig PlayerConfig { get; private set;}
+    public PlayerStats StartPlayerStats { get; private set;}
     public PlayerStats PlayerStats{ get; private set;}
     public int Level { get; private set;}
 }
