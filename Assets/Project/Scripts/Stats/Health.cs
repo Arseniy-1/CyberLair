@@ -7,7 +7,7 @@ public class Health : Stats
 
     private void Awake()
     {
-        CurrentValue = maxHealthValue;
+        CurrentValue = MaxValue;
     }
 
     public void Heal(int amount)
@@ -15,7 +15,7 @@ public class Health : Stats
         if (amount <= 0)
             return;
 
-        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, maxHealthValue);
+        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, MaxValue);
 
         RaiseAmountChanged();
     }
@@ -25,7 +25,7 @@ public class Health : Stats
         if (amount <= 0)
             return;
 
-        CurrentValue = Mathf.Clamp(CurrentValue - amount, 0, maxHealthValue);
+        CurrentValue = Mathf.Clamp(CurrentValue - amount, 0, MaxValue);
 
         if (CurrentValue == 0)
             LostHealth?.Invoke();
@@ -38,7 +38,7 @@ public class Health : Stats
         if (amount <= 0)
             return;
 
-        maxHealthValue += amount;
+        MaxValue += amount;
         // CurrentValue += amount;
     }
 
@@ -46,7 +46,7 @@ public class Health : Stats
     {
         Health copy = new Health
         {
-            maxHealthValue = this.maxHealthValue,
+            MaxValue = this.MaxValue,
             CurrentValue = this.CurrentValue
         };
         

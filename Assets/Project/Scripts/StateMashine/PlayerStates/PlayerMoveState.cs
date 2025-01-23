@@ -7,17 +7,19 @@
         private PlayerInputController _playerInputController;
         private WeaponHolder _weaponHolder;
         private TargetScanner _targetScanner;
-        
+        private Jumper _jumper;
+
         private IStateSwitcher _stateSwitcher;
 
         public PlayerMoveState(Player player, PlayerInputController playerInputController, PlayerMover playerMover,
-            WeaponHolder weaponHolder, TargetScanner targetScanner)
+            WeaponHolder weaponHolder, TargetScanner targetScanner, Jumper jumper)
         {
             _player = player;
             _playerMover = playerMover;
             _playerInputController = playerInputController;
             _weaponHolder = weaponHolder;
             _targetScanner = targetScanner;
+            _jumper = jumper;
         }
 
         public void Initialize(IStateSwitcher stateSwitcher)
@@ -41,7 +43,7 @@
         {
             if (_targetScanner.HasTarget)
                 _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);
-            
+
             if (_player.IsStunned)
                 _stateSwitcher.SwitchState<PlayerStunnedState>();
 
@@ -51,7 +53,8 @@
 
         public void OnJumpButtonPressed()
         {
-            _stateSwitcher.SwitchState<PlayerJumpState>();
+            if (_jumper.CanJump)
+                _stateSwitcher.SwitchState<PlayerJumpState>();
         }
     }
 }

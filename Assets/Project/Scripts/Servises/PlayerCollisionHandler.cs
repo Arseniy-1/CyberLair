@@ -20,11 +20,17 @@ public class PlayerCollisionHandler : CollisionHandler
         }
         else if (collider.TryGetComponent(out ExperienceParticle experienceParticle))
         {
-            _experienceStorage.AddExperience();
+            Debug.Log("1111");
+            _experienceStorage.AddExperience(experienceParticle.ExperienceAmount);
         }
         else if (collider.TryGetComponent(out HealthSphere sphere))
         {
             _health.Heal(sphere.CurrentHealth);
+        }
+        
+        if (collider.TryGetComponent(out IInteractable IInteractable))
+        {
+            IInteractable.Interact();
         }
     }
 }

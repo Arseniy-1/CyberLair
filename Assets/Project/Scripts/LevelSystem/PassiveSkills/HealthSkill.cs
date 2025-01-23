@@ -10,8 +10,8 @@ public class HealthSkill : Skill
     
     public override void Apply(SkillData skillData)//TODO: попробовать связать общим классом
     {
-        skillData.PlayerStats.Health.IncreaseHealth((int)(skillData.StartPlayerStats.Health.MaxValue *
-                                                          _skillConfig.Multipliers[skillData.Level]) - skillData.StartPlayerStats.Health.MaxValue);
+        skillData.PlayerStats.Health.IncreaseHealth((int)(skillData.StartPlayerStats.Health.MaxAmount *
+                                                          _skillConfig.Multipliers[skillData.Level]) - skillData.StartPlayerStats.Health.MaxAmount);
 
         if (skillData.Level == MaxLevel)
         {

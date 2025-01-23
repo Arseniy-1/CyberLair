@@ -67,12 +67,14 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 
     public Bullet Copy()
     {
-        Bullet copy = new Bullet
-        {
-            Speed = this.Speed,
-            LifeTime = this.LifeTime,
-            _damage = this._damage
-        };
+        Bullet copy = Instantiate(this);
+    
+        copy.Speed = this.Speed;
+        copy.LifeTime = this.LifeTime;
+        copy._damage = this._damage;
+
+        copy.transform.position = this.transform.position;
+        copy.transform.rotation = this.transform.rotation;
 
         return copy;
     }

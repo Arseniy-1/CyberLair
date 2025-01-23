@@ -11,7 +11,7 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
     private List<Wave> _waves;
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
 
-    private float _experienceMultiplier;
+    [SerializeField] private float _experienceMultiplier;
 
     private void OnDisable()
     {
@@ -49,6 +49,7 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
         if (CanSpawn())
         {
             var particle = Spawn();
+            particle.Initialize(_experienceMultiplier);
             particle.transform.position = enemy.transform.position;
         }
     }

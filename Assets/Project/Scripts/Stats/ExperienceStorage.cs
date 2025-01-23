@@ -1,14 +1,19 @@
 using System;
+using UnityEngine;
 
 public class ExperienceStorage : Stats
 {
     public event Action LevelRaised;
 
-    public void AddExperience()
+    public void AddExperience(int amount)
     {
-        CurrentValue++;
+        if (amount <= 0)
+            return;
 
-        if (CurrentValue >= maxHealthValue)
+        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, MaxValue); 
+        Debug.Log(CurrentValue);
+
+        if (CurrentValue >= MaxValue)
             LevelRaised?.Invoke();
 
         RaiseAmountChanged();
@@ -16,7 +21,7 @@ public class ExperienceStorage : Stats
 
     public bool TrySpendExperience(int amount)
     {
-        if(amount <= 0 )
+        if (amount <= 0)
             return false;
 
         if (CurrentValue - amount < 0)

@@ -6,43 +6,64 @@ public class Jumper : MonoBehaviour
 {
     private Vector3 _targetPosition;
     private bool _isMoving = false;
+    private bool _isOnCooldown = false;
     private float _elapsedTime = 0f;
+    private float _cooldownTimer = 0f;
 
     private IJumpStats _jumpStats;
-    
+
     public event Action JumpPerformed;
+    
+    public bool IsOnCooldown => _isOnCooldown; // Проверка перезарядки
+    public float CooldownTimer => _cooldownTimer; // Текущее время перезарядки
+    public IJumpStats JumpStats => _jumpStats;
+
+    public bool CanJump => !_isMoving && !_isOnCooldown;
 
     private void Update()
     {
+        // Обновляем логику прыжка
         if (_isMoving)
         {
             _elapsedTime += Time.deltaTime;
 
             float progress = _elapsedTime / _jumpStats.JumpTime;
-            
-             if (progress < 1f)
-             {
-                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition,
-                     _jumpStats.JumpDistance * Time.deltaTime / _jumpStats.JumpTime);
-             }
-             else
-             {
-                 transform.position = _targetPosition;
-                 _isMoving = false;
-                 JumpPerformed?.Invoke();
-             }
+
+            if (progress < 1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, _targetPosition,
+                    _jumpStats.JumpDistance * Time.deltaTime / _jumpStats.JumpTime);
+            }
+            else
+            {
+                transform.position = _targetPosition;
+                _isMoving = false;
+                JumpPerformed?.Invoke();
+                StartCooldown();
+            }
+        }
+
+        if (_isOnCooldown)
+        {
+            _cooldownTimer += Time.deltaTime;
+
+            if (_cooldownTimer >= _jumpStats.JumpReloadTime)
+            {
+                _isOnCooldown = false;
+                _cooldownTimer = 0f;
+            }
         }
     }
 
     public void Initialize(IJumpStats jumpStats)
-     {
-         _jumpStats = jumpStats;
-     }
+    {
+        _jumpStats = jumpStats;
+    }
 
     [Button]
     public void Jump(Vector3 direction)
     {
-        if (_isMoving == false)
+        if (CanJump)
         {
             if (direction == Vector3.zero)
                 return;
@@ -51,5 +72,11 @@ public class Jumper : MonoBehaviour
             _elapsedTime = 0f;
             _isMoving = true;
         }
+    }
+
+    private void StartCooldown()
+    {
+        _isOnCooldown = true;
+        _cooldownTimer = 0f;
     }
 }
