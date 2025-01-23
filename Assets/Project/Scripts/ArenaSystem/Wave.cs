@@ -60,6 +60,7 @@ namespace Project.Scripts.ArenaSystem
                 
                 Enemy enemy = _mainEnemySpawner.Spawn(enemyPrefab.EnemyType);
                 enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
+                enemy.ResetEnemy();
                 enemy.OnDestroyed += HandleDeath;
                 EnemySpawned?.Invoke(enemy);
             }

@@ -5,10 +5,10 @@ public class Health : Stats
 {
     public event Action LostHealth;
 
-    private void Awake()
-    {
-        CurrentValue = MaxValue;
-    }
+    // private void Awake()
+    // {
+    //     ResetHealth();
+    // }
 
     public void Heal(int amount)
     {
@@ -51,5 +51,10 @@ public class Health : Stats
         };
         
         return copy;
+    }
+
+    public void ResetHealth()
+    {
+        CurrentValue = MaxValue;
     }
 }

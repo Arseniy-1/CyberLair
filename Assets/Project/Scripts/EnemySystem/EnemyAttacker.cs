@@ -13,6 +13,7 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private int _attackCount;
         
         protected EnemyTargetProvider EnemyTargetProvider;
+        protected EnemyStats Stats;
         private Transform _transform;
         
         public event Action AttackPerformed;
@@ -24,9 +25,10 @@ namespace Project.Scripts.EnemySystem
             StartCoroutine(Performing());
         }
         
-        public void Initialize(EnemyTargetProvider enemyTargetProvider)
+        public virtual void Initialize(EnemyTargetProvider enemyTargetProvider, EnemyStats stats)
         {
             EnemyTargetProvider = enemyTargetProvider;
+            Stats = stats;
             _transform = transform;
         }
         

@@ -45,7 +45,7 @@ namespace Project.Scripts.EnemySystem
             };
             
             _enemyTargetProvider.Initialize(player, _attackDistance);
-            _attacker.Initialize(_enemyTargetProvider);
+            _attacker.Initialize(_enemyTargetProvider, EnemyStats);
             _destroyer.Initialize(Health, this);
             
             _stateMachine = new EntityStateMachine(states);
@@ -55,13 +55,18 @@ namespace Project.Scripts.EnemySystem
                 state.Initialize(_stateMachine);
             }
             
-            
             _mover.Initialize(this, _enemyTargetProvider, _enemyRigidbody, EnemyStats);
         }
         
         public void TakeDamage(int amount)
         {
             Health.TakeDamage(amount);
+        }
+
+        public void ResetEnemy()
+        {
+            Health.ResetHealth();
+            _stateMachine.SwitchState<EnemyIdleState>();
         }
 
         [Button]
