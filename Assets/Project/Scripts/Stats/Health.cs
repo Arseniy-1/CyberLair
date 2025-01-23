@@ -55,6 +55,7 @@ public class Health : Stats
 
     public void ResetHealth()
     {
+        RaiseAmountChanged();
         CurrentValue = MaxValue;
     }
 }

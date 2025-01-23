@@ -443,7 +443,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -491,8 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthValue: 100
-  CurrentValue: 100
+  MaxValue: 200
+  CurrentValue: 200
 --- !u!4 &156483564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4579364475423813543, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
@@ -1822,7 +1822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad0a08695c8631479b80a0b12aa88a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthValue: 0
+  MaxValue: 0
   CurrentValue: 29
 --- !u!1001 &732552548
 PrefabInstance:
@@ -2631,7 +2631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad0a08695c8631479b80a0b12aa88a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthValue: 0
+  MaxValue: 10
   CurrentValue: 0
 --- !u!114 &1037852799
 MonoBehaviour:
@@ -4426,6 +4426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _experienceSpawner:
     StartAmount: 5
+    _experienceMultiplier: 0
   _experienceParticlePrefab: {fileID: 9162688749952860791, guid: 3b25f1c57e76d5f41a18f15b247e8c68, type: 3}
   _experienceMultiplier: 2
   _healthSpawner:

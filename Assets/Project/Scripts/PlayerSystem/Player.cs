@@ -71,6 +71,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _playerMover.Initialize(_playerInputController, _rigidbody2D, PlayerStats);
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
         _jumper.Initialize(PlayerStats);
+        _health.ResetHealth();
     }
 
     public void TakeDamage(int amount)
