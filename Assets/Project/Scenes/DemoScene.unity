@@ -4801,7 +4801,7 @@ MonoBehaviour:
     StartAmount: 5
     _experienceMultiplier: 0
   _experienceParticlePrefab: {fileID: 9162688749952860791, guid: 3b25f1c57e76d5f41a18f15b247e8c68, type: 3}
-  _experienceMultiplier: 2
+  _experienceMultiplier: 0
   _healthSpawner:
     StartAmount: 5
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
