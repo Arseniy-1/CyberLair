@@ -1822,7 +1822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad0a08695c8631479b80a0b12aa88a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 0
+  MaxValue: 100
   CurrentValue: 29
 --- !u!1001 &732552548
 PrefabInstance:
@@ -2619,20 +2619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bd482925914d24399bd426bdef06e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1037852797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1037852779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad0a08695c8631479b80a0b12aa88a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxValue: 10
-  CurrentValue: 0
+  _rigidbody: {fileID: 1037852801}
 --- !u!114 &1037852799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2657,7 +2644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8df76c82294e1aaf0a36ab5515bb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _experienceStorage: {fileID: 1037852797}
+  _experienceStorage: {fileID: 731102063}
 --- !u!50 &1037852801 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 6501623627911074627, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
@@ -3557,8 +3544,8 @@ Transform:
   m_GameObject: {fileID: 1410299003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.992, y: 0.0039999485, z: 0}
-  m_LocalScale: {x: 1, y: 0.15000002, z: 0.1}
+  m_LocalPosition: {x: -1.82516, y: 0.004, z: 0}
+  m_LocalScale: {x: 1, y: 1.8163207, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1919683544}
@@ -3620,8 +3607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589862a4d6c4244e912f779f887809d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 1000
-  _stunTime: 0.1
+  _pushForce: 3000
+  _stunTime: 1
 --- !u!212 &1410299007
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4433,14 +4420,7 @@ MonoBehaviour:
     StartAmount: 5
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
   _heartSpawnChance: 50
-  _wavesConfigs:
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  _wavesConfigs: []
 --- !u!1 &1980621012
 GameObject:
   m_ObjectHideFlags: 0
@@ -4845,7 +4825,7 @@ PrefabInstance:
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _experienceStorage
       value: 
-      objectReference: {fileID: 1037852797}
+      objectReference: {fileID: 731102063}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _playerCollisionHandler
       value: 
@@ -5059,21 +5039,18 @@ PrefabInstance:
       addedObject: {fileID: 1037852787}
     - targetCorrespondingSourceObject: {fileID: 1913337487105414619, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       insertIndex: 6
-      addedObject: {fileID: 1037852797}
-    - targetCorrespondingSourceObject: {fileID: 1913337487105414619, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
-      insertIndex: 7
       addedObject: {fileID: 1037852796}
     - targetCorrespondingSourceObject: {fileID: 1913337487105414619, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
-      insertIndex: 8
+      insertIndex: 7
       addedObject: {fileID: 1037852795}
     - targetCorrespondingSourceObject: {fileID: 1913337487105414619, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
-      insertIndex: 9
+      insertIndex: 8
       addedObject: {fileID: 1037852794}
     - targetCorrespondingSourceObject: {fileID: 1913337487105414619, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
-      insertIndex: 10
+      insertIndex: 9
       addedObject: {fileID: 1037852800}
     - targetCorrespondingSourceObject: {fileID: 1913337487105414619, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
-      insertIndex: 11
+      insertIndex: 10
       addedObject: {fileID: 1037852799}
     - targetCorrespondingSourceObject: {fileID: 9023222611658903239, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       insertIndex: -1
