@@ -16,6 +16,7 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private Destroyer _destroyer;
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         [SerializeField] private float _attackDistance;
+        [SerializeField] private WeaponHolder _weaponHolder;
 
         private EntityStateMachine _stateMachine;
         
@@ -56,6 +57,8 @@ namespace Project.Scripts.EnemySystem
             }
             
             _mover.Initialize(this, _enemyTargetProvider, _enemyRigidbody, EnemyStats);
+            
+            _weaponHolder.Weapon.Initialize(EnemyStats);
         }
         
         public void TakeDamage(int amount)
@@ -63,7 +66,7 @@ namespace Project.Scripts.EnemySystem
             Health.TakeDamage(amount);
         }
 
-        public void ResetEnemy()
+        public void ResetState()
         {
             Health.ResetHealth();
             _stateMachine.SwitchState<EnemyIdleState>();

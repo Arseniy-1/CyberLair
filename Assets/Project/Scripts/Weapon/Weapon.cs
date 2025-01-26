@@ -1,96 +1,76 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Project.Scripts.Weapon
+public abstract class Weapon : MonoBehaviour
 {
-    public class Weapon : MonoBehaviour
+    [SerializeField] protected Bullet _bulletPrefab;
+    [SerializeField] protected Transform _shootPoint;
+    [SerializeField] protected Animator _weaponAnimator;
+    [SerializeField] protected AmmoSpawner _ammoSpawner;
+    [SerializeField] protected List<BulletEffector> _bulletEffectors;
+
+    protected float _currentTime = 0;
+    protected bool _isReloaded;
+    protected IWeaponStats _weaponStats;
+
+    public bool IsReloaded => _isReloaded;
+    public event Action<Bullet> OnShooted;
+
+    protected virtual void Awake()
     {
-        [SerializeField] private Bullet _bulletPrefab; 
-        
-        [SerializeField] private Transform _shootPoint;
-        [SerializeField] private Animator _weaponAnimator;
+        _ammoSpawner = new AmmoSpawner(_bulletPrefab);
 
-        [SerializeField] private AmmoSpawner _ammoSpawner;
-        [SerializeField] private List<BulletEffector> _bulletEffectors;
-        
-        private float _currentTime = 0;
-
-        private IWeaponStats _weaponStats;
-        
-        public event Action<Bullet> OnShooted;
-
-        public bool IsReloaded { get; private set; }
-
-        private void Awake()
+        foreach (var effector in _bulletEffectors)
         {
-            _ammoSpawner = new AmmoSpawner(_bulletPrefab);
-            
-            foreach (var effector in _bulletEffectors)
-            {
-                effector.Initialize(this);
-            }
+            effector.Initialize(this);
         }
+    }
 
-        private void FixedUpdate()
-        {
-            if (_currentTime < _weaponStats.WeaponBulletReloadTime && IsReloaded == false)
-                _currentTime += Time.deltaTime;
+    public virtual void Initialize(IWeaponStats weaponStats)
+    {
+        _weaponStats = weaponStats;
+    }
 
-            if (_currentTime >= _weaponStats.WeaponBulletReloadTime)
-                Reload();
-        }
+    protected virtual void FixedUpdate()
+    {
+        if (_currentTime < _weaponStats.WeaponBulletReloadTime && !_isReloaded)
+            _currentTime += Time.deltaTime;
 
-        public void Initialize(IWeaponStats weaponStats)
-        {
-            _weaponStats = weaponStats;
-        }
-        
-        [Button]
-        public virtual bool TryAttack()
-        {
-            if (IsReloaded == false)
-                return false;
+        if (_currentTime >= _weaponStats.WeaponBulletReloadTime)
+            Reload();
+    }
 
-            Attack();
+    public abstract bool TryAttack();
 
-            IsReloaded = false;
-            
-            return true;
-        }
+    protected virtual void Reload()
+    {
+        _currentTime = 0;
+        _isReloaded = true;
+    }
 
-        public void ApplyEffector(BulletEffector bulletEffector)
-        {
-            _bulletEffectors.Add(bulletEffector);
-            bulletEffector.Initialize(this);
-        }
+    protected virtual void Attack()
+    {
+        Bullet bullet = _ammoSpawner.Spawn();
+        bullet.Init(_shootPoint.position, GetBulletDirection(), _weaponStats.WeaponDamage);
 
-        private void Attack()
-        {
-            Bullet bullet = _ammoSpawner.Spawn();
-            bullet.Init(_shootPoint.transform.position, GetBulletDirection(), _weaponStats.WeaponDamage);
+        OnShooted?.Invoke(bullet);
 
-            OnShooted?.Invoke(bullet);
+        bullet.Activate();
+    }
 
-            bullet.Activate();
-        }
+    protected virtual Quaternion GetBulletDirection()
+    {
+        Quaternion rotation = transform.rotation;
+        rotation.z += Random.Range(-_weaponStats.WeaponSpread, _weaponStats.WeaponSpread);
+        return rotation;
+    }
 
-        private Quaternion GetBulletDirection()
-        {
-            Quaternion rotation = transform.rotation;
-
-            rotation.z += Random.Range(-_weaponStats.WeaponSpread, _weaponStats.WeaponSpread);
-
-            return rotation;
-        }
-
-        private void Reload()
-        {
-            _currentTime = 0;
-            IsReloaded = true;
-        }
+    public void ApplyEffector(BulletEffector bulletEffector)
+    {
+        _bulletEffectors.Add(bulletEffector);
+        bulletEffector.Initialize(this);
     }
 }

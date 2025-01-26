@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class PlayerStats : IJumpStats, IMoverStats, IWeaponStats
+public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
 {
     [field: SerializeField] public Health Health { get; private set; }
 
@@ -15,6 +15,8 @@ public class PlayerStats : IJumpStats, IMoverStats, IWeaponStats
 
     [field: SerializeField] public int WeaponDamage { get; private set; }
     [field: SerializeField] public float WeaponBulletReloadTime { get; private set; }
+    [field: SerializeField] public float WeaponRechargingTime { get; private set; }
+    [field: SerializeField] public int WeaponMagazineSize { get; private set; }
 
     public void SetDamage(int amount)
     {

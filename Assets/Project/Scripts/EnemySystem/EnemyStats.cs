@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyStats : IJumpStats, IMoverStats, IWeaponStats
 {
     [field: SerializeField] public Health Health { get; private set; }
+    [field: SerializeField] public int Experience { get; private set; }
 
     [field: SerializeField] public float Speed { get; private set; }
 
@@ -31,7 +32,7 @@ public class EnemyStats : IJumpStats, IMoverStats, IWeaponStats
 
         JumpDistance = amount;
     }
-    
+
     public void SetWeaponDamage(int amount)
     {
         if (amount < 0)
@@ -39,7 +40,7 @@ public class EnemyStats : IJumpStats, IMoverStats, IWeaponStats
 
         WeaponDamage = amount;
     }
-    
+
     public void SetWeaponSpread(float amount)
     {
         if (amount < 0)
@@ -47,7 +48,50 @@ public class EnemyStats : IJumpStats, IMoverStats, IWeaponStats
 
         WeaponSpread = amount;
     }
-    
+
+    public void SetWeaponRealoadTime(float amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponBulletReloadTime = amount;
+    }
+}
+
+[Serializable]
+public class SummonStats : IMoverStats, IWeaponStats, ISummonMoveStats
+{
+    [field: SerializeField] public float Speed { get; private set; }
+    [field: SerializeField] public float MoveRadius { get; private set; }
+    [field: SerializeField] public float MoveDelay { get; private set; }
+    [field: SerializeField] public float WeaponSpread { get; private set; }
+    [field: SerializeField] public int WeaponDamage { get; private set; }
+    [field: SerializeField] public float WeaponBulletReloadTime { get; private set; }
+
+    public void SetDamage(int amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponDamage = amount;
+    }
+
+    public void SetWeaponDamage(int amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponDamage = amount;
+    }
+
+    public void SetWeaponSpread(float amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponSpread = amount;
+    }
+
     public void SetWeaponRealoadTime(float amount)
     {
         if (amount < 0)

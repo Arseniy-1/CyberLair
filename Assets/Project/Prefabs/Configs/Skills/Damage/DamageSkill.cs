@@ -14,7 +14,6 @@ public class DamageSkill : Skill
         
         if (skillData.Level == MaxLevel)
         {
-            skillData.WeaponHolder.Weapon.ApplyEffector(_scaleEffector);
         }
     }
 }

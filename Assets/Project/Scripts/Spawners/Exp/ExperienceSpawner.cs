@@ -15,8 +15,8 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
     [SerializeField] private int _experienceAmount;
     [SerializeField] private float _spawnRadius = 1;
 
-    [SerializeField] private float _minForce = 0.0005f;
-    [SerializeField] private float _maxForce = 0.001f;
+    [SerializeField] private float _minPushForce = 0.0005f;
+    [SerializeField] private float _maxPushForce = 0.001f;
     
     private void OnDisable()
     {
@@ -61,7 +61,7 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
             IMoveable interactable = particle as IMoveable;
             
                 Vector2 randomDirection = Random.insideUnitCircle.normalized;
-                float forceMagnitude = Random.Range(_minForce, _maxForce);  
+                float forceMagnitude = Random.Range(_minPushForce, _maxPushForce);  
                 interactable.Rigidbody2D.AddForce(randomDirection * forceMagnitude, ForceMode2D.Impulse);
         }
     }

@@ -3,66 +3,63 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Project.Scripts.Weapon
+public class IncrementalReloadWeapon : Weapon
 {
-    public class IncrementalReloadWeapon : Weapon
+    [SerializeField] private int _currentMagazineSize;
+    
+    private Coroutine _reloadCoroutine;
+    
+    private int _magazineSize => ((IIncrementalWeaponStats)_weaponStats).WeaponMagazineSize;
+    private float _currentRecharchingTime => ((IIncrementalWeaponStats)_weaponStats).WeaponRechargingTime;
+    
+    public event Action<int, int> OnAmmoUpdated;
+    
+    public bool IsReloading { get; private set; }
+    
+    public override void Initialize(IWeaponStats weaponStats)
     {
-        [SerializeField] private int _currentAmmo;
-        private Coroutine _reloadCoroutine;
-        
-        private IIncrementalWeaponStats _weaponStats;
-        
-        public bool IsRealoading = true; 
+        base.Initialize(weaponStats);
 
-        
-        public event Action<int, int> OnAmmoUpdated;
+        OnAmmoUpdated?.Invoke(_currentMagazineSize, _magazineSize);
+    }
 
-        private void Start()
+    public override bool TryAttack()
+    {
+        if (_currentMagazineSize > 0 && _isReloaded)
         {
-            _currentAmmo = _weaponStats.WeaponMagazineSize; 
-            OnAmmoUpdated?.Invoke(_currentAmmo, _weaponStats.WeaponMagazineSize);
+            if (_reloadCoroutine != null)
+            {
+                StopCoroutine(_reloadCoroutine);
+            }
+
+            _currentMagazineSize--;
+            _reloadCoroutine = StartCoroutine(ReloadCoroutine());
+
+            Attack();
+            _isReloaded = false;
+            return true;
         }
 
-        public override bool TryAttack()
-        {
-            if (_currentAmmo > 0)
-            {
-                if (base.TryAttack())
-                {
-                    if (_reloadCoroutine != null)
-                    {
-                        StopCoroutine(_reloadCoroutine);
-                    }
-                    
-                    _currentAmmo--;
-                    _reloadCoroutine = StartCoroutine(ReloadCoroutine());
-                    
-                    return true;
-                }
-            }
-            
-            return false;
-        }
+        return false;
+    }
 
-        private IEnumerator ReloadCoroutine()
-        {
-            IsRealoading = true;
-            
-            while (_currentAmmo < _weaponStats.WeaponMagazineSize)
-            {
-                yield return new WaitForSeconds(_weaponStats.WeaponRechargingTime);
+    private IEnumerator ReloadCoroutine()
+    {
+        IsReloading = true;
 
-                _currentAmmo++;
-                OnAmmoUpdated?.Invoke(_currentAmmo, _weaponStats.WeaponMagazineSize);
-                
-                if (_currentAmmo >= _weaponStats.WeaponMagazineSize)
-                {
-                    _reloadCoroutine = null;
-                    yield break;
-                }
+        while (_currentMagazineSize < _magazineSize)
+        {
+            yield return new WaitForSeconds(_currentRecharchingTime);
+
+            _currentMagazineSize++;
+            OnAmmoUpdated?.Invoke(_currentMagazineSize, _magazineSize);
+
+            if (_currentMagazineSize >= _magazineSize)
+            {
+                _reloadCoroutine = null;
+                IsReloading = false;
+                yield break;
             }
-            
-            IsRealoading = false;
         }
     }
 }

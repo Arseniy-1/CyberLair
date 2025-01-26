@@ -1259,6 +1259,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6455323153911331965, guid: 837d9f43f65c5a143a4fa4e610ea6e1b, type: 3}
+      propertyPath: _damage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6455323153911331965, guid: 837d9f43f65c5a143a4fa4e610ea6e1b, type: 3}
       propertyPath: _reloadTime
       value: 0.4
       objectReference: {fileID: 0}
@@ -4984,8 +4988,6 @@ MonoBehaviour:
   _healAmount: 0
   _wavesConfigs:
   - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 424a03beaf6f842459ee607b683c42e9, type: 2}
-  - {fileID: 11400000, guid: 008d18ac3c9ba4075aeb7b3bac59cf23, type: 2}
 --- !u!1 &1980621012
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,8 +5444,32 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponSpread>k__BackingField
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<JumpReloadTime>k__BackingField
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponReloadTime>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponMagazineSize>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponRechargingTime>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponBulletReloadTime>k__BackingField
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2815475925280034325, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _damage

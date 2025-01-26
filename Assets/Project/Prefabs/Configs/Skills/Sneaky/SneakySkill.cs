@@ -7,7 +7,7 @@ public class SneakySkill : Skill
     
     [SerializeField] private Invulnerability _invulnerabilityPrefab;
     
-    public override void Apply(SkillData skillData)//TODO: попробовать связать общим классом
+    public override void Apply(SkillData skillData)
     {
         skillData.PlayerStats.SetJumpDistance((skillData.StartPlayerStats.JumpDistance *
                                                _skillConfig.Multipliers[skillData.Level]) - skillData.StartPlayerStats.JumpDistance);

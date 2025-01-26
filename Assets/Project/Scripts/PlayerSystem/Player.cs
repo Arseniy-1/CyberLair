@@ -72,6 +72,8 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
         _jumper.Initialize(PlayerStats);
         _health.ResetHealth();
+        
+        _weaponHolder.Weapon.Initialize(PlayerStats);
     }
 
     public void TakeDamage(int amount)
