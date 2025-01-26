@@ -1,53 +1,52 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SummonMover : MonoBehaviour
 {
-    private const float MoveOffset = 0.5f;
-    
-    [SerializeField] private float _nominalSpeed;
-    [SerializeField] private float _moveRadius = 5f;
-    [SerializeField] private float _moveDelay = 2f;
+    private ISummonMoveStats _summonStats;
     
     private Rigidbody2D _rigidbody;
     private Transform _selfTransform;
-    private Vector2 _currentMovePosition;
+    private Vector2 _targetMovePosition;
     private Transform _targetTransform;
-    private float _currentSpeed;
     
     private Vector2 SelfPosition => transform.position;
     private Vector2 TargetPosition => _targetTransform.position;
-    private Vector2 RandomPointAroundTarget => TargetPosition + Random.insideUnitCircle.normalized * _moveRadius;
+    private Vector2 RandomPointAroundTarget => TargetPosition + Random.insideUnitCircle.normalized * _summonStats.MoveRadius;
 
-    public void ApplyStats(float speedMultiplier)
+    private void Awake()
     {
-        _currentSpeed = _nominalSpeed * speedMultiplier;
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
-    
-    public void Initialize(Transform targetTransform, Rigidbody2D rigidbody)
+
+    public void Initialize(Transform targetTransform, SummonStats summonStats)
     {
         _targetTransform = targetTransform;
-        _rigidbody = rigidbody;
+        _summonStats = summonStats;
         
         StartCoroutine(ChangePosition());
     }
     
     public void MoveToNextPosition()
     {
-        if (Vector2.Distance(_currentMovePosition, SelfPosition) <= MoveOffset)
+        float MoveOffset = 0.5f;
+        
+        if (Vector2.Distance(_targetMovePosition, SelfPosition) <= MoveOffset)
             return;
         
-        Vector2 direction = (_currentMovePosition - SelfPosition).normalized;
-        _rigidbody.MovePosition(_rigidbody.position + direction * (_currentSpeed * Time.fixedDeltaTime));
+        Vector2 direction = (_targetMovePosition - SelfPosition).normalized;
+        _rigidbody.MovePosition(_rigidbody.position + direction * (_summonStats.Speed * Time.fixedDeltaTime));
     }
     
     private IEnumerator ChangePosition()
     {
-        var wait = new WaitForSeconds(_moveDelay);
+        var wait = new WaitForSeconds(_summonStats.MoveDelay);
         
         while (isActiveAndEnabled)
         {
-            _currentMovePosition = RandomPointAroundTarget;
+            _targetMovePosition = RandomPointAroundTarget;
 
             yield return wait;
         }

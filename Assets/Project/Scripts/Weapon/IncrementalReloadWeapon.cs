@@ -19,7 +19,8 @@ public class IncrementalReloadWeapon : Weapon
     public override void Initialize(IWeaponStats weaponStats)
     {
         base.Initialize(weaponStats);
-
+        _currentMagazineSize = _magazineSize;
+        
         OnAmmoUpdated?.Invoke(_currentMagazineSize, _magazineSize);
     }
 

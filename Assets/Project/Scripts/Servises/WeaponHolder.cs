@@ -24,6 +24,9 @@ public class WeaponHolder : MonoBehaviour
 
     public void EquipWeapon(Weapon newWeapon)
     {
+        if(newWeapon == _currentWeapon && !newWeapon)
+            return;
+        
         _currentWeapon.gameObject.SetActive(false);
         _currentWeapon = newWeapon;
     }

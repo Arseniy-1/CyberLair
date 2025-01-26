@@ -3,24 +3,16 @@ using UnityEngine;
 
 public class Summon : MonoBehaviour
 {
-    [Header("Summon Settings")]
-    [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private SummonMover _mover;
-    
-    [SerializeField] private int _nominalDamage;
-    [SerializeField, Range(0.01f, 20)] private float _nominalSpread;
-    [SerializeField, Range(0.01f, 1)] private float _nominalReloadTime;
-
-    [Header("Summon Weapon")]
-    [SerializeField] private Weapon _weapon;
-
     [SerializeField] private WeaponHolder _weaponHolder;
+    [SerializeField] private SummonMover _mover;
+    [SerializeField] private SummonStats _summonStats;
     [SerializeField] private TargetScanner _targetScanner;
-
-    private int _currentDamage;
-    private float _currentSpread;
-    private float _currentReloadTime;
     
+    private int _nominalDamage;
+    private float _nominalSpread;
+    private float _nominalReloadTime;
+    private float _nominalSpeed;
+
     private void FixedUpdate()
     {
         ITarget target = _targetScanner.ClosestTarget;
@@ -33,26 +25,28 @@ public class Summon : MonoBehaviour
 
         _mover.MoveToNextPosition();
     }
-    
+
     public void Initialize(Transform targetTransform)
     {
-        _mover.Initialize(targetTransform, _rigidbody);
+        _mover.Initialize(targetTransform, _summonStats);
+
+        _nominalDamage = _summonStats.WeaponDamage;
+        _nominalSpread = _summonStats.WeaponSpread;
+        _nominalReloadTime = _summonStats.WeaponBulletReloadTime;
+        _nominalSpeed = _summonStats.Speed;
     }
 
-    public void ApplyStats(float speedMultiplier, float damageMultiplier, float reloadTimeMultiplier, float spreadMultiplier)
+    public void ApplyStats(float speedMultiplier, float damageMultiplier, float reloadTimeMultiplier,
+        float spreadMultiplier)
     {
-        _currentDamage = (int)(_nominalDamage * damageMultiplier);
-        _currentSpread = _nominalSpread * spreadMultiplier;
-        _currentReloadTime = _nominalReloadTime * reloadTimeMultiplier;
-        
-        _mover.ApplyStats(speedMultiplier);
+        _summonStats.SetWeaponDamage((int)(_nominalDamage * damageMultiplier));
+       _summonStats.SetWeaponSpread(_nominalSpread * spreadMultiplier);
+       _summonStats.SetWeaponRealoadTime(_nominalReloadTime * reloadTimeMultiplier);
+        _summonStats.SetSpeed((int)(_nominalSpeed * speedMultiplier));
     }
 
     public void ApplyWeapon(Weapon weapon)
     {
-        if (weapon == _weapon && !weapon)
-            return;
-        
         var currentWeapon = Instantiate(weapon, _weaponHolder.transform);
         _weaponHolder.EquipWeapon(currentWeapon);
     }
