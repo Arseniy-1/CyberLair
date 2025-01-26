@@ -6,9 +6,13 @@ namespace Project.Scripts.EnemySystem.AttackTypes
     {
         [SerializeField] private WeaponHolder _gun;
 
-        protected override void Attack()
+        private void FixedUpdate()
         {
             _gun.SpotTarget(EnemyTargetProvider.Player);
+        }
+
+        protected override void Attack()
+        {
             _gun.Shoot();
         }
     }

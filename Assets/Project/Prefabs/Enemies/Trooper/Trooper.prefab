@@ -196,17 +196,19 @@ MonoBehaviour:
   _destroyer: {fileID: 4088665956458132345}
   _enemyTargetProvider: {fileID: 9157632587801091930}
   _attackDistance: 10
+  _weaponHolder: {fileID: 6737547138716812977}
   <Health>k__BackingField: {fileID: 2262976181833518466}
   <EnemyType>k__BackingField: 4
   <EnemyStats>k__BackingField:
-    <Damage>k__BackingField: 1
     <Health>k__BackingField: {fileID: 2262976181833518466}
+    <Experience>k__BackingField: 5
+    <Speed>k__BackingField: 3
     <JumpDistance>k__BackingField: 0
     <JumpTime>k__BackingField: 0
     <JumpReloadTime>k__BackingField: 0
-    <ReloadTime>k__BackingField: 1
-    <BulletPrefab>k__BackingField: {fileID: 0}
-    <Speed>k__BackingField: 3
+    <WeaponSpread>k__BackingField: 0.01
+    <WeaponDamage>k__BackingField: 20
+    <WeaponBulletReloadTime>k__BackingField: 1
 --- !u!114 &4679022288187799651
 MonoBehaviour:
   m_ObjectHideFlags: 0
