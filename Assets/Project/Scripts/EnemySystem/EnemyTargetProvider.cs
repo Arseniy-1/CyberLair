@@ -5,7 +5,7 @@ namespace Project.Scripts.EnemySystem
     public class EnemyTargetProvider : MonoBehaviour
     {
         private float _attackDistance;
-        [SerializeField] private Player _player;
+        private Player _player;
         
         public Vector2 Position => transform.position;
         public bool HasPlayer => _player != null;

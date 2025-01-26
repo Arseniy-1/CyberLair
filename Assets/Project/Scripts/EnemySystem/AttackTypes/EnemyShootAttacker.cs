@@ -8,6 +8,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
 
         protected override void Attack()
         {
+            _gun.SpotTarget(EnemyTargetProvider.Player);
             _gun.Shoot();
         }
     }

@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthValue: 100
+  MaxValue: 100
   CurrentValue: 100
 --- !u!114 &6014211762987851508
 MonoBehaviour:
@@ -168,6 +168,15 @@ MonoBehaviour:
   _attackDistance: 3
   <Health>k__BackingField: {fileID: 8914670022210950017}
   <EnemyType>k__BackingField: 2
+  <EnemyStats>k__BackingField:
+    <Damage>k__BackingField: 1
+    <Health>k__BackingField: {fileID: 8914670022210950017}
+    <JumpDistance>k__BackingField: 0
+    <JumpTime>k__BackingField: 0
+    <JumpReloadTime>k__BackingField: 0
+    <ReloadTime>k__BackingField: 0
+    <BulletPrefab>k__BackingField: {fileID: 0}
+    <Speed>k__BackingField: 4
 --- !u!114 &1802045359912388367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9772ab76624152b07c49e6f142712b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
 --- !u!114 &5206861922117507840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294005d492b641c98a4afcfa012cabd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!1 &3740714730047742225
 GameObject:
   m_ObjectHideFlags: 0
