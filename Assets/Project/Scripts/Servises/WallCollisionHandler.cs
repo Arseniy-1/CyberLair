@@ -11,7 +11,7 @@ public class WallCollisionHandler : CollisionHandler
             return;
 
         stunable.TakeStun(_stunTime);
-        Vector3 pushDirection = transform.up;
+        Vector3 pushDirection = transform.up.normalized;
 
         stunable.Rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
     }
