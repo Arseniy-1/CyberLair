@@ -2,8 +2,11 @@
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Jumper : MonoBehaviour
 {
+    private Rigidbody2D _rigidbody;
+    
     private Vector3 _targetPosition;
     private bool _isMoving = false;
     private bool _isOnCooldown = false;
@@ -20,22 +23,28 @@ public class Jumper : MonoBehaviour
 
     public bool CanJump => !_isMoving && !_isOnCooldown;
 
-    private void Update()
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
     {
         if (_isMoving)
         {
-            _elapsedTime += Time.deltaTime;
+            _elapsedTime += Time.fixedDeltaTime;
 
             float progress = _elapsedTime / _jumpStats.JumpTime;
 
             if (progress < 1f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _targetPosition,
-                    _jumpStats.JumpDistance * Time.deltaTime / _jumpStats.JumpTime);
+                var newPosition = Vector3.MoveTowards(transform.position, _targetPosition,
+                    _jumpStats.JumpDistance * Time.fixedDeltaTime / _jumpStats.JumpTime);
+                
+                _rigidbody.MovePosition(newPosition);
             }
             else
             {
-                transform.position = _targetPosition;
                 _isMoving = false;
                 JumpPerformed?.Invoke();
                 StartCooldown();
