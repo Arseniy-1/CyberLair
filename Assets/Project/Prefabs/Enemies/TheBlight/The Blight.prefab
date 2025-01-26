@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthValue: 100
+  MaxValue: 100
   CurrentValue: 100
 --- !u!114 &4382913821471026158
 MonoBehaviour:
@@ -195,6 +195,7 @@ MonoBehaviour:
     <Health>k__BackingField: {fileID: 6933681626514605583}
     <JumpDistance>k__BackingField: 3
     <JumpTime>k__BackingField: 0.5
+    <JumpReloadTime>k__BackingField: 0
     <ReloadTime>k__BackingField: 1
     <BulletPrefab>k__BackingField: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
     <Speed>k__BackingField: 3
@@ -225,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294005d492b641c98a4afcfa012cabd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!114 &6391322191596903747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7259972460534493942
 Transform:
   m_ObjectHideFlags: 0

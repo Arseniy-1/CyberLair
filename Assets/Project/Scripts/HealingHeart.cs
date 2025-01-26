@@ -13,6 +13,14 @@ public class HealingHeart : MonoBehaviour, IAttractable, IInteractable, IDestoya
         Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    public void Initialize(int amount)
+    {
+        if(amount <= 0)
+            return; 
+        
+        HealAmount = amount;
+    }
+    
     public void Interact()
     {
         Destroy(gameObject);

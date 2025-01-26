@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class JumpReloadView : MonoBehaviour
 {
-    [SerializeField] private Jumper jumper; // Ссылка на компонент прыжка
+    [SerializeField] private Jumper jumper;
     private Image _cooldownImage;
 
     private void Awake()

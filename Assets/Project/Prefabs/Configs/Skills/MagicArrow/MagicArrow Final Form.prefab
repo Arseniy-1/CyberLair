@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6966984513860249003}
-  _nominalSpeed: 4
-  _nominalDamage: 30
+  _nominalSpeed: 8
+  _nominalDamage: 100000
   _timeToDespawn: 2
   _collisionHandler: {fileID: -5008895013172540786}
 --- !u!114 &-5008895013172540786

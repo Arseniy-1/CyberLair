@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Project.Scripts.EnemySystem;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -16,7 +17,7 @@ public class Spawner<T> where T : MonoBehaviour, IDestoyable<T>
     public T Spawn()
     {
         T spawnedObject = Pool.Get();
-
+        
         spawnedObject.OnDestroyed += OnSpawnedDestroyed;
 
         return spawnedObject;
@@ -25,8 +26,7 @@ public class Spawner<T> where T : MonoBehaviour, IDestoyable<T>
     protected void OnSpawnedDestroyed(T spawnableObject)
     {
         spawnableObject.OnDestroyed -= OnSpawnedDestroyed;
-
-        spawnableObject.gameObject.SetActive(false);
+        
         Pool.Release(spawnableObject);
     }
 }

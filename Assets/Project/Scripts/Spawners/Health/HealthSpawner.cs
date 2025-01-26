@@ -12,7 +12,9 @@ public class HealthSpawner : Spawner<HealingHeart>
     private List<Wave> _waves;
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
 
-    private void OnDisable()
+    private int _healAmount; 
+    
+        private void OnDisable()
     {
         foreach (var wave in _waves)
             wave.EnemySpawned -= OnEnemySpawned;
@@ -21,11 +23,13 @@ public class HealthSpawner : Spawner<HealingHeart>
             enemy.OnDestroyed -= OnEnemySpawned;
     }
 
-    public void Initialize(List<Wave> waves, HealingHeart heartPrefab, int spawnChance)
+    public void Initialize(List<Wave> waves, HealingHeart heartPrefab, int spawnChance, int healAmount)
     {
         Prefab = heartPrefab;
         Pool = new HealthPool(Prefab, StartAmount);
 
+        _healAmount = healAmount;
+        
         _waves = waves;
         _spawnChance = spawnChance;
 
@@ -47,6 +51,7 @@ public class HealthSpawner : Spawner<HealingHeart>
         if (CanSpawn())
         {
             var particle = Spawn();
+            particle.Initialize(_healAmount);
             particle.transform.position = enemy.transform.position;
         }
     }

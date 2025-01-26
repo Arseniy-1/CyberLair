@@ -7,17 +7,10 @@ public class MainEnemySpawner : MonoBehaviour
     [SerializeField] private List<Enemy> _enemyPrefabs;
     [SerializeField] private int _startPoolCount;
     
-    private List<EnemySpawner> _enemySpawners;
+    [SerializeField] private List<EnemySpawner> _enemySpawners;
 
     private Dictionary<EnemyTypes, EnemySpawner> _spawners = new();
     
-    public Enemy Spawn(EnemyTypes type)
-    {
-        var spawner = _spawners[type];
-        
-        return spawner.Spawn();
-    }
-
     public void Initialize(Player player)
     {
         foreach (var enemyPrefab in _enemyPrefabs)
@@ -25,5 +18,12 @@ public class MainEnemySpawner : MonoBehaviour
             var enemySpawner = new EnemySpawner(enemyPrefab, player, _startPoolCount);
             _spawners.Add(enemySpawner.EnemyType, enemySpawner);
         }
+    }
+    
+    public Enemy Spawn(EnemyTypes type)
+    {
+        var spawner = _spawners[type];
+        
+        return spawner.Spawn();
     }
 }

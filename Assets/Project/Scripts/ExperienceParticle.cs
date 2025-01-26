@@ -13,9 +13,12 @@ public class ExperienceParticle : MonoBehaviour, IInteractable, IAttractable,IDe
         Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void Initialize(float multiplier)
+    public void Initialize(int experienceAmount)
     {
-        ExperienceAmount = (int)(ExperienceAmount * multiplier);
+        if(experienceAmount <= 0)
+            return;
+        
+        ExperienceAmount = experienceAmount;
     }
     
     public void Interact()

@@ -45,23 +45,25 @@ namespace Project.Scripts.Weapon
             if (_currentTime >= _reloadTime)
                 Reload();
         }
-
-        [Button]
-        public void TryAttack()
-        {
-            if (IsReloaded == false)
-                return;
-
-            Attack();
-
-            IsReloaded = false;
-        }
-
+        
         public void ApplyStats(int damage, float spread, float reloadTime)
         {
             _damage = damage;
             _spread = spread;
             _reloadTime = reloadTime;
+        }
+
+        [Button]
+        public virtual bool TryAttack()
+        {
+            if (IsReloaded == false)
+                return false;
+
+            Attack();
+
+            IsReloaded = false;
+            
+            return true;
         }
 
         public void ApplyEffector(BulletEffector bulletEffector)
@@ -78,6 +80,8 @@ namespace Project.Scripts.Weapon
             OnShooted?.Invoke(bullet);
 
             bullet.Activate();
+            
+            Debug.Log("Shooted");
         }
 
         private Quaternion GetBulletDirection()
@@ -93,12 +97,6 @@ namespace Project.Scripts.Weapon
         {
             _currentTime = 0;
             IsReloaded = true;
-        }
-
-        private void ShowAttackAnimation()
-        {
-            int attackAnim = Animator.StringToHash("Attack"); //TODO: �������
-            _weaponAnimator.Play(attackAnim);
         }
     }
 }

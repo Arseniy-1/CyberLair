@@ -11,7 +11,7 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
     private List<Wave> _waves;
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
 
-    [SerializeField] private float _experienceMultiplier;
+    [SerializeField] private int _experienceAmount;
 
     private void OnDisable()
     {
@@ -22,10 +22,10 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
             enemy.OnDestroyed -= OnEnemySpawned;
     }
 
-    public void Initialize(List<Wave> waves, float experienceMultiplier, ExperienceParticle prefab)
+    public void Initialize(List<Wave> waves, int experienceAmount, ExperienceParticle prefab)
     {
         Prefab = prefab;
-        _experienceMultiplier = experienceMultiplier;
+        _experienceAmount = experienceAmount;
         
         Pool = new ExperiencePaticlePool(Prefab, StartAmount);
         
@@ -49,7 +49,7 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
         if (CanSpawn())
         {
             var particle = Spawn();
-            particle.Initialize(_experienceMultiplier);
+            particle.Initialize(_experienceAmount);
             particle.transform.position = enemy.transform.position;
         }
     }

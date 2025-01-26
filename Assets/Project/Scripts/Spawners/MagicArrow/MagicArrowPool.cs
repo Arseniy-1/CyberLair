@@ -12,8 +12,8 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         protected override MagicArrow Create()
         {
             var magicArrow =  Object.Instantiate(Prefab);
-            Stack.Push(magicArrow);
-
+            magicArrow.gameObject.SetActive(false);
+            
             return magicArrow;
         }
     }

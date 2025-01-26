@@ -52,7 +52,6 @@ public class FireZone : MonoBehaviour, IDestoyable<FireZone>
         for (int i = 0; i < _damagableTargets.Count; i++)
         {
             _damagableTargets[i].TakeDamage(_damagePerIteration);
-            Debug.Log("Нанес урон огнем ^_^");
         }
     }
 

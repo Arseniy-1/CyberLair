@@ -11,7 +11,6 @@ public class ExperienceStorage : Stats
             return;
 
         CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, MaxValue); 
-        Debug.Log(CurrentValue);
 
         if (CurrentValue >= MaxValue)
             LevelRaised?.Invoke();

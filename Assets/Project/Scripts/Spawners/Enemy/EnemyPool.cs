@@ -15,7 +15,9 @@ public class EnemyPool : Pool<Enemy>
     protected override Enemy Create()
     {
         var enemy = _enemyFabric.Create(Prefab);
+
         enemy.gameObject.SetActive(false);
+        // Stack.Push(enemy);
 
         return enemy;
     }

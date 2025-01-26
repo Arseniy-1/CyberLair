@@ -22,7 +22,6 @@ namespace Project.Scripts.EnemySystem.AttackTypes
         
         protected override void Attack()
         {
-            Debug.Log($"{transform.name} is attacking");
             _jumper.Jump(Direction);
         }
     }

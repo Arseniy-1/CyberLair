@@ -13,13 +13,8 @@ public class PlayerCollisionHandler : CollisionHandler
 
     protected override void HandleCollision(Collider2D collider)
     {
-        if (collider.TryGetComponent(out AidKit aidKit))
+        if (collider.TryGetComponent(out ExperienceParticle experienceParticle))
         {
-            _health.Heal(aidKit.HealAmount);
-        }
-        else if (collider.TryGetComponent(out ExperienceParticle experienceParticle))
-        {
-            Debug.Log("1111");
             _experienceStorage.AddExperience(experienceParticle.ExperienceAmount);
         }
         else if (collider.TryGetComponent(out HealingHeart sphere))

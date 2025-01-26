@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Project.Scripts.CompositionRoot;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 
+[Serializable]
 public class EnemySpawner : Spawner<Enemy>
 {
     private List<Transform> _spawnPoints;

@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Health : Stats
@@ -53,6 +54,7 @@ public class Health : Stats
         return copy;
     }
 
+    [Button]
     public void ResetHealth()
     {
         RaiseAmountChanged();
