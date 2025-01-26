@@ -199,6 +199,7 @@ MonoBehaviour:
     <ReloadTime>k__BackingField: 1
     <BulletPrefab>k__BackingField: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
     <Speed>k__BackingField: 3
+    <Experience>k__BackingField: 2
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
   m_ObjectHideFlags: 0

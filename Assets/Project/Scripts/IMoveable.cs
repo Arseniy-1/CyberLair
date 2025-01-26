@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface IAttractable
+public interface IMoveable
 {
     Rigidbody2D Rigidbody2D { get; }
 }

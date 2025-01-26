@@ -4964,6 +4964,9 @@ MonoBehaviour:
   _experienceSpawner:
     StartAmount: 5
     _experienceAmount: 0
+    _spawnRadius: 3
+    _minForce: 0.0005
+    _maxForce: 0.001
   _experienceParticlePrefab: {fileID: 9162688749952860791, guid: 3b25f1c57e76d5f41a18f15b247e8c68, type: 3}
   _experienceAmount: 3
   _healthSpawner:
