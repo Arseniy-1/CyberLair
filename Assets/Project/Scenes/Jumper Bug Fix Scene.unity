@@ -4747,8 +4747,7 @@ MonoBehaviour:
   _heartSpawnChance: 50
   _healAmount: 0
   _wavesConfigs:
-  - {fileID: 11400000, guid: 8b40aab103bd250418bcdfcff18ba8c7, type: 2}
-  - {fileID: 11400000, guid: 8b40aab103bd250418bcdfcff18ba8c7, type: 2}
+  - {fileID: 11400000, guid: 8c67f6cd5b0724e32ab982121d2d407f, type: 2}
 --- !u!1 &1980621012
 GameObject:
   m_ObjectHideFlags: 0

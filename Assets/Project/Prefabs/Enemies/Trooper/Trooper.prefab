@@ -175,7 +175,7 @@ MonoBehaviour:
   _scanRadius: 10
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 512
   _scanDelay: 1
 --- !u!114 &4399603215803775128
 MonoBehaviour:
@@ -198,6 +198,15 @@ MonoBehaviour:
   _attackDistance: 10
   <Health>k__BackingField: {fileID: 2262976181833518466}
   <EnemyType>k__BackingField: 4
+  <EnemyStats>k__BackingField:
+    <Damage>k__BackingField: 1
+    <Health>k__BackingField: {fileID: 2262976181833518466}
+    <JumpDistance>k__BackingField: 0
+    <JumpTime>k__BackingField: 0
+    <JumpReloadTime>k__BackingField: 0
+    <ReloadTime>k__BackingField: 1
+    <BulletPrefab>k__BackingField: {fileID: 0}
+    <Speed>k__BackingField: 3
 --- !u!114 &4679022288187799651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9772ab76624152b07c49e6f142712b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
 --- !u!114 &8327977833412635372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 8502437403070517348, guid: 011d83382cbe84a928ca1099e21c0ec9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
