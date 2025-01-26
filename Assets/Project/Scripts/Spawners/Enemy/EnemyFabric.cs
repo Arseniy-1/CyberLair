@@ -7,11 +7,16 @@ namespace Project.Scripts.CompositionRoot
     public class EnemyFabric
     {
         private Player _player;
-        
-        public void Initialize(Player player)
+
+        public EnemyFabric(Player player)
         {
             _player = player;
         }
+        
+        // public void Initialize(Player player)
+        // {
+        //     _player = player;
+        // }
         
         public Enemy Create(Enemy enemy)
         {

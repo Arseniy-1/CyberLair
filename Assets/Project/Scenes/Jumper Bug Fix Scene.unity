@@ -4739,6 +4739,9 @@ MonoBehaviour:
   _experienceSpawner:
     StartAmount: 5
     _experienceAmount: 0
+    _spawnRadius: 1
+    _minPushForce: 0.0005
+    _maxPushForce: 0.001
   _experienceParticlePrefab: {fileID: 9162688749952860791, guid: 3b25f1c57e76d5f41a18f15b247e8c68, type: 3}
   _experienceAmount: 3
   _healthSpawner:
@@ -4747,7 +4750,7 @@ MonoBehaviour:
   _heartSpawnChance: 50
   _healAmount: 0
   _wavesConfigs:
-  - {fileID: 11400000, guid: 8c67f6cd5b0724e32ab982121d2d407f, type: 2}
+  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
 --- !u!1 &1980621012
 GameObject:
   m_ObjectHideFlags: 0
@@ -5204,8 +5207,24 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponDamage>k__BackingField
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<JumpReloadTime>k__BackingField
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponMagazineSize>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponRechargingTime>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponBulletReloadTime>k__BackingField
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2815475925280034325, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _damage

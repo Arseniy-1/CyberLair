@@ -58,7 +58,8 @@ namespace Project.Scripts.EnemySystem
             
             _mover.Initialize(this, _enemyTargetProvider, _enemyRigidbody, EnemyStats);
             
-            _weaponHolder.Weapon.Initialize(EnemyStats);
+            if(_weaponHolder)
+                _weaponHolder.Weapon.Initialize(EnemyStats);
         }
         
         public void TakeDamage(int amount)
