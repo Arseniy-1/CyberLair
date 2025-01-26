@@ -25,8 +25,6 @@ namespace Project.Scripts.Servises
 
         protected override void HandleCollision(Collider2D collider)
         {
-            Debug.Log($"Collided with {collider.name}");
-            
             if (!collider.TryGetComponent(out Enemy enemy)) return;
 
             if (enemy is not IDamageable damagable) return;

@@ -16,15 +16,14 @@ public class Jumper : MonoBehaviour
 
     public event Action JumpPerformed;
     
-    public bool IsOnCooldown => _isOnCooldown; // Проверка перезарядки
-    public float CooldownTimer => _cooldownTimer; // Текущее время перезарядки
+    public bool IsOnCooldown => _isOnCooldown;
+    public float CooldownTimer => _cooldownTimer;
     public IJumpStats JumpStats => _jumpStats;
 
     public bool CanJump => !_isMoving && !_isOnCooldown;
 
     private void FixedUpdate()
     {
-        // Обновляем логику прыжка
         if (_isMoving)
         {
             _elapsedTime += Time.fixedDeltaTime;

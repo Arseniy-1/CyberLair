@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Scripts.ArenaSystem
 {
@@ -9,11 +10,12 @@ namespace Project.Scripts.ArenaSystem
     {
         [SerializeField] private ExperienceSpawner _experienceSpawner;
         [SerializeField] private ExperienceParticle _experienceParticlePrefab;
-        [SerializeField, Range(1, 10)] private float _experienceMultiplier;
+        [SerializeField, Range(1, 10)] private int _experienceAmount;
 
         [SerializeField] private HealthSpawner _healthSpawner;
         [SerializeField] private HealingHeart _heartPrefab;
         [SerializeField, Range(1, 100)] private int _heartSpawnChance;
+        [SerializeField] private int _healAmount;
         
         [SerializeField] private List<WaveConfig> _wavesConfigs;
 
@@ -27,8 +29,8 @@ namespace Project.Scripts.ArenaSystem
         {
             _waves = waves;
             
-            _experienceSpawner.Initialize(waves.ToList(), _experienceMultiplier, _experienceParticlePrefab);
-            _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance);
+            _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
+            _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);
         }
 
         public void Work()

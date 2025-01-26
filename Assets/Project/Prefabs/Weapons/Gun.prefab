@@ -261,7 +261,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5757723436509199290}
-  - component: {fileID: 3859486835601267912}
   m_Layer: 0
   m_Name: AmmoSpawner
   m_TagString: Untagged
@@ -284,20 +283,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4087383731586587309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3859486835601267912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2617346893479385464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b67273f7244f6cf41801953e5a2d55cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
-  StartAmount: 1
 --- !u!1 &4291330248111781278
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,9 +534,11 @@ MonoBehaviour:
   _reloadTime: 0.4
   _damage: 0
   _spread: 0.068
+  _bulletPrefab: {fileID: 0}
   _shootPoint: {fileID: 8704551961970842611}
   _weaponAnimator: {fileID: 234075640184994089}
-  _ammoSpawner: {fileID: 3859486835601267912}
+  _ammoSpawner:
+    StartAmount: 0
   _bulletEffectors: []
 --- !u!95 &234075640184994089
 Animator:

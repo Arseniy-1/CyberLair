@@ -28,7 +28,7 @@ namespace Project.Scripts.EnemySystem
         
         public Vector2 Position => transform.position;
         public bool IsStunned { get; private set; }
-
+        
         private void Update()
         {
             _stateMachine?.Update();
