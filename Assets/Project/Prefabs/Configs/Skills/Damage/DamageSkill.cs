@@ -9,8 +9,8 @@ public class DamageSkill : Skill
     public override void Apply(SkillData skillData)
     {
         Debug.Log(skillData.Level);
-        skillData.PlayerStats.SetDamage((int)(skillData.StartPlayerStats.Damage *
-                                                   _skillConfig.Multipliers[skillData.Level]) - skillData.StartPlayerStats.Damage);
+        skillData.PlayerStats.SetDamage((int)(skillData.StartPlayerStats.WeaponDamage *
+                                                   _skillConfig.Multipliers[skillData.Level]) - skillData.StartPlayerStats.WeaponDamage);
         
         if (skillData.Level == MaxLevel)
         {

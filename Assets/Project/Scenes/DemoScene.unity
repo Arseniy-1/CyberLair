@@ -499,6 +499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 7417804407769913341, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: _damage
       value: 200
@@ -533,17 +537,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4087383731586587309, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
   m_PrefabInstance: {fileID: 108283622}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &108283624 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
-  m_PrefabInstance: {fileID: 108283622}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b7ec6bcce3aa74dba4f974330e9379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &154409900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,13 +1258,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6455323153911331965, guid: 837d9f43f65c5a143a4fa4e610ea6e1b, type: 3}
+      propertyPath: _reloadTime
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7417804407769913341, guid: 837d9f43f65c5a143a4fa4e610ea6e1b, type: 3}
       propertyPath: m_Name
       value: IncrementalGun 1
       objectReference: {fileID: 0}
     - target: {fileID: 7417804407769913341, guid: 837d9f43f65c5a143a4fa4e610ea6e1b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4515,6 +4512,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4087383731586587309, guid: 837d9f43f65c5a143a4fa4e610ea6e1b, type: 3}
   m_PrefabInstance: {fileID: 409279940}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1774497715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6455323153911331965, guid: 837d9f43f65c5a143a4fa4e610ea6e1b, type: 3}
+  m_PrefabInstance: {fileID: 409279940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7030ae34cd6e4f06be3391cf352b9144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1776603432
 GameObject:
   m_ObjectHideFlags: 0
@@ -4965,7 +4973,7 @@ MonoBehaviour:
     StartAmount: 5
     _experienceAmount: 0
     _spawnRadius: 3
-    _minForce: 0.0005
+    _minForce: 0.00005
     _maxForce: 0.001
   _experienceParticlePrefab: {fileID: 9162688749952860791, guid: 3b25f1c57e76d5f41a18f15b247e8c68, type: 3}
   _experienceAmount: 3
@@ -4976,7 +4984,8 @@ MonoBehaviour:
   _healAmount: 0
   _wavesConfigs:
   - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  - {fileID: 11400000, guid: 424a03beaf6f842459ee607b683c42e9, type: 2}
+  - {fileID: 11400000, guid: 008d18ac3c9ba4075aeb7b3bac59cf23, type: 2}
 --- !u!1 &1980621012
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,7 +5177,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -5479,7 +5488,7 @@ PrefabInstance:
     - target: {fileID: 3610522453060248735, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _currentWeapon
       value: 
-      objectReference: {fileID: 108283624}
+      objectReference: {fileID: 1774497715}
     - target: {fileID: 3724022773648805447, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_Layer
       value: 9

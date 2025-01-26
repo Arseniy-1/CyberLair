@@ -44,8 +44,7 @@ public class Summon : MonoBehaviour
         _currentDamage = (int)(_nominalDamage * damageMultiplier);
         _currentSpread = _nominalSpread * spreadMultiplier;
         _currentReloadTime = _nominalReloadTime * reloadTimeMultiplier;
-
-        _weapon.ApplyStats(_currentDamage, _currentSpread, _currentReloadTime);
+        
         _mover.ApplyStats(speedMultiplier);
     }
 

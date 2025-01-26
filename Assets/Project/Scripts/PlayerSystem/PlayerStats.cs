@@ -2,57 +2,69 @@
 using UnityEngine;
 
 [Serializable]
-public class PlayerStats : IJumpStats, IMoverStats
+public class PlayerStats : IJumpStats, IMoverStats, IWeaponStats
 {
-    [field: SerializeField] public int Damage { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
 
-    [field: SerializeField] public float JumpDistance { get; private set; }
     [field: SerializeField] public float Speed { get; private set; }
+
+    [field: SerializeField] public float JumpDistance { get; private set; }
     [field: SerializeField] public float JumpTime { get; private set; }
     [field: SerializeField] public float JumpReloadTime { get; private set; }
+    [field: SerializeField] public float WeaponSpread { get; private set; }
 
-    [field: SerializeField] public float ReloadTime { get; private set; }
-    [field: SerializeField] public Bullet BulletPrefab { get; private set; }
+    [field: SerializeField] public int WeaponDamage { get; private set; }
+    [field: SerializeField] public float WeaponBulletReloadTime { get; private set; }
 
     public void SetDamage(int amount)
     {
-        if(amount < 0)
+        if (amount < 0)
             return;
-        
-        Damage = amount;
+
+        WeaponDamage = amount;
     }
-    
+
     public void SetJumpDistance(float amount)
     {
-        if(amount < 0)
+        if (amount < 0)
             return;
 
         JumpDistance = amount;
+    }
+    
+    public void SetWeaponDamage(int amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponDamage = amount;
+    }
+    
+    public void SetWeaponSpread(float amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponSpread = amount;
+    }
+    
+    public void SetWeaponRealoadTime(float amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponBulletReloadTime = amount;
     }
 
     public PlayerStats DeepCopy()
     {
         return new PlayerStats
         {
-            Damage = this.Damage,
-            Health = this.Health.Copy(),
-            JumpDistance = this.JumpDistance,
-            JumpTime = this.JumpTime,
-            ReloadTime = this.ReloadTime,
-            BulletPrefab = this.BulletPrefab.Copy()
+            WeaponDamage = WeaponDamage,
+            Health = Health.Copy(),
+            JumpDistance = JumpDistance,
+            JumpTime = JumpTime,
+            WeaponBulletReloadTime = WeaponBulletReloadTime,
         };
     }
-}
-
-public interface IJumpStats
-{
-    float JumpDistance { get; }
-    float JumpTime { get; }
-    float JumpReloadTime { get; }
-}
-
-public interface IMoverStats
-{
-    float Speed { get; }
 }

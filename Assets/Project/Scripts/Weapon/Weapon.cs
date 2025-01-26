@@ -9,10 +9,6 @@ namespace Project.Scripts.Weapon
 {
     public class Weapon : MonoBehaviour
     {
-        [SerializeField, Range(0.01f, 20)] private float _reloadTime;
-        [SerializeField] private int _damage;
-        [SerializeField, Range(0, 1)] private float _spread;
-
         [SerializeField] private Bullet _bulletPrefab; 
         
         [SerializeField] private Transform _shootPoint;
@@ -20,9 +16,11 @@ namespace Project.Scripts.Weapon
 
         [SerializeField] private AmmoSpawner _ammoSpawner;
         [SerializeField] private List<BulletEffector> _bulletEffectors;
-
+        
         private float _currentTime = 0;
 
+        private IWeaponStats _weaponStats;
+        
         public event Action<Bullet> OnShooted;
 
         public bool IsReloaded { get; private set; }
@@ -39,20 +37,18 @@ namespace Project.Scripts.Weapon
 
         private void FixedUpdate()
         {
-            if (_currentTime < _reloadTime && IsReloaded == false)
+            if (_currentTime < _weaponStats.WeaponBulletReloadTime && IsReloaded == false)
                 _currentTime += Time.deltaTime;
 
-            if (_currentTime >= _reloadTime)
+            if (_currentTime >= _weaponStats.WeaponBulletReloadTime)
                 Reload();
         }
-        
-        public void ApplyStats(int damage, float spread, float reloadTime)
-        {
-            _damage = damage;
-            _spread = spread;
-            _reloadTime = reloadTime;
-        }
 
+        public void Initialize(IWeaponStats weaponStats)
+        {
+            _weaponStats = weaponStats;
+        }
+        
         [Button]
         public virtual bool TryAttack()
         {
@@ -75,20 +71,18 @@ namespace Project.Scripts.Weapon
         private void Attack()
         {
             Bullet bullet = _ammoSpawner.Spawn();
-            bullet.Init(_shootPoint.transform.position, GetBulletDirection(), _damage);
+            bullet.Init(_shootPoint.transform.position, GetBulletDirection(), _weaponStats.WeaponDamage);
 
             OnShooted?.Invoke(bullet);
 
             bullet.Activate();
-            
-            Debug.Log("Shooted");
         }
 
         private Quaternion GetBulletDirection()
         {
             Quaternion rotation = transform.rotation;
 
-            rotation.z += Random.Range(-_spread, _spread);
+            rotation.z += Random.Range(-_weaponStats.WeaponSpread, _weaponStats.WeaponSpread);
 
             return rotation;
         }
