@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ExperienceParticle : MonoBehaviour, IInteractable, IAttractable,IDestoyable<ExperienceParticle>
+public class ExperienceParticle : MonoBehaviour, IInteractable, IMoveable,IDestoyable<ExperienceParticle>
 {
     public event Action<ExperienceParticle> OnDestroyed;
 

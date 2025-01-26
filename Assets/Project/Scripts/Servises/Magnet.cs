@@ -14,7 +14,7 @@ public class Magnet : MonoBehaviour
 
         foreach (Collider2D attractable in attractables)
         {
-            if (attractable.TryGetComponent(out IAttractable attractableComponent))
+            if (attractable.TryGetComponent(out IMoveable attractableComponent))
             {
                 Vector2 direction = (transform.position - attractable.transform.position).normalized;
 

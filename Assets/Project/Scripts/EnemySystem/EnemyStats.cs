@@ -14,4 +14,5 @@ public class EnemyStats : IJumpStats, IMoverStats
     [field: SerializeField] public float ReloadTime { get; private set; }
     [field: SerializeField] public Bullet BulletPrefab { get; private set; }
     [field: SerializeField] public float Speed { get; private set; }
+    [field: SerializeField] public int Experience { get; private set; } = 1;
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class HealingHeart : MonoBehaviour, IAttractable, IInteractable, IDestoyable<HealingHeart>
+public class HealingHeart : MonoBehaviour, IMoveable, IInteractable, IDestoyable<HealingHeart>
 {
     public event Action<HealingHeart> OnDestroyed;
 

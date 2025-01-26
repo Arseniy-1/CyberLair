@@ -4,6 +4,7 @@ using Project.Scripts.ArenaSystem;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class ExperienceSpawner : Spawner<ExperienceParticle>
@@ -12,7 +13,11 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
 
     [SerializeField] private int _experienceAmount;
+    [SerializeField] private float _spawnRadius = 1;
 
+    [SerializeField] private float _minForce = 0.0005f;
+    [SerializeField] private float _maxForce = 0.001f;
+    
     private void OnDisable()
     {
         foreach (var wave in _waves)
@@ -46,16 +51,25 @@ public class ExperienceSpawner : Spawner<ExperienceParticle>
         enemy.OnDestroyed -= OnEnemyDestroyed;
         _spawnedEnemies.Remove(enemy);
 
-        if (CanSpawn())
+        for (int i = 0; i < enemy.EnemyStats.Experience; i++)
         {
             var particle = Spawn();
             particle.Initialize(_experienceAmount);
+
             particle.transform.position = enemy.transform.position;
+
+            IMoveable interactable = particle as IMoveable;
+            
+                Vector2 randomDirection = Random.insideUnitCircle.normalized;
+                float forceMagnitude = Random.Range(_minForce, _maxForce);  
+                interactable.Rigidbody2D.AddForce(randomDirection * forceMagnitude, ForceMode2D.Impulse);
         }
     }
-
-    private bool CanSpawn()
+    
+    private Vector2 GetRandomPosition(Transform targetTransform, float radius = 3f)
     {
-        return true;
+        Vector2 randomPoint = Random.insideUnitCircle * radius;
+
+        return (Vector2)targetTransform.position + randomPoint;
     }
 }
