@@ -645,8 +645,10 @@ MonoBehaviour:
   _player: {fileID: 1037852793}
   _mainEnemySpawner: {fileID: 1354792443}
   _edgeSpawner:
+    _offset: 0
     _horizontalObjectCount: 16
     _verticalObjectCount: 9
+    _spawnPointPrefab: 0
     _parent: {fileID: 967980132}
     _mainCamera: {fileID: 1686617534}
 --- !u!4 &500295097
@@ -2634,6 +2636,10 @@ PrefabInstance:
     - target: {fileID: 8157759725562543560, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -421.70996
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422871491206318851, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: MaxValue
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
