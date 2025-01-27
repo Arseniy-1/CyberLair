@@ -167,13 +167,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7788ab19084455798bc7a4da8462d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 338829131333349496}
-  _mover: {fileID: 5652720108971927089}
-  _nominalDamage: 0
-  _nominalSpread: 0.57
-  _nominalReloadTime: 1
-  _weapon: {fileID: 810290520881984158}
   _weaponHolder: {fileID: 6737547138716812977}
+  _mover: {fileID: 5652720108971927089}
+  _summonStats:
+    <Speed>k__BackingField: 10
+    <MoveRadius>k__BackingField: 3
+    <MoveDelay>k__BackingField: 1
+    <WeaponSpread>k__BackingField: 0.1
+    <WeaponDamage>k__BackingField: 50
+    <WeaponBulletReloadTime>k__BackingField: 1
   _targetScanner: {fileID: 4177437872860269052}
 --- !u!114 &4177437872860269052
 MonoBehaviour:
@@ -204,9 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac56ce684cd748b0b3437bb2490d3658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nominalSpeed: 3
-  _moveRadius: 2
-  _moveDelay: 2
 --- !u!1 &8266974789114446711
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

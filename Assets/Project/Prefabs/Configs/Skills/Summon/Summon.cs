@@ -34,6 +34,8 @@ public class Summon : MonoBehaviour
         _nominalSpread = _summonStats.WeaponSpread;
         _nominalReloadTime = _summonStats.WeaponBulletReloadTime;
         _nominalSpeed = _summonStats.Speed;
+        
+        _weaponHolder.Weapon.Initialize(_summonStats);
     }
 
     public void ApplyStats(float speedMultiplier, float damageMultiplier, float reloadTimeMultiplier,

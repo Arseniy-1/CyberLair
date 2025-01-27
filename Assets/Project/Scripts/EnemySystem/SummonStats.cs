@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class SummonStats : IMoverStats, IWeaponStats, ISummonMoveStats
+public class SummonStats :  IWeaponStats, ISummonMoveStats
 {
     [field: SerializeField] public float Speed { get; private set; }
     [field: SerializeField] public float MoveRadius { get; private set; }
