@@ -12,6 +12,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private float _offset;
         [SerializeField] private int _horizontalObjectCount;
         [SerializeField] private int _verticalObjectCount;
+        [SerializeField] private float _spawnPointPrefab;
         [SerializeField] private Transform _parent;
         [SerializeField] private Camera _mainCamera;
 
@@ -50,7 +51,18 @@ namespace Project.Scripts.CompositionRoot
             for (int i = 0; i < count; i++)
             {
                 Vector2 position = start + direction * step * i;
-                _edgeObjects.Add(Object.Instantiate(new GameObject(), position, Quaternion.identity, _parent).transform);
+
+                var edgeObject = new GameObject($"EdgeObject {i}")
+                {
+                    transform =
+                    {
+                        parent = _parent,
+                        position = position
+                    }
+                };
+                
+                _edgeObjects.Add(edgeObject.transform);
+                // _edgeObjects.Add(Object.Instantiate(_spawnPointPrefab, position, Quaternion.identity, _parent).transform);
             }
         }
 
