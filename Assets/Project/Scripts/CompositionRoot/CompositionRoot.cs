@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.ArenaSystem;
-using Sirenix.Utilities;
 using UnityEngine;
-using Random = Unity.Mathematics.Random;
 
 namespace Project.Scripts.CompositionRoot
 {
@@ -14,12 +12,15 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Arena _arena;
         [SerializeField] private Player _player;
         [SerializeField] private MainEnemySpawner _mainEnemySpawner;
+        [SerializeField] private EdgeSpawner _edgeSpawner;
         
         private void Awake()
         {
+            _edgeSpawner.SpawnOnEdges();
+            
             _mainEnemySpawner.Initialize(_player);
             var waves = new Queue<Wave>(_arena.WavesConfigs
-                .Select(config => new Wave(config, _mainEnemySpawner, _spawnPoints)).ToList());
+                .Select(config => new Wave(config, _mainEnemySpawner, _edgeSpawner.EdgeObjects.ToList())).ToList());
 
             _arena.Initialize(waves);
             _arena.Work();
