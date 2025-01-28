@@ -18,17 +18,9 @@ public class ExperienceStorage : Stats
         RaiseAmountChanged();
     }
 
-    public bool TrySpendExperience(int amount)
+    public void ResetExperience(int maxValue)
     {
-        if (amount <= 0)
-            return false;
-
-        if (CurrentValue - amount < 0)
-            return false;
-
-        CurrentValue -= amount;
-        RaiseAmountChanged();
-
-        return true;
+        CurrentValue = 0;
+        MaxValue = maxValue;
     }
 }

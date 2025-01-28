@@ -55,10 +55,14 @@ public class Mediator : MonoBehaviour
         skill.Apply(skillData);
 
         HideSkills();
+        
+        Time.timeScale = 1;
     }
 
     private void ShowSkills()
     {
+        Time.timeScale = 0;
+        
         if (_skillViews.IsNullOrEmpty())
             return;
 
