@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9158922d1e4fe44e9d3cf87a413430d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  LifeTime: 1
+  Speed: 12
+  LifeTime: 3
   _damage: 60
 --- !u!61 &2537145060094924388
 BoxCollider2D:
@@ -191,7 +191,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

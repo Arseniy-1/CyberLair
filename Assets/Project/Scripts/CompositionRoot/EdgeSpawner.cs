@@ -12,7 +12,6 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private float _offset;
         [SerializeField] private int _horizontalObjectCount;
         [SerializeField] private int _verticalObjectCount;
-        [SerializeField] private float _spawnPointPrefab;
         [SerializeField] private Transform _parent;
         [SerializeField] private Camera _mainCamera;
 

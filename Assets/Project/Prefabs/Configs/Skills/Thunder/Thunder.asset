@@ -23,29 +23,29 @@ MonoBehaviour:
   _thunderPrefab: {fileID: 257799198162151130, guid: 96ff3884ff4f8436296ce4aff53ce157, type: 3}
   _delayConfig:
     _multipliers:
-    - 1
-    - 1
-    - 1
-    - 1
+    - 3
+    - 2.5
+    - 2
+    - 1.5
     - 0.75
   _radiusConfig:
     _multipliers:
     - 1
-    - 1
-    - 1
-    - 1
+    - 1.4
+    - 1.7
     - 2
+    - 2.4
   _damageConfig:
     _multipliers:
     - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 2.4
+    - 3.2
+    - 4
+    - 5
   _countConfig:
     _multipliers:
     - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 2
+    - 3
+    - 3
+    - 2

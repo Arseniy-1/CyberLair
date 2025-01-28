@@ -50,6 +50,7 @@ public class Summon : MonoBehaviour
     public void ApplyWeapon(Weapon weapon)
     {
         var currentWeapon = Instantiate(weapon, _weaponHolder.transform);
+        currentWeapon.Initialize(_summonStats);
         _weaponHolder.EquipWeapon(currentWeapon);
     }
 }

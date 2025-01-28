@@ -26,6 +26,14 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
         WeaponDamage = amount;
     }
 
+    public void SetSpeed(float amount)
+    {
+        if (amount < 0)
+            return;
+        
+        Speed = amount;
+    }
+    
     public void SetJumpDistance(float amount)
     {
         if (amount < 0)
@@ -62,11 +70,18 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
     {
         return new PlayerStats
         {
-            WeaponDamage = WeaponDamage,
+            Speed = Speed,
             Health = Health.Copy(),
+            
             JumpDistance = JumpDistance,
             JumpTime = JumpTime,
+            JumpReloadTime = JumpReloadTime,
+            
+            WeaponSpread = WeaponSpread,
+            WeaponDamage = WeaponDamage,
             WeaponBulletReloadTime = WeaponBulletReloadTime,
+            WeaponRechargingTime = WeaponRechargingTime,
+            WeaponMagazineSize = WeaponMagazineSize
         };
     }
 }

@@ -10,9 +10,10 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
     [Serializable]
     public class MagicArrowSpawner : Spawner<MagicArrow>
     {
-        [SerializeField] private float _delay;
-        [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _radius;
+        
+        private float _delay;
+        private LayerMask _layerMask;
 
         private float _speedMultiplier;
         private int _damageMultiplier;
@@ -41,10 +42,12 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             Pool = new MagicArrowPool(magicArrow, StartAmount);
         }
 
-        public void ApplyStats(float speed, int damage)
+        public void ApplyStats(float speed, int damage, float delay, float radius)
         {
             _speedMultiplier = speed;
             _damageMultiplier = damage;
+            _delay = delay;
+            _radius = radius;
         }
 
         private Vector3 FindEnemyPosition()

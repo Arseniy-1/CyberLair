@@ -27,10 +27,10 @@ public class SummonSkill : Skill
         if (skillData.Level == MaxLevel)
             _summon.ApplyWeapon(_finalWeaponPrefab);
 
-        var speed = _speedSkillConfig.Multipliers[skillData.Level - 1];
-        var damage = (int)_damageSkillConfig.Multipliers[skillData.Level - 1];
-        var reload = (int)_realoadSkillConfig.Multipliers[skillData.Level - 1];
-        var spread = (int)_spreadSkillConfig.Multipliers[skillData.Level - 1];
+        var speed = _speedSkillConfig.Multipliers[skillData.Level];
+        var damage = (int)_damageSkillConfig.Multipliers[skillData.Level];
+        var reload = (int)_realoadSkillConfig.Multipliers[skillData.Level];
+        var spread = (int)_spreadSkillConfig.Multipliers[skillData.Level];
 
         _summon.ApplyStats(speed, damage, reload, spread);
     }

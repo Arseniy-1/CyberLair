@@ -23,29 +23,29 @@ MonoBehaviour:
   _damageSkillConfig:
     _multipliers:
     - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 2
+    - 3
+    - 4
+    - 5
   _speedSkillConfig:
     _multipliers:
     - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 2
+    - 3
+    - 4
+    - 5
   _realoadSkillConfig:
     _multipliers:
-    - 1
-    - 1
-    - 1
+    - 2
+    - 1.5
+    - 1.2
     - 1
     - 1
   _spreadSkillConfig:
     _multipliers:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.8
   _finalWeaponPrefab: {fileID: 9129116019813110773, guid: 058d2af6fc691414cbb6c5ef93778fc1, type: 3}

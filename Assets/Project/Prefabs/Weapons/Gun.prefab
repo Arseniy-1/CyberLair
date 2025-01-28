@@ -252,37 +252,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2617346893479385464
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5757723436509199290}
-  m_Layer: 0
-  m_Name: AmmoSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5757723436509199290
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2617346893479385464}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39439663, y: -0.10807343, z: 0.012096778}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4087383731586587309}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4291330248111781278
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +485,6 @@ Transform:
   m_Children:
   - {fileID: 6299138363646056453}
   - {fileID: 8704551961970842611}
-  - {fileID: 5757723436509199290}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7881955136329227856
@@ -531,10 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b7ec6bcce3aa74dba4f974330e9379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 0.4
-  _damage: 0
-  _spread: 0.068
-  _bulletPrefab: {fileID: 0}
+  _bulletPrefab: {fileID: 8502437403070517348, guid: 85d957b85733f6640a3633921494d5bc, type: 3}
   _shootPoint: {fileID: 8704551961970842611}
   _weaponAnimator: {fileID: 234075640184994089}
   _ammoSpawner:

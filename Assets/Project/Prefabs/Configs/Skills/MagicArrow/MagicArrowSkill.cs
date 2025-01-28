@@ -9,6 +9,8 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
     {
         [SerializeField] private SkillConfig _speedConfig;
         [SerializeField] private SkillConfig _damageConfig;
+        [SerializeField] private SkillConfig _radiusConfig;
+        [SerializeField] private SkillConfig _reloadConfig;
 
         [SerializeField] private MagicArrow _defaultForm;
         [SerializeField] private MagicArrow _finalForm;
@@ -20,7 +22,7 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
 
         public override void Apply(SkillData skillData)
         {
-            if (skillData.Level > MaxLevel || skillData.Level < 1)
+            if (skillData.Level > MaxLevel || skillData.Level < 0)
                 return;
 
             if (skillData.Level == 1)
@@ -30,10 +32,12 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
             if (skillData.Level == MaxLevel)
                 _spawner.ChangeArrowPrefab(_finalForm);
 
-            var speed = _speedConfig.Multipliers[skillData.Level - 1];
-            var damage = (int)_damageConfig.Multipliers[skillData.Level - 1];
-
-            _spawner.ApplyStats(speed, damage);
+            var speed = _speedConfig.Multipliers[skillData.Level];
+            var damage = (int)_damageConfig.Multipliers[skillData.Level];
+            var radius = _radiusConfig.Multipliers[skillData.Level];
+            var reloadTime = _reloadConfig.Multipliers[skillData.Level];
+            
+            _spawner.ApplyStats(speed, damage, radius, reloadTime);
         }
     }
 }

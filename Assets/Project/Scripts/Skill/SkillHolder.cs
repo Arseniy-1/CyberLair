@@ -10,7 +10,7 @@ public class SkillHolder
 
     public void AddSkill(Skill skill)
     {
-        int startSkillLevel = 1;
+        int startSkillLevel = 0;
 
         if (_skills.Count != 0)
         {
