@@ -10,7 +10,7 @@ namespace Project.Scripts.ArenaSystem
     {
         [SerializeField] private ExperienceSpawner _experienceSpawner;
         [SerializeField] private ExperienceParticle _experienceParticlePrefab;
-        [SerializeField, Range(1, 20)] private int _experienceAmount;
+        [SerializeField] private int _experienceAmount;
 
         [SerializeField] private HealthSpawner _healthSpawner;
         [SerializeField] private HealingHeart _heartPrefab;

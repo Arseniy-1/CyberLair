@@ -24,7 +24,7 @@ public class SummonSkill : Skill
             _summon.Initialize(skillData.WeaponHolder.transform);
         }
 
-        if (skillData.Level == MaxLevel)
+        if (skillData.Level == MaxLevel - 1)
             _summon.ApplyWeapon(_finalWeaponPrefab);
 
         var speed = _speedSkillConfig.Multipliers[skillData.Level];

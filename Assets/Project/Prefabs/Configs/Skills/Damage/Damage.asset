@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Damage
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: 
-    <Description>k__BackingField: 
+    <SkillName>k__BackingField: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435
+      \u0443\u0440\u043E\u043D\u0430"
+    <Description>k__BackingField: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435
+      \u0443\u0440\u043E\u043D\u0430"
     <Icon>k__BackingField: {fileID: 0}
   <MaxLevel>k__BackingField: 5
   _skillConfig:
@@ -24,5 +26,4 @@ MonoBehaviour:
     - 4
     - 5
     - 6
-    - 0
   _scaleEffector: {fileID: 11400000, guid: fadc824746346024e8877fd9f967aaa7, type: 2}

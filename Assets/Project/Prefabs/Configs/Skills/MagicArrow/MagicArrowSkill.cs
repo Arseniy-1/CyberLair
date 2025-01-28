@@ -29,7 +29,7 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
                 _spawner = new MagicArrowSpawner(_defaultForm, skillData.WeaponHolder.transform, _spawnDelay,
                     _searchRadius, _layerMask);
 
-            if (skillData.Level == MaxLevel)
+            if (skillData.Level == MaxLevel - 1)
                 _spawner.ChangeArrowPrefab(_finalForm);
 
             var speed = _speedConfig.Multipliers[skillData.Level];

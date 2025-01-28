@@ -10,7 +10,7 @@ public class DamageSkill : Skill
     {
         Debug.Log(skillData.Level);
         skillData.PlayerStats.SetDamage((int)(skillData.StartPlayerStats.WeaponDamage *
-                                                   _skillConfig.Multipliers[skillData.Level]) - skillData.StartPlayerStats.WeaponDamage);
+                                                   _skillConfig.Multipliers[skillData.Level]));
         
         if (skillData.Level == MaxLevel)
         {

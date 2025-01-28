@@ -65,9 +65,11 @@ public class Mediator : MonoBehaviour
         
         if (_skillViews.IsNullOrEmpty())
             return;
-
-        var availableSkills = _skills.ToList();
-
+        
+        List<Skill> availableSkills = _skills
+            .Where(skill => !_skillHolder.Skills.TryGetValue(skill, out int skillLevel) || skillLevel < skill.MaxLevel - 1)
+            .ToList();
+        
         for (int i = 0; i < _skillsCount; i++)
         {
             int randomIndex = Random.Range(0, availableSkills.Count);

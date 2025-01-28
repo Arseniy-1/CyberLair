@@ -13,7 +13,7 @@ public class BoomerangSkill : Skill
     
     public override void Apply(SkillData skillData)
     {
-        if (skillData.Level > MaxLevel || skillData.Level < 0)
+        if (skillData.Level >= MaxLevel || skillData.Level < 0)
             return;
         
         Boomerang boomerang = Instantiate(_boomerangPrefab, skillData.WeaponHolder.transform);
