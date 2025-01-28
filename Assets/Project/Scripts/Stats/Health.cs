@@ -34,12 +34,14 @@ public class Health : Stats
         if (amount <= 0)
             return;
 
-        MaxValue += amount;
+        MaxValue = amount;
     }
 
     public Health Copy()
     {
         Health copy = gameObject.AddComponent<Health>();
+        copy.MaxValue = MaxValue;
+        copy.CurrentValue = CurrentValue;
         
         return copy;
     }

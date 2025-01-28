@@ -25,7 +25,7 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
             if (skillData.Level > MaxLevel || skillData.Level < 0)
                 return;
 
-            if (skillData.Level == 1)
+            if (skillData.Level == 0)
                 _spawner = new MagicArrowSpawner(_defaultForm, skillData.WeaponHolder.transform, _spawnDelay,
                     _searchRadius, _layerMask);
 

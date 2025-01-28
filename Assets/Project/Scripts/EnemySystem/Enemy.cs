@@ -3,11 +3,12 @@ using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
+using System.Collections;
 using Sirenix.OdinInspector;
 
 namespace Project.Scripts.EnemySystem
 {
-    public class Enemy : MonoBehaviour, ITarget, IDamageable, IDieable, IDestoyable<Enemy>, IMoveable
+    public class Enemy : MonoBehaviour, ITarget, IDamageable, IDieable, IDestoyable<Enemy>, IMoveable, IStunable
     {
         [SerializeField] private EnemyCollisionHandler _collisionHandler;
         [SerializeField] protected EnemyMover _mover;
@@ -28,6 +29,7 @@ namespace Project.Scripts.EnemySystem
         [field: SerializeField] public EnemyStats EnemyStats { get; private set; }
 
         public Rigidbody2D Rigidbody2D => _enemyRigidbody;
+
         public Vector2 Position => transform.position;
         public bool IsStunned { get; private set; }
         
@@ -67,6 +69,11 @@ namespace Project.Scripts.EnemySystem
         {
             Health.TakeDamage(amount);
         }
+        
+        public void TakeStun(float time)
+        {
+            StartCoroutine(TakingStun(time));
+        }
 
         public void ResetState()
         {
@@ -79,6 +86,14 @@ namespace Project.Scripts.EnemySystem
         {
             OnDestroyed?.Invoke(this);
             OnDeath?.Invoke(this);
+        }
+        
+        private IEnumerator TakingStun(float time)
+        {
+            IsStunned = true;
+            yield return new WaitForSeconds(time);
+
+            IsStunned = false;
         }
         
         private void OnDrawGizmos()

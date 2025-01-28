@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
-  _attackDelay: 0.5
+  _attackDelay: 4
   _attackRecovery: 0.5
   _attackCount: 1
 --- !u!114 &442572439295423526
@@ -241,7 +241,7 @@ MonoBehaviour:
     <Speed>k__BackingField: 2
     <JumpDistance>k__BackingField: 8
     <JumpTime>k__BackingField: 0.5
-    <JumpReloadTime>k__BackingField: 0
+    <JumpReloadTime>k__BackingField: 5
     <WeaponSpread>k__BackingField: 0
     <WeaponDamage>k__BackingField: 0
     <WeaponBulletReloadTime>k__BackingField: 0

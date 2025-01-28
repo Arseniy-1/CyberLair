@@ -42,11 +42,11 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             Pool = new MagicArrowPool(magicArrow, StartAmount);
         }
 
-        public void ApplyStats(float speed, int damage, float delay, float radius)
+        public void ApplyStats(float speed, int damage, float radius, float reloadTime)
         {
             _speedMultiplier = speed;
             _damageMultiplier = damage;
-            _delay = delay;
+            _delay = reloadTime;
             _radius = radius;
         }
 
@@ -73,7 +73,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             while (true)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(_delay));
-
+                Debug.Log(_delay);
                 var enemyPosition = FindEnemyPosition();
                 var rotation = CalculateRotation(enemyPosition);
                 var magicArrow = Spawn();

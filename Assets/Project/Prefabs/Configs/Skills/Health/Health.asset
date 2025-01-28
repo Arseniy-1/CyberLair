@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: 
-    <Description>k__BackingField: 
-    <Icon>k__BackingField: {fileID: 0}
+    <SkillName>k__BackingField: "\u0417\u0434\u043E\u0440\u043E\u0432\u044C\u0435"
+    <Description>k__BackingField: "\u0421\u0447\u0430\u0441\u0442\u044C\u0435, \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435"
+    <Icon>k__BackingField: {fileID: 21300000, guid: bd9c50bfec9ed864d820b34daccfabc2, type: 3}
   <MaxLevel>k__BackingField: 5
-  skillConfig:
+  _skillConfig:
     _multipliers:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
+    - 1.5
+    - 2
+    - 2.5
+    - 3
+    - 4
+  _ShieldPrefab: {fileID: 0}

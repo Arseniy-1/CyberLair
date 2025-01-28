@@ -35035,11 +35035,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skills:
-  - {fileID: 11400000, guid: 48f6466c7ace74ec7b973c0dfe405a61, type: 2}
-  - {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
-  - {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
   - {fileID: 11400000, guid: 3572f783faa47490a8595315be041fc9, type: 2}
   - {fileID: 11400000, guid: 28fc9838c81b24ed18d68d5f4b66ff3a, type: 2}
+  - {fileID: 11400000, guid: 666a77861a2264f459e2cf6d143436d5, type: 2}
   _skillViews:
   - {fileID: 464978700}
   - {fileID: 525825191}
