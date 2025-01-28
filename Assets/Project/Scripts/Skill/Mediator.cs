@@ -70,7 +70,9 @@ public class Mediator : MonoBehaviour
             .Where(skill => !_skillHolder.Skills.TryGetValue(skill, out int skillLevel) || skillLevel < skill.MaxLevel - 1)
             .ToList();
         
-        for (int i = 0; i < _skillsCount; i++)
+        int cappedSkillsCount = availableSkills.Count >= _skillsCount ? _skillsCount : availableSkills.Count;
+        
+        for (int i = 0; i < cappedSkillsCount; i++)
         {
             int randomIndex = Random.Range(0, availableSkills.Count);
 
