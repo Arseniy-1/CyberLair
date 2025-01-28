@@ -15,8 +15,8 @@ TagManager:
   - EnemyCollision
   - Attractable
   - Player
-  - 
-  - 
+  - PlayerBullet
+  - EnemyBullet
   - 
   - 
   - 

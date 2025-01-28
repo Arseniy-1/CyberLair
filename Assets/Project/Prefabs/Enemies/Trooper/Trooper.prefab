@@ -201,8 +201,8 @@ MonoBehaviour:
   <EnemyType>k__BackingField: 4
   <EnemyStats>k__BackingField:
     <Health>k__BackingField: {fileID: 2262976181833518466}
-    <Experience>k__BackingField: 5
-    <Speed>k__BackingField: 3
+    <Experience>k__BackingField: 3
+    <Speed>k__BackingField: 2
     <JumpDistance>k__BackingField: 0
     <JumpTime>k__BackingField: 0
     <JumpReloadTime>k__BackingField: 0

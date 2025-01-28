@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4783027384808543349}
   - component: {fileID: 3777322196449997574}
   - component: {fileID: 8502437403070517348}
-  m_Layer: 0
-  m_Name: BlueLazer
+  m_Layer: 11
+  m_Name: EnemyRedLazer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0ef1ff7a32402a24d9c942a6e2f48a3a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.1462264, b: 0.1462264, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Bullet : MonoBehaviour, IDestoyable<Bullet>
+public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable
 {
     [SerializeField] protected float Speed;
     [SerializeField] protected float LifeTime;
     [SerializeField] private int _damage = 0;
-    
+
     private Rigidbody2D _rigidbody2D;
     private Coroutine _coroutine;
     private WaitForSeconds _waitLife;
 
     public event Action<Bullet> OnDestroyed;
     public event Action<IDamageable> OnDamagableCollided;
-    
+
+    public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public int Damage => _damage;
-    
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -32,7 +33,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
             damagable.TakeDamage(_damage);
 
             Destory();
-            
+
             OnDamagableCollided?.Invoke(damagable);
         }
     }
@@ -53,7 +54,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
 
         _coroutine = StartCoroutine(WaitDestroy());
     }
-    
+
     private void Destory()
     {
         OnDestroyed?.Invoke(this);
@@ -63,19 +64,5 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>
     {
         yield return _waitLife;
         Destory();
-    }
-
-    public Bullet Copy()
-    {
-        Bullet copy = Instantiate(this);
-    
-        copy.Speed = this.Speed;
-        copy.LifeTime = this.LifeTime;
-        copy._damage = this._damage;
-
-        copy.transform.position = this.transform.position;
-        copy.transform.rotation = this.transform.rotation;
-
-        return copy;
     }
 }

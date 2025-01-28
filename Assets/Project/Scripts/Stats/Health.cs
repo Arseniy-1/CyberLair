@@ -5,12 +5,7 @@ using UnityEngine;
 public class Health : Stats
 {
     public event Action LostHealth;
-
-    // private void Awake()
-    // {
-    //     ResetHealth();
-    // }
-
+    
     public void Heal(int amount)
     {
         if (amount <= 0)
@@ -34,22 +29,17 @@ public class Health : Stats
         RaiseAmountChanged();
     }
 
-    public void IncreaseHealth(int amount)
+    public void SetHealth(int amount)
     {
         if (amount <= 0)
             return;
 
         MaxValue += amount;
-        // CurrentValue += amount;
     }
 
     public Health Copy()
     {
-        Health copy = new Health
-        {
-            MaxValue = this.MaxValue,
-            CurrentValue = this.CurrentValue
-        };
+        Health copy = gameObject.AddComponent<Health>();
         
         return copy;
     }

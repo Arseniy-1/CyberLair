@@ -193,7 +193,7 @@ MonoBehaviour:
   <EnemyType>k__BackingField: 3
   <EnemyStats>k__BackingField:
     <Health>k__BackingField: {fileID: 6933681626514605583}
-    <Experience>k__BackingField: 2
+    <Experience>k__BackingField: 4
     <Speed>k__BackingField: 3
     <JumpDistance>k__BackingField: 3
     <JumpTime>k__BackingField: 0.5
@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294005d492b641c98a4afcfa012cabd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!114 &6391322191596903747
 MonoBehaviour:
   m_ObjectHideFlags: 0
