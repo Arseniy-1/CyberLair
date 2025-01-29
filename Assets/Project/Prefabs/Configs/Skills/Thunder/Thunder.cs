@@ -9,17 +9,21 @@ namespace Project.Scripts.Weapon.ActiveSkills
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _nominalActionRadius;
         [SerializeField] private int _nominalDamage;
+        [SerializeField] private GameObject _view;
         
         private float _currentDelay;
         private int _strikesCount = 1;
         private float _currentActionRadius;
         private int _currentDamage;
         private WaitForSeconds _waitDelay;
+        private GameObject _viewInstance;
         
         private Vector2 TargetPosition => transform.position;
         
         private void OnEnable()
         {
+            _viewInstance = Instantiate(_view);
+            
             StartCoroutine(StrikeIterating());
         }
 
@@ -47,6 +51,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
                 if (strickenCollider.TryGetComponent(out Health health))
                 {
                     health.TakeDamage(_currentDamage);
+                    _viewInstance.transform.position = health.transform.position;
                 }
             }
         }
