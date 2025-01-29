@@ -32,16 +32,16 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             StartCoroutine(Lifetime());
         }
 
-        private void FixedUpdate()
-        {
-            _rigidbody.MovePosition(_rigidbody.position + Forward * (_currentSpeed * Time.fixedDeltaTime));
-        }
-
         private void OnDisable()
         {
             _collisionHandler.ContactLimitExpired -= Return;
         }
-
+        
+        private void FixedUpdate()
+        {
+            _rigidbody.MovePosition(_rigidbody.position + Forward * (_currentSpeed * Time.fixedDeltaTime));
+        }
+        
         public void ApplyStats(float speedMultiplier, int damageMultiplier)
         {
             _currentSpeed = _nominalSpeed * speedMultiplier;

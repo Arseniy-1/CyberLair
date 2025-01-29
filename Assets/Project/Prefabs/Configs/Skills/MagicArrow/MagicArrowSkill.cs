@@ -25,18 +25,18 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
             if (skillData.Level > MaxLevel || skillData.Level < 0)
                 return;
 
-            if (skillData.Level == 0)
+            if (skillData.Level == 1)
                 _spawner = new MagicArrowSpawner(_defaultForm, skillData.WeaponHolder.transform, _spawnDelay,
                     _searchRadius, _layerMask);
 
-            if (skillData.Level == MaxLevel - 1)
+            if (skillData.Level == MaxLevel)
                 _spawner.ChangeArrowPrefab(_finalForm);
 
-            var speed = _speedConfig.Multipliers[skillData.Level];
-            var damage = (int)_damageConfig.Multipliers[skillData.Level];
-            var radius = _radiusConfig.Multipliers[skillData.Level];
-            var reloadTime = _reloadConfig.Multipliers[skillData.Level];
-            
+            var speed = _speedConfig.Multipliers[skillData.Level - 1];
+            var damage = (int)_damageConfig.Multipliers[skillData.Level - 1];
+            var radius = _radiusConfig.Multipliers[skillData.Level - 1];
+            var reloadTime = _reloadConfig.Multipliers[skillData.Level - 1];
+
             _spawner.ApplyStats(speed, damage, radius, reloadTime);
         }
     }

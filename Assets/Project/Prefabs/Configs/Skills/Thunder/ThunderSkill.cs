@@ -23,10 +23,10 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
             if(!_thunder)
                 _thunder = Instantiate(_thunderPrefab, skillData.WeaponHolder.transform);
 
-            var delay = _delayConfig.Multipliers[skillData.Level];
-            var radius = _radiusConfig.Multipliers[skillData.Level];
-            var damage = _damageConfig.Multipliers[skillData.Level];
-            var count = _countConfig.Multipliers[skillData.Level];
+            var delay = _delayConfig.Multipliers[skillData.Level - 1];
+            var radius = _radiusConfig.Multipliers[skillData.Level - 1];
+            var damage = _damageConfig.Multipliers[skillData.Level - 1];
+            var count = _countConfig.Multipliers[skillData.Level - 1];
             _thunder.ApplyStats(delay, radius, damage, count);
         }
     }

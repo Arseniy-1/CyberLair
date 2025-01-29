@@ -17,6 +17,7 @@ public abstract class Weapon : MonoBehaviour
     protected IWeaponStats _weaponStats;
 
     public bool IsReloaded => _isReloaded;
+    public bool Bullet => _bulletPrefab;
     public event Action<Bullet> OnShooted;
 
     protected virtual void Awake()

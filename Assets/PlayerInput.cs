@@ -152,6 +152,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Telephone"",
+            ""bindingGroup"": ""Telephone"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -286,6 +297,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (m_KeyboardAndMouseSchemeIndex == -1) m_KeyboardAndMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard And Mouse");
             return asset.controlSchemes[m_KeyboardAndMouseSchemeIndex];
+        }
+    }
+    private int m_TelephoneSchemeIndex = -1;
+    public InputControlScheme TelephoneScheme
+    {
+        get
+        {
+            if (m_TelephoneSchemeIndex == -1) m_TelephoneSchemeIndex = asset.FindControlSchemeIndex("Telephone");
+            return asset.controlSchemes[m_TelephoneSchemeIndex];
         }
     }
     public interface IPlayerActions

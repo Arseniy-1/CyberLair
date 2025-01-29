@@ -130,6 +130,17 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "Telephone",
+            "bindingGroup": "Telephone",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }
