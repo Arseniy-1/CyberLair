@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
+public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats, IMagnetStats
 {
     [field: SerializeField] public Health Health { get; private set; }
 
@@ -18,6 +18,9 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
     [field: SerializeField] public float WeaponRechargingTime { get; private set; }
     [field: SerializeField] public int WeaponMagazineSize { get; private set; }
 
+    [field: SerializeField] public float MagnetRange { get; private set; }
+    [field: SerializeField] public float MagnetForce { get; private set; }
+    
     public void SetDamage(int amount)
     {
         if (amount < 0)
@@ -40,6 +43,22 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
             return;
 
         JumpDistance = amount;
+    }
+    
+    public void SetJumpRealoadTime(float amount)
+    {
+        if (amount < 0)
+            return;
+
+        JumpReloadTime = amount;
+    }
+    
+    public void SetJumpTime(float amount)
+    {
+        if (amount < 0)
+            return;
+
+        JumpTime = amount;
     }
     
     public void SetWeaponDamage(int amount)
@@ -80,6 +99,22 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
             return;
 
         WeaponRechargingTime = amount;
+    }
+
+    public void SetMagnetRange(float amount)
+    {
+        if (amount < 0)
+            return;
+        
+        MagnetRange = amount;
+    }
+
+    public void SetMagnetForce(float amount)
+    {
+        if (amount < 0)
+            return;
+        
+        MagnetForce = amount;
     }
 
     public PlayerStats DeepCopy()

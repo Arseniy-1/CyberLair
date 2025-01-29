@@ -4,9 +4,3 @@
     float WeaponSpread { get; }
     float WeaponBulletReloadTime { get; }
 }
-
-public interface IIncrementalWeaponStats : IWeaponStats
-{
-    float WeaponRechargingTime { get; }
-    int WeaponMagazineSize { get; }
-}
