@@ -35159,9 +35159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb061a729cc24cc1a24b0482f33515af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skills:
-  - {fileID: 11400000, guid: 48f6466c7ace74ec7b973c0dfe405a61, type: 2}
-  - {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
+  _skills: []
   _skillViews:
   - {fileID: 464978700}
   - {fileID: 525825191}
@@ -35251,22 +35249,14 @@ MonoBehaviour:
     _minPushForce: 0.0005
     _maxPushForce: 0.001
   _experienceParticlePrefab: {fileID: 9162688749952860791, guid: 3b25f1c57e76d5f41a18f15b247e8c68, type: 3}
-  _experienceAmount: 1200
+  _experienceAmount: 6
   _healthSpawner:
     StartAmount: 5
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
   _heartSpawnChance: 5
   _healAmount: 20
   _wavesConfigs:
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: f89f4eb4bbbfd174798c226e5e574657, type: 2}
-  - {fileID: 11400000, guid: eefcda05b29f1d940903477f3d3ca2f4, type: 2}
-  - {fileID: 11400000, guid: faebe27a0f665a245be5dc010bc3a9e1, type: 2}
-  - {fileID: 11400000, guid: faebe27a0f665a245be5dc010bc3a9e1, type: 2}
-  - {fileID: 11400000, guid: faebe27a0f665a245be5dc010bc3a9e1, type: 2}
-  - {fileID: 11400000, guid: 96aacf38772c4984cba74bf9f5002945, type: 2}
-  - {fileID: 11400000, guid: b24a3c3404f7ca64d834418f5eab496b, type: 2}
-  - {fileID: 11400000, guid: faebe27a0f665a245be5dc010bc3a9e1, type: 2}
+  - {fileID: 11400000, guid: 5b3bf6c7a189c45b6a30a27de621ccdb, type: 2}
 --- !u!114 &1993700742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3610522453060248735, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
@@ -35368,8 +35358,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<JumpTime>k__BackingField
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<JumpDistance>k__BackingField
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<WeaponDamage>k__BackingField
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4579364475423813543, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_LocalPosition.x

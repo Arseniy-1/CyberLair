@@ -1,59 +1,16 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
-public class EnemyStats : IJumpStats, IMoverStats, IWeaponStats
+public class EnemyStats : IMoverStats, IAttackerStats
 {
-    [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public int Experience { get; private set; }
 
     [field: SerializeField] public float Speed { get; private set; }
 
-    [field: SerializeField] public float JumpDistance { get; private set; }
-    [field: SerializeField] public float JumpTime { get; private set; }
-    [field: SerializeField] public float JumpReloadTime { get; private set; }
-    [field: SerializeField] public float WeaponSpread { get; private set; }
-
-    [field: SerializeField] public int WeaponDamage { get; private set; }
-    [field: SerializeField] public float WeaponBulletReloadTime { get; private set; }
-
-    public void SetDamage(int amount)
-    {
-        if (amount < 0)
-            return;
-
-        WeaponDamage = amount;
-    }
-
-    public void SetJumpDistance(float amount)
-    {
-        if (amount < 0)
-            return;
-
-        JumpDistance = amount;
-    }
-
-    public void SetWeaponDamage(int amount)
-    {
-        if (amount < 0)
-            return;
-
-        WeaponDamage = amount;
-    }
-
-    public void SetWeaponSpread(float amount)
-    {
-        if (amount < 0)
-            return;
-
-        WeaponSpread = amount;
-    }
-
-    public void SetWeaponRealoadTime(float amount)
-    {
-        if (amount < 0)
-            return;
-
-        WeaponBulletReloadTime = amount;
-    }
+    [field: SerializeField] public int Damage { get; private set; }
+    [field: SerializeField] public float AttackDelay { get; private set; }
+    [field: SerializeField] public float AttackRecovery { get; private set; }
+    [field: SerializeField] public int AttackCount {  get; private set; }
 }

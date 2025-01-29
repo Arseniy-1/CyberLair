@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
+using UnityEngine.Serialization;
 
 namespace Project.Scripts.EnemySystem
 {
@@ -12,12 +13,11 @@ namespace Project.Scripts.EnemySystem
     {
         [SerializeField] private EnemyCollisionHandler _collisionHandler;
         [SerializeField] protected EnemyMover _mover;
-        [SerializeField] protected Rigidbody2D _enemyRigidbody;
+        [SerializeField] protected Rigidbody2D _rigidbody;
         [SerializeField] private EnemyAttacker _attacker;
         [SerializeField] private Destroyer _destroyer;
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         [SerializeField] private float _attackDistance;
-        [SerializeField] private WeaponHolder _weaponHolder;
 
         private EntityStateMachine _stateMachine;
         
@@ -28,7 +28,7 @@ namespace Project.Scripts.EnemySystem
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
         [field: SerializeField] public EnemyStats EnemyStats { get; private set; }
 
-        public Rigidbody2D Rigidbody2D => _enemyRigidbody;
+        public Rigidbody2D Rigidbody2D => _rigidbody;
 
         public Vector2 Position => transform.position;
         public bool IsStunned { get; private set; }
@@ -42,7 +42,7 @@ namespace Project.Scripts.EnemySystem
         {
             var states = new List<IState>
             {
-                new EnemyIdleState(this, _enemyRigidbody, _enemyTargetProvider),
+                new EnemyIdleState(this, _rigidbody, _enemyTargetProvider),
                 new EnemyMoveState(this, _mover, _enemyTargetProvider),
                 new EnemyAttackState(this, _mover, _attacker),
                 new EnemyStunnedState(this, _mover)
@@ -59,10 +59,7 @@ namespace Project.Scripts.EnemySystem
                 state.Initialize(_stateMachine);
             }
             
-            _mover.Initialize(this, _enemyTargetProvider, _enemyRigidbody, EnemyStats);
-            
-            if(_weaponHolder)
-                _weaponHolder.Weapon.Initialize(EnemyStats);
+            _mover.Initialize(this, _enemyTargetProvider, _rigidbody, EnemyStats);
         }
         
         public void TakeDamage(int amount)

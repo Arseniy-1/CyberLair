@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 171301975007036883}
   - component: {fileID: 338829131333349496}
   - component: {fileID: 4213689946170667695}
-  - component: {fileID: 5264763095014667534}
   - component: {fileID: 4399603215803775128}
   - component: {fileID: 4679022288187799651}
   - component: {fileID: 8327977833412635372}
@@ -66,7 +65,7 @@ GameObject:
   - component: {fileID: 9157632587801091930}
   - component: {fileID: -8405115729108536640}
   m_Layer: 3
-  m_Name: Trooper
+  m_Name: Sniper E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,23 +159,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5264763095014667534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5537806147820285303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08e7a98f660e474da3b510920e26fba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scanRadius: 10
-  _targetLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  _scanDelay: 1
 --- !u!114 &4399603215803775128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,24 +173,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collisionHandler: {fileID: -8405115729108536640}
   _mover: {fileID: 4679022288187799651}
-  _enemyRigidbody: {fileID: 338829131333349496}
+  _rigidbody: {fileID: 338829131333349496}
   _attacker: {fileID: 8327977833412635372}
   _destroyer: {fileID: 4088665956458132345}
   _enemyTargetProvider: {fileID: 9157632587801091930}
-  _attackDistance: 10
-  _weaponHolder: {fileID: 6737547138716812977}
+  _attackDistance: 17
   <Health>k__BackingField: {fileID: 2262976181833518466}
   <EnemyType>k__BackingField: 4
   <EnemyStats>k__BackingField:
-    <Health>k__BackingField: {fileID: 2262976181833518466}
-    <Experience>k__BackingField: 3
-    <Speed>k__BackingField: 2
-    <JumpDistance>k__BackingField: 0
-    <JumpTime>k__BackingField: 0
-    <JumpReloadTime>k__BackingField: 0
-    <WeaponSpread>k__BackingField: 0.01
-    <WeaponDamage>k__BackingField: 20
-    <WeaponBulletReloadTime>k__BackingField: 1
+    <Experience>k__BackingField: 6
+    <Speed>k__BackingField: 2.7
+    <Damage>k__BackingField: 10
+    <AttackDelay>k__BackingField: 3
+    <AttackRecovery>k__BackingField: 1
+    <AttackCount>k__BackingField: 1
 --- !u!114 &4679022288187799651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,11 +211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae40b481a3794c0a814e5737472134f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 20
-  _attackDelay: 0.5
-  _attackRecovery: 0.3
-  _attackCount: 1
-  _gun: {fileID: 6737547138716812977}
+  _holder: {fileID: 6737547138716812977}
+  _weaponStats:
+    <WeaponDamage>k__BackingField: 40
+    <WeaponSpread>k__BackingField: 0.1
+    <WeaponBulletReloadTime>k__BackingField: 0.7
 --- !u!114 &2262976181833518466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 32
-  CurrentValue: 32
+  MaxValue: 30
+  CurrentValue: 30
 --- !u!114 &4088665956458132345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,9 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 5
+  _pushForce: 50
   _stunTime: 0.3
-  _collisionDamage: 20
+  _collisionDamage: 10
 --- !u!1 &8266974789114446711
 GameObject:
   m_ObjectHideFlags: 0

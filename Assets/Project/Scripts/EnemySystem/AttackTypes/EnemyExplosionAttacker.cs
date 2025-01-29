@@ -12,7 +12,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
         {
             foreach (IDamageable health in GetCollidedBodies(Position))
             {
-                health.TakeDamage(Damage);
+                health.TakeDamage(Stats.Damage);
             }
         }
 
