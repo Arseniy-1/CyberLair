@@ -33194,8 +33194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589862a4d6c4244e912f779f887809d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 1000
-  _stunTime: 0.1
+  _pushForce: 1500
+  _stunTime: 0.4
 --- !u!212 &203261944
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33350,8 +33350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589862a4d6c4244e912f779f887809d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 1000
-  _stunTime: 0.1
+  _pushForce: 1500
+  _stunTime: 0.4
 --- !u!212 &259230488
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33571,7 +33571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7760457bd3bc4cc791de0ecb995ba785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPoints: []
   _arena: {fileID: 1919683545}
   _player: {fileID: 1037852793}
   _mainEnemySpawner: {fileID: 1354792443}
@@ -33775,8 +33774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589862a4d6c4244e912f779f887809d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 1000
-  _stunTime: 0.1
+  _pushForce: 1500
+  _stunTime: 0.4
 --- !u!212 &821430143
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33986,8 +33985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589862a4d6c4244e912f779f887809d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 1000
-  _stunTime: 0.1
+  _pushForce: 1500
+  _stunTime: 0.4
 --- !u!212 &885880629
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34445,8 +34444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589862a4d6c4244e912f779f887809d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 1000
-  _stunTime: 0.1
+  _pushForce: 1500
+  _stunTime: 0.4
 --- !u!212 &1194815177
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34590,8 +34589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589862a4d6c4244e912f779f887809d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 1000
-  _stunTime: 0.1
+  _pushForce: 1500
+  _stunTime: 0.4
 --- !u!212 &1199203467
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34944,8 +34943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589862a4d6c4244e912f779f887809d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 1000
-  _stunTime: 0.1
+  _pushForce: 1500
+  _stunTime: 0.4
 --- !u!212 &1410299007
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35255,8 +35254,7 @@ MonoBehaviour:
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
   _heartSpawnChance: 5
   _healAmount: 20
-  _wavesConfigs:
-  - {fileID: 11400000, guid: 5b3bf6c7a189c45b6a30a27de621ccdb, type: 2}
+  _wavesConfigs: []
 --- !u!114 &1993700742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3610522453060248735, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
