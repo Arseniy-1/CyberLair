@@ -12,11 +12,11 @@ public class SneakySkill : Skill
     public override void Apply(SkillData skillData)
     {
         skillData.PlayerStats.SetJumpDistance(skillData.StartPlayerStats.JumpDistance *
-                                               _jumpSkillConfig.Multipliers[skillData.Level]);
+                                               _jumpSkillConfig.Multipliers[skillData.Level - 1]);
         
         
         skillData.PlayerStats.SetSpeed(skillData.StartPlayerStats.Speed *
-                                        _speedSkillConfig.Multipliers[skillData.Level]);
+                                        _speedSkillConfig.Multipliers[skillData.Level - 1]);
         
         if (skillData.Level == MaxLevel)
         {

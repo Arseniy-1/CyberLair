@@ -50,6 +50,14 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
         WeaponDamage = amount;
     }
     
+    public void SetMagazineSize(int amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponMagazineSize = amount;
+    }
+    
     public void SetWeaponSpread(float amount)
     {
         if (amount < 0)
@@ -64,6 +72,14 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats
             return;
 
         WeaponBulletReloadTime = amount;
+    }
+    
+    public void SetWeaponRechargeTime(float amount)
+    {
+        if (amount < 0)
+            return;
+
+        WeaponRechargingTime = amount;
     }
 
     public PlayerStats DeepCopy()

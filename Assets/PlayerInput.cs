@@ -113,6 +113,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""25983bd9-1613-4367-80f9-7830675c0f91"",
+                    ""path"": ""<AndroidJoystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Telephone"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""31853d8f-1138-4a54-a9e5-6cd49bf9926d"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -148,6 +159,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Telephone"",
+            ""bindingGroup"": ""Telephone"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -286,6 +308,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (m_KeyboardAndMouseSchemeIndex == -1) m_KeyboardAndMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard And Mouse");
             return asset.controlSchemes[m_KeyboardAndMouseSchemeIndex];
+        }
+    }
+    private int m_TelephoneSchemeIndex = -1;
+    public InputControlScheme TelephoneScheme
+    {
+        get
+        {
+            if (m_TelephoneSchemeIndex == -1) m_TelephoneSchemeIndex = asset.FindControlSchemeIndex("Telephone");
+            return asset.controlSchemes[m_TelephoneSchemeIndex];
         }
     }
     public interface IPlayerActions

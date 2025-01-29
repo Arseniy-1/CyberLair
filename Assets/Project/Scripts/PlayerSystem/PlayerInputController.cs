@@ -10,31 +10,39 @@ public class PlayerInputController : MonoBehaviour
 
     public event Action OnJumpButtonPressed;
     public event Action OnMoveButtonPressed;
-                        
     public event Action OnShootButtonPressed;
     public event Action OnSwitchButtonPressed;
+    public event Action OnAttackPerformed;
+
+    private Rect attackArea;
 
     private void Awake()
     {
         _payerInput = new PlayerInput();
         _payerInput.Enable();
+
+        attackArea = new Rect(Screen.width / 2, 0, Screen.width / 2, Screen.height);
     }
 
     private void OnEnable()
     {
         _payerInput.Player.Shoot.performed += OnShootPreformed;
         _payerInput.Player.Jump.performed += OnJumpPerformed;
+
+        // _payerInput.Player.Touchscreen.primaryTouch.performed += OnTouchPerformed;
     }
 
     private void OnDisable()
     {
         _payerInput.Player.Shoot.performed -= OnShootPreformed;
         _payerInput.Player.Jump.performed -= OnJumpPerformed;
+
+        // _payerInput.Player.Touchscreen.primaryTouch.performed -= OnTouchPerformed;
     }
 
     private void Update()
     {
-        ReadIMovemetInput();
+        ReadMovementInput();
 
         if (_payerInput.Player.Shoot.IsPressed())
             OnShootButtonPressed?.Invoke();
@@ -55,8 +63,24 @@ public class PlayerInputController : MonoBehaviour
         OnSwitchButtonPressed?.Invoke();
     }
 
-    private void ReadIMovemetInput()
+    private void OnTouchPerformed(InputAction.CallbackContext callbackContext)
     {
-        OnMoveButtonPressed?.Invoke();
+        Vector2 touchPosition = callbackContext.ReadValue<Vector2>();
+
+        if (touchPosition.x < Screen.width / 2)
+        {
+            float moveX = (touchPosition.x / (Screen.width / 2)) * 2 - 1;
+            Vector2 moveDirection = new Vector2(moveX, 0);
+
+            OnMoveButtonPressed?.Invoke();
+        }
+    }
+
+    private void ReadMovementInput()
+    {
+        if (InputDirection != Vector2.zero)
+        {
+            OnMoveButtonPressed?.Invoke();
+        }
     }
 }
