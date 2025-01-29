@@ -7,13 +7,6 @@ public class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private Weapon _currentWeapon;
 
-    public event Action OnWeaponChanged;
-
-    private void Start()
-    {
-        
-    }
-    
     public Weapon Weapon => _currentWeapon;
     
     [Button]

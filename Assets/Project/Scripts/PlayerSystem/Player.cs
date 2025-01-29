@@ -7,6 +7,7 @@ using StateMashineSytem.PlayerStateMashine;
 
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
+
 {
     [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
     [SerializeField] private PlayerMover _playerMover;
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private Jumper _jumper;
     [SerializeField] private TargetScanner _targetScanner;
     [SerializeField] private Destroyer _destroyer;
+    [SerializeField] private Magnet _magnet;
 
     private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
@@ -72,6 +74,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
         _jumper.Initialize(PlayerStats);
         _health.ResetHealth();
+        _magnet.Initialize(PlayerStats);
         
         _weaponHolder.Weapon.Initialize(PlayerStats);
     }

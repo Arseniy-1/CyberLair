@@ -19,11 +19,11 @@ public class WeaponUpdateSkill : Skill
         skillData.PlayerStats.SetMagazineSize((int)(skillData.StartPlayerStats.WeaponMagazineSize *
                                                     _magazineSizeConfig.Multipliers[skillData.Level - 1]));
         
-        skillData.PlayerStats.SetWeaponRealoadTime((int)(skillData.StartPlayerStats.WeaponBulletReloadTime *
-                                                    _reloadTimeConfig.Multipliers[skillData.Level - 1]));
+        skillData.PlayerStats.SetWeaponRealoadTime(skillData.StartPlayerStats.WeaponBulletReloadTime *
+                                                    _reloadTimeConfig.Multipliers[skillData.Level - 1]);
         
-        skillData.PlayerStats.SetWeaponRechargeTime((int)(skillData.StartPlayerStats.WeaponRechargingTime *
-                                                          _rechargeTimeConfig.Multipliers[skillData.Level - 1]));
+        skillData.PlayerStats.SetWeaponRechargeTime(skillData.StartPlayerStats.WeaponRechargingTime *
+                                                          _rechargeTimeConfig.Multipliers[skillData.Level - 1]);
         
         if (skillData.Level == MaxLevel)
         {

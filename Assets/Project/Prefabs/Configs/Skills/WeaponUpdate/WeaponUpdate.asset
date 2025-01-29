@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: WeaponUpdate
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: 
-    <Description>k__BackingField: 
-    <Icon>k__BackingField: {fileID: 0}
+    <SkillName>k__BackingField: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435
+      \u043E\u0440\u0443\u0436\u0438\u044F"
+    <Description>k__BackingField: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435
+      \u043E\u0440\u0443\u0436\u0438\u044F"
+    <Icon>k__BackingField: {fileID: 21300000, guid: 3c6375ba04a84cf4ba723fb31582033e, type: 3}
   <MaxLevel>k__BackingField: 5
   _damageConfig:
     _multipliers:
@@ -26,11 +28,11 @@ MonoBehaviour:
     - 3
   _magazineSizeConfig:
     _multipliers:
-    - 40
-    - 80
-    - 120
-    - 160
-    - 200
+    - 1.4
+    - 1.8
+    - 2.2
+    - 2.6
+    - 3
   _reloadTimeConfig:
     _multipliers:
     - 0.9
@@ -45,4 +47,4 @@ MonoBehaviour:
     - 0.7
     - 0.6
     - 0.5
-  _scaleEffector: {fileID: 0}
+  _scaleEffector: {fileID: 11400000, guid: fadc824746346024e8877fd9f967aaa7, type: 2}
