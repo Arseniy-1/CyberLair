@@ -34831,6 +34831,7 @@ MonoBehaviour:
   - {fileID: 4399603215803775128, guid: 75bf669011b8f42ce8b3cdbf132211e0, type: 3}
   - {fileID: -4304947118811211038, guid: 6048dee4b8fa34db68c58b2ca18955a2, type: 3}
   - {fileID: 4399603215803775128, guid: d7203ac9ffc6144698bd094afaab65e6, type: 3}
+  - {fileID: 8511549520770673055, guid: a58b2cc01c88b44ebacc95da4b15607e, type: 3}
   _startPoolCount: 0
   _enemySpawners: []
 --- !u!4 &1354792444

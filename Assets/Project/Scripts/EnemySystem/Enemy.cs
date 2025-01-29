@@ -5,7 +5,6 @@ using UnityEngine;
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
-using UnityEngine.Serialization;
 
 namespace Project.Scripts.EnemySystem
 {
