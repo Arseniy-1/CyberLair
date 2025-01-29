@@ -113,6 +113,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""25983bd9-1613-4367-80f9-7830675c0f91"",
+                    ""path"": ""<AndroidJoystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Telephone"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""31853d8f-1138-4a54-a9e5-6cd49bf9926d"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",

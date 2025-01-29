@@ -170,11 +170,11 @@ MonoBehaviour:
   _weaponHolder: {fileID: 6737547138716812977}
   _mover: {fileID: 5652720108971927089}
   _summonStats:
-    <Speed>k__BackingField: 10
+    <Speed>k__BackingField: 3
     <MoveRadius>k__BackingField: 3
-    <MoveDelay>k__BackingField: 1
-    <WeaponSpread>k__BackingField: 0.1
-    <WeaponDamage>k__BackingField: 50
+    <MoveDelay>k__BackingField: 3
+    <WeaponSpread>k__BackingField: 0.2
+    <WeaponDamage>k__BackingField: 30
     <WeaponBulletReloadTime>k__BackingField: 1
   _targetScanner: {fileID: 4177437872860269052}
 --- !u!114 &4177437872860269052
