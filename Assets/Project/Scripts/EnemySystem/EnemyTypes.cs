@@ -5,5 +5,7 @@
     Kamikaze,
     Blight,
     Trooper,
-    Sniper
+    Sniper,
+    Doomguard,
+    Imp
 }

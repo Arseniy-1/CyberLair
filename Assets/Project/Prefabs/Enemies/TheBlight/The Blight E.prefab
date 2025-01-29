@@ -40,7 +40,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2543074565528694283}
-  - {fileID: 7259972460534493942}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &9187278981319853839
@@ -193,7 +192,7 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 4
     <Speed>k__BackingField: 3.3
-    <Damage>k__BackingField: 10
+    <CollisionDamage>k__BackingField: 0
     <AttackDelay>k__BackingField: 0.5
     <AttackRecovery>k__BackingField: 2
     <AttackCount>k__BackingField: 2
@@ -211,7 +210,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pushForce: 3
   _stunTime: 0.5
-  _collisionDamage: 10
 --- !u!114 &6311730808988131680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2543074565528694283}
   - component: {fileID: 3948316353497071274}
+  - component: {fileID: 3630374792071387719}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -310,8 +309,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: cc35afd292fc349128b36a291fb3a165, type: 3}
-  m_Color: {r: 0.23616053, g: 0.6168041, b: 0.8207547, a: 1}
+  m_Sprite: {fileID: 1547203466, guid: 9487bc9477b5740cbbddb8491a9b83d5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -321,6 +320,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3630374792071387719
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786434052027316470}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 447f887e8b2114760bbc836ca229a282, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1889057684960242127
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,70 +372,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2543074565528694283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2081601560048507040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7259972460534493942}
-  - component: {fileID: 7626330584972918157}
-  m_Layer: 7
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7259972460534493942
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081601560048507040}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3335654862418739538}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &7626330584972918157
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081601560048507040}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.15
