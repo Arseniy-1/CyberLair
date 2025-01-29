@@ -61,8 +61,6 @@ public class Mediator : MonoBehaviour
 
     private void ShowSkills()
     {
-        Time.timeScale = 0;
-        
         if (_skillViews.IsNullOrEmpty())
             return;
         
@@ -70,8 +68,11 @@ public class Mediator : MonoBehaviour
             .Where(skill => !_skillHolder.Skills.TryGetValue(skill, out int skillLevel) || skillLevel < skill.MaxLevel - 1)
             .ToList();
         
-        int cappedSkillsCount = availableSkills.Count >= _skillsCount ? _skillsCount : availableSkills.Count;
+        if (availableSkills.Count == 0)
+            return;
         
+        int cappedSkillsCount = availableSkills.Count >= _skillsCount ? _skillsCount : availableSkills.Count;
+
         for (int i = 0; i < cappedSkillsCount; i++)
         {
             int randomIndex = Random.Range(0, availableSkills.Count);
@@ -81,6 +82,8 @@ public class Mediator : MonoBehaviour
 
             availableSkills.RemoveAt(randomIndex);
         }
+        
+        Time.timeScale = 0;
     }
 
     private void HideSkills()

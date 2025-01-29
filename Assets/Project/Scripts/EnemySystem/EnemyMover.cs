@@ -20,10 +20,10 @@ namespace Project.Scripts.EnemySystem
 
         public void Initialize(Enemy enemy, EnemyTargetProvider enemyTargetProvider, Rigidbody2D enemyRigidbody, IMoverStats moverStats)
         {
-            MoverStats = moverStats;
             EnemyPrefab = enemy;
             EnemyTargetProvider = enemyTargetProvider;
             EnemyRigidbody = enemyRigidbody;
+            MoverStats = moverStats;
         }
 
         protected abstract void Move();

@@ -4,5 +4,6 @@
     Hawk,
     Kamikaze,
     Blight,
-    Trooper
+    Trooper,
+    Sniper
 }

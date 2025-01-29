@@ -24,8 +24,6 @@ namespace StateMashineSytem.EnemyStates
 
         public void Update()
         {
-            Debug.Log($"Enemy {_rigidbody.name} is idling");
-            
             if (_enemy.IsStunned)
                 _stateSwitcher.SwitchState<EnemyStunnedState>();
             

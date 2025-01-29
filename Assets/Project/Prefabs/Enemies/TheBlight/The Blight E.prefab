@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6311730808988131680}
   - component: {fileID: 6391322191596903747}
   m_Layer: 3
-  m_Name: The Blight
+  m_Name: The Blight E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,10 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
-  _attackDelay: 0.5
-  _attackRecovery: 0.5
-  _attackCount: 3
+  _jumpStats:
+    <JumpDistance>k__BackingField: 3
+    <JumpTime>k__BackingField: 0.5
+    <JumpReloadTime>k__BackingField: 0
 --- !u!114 &705212269321072690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 100
-  CurrentValue: 100
+  MaxValue: 30
+  CurrentValue: 30
 --- !u!114 &4382913821471026158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,24 +183,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collisionHandler: {fileID: -6442682817018359020}
   _mover: {fileID: 705212269321072690}
-  _enemyRigidbody: {fileID: 9187278981319853839}
+  _rigidbody: {fileID: 9187278981319853839}
   _attacker: {fileID: 2255569116647932330}
   _destroyer: {fileID: 6391322191596903747}
   _enemyTargetProvider: {fileID: 6311730808988131680}
-  _attackDistance: 5
-  _weaponHolder: {fileID: 0}
+  _attackDistance: 4
   <Health>k__BackingField: {fileID: 6933681626514605583}
   <EnemyType>k__BackingField: 3
   <EnemyStats>k__BackingField:
-    <Health>k__BackingField: {fileID: 6933681626514605583}
     <Experience>k__BackingField: 4
-    <Speed>k__BackingField: 3
-    <JumpDistance>k__BackingField: 3
-    <JumpTime>k__BackingField: 0.5
-    <JumpReloadTime>k__BackingField: 0
-    <WeaponSpread>k__BackingField: 0.2
-    <WeaponDamage>k__BackingField: 10
-    <WeaponBulletReloadTime>k__BackingField: 1
+    <Speed>k__BackingField: 3.3
+    <Damage>k__BackingField: 10
+    <AttackDelay>k__BackingField: 0.5
+    <AttackRecovery>k__BackingField: 2
+    <AttackCount>k__BackingField: 2
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pushForce: 3
   _stunTime: 0.5
-  _collisionDamage: 48
+  _collisionDamage: 10
 --- !u!114 &6311730808988131680
 MonoBehaviour:
   m_ObjectHideFlags: 0

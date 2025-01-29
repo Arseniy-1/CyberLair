@@ -7,13 +7,9 @@ namespace Project.Scripts.EnemySystem
 {
     public abstract class EnemyAttacker : MonoBehaviour
     {
-        [SerializeField] protected int Damage;
-        [SerializeField] private float _attackDelay;
-        [SerializeField] private float _attackRecovery;
-        [SerializeField] private int _attackCount;
+        private IAttackerStats _stats;
         
         protected EnemyTargetProvider EnemyTargetProvider;
-        protected EnemyStats Stats;
         private Transform _transform;
         
         public event Action AttackPerformed;
@@ -25,26 +21,26 @@ namespace Project.Scripts.EnemySystem
             StartCoroutine(Performing());
         }
         
-        public virtual void Initialize(EnemyTargetProvider enemyTargetProvider, EnemyStats stats)
+        public virtual void Initialize(EnemyTargetProvider enemyTargetProvider, IAttackerStats stats)
         {
             EnemyTargetProvider = enemyTargetProvider;
-            Stats = stats;
+            _stats = stats;
             _transform = transform;
         }
         
         protected abstract void Attack();
         
-        protected virtual void EndAttack()
+        private void EndAttack()
         {
             AttackPerformed?.Invoke();
         }
 
         private IEnumerator Performing()
         {
-            WaitForSeconds waitDelay = new WaitForSeconds(_attackDelay);
-            WaitForSeconds waitRecovery = new WaitForSeconds(_attackRecovery);
+            WaitForSeconds waitDelay = new WaitForSeconds(_stats.AttackDelay);
+            WaitForSeconds waitRecovery = new WaitForSeconds(_stats.AttackRecovery);
             
-            for (int i = 0; i < _attackCount; i++)
+            for (int i = 0; i < _stats.AttackCount; i++)
             {
                 yield return waitDelay;
                 Attack();

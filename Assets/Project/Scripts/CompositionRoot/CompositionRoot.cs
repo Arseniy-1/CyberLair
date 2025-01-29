@@ -8,7 +8,6 @@ namespace Project.Scripts.CompositionRoot
 {
     public class CompositionRoot : MonoBehaviour
     {
-        [SerializeField] private List<Transform> _spawnPoints;
         [SerializeField] private Arena _arena;
         [SerializeField] private Player _player;
         [SerializeField] private MainEnemySpawner _mainEnemySpawner;
