@@ -179,11 +179,11 @@ MonoBehaviour:
   _enemyTargetProvider: {fileID: 9157632587801091930}
   _attackDistance: 17
   <Health>k__BackingField: {fileID: 2262976181833518466}
-  <EnemyType>k__BackingField: 4
+  <EnemyType>k__BackingField: 5
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 6
     <Speed>k__BackingField: 2.7
-    <Damage>k__BackingField: 10
+    <CollisionDamage>k__BackingField: 0
     <AttackDelay>k__BackingField: 3
     <AttackRecovery>k__BackingField: 1
     <AttackCount>k__BackingField: 1
@@ -268,7 +268,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pushForce: 50
   _stunTime: 0.3
-  _collisionDamage: 10
 --- !u!1 &8266974789114446711
 GameObject:
   m_ObjectHideFlags: 0

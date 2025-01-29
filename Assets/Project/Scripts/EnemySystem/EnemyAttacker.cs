@@ -7,7 +7,7 @@ namespace Project.Scripts.EnemySystem
 {
     public abstract class EnemyAttacker : MonoBehaviour
     {
-        protected IAttackerStats Stats;
+        private IAttackerStats _stats;
         
         protected EnemyTargetProvider EnemyTargetProvider;
         private Transform _transform;
@@ -24,23 +24,23 @@ namespace Project.Scripts.EnemySystem
         public virtual void Initialize(EnemyTargetProvider enemyTargetProvider, IAttackerStats stats)
         {
             EnemyTargetProvider = enemyTargetProvider;
-            Stats = stats;
+            _stats = stats;
             _transform = transform;
         }
         
         protected abstract void Attack();
         
-        protected virtual void EndAttack()
+        private void EndAttack()
         {
             AttackPerformed?.Invoke();
         }
 
         private IEnumerator Performing()
         {
-            WaitForSeconds waitDelay = new WaitForSeconds(Stats.AttackDelay);
-            WaitForSeconds waitRecovery = new WaitForSeconds(Stats.AttackRecovery);
+            WaitForSeconds waitDelay = new WaitForSeconds(_stats.AttackDelay);
+            WaitForSeconds waitRecovery = new WaitForSeconds(_stats.AttackRecovery);
             
-            for (int i = 0; i < Stats.AttackCount; i++)
+            for (int i = 0; i < _stats.AttackCount; i++)
             {
                 yield return waitDelay;
                 Attack();

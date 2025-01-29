@@ -61,7 +61,6 @@ namespace Project.Scripts.CompositionRoot
                 };
                 
                 _edgeObjects.Add(edgeObject.transform);
-                // _edgeObjects.Add(Object.Instantiate(_spawnPointPrefab, position, Quaternion.identity, _parent).transform);
             }
         }
 

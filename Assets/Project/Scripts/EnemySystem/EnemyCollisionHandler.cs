@@ -4,8 +4,14 @@ public class EnemyCollisionHandler : CollisionHandler
 {
     [SerializeField] private float _pushForce;
     [SerializeField] private float _stunTime;
-    [SerializeField] private int _collisionDamage;
+    
+    private int _collisionDamage;
 
+    public void Initialize(int collisionDamage)
+    {
+        _collisionDamage = collisionDamage;
+    }
+    
     protected override void HandleCollision(Collider2D collider)
     {
         if (collider.TryGetComponent(out Player player))

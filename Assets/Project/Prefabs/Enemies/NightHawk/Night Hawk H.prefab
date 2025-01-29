@@ -102,6 +102,8 @@ GameObject:
   - component: {fileID: 1709608626960835559}
   - component: {fileID: 5625599109945990570}
   - component: {fileID: 2166195250440910278}
+  - component: {fileID: -4655703119198424357}
+  - component: {fileID: 8754963830627189129}
   m_Layer: 3
   m_Name: Night Hawk H
   m_TagString: Untagged
@@ -209,10 +211,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc5d0f877aa4763b8642f13a738e9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRange: 6
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 512
+  _enemy: {fileID: 263878080555140060}
+  _attacker: {fileID: 8754963830627189129}
+  _explosion:
+    _range: 6
+    _layerMask:
+      serializedVersion: 2
+      m_Bits: 512
+    _explosionDamage: 70
 --- !u!114 &9010007184260890335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +261,7 @@ MonoBehaviour:
   _collisionHandler: {fileID: 1709608626960835559}
   _mover: {fileID: 9010007184260890335}
   _rigidbody: {fileID: 26766439269764555}
-  _attacker: {fileID: 4695786123440549315}
+  _attacker: {fileID: 8754963830627189129}
   _destroyer: {fileID: 5625599109945990570}
   _enemyTargetProvider: {fileID: 2166195250440910278}
   _attackDistance: 2.5
@@ -264,7 +270,7 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 4
     <Speed>k__BackingField: 2
-    <Damage>k__BackingField: 70
+    <CollisionDamage>k__BackingField: 0
     <AttackDelay>k__BackingField: 0.3
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
@@ -282,7 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pushForce: 20
   _stunTime: 0
-  _collisionDamage: 5
 --- !u!114 &5625599109945990570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,3 +312,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294005d492b641c98a4afcfa012cabd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4655703119198424357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321936822601242699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bd482925914d24399bd426bdef06e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8754963830627189129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321936822601242699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpStats:
+    <JumpDistance>k__BackingField: 2
+    <JumpTime>k__BackingField: 0.2
+    <JumpReloadTime>k__BackingField: 0

@@ -34830,6 +34830,7 @@ MonoBehaviour:
   - {fileID: 4382913821471026158, guid: c5cd427ff58ac4be9b534cf856fe6a4c, type: 3}
   - {fileID: 4399603215803775128, guid: 75bf669011b8f42ce8b3cdbf132211e0, type: 3}
   - {fileID: -4304947118811211038, guid: 6048dee4b8fa34db68c58b2ca18955a2, type: 3}
+  - {fileID: 4399603215803775128, guid: d7203ac9ffc6144698bd094afaab65e6, type: 3}
   _startPoolCount: 0
   _enemySpawners: []
 --- !u!4 &1354792444
@@ -35254,7 +35255,8 @@ MonoBehaviour:
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
   _heartSpawnChance: 5
   _healAmount: 20
-  _wavesConfigs: []
+  _wavesConfigs:
+  - {fileID: 11400000, guid: 5b3bf6c7a189c45b6a30a27de621ccdb, type: 2}
 --- !u!114 &1993700742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3610522453060248735, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
@@ -35342,6 +35344,18 @@ PrefabInstance:
     - target: {fileID: 516483364298148527, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -89
+      objectReference: {fileID: 0}
+    - target: {fileID: 747776050063612614, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 747776050063612614, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 747776050063612614, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1064751530679707067, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -35434,6 +35448,18 @@ PrefabInstance:
     - target: {fileID: 5550378234593288289, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830495567432715624, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830495567432715624, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830495567432715624, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6019425685830596224, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_SizeDelta.x

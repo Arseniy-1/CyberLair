@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.Servises;
 using UnityEngine;
 using Project.Scripts.Weapon;
 
 [CreateAssetMenu(fileName = "New ExplosionEffector", menuName = "Skill/BulletEffectors/ExplosionEffector",order = 51)]
 public class ExplosionEffector : BulletEffector
 {
-    [SerializeField] private float _range;
-    [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private int _explosionDamage;
+    [SerializeField] private Explosion _explosion;
     
     public override void Initialize(Weapon weapon)
     {
@@ -25,17 +24,7 @@ public class ExplosionEffector : BulletEffector
     private void Explode(Bullet bullet)
     {
         bullet.OnDestroyed -= Explode;
-
-        List<Health> affected = Physics2D.OverlapCircleAll(bullet.transform.position, _range, _layerMask)
-            .Select(hit =>
-            {
-                hit.TryGetComponent(out Health health);
-                return health;
-            }).Where(health => health).ToList();
-
-        foreach (Health hit in affected)
-        {
-            hit.TakeDamage(_explosionDamage);
-        }
+        
+        _explosion.Explode(bullet.transform.position);
     }
 }

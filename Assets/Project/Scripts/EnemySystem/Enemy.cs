@@ -22,7 +22,6 @@ namespace Project.Scripts.EnemySystem
         private EntityStateMachine _stateMachine;
         
         public event Action<Enemy> OnDestroyed;
-        public static event Action<Enemy> OnDeath;
 
         [field: SerializeField] public Health Health {get; private set; }
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
@@ -60,6 +59,7 @@ namespace Project.Scripts.EnemySystem
             }
             
             _mover.Initialize(this, _enemyTargetProvider, _rigidbody, EnemyStats);
+            _collisionHandler.Initialize(EnemyStats.CollisionDamage);
         }
         
         public void TakeDamage(int amount)
@@ -82,7 +82,6 @@ namespace Project.Scripts.EnemySystem
         public void Die()
         {
             OnDestroyed?.Invoke(this);
-            OnDeath?.Invoke(this);
         }
         
         private IEnumerator TakingStun(float time)

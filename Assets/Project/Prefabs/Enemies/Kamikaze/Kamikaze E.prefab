@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 5206861922117507840}
   - component: {fileID: -6513443518455752750}
   - component: {fileID: 7848786051674692826}
+  - component: {fileID: -3269767769425046405}
+  - component: {fileID: -9061006521750571887}
   m_Layer: 3
   m_Name: Kamikaze E
   m_TagString: Untagged
@@ -125,10 +127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc5d0f877aa4763b8642f13a738e9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRange: 6
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 512
+  _enemy: {fileID: 6014211762987851508}
+  _attacker: {fileID: -9061006521750571887}
+  _explosion:
+    _range: 6
+    _layerMask:
+      serializedVersion: 2
+      m_Bits: 512
+    _explosionDamage: 30
 --- !u!114 &8914670022210950017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +164,7 @@ MonoBehaviour:
   _collisionHandler: {fileID: -6513443518455752750}
   _mover: {fileID: 1802045359912388367}
   _rigidbody: {fileID: 667147929308886583}
-  _attacker: {fileID: 1909045439452979584}
+  _attacker: {fileID: -9061006521750571887}
   _destroyer: {fileID: 5206861922117507840}
   _enemyTargetProvider: {fileID: 7848786051674692826}
   _attackDistance: 2
@@ -167,7 +173,7 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 3
     <Speed>k__BackingField: 3.6
-    <Damage>k__BackingField: 40
+    <CollisionDamage>k__BackingField: 5
     <AttackDelay>k__BackingField: 0.5
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
@@ -209,7 +215,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pushForce: 2
   _stunTime: 0
-  _collisionDamage: 5
 --- !u!114 &7848786051674692826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +227,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294005d492b641c98a4afcfa012cabd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3269767769425046405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229772452010772433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bd482925914d24399bd426bdef06e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-9061006521750571887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229772452010772433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpStats:
+    <JumpDistance>k__BackingField: 1
+    <JumpTime>k__BackingField: 0.2
+    <JumpReloadTime>k__BackingField: 0
 --- !u!1 &8036182046258370948
 GameObject:
   m_ObjectHideFlags: 0
