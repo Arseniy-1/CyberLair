@@ -50,7 +50,6 @@ public class WeaponView : MonoBehaviour
             }
             else if(i >= maxAmmoCount)
             {
-                Debug.Log(i);
                 _bulletIcons[i].gameObject.SetActive(false);
             }
         }

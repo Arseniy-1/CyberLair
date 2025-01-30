@@ -1,30 +1,38 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(CircleCollider2D), typeof(PointEffector2D))]
 public class Magnet : MonoBehaviour
 {
     [SerializeField] private LayerMask _attractionLayer;
 
-    private IMagnetStats _magnetStats;
-    
-    private void FixedUpdate()
+    private CircleCollider2D _collider;
+    private PointEffector2D _effector;
+    private Transform _player;
+
+    public void Initialize(IMagnetStats magnetStats, Transform player)
     {
-        Collider2D[] attractables =
-            Physics2D.OverlapCircleAll(transform.position, _magnetStats.MagnetRange, _attractionLayer);
+        _player = player;
+        _collider = GetComponent<CircleCollider2D>();
+        _effector = GetComponent<PointEffector2D>();
 
-        foreach (Collider2D attractable in attractables)
-        {
-            if (attractable.TryGetComponent(out IMoveable attractableComponent))
-            {
-                Vector2 direction = (transform.position - attractable.transform.position).normalized;
+        _collider.isTrigger = true;
+        _collider.radius = magnetStats.MagnetRange;
 
-                attractableComponent.Rigidbody2D.AddForce(direction * _magnetStats.MagnetRange * Time.fixedDeltaTime,
-                    ForceMode2D.Force);
-            }
-        }
+        _effector.forceMagnitude = -magnetStats.MagnetForce;
+        _effector.forceVariation = 0f;
+        _effector.distanceScale = 1f;
+        _effector.drag = 0f;
+        _effector.angularDrag = 0f;
+        _effector.forceSource = EffectorSelection2D.Collider;
+        _effector.forceTarget = EffectorSelection2D.Rigidbody;
+        _effector.forceMode = EffectorForceMode2D.Constant;
     }
 
-    public void Initialize(IMagnetStats magnetStats)
+    private void FixedUpdate()
     {
-        _magnetStats = magnetStats;
+        if (_player != null)
+        {
+            transform.position = _player.position;
+        }
     }
 }
