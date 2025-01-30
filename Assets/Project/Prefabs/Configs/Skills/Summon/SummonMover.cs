@@ -31,13 +31,10 @@ public class SummonMover : MonoBehaviour
     
     public void MoveToNextPosition()
     {
-        var newPosition = Vector3.MoveTowards(transform.position, _targetMovePosition,
+        var newPosition = Vector2.MoveTowards(SelfPosition, _targetMovePosition,
             _summonStats.Speed * Time.fixedDeltaTime);
 
         _rigidbody.MovePosition(newPosition);
-        
-        // Vector2 direction = (_targetMovePosition - SelfPosition).normalized;
-        // _rigidbody.MovePosition(_rigidbody.position + direction * (_summonStats.Speed * Time.fixedDeltaTime));
     }
     
     private IEnumerator ChangePosition()
