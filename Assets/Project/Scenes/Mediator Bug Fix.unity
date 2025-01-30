@@ -35160,8 +35160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb061a729cc24cc1a24b0482f33515af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skills:
-  - {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
+  _skills: []
   _skillViews:
   - {fileID: 464978700}
   - {fileID: 525825191}

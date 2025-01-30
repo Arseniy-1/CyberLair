@@ -18,6 +18,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             _imps.CopyTo(temporaryImps);
             
             temporaryImps.ToList().ForEach(RemoveImp);
+            temporaryImps.ToList().ForEach(imp => Destroy(imp.gameObject));
         }
 
         public override void Initialize(EnemyTargetProvider enemyTargetProvider, IAttackerStats stats)
@@ -40,7 +41,6 @@ namespace Project.Scripts.EnemySystem.AttackTypes
         {
             imp.OnDestroyed -= RemoveImp;
             _imps.Remove(imp);
-            imp.Die();
         }
     }
 }

@@ -54,10 +54,12 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         {
             Collider2D[] enemies = Physics2D.OverlapCircleAll(_transform.position, _radius, _layerMask);
 
-            if (enemies == null || enemies.Length == 0)
-                return Vector3.zero;
-
-            return enemies[Random.Range(0, enemies.Length)].transform.position;
+            if (enemies != null && enemies.Length != 0)
+                return enemies[Random.Range(0, enemies.Length)].transform.position;
+            
+            Vector3 randomOffset = Random.insideUnitCircle;
+                
+            return _transform.position + randomOffset;
         }
 
         private Quaternion CalculateRotation(Vector3 targetPosition)
