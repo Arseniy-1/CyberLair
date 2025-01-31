@@ -274,7 +274,7 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 7940481050374619967}
   <EnemyType>k__BackingField: 7
   <EnemyStats>k__BackingField:
-    <Experience>k__BackingField: 0
+    <Experience>k__BackingField: 2
     <Speed>k__BackingField: 2
     <CollisionDamage>k__BackingField: 10
     <AttackDelay>k__BackingField: 1.5

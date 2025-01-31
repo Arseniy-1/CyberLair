@@ -21,6 +21,11 @@ public class Mediator : MonoBehaviour
 
     private void OnEnable()
     {
+        foreach (Skill skill in _skills)
+        {
+            _skillHolder.AddSkill(skill);    
+        }
+        
         _playerStats = _player.PlayerStats;
         _startPlayerStats = _player.PlayerStats.DeepCopy();
         

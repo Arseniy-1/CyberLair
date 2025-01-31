@@ -9,6 +9,7 @@ public class SummonStats :  IWeaponStats, ISummonMoveStats
     [field: SerializeField] public float MoveDelay { get; private set; }
     [field: SerializeField] public float WeaponSpread { get; private set; }
     [field: SerializeField] public int WeaponDamage { get; private set; }
+    [field: SerializeField] public int BulletPerShootCount { get; private set; } = 1;
     [field: SerializeField] public float WeaponBulletReloadTime { get; private set; }
 
     public void SetWeaponDamage(int amount)

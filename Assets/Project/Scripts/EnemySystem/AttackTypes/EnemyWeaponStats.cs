@@ -7,6 +7,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
     public class EnemyWeaponStats : IWeaponStats
     {
         [field: SerializeField] public int WeaponDamage { get; private set; }
+        [field: SerializeField] public int BulletPerShootCount { get; private set; } = 1;
         [field: SerializeField] public float WeaponSpread { get; private set; }
         [field: SerializeField] public float WeaponBulletReloadTime { get; private set; }
     }

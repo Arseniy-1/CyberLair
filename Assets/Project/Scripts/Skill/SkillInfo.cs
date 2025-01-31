@@ -1,7 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
-using Image = Microsoft.Unity.VisualStudio.Editor.Image;
 
 [Serializable]
 public class SkillInfo

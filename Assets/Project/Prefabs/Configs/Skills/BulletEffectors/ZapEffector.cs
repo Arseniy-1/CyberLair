@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
-using Project.Scripts.Weapon;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random; // Подключаем DoTween
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "New ZapEffector", menuName = "Skill/BulletEffectors/ZapEffector", order = 51)]
 public class ZapEffector : BulletEffector
@@ -43,7 +40,7 @@ public class ZapEffector : BulletEffector
             hitTargets.Add(currentTarget);
 
             // Наносим урон
-            int currentDamage = Mathf.RoundToInt(bullet.Damage * Mathf.Pow(_damageFalloff, bounce));
+            int currentDamage = Mathf.RoundToInt(Weapon.WeaponStats.WeaponDamage * Mathf.Pow(_damageFalloff, bounce));
             currentTarget.TakeDamage(currentDamage);
 
             if (bounce != 0) // Эффект молнии только для последующих отскоков

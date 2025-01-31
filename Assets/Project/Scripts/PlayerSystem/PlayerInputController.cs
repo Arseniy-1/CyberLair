@@ -1,51 +1,58 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using YG;
 
 public class PlayerInputController : MonoBehaviour
 {
-    private PlayerInput _payerInput;
+    [SerializeField] private DeviceControlls _deviceControlls;
+    [SerializeField] private DesktopControlls _desktopControlls;
 
-    public Vector2 InputDirection => _payerInput.Player.Move.ReadValue<Vector2>();
+    private PlayerInput _playerInput;
+
+    public Vector2 InputDirection => _playerInput.Land.Move.ReadValue<Vector2>();
 
     public event Action OnJumpButtonPressed;
     public event Action OnMoveButtonPressed;
     public event Action OnShootButtonPressed;
     public event Action OnSwitchButtonPressed;
-    public event Action OnAttackPerformed;
 
-    private Rect attackArea;
+    public bool _isMobile;
 
     private void Awake()
     {
-        _payerInput = new PlayerInput();
-        _payerInput.Enable();
+        _isMobile = YandexGame.EnvironmentData.isMobile;
+        _playerInput = new PlayerInput();
+        _playerInput.Enable();
 
-        attackArea = new Rect(Screen.width / 2, 0, Screen.width / 2, Screen.height);
+        SelectControlScheme();
     }
 
     private void OnEnable()
     {
-        _payerInput.Player.Shoot.performed += OnShootPreformed;
-        _payerInput.Player.Jump.performed += OnJumpPerformed;
-
-        // _payerInput.Player.Touchscreen.primaryTouch.performed += OnTouchPerformed;
+        _playerInput.Land.Shoot.performed += OnShootPerformed;
+        _playerInput.Land.Jump.performed += OnJumpPerformed;
     }
 
     private void OnDisable()
     {
-        _payerInput.Player.Shoot.performed -= OnShootPreformed;
-        _payerInput.Player.Jump.performed -= OnJumpPerformed;
-
-        // _payerInput.Player.Touchscreen.primaryTouch.performed -= OnTouchPerformed;
+        _playerInput.Land.Shoot.performed -= OnShootPerformed;
+        _playerInput.Land.Jump.performed -= OnJumpPerformed;
     }
 
     private void Update()
     {
         ReadMovementInput();
 
-        if (_payerInput.Player.Shoot.IsPressed())
+        if (!_isMobile && _playerInput.Land.Shoot.IsPressed()) // ПК и любое нажатие вызывает атаку
+        {
             OnShootButtonPressed?.Invoke();
+        }
+
+        if (_isMobile)
+        {
+            HandleMobileShooting();
+        }
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext callbackContext)
@@ -53,26 +60,11 @@ public class PlayerInputController : MonoBehaviour
         OnJumpButtonPressed?.Invoke();
     }
 
-    private void OnShootPreformed(InputAction.CallbackContext callbackContext)
+    private void OnShootPerformed(InputAction.CallbackContext callbackContext)
     {
-        OnShootButtonPressed?.Invoke();
-    }
-
-    private void OnSwitchWeaponPreformed(InputAction.CallbackContext callbackContext)
-    {
-        OnSwitchButtonPressed?.Invoke();
-    }
-
-    private void OnTouchPerformed(InputAction.CallbackContext callbackContext)
-    {
-        Vector2 touchPosition = callbackContext.ReadValue<Vector2>();
-
-        if (touchPosition.x < Screen.width / 2)
+        if (!_isMobile)
         {
-            float moveX = (touchPosition.x / (Screen.width / 2)) * 2 - 1;
-            Vector2 moveDirection = new Vector2(moveX, 0);
-
-            OnMoveButtonPressed?.Invoke();
+            OnShootButtonPressed?.Invoke();
         }
     }
 
@@ -81,6 +73,24 @@ public class PlayerInputController : MonoBehaviour
         if (InputDirection != Vector2.zero)
         {
             OnMoveButtonPressed?.Invoke();
+        }
+    }
+
+    private void SelectControlScheme()
+    {
+        if (_isMobile)
+            _deviceControlls.gameObject.SetActive(true);
+        else
+            _desktopControlls.gameObject.SetActive(true);
+    }
+
+    private void HandleMobileShooting()
+    {
+        Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+
+        if (touchPosition.x > Screen.width / 2)
+        {
+            OnShootButtonPressed?.Invoke();
         }
     }
 }

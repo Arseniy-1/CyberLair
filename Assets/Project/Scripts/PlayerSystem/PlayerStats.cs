@@ -14,6 +14,7 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats, IMa
     [field: SerializeField] public float WeaponSpread { get; private set; }
 
     [field: SerializeField] public int WeaponDamage { get; private set; }
+    [field: SerializeField] public int BulletPerShootCount { get; private set; } = 1;
     [field: SerializeField] public float WeaponBulletReloadTime { get; private set; }
     [field: SerializeField] public float WeaponRechargingTime { get; private set; }
     [field: SerializeField] public int WeaponMagazineSize { get; private set; }
@@ -29,6 +30,14 @@ public class PlayerStats : IJumpStats, IMoverStats, IIncrementalWeaponStats, IMa
         WeaponDamage = amount;
     }
 
+    public void SetBulletPerShootCount(int amount)
+    {
+        if (amount < 0)
+            return;
+
+        BulletPerShootCount = amount;
+    }
+    
     public void SetSpeed(float amount)
     {
         if (amount < 0)

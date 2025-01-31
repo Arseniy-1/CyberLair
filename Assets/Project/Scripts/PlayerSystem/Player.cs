@@ -7,7 +7,6 @@ using StateMashineSytem.PlayerStateMashine;
 
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
-
 {
     [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
     [SerializeField] private PlayerMover _playerMover;

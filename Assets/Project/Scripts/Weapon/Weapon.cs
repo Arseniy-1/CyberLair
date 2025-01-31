@@ -17,7 +17,7 @@ public abstract class Weapon : MonoBehaviour
     protected IWeaponStats _weaponStats;
 
     public bool IsReloaded => _isReloaded;
-    public bool Bullet => _bulletPrefab;
+    public IWeaponStats WeaponStats => _weaponStats;
     public event Action<Bullet> OnShooted;
 
     protected virtual void Awake()
@@ -46,6 +46,15 @@ public abstract class Weapon : MonoBehaviour
 
     public abstract bool TryAttack();
 
+    // public Bullet GetBullet(List<Bullet> clonedBullets)
+    // {
+    //     Bullet bullet = _ammoSpawner.Spawn();
+    //     clonedBullets.Add(bullet);
+    //     OnShooted?.Invoke(bullet);
+    //
+    //     return bullet;
+    // }
+
     protected virtual void Reload()
     {
         _currentTime = 0;
@@ -54,12 +63,15 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void Attack()
     {
-        Bullet bullet = _ammoSpawner.Spawn();
-        bullet.Init(_shootPoint.position, GetBulletDirection(), _weaponStats.WeaponDamage);
+        for (int i = 0; i < _weaponStats.BulletPerShootCount; i++)
+        {
+            Bullet bullet = _ammoSpawner.Spawn();
+            bullet.Init(_shootPoint.position, GetBulletDirection(), _weaponStats.WeaponDamage);
 
-        OnShooted?.Invoke(bullet);
+            OnShooted?.Invoke(bullet);
 
-        bullet.Activate();
+            bullet.Activate();
+        }
     }
 
     protected virtual Quaternion GetBulletDirection()

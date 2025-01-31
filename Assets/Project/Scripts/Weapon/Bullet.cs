@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable
 {
@@ -18,7 +16,6 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable
     public event Action<IDamageable> OnDamagableCollided;
 
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
-    public int Damage => _damage;
 
     private void Awake()
     {

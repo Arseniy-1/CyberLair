@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Passive/UpdateWeapon", order = 51)]
 public class WeaponUpdateSkill : Skill
@@ -8,8 +7,11 @@ public class WeaponUpdateSkill : Skill
     [SerializeField] private SkillConfig _magazineSizeConfig;
     [SerializeField] private SkillConfig _reloadTimeConfig;
     [SerializeField] private SkillConfig _rechargeTimeConfig;
+    [SerializeField] private SkillConfig _bulletCountConfig;
     
     [SerializeField] private ScaleEffector _scaleEffector;
+    [SerializeField] private FireZoneEffector _fireZoneEffector;
+    [SerializeField] private CriticalHitEffector _criticalHitEffector;
     
     public override void Apply(SkillData skillData)
     {
@@ -25,9 +27,14 @@ public class WeaponUpdateSkill : Skill
         skillData.PlayerStats.SetWeaponRechargeTime(skillData.StartPlayerStats.WeaponRechargingTime *
                                                           _rechargeTimeConfig.Multipliers[skillData.Level - 1]);
         
+        skillData.PlayerStats.SetBulletPerShootCount((int)(skillData.StartPlayerStats.BulletPerShootCount *
+                                                           _bulletCountConfig.Multipliers[skillData.Level - 1]));
+
         if (skillData.Level == MaxLevel)
         {
             skillData.WeaponHolder.Weapon.ApplyEffector(_scaleEffector);
+            skillData.WeaponHolder.Weapon.ApplyEffector(_fireZoneEffector);
+            skillData.WeaponHolder.Weapon.ApplyEffector(_criticalHitEffector);
         }
     }
 }
