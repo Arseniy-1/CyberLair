@@ -35097,7 +35097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5537806147820285303, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35195,9 +35195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skills:
+  - {fileID: 11400000, guid: e18572bf8d0b7d24cb7dae87a156099e, type: 2}
+  - {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
   - {fileID: 11400000, guid: 3eb791f9b569d2545a71fcb2caa40db2, type: 2}
-  - {fileID: 11400000, guid: 48f6466c7ace74ec7b973c0dfe405a61, type: 2}
-  - {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
   _skillViews:
   - {fileID: 464978700}
   - {fileID: 525825191}
@@ -35286,9 +35286,19 @@ MonoBehaviour:
   _healthSpawner:
     StartAmount: 5
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
-  _heartSpawnChance: 5
+  _heartSpawnChance: 10
   _healAmount: 20
-  _wavesConfigs: []
+  _wavesConfigs:
+  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  - {fileID: 11400000, guid: f89f4eb4bbbfd174798c226e5e574657, type: 2}
+  - {fileID: 11400000, guid: eefcda05b29f1d940903477f3d3ca2f4, type: 2}
+  - {fileID: 11400000, guid: faebe27a0f665a245be5dc010bc3a9e1, type: 2}
+  - {fileID: 11400000, guid: 96aacf38772c4984cba74bf9f5002945, type: 2}
+  - {fileID: 11400000, guid: b24a3c3404f7ca64d834418f5eab496b, type: 2}
+  - {fileID: 11400000, guid: 4fc314dbd4d965440b35451ac239d608, type: 2}
+  - {fileID: 11400000, guid: aa487ff90254f1742950c926a1c5f7c9, type: 2}
+  - {fileID: 11400000, guid: 1f7e076b5df9e544e94a94df5b9fd249, type: 2}
+  - {fileID: 11400000, guid: 3ba4a94d896748c46b9f4fc04dd32bb9, type: 2}
 --- !u!114 &1993700742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3610522453060248735, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
@@ -35389,6 +35399,18 @@ PrefabInstance:
       propertyPath: _magnet
       value: 
       objectReference: {fileID: 928932857}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<Speed>k__BackingField
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponDamage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponSpread>k__BackingField
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4579364475423813543, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -35433,6 +35455,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6501623627911074627, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6522301480285434120, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -35444,6 +35470,10 @@ PrefabInstance:
     - target: {fileID: 7361027871960293911, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324568543079457346, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _scanDelay
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

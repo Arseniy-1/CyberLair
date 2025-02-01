@@ -17,9 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: -4304947118811211038, guid: 6048dee4b8fa34db68c58b2ca18955a2, type: 3}
-    - {fileID: 4382913821471026158, guid: c5cd427ff58ac4be9b534cf856fe6a4c, type: 3}
-    - {fileID: 6014211762987851508, guid: 9629869b2fccb4cff8ddb8b4a46f5a32, type: 3}
-    - {fileID: 263878080555140060, guid: ec3d70abf72c34a64a1e9127b112b1f6, type: 3}
+    - {fileID: 4399603215803775128, guid: 75bf669011b8f42ce8b3cdbf132211e0, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -38,25 +36,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 10
       Data: 0
-    - Name: $v
-      Entry: 3
-      Data: 30
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 1
     - Name: $v
       Entry: 3
       Data: 20
@@ -68,22 +54,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: $v
       Entry: 3
-      Data: 10
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 3
-    - Name: $v
-      Entry: 3
-      Data: 10
+      Data: 15
     - Name: 
       Entry: 8
       Data: 
@@ -93,5 +67,5 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _waveDuration: 60
-  _spawnDuration: 1.5
+  _waveDuration: 15
+  _spawnDuration: 0.7

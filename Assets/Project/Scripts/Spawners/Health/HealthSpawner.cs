@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Project.Scripts.ArenaSystem;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class HealthSpawner : Spawner<HealingHeart>
@@ -58,6 +59,6 @@ public class HealthSpawner : Spawner<HealingHeart>
 
     private bool CanSpawn()
     {
-        return true;
+        return Random.Range(0, 100) < _spawnChance;
     }
 }

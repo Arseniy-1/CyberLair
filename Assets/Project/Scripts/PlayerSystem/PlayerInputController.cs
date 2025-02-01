@@ -86,11 +86,16 @@ public class PlayerInputController : MonoBehaviour
 
     private void HandleMobileShooting()
     {
-        Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-
-        if (touchPosition.x > Screen.width / 2)
+        foreach (var touch in Touchscreen.current.touches)
         {
-            OnShootButtonPressed?.Invoke();
+            if (!touch.press.isPressed) continue;
+
+            Vector2 touchPosition = touch.position.ReadValue();
+
+            if (touchPosition.x > Screen.width / 2)
+            {
+                OnShootButtonPressed?.Invoke();
+            }
         }
     }
 }

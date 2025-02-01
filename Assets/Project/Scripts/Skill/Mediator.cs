@@ -21,11 +21,6 @@ public class Mediator : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (Skill skill in _skills)
-        {
-            _skillHolder.AddSkill(skill);    
-        }
-        
         _playerStats = _player.PlayerStats;
         _startPlayerStats = _player.PlayerStats.DeepCopy();
         
@@ -54,8 +49,7 @@ public class Mediator : MonoBehaviour
     {
         _skillHolder.AddSkill(skill);
 
-        var skillData = new SkillData(_playerWeaponHolder, _playerStats, _startPlayerStats,
-            _skillHolder.Skills[skill]);
+        var skillData = new SkillData(_playerWeaponHolder, _playerStats, _startPlayerStats, _skillHolder.Skills[skill]);
 
         skill.Apply(skillData);
 
@@ -70,7 +64,7 @@ public class Mediator : MonoBehaviour
             return;
         
         List<Skill> availableSkills = _skills
-            .Where(skill => !_skillHolder.Skills.TryGetValue(skill, out int skillLevel) || skillLevel < skill.MaxLevel - 1)
+            .Where(skill => !_skillHolder.Skills.TryGetValue(skill, out int skillLevel) || skillLevel < skill.MaxLevel)
             .ToList();
         
         if (availableSkills.Count == 0)

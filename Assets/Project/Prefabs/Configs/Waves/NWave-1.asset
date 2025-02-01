@@ -54,5 +54,5 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _waveDuration: 30
+  _waveDuration: 20
   _spawnDuration: 1.5

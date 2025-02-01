@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79edefd2bd3e49f792033216dfcf45fe, type: 3}
   m_Name: CriticalHitEffector
   m_EditorClassIdentifier: 
-  _criticalHitChance: 0
+  _criticalHitChance: 25

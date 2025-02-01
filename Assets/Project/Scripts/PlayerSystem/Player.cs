@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
@@ -108,6 +109,6 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     public void Die()
     {
-        Debug.Log("Player Die");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

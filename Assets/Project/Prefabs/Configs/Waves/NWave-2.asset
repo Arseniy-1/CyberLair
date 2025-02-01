@@ -16,7 +16,6 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 4382913821471026158, guid: c5cd427ff58ac4be9b534cf856fe6a4c, type: 3}
     - {fileID: -4304947118811211038, guid: 6048dee4b8fa34db68c58b2ca18955a2, type: 3}
     - {fileID: 4399603215803775128, guid: 75bf669011b8f42ce8b3cdbf132211e0, type: 3}
     SerializedBytesString: 
@@ -37,7 +36,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -46,7 +45,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 3
-      Data: 10
+      Data: 25
     - Name: 
       Entry: 8
       Data: 
@@ -56,18 +55,6 @@ MonoBehaviour:
     - Name: $k
       Entry: 10
       Data: 1
-    - Name: $v
-      Entry: 3
-      Data: 15
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 2
     - Name: $v
       Entry: 3
       Data: 5
@@ -80,5 +67,5 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _waveDuration: 40
-  _spawnDuration: 1.2
+  _waveDuration: 15
+  _spawnDuration: 0.8

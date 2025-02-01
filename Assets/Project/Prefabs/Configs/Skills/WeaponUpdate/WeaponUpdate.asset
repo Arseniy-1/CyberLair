@@ -47,4 +47,13 @@ MonoBehaviour:
     - 0.7
     - 0.6
     - 0.5
+  _bulletCountConfig:
+    _multipliers:
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
   _scaleEffector: {fileID: 11400000, guid: fadc824746346024e8877fd9f967aaa7, type: 2}
+  _fireZoneEffector: {fileID: 11400000, guid: 4b28fee20e298b94683ca76b257b742c, type: 2}
+  _criticalHitEffector: {fileID: 11400000, guid: ae890aaa3ecd9244399f0b2ae37104c3, type: 2}

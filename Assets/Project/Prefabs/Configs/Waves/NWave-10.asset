@@ -44,7 +44,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 3
-      Data: 4
+      Data: 5000
     - Name: 
       Entry: 8
       Data: 
@@ -54,5 +54,5 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _waveDuration: 10
-  _spawnDuration: 0.4
+  _waveDuration: 120
+  _spawnDuration: 0.05
