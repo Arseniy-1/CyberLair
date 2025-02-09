@@ -1,6 +1,6 @@
 ﻿public interface ISummonMoveStats : IMoverStats
 {
-    float Speed { get; }
+    Speed Speed { get; }
     float MoveRadius { get; }
     float MoveDelay { get; }
 }

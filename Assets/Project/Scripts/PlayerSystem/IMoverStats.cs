@@ -1,4 +1,4 @@
 ﻿public interface IMoverStats
 {
-    float Speed { get; }
+    Speed Speed { get; }
 }

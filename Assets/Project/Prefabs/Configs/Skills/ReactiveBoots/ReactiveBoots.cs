@@ -9,14 +9,5 @@ public class ReactiveBoots : Skill
 
     public override void Apply(SkillData skillData)
     {
-        skillData.PlayerStats.SetSpeed(skillData.StartPlayerStats.Speed *
-                                       _speedConfig.Multipliers[skillData.Level - 1]);
-
-
-        skillData.PlayerStats.SetJumpRealoadTime(skillData.StartPlayerStats.JumpReloadTime *
-                                                 _jumpRealoadTimeConfig.Multipliers[skillData.Level - 1]);
-        
-        skillData.PlayerStats.SetJumpTime(skillData.StartPlayerStats.JumpTime *
-                                          _jumpTimeConfig.Multipliers[skillData.Level - 1]);
     }
 }

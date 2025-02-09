@@ -1,5 +1,5 @@
 ﻿public interface IMagnetStats
 {
-    float MagnetRange { get; }
-    float MagnetForce { get; }
+    MagnetRange MagnetRange { get; }
+    MagnetForce MagnetForce { get; }
 }

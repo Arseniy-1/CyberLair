@@ -26,6 +26,6 @@ public class PlayerMover : MonoBehaviour
 
     public void Run()
     {
-        _rigidbody2D.velocity = _playerInputController.InputDirection.normalized * _moverStats.Speed;
+        // _rigidbody2D.velocity = _playerInputController.InputDirection.normalized * _moverStats.Speed;
     }
 }

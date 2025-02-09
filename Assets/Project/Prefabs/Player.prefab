@@ -136,12 +136,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474391713368416704}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4579364475423813543}
+  m_Father: {fileID: 3564388593015311227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8422871491206318851
 MonoBehaviour:
@@ -155,8 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 100
-  CurrentValue: 100
+  <BaseValue>k__BackingField: 0
 --- !u!1 &577191666399518174
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,11 +704,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3564388593015311227}
   - {fileID: 747776050063612614}
   - {fileID: 2199191769573976124}
   - {fileID: 5688379715743855141}
-  - {fileID: 8833126005563002850}
-  - {fileID: 2681664527010328091}
   - {fileID: 5272659400827683150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -738,18 +736,18 @@ MonoBehaviour:
   _magnet: {fileID: 0}
   <PlayerStats>k__BackingField:
     <Health>k__BackingField: {fileID: 8422871491206318851}
-    <Speed>k__BackingField: 3
-    <JumpDistance>k__BackingField: 3
-    <JumpTime>k__BackingField: 0.45
-    <JumpReloadTime>k__BackingField: 2.5
-    <WeaponSpread>k__BackingField: 0.1
-    <WeaponDamage>k__BackingField: 30
-    <BulletPerShootCount>k__BackingField: 1
-    <WeaponBulletReloadTime>k__BackingField: 0.4
-    <WeaponRechargingTime>k__BackingField: 1
-    <WeaponMagazineSize>k__BackingField: 5
-    <MagnetRange>k__BackingField: 5
-    <MagnetForce>k__BackingField: 0.05
+    <Speed>k__BackingField: {fileID: 0}
+    <JumpDistance>k__BackingField: {fileID: 0}
+    <JumpTime>k__BackingField: {fileID: 0}
+    <JumpReloadTime>k__BackingField: {fileID: 0}
+    <WeaponSpread>k__BackingField: {fileID: 0}
+    <WeaponDamage>k__BackingField: {fileID: 0}
+    <BulletPerShootCount>k__BackingField: {fileID: 0}
+    <WeaponBulletReloadTime>k__BackingField: {fileID: 0}
+    <WeaponRechargingTime>k__BackingField: {fileID: 0}
+    <WeaponMagazineSize>k__BackingField: {fileID: 0}
+    <MagnetRange>k__BackingField: {fileID: 0}
+    <MagnetForce>k__BackingField: {fileID: 0}
 --- !u!114 &759872763843480161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,7 +1677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0758ddf51679f974083db911b3492fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 8422871491206318851}
+  _stats: {fileID: 0}
   StatsBarView: {fileID: 1784829041958984027}
 --- !u!1 &4152770025089855069
 GameObject:
@@ -2886,12 +2884,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6942293828151828099}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4579364475423813543}
+  m_Father: {fileID: 3564388593015311227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4387813712044711947
 MonoBehaviour:
@@ -3989,6 +3987,39 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8927535424081533640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3564388593015311227}
+  m_Layer: 9
+  m_Name: Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3564388593015311227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8927535424081533640}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8833126005563002850}
+  - {fileID: 2681664527010328091}
+  m_Father: {fileID: 4579364475423813543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9001978720418436109
 GameObject:
   m_ObjectHideFlags: 0

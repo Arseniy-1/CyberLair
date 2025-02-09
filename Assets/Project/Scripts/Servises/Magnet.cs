@@ -16,9 +16,9 @@ public class Magnet : MonoBehaviour
         _effector = GetComponent<PointEffector2D>();
 
         _collider.isTrigger = true;
-        _collider.radius = magnetStats.MagnetRange;
+        // _collider.radius = magnetStats.MagnetRange;
 
-        _effector.forceMagnitude = -magnetStats.MagnetForce;
+        // _effector.forceMagnitude = -magnetStats.MagnetForce;
         _effector.forceVariation = 0f;
         _effector.distanceScale = 1f;
         _effector.drag = 0f;

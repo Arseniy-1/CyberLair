@@ -10,11 +10,5 @@ public class HealthSkill : Skill
     
     public override void Apply(SkillData skillData)
     {
-        skillData.PlayerStats.Health.SetHealth((int)(skillData.StartPlayerStats.Health.MaxAmount * _skillConfig.Multipliers[skillData.Level - 1]));
-        
-        if (skillData.Level == MaxLevel)
-        {
-            Instantiate(_ShieldPrefab, skillData.WeaponHolder.transform);
-        }
     }
 }

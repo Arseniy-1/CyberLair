@@ -30,10 +30,10 @@ public class Summon : MonoBehaviour
     {
         _mover.Initialize(targetTransform, _summonStats);
 
-        _nominalDamage = _summonStats.WeaponDamage;
-        _nominalSpread = _summonStats.WeaponSpread;
-        _nominalReloadTime = _summonStats.WeaponBulletReloadTime;
-        _nominalSpeed = _summonStats.Speed;
+        _nominalDamage = (int)_summonStats.WeaponDamage.CurrentValue;
+        _nominalSpread = _summonStats.WeaponSpread.CurrentValue;
+        _nominalReloadTime = _summonStats.WeaponBulletReloadTime.CurrentValue;
+        _nominalSpeed = _summonStats.Speed.CurrentValue;
         
         _weaponHolder.Weapon.Initialize(_summonStats);
     }

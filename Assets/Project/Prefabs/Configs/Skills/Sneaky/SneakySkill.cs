@@ -11,16 +11,6 @@ public class SneakySkill : Skill
 
     public override void Apply(SkillData skillData)
     {
-        skillData.PlayerStats.SetJumpDistance(skillData.StartPlayerStats.JumpDistance *
-                                              _jumpConfig.Multipliers[skillData.Level - 1]);
 
-
-        skillData.PlayerStats.SetMagnetRange(skillData.StartPlayerStats.MagnetRange *
-                                       _magnetRangeConfig.Multipliers[skillData.Level - 1]);
-
-        if (skillData.Level == MaxLevel)
-        {
-            Instantiate(_invulnerabilityPrefab, skillData.WeaponHolder.transform);
-        }
     }
 }

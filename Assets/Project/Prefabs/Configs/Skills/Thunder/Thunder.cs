@@ -51,7 +51,6 @@ namespace Project.Scripts.Weapon.ActiveSkills
                 if (strickenCollider.TryGetComponent(out Health health))
                 {
                     health.TakeDamage(_currentDamage);
-                    _viewInstance.transform.position = health.transform.position;
                 }
             }
         }

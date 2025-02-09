@@ -21,7 +21,7 @@ public class CriticalHitEffector : BulletEffector
     {
         if (Random.Range(0, 100) < _criticalHitChance)
         {
-            damageable.TakeDamage(Weapon.WeaponStats.WeaponDamage);
+            // damageable.TakeDamage(Weapon.WeaponStats.WeaponDamage);
         }
     }
 }

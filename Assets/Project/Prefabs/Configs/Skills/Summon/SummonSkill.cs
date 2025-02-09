@@ -18,20 +18,5 @@ public class SummonSkill : Skill
 
     public override void Apply(SkillData skillData)
     {
-        if (!_summon)
-        {
-            _summon = Instantiate(_summonPrefab);
-            _summon.Initialize(skillData.WeaponHolder.transform);
-        }
-
-        if (skillData.Level == MaxLevel - 1)
-            _summon.ApplyWeapon(_finalWeaponPrefab);
-
-        var speed = _speedSkillConfig.Multipliers[skillData.Level];
-        var damage = (int)_damageSkillConfig.Multipliers[skillData.Level];
-        var reload = (int)_realoadSkillConfig.Multipliers[skillData.Level];
-        var spread = (int)_spreadSkillConfig.Multipliers[skillData.Level];
-
-        _summon.ApplyStats(speed, damage, reload, spread);
     }
 }

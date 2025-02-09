@@ -7,7 +7,7 @@ public class EnemyStats : IMoverStats, IAttackerStats
 {
     [field: SerializeField] public int Experience { get; private set; }
 
-    [field: SerializeField] public float Speed { get; private set; }
+    [field: SerializeField] public Speed Speed { get; private set; }
 
     [field: SerializeField] public int CollisionDamage { get; private set; }
     [field: SerializeField] public float AttackDelay { get; private set; }

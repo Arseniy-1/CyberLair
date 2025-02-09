@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
+using UnityEngine.Serialization;
 
 public class Mediator : MonoBehaviour
 {
-    [SerializeField] private List<Skill> _skills;
+    [SerializeField] private List<HardSkill> _hardSkills;
+    [SerializeField] private List<Skill> _availableSkills;
     [SerializeField] private List<SkillView> _skillViews;
 
     [SerializeField] private Player _player;
@@ -22,7 +24,6 @@ public class Mediator : MonoBehaviour
     private void OnEnable()
     {
         _playerStats = _player.PlayerStats;
-        _startPlayerStats = _player.PlayerStats.DeepCopy();
         
         _level.LevelRaised += ShowSkills;
 
@@ -63,8 +64,8 @@ public class Mediator : MonoBehaviour
         if (_skillViews.IsNullOrEmpty())
             return;
         
-        List<Skill> availableSkills = _skills
-            .Where(skill => !_skillHolder.Skills.TryGetValue(skill, out int skillLevel) || skillLevel < skill.MaxLevel)
+        List<Skill> availableSkills = _availableSkills
+            .Where(skill => !_skillHolder.Skills.TryGetValue(skill, out int skillLevel))
             .ToList();
         
         if (availableSkills.Count == 0)

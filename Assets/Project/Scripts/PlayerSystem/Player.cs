@@ -49,6 +49,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     private void Update()
     {
+        PlayerStats.Update();
         _entityStateMachine.Update();
     }
 
@@ -69,11 +70,10 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
             state.Initialize(_entityStateMachine);
         }
 
-        _destroyer.Initialize(_health, this);
+        // _destroyer.Initialize(_health, this);
         _playerMover.Initialize(_playerInputController, _rigidbody2D, PlayerStats);
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
-        _jumper.Initialize(PlayerStats);
-        _health.ResetHealth();
+        // _jumper.Initialize(PlayerStats);
         _magnet.Initialize(PlayerStats, transform);
         
         _weaponHolder.Weapon.Initialize(PlayerStats);

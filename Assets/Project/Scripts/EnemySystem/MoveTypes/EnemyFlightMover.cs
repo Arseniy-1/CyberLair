@@ -12,7 +12,7 @@ namespace Project.Scripts.EnemySystem.MoveTypes
             if(EnemyTargetProvider.HasPlayer == false)
                 return;
             
-            EnemyRigidbody.velocity += (Direction * (MoverStats.Speed * Time.fixedDeltaTime)).normalized;
+            // EnemyRigidbody.velocity += (Direction * (MoverStats.Speed * Time.fixedDeltaTime)).normalized;
             EnemyRigidbody.velocity = Vector2.ClampMagnitude(EnemyRigidbody.velocity, _maxSpeed);
         }
     }

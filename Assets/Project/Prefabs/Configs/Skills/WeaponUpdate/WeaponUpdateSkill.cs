@@ -3,38 +3,12 @@
 [CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Passive/UpdateWeapon", order = 51)]
 public class WeaponUpdateSkill : Skill
 {
-    [SerializeField] private SkillConfig _damageConfig;
-    [SerializeField] private SkillConfig _magazineSizeConfig;
-    [SerializeField] private SkillConfig _reloadTimeConfig;
-    [SerializeField] private SkillConfig _rechargeTimeConfig;
-    [SerializeField] private SkillConfig _bulletCountConfig;
-    
-    [SerializeField] private ScaleEffector _scaleEffector;
-    [SerializeField] private FireZoneEffector _fireZoneEffector;
-    [SerializeField] private CriticalHitEffector _criticalHitEffector;
+    [SerializeField] private StatModifier _damageStatModifier;
+    [SerializeField] private StatModifier _damageStatModifier2;
     
     public override void Apply(SkillData skillData)
     {
-        skillData.PlayerStats.SetDamage((int)(skillData.StartPlayerStats.WeaponDamage *
-                                                   _damageConfig.Multipliers[skillData.Level - 1]));
-        
-        skillData.PlayerStats.SetMagazineSize((int)(skillData.StartPlayerStats.WeaponMagazineSize *
-                                                    _magazineSizeConfig.Multipliers[skillData.Level - 1]));
-        
-        skillData.PlayerStats.SetWeaponRealoadTime(skillData.StartPlayerStats.WeaponBulletReloadTime *
-                                                    _reloadTimeConfig.Multipliers[skillData.Level - 1]);
-        
-        skillData.PlayerStats.SetWeaponRechargeTime(skillData.StartPlayerStats.WeaponRechargingTime *
-                                                          _rechargeTimeConfig.Multipliers[skillData.Level - 1]);
-        
-        skillData.PlayerStats.SetBulletPerShootCount((int)(skillData.StartPlayerStats.BulletPerShootCount *
-                                                           _bulletCountConfig.Multipliers[skillData.Level - 1]));
-
-        if (skillData.Level == MaxLevel)
-        {
-            skillData.WeaponHolder.Weapon.ApplyEffector(_scaleEffector);
-            skillData.WeaponHolder.Weapon.ApplyEffector(_fireZoneEffector);
-            skillData.WeaponHolder.Weapon.ApplyEffector(_criticalHitEffector);
-        }
+        skillData.PlayerStats.WeaponDamage.AddModifier(_damageStatModifier);
+        skillData.PlayerStats.WeaponDamage.AddModifier(_damageStatModifier2);
     }
 }

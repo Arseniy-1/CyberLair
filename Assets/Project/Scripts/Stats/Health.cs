@@ -1,55 +1,76 @@
 using System;
-using Sirenix.OdinInspector;
-using UnityEngine;
 
-public class Health : Stats
+[System.Serializable]
+public class Health : BaseStat
 {
     public event Action LostHealth;
-    
+
     public void Heal(int amount)
     {
-        if (amount <= 0)
-            return;
-
-        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, MaxValue);
-
-        RaiseAmountChanged();
     }
 
     public void TakeDamage(int amount)
     {
-        if (amount <= 0)
-            return;
 
-        CurrentValue = Mathf.Clamp(CurrentValue - amount, 0, MaxValue);
-
-        if (CurrentValue == 0)
-            LostHealth?.Invoke();
-
-        RaiseAmountChanged();
     }
 
     public void SetHealth(int amount)
     {
-        if (amount <= 0)
-            return;
 
-        MaxValue = amount;
     }
+}
 
-    public Health Copy()
-    {
-        Health copy = gameObject.AddComponent<Health>();
-        copy.MaxValue = MaxValue;
-        copy.CurrentValue = CurrentValue;
-        
-        return copy;
-    }
+[System.Serializable]
+public class JumpDistance : BaseStat
+{
+}
 
-    [Button]
-    public void ResetHealth()
-    {
-        RaiseAmountChanged();
-        CurrentValue = MaxValue;
-    }
+[System.Serializable]
+public class JumpTime : BaseStat
+{
+}
+
+[System.Serializable]
+public class JumpReloadTime : BaseStat
+{
+}
+
+[System.Serializable]
+public class WeaponSpread : BaseStat
+{
+}
+
+[System.Serializable]
+public class WeaponDamage : BaseStat
+{
+}
+
+[System.Serializable]
+public class BulletPerShootCount : BaseStat
+{
+}
+
+[System.Serializable]
+public class WeaponBulletReloadTime : BaseStat
+{
+}
+
+[System.Serializable]
+public class WeaponRechargingTime : BaseStat
+{
+}
+
+[System.Serializable]
+public class WeaponMagazineSize : BaseStat
+{
+}
+
+[System.Serializable]
+public class MagnetRange : BaseStat
+{
+}
+
+[System.Serializable]
+public class MagnetForce : BaseStat
+{
 }

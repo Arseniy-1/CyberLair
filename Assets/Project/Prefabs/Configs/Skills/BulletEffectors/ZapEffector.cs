@@ -40,8 +40,8 @@ public class ZapEffector : BulletEffector
             hitTargets.Add(currentTarget);
 
             // Наносим урон
-            int currentDamage = Mathf.RoundToInt(Weapon.WeaponStats.WeaponDamage * Mathf.Pow(_damageFalloff, bounce));
-            currentTarget.TakeDamage(currentDamage);
+            // int currentDamage = Mathf.RoundToInt(Weapon.WeaponStats.WeaponDamage * Mathf.Pow(_damageFalloff, bounce));
+            // currentTarget.TakeDamage(currentDamage);
 
             if (bounce != 0) // Эффект молнии только для последующих отскоков
                 DrawLightning(currentPosition, currentTarget.transform.position, bullet);

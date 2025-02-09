@@ -9,7 +9,7 @@ namespace Project.Scripts.EnemySystem.MoveTypes
             if(EnemyTargetProvider.HasPlayer == false)
                 return;
 
-            EnemyRigidbody.MovePosition(EnemyPrefab.Position + Direction * (MoverStats.Speed * Time.fixedDeltaTime));
+            // EnemyRigidbody.MovePosition(EnemyPrefab.Position + Direction * (MoverStats.Speed * Time.fixedDeltaTime));
         }
     }
 }

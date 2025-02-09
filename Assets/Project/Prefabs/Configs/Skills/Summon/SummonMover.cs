@@ -32,7 +32,7 @@ public class SummonMover : MonoBehaviour
     public void MoveToNextPosition()
     {
         var newPosition = Vector2.MoveTowards(SelfPosition, _targetMovePosition,
-            _summonStats.Speed * Time.fixedDeltaTime);
+            _summonStats.Speed.CurrentValue * Time.fixedDeltaTime);
 
         _rigidbody.MovePosition(newPosition);
     }

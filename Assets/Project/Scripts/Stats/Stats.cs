@@ -16,4 +16,3 @@ public class Stats : MonoBehaviour
         AmountChanged?.Invoke(CurrentValue, MaxValue);
     }
 }
-

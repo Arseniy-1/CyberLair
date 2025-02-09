@@ -9,8 +9,8 @@ public class IncrementalReloadWeapon : Weapon
 
     private Coroutine _reloadCoroutine;
 
-    private int _magazineSize => ((IIncrementalWeaponStats)_weaponStats).WeaponMagazineSize;
-    private float _currentRecharchingTime => ((IIncrementalWeaponStats)_weaponStats).WeaponRechargingTime;
+    private int _magazineSize => (int)((IIncrementalWeaponStats)_weaponStats).WeaponMagazineSize.CurrentValue;
+    private float _currentRecharchingTime => ((IIncrementalWeaponStats)_weaponStats).WeaponRechargingTime.CurrentValue;
 
     public event Action<int, int> OnAmmoUpdated;
 

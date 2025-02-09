@@ -37,23 +37,14 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (_currentTime < _weaponStats.WeaponBulletReloadTime && !_isReloaded)
+        if (_currentTime < _weaponStats.WeaponBulletReloadTime.CurrentValue && !_isReloaded)
             _currentTime += Time.deltaTime;
 
-        if (_currentTime >= _weaponStats.WeaponBulletReloadTime)
+        if (_currentTime >= _weaponStats.WeaponBulletReloadTime.CurrentValue)
             Reload();
     }
 
     public abstract bool TryAttack();
-
-    // public Bullet GetBullet(List<Bullet> clonedBullets)
-    // {
-    //     Bullet bullet = _ammoSpawner.Spawn();
-    //     clonedBullets.Add(bullet);
-    //     OnShooted?.Invoke(bullet);
-    //
-    //     return bullet;
-    // }
 
     protected virtual void Reload()
     {
@@ -63,10 +54,10 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void Attack()
     {
-        for (int i = 0; i < _weaponStats.BulletPerShootCount; i++)
+        for (int i = 0; i < _weaponStats.BulletPerShootCount.CurrentValue; i++)
         {
             Bullet bullet = _ammoSpawner.Spawn();
-            bullet.Init(_shootPoint.position, GetBulletDirection(), _weaponStats.WeaponDamage);
+            bullet.Init(_shootPoint.position, GetBulletDirection(), (int)(_weaponStats.WeaponDamage.CurrentValue));
 
             OnShooted?.Invoke(bullet);
 
@@ -77,7 +68,7 @@ public abstract class Weapon : MonoBehaviour
     protected virtual Quaternion GetBulletDirection()
     {
         Quaternion rotation = transform.rotation;
-        rotation.z += Random.Range(-_weaponStats.WeaponSpread, _weaponStats.WeaponSpread);
+        rotation.z += Random.Range(-_weaponStats.WeaponSpread.CurrentValue, _weaponStats.WeaponSpread.CurrentValue);
         return rotation;
     }
 

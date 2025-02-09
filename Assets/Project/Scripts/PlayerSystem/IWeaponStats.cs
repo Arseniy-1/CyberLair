@@ -1,7 +1,7 @@
 ﻿public interface IWeaponStats
 {
-    int WeaponDamage { get; }
-    int BulletPerShootCount { get; }
-    float WeaponSpread { get; }
-    float WeaponBulletReloadTime { get; }
+    WeaponDamage WeaponDamage { get; }
+    BulletPerShootCount BulletPerShootCount { get; }
+    WeaponSpread WeaponSpread { get; }
+    WeaponBulletReloadTime WeaponBulletReloadTime { get; }
 }

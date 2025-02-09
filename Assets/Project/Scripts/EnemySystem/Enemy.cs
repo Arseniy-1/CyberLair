@@ -73,7 +73,6 @@ namespace Project.Scripts.EnemySystem
 
         public void ResetState()
         {
-            Health.ResetHealth();
             _stateMachine.SwitchState<EnemyIdleState>();
         }
 
