@@ -7,6 +7,7 @@ public class Health : BaseStat
 
     public void Heal(int amount)
     {
+        CurrentValue += amount;
     }
 
     public void TakeDamage(int amount)

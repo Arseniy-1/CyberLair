@@ -44,7 +44,7 @@ public class PlayerInputController : MonoBehaviour
     {
         ReadMovementInput();
 
-        if (!_isMobile && _playerInput.Land.Shoot.IsPressed()) // ПК и любое нажатие вызывает атаку
+        if (!_isMobile && _playerInput.Land.Shoot.IsPressed())
         {
             OnShootButtonPressed?.Invoke();
         }

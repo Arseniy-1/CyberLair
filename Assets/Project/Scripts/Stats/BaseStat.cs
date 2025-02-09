@@ -53,7 +53,6 @@ public abstract class BaseStat
     public void RemoveModifier(StatModifier modifier)
     {
         modifier.ValueExpired -= RemoveModifier;
-        // modifiers.Remove(modifier);
         CalculateCurrentValue();
     }
 }
