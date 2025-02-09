@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 
 public class Mediator : MonoBehaviour
@@ -16,7 +17,7 @@ public class Mediator : MonoBehaviour
     [SerializeField] private Level _level;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
 
-    private int _skillsCount = 3;
+    private readonly int _skillsCount = 3;
 
     private PlayerStats _playerStats;
 
@@ -52,21 +53,14 @@ public class Mediator : MonoBehaviour
         _availableSkills.Remove(skill);
         _raisedSkills.Add(skill);
 
-        foreach (var hardSkill in _hardSkills)
+        foreach (var hardSkill in _hardSkills.Where(hardSkill => hardSkill.IsAvailable(_raisedSkills)))
         {
-            if (hardSkill.IsAvailable(_raisedSkills))
-            {
-                Debug.Log("Raised");
-                _availableSkills.Add(hardSkill);
-            }
+            _availableSkills.Add(hardSkill);
         }
         
-        foreach (var mutantSkill in _mutantSkills)
+        foreach (var mutantSkill in _mutantSkills.Where(mutantSkill => mutantSkill.IsAvailable(_raisedSkills)))
         {
-            if (mutantSkill.IsAvailable(_raisedSkills))
-            {
-                _availableSkills.Add(mutantSkill);
-            }
+            _availableSkills.Add(mutantSkill);
         }
         
         var skillData = new SkillData(_playerWeaponHolder, _playerStats);

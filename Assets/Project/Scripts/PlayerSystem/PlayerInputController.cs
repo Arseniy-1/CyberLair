@@ -81,7 +81,7 @@ public class PlayerInputController : MonoBehaviour
         if (_isMobile)
             _deviceControlls.gameObject.SetActive(true);
         else
-            _desktopControlls.gameObject.SetActive(true);
+            _desktopControlls.gameObject.SetActive(false);
     }
 
     private void HandleMobileShooting()
@@ -91,8 +91,9 @@ public class PlayerInputController : MonoBehaviour
             if (!touch.press.isPressed) continue;
 
             Vector2 touchPosition = touch.position.ReadValue();
+            var shootPosition = Screen.width / 2;
 
-            if (touchPosition.x > Screen.width / 2)
+            if (touchPosition.x > shootPosition)
             {
                 OnShootButtonPressed?.Invoke();
             }

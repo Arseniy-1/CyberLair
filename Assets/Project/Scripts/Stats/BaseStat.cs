@@ -7,15 +7,20 @@ using System.Linq;
 public abstract class BaseStat
 {
     [field: SerializeField] public float BaseValue { get; protected set; }
-    private List<StatModifier> modifiers = new List<StatModifier>();
+    private List<StatModifier> modifiers = new();
 
     [SerializeField] public float CurrentValue = 0;
 
-    public void UpdateModifiers(float deltaTime)
+    public void CalculateCurrentValue()
+    {
+        CurrentValue = CalculateValue();
+    }
+
+    public void UpdateModifiers()
     {
         for(int i = 0; i < modifiers.Count; i++)
         {
-            modifiers[i].Update(deltaTime);
+            modifiers[i].Update();
             
             if (modifiers[i].HasExpired())
             {
@@ -34,25 +39,21 @@ public abstract class BaseStat
         
         finalValue += additive;
 
-        foreach (var mod in modifiers.Where(mod => mod.Type == ModifierType.Multiplicative))
-        {
-            finalValue *= mod.Value;
-        }
-
-        return finalValue;
+        return modifiers.Where(mod => mod.Type == ModifierType.Multiplicative)
+            .Aggregate(finalValue, (current, mod) => current * mod.Value);
     }
 
     public void AddModifier(StatModifier modifier)
     {
         modifier.ValueExpired += RemoveModifier;
         modifiers.Add(modifier);
-        CurrentValue = CalculateValue();
+        CalculateCurrentValue();
     }
 
     public void RemoveModifier(StatModifier modifier)
     {
         modifier.ValueExpired -= RemoveModifier;
-        modifiers.Remove(modifier);
-        CurrentValue = CalculateValue();
+        // modifiers.Remove(modifier);
+        CalculateCurrentValue();
     }
 }

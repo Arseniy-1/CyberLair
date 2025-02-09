@@ -1,6 +1,6 @@
 ﻿public interface IJumpStats
 {
-    float JumpDistance { get; }
-    float JumpTime { get; }
-    float JumpReloadTime { get; }
+    public JumpDistance JumpDistance { get;}
+    public JumpTime JumpTime { get;}
+    public JumpReloadTime JumpReloadTime { get;}
 }

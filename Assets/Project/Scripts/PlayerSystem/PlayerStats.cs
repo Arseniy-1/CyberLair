@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats
+public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, IJumpStats
 {
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Speed Speed { get; private set; }
@@ -18,22 +18,37 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats
     [field: SerializeField] public MagnetRange MagnetRange { get; private set; }
     [field: SerializeField] public MagnetForce MagnetForce { get; private set; }
 
+    public void Initialize()
+    {
+        Health.CalculateCurrentValue();
+        Speed.CalculateCurrentValue();
+        JumpDistance.CalculateCurrentValue();
+        JumpTime.CalculateCurrentValue();
+        JumpReloadTime.CalculateCurrentValue();
+        WeaponSpread.CalculateCurrentValue();
+        WeaponDamage.CalculateCurrentValue();
+        BulletPerShootCount.CalculateCurrentValue();
+        WeaponBulletReloadTime.CalculateCurrentValue();
+        WeaponRechargingTime.CalculateCurrentValue();
+        WeaponMagazineSize.CalculateCurrentValue();
+        MagnetRange.CalculateCurrentValue();
+        MagnetForce.CalculateCurrentValue();
+    }
+    
     public void Update()
     {
-        float deltaTime = Time.deltaTime;
-        Debug.Log(deltaTime);
-        Health.UpdateModifiers(deltaTime);
-        Speed.UpdateModifiers(deltaTime);
-        JumpDistance.UpdateModifiers(deltaTime);
-        JumpTime.UpdateModifiers(deltaTime);
-        JumpReloadTime.UpdateModifiers(deltaTime);
-        WeaponSpread.UpdateModifiers(deltaTime);
-        WeaponDamage.UpdateModifiers(deltaTime);
-        BulletPerShootCount.UpdateModifiers(deltaTime);
-        WeaponBulletReloadTime.UpdateModifiers(deltaTime);
-        WeaponRechargingTime.UpdateModifiers(deltaTime);
-        WeaponMagazineSize.UpdateModifiers(deltaTime);
-        MagnetRange.UpdateModifiers(deltaTime);
-        MagnetForce.UpdateModifiers(deltaTime);
+        Health.UpdateModifiers();
+        Speed.UpdateModifiers();
+        JumpDistance.UpdateModifiers();
+        JumpTime.UpdateModifiers();
+        JumpReloadTime.UpdateModifiers();
+        WeaponSpread.UpdateModifiers();
+        WeaponDamage.UpdateModifiers();
+        BulletPerShootCount.UpdateModifiers();
+        WeaponBulletReloadTime.UpdateModifiers();
+        WeaponRechargingTime.UpdateModifiers();
+        WeaponMagazineSize.UpdateModifiers();
+        MagnetRange.UpdateModifiers();
+        MagnetForce.UpdateModifiers();
     }
 }

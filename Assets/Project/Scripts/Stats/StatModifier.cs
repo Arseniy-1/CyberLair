@@ -13,11 +13,11 @@ public class StatModifier
 
     public event Action<StatModifier> ValueExpired;
 
-    public void Update(float deltaTime)
+    public void Update()
     {
         if (Duration > 0f)
         {
-            _elapsedTime += deltaTime;
+            _elapsedTime += Time.deltaTime;
         }
 
         if (HasExpired())

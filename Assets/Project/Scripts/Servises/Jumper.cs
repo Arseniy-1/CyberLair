@@ -34,12 +34,12 @@ public class Jumper : MonoBehaviour
         {
             _elapsedTime += Time.fixedDeltaTime;
 
-            float progress = _elapsedTime / _jumpStats.JumpTime;
+            float progress = _elapsedTime / _jumpStats.JumpTime.CurrentValue;
 
             if (progress < 1f)
             {
                 var newPosition = Vector3.MoveTowards(transform.position, _targetPosition,
-                    _jumpStats.JumpDistance * Time.fixedDeltaTime / _jumpStats.JumpTime);
+                    _jumpStats.JumpDistance.CurrentValue * Time.fixedDeltaTime / _jumpStats.JumpTime.CurrentValue);
                 
                 _rigidbody.MovePosition(newPosition);
             }
@@ -55,7 +55,7 @@ public class Jumper : MonoBehaviour
         {
             _cooldownTimer += Time.deltaTime;
 
-            if (_cooldownTimer >= _jumpStats.JumpReloadTime)
+            if (_cooldownTimer >= _jumpStats.JumpReloadTime.CurrentValue)
             {
                 _isOnCooldown = false;
                 _cooldownTimer = 0f;
@@ -76,7 +76,7 @@ public class Jumper : MonoBehaviour
             if (direction == Vector3.zero)
                 return;
 
-            _targetPosition = transform.position + direction.normalized * _jumpStats.JumpDistance;
+            _targetPosition = transform.position + direction.normalized * _jumpStats.JumpDistance.CurrentValue;
             _elapsedTime = 0f;
             _isMoving = true;
         }

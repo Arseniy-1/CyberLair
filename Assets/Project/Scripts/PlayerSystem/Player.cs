@@ -53,7 +53,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _entityStateMachine.Update();
     }
 
-    public void InitializeComponents()
+    private void InitializeComponents()
     {
         List<IState> playerStates = new List<IState>
         {
@@ -70,10 +70,11 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
             state.Initialize(_entityStateMachine);
         }
 
+        PlayerStats.Initialize();
         // _destroyer.Initialize(_health, this);
         _playerMover.Initialize(_playerInputController, _rigidbody2D, PlayerStats);
         _playerCollisionHandler.Initialize(_health, _experienceStorage);
-        // _jumper.Initialize(PlayerStats);
+        _jumper.Initialize(PlayerStats);
         _magnet.Initialize(PlayerStats, transform);
         
         _weaponHolder.Weapon.Initialize(PlayerStats);

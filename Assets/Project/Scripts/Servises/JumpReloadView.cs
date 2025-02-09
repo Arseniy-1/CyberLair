@@ -30,7 +30,7 @@ public class JumpReloadView : MonoBehaviour
     {
         if (jumper.IsOnCooldown)
         {
-            _cooldownImage.fillAmount = jumper.CooldownTimer / jumper.JumpStats.JumpReloadTime;
+            _cooldownImage.fillAmount = jumper.CooldownTimer / jumper.JumpStats.JumpReloadTime.CurrentValue;
         }
     }
 
