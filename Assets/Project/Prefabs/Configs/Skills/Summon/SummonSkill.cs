@@ -1,7 +1,7 @@
 using Project.Scripts.Weapon;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Summon Skill", menuName = "Skill/Active/Summon", order = 51)]
+[CreateAssetMenu(fileName = "SummonSkill", menuName = "Skill/Simple/Summon", order = 51)]
 public class SummonSkill : Skill
 {
     [SerializeField] private Summon _summonPrefab;

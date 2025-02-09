@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Passive/ReactiveBoots", order = 51)]
+[CreateAssetMenu(fileName = "ReactiveBootsSkill", menuName = "Skill/Simple/ReactiveBoots", order = 51)]
 public class ReactiveBoots : Skill
 {
     [SerializeField] private SkillConfig _speedConfig;

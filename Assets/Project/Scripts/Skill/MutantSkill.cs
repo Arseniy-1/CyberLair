@@ -2,14 +2,14 @@
 using System.Linq;
 using UnityEngine;
 
-public abstract class HardSkill : Skill
+public abstract class MutantSkill : Skill
 {
-    [SerializeField] protected List<Skill> NeededSkills;
+    [SerializeField] private List<Skill> _neededSkills;
 
     public abstract override void Apply(SkillData skillData);
 
     public bool IsAvailable(List<Skill> skills)
     {
-        return NeededSkills.All(skills.Contains);
+        return _neededSkills.All(skills.Contains);
     }
 }

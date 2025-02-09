@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Passive/UpdateWeapon", order = 51)]
+[CreateAssetMenu(fileName = "WeaponUpdateSkill", menuName = "Skill/Simple/UpdateWeapon", order = 51)]
 public class WeaponUpdateSkill : Skill
 {
     [SerializeField] private StatModifier _damageStatModifier;

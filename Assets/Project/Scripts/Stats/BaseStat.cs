@@ -13,8 +13,15 @@ public abstract class BaseStat
 
     public void UpdateModifiers(float deltaTime)
     {
-        foreach (var mod in modifiers) mod.Update(deltaTime);
-        modifiers.RemoveAll(mod => mod.HasExpired());
+        for(int i = 0; i < modifiers.Count; i++)
+        {
+            modifiers[i].Update(deltaTime);
+            
+            if (modifiers[i].HasExpired())
+            {
+                modifiers.RemoveAt(i);
+            }
+        }
     }
 
     protected virtual float CalculateValue()

@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace Project.Scripts.LevelSystem.ActiveSkills
 {
-    [CreateAssetMenu(fileName = "New Magic Arrow Skill", menuName = "Skill/Active/MagicArrow", order = 51)]
+    [CreateAssetMenu(fileName = "MagicArrowSkill", menuName = "Skill/Simple/MagicArrow", order = 51)]
     public class MagicArrowSkill : Skill
     {
         public override void Apply(SkillData skillData)

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Project.Scripts.LevelSystem.ActiveSkills
 {
-    [CreateAssetMenu(fileName = "New Thunder Skill", menuName = "Skill/Active/Thunder", order = 0)]
+    [CreateAssetMenu(fileName = "ThunderSkill", menuName = "Skill/Simple/Thunder", order = 0)]
     public class ThunderSkill : Skill
     {
         [SerializeField] private Thunder _thunderPrefab;

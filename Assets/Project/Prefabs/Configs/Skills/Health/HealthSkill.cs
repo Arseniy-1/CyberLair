@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Passive/Health", order = 51)]
+[CreateAssetMenu(fileName = "HeathSkill", menuName = "Skill/Simple/Health", order = 51)]
 public class HealthSkill : Skill
 {
     [SerializeField] private SkillConfig _skillConfig;

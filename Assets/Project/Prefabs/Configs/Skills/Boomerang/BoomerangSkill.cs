@@ -3,7 +3,7 @@ using Project.Scripts.Weapon.ActiveSkills;
 using Sirenix.Utilities;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Boomerang Skill", menuName = "Skill/Active/Boomerang", order = 51)]
+[CreateAssetMenu(fileName = "BoomerangSkill", menuName = "Skill/Simple/Boomerang", order = 51)]
 public class BoomerangSkill : Skill
 {
     [SerializeField] private Boomerang _boomerangPrefab;
@@ -13,15 +13,8 @@ public class BoomerangSkill : Skill
     
     public override void Apply(SkillData skillData)
     {
-        Boomerang boomerang = Instantiate(_boomerangPrefab, skillData.WeaponHolder.transform);
-        boomerang.Initialize(skillData.WeaponHolder.transform);
-
-        var speed = _speedConfig.Multipliers[skillData.Level - 1];
-        
-        _boomerangs.Add(boomerang);
-        DistributeEqually(skillData.WeaponHolder.transform, speed);
     }
-    
+
     private void DistributeEqually(Transform holder, float speed)
     {
         if (_boomerangs.IsNullOrEmpty()) return;

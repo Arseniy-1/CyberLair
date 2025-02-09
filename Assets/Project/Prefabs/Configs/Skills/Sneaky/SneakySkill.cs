@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Passive/SneakySkill", order = 51)]
+[CreateAssetMenu(fileName = "SneakySkill", menuName = "Skill/Simple/SneakySkill", order = 51)]
 public class SneakySkill : Skill
 {
     [SerializeField] private SkillConfig _jumpConfig;

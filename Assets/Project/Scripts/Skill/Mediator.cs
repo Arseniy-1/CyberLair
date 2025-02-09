@@ -1,30 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
-using UnityEngine.Serialization;
 
 public class Mediator : MonoBehaviour
 {
     [SerializeField] private List<HardSkill> _hardSkills;
+    [SerializeField] private List<MutantSkill> _mutantSkills;
+    [SerializeField] private List<Skill> _simpleSkills;
+
     [SerializeField] private List<Skill> _availableSkills;
+    [SerializeField] private List<Skill> _raisedSkills;
     [SerializeField] private List<SkillView> _skillViews;
 
     [SerializeField] private Player _player;
     [SerializeField] private Level _level;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
 
-    private readonly SkillHolder _skillHolder = new();
     private int _skillsCount = 3;
 
     private PlayerStats _playerStats;
-    private PlayerStats _startPlayerStats;
 
     private void OnEnable()
     {
+        _availableSkills.AddRange(_simpleSkills);
+
         _playerStats = _player.PlayerStats;
-        
+
         _level.LevelRaised += ShowSkills;
 
         foreach (var skillView in _skillViews)
@@ -48,41 +49,46 @@ public class Mediator : MonoBehaviour
     [Button]
     private void OnSkillApplied(Skill skill)
     {
-        _skillHolder.AddSkill(skill);
+        _availableSkills.Remove(skill);
+        _raisedSkills.Add(skill);
 
-        var skillData = new SkillData(_playerWeaponHolder, _playerStats, _startPlayerStats, _skillHolder.Skills[skill]);
+        foreach (var hardSkill in _hardSkills)
+        {
+            if (hardSkill.IsAvailable(_raisedSkills))
+            {
+                Debug.Log("Raised");
+                _availableSkills.Add(hardSkill);
+            }
+        }
+        
+        foreach (var mutantSkill in _mutantSkills)
+        {
+            if (mutantSkill.IsAvailable(_raisedSkills))
+            {
+                _availableSkills.Add(mutantSkill);
+            }
+        }
+        
+        var skillData = new SkillData(_playerWeaponHolder, _playerStats);
 
         skill.Apply(skillData);
 
         HideSkills();
-        
+
         Time.timeScale = 1;
     }
 
+    [Button]
     private void ShowSkills()
     {
-        if (_skillViews.IsNullOrEmpty())
-            return;
-        
-        List<Skill> availableSkills = _availableSkills
-            .Where(skill => !_skillHolder.Skills.TryGetValue(skill, out int skillLevel))
-            .ToList();
-        
-        if (availableSkills.Count == 0)
-            return;
-        
-        int cappedSkillsCount = availableSkills.Count >= _skillsCount ? _skillsCount : availableSkills.Count;
-
-        for (int i = 0; i < cappedSkillsCount; i++)
+        for (int i = 0; i < _skillsCount; i++)
         {
-            int randomIndex = Random.Range(0, availableSkills.Count);
-
+            int randomIndex = Random.Range(0, _availableSkills.Count);
+            
             _skillViews[i].gameObject.SetActive(true);
-            _skillViews[i].SetSkill(availableSkills[randomIndex]);
-
-            availableSkills.RemoveAt(randomIndex);
+            _skillViews[i].SetSkill(_availableSkills[randomIndex]);
         }
-        
+
         Time.timeScale = 0;
     }
 
