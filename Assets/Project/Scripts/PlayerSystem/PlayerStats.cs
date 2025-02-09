@@ -21,6 +21,7 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats
     public void Update()
     {
         float deltaTime = Time.deltaTime;
+        Debug.Log(deltaTime);
         Health.UpdateModifiers(deltaTime);
         Speed.UpdateModifiers(deltaTime);
         JumpDistance.UpdateModifiers(deltaTime);

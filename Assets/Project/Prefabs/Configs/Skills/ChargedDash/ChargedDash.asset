@@ -13,15 +13,18 @@ MonoBehaviour:
   m_Name: ChargedDash
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: 
-    <Description>k__BackingField: 
-    <Icon>k__BackingField: {fileID: 0}
-  NeededSkills: []
+    <SkillName>k__BackingField: ChargedDash
+    <Description>k__BackingField: Dash
+    <Icon>k__BackingField: {fileID: 21300000, guid: cda527fc2e9f1489687fc583525a97b2, type: 3}
+  NeededSkills:
+  - {fileID: 11400000, guid: 3eb791f9b569d2545a71fcb2caa40db2, type: 2}
   _speedStatModifier:
     <Value>k__BackingField: 0
     <Type>k__BackingField: 0
     <Duration>k__BackingField: 0
+    elapsedTime: 0
   _chargeTimeStatModifier:
     <Value>k__BackingField: 0
     <Type>k__BackingField: 0
     <Duration>k__BackingField: 0
+    elapsedTime: 0
