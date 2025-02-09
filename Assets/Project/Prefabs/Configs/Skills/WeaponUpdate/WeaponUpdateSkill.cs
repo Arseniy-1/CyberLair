@@ -8,7 +8,7 @@ public class WeaponUpdateSkill : Skill
     
     public override void Apply(SkillData skillData)
     {
-        skillData.PlayerStats.WeaponDamage.AddModifier(_damageStatModifier);
-        skillData.PlayerStats.WeaponDamage.AddModifier(_damageStatModifier2);
+        skillData.PlayerStats.WeaponDamage.AddModifier(_damageStatModifier.Copy());
+        skillData.PlayerStats.WeaponDamage.AddModifier(_damageStatModifier2.Copy());
     }
 }

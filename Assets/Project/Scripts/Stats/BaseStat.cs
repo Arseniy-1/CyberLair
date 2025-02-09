@@ -31,6 +31,7 @@ public abstract class BaseStat
         float additive = modifiers
             .Where(mod => mod.Type == ModifierType.Additive)
             .Sum(mod => mod.Value);
+        
         finalValue += additive;
 
         foreach (var mod in modifiers.Where(mod => mod.Type == ModifierType.Multiplicative))
