@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "SneakySkill", menuName = "Skill/Simple/SneakySkill", order = 51)]
 public class SneakySkill : Skill

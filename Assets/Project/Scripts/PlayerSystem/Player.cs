@@ -14,7 +14,6 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private WeaponHolder _weaponHolder;
     [SerializeField] private PlayerInputController _playerInputController;
     [SerializeField] private Rigidbody2D _rigidbody2D;
-    [SerializeField] private Health _health;
     [SerializeField] private ExperienceStorage _experienceStorage;
     [SerializeField] private Jumper _jumper;
     [SerializeField] private TargetScanner _targetScanner;
@@ -71,28 +70,23 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         }
 
         PlayerStats.Initialize();
-        _destroyer.Initialize(_health, this);
+        _destroyer.Initialize(PlayerStats.Health, this);
         _playerMover.Initialize(_playerInputController, _rigidbody2D, PlayerStats);
-        _playerCollisionHandler.Initialize(_health, _experienceStorage);
+        _playerCollisionHandler.Initialize(PlayerStats.Health, _experienceStorage);
         _jumper.Initialize(PlayerStats);
         _magnet.Initialize(PlayerStats, transform);
         
         _weaponHolder.Weapon.Initialize(PlayerStats);
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
-        _health.TakeDamage(amount);
+        PlayerStats.Health.TakeDamage(amount);
     }
 
     public void TakeStun(float time)
     {
         StartCoroutine(TakingStun(time));
-    }
-
-    public void Heal(int amount)
-    {
-        _health.Heal(amount);
     }
 
     private IEnumerator TakingStun(float time)

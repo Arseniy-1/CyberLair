@@ -61,7 +61,7 @@ namespace Project.Scripts.EnemySystem
             _collisionHandler.Initialize(EnemyStats.CollisionDamage);
         }
         
-        public void TakeDamage(int amount)
+        public void TakeDamage(float amount)
         {
             Health.TakeDamage(amount);
         }

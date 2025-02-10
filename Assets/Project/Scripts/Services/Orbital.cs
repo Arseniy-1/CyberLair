@@ -1,9 +1,8 @@
-using Project.Scripts.Servises;
 using UnityEngine;
 
-namespace Project.Scripts.Weapon.ActiveSkills
+namespace Project.Scripts.Servises
 {
-    public class Boomerang : MonoBehaviour
+    public class Orbital : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private float _speed;
@@ -13,12 +12,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
         private Transform _targetTransform;
         
         private Vector3 CenterPosition => _targetTransform.position;
-
-        public void Initialize(Transform targetTransform)
-        {
-            _targetTransform = targetTransform;
-        }
-
+        
         private void FixedUpdate()
         {
             _angle += _speed * Time.fixedDeltaTime;
@@ -27,18 +21,24 @@ namespace Project.Scripts.Weapon.ActiveSkills
             Vector3 newPosition = CenterPosition + offset;
 
             _rigidbody.MovePosition(newPosition);
+            
+            Vector2 lookDirection = CenterPosition - (Vector3)_rigidbody.position;
+            float lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+    
+            _rigidbody.MoveRotation(lookAngle);
         }
 
-        public void CalculateOffset()
+        public void Initialize(Transform targetTransform)
+        {
+            _targetTransform = targetTransform;
+            CalculateOffset();
+        }
+        
+        private void CalculateOffset()
         {
             Vector3 offset = transform.position - CenterPosition;
 
             _angle = Mathf.Atan2(offset.y, offset.x);
-        }
-
-        public void ApplyStats(float speed)
-        {
-            _speed *= speed;
         }
     }
 }

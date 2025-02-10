@@ -1,20 +1,19 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[RequireComponent(typeof(InvulnerabilityCollisionHandler))]
-public class Invulnerability : MonoBehaviour
+[RequireComponent(typeof(InvincibilityCollisionHandler))]
+public class Invincibility : MonoBehaviour
 {
     [SerializeField] private float _minDisableTime = 3f;
     [SerializeField] private float _maxDisableTime = 10f;
 
     [SerializeField] private float _activeTime = 2f;
 
-    [SerializeField] private InvulnerabilityCollisionHandler _InvulnerabilityCollision;
+    [SerializeField] private InvincibilityCollisionHandler invincibilityCollision;
 
     private void OnEnable()
     {
-        _InvulnerabilityCollision.gameObject.SetActive(false);
+        invincibilityCollision.gameObject.SetActive(false);
 
         StartCoroutine(InvulnerabilityRoutine());
     }
@@ -36,11 +35,11 @@ public class Invulnerability : MonoBehaviour
 
     private void ActivateShield()
     {
-        _InvulnerabilityCollision.gameObject.SetActive(true);
+        invincibilityCollision.gameObject.SetActive(true);
     }
 
     private void DeactivateShield()
     {
-        _InvulnerabilityCollision.gameObject.SetActive(false);
+        invincibilityCollision.gameObject.SetActive(false);
     }
 }

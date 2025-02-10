@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InvulnerabilityCollisionHandler : CollisionHandler
+public class InvincibilityCollisionHandler : CollisionHandler
 {
     private string _friendlyBulletLayerName = "FriendlyBullet";
 
