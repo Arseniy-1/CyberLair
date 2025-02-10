@@ -1,32 +1,79 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
 public class Health : BaseStat
 {
+    [SerializeField] private float _regenerationTime;
+    
+    private bool _isActive;
+    private CancellationTokenSource _cancellationToken;
+    
+    private RegenerateAmount _regenerateAmount;
+    
     public event Action LostHealth;
 
     private float MaxHealth => CalculateValue();
 
-    public void Heal(int amount)
+    public void Initialize(RegenerateAmount regenerateAmount)
+    {
+        _regenerateAmount = regenerateAmount;
+        
+        _isActive = true;
+        _cancellationToken = new CancellationTokenSource();
+        
+        Regenerating().Forget();
+    }
+
+    public void Heal(float amount)
     {
         if(amount < 0)
-            throw new ArgumentOutOfRangeException(amount.ToString());
+            throw new ArgumentOutOfRangeException(nameof(amount));
         
         CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, MaxHealth);
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if(amount < 0)
-            throw new ArgumentOutOfRangeException(amount.ToString());
+            throw new ArgumentOutOfRangeException(nameof(amount));
         
         CurrentValue = Mathf.Clamp(CurrentValue - amount, 0, MaxHealth);
         
         if(CurrentValue <= 0)
-            LostHealth?.Invoke();
+            HandleDeath();
+    }
+
+    private void HandleDeath()
+    {
+        _isActive = false;
+        _cancellationToken.Cancel();
+        
+        LostHealth?.Invoke();
+    }
+    
+    private async UniTaskVoid Regenerating()
+    {
+        while (_isActive)
+        {
+            try
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(_regenerationTime), cancellationToken: _cancellationToken.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                break;
+            }
+
+            Heal(_regenerateAmount.CurrentValue);
+        }
     }
 }
+
+[Serializable]
+public class RegenerateAmount : BaseStat { }
 
 [Serializable]
 public class JumpDistance : BaseStat { }
