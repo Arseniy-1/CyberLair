@@ -7,20 +7,18 @@ using UnityEngine;
 public class Health : BaseStat
 {
     [SerializeField] private float _regenerationTime;
+    [field: SerializeField] public RegenerateAmount RegenerateAmount { get; private set; }
     
     private bool _isActive;
     private CancellationTokenSource _cancellationToken;
-    
-    private RegenerateAmount _regenerateAmount;
     
     public event Action LostHealth;
 
     private float MaxHealth => CalculateValue();
 
-    public void Initialize(RegenerateAmount regenerateAmount)
+    public void Initialize()
     {
-        _regenerateAmount = regenerateAmount;
-        
+        RegenerateAmount.CalculateCurrentValue();
         _isActive = true;
         _cancellationToken = new CancellationTokenSource();
         
@@ -32,7 +30,7 @@ public class Health : BaseStat
         if(amount < 0)
             throw new ArgumentOutOfRangeException(nameof(amount));
         
-        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, MaxHealth);
+        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0f, MaxHealth);
     }
 
     public void TakeDamage(float amount)
@@ -67,7 +65,9 @@ public class Health : BaseStat
                 break;
             }
 
-            Heal(_regenerateAmount.CurrentValue);
+            
+            RegenerateAmount.UpdateModifiers();
+            Heal(RegenerateAmount.CurrentValue);
         }
     }
 }

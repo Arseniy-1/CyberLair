@@ -9,7 +9,7 @@ namespace Project.Prefabs.Configs.Skills.Regeneration
         
         public override void Apply(SkillData skillData)
         {
-            skillData.PlayerStats.RegenerateAmount.AddModifier(_regenerationModifier.Copy());
+            skillData.PlayerStats.Health.RegenerateAmount.AddModifier(_regenerationModifier.Copy());
         }
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, IJumpStats
 {
     [field: SerializeField] public Health Health { get; private set; }
-    [field: SerializeField] public RegenerateAmount RegenerateAmount { get; private set; }
     [field: SerializeField] public Speed Speed { get; private set; }
     [field: SerializeField] public JumpDistance JumpDistance { get; private set; }
     [field: SerializeField] public JumpTime JumpTime { get; private set; }
@@ -25,10 +24,7 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, I
     public void Initialize()
     {
         Health.CalculateCurrentValue();
-        RegenerateAmount.CalculateCurrentValue();
-        
-        Health.Initialize(RegenerateAmount);
-        
+        Health.Initialize();
         Speed.CalculateCurrentValue();
         JumpDistance.CalculateCurrentValue();
         JumpTime.CalculateCurrentValue();
@@ -46,7 +42,6 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, I
     public void Update()
     {
         Health.UpdateModifiers();
-        RegenerateAmount.UpdateModifiers();
         Speed.UpdateModifiers();
         JumpDistance.UpdateModifiers();
         JumpTime.UpdateModifiers();
