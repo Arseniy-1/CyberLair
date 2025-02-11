@@ -2,6 +2,7 @@
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using DG.Tweening;
+using Project.Scripts.Weapon;
 using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "New ZapEffector", menuName = "Skill/BulletEffectors/ZapEffector", order = 51)]

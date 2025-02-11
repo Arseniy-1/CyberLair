@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Weapon;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "New CriticalHitEffector", menuName = "Skill/BulletEffectors/CriticalHitEffector",
     order = 51)]

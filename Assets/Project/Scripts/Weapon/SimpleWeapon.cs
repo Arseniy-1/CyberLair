@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Project.Scripts.Weapon;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;

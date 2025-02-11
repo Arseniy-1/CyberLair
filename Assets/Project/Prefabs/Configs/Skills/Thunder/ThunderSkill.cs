@@ -8,15 +8,10 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
     {
         [SerializeField] private Thunder _thunderPrefab;
         
-        [SerializeField] private SkillConfig _delayConfig;
-        [SerializeField] private SkillConfig _radiusConfig;
-        [SerializeField] private SkillConfig _damageConfig;
-        [SerializeField] private SkillConfig _countConfig;
-        
-        private Thunder _thunder;
-        
         public override void Apply(SkillData skillData)
         {
+            var thunder = Instantiate(_thunderPrefab);
+            thunder.Initialize(skillData.WeaponHolder.Weapon);
         }
     }
 }

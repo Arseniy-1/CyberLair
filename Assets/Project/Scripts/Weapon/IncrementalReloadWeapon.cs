@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Project.Scripts.Weapon;
 using UnityEngine;
 using UnityEngine.Serialization;
 
