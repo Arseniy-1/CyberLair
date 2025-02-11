@@ -1,16 +1,19 @@
+using System;
+using Project.Scripts.Weapon;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.StunZap
 {
-    public class StanZapSkill : Skill
+    [Serializable]
+    public class StunZap
     {
-        [SerializeField] private float _stunTime;
+        [SerializeField] private float _stunDuration;
         
-        public override void Apply(SkillData skillData)
+        public void Initialize(Weapon weapon)
         {
-            skillData.WeaponHolder.Weapon.OnShooted += InnerSubscribe;
+            weapon.OnShooted += InnerSubscribe;
         }
-
+        
         private void InnerSubscribe(Bullet bullet)
         {
             bullet.OnDamagableCollided += StunEnemy;
@@ -18,7 +21,7 @@ namespace Project.Prefabs.Configs.Skills.StunZap
 
         private void StunEnemy(IDamageable damageable)
         {
-            (damageable as IStunable)?.TakeStun(_stunTime);
+            (damageable as IStunable)?.TakeStun(_stunDuration);
         }
     }
 }
