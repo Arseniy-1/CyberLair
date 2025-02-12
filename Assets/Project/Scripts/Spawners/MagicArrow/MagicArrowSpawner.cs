@@ -72,7 +72,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
                 {
                     break;
                 }
-                // await UniTask.Delay(TimeSpan.FromSeconds(_delay));
+                
                 var enemyPosition = FindEnemyPosition();
                 var rotation = CalculateRotation(enemyPosition);
                 var magicArrow = Spawn();

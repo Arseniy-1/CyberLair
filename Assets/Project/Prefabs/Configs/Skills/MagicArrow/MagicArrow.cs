@@ -10,7 +10,6 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private float _speed;
-        [SerializeField] private int _damage;
         [SerializeField] private float _timeToDespawn;
         [SerializeField] private SkillCollisionHandler _collisionHandler;
         
