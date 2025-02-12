@@ -6,7 +6,7 @@ namespace Project.Prefabs.Configs.Skills
     [Serializable]
     public class FirstAid
     {
-        [SerializeField] private float _part;
+        [SerializeField, Range(0f, 1f)] private float _healProportion;
         
         private Health _health;
         
@@ -21,7 +21,7 @@ namespace Project.Prefabs.Configs.Skills
             if (damage < 0)
                 return;
             
-            _health.Heal(damage * _part);
+            _health.Heal(damage * _healProportion);
         }
     }
 }

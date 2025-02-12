@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills
 {
-    [CreateAssetMenu(fileName = "ChainZapSkill", menuName = "Skill/Simple/ChainZap", order = 51)]
+    [CreateAssetMenu(fileName = "FirstAidSkill", menuName = "Skill/Simple/FirstAid", order = 51)]
     public class FirstAidSkill : Skill
     {
         [SerializeField] private FirstAid _firstAid;

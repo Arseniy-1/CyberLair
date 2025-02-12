@@ -34792,7 +34792,7 @@ MonoBehaviour:
   _mutantSkills: []
   _simpleSkills: []
   _availableSkills:
-  - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
+  - {fileID: 11400000, guid: 79bbb4527739b4428b0f0eba3d54714f, type: 2}
   _raisedSkills: []
   _skillViews:
   - {fileID: 464978700}
@@ -35060,6 +35060,10 @@ PrefabInstance:
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<WeaponBulletReloadTime>k__BackingField.<BaseValue>k__BackingField
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<Health>k__BackingField.<RegenerateAmount>k__BackingField.<BaseValue>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3030095462087275350, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_IsActive

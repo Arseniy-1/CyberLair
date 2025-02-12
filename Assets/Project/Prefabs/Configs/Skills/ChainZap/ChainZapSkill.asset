@@ -27,4 +27,4 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 8
     _segments: 20
-    _chance: 1
+    _chance: 0.1
