@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Object = UnityEngine.Object;
@@ -11,27 +12,24 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
     public class MagicArrowSpawner : Spawner<MagicArrow>
     {
         [SerializeField] private float _radius;
-        
-        private float _delay;
-        private LayerMask _layerMask;
-
-        private float _speedMultiplier;
-        private int _damageMultiplier;
+        [SerializeField] private float _delay;
+        [SerializeField] private LayerMask _layerMask;
 
         private List<MagicArrow> _magicArrows = new();
-
+        private bool _isActive;
+        private CancellationTokenSource _cancellationToken;
+        
         private Transform _transform;
 
-        public MagicArrowSpawner(MagicArrow magicArrowPrefab, Transform transform, float delay, float radius, LayerMask layerMask)
+        public void Initialize(MagicArrow magicArrowPrefab, Transform transform)
         {
             Prefab = magicArrowPrefab;
             Pool = new MagicArrowPool(Prefab, StartAmount);
 
             _transform = transform;
-            _delay = delay;
-            _radius = radius;
-            _layerMask = layerMask;
             
+            _isActive = true;
+            _cancellationToken = new CancellationTokenSource();
             SpawnIterating().Forget();
         }
 
@@ -40,14 +38,6 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             Unsubscribe();
 
             Pool = new MagicArrowPool(magicArrow, StartAmount);
-        }
-
-        public void ApplyStats(float speed, int damage, float radius, float reloadTime)
-        {
-            _speedMultiplier = speed;
-            _damageMultiplier = damage;
-            _delay = reloadTime;
-            _radius = radius;
         }
 
         private Vector3 FindEnemyPosition()
@@ -74,16 +64,22 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         {
             while (true)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(_delay));
-                Debug.Log(_delay);
+                try
+                {
+                    await UniTask.Delay(TimeSpan.FromSeconds(_delay), cancellationToken: _cancellationToken.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                // await UniTask.Delay(TimeSpan.FromSeconds(_delay));
                 var enemyPosition = FindEnemyPosition();
                 var rotation = CalculateRotation(enemyPosition);
                 var magicArrow = Spawn();
 
-                if (!_magicArrows.Contains(magicArrow))
+                if (_magicArrows.Contains(magicArrow) == false)
                     _magicArrows.Add(magicArrow);
 
-                magicArrow.ApplyStats(_speedMultiplier, _damageMultiplier);
                 magicArrow.transform.position = _transform.position;
                 magicArrow.transform.rotation = rotation;
             }

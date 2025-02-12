@@ -9,13 +9,10 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
     public class MagicArrow : MonoBehaviour, IDestoyable<MagicArrow>
     {
         [SerializeField] private Rigidbody2D _rigidbody;
-        [SerializeField] private float _nominalSpeed;
-        [SerializeField] private int _nominalDamage;
+        [SerializeField] private float _speed;
+        [SerializeField] private int _damage;
         [SerializeField] private float _timeToDespawn;
         [SerializeField] private SkillCollisionHandler _collisionHandler;
-        
-        private float _currentSpeed;
-        private int _currentDamage;
         
         private Transform _transform;
         
@@ -39,15 +36,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         
         private void FixedUpdate()
         {
-            _rigidbody.MovePosition(_rigidbody.position + Forward * (_currentSpeed * Time.fixedDeltaTime));
-        }
-        
-        public void ApplyStats(float speedMultiplier, int damageMultiplier)
-        {
-            _currentSpeed = _nominalSpeed * speedMultiplier;
-            _currentDamage = _nominalDamage * damageMultiplier;
-            
-            _collisionHandler.ApplyStats(_currentDamage);
+            _rigidbody.MovePosition(_rigidbody.position + Forward * (_speed * Time.fixedDeltaTime));
         }
 
         private IEnumerator Lifetime()
