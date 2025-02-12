@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 public class IncrementalReloadWeapon : Weapon
 {
-    [FormerlySerializedAs("_currentMagazineSize")] [SerializeField] private int currentCurrentMagazineSize;
+    [SerializeField] private int currentCurrentMagazineSize;
 
     private Coroutine _reloadCoroutine;
 
