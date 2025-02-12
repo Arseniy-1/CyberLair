@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "HeathSkill", menuName = "Skill/Simple/Health", order = 51)]
-public class HealthSkill : Skill
+[CreateAssetMenu(fileName = "DurabilitySkill", menuName = "Skill/Simple/Durability", order = 51)]
+public class DurabilitySkill : Skill
 {
     [SerializeField] private StatModifier _healthModifier;
     [SerializeField] private StatModifier _regenerationModifier;

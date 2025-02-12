@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4ee47eeaec4f3596deb20ff5b98e08, type: 3}
+  m_Name: DurabilitySkill
+  m_EditorClassIdentifier: 
+  <SkillInfo>k__BackingField:
+    <SkillName>k__BackingField: "\u0421\u0442\u043E\u0439\u043A\u043E\u0441\u0442\u044C"
+    <Description>k__BackingField: "+20% HP, +1 HP \u0432 \u0441\u0435\u043A\u0443\u043D\u0434\u0443
+      \u0440\u0435\u0433\u0435\u043D\u0435\u0440\u0430\u0446\u0438\u044F"
+    <Icon>k__BackingField: {fileID: 21300000, guid: bd9c50bfec9ed864d820b34daccfabc2, type: 3}
+  _healthModifier:
+    <Value>k__BackingField: 1.2
+    <Type>k__BackingField: 1
+    <Duration>k__BackingField: 0
+  _regenerationModifier:
+    <Value>k__BackingField: 1
+    <Type>k__BackingField: 0
+    <Duration>k__BackingField: 0
