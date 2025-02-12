@@ -17,7 +17,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
         public void Initialize(Weapon weapon)
         {
-            weapon.OnShooted += HandleShoot;
+            weapon.OnShot += HandleShoot;
         }
 
         private void HandleShoot(Bullet bullet)

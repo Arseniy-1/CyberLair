@@ -12,10 +12,10 @@ public class FireZoneEffector : BulletEffector
     {
         _fireZoneSpawner = new FireZoneSpawner(_fireZonePrefab);
         Weapon = weapon;
-        weapon.OnShooted += OnShooted;
+        weapon.OnShot += OnShot;
     }
 
-    private void OnShooted(Bullet bullet)
+    private void OnShot(Bullet bullet)
     {
         bullet.OnDestroyed += Explode;
     }

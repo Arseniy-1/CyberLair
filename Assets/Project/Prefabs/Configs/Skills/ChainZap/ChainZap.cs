@@ -13,19 +13,20 @@ public class ChainZap
     [SerializeField] private float _chainRadius = 5f;
     [SerializeField] private int _maxBounces = 2;
     [SerializeField] private float _damageFalloff = 0.8f;
-    [SerializeField] private LineRenderer _linePrefab;
+    [SerializeField] private LineRenderer _zapView;
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private int _segments = 20;
+    [SerializeField, Range(0f, 1f)] private float _chance;
 
     private Weapon _weapon;
 
     public void Initialize(Weapon weapon)
     {
         _weapon = weapon;
-        weapon.OnShooted += OnShooted;
+        weapon.OnShot += InnerSubscribe;
     }
 
-    private void OnShooted(Bullet bullet)
+    private void InnerSubscribe(Bullet bullet)
     {
         bullet.OnDestroyed += CastLightning;
     }
@@ -33,6 +34,9 @@ public class ChainZap
     private void CastLightning(Bullet bullet)
     {
         bullet.OnDestroyed -= CastLightning;
+        
+        if (Random.value > _chance)
+            return;
 
         List<Enemy> hitTargets = new List<Enemy>();
         Vector2 currentPosition = bullet.transform.position;
@@ -80,7 +84,7 @@ public class ChainZap
 
     private void DrawLightning(Vector2 start, Vector2 end, Bullet bullet)
     {
-        LineRenderer line = Object.Instantiate(_linePrefab, bullet.transform.position, Quaternion.identity);
+        LineRenderer line = Object.Instantiate(_zapView, bullet.transform.position, Quaternion.identity);
         line.positionCount = _segments;
 
         for (int i = 0; i < _segments; i++)
