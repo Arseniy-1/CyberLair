@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a53baf3e4b4d108d00a6b1e77ea212, type: 3}
-  m_Name: Sneaky
+  m_Name: AthleticsSkill
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: "\u0421\u043A\u0440\u044B\u0442\u043D\u043E\u0441\u0442\u044C"

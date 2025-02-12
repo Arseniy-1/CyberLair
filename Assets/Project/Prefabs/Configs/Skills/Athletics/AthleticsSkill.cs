@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "SneakySkill", menuName = "Skill/Simple/SneakySkill", order = 51)]
-public class SneakySkill : Skill
+[CreateAssetMenu(fileName = "AthleticsSkill", menuName = "Skill/Simple/Athletics", order = 51)]
+public class AthleticsSkill : Skill
 {
     [SerializeField] private StatModifier _jumpDistanceModifier;
     [SerializeField] private StatModifier _magnetRangeModifier;
