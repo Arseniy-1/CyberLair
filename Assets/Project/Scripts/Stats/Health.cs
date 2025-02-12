@@ -13,6 +13,7 @@ public class Health : BaseStat
     private CancellationTokenSource _cancellationToken;
     
     public event Action LostHealth;
+    public event Action<float> DamageTaken;
 
     private float MaxHealth => CalculateValue();
 
@@ -38,7 +39,8 @@ public class Health : BaseStat
         if(amount < 0)
             throw new ArgumentOutOfRangeException(nameof(amount));
         
-        CurrentValue = Mathf.Clamp(CurrentValue - amount, 0, MaxHealth);
+        CurrentValue -= amount;
+        DamageTaken?.Invoke(amount);
         
         if(CurrentValue <= 0)
             HandleDeath();
@@ -65,7 +67,6 @@ public class Health : BaseStat
                 break;
             }
 
-            
             RegenerateAmount.UpdateModifiers();
             Heal(RegenerateAmount.CurrentValue);
         }
