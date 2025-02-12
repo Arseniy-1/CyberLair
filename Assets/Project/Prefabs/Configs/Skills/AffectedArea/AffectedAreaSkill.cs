@@ -9,7 +9,7 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
         
         public override void Apply(SkillData skillData)
         {
-            _affectedArea.Initialize(skillData.WeaponHolder.Weapon);
+            _affectedArea.Initialize(skillData.WeaponHolder.Weapon, skillData.PlayerStats);
         }
     }
 }

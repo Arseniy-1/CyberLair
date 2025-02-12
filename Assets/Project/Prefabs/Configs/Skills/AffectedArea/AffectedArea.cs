@@ -10,38 +10,38 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
     public class AffectedArea
     {
         [SerializeField] private float _radius;
-        [SerializeField] private float _damage;
         [SerializeField] private LayerMask _layerMask;
+        [SerializeField, Range(0f, 1f)] private float _damageProportion;
         [SerializeField, Range(0f, 1f)] private float _chance;
 
-        public void Initialize(Weapon weapon)
+        private IWeaponStats _weaponStats;
+        
+        public void Initialize(Weapon weapon, IWeaponStats weaponStats)
         {
             weapon.OnShooted += InnerSubscribe;
+
+            _weaponStats = weaponStats;
         }
 
         private void InnerSubscribe(Bullet bullet)
         {
-            bullet.OnDamagableCollided += Blow;
+            bullet.OnDestroyed += Blow;
         }
 
-        private void Blow(IDamageable damageable)
+        private void Blow(Bullet bullet)
         {
+            bullet.OnDestroyed -= Blow;
+            
             if (Random.value > _chance)
                 return;
-            
-            var enemy = damageable as Enemy;
 
-            if (enemy == false)
-                return;
-
-            Collider2D[] results = { };
-            Physics2D.OverlapCircleNonAlloc(enemy.Position, _radius, results, _layerMask);
+            Collider2D[] results = Physics2D.OverlapCircleAll(bullet.transform.position, _radius, _layerMask);
 
             foreach (Collider2D affected in results)
             {
                 if (affected.TryGetComponent(out Enemy affectedEnemy))
                 {
-                    affectedEnemy.TakeDamage(_damage);
+                    affectedEnemy.TakeDamage(_weaponStats.WeaponDamage.CurrentValue * _damageProportion);
                 }
             }
         }
