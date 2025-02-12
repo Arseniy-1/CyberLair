@@ -97,10 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385f790a1e0f41dc92d20b7e7c32f2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nominalDelay: 3
+  _actionRadius: 5
   _layerMask:
     serializedVersion: 2
     m_Bits: 8
-  _nominalActionRadius: 6
-  _nominalDamage: 20
-  _view: {fileID: 5219692172836891113, guid: 2b56ce0bc03964d5d8e5d285824cf1d9, type: 3}
+  _damage: 20
+  _shootsNeeded: 1

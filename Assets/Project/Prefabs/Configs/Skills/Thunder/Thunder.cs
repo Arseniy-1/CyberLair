@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Weapon.ActiveSkills
 {
@@ -12,12 +14,19 @@ namespace Project.Scripts.Weapon.ActiveSkills
         [SerializeField] private float _shootsNeeded;
 
         private float _shootsPassed;
+        private Weapon _weapon;
         
         private Vector2 TargetPosition => transform.position;
 
+        private void OnDisable()
+        {
+            _weapon.OnShot -= HandleShoot;
+        }
+
         public void Initialize(Weapon weapon)
         {
-            weapon.OnShot += HandleShoot;
+            _weapon = weapon;
+            _weapon.OnShot += HandleShoot;
         }
 
         private void HandleShoot(Bullet bullet)

@@ -39,8 +39,7 @@ public abstract class BaseStat
 
         finalValue = modifiers.Where(mod => mod.Type == ModifierType.Multiplicative)
             .Aggregate(finalValue, (current, mod) => current * mod.Value);
-
-        Debug.Log(GetType().Name + " Calculate Value: " + finalValue);
+        
         return finalValue;
     }
 

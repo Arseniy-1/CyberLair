@@ -10,7 +10,7 @@ namespace Project.Scripts.LevelSystem.ActiveSkills
         
         public override void Apply(SkillData skillData)
         {
-            var thunder = Instantiate(_thunderPrefab);
+            var thunder = Instantiate(_thunderPrefab, skillData.WeaponHolder.transform);
             thunder.Initialize(skillData.WeaponHolder.Weapon);
         }
     }
