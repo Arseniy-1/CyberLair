@@ -23,6 +23,8 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, I
 
     public void Initialize()
     {
+        OrbitalHandler = new OrbitalHandler();
+        
         Health.CalculateCurrentValue();
         Health.Initialize();
         Speed.CalculateCurrentValue();
