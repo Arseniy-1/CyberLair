@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 4669096686366673745}
   - component: {fileID: 3406921587590573143}
   - component: {fileID: 185552746671110269}
-  - component: {fileID: 7039963581276680550}
   - component: {fileID: 8511549520770673055}
   - component: {fileID: 2244687451016219675}
   - component: {fileID: 846970336447539646}
@@ -209,20 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9772ab76624152b07c49e6f142712b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7039963581276680550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8874718456016739414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxValue: 35
-  CurrentValue: 35
 --- !u!114 &8511549520770673055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,11 +227,19 @@ MonoBehaviour:
   _destroyer: {fileID: 846970336447539646}
   _enemyTargetProvider: {fileID: 4425134607618233944}
   _attackDistance: 8
-  <Health>k__BackingField: {fileID: 7039963581276680550}
+  <Health>k__BackingField:
+    <BaseValue>k__BackingField: 0
+    CurrentValue: 0
+    _regenerationTime: 0
+    <RegenerateAmount>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
   <EnemyType>k__BackingField: 6
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 5
-    <Speed>k__BackingField: 2
+    <Speed>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
     <CollisionDamage>k__BackingField: 5
     <AttackDelay>k__BackingField: 2.5
     <AttackRecovery>k__BackingField: 1.5

@@ -60,7 +60,6 @@ GameObject:
   - component: {fileID: 4399603215803775128}
   - component: {fileID: 4679022288187799651}
   - component: {fileID: 8327977833412635372}
-  - component: {fileID: 2262976181833518466}
   - component: {fileID: 4088665956458132345}
   - component: {fileID: 9157632587801091930}
   - component: {fileID: -8405115729108536640}
@@ -178,11 +177,19 @@ MonoBehaviour:
   _destroyer: {fileID: 4088665956458132345}
   _enemyTargetProvider: {fileID: 9157632587801091930}
   _attackDistance: 17
-  <Health>k__BackingField: {fileID: 2262976181833518466}
+  <Health>k__BackingField:
+    <BaseValue>k__BackingField: 0
+    CurrentValue: 0
+    _regenerationTime: 0
+    <RegenerateAmount>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
   <EnemyType>k__BackingField: 5
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 4
-    <Speed>k__BackingField: 3
+    <Speed>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
     <CollisionDamage>k__BackingField: 0
     <AttackDelay>k__BackingField: 3
     <AttackRecovery>k__BackingField: 1
@@ -213,23 +220,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _holder: {fileID: 6737547138716812977}
   _weaponStats:
-    <WeaponDamage>k__BackingField: 60
-    <WeaponSpread>k__BackingField: 0.1
-    <WeaponBulletReloadTime>k__BackingField: 0.7
---- !u!114 &2262976181833518466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5537806147820285303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxValue: 50
-  CurrentValue: 50
+    <WeaponDamage>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
+    <BulletPerShootCount>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
+    <WeaponSpread>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
+    <WeaponBulletReloadTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
 --- !u!114 &4088665956458132345
 MonoBehaviour:
   m_ObjectHideFlags: 0

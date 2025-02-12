@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2127047212072642651}
   - component: {fileID: 6300912649283175769}
   - component: {fileID: 442572439295423526}
-  - component: {fileID: 4219066298249808052}
   - component: {fileID: -4304947118811211038}
   - component: {fileID: 3709468705532820958}
   - component: {fileID: 4789583573764484402}
@@ -139,9 +138,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpStats:
-    <JumpDistance>k__BackingField: 8
-    <JumpTime>k__BackingField: 0.5
-    <JumpReloadTime>k__BackingField: 2
+    <JumpDistance>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
+    <JumpTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
+    <JumpReloadTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
 --- !u!114 &442572439295423526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,20 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9772ab76624152b07c49e6f142712b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4219066298249808052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5359367708107569414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxValue: 50
-  CurrentValue: 50
 --- !u!114 &-4304947118811211038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,12 +178,20 @@ MonoBehaviour:
   _destroyer: {fileID: 4789583573764484402}
   _enemyTargetProvider: {fileID: 363723337743644631}
   _attackDistance: 2
-  <Health>k__BackingField: {fileID: 4219066298249808052}
+  <Health>k__BackingField:
+    <BaseValue>k__BackingField: 0
+    CurrentValue: 0
+    _regenerationTime: 0
+    <RegenerateAmount>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
   <EnemyType>k__BackingField: 0
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 1
-    <Speed>k__BackingField: 2.5
-    <Damage>k__BackingField: 15
+    <Speed>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
+    <CollisionDamage>k__BackingField: 0
     <AttackDelay>k__BackingField: 1
     <AttackRecovery>k__BackingField: 1.5
     <AttackCount>k__BackingField: 1
@@ -210,7 +209,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pushForce: 40
   _stunTime: 0.7
-  _collisionDamage: 15
 --- !u!114 &4789583573764484402
 MonoBehaviour:
   m_ObjectHideFlags: 0

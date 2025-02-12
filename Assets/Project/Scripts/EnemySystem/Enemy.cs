@@ -46,6 +46,8 @@ namespace Project.Scripts.EnemySystem
                 new EnemyStunnedState(this, _mover)
             };
             
+            Health.CalculateCurrentValue();
+            
             _enemyTargetProvider.Initialize(player, _attackDistance);
             _attacker.Initialize(_enemyTargetProvider, EnemyStats);
             _destroyer.Initialize(Health, this);

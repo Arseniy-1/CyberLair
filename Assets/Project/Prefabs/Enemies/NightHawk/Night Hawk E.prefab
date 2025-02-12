@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 7671894555850046273}
   - component: {fileID: 4695786123440549315}
   - component: {fileID: 9010007184260890335}
-  - component: {fileID: 6052317746550728024}
   - component: {fileID: 263878080555140060}
   - component: {fileID: 1709608626960835559}
   - component: {fileID: 5625599109945990570}
@@ -232,20 +231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 3.6
---- !u!114 &6052317746550728024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6321936822601242699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxValue: 25
-  CurrentValue: 25
 --- !u!114 &263878080555140060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,11 +250,19 @@ MonoBehaviour:
   _destroyer: {fileID: 5625599109945990570}
   _enemyTargetProvider: {fileID: 2166195250440910278}
   _attackDistance: 2.5
-  <Health>k__BackingField: {fileID: 6052317746550728024}
+  <Health>k__BackingField:
+    <BaseValue>k__BackingField: 0
+    CurrentValue: 0
+    _regenerationTime: 0
+    <RegenerateAmount>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
   <EnemyType>k__BackingField: 1
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 6
-    <Speed>k__BackingField: 2
+    <Speed>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
     <CollisionDamage>k__BackingField: 0
     <AttackDelay>k__BackingField: 0.3
     <AttackRecovery>k__BackingField: 0
@@ -337,6 +330,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpStats:
-    <JumpDistance>k__BackingField: 2
-    <JumpTime>k__BackingField: 0.2
-    <JumpReloadTime>k__BackingField: 0
+    <JumpDistance>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
+    <JumpTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
+    <JumpReloadTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      CurrentValue: 0
