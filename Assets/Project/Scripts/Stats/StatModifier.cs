@@ -28,7 +28,7 @@ public class StatModifier
 
     public bool HasExpired()
     {
-        return _elapsedTime >= Duration;
+        return _elapsedTime > Duration;
     }
     
     public StatModifier Copy()

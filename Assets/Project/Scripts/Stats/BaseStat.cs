@@ -32,15 +32,16 @@ public abstract class BaseStat
     protected virtual float CalculateValue()
     {
         float finalValue = BaseValue;
-
-        float additive = modifiers
-            .Where(mod => mod.Type == ModifierType.Additive)
-            .Sum(mod => mod.Value);
         
-        finalValue += additive;
+        finalValue = modifiers
+            .Where(mod => mod.Type == ModifierType.Additive)
+            .Aggregate(finalValue, (current, mod) => current + mod.Value);
 
-        return modifiers.Where(mod => mod.Type == ModifierType.Multiplicative)
+        finalValue = modifiers.Where(mod => mod.Type == ModifierType.Multiplicative)
             .Aggregate(finalValue, (current, mod) => current * mod.Value);
+
+        Debug.Log(GetType().Name + " Calculate Value: " + finalValue);
+        return finalValue;
     }
 
     public void AddModifier(StatModifier modifier)
