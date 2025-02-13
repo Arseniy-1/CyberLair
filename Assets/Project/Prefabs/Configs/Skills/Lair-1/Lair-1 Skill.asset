@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bfdd584729c4d589389ef4c8cc6b3bb, type: 3}
-  m_Name: OrbitalSkill
+  m_Name: Lair-1 Skill
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: "\u0411\u0435\u0440\u043B\u043E\u0433\u0430-1"

@@ -8,7 +8,7 @@ public class AthleticsSkill : Skill
 
     public override void Apply(SkillData skillData)
     {
-        skillData.PlayerStats.JumpDistance.AddModifier(_jumpDistanceModifier);
-        skillData.PlayerStats.MagnetRange.AddModifier(_magnetRangeModifier);
+        skillData.PlayerStats.JumpDistance.AddModifier(_jumpDistanceModifier.Copy());
+        skillData.PlayerStats.MagnetRange.AddModifier(_magnetRangeModifier.Copy());
     }
 }

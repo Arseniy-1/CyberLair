@@ -53,12 +53,12 @@ public class Mediator : MonoBehaviour
         _availableSkills.Remove(skill);
         _raisedSkills.Add(skill);
 
-        foreach (var hardSkill in _hardSkills.Where(hardSkill => hardSkill.IsAvailable(_raisedSkills)))
+        foreach (HardSkill hardSkill in _hardSkills.Where(hardSkill => hardSkill.IsAvailable(_raisedSkills)))
         {
             _availableSkills.Add(hardSkill);
         }
         
-        foreach (var mutantSkill in _mutantSkills.Where(mutantSkill => mutantSkill.IsAvailable(_raisedSkills)))
+        foreach (MutantSkill mutantSkill in _mutantSkills.Where(mutantSkill => mutantSkill.IsAvailable(_raisedSkills)))
         {
             _availableSkills.Add(mutantSkill);
         }
@@ -75,6 +75,14 @@ public class Mediator : MonoBehaviour
     [Button]
     private void ShowSkills()
     {
+        int skillsNeeded = _skillsCount;
+        
+        if(_availableSkills.Count < _skillsCount)
+            skillsNeeded = _availableSkills.Count;
+
+        if (skillsNeeded == 0)
+            return;
+        
         for (int i = 0; i < _skillsCount; i++)
         {
             int randomIndex = Random.Range(0, _availableSkills.Count);

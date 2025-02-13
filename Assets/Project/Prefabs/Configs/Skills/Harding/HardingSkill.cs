@@ -9,7 +9,7 @@ namespace Project.Prefabs.Configs.Skills.Harding
         
         public override void Apply(SkillData skillData)
         {
-            skillData.PlayerStats.JumpReloadTime.AddModifier(_jumpReloadTimeModifier);
+            skillData.PlayerStats.JumpReloadTime.AddModifier(_jumpReloadTimeModifier.Copy());
         }
     }
 }

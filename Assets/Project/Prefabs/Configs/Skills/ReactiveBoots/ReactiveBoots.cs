@@ -7,6 +7,6 @@ public class ReactiveBoots : Skill
 
     public override void Apply(SkillData skillData)
     {
-        skillData.PlayerStats.Speed.AddModifier(_speedModifier);
+        skillData.PlayerStats.Speed.AddModifier(_speedModifier.Copy());
     }
 }
