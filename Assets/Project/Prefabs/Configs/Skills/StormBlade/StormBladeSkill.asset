@@ -18,7 +18,8 @@ MonoBehaviour:
     <Icon>k__BackingField: {fileID: 0}
   NeededSkills:
   - {fileID: 11400000, guid: 3572f783faa47490a8595315be041fc9, type: 2}
+  - {fileID: 11400000, guid: e18572bf8d0b7d24cb7dae87a156099e, type: 2}
   _stormBlade:
-    _maxRadius: 5
+    _maxRadius: 6
     _minRadius: 1
     _changingSpeed: 3
