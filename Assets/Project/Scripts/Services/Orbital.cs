@@ -33,6 +33,14 @@ namespace Project.Scripts.Servises
             _targetTransform = targetTransform;
             CalculateOffset();
         }
+
+        public void ApplyRadius(float radius)
+        {
+            if (radius < 0)
+                return;
+            
+            _radius = radius;
+        }
         
         private void CalculateOffset()
         {

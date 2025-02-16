@@ -17,6 +17,7 @@ public class Level : MonoBehaviour
         _experienceStorage.ResetExperience(_levelConfig.ExperienceValues[_currentLevel]);
     }
     
+    [Button]
     private void UpgradeLevel()
     {
         _currentLevel++;

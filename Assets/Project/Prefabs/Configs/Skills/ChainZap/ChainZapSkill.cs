@@ -5,11 +5,11 @@ namespace Project.Prefabs.Configs.Skills.Zap
     [CreateAssetMenu(fileName = "ChainZapSkill", menuName = "Skill/Simple/ChainZap", order = 51)]
     public class ChainZapSkill : Skill
     {
-        [SerializeField] private ChainZap _chainZap;
+        [field: SerializeField] public ChainZap ChainZap { get; private set; }
         
         public override void Apply(SkillData skillData)
         {
-            _chainZap.Initialize(skillData.WeaponHolder.Weapon);
+            ChainZap.Initialize(skillData.WeaponHolder.Weapon);
         }
     }
 }

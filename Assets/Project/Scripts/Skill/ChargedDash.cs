@@ -8,7 +8,7 @@ public class ChargedDash : HardSkill
     
     public override void Apply(SkillData skillData)
     {
-        skillData.PlayerStats.WeaponDamage.AddModifier(_speedStatModifier);
-        skillData.PlayerStats.WeaponDamage.AddModifier(_chargeTimeStatModifier);
+        skillData.PlayerStats.WeaponDamage.AddModifier(_speedStatModifier.Copy());
+        skillData.PlayerStats.WeaponDamage.AddModifier(_chargeTimeStatModifier.Copy());
     }
 }

@@ -6,9 +6,11 @@ public class OrbitalSkill : Skill
 {
     [SerializeField] private Orbital _orbitalPrefab;
     
+    public Orbital OrbitalInstance { get; private set; }
+    
     public override void Apply(SkillData skillData)
     {
-        var orbital = Instantiate(_orbitalPrefab);
-        skillData.PlayerStats.OrbitalHandler.AddOrbital(orbital, skillData.WeaponHolder.transform);
+        OrbitalInstance = Instantiate(_orbitalPrefab);
+        skillData.PlayerStats.OrbitalHandler.AddOrbital(OrbitalInstance, skillData.WeaponHolder.transform);
     }
 }

@@ -34788,11 +34788,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb061a729cc24cc1a24b0482f33515af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hardSkills: []
+  _hardSkills:
+  - {fileID: 11400000, guid: 675f30507dc22494b890595cd2b14de4, type: 2}
   _mutantSkills: []
   _simpleSkills:
-  - {fileID: 11400000, guid: df048b20ce113448994a301fd79d0ed1, type: 2}
-  - {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
+  - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
   _availableSkills: []
   _raisedSkills: []
   _skillViews:

@@ -33,11 +33,12 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             SpawnIterating().Forget();
         }
 
-        public void ChangeArrowPrefab(MagicArrow magicArrow)
+        public void Disable()
         {
             Unsubscribe();
-
-            Pool = new MagicArrowPool(magicArrow, StartAmount);
+            _isActive = false;
+            
+            _cancellationToken.Cancel();
         }
 
         private Vector3 FindEnemyPosition()
@@ -62,7 +63,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
         private async UniTask SpawnIterating()
         {
-            while (true)
+            while (_isActive)
             {
                 try
                 {
