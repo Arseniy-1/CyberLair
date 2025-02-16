@@ -10,8 +10,8 @@ namespace Project.Prefabs.Configs.Skills.SnowBlood
         
         public override void Apply(SkillData skillData)
         {
-            skillData.PlayerStats.Health.AddModifier(_healthModifier);
-            skillData.PlayerStats.WeaponDamage.AddModifier(_damageModifier);
+            skillData.PlayerStats.Health.AddModifier(_healthModifier.Copy());
+            skillData.PlayerStats.WeaponDamage.AddModifier(_damageModifier.Copy());
         }
     }
 }

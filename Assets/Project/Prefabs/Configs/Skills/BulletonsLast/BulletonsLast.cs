@@ -24,10 +24,10 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
         private void HandleAmmoUpdated(int currentAmmoCount, int magazineSize)
         {
             if (currentAmmoCount == 1)
-                _incrementalWeapon.WeaponStats.WeaponDamage.AddModifier(_damageModifier);
+                _incrementalWeapon.WeaponStats.WeaponDamage.AddModifier(_damageModifier.Copy());
             
             if(currentAmmoCount != 1)
-                _incrementalWeapon.WeaponStats.WeaponDamage.RemoveModifier(_damageModifier);
+                _incrementalWeapon.WeaponStats.WeaponDamage.RemoveModifier(_damageModifier.Copy());
         }
     }
 }

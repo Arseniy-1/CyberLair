@@ -18,7 +18,7 @@ namespace Project.Prefabs.Configs.Skills.MercuryMimicry
 
         private void IncreaseSpeed(float damage)
         {
-            _skillData.PlayerStats.Speed.AddModifier(_speedModifier);
+            _skillData.PlayerStats.Speed.AddModifier(_speedModifier.Copy());
         }
     }
 }
