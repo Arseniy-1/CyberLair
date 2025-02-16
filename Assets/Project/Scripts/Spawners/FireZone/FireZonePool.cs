@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Prefabs.Configs.Skills.FireZone;
+using UnityEngine;
 
 public class FireZonePool : Pool<FireZone>
 {

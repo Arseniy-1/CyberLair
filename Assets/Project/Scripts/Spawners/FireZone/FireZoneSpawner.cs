@@ -1,4 +1,5 @@
 ﻿using System;
+using Project.Prefabs.Configs.Skills.FireZone;
 
 [Serializable]
 public class FireZoneSpawner : Spawner<FireZone>
