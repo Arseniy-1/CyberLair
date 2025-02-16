@@ -23,7 +23,7 @@ public class ChainZap
     public void Initialize(Weapon weapon)
     {
         _weapon = weapon;
-        weapon.OnShot += InnerSubscribe;
+        weapon.Shooted += InnerSubscribe;
     }
 
     private void InnerSubscribe(Bullet bullet)

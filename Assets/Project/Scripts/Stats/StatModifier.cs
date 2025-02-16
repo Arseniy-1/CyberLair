@@ -9,7 +9,7 @@ public class StatModifier
     [field: SerializeField] public ModifierType Type { get; private set; }
     [field: SerializeField, MinValue(0)] public float Duration { get; private set; }
 
-    private float _elapsedTime = 0;
+    [SerializeField] private float _elapsedTime = 0;
 
     public event Action<StatModifier> ValueExpired;
 
@@ -30,7 +30,7 @@ public class StatModifier
     {
         return _elapsedTime > Duration;
     }
-    
+
     public StatModifier Copy()
     {
         var copy = new StatModifier
@@ -38,9 +38,9 @@ public class StatModifier
             Value = Value,
             Type = Type,
             Duration = Duration,
-            _elapsedTime = _elapsedTime
+            _elapsedTime = 0
         };
-        
+
         return copy;
     }
 }

@@ -27,11 +27,10 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable
     {
         if (collision.TryGetComponent(out IDamageable damagable))
         {
+            OnDamagableCollided?.Invoke(damagable);
             damagable.TakeDamage(_damage);
 
             Destory();
-
-            OnDamagableCollided?.Invoke(damagable);
         }
     }
 

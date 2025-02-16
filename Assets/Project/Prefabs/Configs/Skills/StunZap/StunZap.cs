@@ -11,7 +11,7 @@ namespace Project.Prefabs.Configs.Skills.StunZap
         
         public void Initialize(Weapon weapon)
         {
-            weapon.OnShot += InnerSubscribe;
+            weapon.Shooted += InnerSubscribe;
         }
         
         private void InnerSubscribe(Bullet bullet)

@@ -20,13 +20,13 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
         private void OnDisable()
         {
-            _weapon.OnShot -= HandleShoot;
+            _weapon.Shooted -= HandleShoot;
         }
 
         public void Initialize(Weapon weapon)
         {
             _weapon = weapon;
-            _weapon.OnShot += HandleShoot;
+            _weapon.Shooted += HandleShoot;
         }
 
         private void HandleShoot(Bullet bullet)

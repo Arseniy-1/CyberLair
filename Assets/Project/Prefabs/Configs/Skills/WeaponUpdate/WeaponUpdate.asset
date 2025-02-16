@@ -21,8 +21,5 @@ MonoBehaviour:
   _damageStatModifier:
     <Value>k__BackingField: 2
     <Type>k__BackingField: 1
-    <Duration>k__BackingField: 4
-  _damageStatModifier2:
-    <Value>k__BackingField: 15
-    <Type>k__BackingField: 0
-    <Duration>k__BackingField: 4
+    <Duration>k__BackingField: 3
+    _elapsedTime: 0

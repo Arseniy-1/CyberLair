@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Sirenix.OdinInspector;
 
 [Serializable]
 public abstract class BaseStat
@@ -18,28 +19,24 @@ public abstract class BaseStat
 
     public void UpdateModifiers()
     {
-        for(int i = 0; i < modifiers.Count; i++)
+        for (int i = 0; i < modifiers.Count; i++)
         {
             modifiers[i].Update();
-            
-            if (modifiers[i].HasExpired())
-            {
-                modifiers.RemoveAt(i);
-            }
         }
     }
 
+    [Button]
     protected virtual float CalculateValue()
     {
         float finalValue = BaseValue;
-        
+
         finalValue = modifiers
             .Where(mod => mod.Type == ModifierType.Additive)
             .Aggregate(finalValue, (current, mod) => current + mod.Value);
 
         finalValue = modifiers.Where(mod => mod.Type == ModifierType.Multiplicative)
             .Aggregate(finalValue, (current, mod) => current * mod.Value);
-        
+
         return finalValue;
     }
 
@@ -53,6 +50,7 @@ public abstract class BaseStat
     public void RemoveModifier(StatModifier modifier)
     {
         modifier.ValueExpired -= RemoveModifier;
+        modifiers.Remove(modifier);
         CalculateCurrentValue();
     }
 }

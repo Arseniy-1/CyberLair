@@ -10,10 +10,10 @@ public class CriticalHitEffector : BulletEffector
     public override void Initialize(Weapon weapon)
     {
         Weapon = weapon;
-        weapon.OnShot += OnShot;
+        weapon.Shooted += Shooted;
     }
 
-    private void OnShot(Bullet bullet)
+    private void Shooted(Bullet bullet)
     {
         bullet.OnDamagableCollided += HandleDamageable;
     }

@@ -18,7 +18,7 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
         
         public void Initialize(Weapon weapon, IWeaponStats weaponStats)
         {
-            weapon.OnShot += InnerSubscribe;
+            weapon.Shooted += InnerSubscribe;
 
             _weaponStats = weaponStats;
         }

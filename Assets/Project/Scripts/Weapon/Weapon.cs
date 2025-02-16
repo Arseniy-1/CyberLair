@@ -19,7 +19,7 @@ namespace Project.Scripts.Weapon
 
         public bool IsReloaded => _isReloaded;
         public IWeaponStats WeaponStats => _weaponStats;
-        public event Action<Bullet> OnShot;
+        public event Action<Bullet> Shooted;
 
         protected virtual void Awake()
         {
@@ -60,7 +60,7 @@ namespace Project.Scripts.Weapon
                 Bullet bullet = _ammoSpawner.Spawn();
                 bullet.Init(_shootPoint.position, GetBulletDirection(), (int)(_weaponStats.WeaponDamage.CurrentValue));
 
-                OnShot?.Invoke(bullet);
+                Shooted?.Invoke(bullet);
 
                 bullet.Activate();
             }

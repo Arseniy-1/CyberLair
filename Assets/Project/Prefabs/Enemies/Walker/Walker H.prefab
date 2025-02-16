@@ -179,8 +179,8 @@ MonoBehaviour:
   _enemyTargetProvider: {fileID: 363723337743644631}
   _attackDistance: 2
   <Health>k__BackingField:
-    <BaseValue>k__BackingField: 0
-    CurrentValue: 0
+    <BaseValue>k__BackingField: 100
+    CurrentValue: 100
     _regenerationTime: 0
     <RegenerateAmount>k__BackingField:
       <BaseValue>k__BackingField: 0

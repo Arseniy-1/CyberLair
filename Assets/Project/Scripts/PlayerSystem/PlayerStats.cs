@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, IJumpStats
 {
     [field: SerializeField] public Health Health { get; private set; }
+    [field: SerializeField] public RegenerateAmount RegenerateAmount { get; private set; }
+    [field: SerializeField] public ShieldAmount ShieldAmount { get; private set; }
     [field: SerializeField] public Speed Speed { get; private set; }
     [field: SerializeField] public JumpDistance JumpDistance { get; private set; }
     [field: SerializeField] public JumpTime JumpTime { get; private set; }
@@ -26,7 +28,9 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, I
         OrbitalHandler = new OrbitalHandler();
         
         Health.CalculateCurrentValue();
-        Health.Initialize();
+        ShieldAmount.CalculateCurrentValue();
+        Health.Initialize(ShieldAmount);
+        RegenerateAmount.CalculateCurrentValue();
         Speed.CalculateCurrentValue();
         JumpDistance.CalculateCurrentValue();
         JumpTime.CalculateCurrentValue();
@@ -43,6 +47,8 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, I
     
     public void Update()
     {
+        RegenerateAmount.UpdateModifiers();
+        ShieldAmount.UpdateModifiers();
         Health.UpdateModifiers();
         Speed.UpdateModifiers();
         JumpDistance.UpdateModifiers();
