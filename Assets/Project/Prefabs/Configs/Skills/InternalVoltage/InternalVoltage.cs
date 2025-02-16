@@ -24,6 +24,9 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
 
         private void Shock(float damage)
         {
+            if(Random.value >= _chance)
+                return;
+            
             Collider2D[] colliders = Physics2D.OverlapCircleAll(TargetPosition, _actionRadius, _layerMask);
 
             if(colliders.Length == 0)
