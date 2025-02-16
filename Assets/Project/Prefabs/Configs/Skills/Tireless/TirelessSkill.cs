@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills
 {
-    [CreateAssetMenu(fileName = "PhantomArrowsSkill", menuName = "Skill/Hard/PhantomArrows", order = 51)]
+    [CreateAssetMenu(fileName = "TirelessSkill", menuName = "Skill/Hard/Tireless", order = 51)]
     public class TirelessSkill : HardSkill
     {
         [SerializeField] private StatModifier _jumpReloadTimeModifier;
