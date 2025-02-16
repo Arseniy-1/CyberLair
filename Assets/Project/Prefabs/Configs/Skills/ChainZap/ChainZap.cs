@@ -25,14 +25,14 @@ public class ChainZap
     public void Initialize(Weapon weapon)
     {
         _weapon = weapon;
-        weapon.OnShot += InnerSubscribe;
+        weapon.Shooted += InnerSubscribe;
 
         _viewSpawner = new ChainZapViewSpawner(_zapView, 0);
     }
 
     public void Disable()
     {
-        _weapon.OnShot -= InnerSubscribe;
+        _weapon.Shooted -= InnerSubscribe;
     }
 
     private void InnerSubscribe(Bullet bullet)

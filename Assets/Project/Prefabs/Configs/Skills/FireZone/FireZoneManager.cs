@@ -14,7 +14,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
         public void Initialize(Weapon weapon)
         {
             _fireZoneSpawner = new FireZoneSpawner(_fireZonePrefab);
-            weapon.OnShot += OnShot;
+            weapon.Shooted += OnShot;
         }
 
         private void OnShot(Bullet bullet)

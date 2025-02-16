@@ -25,12 +25,12 @@ namespace Project.Scripts.Weapon.ActiveSkills
         {
             _weapon = weapon;
             _target = target;
-            _weapon.OnShot += HandleShoot;
+            _weapon.Shooted += HandleShoot;
         }
         
         public void Disable()
         {
-            _weapon.OnShot -= HandleShoot;
+            _weapon.Shooted -= HandleShoot;
         }
 
         private void HandleShoot(Bullet bullet)
