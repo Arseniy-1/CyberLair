@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3214721776068254768}
   - component: {fileID: 1058705675161308876}
+  - component: {fileID: 1801309511109169991}
   m_Layer: 0
   m_Name: ZapView
   m_TagString: Untagged
@@ -154,3 +155,16 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1801309511109169991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2746163804480821433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb19875ccc54750b8304dcf22ef004c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ZapView>k__BackingField: {fileID: 1058705675161308876}

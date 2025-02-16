@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using DG.Tweening;
+using Project.Prefabs.Configs.Skills.Zap;
 using Project.Scripts.Weapon;
-using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -13,17 +13,26 @@ public class ChainZap
     [SerializeField] private float _chainRadius = 5f;
     [SerializeField] private int _maxBounces = 2;
     [SerializeField] private float _damageFalloff = 0.8f;
-    [SerializeField] private LineRenderer _zapView;
+    [SerializeField] private ChainZapView _zapView;
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private int _segments = 20;
     [SerializeField, Range(0f, 1f)] private float _chance;
+    [SerializeField] private StatModifier _enemySpeedModifier;
 
     private Weapon _weapon;
+    private ChainZapViewSpawner _viewSpawner;
 
     public void Initialize(Weapon weapon)
     {
         _weapon = weapon;
         weapon.OnShot += InnerSubscribe;
+
+        _viewSpawner = new ChainZapViewSpawner(_zapView, 0);
+    }
+
+    public void Disable()
+    {
+        _weapon.OnShot -= InnerSubscribe;
     }
 
     private void InnerSubscribe(Bullet bullet)
@@ -50,6 +59,7 @@ public class ChainZap
             hitTargets.Add(currentTarget);
 
             currentTarget.TakeDamage(_weapon.WeaponStats.WeaponDamage.CurrentValue * Mathf.Pow(_damageFalloff, bounce));
+            currentTarget.EnemyStats.Speed.AddModifier(_enemySpeedModifier);
 
             if (bounce != 0)
                 DrawLightning(currentPosition, currentTarget.transform.position, bullet);
@@ -84,8 +94,9 @@ public class ChainZap
 
     private void DrawLightning(Vector2 start, Vector2 end, Bullet bullet)
     {
-        LineRenderer line = Object.Instantiate(_zapView, bullet.transform.position, Quaternion.identity);
-        line.positionCount = _segments;
+        ChainZapView view = _viewSpawner.Spawn();
+        view.transform.position = bullet.transform.position;
+        view.ZapView.positionCount = _segments;
 
         for (int i = 0; i < _segments; i++)
         {
@@ -94,15 +105,15 @@ public class ChainZap
             float offset = Random.Range(-0.2f, 0.2f);
             
             point += Vector2.Perpendicular(end - start).normalized * offset;
-            line.SetPosition(i, point);
+            view.ZapView.SetPosition(i, point);
         }
 
-        line.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
+        view.ZapView.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
 
         float duration = 0.2f;
-        line.material.DOFade(0f, duration).SetEase(Ease.InOutFlash).OnComplete(() =>
+        view.ZapView.material.DOFade(0f, duration).SetEase(Ease.InOutFlash).OnComplete(() =>
         {
-            Object.Destroy(line.gameObject);
+            view.Disable();
         });
     }
 }
