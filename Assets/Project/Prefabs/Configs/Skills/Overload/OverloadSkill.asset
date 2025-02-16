@@ -20,7 +20,7 @@ MonoBehaviour:
   NeededSkills:
   - {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
   _overloadThunder:
-    _actionRadius: 5
+    _actionRadius: 10
     _layerMask:
       serializedVersion: 2
       m_Bits: 8
