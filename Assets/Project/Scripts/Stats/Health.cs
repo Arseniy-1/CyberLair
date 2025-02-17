@@ -6,14 +6,14 @@ using UnityEngine;
 [Serializable]
 public class Health : BaseStat
 {
-    [SerializeField] private float MaxHealth;
-
     private ShieldAmount _shieldAmount;
     private bool _isActive;
     
     public event Action LostHealth;
     public event Action<float> DamageTaken;
 
+    public float MaxHealth => CalculateValue();
+    
     public void Initialize(ShieldAmount shieldAmount)
     {
         _shieldAmount = shieldAmount;
