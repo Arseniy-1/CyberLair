@@ -37,7 +37,6 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
                 if (strickenCollider.TryGetComponent(out IStunable affected))
                 {
                     affected.TakeStun(_stunTime);
-                    Debug.Log($"{strickenCollider.name} is stunned.");
                 }
             }
         }
