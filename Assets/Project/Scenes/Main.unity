@@ -35202,7 +35202,7 @@ MonoBehaviour:
   _hardSkills: []
   _mutantSkills: []
   _simpleSkills:
-  - {fileID: 11400000, guid: 3eb791f9b569d2545a71fcb2caa40db2, type: 2}
+  - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
   _availableSkills: []
   _raisedSkills: []
   _skillViews:
@@ -35295,8 +35295,7 @@ MonoBehaviour:
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
   _heartSpawnChance: 10
   _healAmount: 20
-  _wavesConfigs:
-  - {fileID: 11400000, guid: 9de250105e226f042b1976e6d7ca9870, type: 2}
+  _wavesConfigs: []
 --- !u!114 &1928655050 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 977991838771203437, guid: 57c98b8b3a1413849b66c701178f515f, type: 3}
@@ -35532,7 +35531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<WeaponSpread>k__BackingField.<BaseValue>k__BackingField
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<JumpReloadTime>k__BackingField.<BaseValue>k__BackingField
@@ -35604,6 +35603,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4929631572322579149, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413698433737955829, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _bulletEffectors.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6501623627911074627, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}

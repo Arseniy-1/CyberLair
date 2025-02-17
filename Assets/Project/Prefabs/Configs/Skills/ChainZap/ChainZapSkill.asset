@@ -19,7 +19,7 @@ MonoBehaviour:
       \u043F\u043E\u0440\u0430\u0436\u0430\u0435\u0442 2 \u0446\u0435\u043B\u0438"
     <Icon>k__BackingField: {fileID: 21300000, guid: bd9c50bfec9ed864d820b34daccfabc2, type: 3}
   <ChainZap>k__BackingField:
-    _chainRadius: 5
+    _chainRadius: 4
     _maxBounces: 2
     _damageFalloff: 0.8
     _zapView: {fileID: 1801309511109169991, guid: 665688c73c4abd4489377eadcb9465f7, type: 3}
@@ -32,3 +32,4 @@ MonoBehaviour:
       <Value>k__BackingField: 0
       <Type>k__BackingField: 0
       <Duration>k__BackingField: 0
+      _elapsedTime: 0

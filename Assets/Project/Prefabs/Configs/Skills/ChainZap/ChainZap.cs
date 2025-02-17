@@ -28,7 +28,7 @@ public class ChainZap
         weapon.Shooted += InnerSubscribe;
 
         _viewSpawner = new ChainZapViewSpawner(_zapView, 0);
-    }
+    }   
 
     public void Disable()
     {
@@ -54,7 +54,7 @@ public class ChainZap
         if (currentTarget == false)
             return;
 
-        for (int bounce = 0; bounce < _maxBounces && currentTarget; bounce++)
+        for (int bounce = 0; bounce <= _maxBounces && currentTarget; bounce++)
         {
             hitTargets.Add(currentTarget);
 
@@ -110,10 +110,12 @@ public class ChainZap
 
 
         view.ZapView.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
+        
         float duration = 0.2f;
         view.ZapView.material.DOFade(0f, duration).SetEase(Ease.InOutFlash).OnComplete(() =>
         {
             view.Disable();
+            view.ZapView.material.DOFade(1f, 0f);
         });
     }
 }
