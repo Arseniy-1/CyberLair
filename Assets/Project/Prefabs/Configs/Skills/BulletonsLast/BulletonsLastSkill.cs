@@ -5,7 +5,7 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
     [CreateAssetMenu(fileName = "BulletonsLastSkill", menuName = "Skill/Hard/BulletonsLast", order = 51)]
     public class BulletonsLastSkill : HardSkill
     {
-        [SerializeField] private BulletonsLast _bulletonsLast;
+        private readonly BulletonsLast _bulletonsLast = new();
         
         public override void Apply(SkillData skillData)
         {

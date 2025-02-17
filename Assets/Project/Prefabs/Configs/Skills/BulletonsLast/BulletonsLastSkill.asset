@@ -18,9 +18,4 @@ MonoBehaviour:
     <Icon>k__BackingField: {fileID: 0}
   NeededSkills:
   - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
-  _bulletonsLast:
-    _damageModifier:
-      <Value>k__BackingField: 2
-      <Type>k__BackingField: 1
-      <Duration>k__BackingField: 0
-      _elapsedTime: 0
+  - {fileID: 11400000, guid: 95fd6710fc5784a98914846ca07ba1cc, type: 2}

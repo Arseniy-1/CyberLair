@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.BulletonsLast
 {
-    [Serializable]
     public class BulletonsLast
     {
         private IncrementalReloadWeapon _weapon;
