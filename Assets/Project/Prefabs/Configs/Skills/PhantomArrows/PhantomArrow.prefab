@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6966984513860249003}
   - component: {fileID: 2790034736549358457}
   m_Layer: 6
-  m_Name: MagicArrow Final Form
+  m_Name: PhantomArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,9 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6966984513860249003}
-  _nominalSpeed: 8
-  _nominalDamage: 15
-  _timeToDespawn: 2
+  _speed: 5
+  _timeToDespawn: 4
   _collisionHandler: {fileID: -5008895013172540786}
 --- !u!114 &-5008895013172540786
 MonoBehaviour:
@@ -82,7 +81,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
