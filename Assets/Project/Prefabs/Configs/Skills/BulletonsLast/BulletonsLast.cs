@@ -7,27 +7,33 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
     [Serializable]
     public class BulletonsLast
     {
-        [SerializeField] private StatModifier _damageModifier;
-
-        private IncrementalReloadWeapon _incrementalWeapon;
+        private IncrementalReloadWeapon _weapon;
 
         public void Initialize(Weapon weapon)
         {
-            _incrementalWeapon = weapon as IncrementalReloadWeapon;
-
-            if (_incrementalWeapon == false)
-                throw new ArgumentNullException($"{nameof(weapon)} должен быть {nameof(IncrementalReloadWeapon)}");
-
-            _incrementalWeapon.OnAmmoUpdated += HandleAmmoUpdated;
+            _weapon = weapon as IncrementalReloadWeapon;
+            
+            if (_weapon)
+                _weapon.Shooted += InnerSubscribe;
         }
 
-        private void HandleAmmoUpdated(int currentAmmoCount, int magazineSize)
+        private void InnerSubscribe(Bullet bullet)
         {
-            if (currentAmmoCount == 1)
-                _incrementalWeapon.WeaponStats.WeaponDamage.AddModifier(_damageModifier.Copy());
+            if (_weapon.CurrentMagazineSize != 0) return;
             
-            if(currentAmmoCount != 1)
-                _incrementalWeapon.WeaponStats.WeaponDamage.RemoveModifier(_damageModifier.Copy());
+            bullet.OnDamagableCollided += DealCriticalDamage;
+            bullet.OnDestroyed += Unsubscribe;
+        }
+
+        private void DealCriticalDamage(IDamageable damageable)
+        {
+            damageable.TakeDamage(_weapon.WeaponStats.WeaponDamage.CurrentValue);
+        }
+
+        private void Unsubscribe(Bullet bullet)
+        {
+            bullet.OnDamagableCollided -= DealCriticalDamage;
+            bullet.OnDestroyed -= Unsubscribe;
         }
     }
 }

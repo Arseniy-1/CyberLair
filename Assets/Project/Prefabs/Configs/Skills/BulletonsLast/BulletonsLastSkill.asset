@@ -16,9 +16,11 @@ MonoBehaviour:
     <SkillName>k__BackingField: 
     <Description>k__BackingField: 
     <Icon>k__BackingField: {fileID: 0}
-  NeededSkills: []
+  NeededSkills:
+  - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
   _bulletonsLast:
     _damageModifier:
-      <Value>k__BackingField: 0
-      <Type>k__BackingField: 0
+      <Value>k__BackingField: 2
+      <Type>k__BackingField: 1
       <Duration>k__BackingField: 0
+      _elapsedTime: 0
