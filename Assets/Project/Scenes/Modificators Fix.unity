@@ -34839,10 +34839,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hardSkills:
-  - {fileID: 11400000, guid: 223557b8524044eddb9d4638a7b6fdd4, type: 2}
+  - {fileID: 11400000, guid: 8c52f3ad6cb114752878cc3ba0d9a9f2, type: 2}
   _mutantSkills: []
   _simpleSkills:
-  - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
+  - {fileID: 11400000, guid: 95fd6710fc5784a98914846ca07ba1cc, type: 2}
   _availableSkills: []
   _raisedSkills: []
   _skillViews:

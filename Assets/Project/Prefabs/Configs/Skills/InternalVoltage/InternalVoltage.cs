@@ -31,12 +31,14 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
 
             if(colliders.Length == 0)
                     return;
-            
-            Collider2D strickenCollider = colliders[Random.Range(0, colliders.Length)];
 
-            if (strickenCollider.TryGetComponent(out IStunable affected))
+            foreach (Collider2D strickenCollider in colliders)
             {
-                affected.TakeStun(_stunTime);
+                if (strickenCollider.TryGetComponent(out IStunable affected))
+                {
+                    affected.TakeStun(_stunTime);
+                    Debug.Log($"{strickenCollider.name} is stunned.");
+                }
             }
         }
     }
