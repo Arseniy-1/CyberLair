@@ -26,10 +26,11 @@ MonoBehaviour:
     <Icon>k__BackingField: {fileID: 21300000, guid: 6f559fd089f5ddd4f907314e413c0b2d, type: 3}
   NeededSkills:
   - {fileID: 11400000, guid: 95fd6710fc5784a98914846ca07ba1cc, type: 2}
+  - {fileID: 11400000, guid: 79bbb4527739b4428b0f0eba3d54714f, type: 2}
   _internalVoltage:
-    _actionRadius: 4
+    _actionRadius: 3
     _stunTime: 0.5
     _layerMask:
       serializedVersion: 2
       m_Bits: 8
-    _chance: 1
+    _chance: 0.2
