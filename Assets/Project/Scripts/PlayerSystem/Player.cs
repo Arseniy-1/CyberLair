@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
 using UnityEngine.SceneManagement;
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _weaponHolder.Weapon.Initialize(PlayerStats);
     }
 
+    [Button]
     public void TakeDamage(float amount)
     {
         PlayerStats.Health.TakeDamage(amount);
