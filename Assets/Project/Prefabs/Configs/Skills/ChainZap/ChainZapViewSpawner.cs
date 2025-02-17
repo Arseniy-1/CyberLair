@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Project.Prefabs.Configs.Skills.Zap
 {
     public class ChainZapViewSpawner : Spawner<ChainZapView>

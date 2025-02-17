@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PainHealler : MonoBehaviour
 {
@@ -15,6 +14,6 @@ public class PainHealler : MonoBehaviour
 
     private void Heal(float amount)
     {
-        _skillData.PlayerStats.RegenerateAmount.AddModifier(_regenerateModifier.Copy());
+        _skillData.PlayerStats.HealthRegenerateAmount.AddModifier(_regenerateModifier.Copy());
     }
 }

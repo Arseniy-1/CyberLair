@@ -1,6 +1,4 @@
-﻿using System;
-using Project.Scripts.EnemySystem;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {

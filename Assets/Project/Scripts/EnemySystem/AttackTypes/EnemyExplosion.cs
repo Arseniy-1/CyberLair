@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using Project.Scripts.Servises;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Project.Scripts.EnemySystem.AttackTypes
 {

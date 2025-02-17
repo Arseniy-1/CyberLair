@@ -3,7 +3,6 @@ using Project.Scripts.EnemySystem;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Project.Scripts.ArenaSystem
 {

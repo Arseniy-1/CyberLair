@@ -76,7 +76,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _playerCollisionHandler.Initialize(PlayerStats.Health, _experienceStorage);
         _jumper.Initialize(PlayerStats);
         _magnet.Initialize(PlayerStats, transform);
-        _healthRegenerator.Initialize(PlayerStats.Health, PlayerStats.RegenerateAmount);
+        _healthRegenerator.Initialize(PlayerStats.Health, PlayerStats.HealthRegenerateAmount);
         
         _weaponHolder.Weapon.Initialize(PlayerStats);
     }

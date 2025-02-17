@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Project.Scripts.Servises;
 using UnityEngine;
 using Project.Scripts.Weapon;

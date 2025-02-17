@@ -108,8 +108,8 @@ public class ChainZap
             view.ZapView.SetPosition(i, point);
         }
 
-        view.ZapView.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
 
+        view.ZapView.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
         float duration = 0.2f;
         view.ZapView.material.DOFade(0f, duration).SetEase(Ease.InOutFlash).OnComplete(() =>
         {

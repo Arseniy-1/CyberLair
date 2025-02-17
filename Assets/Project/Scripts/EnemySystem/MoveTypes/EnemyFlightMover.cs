@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.MoveTypes

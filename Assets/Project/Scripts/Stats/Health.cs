@@ -46,21 +46,16 @@ public class Health : BaseStat
         
         LostHealth?.Invoke();
     }
-    
-    private float CalculateDamageAfterArmor(float amount)
-    {
-        float armorBaseValue = 100; 
-        float armorReductionFactor = _shieldAmount.CurrentValue / (_shieldAmount.CurrentValue + armorBaseValue); 
-        
-        return amount * (1 - armorReductionFactor); 
-    }
 }
 
 [Serializable]
-public class RegenerateAmount : BaseStat { }
+public class HealthRegenerateAmount : BaseStat { }
 
 [Serializable]
-public class ShieldAmount : BaseStat { }
+public class ShieldAmount : BaseStat
+{
+    
+}
 
 [Serializable]
 public class JumpDistance : BaseStat { }

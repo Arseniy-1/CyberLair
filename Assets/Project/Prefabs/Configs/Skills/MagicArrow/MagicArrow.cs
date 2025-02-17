@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Project.Scripts.Servises;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 {

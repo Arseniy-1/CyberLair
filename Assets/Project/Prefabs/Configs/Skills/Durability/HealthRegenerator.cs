@@ -7,12 +7,12 @@ public class HealthRegenerator : MonoBehaviour
 
     private Health _health; 
 
-    private RegenerateAmount _regenerateAmount;
+    private HealthRegenerateAmount _healthRegenerateAmount;
     private WaitForSeconds _healWait;
     
-    public void Initialize(Health health, RegenerateAmount regenerateAmount)
+    public void Initialize(Health health, HealthRegenerateAmount healthRegenerateAmount)
     {
-        _regenerateAmount = regenerateAmount;
+        _healthRegenerateAmount = healthRegenerateAmount;
         _health = health;
         _healWait = new WaitForSeconds(_healInterval);
         StartCoroutine(RegenerateHealth());
@@ -23,7 +23,7 @@ public class HealthRegenerator : MonoBehaviour
         while (enabled)
         {
             yield return _healWait;
-            _health.Heal(_regenerateAmount.CurrentValue);
+            _health.Heal(_healthRegenerateAmount.CurrentValue);
         }
     }
 }

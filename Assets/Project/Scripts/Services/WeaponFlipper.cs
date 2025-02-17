@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Project.Scripts.Servises
 {
     public class WeaponFlipper : Flipper

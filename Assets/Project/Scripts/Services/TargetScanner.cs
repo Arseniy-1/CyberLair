@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using UnityEngine.Profiling;
 
 public class TargetScanner : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class TargetScanner : MonoBehaviour
         }
     }
 
-    public void Scan()
+    private void Scan()
     {
         Vector2 position = transform.position;
 

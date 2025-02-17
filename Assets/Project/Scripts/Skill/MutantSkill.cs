@@ -4,12 +4,12 @@ using UnityEngine;
 
 public abstract class MutantSkill : Skill
 {
-    [SerializeField] private List<Skill> _neededSkills;
+    [SerializeField] protected List<Skill> NeededSkills;
 
     public abstract override void Apply(SkillData skillData);
 
     public bool IsAvailable(List<Skill> skills)
     {
-        return _neededSkills.All(skills.Contains);
+        return NeededSkills.All(skills.Contains);
     }
 }

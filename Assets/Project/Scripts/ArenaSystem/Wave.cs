@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Project.Scripts.CompositionRoot;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using Cysharp.Threading.Tasks;

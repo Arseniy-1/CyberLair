@@ -1,5 +1,4 @@
-﻿using System;
-using Project.Scripts.Weapon;
+﻿using Project.Scripts.Weapon;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New ScaleEffector", menuName = "Skill/BulletEffectors/ScaleEffector", order = 51)]

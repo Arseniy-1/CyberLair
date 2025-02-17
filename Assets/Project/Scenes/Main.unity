@@ -35296,7 +35296,7 @@ MonoBehaviour:
   _heartSpawnChance: 10
   _healAmount: 20
   _wavesConfigs:
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  - {fileID: 11400000, guid: 9de250105e226f042b1976e6d7ca9870, type: 2}
 --- !u!114 &1928655050 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 977991838771203437, guid: 57c98b8b3a1413849b66c701178f515f, type: 3}
