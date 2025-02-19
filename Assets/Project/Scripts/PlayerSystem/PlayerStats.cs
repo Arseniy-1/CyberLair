@@ -47,20 +47,20 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, I
     
     public void Update()
     {
-        HealthRegenerateAmount.UpdateModifiers();
-        ShieldAmount.UpdateModifiers();
-        Health.UpdateModifiers();
-        Speed.UpdateModifiers();
-        JumpDistance.UpdateModifiers();
-        JumpTime.UpdateModifiers();
-        JumpReloadTime.UpdateModifiers();
-        WeaponSpread.UpdateModifiers();
-        WeaponDamage.UpdateModifiers();
-        BulletPerShootCount.UpdateModifiers();
-        WeaponBulletReloadTime.UpdateModifiers();
-        WeaponRechargingTime.UpdateModifiers();
-        WeaponMagazineSize.UpdateModifiers();
-        MagnetRange.UpdateModifiers();
-        MagnetForce.UpdateModifiers();
+        HealthRegenerateAmount.Update();
+        ShieldAmount.Update();
+        Health.Update();
+        Speed.Update();
+        JumpDistance.Update();
+        JumpTime.Update();
+        JumpReloadTime.Update();
+        WeaponSpread.Update();
+        WeaponDamage.Update();
+        BulletPerShootCount.Update();
+        WeaponBulletReloadTime.Update();
+        WeaponRechargingTime.Update();
+        WeaponMagazineSize.Update();
+        MagnetRange.Update();
+        MagnetForce.Update();
     }
 }

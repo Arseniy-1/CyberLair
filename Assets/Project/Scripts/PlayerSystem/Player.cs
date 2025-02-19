@@ -20,7 +20,9 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private TargetScanner _targetScanner;
     [SerializeField] private Destroyer _destroyer;
     [SerializeField] private Magnet _magnet;
+    
     [SerializeField] private HealthRegenerator _healthRegenerator;
+    [SerializeField] private ShieldRegenerator _shieldRegenerator;
     
     private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
@@ -77,7 +79,9 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _playerCollisionHandler.Initialize(PlayerStats.Health, _experienceStorage);
         _jumper.Initialize(PlayerStats);
         _magnet.Initialize(PlayerStats, transform);
+        
         _healthRegenerator.Initialize(PlayerStats.Health, PlayerStats.HealthRegenerateAmount);
+        _shieldRegenerator.Initialize(PlayerStats.ShieldAmount, PlayerStats.Health);
         
         _weaponHolder.Weapon.Initialize(PlayerStats);
     }

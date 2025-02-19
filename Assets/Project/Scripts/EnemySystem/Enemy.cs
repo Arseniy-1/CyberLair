@@ -3,6 +3,7 @@ using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
+using UniRx;
 using System.Collections;
 using Sirenix.OdinInspector;
 
@@ -19,6 +20,7 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private float _attackDistance;
 
         private EntityStateMachine _stateMachine;
+        
         
         public event Action<Enemy> OnDestroyed;
 
@@ -81,6 +83,7 @@ namespace Project.Scripts.EnemySystem
         [Button]
         public void Die()
         {
+            MessageBrokerHolder.Enemy.Publish(new M_Enemy_Death());
             OnDestroyed?.Invoke(this);
         }
         
@@ -97,6 +100,6 @@ namespace Project.Scripts.EnemySystem
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, _attackDistance);
         }
-
     }
+    
 }

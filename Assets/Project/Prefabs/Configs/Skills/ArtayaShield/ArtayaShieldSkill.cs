@@ -1,45 +1,28 @@
-﻿using Project.Scripts.EnemySystem;
+﻿using UniRx;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ArtayaShieldSkill", menuName = "Skill/Simple/ArtayaShield", order = 51)]
 public class ArtayaShieldSkill : Skill
 {
-    [SerializeField] private KillerShield _killerShield;
-    
+    private CompositeDisposable _disposable;
+
     public override void Apply(SkillData skillData)
     {
-        // _killerShield.;
-    }
-}
-
-public class KillerShield : MonoBehaviour
-{
-    [SerializeField] private StatModifier _shieldModifier;
-    
-    private SkillData _skillData;
-    
-    public void Initialize(SkillData skillData)
-    {
-        skillData.WeaponHolder.Weapon.Shooted += OnShooted;
-    }
-
-    private void OnShooted(Bullet bullet)
-    {
-        bullet.OnDamagableCollided += OnDamagableCollided;
-    }
-
-    private void OnDamagableCollided(IDamageable damageable)
-    {
+        if (_disposable != null)
+            _disposable.Dispose();
         
-        if(damageable is Enemy enemy)
-        {
-            enemy.OnDestroyed += OnEnemyDied;
-        }
+        _disposable = new CompositeDisposable();
+        MessageBrokerHolder.Enemy.Receive<M_Enemy_Death>().Subscribe((message) => HandleEnemyDeath())
+            .AddTo(_disposable);
     }
 
-    private void OnEnemyDied(Enemy enemy)
+    private void OnDestroy()
     {
-        enemy.OnDestroyed -= OnEnemyDied;
-        _skillData.PlayerStats.ShieldAmount.AddModifier(_shieldModifier.Copy());
+        _disposable.Dispose();
+    }
+
+    private void HandleEnemyDeath()
+    {
+        Debug.Log("HandleEnemyDeath");
     }
 }

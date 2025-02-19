@@ -8,16 +8,16 @@ using Sirenix.OdinInspector;
 public abstract class BaseStat
 {
     [field: SerializeField] public float BaseValue { get; protected set; }
+    [field: SerializeField] public float CurrentValue { get; protected set; }
+    
     private List<StatModifier> modifiers = new();
-
-    [SerializeField] public float CurrentValue = 0;
 
     public void CalculateCurrentValue()
     {
         CurrentValue = CalculateValue();
     }
 
-    public void UpdateModifiers()
+    public virtual void Update()
     {
         for (int i = 0; i < modifiers.Count; i++)
         {
@@ -25,7 +25,6 @@ public abstract class BaseStat
         }
     }
 
-    [Button]
     protected virtual float CalculateValue()
     {
         float finalValue = BaseValue;
