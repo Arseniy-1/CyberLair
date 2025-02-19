@@ -5,8 +5,8 @@ public class StatsBar : StatsView
 {
     [SerializeField] protected Slider StatsBarView;
 
-    protected override void ShowStats(int currentValue, int maxValue)
+    protected override void ShowStats(float currentValue, float maxValue)
     {
-        StatsBarView.value = (float)currentValue / maxValue;
+        StatsBarView.value = currentValue / maxValue;
     }
 }

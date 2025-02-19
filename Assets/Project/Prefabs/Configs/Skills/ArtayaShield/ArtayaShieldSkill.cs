@@ -28,7 +28,6 @@ public class ArtayaShieldSkill : Skill
 
     private void HandleEnemyDeath()
     {
-        Debug.Log("repair");
         _shield.RepairShield(_shieldRepairAmount);
     }
 }

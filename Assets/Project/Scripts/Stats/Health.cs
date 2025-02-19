@@ -8,7 +8,6 @@ using UnityEngine;
 public class Health : BaseStat
 {
     private ShieldAmount _shieldAmount;
-    private bool _isActive;
 
     public event Action LostHealth;
     public event Action<float> DamageTaken;
@@ -18,7 +17,6 @@ public class Health : BaseStat
     public void Initialize(ShieldAmount shieldAmount)
     {
         _shieldAmount = shieldAmount;
-        _isActive = true;
     }
 
     [Button]
@@ -27,6 +25,7 @@ public class Health : BaseStat
         if (amount < 0)
             throw new ArgumentOutOfRangeException(nameof(amount));
 
+        OnAmountChanged();
         CurrentValue = Mathf.Clamp(CurrentValue + amount, 0f, MaxHealth);
     }
 
@@ -52,92 +51,17 @@ public class Health : BaseStat
             HandleDeath();
     }
 
+    [Button]
+    public void SetMaxHealth(float amount)
+    {
+        if(amount <= 0)
+            return;
+     
+        BaseValue = amount;
+    }
+
     private void HandleDeath()
     {
-        _isActive = false;
-
         LostHealth?.Invoke();
     }
-}
-
-[Serializable]
-public class HealthRegenerateAmount : BaseStat
-{
-}
-
-[Serializable]
-public class ShieldAmount : BaseStat
-{
-    public float MaxShield => CalculateValue();
-
-    public void ReduceShield(float amount)
-    {
-        if (amount < 0)
-            return;
-
-        CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxShield);
-    }
-
-    public void RepairShield(float repairAmount)
-    {
-        if (repairAmount < 0)
-            return;
-
-        CurrentValue = Mathf.Clamp(CurrentValue + repairAmount, 0f, MaxShield);
-    }
-}
-
-[Serializable]
-public class JumpDistance : BaseStat
-{
-}
-
-[Serializable]
-public class JumpTime : BaseStat
-{
-}
-
-[Serializable]
-public class JumpReloadTime : BaseStat
-{
-}
-
-[Serializable]
-public class WeaponSpread : BaseStat
-{
-}
-
-[Serializable]
-public class WeaponDamage : BaseStat
-{
-}
-
-[Serializable]
-public class BulletPerShootCount : BaseStat
-{
-}
-
-[Serializable]
-public class WeaponBulletReloadTime : BaseStat
-{
-}
-
-[Serializable]
-public class WeaponRechargingTime : BaseStat
-{
-}
-
-[Serializable]
-public class WeaponMagazineSize : BaseStat
-{
-}
-
-[Serializable]
-public class MagnetRange : BaseStat
-{
-}
-
-[Serializable]
-public class MagnetForce : BaseStat
-{
 }

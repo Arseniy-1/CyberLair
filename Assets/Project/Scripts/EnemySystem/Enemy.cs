@@ -21,7 +21,6 @@ namespace Project.Scripts.EnemySystem
 
         private EntityStateMachine _stateMachine;
         
-        
         public event Action<Enemy> OnDestroyed;
 
         [field: SerializeField] public Health Health {get; private set; }

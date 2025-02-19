@@ -2,7 +2,7 @@
 
 public abstract class StatsView : MonoBehaviour
 {
-    [SerializeField] private Stats _stats;
+    [SerializeField] private BaseStat _stats;
 
     private void OnEnable()
     {
@@ -14,5 +14,5 @@ public abstract class StatsView : MonoBehaviour
         _stats.AmountChanged -= ShowStats;
     }
 
-    protected abstract void ShowStats(int currentValue, int maxValue);
+    protected abstract void ShowStats(float currentValue, float maxValue);
 }

@@ -6,7 +6,7 @@ namespace Project.Prefabs.Configs.Skills.MercuryMimicry
     [Serializable]
     public class MercuryMimicry
     {
-        [SerializeField, ] private StatModifier _speedModifier;
+        [SerializeField] private StatModifier _speedModifier;
         
         private SkillData _skillData;
 

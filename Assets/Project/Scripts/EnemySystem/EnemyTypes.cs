@@ -7,5 +7,6 @@
     Trooper,
     Sniper,
     Doomguard,
-    Imp
+    Imp,
+    Boss
 }
