@@ -4,10 +4,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ArtayaShieldSkill", menuName = "Skill/Simple/ArtayaShield", order = 51)]
 public class ArtayaShieldSkill : Skill
 {
+    [SerializeField] private float _shieldRepairAmount;
+    
+    private ShieldAmount _shield;
     private CompositeDisposable _disposable;
 
     public override void Apply(SkillData skillData)
     {
+        _shield = skillData.PlayerStats.ShieldAmount;
+        
         if (_disposable != null)
             _disposable.Dispose();
         
@@ -23,6 +28,7 @@ public class ArtayaShieldSkill : Skill
 
     private void HandleEnemyDeath()
     {
-        Debug.Log("HandleEnemyDeath");
+        Debug.Log("repair");
+        _shield.RepairShield(_shieldRepairAmount);
     }
 }

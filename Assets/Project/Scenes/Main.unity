@@ -35109,6 +35109,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6feb81cb0865c7c4b9ce237cb7c993bb, type: 3}
+--- !u!1 &1878401726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1878401727}
+  - component: {fileID: 1878401728}
+  m_Layer: 9
+  m_Name: ShieldRegenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1878401727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878401726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1037852801}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1878401728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878401726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c480697d1324f5f818338484a68c446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _regenerateInterval: 1
+  _afterDamagePause: 3
 --- !u!1001 &1904620810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35203,6 +35249,7 @@ MonoBehaviour:
   _mutantSkills: []
   _simpleSkills:
   - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
+  - {fileID: 11400000, guid: 89f4f5a49f8f76d4f98d206f1ceb82ec, type: 2}
   _availableSkills: []
   _raisedSkills: []
   _skillViews:
@@ -35295,7 +35342,8 @@ MonoBehaviour:
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
   _heartSpawnChance: 10
   _healAmount: 20
-  _wavesConfigs: []
+  _wavesConfigs:
+  - {fileID: 11400000, guid: 0ff0dec2e9cbfd547b755362e955ff61, type: 2}
 --- !u!114 &1928655050 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 977991838771203437, guid: 57c98b8b3a1413849b66c701178f515f, type: 3}
@@ -35486,6 +35534,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1928655050}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _shieldRegenerator
+      value: 
+      objectReference: {fileID: 1878401728}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<Speed>k__BackingField
       value: 
       objectReference: {fileID: 0}
@@ -35507,7 +35559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<Health>k__BackingField.<BaseValue>k__BackingField
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<JumpTime>k__BackingField.<BaseValue>k__BackingField
@@ -35524,6 +35576,10 @@ PrefabInstance:
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<JumpDistance>k__BackingField.<BaseValue>k__BackingField
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<ShieldAmount>k__BackingField.<BaseValue>k__BackingField
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<WeaponDamage>k__BackingField.<BaseValue>k__BackingField
@@ -35551,11 +35607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<WeaponRechargingTime>k__BackingField.<BaseValue>k__BackingField
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2307180867309386896, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<WeaponBulletReloadTime>k__BackingField.<BaseValue>k__BackingField
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4069213705150038138, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_IsActive
@@ -35652,6 +35708,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4579364475423813543, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1928655051}
+    - targetCorrespondingSourceObject: {fileID: 4579364475423813543, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1878401727}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
 --- !u!1660057539 &9223372036854775807

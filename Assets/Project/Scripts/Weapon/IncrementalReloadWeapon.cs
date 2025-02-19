@@ -53,7 +53,7 @@ public class IncrementalReloadWeapon : Weapon
 
     private IEnumerator ReloadCoroutine()
     {
-        float reloadDelay = 0.5f;
+        float reloadDelay = 1f;
 
         yield return new WaitForSeconds(reloadDelay);
 

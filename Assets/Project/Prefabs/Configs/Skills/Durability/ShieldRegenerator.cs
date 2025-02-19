@@ -10,7 +10,7 @@ public class ShieldRegenerator : MonoBehaviour
     private ShieldAmount _shield;
     private Health _health;
 
-    private float _shieldRegenerateAmount => _shield.MaxHealth * 0.1f;
+    private float ShieldRegenerateAmount => _shield.MaxShield * 0.1f;
     private WaitForSeconds _regenerateWait;
     private WaitForSeconds _pauseWait;
 
@@ -38,7 +38,7 @@ public class ShieldRegenerator : MonoBehaviour
         while (enabled)
         {
             yield return _regenerateWait;
-            _shield.RepairShield(_shieldRegenerateAmount);
+            _shield.RepairShield(ShieldRegenerateAmount);
         }
     }
 

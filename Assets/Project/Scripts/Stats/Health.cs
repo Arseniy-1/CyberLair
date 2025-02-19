@@ -29,21 +29,24 @@ public class Health : BaseStat
 
         CurrentValue = Mathf.Clamp(CurrentValue + amount, 0f, MaxHealth);
     }
-    
+
     [Button]
     public void TakeDamage(float amount)
     {
         if (amount < 0)
             throw new ArgumentOutOfRangeException(nameof(amount));
 
-        float shieldDamage = Mathf.Min(_shieldAmount.CurrentValue, amount);
-        _shieldAmount.ReduceShield(shieldDamage);
-        amount -= shieldDamage;
+        if (_shieldAmount != null)
+        {
+            float shieldDamage = Mathf.Min(_shieldAmount.CurrentValue, amount);
+            _shieldAmount.ReduceShield(shieldDamage);
+            amount -= shieldDamage;
+        }
 
         if (amount > 0)
             CurrentValue -= amount;
 
-        DamageTaken?.Invoke(amount + shieldDamage);
+        DamageTaken?.Invoke(amount);
 
         if (CurrentValue <= 0)
             HandleDeath();
@@ -65,19 +68,22 @@ public class HealthRegenerateAmount : BaseStat
 [Serializable]
 public class ShieldAmount : BaseStat
 {
-    public float MaxHealth => CalculateValue();
-    
+    public float MaxShield => CalculateValue();
+
     public void ReduceShield(float amount)
     {
         if (amount < 0)
-            throw new ArgumentOutOfRangeException(nameof(amount));
+            return;
 
-        CurrentValue -= amount;
+        CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxShield);
     }
-    
+
     public void RepairShield(float repairAmount)
     {
-        CurrentValue = Mathf.Clamp(CurrentValue + repairAmount, 0f, MaxHealth);
+        if (repairAmount < 0)
+            return;
+
+        CurrentValue = Mathf.Clamp(CurrentValue + repairAmount, 0f, MaxShield);
     }
 }
 
