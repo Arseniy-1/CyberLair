@@ -6,6 +6,7 @@
         PlayerStats = playerStats;
     }
 
-    public WeaponHolder WeaponHolder { get; private set;}
-    public PlayerStats PlayerStats{ get; private set;}
+    public WeaponHolder WeaponHolder { get; private set; }
+    public PlayerStats PlayerStats { get; private set; }
+    public Jumper PlayerJumper { get; private set; }
 }

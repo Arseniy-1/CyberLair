@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using Sirenix.OdinInspector;
 
 [Serializable]
 public abstract class BaseStat
@@ -10,7 +9,7 @@ public abstract class BaseStat
     [field: SerializeField] public float BaseValue { get; protected set; }
     [field: SerializeField] public float CurrentValue { get; protected set; }
     
-    private List<StatModifier> modifiers = new();
+    private List<StatModifier> _modifiers = new();
 
     public event Action<float, float> AmountChanged;
     
@@ -22,9 +21,9 @@ public abstract class BaseStat
 
     public virtual void Update()
     {
-        for (int i = 0; i < modifiers.Count; i++)
+        for (int i = 0; i < _modifiers.Count; i++)
         {
-            modifiers[i].Update();
+            _modifiers[i].Update();
         }
     }
 
@@ -32,11 +31,11 @@ public abstract class BaseStat
     {
         float finalValue = BaseValue;
 
-        finalValue = modifiers
+        finalValue = _modifiers
             .Where(mod => mod.Type == ModifierType.Additive)
             .Aggregate(finalValue, (current, mod) => current + mod.Value);
 
-        finalValue = modifiers.Where(mod => mod.Type == ModifierType.Multiplicative)
+        finalValue = _modifiers.Where(mod => mod.Type == ModifierType.Multiplicative)
             .Aggregate(finalValue, (current, mod) => current * mod.Value);
 
         return finalValue;
@@ -50,14 +49,14 @@ public abstract class BaseStat
     public void AddModifier(StatModifier modifier)
     {
         modifier.ValueExpired += RemoveModifier;
-        modifiers.Add(modifier);
+        _modifiers.Add(modifier);
         CalculateCurrentValue();
     }
 
     public void RemoveModifier(StatModifier modifier)
     {
         modifier.ValueExpired -= RemoveModifier;
-        modifiers.Remove(modifier);
+        _modifiers.Remove(modifier);
         CalculateCurrentValue();
     }
 }
