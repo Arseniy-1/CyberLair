@@ -25,12 +25,12 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
 
         public void PlaceObjects()
         {
-            List<Vector3> _availablePositions = _targetTilemap.GetTileWorldPositionsWithTiles();
+            List<Vector3> availablePositions = _targetTilemap.GetTileWorldPositionsWithTiles();
             
             if(_obstacleTilemaps.Length > 0)
                 _bannedPositions = _obstacleTilemaps.GetUsedTileWorldPositionWithTiles();
 
-            foreach (Vector3 position in _availablePositions)
+            foreach (Vector3 position in availablePositions)
             {
                 if(_bannedPositions.Contains(position))
                     continue;
