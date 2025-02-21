@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
@@ -21,10 +22,12 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
         [SerializeField] private float _maxObjectsPerCluster;
 
         private List<Vector3> _bannedPositions = new();
-        private List<Vector3> _placedObjectsPositions = new();
+        private Dictionary<Vector3, MapEnvironment> _placedObjects = new();
 
-        public void PlaceObjects()
+        public void Place()
         {
+            Clear();
+            
             List<Vector3> availablePositions = _targetTilemap.GetTileWorldPositionsWithTiles();
             
             if(_obstacleTilemaps.Length > 0)
@@ -55,12 +58,22 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
                 if(_bannedPositions.Contains(currentPosition))
                     continue;
                 
-                if(_placedObjectsPositions.Contains(currentPosition))
+                if(_placedObjects.Keys.ToList().Contains(currentPosition))
                     continue;
                 
-                Object.Instantiate(prefab, position, Quaternion.identity);
-                _placedObjectsPositions.Add(currentPosition);
+                MapEnvironment entity = Object.Instantiate(prefab, position, Quaternion.identity);
+                _placedObjects.Add(currentPosition, entity);
             }
+        }
+
+        private void Clear()
+        {
+            foreach (MapEnvironment mapEnvironment in _placedObjects.Values)
+            {
+                Object.Destroy(mapEnvironment.gameObject);
+            }
+            
+            _placedObjects.Clear();
         }
     }
 }
