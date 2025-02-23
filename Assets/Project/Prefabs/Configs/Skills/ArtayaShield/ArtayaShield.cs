@@ -10,7 +10,7 @@ namespace Project.Prefabs.Configs.Skills.ArtayaShield
         private readonly ShieldAmount _shield;
         private readonly CompositeDisposable _disposable;
         
-        public ArtayaShield(SkillData skillData, ArtayaShieldSkill skill, SkillHolder skillHolder) : base(skillHolder)
+        public ArtayaShield(SkillData skillData, ArtayaShieldSkill skill)
         {
             _shield = skillData.PlayerStats.ShieldAmount;
             _shieldRepairAmount = skill.ShieldRepairAmount;

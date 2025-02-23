@@ -1,15 +1,15 @@
 using UnityEngine;
 
-namespace Project.Prefabs.Configs.Skills
+[CreateAssetMenu(fileName = "TirelessSkill", menuName = "Skill/Hard/Tireless", order = 51)]
+public class TirelessSkill : HardSkill
 {
-    [CreateAssetMenu(fileName = "TirelessSkill", menuName = "Skill/Hard/Tireless", order = 51)]
-    public class TirelessSkill : HardSkill
+    [SerializeField] private StatModifier _jumpReloadTimeModifier;
+}
+
+public class Tireless : SkillInstance
+{
+    public Tireless(SkillHolder skillHolder) : base(skillHolder)
     {
-        [SerializeField] private StatModifier _jumpReloadTimeModifier;
         
-        public override void Apply(SkillData skillData)
-        {
-            skillData.PlayerStats.JumpReloadTime.AddModifier(_jumpReloadTimeModifier.Copy());
-        }
     }
 }

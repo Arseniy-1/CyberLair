@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Project.Prefabs.Configs.Skills.AffectedArea;
 using Project.Prefabs.Configs.Skills.ArtayaShield;
 using Project.Prefabs.Configs.Skills.Durability;
-using UnityEngine;
 
 public class SkillHolder
 {
@@ -13,7 +12,7 @@ public class SkillHolder
     {
         _skillData = skillData;
     }
-    
+
     public void CreateSkillHui(Skill skill)
     {
         switch (skill)
@@ -21,16 +20,18 @@ public class SkillHolder
             case DurabilitySkill affectedAreaSkill:
                 _skillInstances.Add(new Durability(_skillData, affectedAreaSkill, this));
                 break;
-            
+
             case AffectedAreaSkill affectedAreaSkill:
                 _skillInstances.Add(new AffectedArea(_skillData, affectedAreaSkill, this));
                 break;
-            
+
             case ArtayaShieldSkill artayaShieldSkill:
-                _skillInstances.Add(new ArtayaShield(_skillData, artayaShieldSkill, this));
+                _skillInstances.Add(new ArtayaShield(_skillData, artayaShieldSkill));
                 break;
-            
-            case 
+
+            case WeaponUpdateSkill weaponUpdateSkill:
+                _skillInstances.Add(new WeaponUpdate(_skillData, weaponUpdateSkill));
+                break;
         }
     }
 }
