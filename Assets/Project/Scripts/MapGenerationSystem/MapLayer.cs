@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,15 +14,13 @@ namespace Project.Scripts.MapGenerationSystem
 
         [field: SerializeField] public MapConfig Config { get; private set; }
 
-        public void Render(int width, int height, int[,] tiles)
+        public void Render(int[,] tiles)
         {
-            Clear();
-            
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < Config.Width; x++)
             {
-                for (int y = 0; y < height; y++)
+                for (int y = 0; y < Config.Height; y++)
                 {
-                    var position = new Vector3Int(-x + width / 2, -y + height / 2, 0);
+                    var position = new Vector3Int(-x + Config.Width / 2, -y + Config.Height / 2, 0);
 
                     if (_tilemap.HasTile(position))
                         return;
@@ -33,12 +32,6 @@ namespace Project.Scripts.MapGenerationSystem
                         _tilemap.SetTile(position, _defaultTile);
                 }
             }
-        }
-
-        private void Clear()
-        {
-            _tilemap.ClearAllTiles();
-            _tilemap.RefreshAllTiles();
         }
     }
 }
