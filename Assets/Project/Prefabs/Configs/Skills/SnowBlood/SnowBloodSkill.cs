@@ -1,17 +1,8 @@
 using UnityEngine;
 
-namespace Project.Prefabs.Configs.Skills.SnowBlood
+[CreateAssetMenu(fileName = "SnowBloodSkill", menuName = "Skill/Hard/SnowBlood", order = 51)]
+public class SnowBloodSkill : HardSkill
 {
-    [CreateAssetMenu(fileName = "SnowBloodSkill", menuName = "Skill/Hard/SnowBlood", order = 51)]
-    public class SnowBloodSkill : HardSkill
-    {
-        [SerializeField] private StatModifier _healthModifier;
-        [SerializeField] private StatModifier _damageModifier;
-        
-        public override void Apply(SkillData skillData)
-        {
-            skillData.PlayerStats.Health.AddModifier(_healthModifier.Copy());
-            skillData.PlayerStats.WeaponDamage.AddModifier(_damageModifier.Copy());
-        }
-    }
+    [field: SerializeField] public StatModifier HealthModifier {get; private set;}
+    [field: SerializeField] public StatModifier DamageModifier {get; private set;}
 }

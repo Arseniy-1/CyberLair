@@ -13,6 +13,6 @@
 
     public override void Disable()
     {
-        _data.PlayerStats.WeaponDamage.AddModifier(_skill.DamageStatModifier.Copy());
+        _data.PlayerStats.WeaponDamage.RemoveModifier(_skill.DamageStatModifier.Copy());
     }
 }

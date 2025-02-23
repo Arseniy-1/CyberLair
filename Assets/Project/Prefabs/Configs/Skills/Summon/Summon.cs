@@ -8,11 +8,6 @@ public class Summon : MonoBehaviour
     [SerializeField] private SummonStats _summonStats;
     [SerializeField] private TargetScanner _targetScanner;
     
-    private int _nominalDamage;
-    private float _nominalSpread;
-    private float _nominalReloadTime;
-    private float _nominalSpeed;
-
     private void FixedUpdate()
     {
         ITarget target = _targetScanner.ClosestTarget;
@@ -29,28 +24,7 @@ public class Summon : MonoBehaviour
     public void Initialize(Transform targetTransform)
     {
         _mover.Initialize(targetTransform, _summonStats);
-
-        _nominalDamage = (int)_summonStats.WeaponDamage.CurrentValue;
-        _nominalSpread = _summonStats.WeaponSpread.CurrentValue;
-        _nominalReloadTime = _summonStats.WeaponBulletReloadTime.CurrentValue;
-        _nominalSpeed = _summonStats.Speed.CurrentValue;
         
         _weaponHolder.Weapon.Initialize(_summonStats);
-    }
-
-    public void ApplyStats(float speedMultiplier, float damageMultiplier, float reloadTimeMultiplier,
-        float spreadMultiplier)
-    {
-        _summonStats.SetWeaponDamage((int)(_nominalDamage * damageMultiplier));
-       _summonStats.SetWeaponSpread(_nominalSpread * spreadMultiplier);
-       _summonStats.SetWeaponRealoadTime(_nominalReloadTime * reloadTimeMultiplier);
-        _summonStats.SetSpeed((int)(_nominalSpeed * speedMultiplier));
-    }
-
-    public void ApplyWeapon(Weapon weapon)
-    {
-        var currentWeapon = Instantiate(weapon, _weaponHolder.transform);
-        currentWeapon.Initialize(_summonStats);
-        _weaponHolder.EquipWeapon(currentWeapon);
     }
 }

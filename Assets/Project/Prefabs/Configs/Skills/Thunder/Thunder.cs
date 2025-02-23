@@ -5,28 +5,36 @@ using Random = UnityEngine.Random;
 namespace Project.Scripts.Weapon.ActiveSkills
 {
     [Serializable]
-    public class Thunder
+    public class Thunder : SkillInstance
     {
-        [SerializeField] private float _actionRadius;
-        [SerializeField] private LayerMask _layerMask;
-        [SerializeField] private int _damage;
-        [SerializeField] private float _strikesCount;
-        [SerializeField] private float _shootsNeeded;
+        private float _actionRadius;
+        private LayerMask _layerMask;
+        private int _damage;
+        private float _strikesCount;
+        private float _shootsNeeded;
 
         private float _shootsPassed;
         private Transform _target;
         private Weapon _weapon;
         
-        private Vector2 TargetPosition => _target.position;
+        private Vector2 Position => _target.position;
 
-        public void Initialize(Weapon weapon, Transform target)
+        public Thunder(SkillData skillData, ThunderSkill thunderSkill)
         {
-            _weapon = weapon;
-            _target = target;
+            _actionRadius = thunderSkill.ActionRadius;
+            _layerMask = thunderSkill.LayerMask;
+            _damage = thunderSkill.Damage;
+            _strikesCount = thunderSkill.StrikesCount;
+            _shootsNeeded = thunderSkill.ShootsNeeded;
+
+            _shootsPassed = 0;
+            _target = skillData.WeaponHolder.transform;
+            _weapon = skillData.WeaponHolder.Weapon;
+            
             _weapon.Shooted += HandleShoot;
         }
         
-        public void Disable()
+        public override void Disable()
         {
             _weapon.Shooted -= HandleShoot;
         }
@@ -43,7 +51,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
         
         private void Strike()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(TargetPosition, _actionRadius, _layerMask);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(Position, _actionRadius, _layerMask);
 
             for (int i = 0; i < _strikesCount; i++)
             {

@@ -1,4 +1,3 @@
-using Project.Prefabs.Configs.Skills.Durability;
 using UniRx;
 
 namespace Project.Prefabs.Configs.Skills.ArtayaShield

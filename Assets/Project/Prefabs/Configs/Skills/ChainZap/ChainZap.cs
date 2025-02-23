@@ -8,7 +8,7 @@ using Project.Scripts.Weapon;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public class ChainZap
+public class ChainZap : SkillInstance
 {
     [SerializeField] private float _chainRadius = 5f;
     [SerializeField] private int _maxBounces = 2;

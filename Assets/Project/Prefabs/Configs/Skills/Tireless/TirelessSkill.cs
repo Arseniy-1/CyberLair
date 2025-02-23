@@ -1,15 +1,8 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "TirelessSkill", menuName = "Skill/Hard/Tireless", order = 51)]
 public class TirelessSkill : HardSkill
 {
-    [SerializeField] private StatModifier _jumpReloadTimeModifier;
-}
-
-public class Tireless : SkillInstance
-{
-    public Tireless(SkillHolder skillHolder) : base(skillHolder)
-    {
-        
-    }
+    [field: SerializeField] public StatModifier JumpReloadTimeModifier { get; private set; }
 }
