@@ -7,7 +7,7 @@ namespace Project.Prefabs.Configs.Skills.Zap
     {
         [field: SerializeField] public ChainZap ChainZap { get; private set; }
         
-        public override void Apply(SkillData skillData)
+        public void Apply(SkillData skillData)
         {
             ChainZap.Initialize(skillData.WeaponHolder.Weapon);
         }

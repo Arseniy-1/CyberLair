@@ -1,32 +1,36 @@
 using System.Collections.Generic;
+using Project.Prefabs.Configs.Skills.AffectedArea;
+using Project.Prefabs.Configs.Skills.ArtayaShield;
+using Project.Prefabs.Configs.Skills.Durability;
 using UnityEngine;
 
 public class SkillHolder
 {
-    private Dictionary<Skill, int> _skills = new Dictionary<Skill, int>();
-    private int _maxSkillsCount = 5;
+    private SkillData _skillData;
+    private List<SkillInstance> _skillInstances = new();
 
-    public IReadOnlyDictionary<Skill, int> Skills => _skills;
-
-    public void AddSkill(Skill skill)
+    public SkillHolder(SkillData skillData)
     {
-        int startSkillLevel = 1;
-
-        if (_skills.Count != 0)
+        _skillData = skillData;
+    }
+    
+    public void CreateSkillHui(Skill skill)
+    {
+        switch (skill)
         {
-            if (_skills.ContainsKey(skill))
-            {
-                _skills[skill]++;
-
-                return;
-            }
-
-            if (_skills.Count >= _maxSkillsCount)
-            {
-                return;
-            }
+            case DurabilitySkill affectedAreaSkill:
+                _skillInstances.Add(new Durability(_skillData, affectedAreaSkill, this));
+                break;
+            
+            case AffectedAreaSkill affectedAreaSkill:
+                _skillInstances.Add(new AffectedArea(_skillData, affectedAreaSkill, this));
+                break;
+            
+            case ArtayaShieldSkill artayaShieldSkill:
+                _skillInstances.Add(new ArtayaShield(_skillData, artayaShieldSkill, this));
+                break;
+            
+            case 
         }
-
-        _skills.Add(skill, startSkillLevel);
     }
 }

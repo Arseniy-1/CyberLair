@@ -16,6 +16,8 @@ public class Mediator : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Level _level;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
+    
+    private SkillHolder _playerSkillHolder;
 
     private readonly int _skillsCount = 3;
 
@@ -26,6 +28,7 @@ public class Mediator : MonoBehaviour
         _availableSkills.AddRange(_simpleSkills);
 
         _playerStats = _player.PlayerStats;
+        _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats));
 
         _level.LevelRaised += ShowSkills;
 
@@ -62,10 +65,8 @@ public class Mediator : MonoBehaviour
         {
             _availableSkills.Add(mutantSkill);
         }
-        
-        var skillData = new SkillData(_playerWeaponHolder, _playerStats);
 
-        skill.Apply(skillData);
+        _playerSkillHolder.CreateSkillHui(skill);
 
         HideSkills();
 

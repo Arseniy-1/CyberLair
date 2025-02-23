@@ -6,7 +6,7 @@ public class ArtayaWillSkill : Skill
     [SerializeField] private float _maxHealth = 1;
     [SerializeField] private float _shieldMultiplier = 3;
     
-    public override void Apply(SkillData skillData)
+    public void Apply(SkillData skillData)
     {
         skillData.PlayerStats.Health.SetMaxHealth(_maxHealth);
 
