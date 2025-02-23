@@ -1,36 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using DG.Tweening;
+using Project.Prefabs.Configs.Skills.Durability;
 using Project.Prefabs.Configs.Skills.Zap;
 using Project.Scripts.Weapon;
 using Random = UnityEngine.Random;
 
-[Serializable]
-public class ChainZap
+public class ChainZap : SkillInstance
 {
-    [SerializeField] private float _chainRadius = 5f;
-    [SerializeField] private int _maxBounces = 2;
-    [SerializeField] private float _damageFalloff = 0.8f;
-    [SerializeField] private ChainZapView _zapView;
-    [SerializeField] private LayerMask _enemyLayer;
-    [SerializeField] private int _segments = 20;
-    [SerializeField, Range(0f, 1f)] private float _chance;
-    [SerializeField] private StatModifier _enemySpeedModifier;
+    private float _chainRadius;
+    private int _maxBounces;
+    private float _damageFalloff;
+    private ChainZapView _zapView;
+    private LayerMask _enemyLayer;
+    private int _segments;
+    private float _chance;
+    private StatModifier _enemySpeedModifier;
 
     private Weapon _weapon;
     private ChainZapViewSpawner _viewSpawner;
 
-    public void Initialize(Weapon weapon)
+    public ChainZap(SkillData skillData, ChainZapSkill skill)
     {
-        _weapon = weapon;
-        weapon.Shooted += InnerSubscribe;
+        _chainRadius = skill.ChainRadius;
+        _maxBounces = skill.MaxBounces;
+        _damageFalloff = skill.DamageFalloff;
+        _zapView = skill.ZapView;
+        _enemyLayer = skill.EnemyLayer;
+        _segments = skill.Segments;
+        _chance = skill.Chance;
+        _enemySpeedModifier = skill.EnemySpeedModifier;
+        
+        _weapon = skillData.WeaponHolder.Weapon;
+        _weapon.Shooted += InnerSubscribe;
 
         _viewSpawner = new ChainZapViewSpawner(_zapView, 0);
     }   
 
-    public void Disable()
+    public override void Disable()
     {
         _weapon.Shooted -= InnerSubscribe;
     }
@@ -81,6 +89,7 @@ public class ChainZap
             if (hit.TryGetComponent(out Enemy target) && !excludedTargets.Contains(target))
             {
                 float distance = Vector2.Distance(position, target.transform.position);
+                
                 if (distance < closestDistance)
                 {
                     closestTarget = target;

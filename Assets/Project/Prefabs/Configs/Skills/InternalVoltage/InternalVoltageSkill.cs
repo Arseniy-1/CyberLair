@@ -5,11 +5,9 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
     [CreateAssetMenu(fileName = "InternalVoltageSkill", menuName = "Skill/Hard/InternalVoltage", order = 51)]
     public class InternalVoltageSkill : HardSkill
     {
-        [SerializeField] private InternalVoltage _internalVoltage;
-        
-        public override void Apply(SkillData skillData)
-        {
-            _internalVoltage.Initialize(skillData.PlayerStats.Health, skillData.WeaponHolder.transform);
-        }
+        [field: SerializeField] public float ActionRadius { get; private set; }
+        [field: SerializeField] public float StunTime { get; private set; }
+        [field: SerializeField] public LayerMask LayerMask { get; private set; }
+        [field: SerializeField, Range(0f, 1f)] public float Chance { get; private set; }
     }
 }

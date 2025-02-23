@@ -1,25 +1,33 @@
 using System;
+using Project.Prefabs.Configs.Skills.Durability;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Project.Prefabs.Configs.Skills.InternalVoltage
 {
-    [Serializable]
-    public class InternalVoltage
+    public class InternalVoltage : SkillInstance
     {
-        [SerializeField] private float _actionRadius;
-        [SerializeField] private float _stunTime;
-        [SerializeField] private LayerMask _layerMask;
-        [SerializeField, Range(0f, 1f)] private float _chance;
+        private readonly float _actionRadius;
+        private readonly float _stunTime;
+        private readonly LayerMask _layerMask;
+        private readonly float _chance;
         
-        private Transform _target;
+        private readonly Health _health;
+        private readonly Transform _holder;
 
-        private Vector2 TargetPosition => _target.position;
+        private Vector2 Position => _holder.position;
 
-        public void Initialize(Health health, Transform target)
+        public InternalVoltage(SkillData skillData, InternalVoltageSkill skill)
         {
-            _target = target;
-            health.DamageTaken += Shock;
+            _actionRadius = skill.ActionRadius;
+            _stunTime = skill.StunTime;
+            _layerMask = skill.LayerMask;
+            _chance = skill.Chance;
+            
+            _holder = skillData.WeaponHolder.transform;
+            _health = skillData.PlayerStats.Health;
+            
+            _health.DamageTaken += Shock;
         }
 
         private void Shock(float damage)
@@ -27,7 +35,7 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
             if(Random.value >= _chance)
                 return;
             
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(TargetPosition, _actionRadius, _layerMask);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(Position, _actionRadius, _layerMask);
 
             if(colliders.Length == 0)
                     return;
@@ -39,6 +47,11 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
                     affected.TakeStun(_stunTime);
                 }
             }
+        }
+
+        public override void Disable()
+        {
+            _health.DamageTaken -= Shock;
         }
     }
 }

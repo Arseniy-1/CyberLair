@@ -18,7 +18,7 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
         private IWeaponStats _weaponStats;
         private SkillData _skillData;
         
-        public AffectedArea(SkillData skillData, AffectedAreaSkill affectedAreaSkill, SkillHolder skillHolder) : base(skillHolder)
+        public AffectedArea(SkillData skillData, AffectedAreaSkill affectedAreaSkill)
         {
             skillData.WeaponHolder.Weapon.Shooted += InnerSubscribe;
 

@@ -1,15 +1,15 @@
 using Project.Prefabs.Configs.Skills.Durability;
 
-namespace Project.Prefabs.Configs.Skills.Athletics
+namespace Project.Prefabs.Configs.Skills.JumpSwirl
 {
-    public class Athletics : SkillInstance
+    public class JumpSwirl : SkillInstance
     {
-        private readonly StatModifier _jumpDistanceModifier;
-        private readonly StatModifier _magnetRangeModifier;
+        private StatModifier _jumpDistanceModifier;
+        private StatModifier _magnetRangeModifier;
         
-        private readonly SkillData _skillData;
+        private SkillData _skillData;
         
-        public Athletics(SkillData skillData, AthleticsSkill skill)
+        public JumpSwirl(SkillData skillData, JumpSwirlSkill skill)
         {
             _jumpDistanceModifier = skill.JumpDistanceModifier.Copy();
             _magnetRangeModifier = skill.MagnetRangeModifier.Copy();

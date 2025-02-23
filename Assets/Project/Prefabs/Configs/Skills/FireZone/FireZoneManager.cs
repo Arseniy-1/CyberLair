@@ -1,4 +1,5 @@
 using System;
+using Project.Prefabs.Configs.Skills.Durability;
 using Project.Scripts.Weapon;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,16 +7,19 @@ using Random = UnityEngine.Random;
 namespace Project.Prefabs.Configs.Skills.FireZone
 {
     [Serializable]
-    public class FireZoneManager
+    public class FireZoneManager : SkillInstance
     {
-        [SerializeField] private FireZone _fireZonePrefab;
-        [SerializeField] private FireZoneSpawner _fireZoneSpawner;
-        [SerializeField, Range(0f, 1f)] private float _chance;
+        private FireZoneSpawner _fireZoneSpawner;
+        private float _chance;
+
+        private SkillData _skillData;
         
-        public void Initialize(Weapon weapon)
+        public FireZoneManager(SkillData skillData, FireZoneSkill fireZoneSkill)
         {
-            _fireZoneSpawner = new FireZoneSpawner(_fireZonePrefab);
-            weapon.Shooted += OnShot;
+            _skillData = skillData;
+            
+            _fireZoneSpawner = new FireZoneSpawner(fireZoneSkill.FireZonePrefab);
+            skillData.WeaponHolder.Weapon.Shooted += OnShot;
         }
 
         private void OnShot(Bullet bullet)
@@ -32,6 +36,11 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
             var fireZone = _fireZoneSpawner.Spawn();
             fireZone.transform.position = bullet.transform.position;
+        }
+
+        public override void Disable()
+        {
+            _skillData.WeaponHolder.Weapon.Shooted -= OnShot;
         }
     }
 }

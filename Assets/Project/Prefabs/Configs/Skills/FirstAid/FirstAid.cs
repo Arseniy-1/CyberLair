@@ -1,18 +1,18 @@
 using System;
+using Project.Prefabs.Configs.Skills.Durability;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills
 {
-    [Serializable]
-    public class FirstAid
+    public class FirstAid : SkillInstance
     {
-        [SerializeField, Range(0f, 1f)] private float _healProportion;
+        private readonly Health _health;
+        private float _healProportion;
         
-        private Health _health;
-        
-        public void Initialize(Health health)
+        public FirstAid(SkillData skillData, FirstAidSkill skill)
         {
-            _health = health;
+            _health = skillData.PlayerStats.Health;
+            _healProportion = skill.HealProportion;
             _health.DamageTaken += HealPart;
         }
 
@@ -22,6 +22,11 @@ namespace Project.Prefabs.Configs.Skills
                 return;
             
             _health.Heal(damage * _healProportion);
+        }
+
+        public override void Disable()
+        {
+            _health.DamageTaken -= HealPart;
         }
     }
 }

@@ -1,16 +1,17 @@
 using System;
+using Project.Prefabs.Configs.Skills.Durability;
 using Project.Scripts.Weapon;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.BulletonsLast
 {
-    public class BulletonsLast
+    public class BulletonsLast : SkillInstance
     {
-        private IncrementalReloadWeapon _weapon;
+        private readonly IncrementalReloadWeapon _weapon;
 
-        public void Initialize(Weapon weapon)
+        public BulletonsLast(SkillData skillData)
         {
-            _weapon = weapon as IncrementalReloadWeapon;
+            _weapon = skillData.WeaponHolder.Weapon as IncrementalReloadWeapon;
             
             if (_weapon)
                 _weapon.Shooted += InnerSubscribe;
@@ -33,6 +34,11 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
         {
             bullet.OnDamagableCollided -= DealCriticalDamage;
             bullet.OnDestroyed -= Unsubscribe;
+        }
+
+        public override void Disable()
+        {
+            _weapon.Shooted -= InnerSubscribe;
         }
     }
 }
