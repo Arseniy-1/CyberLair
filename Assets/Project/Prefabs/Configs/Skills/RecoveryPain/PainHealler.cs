@@ -1,8 +1,9 @@
 ﻿using System;
+using Project.Prefabs.Configs.Skills.Durability;
 using UnityEngine;
 
 [Serializable]
-public class PainHealler : SkillInstance
+public class PainHealler : ISkillInstance
 {
     private SkillData _data;
     private RecoveryPainSkill _skill;
@@ -20,7 +21,7 @@ public class PainHealler : SkillInstance
         _data.PlayerStats.HealthRegenerateAmount.AddModifier(_skill.RegenerateModifier.Copy());
     }
 
-    public override void Disable()
+    public void Disable()
     {
         throw new NotImplementedException();
     }

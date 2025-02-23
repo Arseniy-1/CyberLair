@@ -1,4 +1,6 @@
-﻿public class TacticalEfficiency : SkillInstance
+﻿using Project.Prefabs.Configs.Skills.Durability;
+
+public class TacticalEfficiency : ISkillInstance
 {
     private SkillData _data;
     private TacticalEfficiencySkill _skill;
@@ -12,7 +14,7 @@
         _data.PlayerStats.WeaponDamage.AddModifier(_skill.DamageModifier.Copy());
     }
     
-    public override void Disable()
+    public void Disable()
     {
         _data.PlayerStats.Health.RemoveModifier(_skill.HealthModifier.Copy());
         _data.PlayerStats.WeaponDamage.RemoveModifier(_skill.DamageModifier.Copy());

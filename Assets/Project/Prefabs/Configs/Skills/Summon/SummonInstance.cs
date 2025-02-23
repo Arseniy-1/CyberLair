@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Project.Prefabs.Configs.Skills.Durability;
+using UnityEngine;
 
-public class SummonInstance : SkillInstance
+public class SummonInstance : ISkillInstance
 {
     private Summon _summonInstance;
     
@@ -12,7 +13,7 @@ public class SummonInstance : SkillInstance
         summon.Initialize(weaponHolderTransform);
     }
 
-    public override void Disable()
+    public void Disable()
     {
         Object.Destroy(_summonInstance);
     }

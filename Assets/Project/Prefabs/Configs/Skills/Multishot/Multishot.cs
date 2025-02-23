@@ -1,4 +1,6 @@
-﻿public class Multishot : SkillInstance
+﻿using Project.Prefabs.Configs.Skills.Durability;
+
+public class Multishot : ISkillInstance
 {
     private SkillData _data;
     private MultishotSkill _multishotSkill;
@@ -11,7 +13,7 @@
         _data.PlayerStats.BulletPerShootCount.AddModifier(_multishotSkill.BulletsPerShootModifier);
     }
 
-    public override void Disable()
+    public  void Disable()
     {
         _data.PlayerStats.BulletPerShootCount.RemoveModifier(_multishotSkill.BulletsPerShootModifier);
     }

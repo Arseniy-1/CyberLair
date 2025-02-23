@@ -35,7 +35,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
             _weapon.Shooted += HandleShoot;
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _weapon.Shooted -= HandleShoot;
         }

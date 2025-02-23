@@ -1,4 +1,6 @@
-﻿public class SnowBlood : SkillInstance
+﻿using Project.Prefabs.Configs.Skills.Durability;
+
+public class SnowBlood : ISkillInstance
 {
     private SkillData _data;
     private SnowBloodSkill _skill;
@@ -13,7 +15,7 @@
         _data.PlayerStats.WeaponDamage.AddModifier(_skill.DamageModifier);   
     }
     
-    public override void Disable()
+    public void Disable()
     {
         _data.PlayerStats.Health.RemoveModifier(_skill.HealthModifier);   
         _data.PlayerStats.WeaponDamage.RemoveModifier(_skill.DamageModifier);

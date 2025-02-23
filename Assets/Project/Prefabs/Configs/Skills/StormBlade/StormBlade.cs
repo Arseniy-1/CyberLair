@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Project.Prefabs.Configs.Skills.Boomerang;
 using Project.Prefabs.Configs.Skills.Durability;
 using Project.Prefabs.Configs.Skills.StormBlade;
+using Project.Scripts.Servises;
 using UnityEngine;
 
 [Serializable]
@@ -15,14 +16,14 @@ public class StormBlade : ISkillInstance
     private bool _isActive;
     private BoomerangOrbital _boomerang;
 
-    public StormBlade(StormBladeSkill stormBladeSkill, BoomerangOrbital boomerang)
+    public StormBlade(StormBladeSkill stormBladeSkill, Orbital boomerang)
     {
         _maxRadius = stormBladeSkill.MaxRadius;
         _minRadius = stormBladeSkill.MinRadius;
         _changingSpeed = stormBladeSkill.ChangingSpeed;
         
         _isActive = true;
-        _boomerang = boomerang;
+        _boomerang = boomerang as BoomerangOrbital;
         RadiusChanging().Forget();
     }
 

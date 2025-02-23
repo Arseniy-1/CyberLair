@@ -4,7 +4,6 @@ using System.Threading;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Project.Prefabs.Configs.Skills.Durability;
-using Project.Scripts.LevelSystem.ActiveSkills;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -23,7 +22,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         
         private Transform _transform;
 
-        public MagicArrowSpawner(SkillData skillData, MagicArrowSkill skill)
+        public MagicArrowSpawner(SkillData skillData, IMagicArrowStats skill)
         {
             _radius = skill.Radius;
             _delay = skill.Delay;

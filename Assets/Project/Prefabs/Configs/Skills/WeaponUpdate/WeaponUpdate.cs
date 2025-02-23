@@ -1,4 +1,6 @@
-﻿public class WeaponUpdate : SkillInstance
+﻿using Project.Prefabs.Configs.Skills.Durability;
+
+public class WeaponUpdate : ISkillInstance
 {
     private readonly SkillData _data;
     private readonly WeaponUpdateSkill _skill;
@@ -11,7 +13,7 @@
         _data.PlayerStats.WeaponDamage.AddModifier(_skill.DamageStatModifier.Copy());
     }
 
-    public override void Disable()
+    public void Disable()
     {
         _data.PlayerStats.WeaponDamage.RemoveModifier(_skill.DamageStatModifier.Copy());
     }

@@ -1,4 +1,6 @@
-﻿public class ReactiveBoots : SkillInstance
+﻿using Project.Prefabs.Configs.Skills.Durability;
+
+public class ReactiveBoots : ISkillInstance
 {
     private SkillData _data;
     private ReactiveBootsSkill _skill;
@@ -11,7 +13,7 @@
         _data.PlayerStats.Speed.AddModifier(_skill.SpeedModifier);
     } 
     
-    public override void Disable()
+    public void Disable()
     {
         _data.PlayerStats.Speed.RemoveModifier(_skill.SpeedModifier);
     }

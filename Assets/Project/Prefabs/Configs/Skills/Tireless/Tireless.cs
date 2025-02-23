@@ -1,4 +1,6 @@
-﻿public class Tireless : SkillInstance
+﻿using Project.Prefabs.Configs.Skills.Durability;
+
+public class Tireless : ISkillInstance
 {
     private readonly SkillData _data;
     private readonly TirelessSkill _skill;
@@ -11,7 +13,7 @@
         _data.PlayerStats.WeaponDamage.AddModifier(_skill.JumpReloadTimeModifier.Copy());
     }
 
-    public override void Disable()
+    public  void Disable()
     {
         _data.PlayerStats.WeaponDamage.RemoveModifier(_skill.JumpReloadTimeModifier.Copy());
     }
