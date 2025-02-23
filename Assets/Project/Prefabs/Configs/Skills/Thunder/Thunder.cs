@@ -17,10 +17,10 @@ namespace Project.Scripts.Weapon.ActiveSkills
         private float _shootsPassed;
         private Transform _target;
         private Weapon _weapon;
-        
+
         private Vector2 Position => _target.position;
 
-        public Thunder(SkillData skillData, ThunderSkill thunderSkill)
+        public Thunder(SkillData skillData, IThunderStats thunderSkill)
         {
             _actionRadius = thunderSkill.ActionRadius;
             _layerMask = thunderSkill.LayerMask;
@@ -31,10 +31,10 @@ namespace Project.Scripts.Weapon.ActiveSkills
             _shootsPassed = 0;
             _target = skillData.WeaponHolder.transform;
             _weapon = skillData.WeaponHolder.Weapon;
-            
+
             _weapon.Shooted += HandleShoot;
         }
-        
+
         public override void Disable()
         {
             _weapon.Shooted -= HandleShoot;
@@ -45,20 +45,20 @@ namespace Project.Scripts.Weapon.ActiveSkills
             _shootsPassed++;
 
             if (_shootsPassed < _shootsNeeded) return;
-            
+
             _shootsPassed = 0;
             Strike();
         }
-        
+
         private void Strike()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(Position, _actionRadius, _layerMask);
 
             for (int i = 0; i < _strikesCount; i++)
             {
-                if(colliders.Length == 0)
+                if (colliders.Length == 0)
                     return;
-            
+
                 Collider2D strickenCollider = colliders[Random.Range(0, colliders.Length)];
 
                 if (strickenCollider.TryGetComponent(out IDamageable affected))
