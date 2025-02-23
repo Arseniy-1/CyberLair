@@ -1,24 +1,31 @@
 using System;
+using Project.Prefabs.Configs.Skills.Durability;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.MercuryMimicry
 {
     [Serializable]
-    public class MercuryMimicry
+    public class MercuryMimicry : ISkillInstance
     {
-        [SerializeField] private StatModifier _speedModifier;
-        
+        private StatModifier _speedModifier;
         private SkillData _skillData;
 
-        public void Initialize(SkillData skillData)
+        public MercuryMimicry(SkillData skillData, MercuryMimicrySkill skill)
         {
+            _speedModifier = skill.SpeedModifier;
             _skillData = skillData;
-            skillData.PlayerStats.Health.DamageTaken += IncreaseSpeed;
+            
+            _skillData.PlayerStats.Health.DamageTaken += IncreaseSpeed;
         }
 
         private void IncreaseSpeed(float damage)
         {
             _skillData.PlayerStats.Speed.AddModifier(_speedModifier.Copy());
+        }
+
+        public void Disable()
+        {
+            _skillData.PlayerStats.Health.DamageTaken -= IncreaseSpeed;
         }
     }
 }

@@ -11,12 +11,15 @@ using Project.Prefabs.Configs.Skills.Harding;
 using Project.Prefabs.Configs.Skills.InternalVoltage;
 using Project.Prefabs.Configs.Skills.JumpSwirl;
 using Project.Prefabs.Configs.Skills.Lair_1;
+using Project.Prefabs.Configs.Skills.MercuryMimicry;
 using Project.Prefabs.Configs.Skills.Zap;
+using Project.Scripts.LevelSystem.ActiveSkills;
+using Project.Scripts.Weapon.ActiveSkills.MagicArrow;
 
 public class SkillHolder
 {
     private readonly SkillData _skillData;
-    private List<SkillInstance> _skillInstances = new();
+    private List<ISkillInstance> _skillInstances = new();
 
     public SkillHolder(SkillData skillData)
     {
@@ -81,6 +84,14 @@ public class SkillHolder
             
             case LairOneSkill lairOneSkill:
                 _skillInstances.Add(new LairOne(_skillData, lairOneSkill));
+                break;
+            
+            case MagicArrowSkill magicArrowSkill:
+                _skillInstances.Add(new MagicArrowSpawner(_skillData, magicArrowSkill));
+                break;
+            
+            case MercuryMimicrySkill mercuryMimicrySkill:
+                _skillInstances.Add(new MercuryMimicry(_skillData, mercuryMimicrySkill));
                 break;
         }
     }

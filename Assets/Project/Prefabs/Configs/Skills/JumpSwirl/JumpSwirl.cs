@@ -2,7 +2,7 @@ using Project.Prefabs.Configs.Skills.Durability;
 
 namespace Project.Prefabs.Configs.Skills.JumpSwirl
 {
-    public class JumpSwirl : SkillInstance
+    public class JumpSwirl : ISkillInstance
     {
         private StatModifier _jumpDistanceModifier;
         private StatModifier _magnetRangeModifier;
@@ -20,7 +20,7 @@ namespace Project.Prefabs.Configs.Skills.JumpSwirl
             skillData.PlayerStats.MagnetRange.AddModifier(_magnetRangeModifier);
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _skillData.PlayerStats.JumpDistance.RemoveModifier(_jumpDistanceModifier);
             _skillData.PlayerStats.MagnetRange.RemoveModifier(_magnetRangeModifier);

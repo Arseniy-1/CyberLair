@@ -1,6 +1,6 @@
 ﻿using Project.Prefabs.Configs.Skills.Durability;
 
-public class BerserkHealthRegenerator : SkillInstance
+public class BerserkHealthRegenerator : ISkillInstance
 {
     private readonly float _criticalHealthLevel;
     private readonly StatModifier _healthRegeneratorModifier;
@@ -26,7 +26,7 @@ public class BerserkHealthRegenerator : SkillInstance
             _healthRegenerateAmount.RemoveModifier(_healthRegeneratorModifier);
     }
 
-    public override void Disable()
+    public void Disable()
     {
         _skillData.PlayerStats.Health.AmountChanged -= OnHealthChanged;
     }

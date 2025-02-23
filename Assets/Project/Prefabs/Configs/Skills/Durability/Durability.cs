@@ -1,6 +1,6 @@
 namespace Project.Prefabs.Configs.Skills.Durability
 {
-    public class Durability : SkillInstance
+    public class Durability : ISkillInstance
     {
         private readonly SkillData _data;
 
@@ -18,7 +18,7 @@ namespace Project.Prefabs.Configs.Skills.Durability
             _data.PlayerStats.HealthRegenerateAmount.AddModifier(skill.RegenerationModifier.Copy());
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _data.PlayerStats.Health.RemoveModifier(_healthModifier);
             _data.PlayerStats.HealthRegenerateAmount.RemoveModifier(_regenerateModifier);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills
 {
-    public class FirstAid : SkillInstance
+    public class FirstAid : ISkillInstance
     {
         private readonly Health _health;
         private float _healProportion;
@@ -24,7 +24,7 @@ namespace Project.Prefabs.Configs.Skills
             _health.Heal(damage * _healProportion);
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _health.DamageTaken -= HealPart;
         }

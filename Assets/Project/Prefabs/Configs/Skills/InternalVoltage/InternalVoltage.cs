@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Project.Prefabs.Configs.Skills.InternalVoltage
 {
-    public class InternalVoltage : SkillInstance
+    public class InternalVoltage : ISkillInstance
     {
         private readonly float _actionRadius;
         private readonly float _stunTime;
@@ -49,7 +49,7 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
             }
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _health.DamageTaken -= Shock;
         }

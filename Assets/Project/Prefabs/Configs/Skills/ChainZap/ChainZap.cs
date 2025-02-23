@@ -7,7 +7,7 @@ using Project.Prefabs.Configs.Skills.Zap;
 using Project.Scripts.Weapon;
 using Random = UnityEngine.Random;
 
-public class ChainZap : SkillInstance
+public class ChainZap : ISkillInstance
 {
     private float _chainRadius;
     private int _maxBounces;
@@ -38,7 +38,7 @@ public class ChainZap : SkillInstance
         _viewSpawner = new ChainZapViewSpawner(_zapView, 0);
     }   
 
-    public override void Disable()
+    public void Disable()
     {
         _weapon.Shooted -= InnerSubscribe;
     }

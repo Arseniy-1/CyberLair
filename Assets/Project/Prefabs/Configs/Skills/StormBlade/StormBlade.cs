@@ -1,11 +1,12 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Project.Prefabs.Configs.Skills.Boomerang;
+using Project.Prefabs.Configs.Skills.Durability;
 using Project.Prefabs.Configs.Skills.StormBlade;
 using UnityEngine;
 
 [Serializable]
-public class StormBlade : SkillInstance
+public class StormBlade : ISkillInstance
 {
     private float _maxRadius;
     private float _minRadius;
@@ -36,7 +37,7 @@ public class StormBlade : SkillInstance
         }
     }
 
-    public override void Disable()
+    public void Disable()
     {
         throw new NotImplementedException();
     }

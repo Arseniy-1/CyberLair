@@ -1,8 +1,9 @@
+using Project.Prefabs.Configs.Skills.Durability;
 using UniRx;
 
 namespace Project.Prefabs.Configs.Skills.ArtayaShield
 {
-    public class ArtayaShield : SkillInstance
+    public class ArtayaShield : ISkillInstance
     {
         private readonly float _shieldRepairAmount;
     
@@ -19,7 +20,7 @@ namespace Project.Prefabs.Configs.Skills.ArtayaShield
                 .AddTo(_disposable);
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _disposable.Dispose();
         }

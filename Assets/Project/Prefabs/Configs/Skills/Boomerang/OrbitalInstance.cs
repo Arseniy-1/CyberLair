@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.Boomerang
 {
-    public class OrbitalInstance : SkillInstance
+    public class OrbitalInstance : ISkillInstance
     {
         public Orbital Orbital { get; private set; }
     
@@ -14,7 +14,7 @@ namespace Project.Prefabs.Configs.Skills.Boomerang
             skillData.PlayerStats.OrbitalHandler.AddOrbital(Orbital, skillData.WeaponHolder.transform);
         }
 
-        public override void Disable()
+        public void Disable()
         {
             Object.Destroy(Orbital.gameObject);
         }

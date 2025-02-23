@@ -1,9 +1,10 @@
 using System;
 using Project.Prefabs.Configs.Skills.StunZap;
 using System.Collections.Generic;
+using Project.Prefabs.Configs.Skills.Durability;
 
 [Serializable]
-public class StunZap : SkillInstance
+public class StunZap : ISkillInstance
 {
     private float _stunDuration;
 
@@ -19,7 +20,7 @@ public class StunZap : SkillInstance
         _date.WeaponHolder.Weapon.Shooted += InnerSubscribe;
     }
     
-    public override void Disable()
+    public void Disable()
     {
         _date.WeaponHolder.Weapon.Shooted -= InnerSubscribe;
 

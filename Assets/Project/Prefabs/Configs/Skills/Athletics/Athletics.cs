@@ -2,7 +2,7 @@ using Project.Prefabs.Configs.Skills.Durability;
 
 namespace Project.Prefabs.Configs.Skills.Athletics
 {
-    public class Athletics : SkillInstance
+    public class Athletics : ISkillInstance
     {
         private readonly StatModifier _jumpDistanceModifier;
         private readonly StatModifier _magnetRangeModifier;
@@ -20,7 +20,7 @@ namespace Project.Prefabs.Configs.Skills.Athletics
             skillData.PlayerStats.MagnetRange.AddModifier(_magnetRangeModifier);
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _skillData.PlayerStats.JumpDistance.RemoveModifier(_jumpDistanceModifier);
             _skillData.PlayerStats.MagnetRange.RemoveModifier(_magnetRangeModifier);

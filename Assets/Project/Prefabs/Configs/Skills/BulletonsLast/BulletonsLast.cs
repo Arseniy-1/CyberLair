@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.BulletonsLast
 {
-    public class BulletonsLast : SkillInstance
+    public class BulletonsLast : ISkillInstance
     {
         private readonly IncrementalReloadWeapon _weapon;
 
@@ -36,7 +36,7 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
             bullet.OnDestroyed -= Unsubscribe;
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _weapon.Shooted -= InnerSubscribe;
         }

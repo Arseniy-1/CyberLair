@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 namespace Project.Prefabs.Configs.Skills.FireZone
 {
     [Serializable]
-    public class FireZoneManager : SkillInstance
+    public class FireZoneManager : ISkillInstance
     {
         private FireZoneSpawner _fireZoneSpawner;
         private float _chance;
@@ -38,7 +38,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
             fireZone.transform.position = bullet.transform.position;
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _skillData.WeaponHolder.Weapon.Shooted -= OnShot;
         }

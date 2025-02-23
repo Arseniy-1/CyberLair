@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 namespace Project.Prefabs.Configs.Skills.AffectedArea
 {
     [Serializable]
-    public class AffectedArea : SkillInstance
+    public class AffectedArea : ISkillInstance
     {
         private float _radius;
         private LayerMask _layerMask;
@@ -53,7 +53,7 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
             }
         }
 
-        public override void Disable()
+        public void Disable()
         {
             _skillData.WeaponHolder.Weapon.Shooted -= InnerSubscribe;
         }

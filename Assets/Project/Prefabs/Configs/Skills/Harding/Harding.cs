@@ -2,7 +2,7 @@ using Project.Prefabs.Configs.Skills.Durability;
 
 namespace Project.Prefabs.Configs.Skills.Harding
 {
-    public class Harding : SkillInstance
+    public class Harding : ISkillInstance
     {
         private readonly StatModifier _jumpReloadTimeModifier;
         private readonly SkillData _skillData;
@@ -15,7 +15,7 @@ namespace Project.Prefabs.Configs.Skills.Harding
             _skillData.PlayerStats.JumpReloadTime.AddModifier(_jumpReloadTimeModifier);
         }
         
-        public override void Disable()
+        public void Disable()
         {
             _skillData.PlayerStats.JumpReloadTime.RemoveModifier(_jumpReloadTimeModifier);
         }

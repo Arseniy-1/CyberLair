@@ -1,11 +1,12 @@
 using System;
+using Project.Prefabs.Configs.Skills.Durability;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Weapon.ActiveSkills
 {
     [Serializable]
-    public class Thunder : SkillInstance
+    public class Thunder : ISkillInstance
     {
         private float _actionRadius;
         private LayerMask _layerMask;

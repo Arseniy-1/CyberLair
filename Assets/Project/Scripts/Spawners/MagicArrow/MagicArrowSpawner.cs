@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using Project.Prefabs.Configs.Skills.Durability;
+using Project.Scripts.LevelSystem.ActiveSkills;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 {
     [Serializable]
-    public class MagicArrowSpawner : Spawner<MagicArrow>
+    public class MagicArrowSpawner : Spawner<MagicArrow>, ISkillInstance
     {
-        [SerializeField] private float _radius;
-        [SerializeField] private float _delay;
-        [SerializeField] private LayerMask _layerMask;
+        private float _radius;
+        private float _delay;
+        private LayerMask _layerMask;
 
         private List<MagicArrow> _magicArrows = new();
         private bool _isActive;
@@ -21,12 +23,16 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         
         private Transform _transform;
 
-        public void Initialize(MagicArrow magicArrowPrefab, Transform transform)
+        public MagicArrowSpawner(SkillData skillData, MagicArrowSkill skill)
         {
-            Prefab = magicArrowPrefab;
+            _radius = skill.Radius;
+            _delay = skill.Delay;
+            _layerMask = skill.LayerMask;
+            
+            Prefab = skill.MagicArrowPrefab;
             Pool = new MagicArrowPool(Prefab, StartAmount);
 
-            _transform = transform;
+            _transform = skillData.WeaponHolder.transform;
             
             _isActive = true;
             _cancellationToken = new CancellationTokenSource();
