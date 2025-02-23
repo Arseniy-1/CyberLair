@@ -3,10 +3,5 @@
 [CreateAssetMenu(fileName = "WeaponUpdateSkill", menuName = "Skill/Simple/UpdateWeapon", order = 51)]
 public class WeaponUpdateSkill : Skill
 {
-    [SerializeField] private StatModifier _damageStatModifier;
-    
-    public override void Apply(SkillData skillData)
-    {
-        skillData.PlayerStats.WeaponDamage.AddModifier(_damageStatModifier.Copy());
-    }
+    [field: SerializeField] public StatModifier DamageStatModifier { get; private set; }
 }

@@ -4,8 +4,6 @@ using Project.Scripts.LevelSystem.ActiveSkills;
 using Project.Scripts.Weapon.ActiveSkills.MagicArrow;
 using UnityEngine;
 
-namespace Project.Prefabs.Configs.Skills.PhantomArrows
-{
     [CreateAssetMenu(fileName = "PhantomArrowsSkill", menuName = "Skill/Hard/PhantomArrows", order = 51)]
     public class PhantomArrowsSkill : HardSkill
     {
@@ -30,4 +28,20 @@ namespace Project.Prefabs.Configs.Skills.PhantomArrows
             _phantomArrowSpawner.Initialize(_phantomArrowPrefab, skillData.WeaponHolder.transform);
         }
     }
-}
+
+    public class PhantomArrows : SkillInstance
+    {
+        private SkillData _data;
+        private PhantomArrowsSkill _skill;
+        
+        public PhantomArrows(SkillData data, PhantomArrowsSkill skill)
+        {
+            _data = data;
+            _skill = skill;
+        }
+        
+        public override void Disable()
+        {
+            
+        }
+    }

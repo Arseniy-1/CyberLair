@@ -1,12 +1,18 @@
-using UnityEngine;
-
-[CreateAssetMenu(fileName = "ReactiveBootsSkill", menuName = "Skill/Simple/ReactiveBoots", order = 51)]
-public class ReactiveBoots : Skill
+﻿public class ReactiveBoots : SkillInstance
 {
-    [SerializeField] private StatModifier _speedModifier;
-
-    public override void Apply(SkillData skillData)
+    private SkillData _data;
+    private ReactiveBootsSkill _skill;
+    
+    public ReactiveBoots(SkillData data, ReactiveBootsSkill skill)
     {
-        skillData.PlayerStats.Speed.AddModifier(_speedModifier.Copy());
+        _data = data;
+        _skill = skill;
+        
+        _data.PlayerStats.Speed.AddModifier(_skill.SpeedModifier);
+    } 
+    
+    public override void Disable()
+    {
+        _data.PlayerStats.Speed.RemoveModifier(_skill.SpeedModifier);
     }
 }

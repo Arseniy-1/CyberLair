@@ -1,19 +1,27 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class PainHealler : MonoBehaviour
+[Serializable]
+public class PainHealler : SkillInstance
 {
-    [SerializeField] private StatModifier _regenerateModifier;
+    private SkillData _data;
+    private RecoveryPainSkill _skill;
     
-    private SkillData _skillData;
-    
-    public void Initialize(SkillData skillData)
+    public PainHealler(SkillData skillData, RecoveryPainSkill skill)
     {
-        _skillData = skillData;
-        skillData.PlayerStats.Health.DamageTaken += Heal;
+        _data = skillData;
+        _skill = skill;
+        
+        _data.PlayerStats.Health.DamageTaken += Heal;
     }
 
     private void Heal(float amount)
     {
-        _skillData.PlayerStats.HealthRegenerateAmount.AddModifier(_regenerateModifier.Copy());
+        _data.PlayerStats.HealthRegenerateAmount.AddModifier(_skill.RegenerateModifier.Copy());
+    }
+
+    public override void Disable()
+    {
+        throw new NotImplementedException();
     }
 }

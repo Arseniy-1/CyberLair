@@ -1,16 +1,11 @@
-using Project.Scripts.Weapon.ActiveSkills;
 using UnityEngine;
 
-namespace Project.Scripts.LevelSystem.ActiveSkills
+[CreateAssetMenu(fileName = "ThunderSkill", menuName = "Skill/Simple/Thunder", order = 51)]
+public class ThunderSkill : Skill
 {
-    [CreateAssetMenu(fileName = "ThunderSkill", menuName = "Skill/Simple/Thunder", order = 51)]
-    public class ThunderSkill : Skill
-    {
-        [field: SerializeField] public Thunder Thunder { get; private set; }
-
-        public override void Apply(SkillData skillData)
-        {
-            Thunder.Initialize(skillData.WeaponHolder.Weapon, skillData.WeaponHolder.transform);
-        }
-    }
+    [field: SerializeField] public float ActionRadius { get; private set; }
+    [field: SerializeField] public LayerMask LayerMask { get; private set; }
+    [field: SerializeField] public int Damage { get; private set; }
+    [field: SerializeField] public float StrikesCount { get; private set; }
+    [field: SerializeField] public float ShootsNeeded { get; private set; }
 }
