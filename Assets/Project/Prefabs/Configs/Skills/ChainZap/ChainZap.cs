@@ -21,16 +21,16 @@ public class ChainZap : SkillInstance
     private Weapon _weapon;
     private ChainZapViewSpawner _viewSpawner;
 
-    public ChainZap(SkillData skillData, ChainZapSkill skill)
+    public ChainZap(SkillData skillData, IChainZapStats stats)
     {
-        _chainRadius = skill.ChainRadius;
-        _maxBounces = skill.MaxBounces;
-        _damageFalloff = skill.DamageFalloff;
-        _zapView = skill.ZapView;
-        _enemyLayer = skill.EnemyLayer;
-        _segments = skill.Segments;
-        _chance = skill.Chance;
-        _enemySpeedModifier = skill.EnemySpeedModifier;
+        _chainRadius = stats.ChainRadius;
+        _maxBounces = stats.MaxBounces;
+        _damageFalloff = stats.DamageFalloff;
+        _zapView = stats.ZapView;
+        _enemyLayer = stats.EnemyLayer;
+        _segments = stats.Segments;
+        _chance = stats.Chance;
+        _enemySpeedModifier = stats.EnemySpeedModifier;
         
         _weapon = skillData.WeaponHolder.Weapon;
         _weapon.Shooted += InnerSubscribe;

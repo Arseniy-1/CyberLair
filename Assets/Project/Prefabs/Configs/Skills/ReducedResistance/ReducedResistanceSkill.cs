@@ -1,29 +1,14 @@
-using System;
-using System.Linq;
-using Project.Prefabs.Configs.Skills.Zap;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ReducedResistanceSkill", menuName = "Skill/Hard/ReducedResistance", order = 51)]
-public class ReducedResistanceSkill : HardSkill
+public class ReducedResistanceSkill : HardSkill, IChainZapStats
 {
-    [SerializeField] private ChainZap _chainZap;
-
-    private ChainZapSkill _chainZapSkill;
-    private ChainZap PastZap => _chainZapSkill.ChainZap;
-
-    private void OnValidate()
-    {
-        _chainZapSkill =
-            NeededSkills.FirstOrDefault(skill => skill.GetType() == typeof(ChainZapSkill)) as ChainZapSkill;
-
-        if (_chainZapSkill == false)
-            throw new NullReferenceException("ChainZapSkill is not set");
-    }
-
-    public override void Apply(SkillData skillData)
-    {
-        PastZap.Disable();
-
-        _chainZap.Initialize(skillData.WeaponHolder.Weapon);
-    }
+    [field: SerializeField] public float ChainRadius { get; private set; }
+    [field: SerializeField] public int MaxBounces { get; private set; }
+    [field: SerializeField] public float DamageFalloff { get; private set; }
+    [field: SerializeField] public ChainZapView ZapView { get; private set; }
+    [field: SerializeField] public LayerMask EnemyLayer { get; private set; }
+    [field: SerializeField] public int Segments { get; private set; }
+    [field: SerializeField, Range(0f, 1f)] public float Chance { get; private set; }
+    [field: SerializeField] public StatModifier EnemySpeedModifier { get; private set; }
 }

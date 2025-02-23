@@ -1,7 +1,4 @@
-namespace Project.Prefabs.Configs.Skills.Durability
+public abstract class SkillInstance
 {
-    public abstract class SkillInstance
-    {
-        public abstract void Disable();
-    }
+    public abstract void Disable();
 }
