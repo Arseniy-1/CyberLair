@@ -17,21 +17,22 @@ namespace Project.Scripts.MapGenerationSystem.Algorithms
             var halfWidth = _mapConfig.Width / 2f;
             var halfHeight = _mapConfig.Height / 2f;
             var innerPercentage = 1f - _mapConfig.FillPercent;
-
+            
             var noiseMap = new float[_mapConfig.Width, _mapConfig.Height];
-
+            
             for (int x = 0; x < _mapConfig.Width; x++)
             {
                 for (int y = 0; y < _mapConfig.Height; y++)
                 {
-                    float xCoord = (x - halfWidth) / _mapConfig.Width * _mapConfig.NoiseScale + _mapConfig.NoiseOffset.x;
-                    float yCoord = (y - halfHeight) / _mapConfig.Height * _mapConfig.NoiseScale + _mapConfig.NoiseOffset.y;
-
+                    float randomScale = Random.Range(_mapConfig.NoiseScale.x, _mapConfig.NoiseScale.y);
+                    float xCoord = (x - halfWidth) / _mapConfig.Width * randomScale + Random.Range(_mapConfig.NoiseOffsetX.x, _mapConfig.NoiseOffsetX.y);
+                    float yCoord = (y - halfHeight) / _mapConfig.Height * randomScale + Random.Range(_mapConfig.NoiseOffsetY.x, _mapConfig.NoiseOffsetY.y);
+            
                     float noiseValue = Mathf.PerlinNoise(xCoord, yCoord);
                     noiseMap[x, y] = noiseValue;
                 }
             }
-
+            
             for (int x = 0; x < _mapConfig.Width; x++)
             {
                 for (int y = 0; y < _mapConfig.Height; y++)

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Project.Scripts.MapGenerationSystem
 {
+    [CreateAssetMenu(fileName = "RandomWalkMapConfig", menuName = "Map/RandomWalk", order = 51)]
     public class RandomWalkMapConfig : MapConfig
     {
         [field: SerializeField] public bool InvertGrid { get; private set; }

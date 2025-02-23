@@ -15,7 +15,7 @@ namespace Project.Scripts.MapGenerationSystem.Algorithms
         {
             var terrainMap = FullDefaultMap();
             
-            var requiredFillQuantity = (int)(_mapConfig.Width * _mapConfig.Height * _mapConfig.FillPercent / 100);
+            var requiredFillQuantity = (int)(_mapConfig.Width * _mapConfig.Height * _mapConfig.FillPercent);
             var fillCounter = 0;
 
             var currentX = (int)_mapConfig.StartingPoint.x;

@@ -27,7 +27,7 @@ namespace Project.Scripts.MapGenerationSystem.Algorithms
                             : MapGeneratorConstraints.Default;
                 }
             }
-
+            
             for (var i = 0; i < _mapConfig.SmoothSteps; i++)
             {
                 SmoothMap(ref terrainMap);
