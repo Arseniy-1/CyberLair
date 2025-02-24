@@ -19,5 +19,5 @@ MonoBehaviour:
       \u043F\u0435\u0441\u043D\u044F"
     <Icon>k__BackingField: {fileID: -103632214, guid: 0dcc73b7e558dc3439a90534350b569d, type: 3}
   NeededSkills: []
-  <LandMinePrefab>k__BackingField: {fileID: 0}
+  <LandMinePrefab>k__BackingField: {fileID: 1879270878290182585, guid: 1540f2c2f242cd149b86750e2bd2ead9, type: 3}
   <NedeedDiedEnemyCount>k__BackingField: 5

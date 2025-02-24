@@ -162,6 +162,10 @@ public class SkillHolder
             case NonStopSkill nonStopSkill:
                 _skillInstances.Add(new NonStop(_skillData, nonStopSkill));
                 break;
+            
+            case ArtayaWillSkill artayaWillSkill:
+                _skillInstances.Add(new ArtayaWill(_skillData, artayaWillSkill));
+                break;
         }
     }
 }
