@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8056966689024523781}
   - component: {fileID: 3224201669410533625}
   - component: {fileID: 1879270878290182585}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LandMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5353529481570071487}
   - component: {fileID: 1739805938966323081}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -8
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.13723646, g: 0.3584906, b: 0.1268245, a: 1}
   m_FlipX: 0
@@ -231,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3405916464957648602}
   - component: {fileID: 6089957663605126796}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.078017995, g: 0.18867922, b: 0.0720897, a: 1}
   m_FlipX: 0

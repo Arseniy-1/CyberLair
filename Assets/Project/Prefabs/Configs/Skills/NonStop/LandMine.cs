@@ -12,10 +12,10 @@ public class LandMine : MonoBehaviour, IDestoyable<LandMine>
     {
         if (other.TryGetComponent(out IDamageable damageable))
         {
-            damageable.TakeDamage(_damage);
-            
             if (other.TryGetComponent(out IStunable stunable))
                 stunable.TakeStun(_stunTime);
+            
+            damageable.TakeDamage(_damage);
             
             OnDestroyed?.Invoke(this);
         }
