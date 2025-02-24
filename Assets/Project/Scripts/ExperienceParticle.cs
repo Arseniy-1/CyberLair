@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ExperienceParticle : MonoBehaviour, IInteractable, IMoveable,IDestoyable<ExperienceParticle>
+public class ExperienceParticle : MonoBehaviour, IInteractable, IMoveable, IDestoyable<ExperienceParticle>
 {
     public event Action<ExperienceParticle> OnDestroyed;
 
@@ -15,12 +15,12 @@ public class ExperienceParticle : MonoBehaviour, IInteractable, IMoveable,IDesto
 
     public void Initialize(int experienceAmount)
     {
-        if(experienceAmount <= 0)
+        if (experienceAmount <= 0)
             return;
-        
+
         ExperienceAmount = experienceAmount;
     }
-    
+
     public void Interact()
     {
         Destroy(gameObject);

@@ -159,6 +159,9 @@ public class SkillHolder
                 _skillInstances.Add(new Tireless(_skillData, tirelessSkill));
                 break;
             
+            case NonStopSkill nonStopSkill:
+                _skillInstances.Add(new NonStop(_skillData, nonStopSkill));
+                break;
         }
     }
 }

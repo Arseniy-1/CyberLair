@@ -1,9 +1,10 @@
 ﻿public class SkillData
 {
-    public SkillData(WeaponHolder weaponHolder, PlayerStats playerStats)
+    public SkillData(WeaponHolder weaponHolder, PlayerStats playerStats, Jumper playerJumper)
     {
         WeaponHolder = weaponHolder;
         PlayerStats = playerStats;
+        PlayerJumper = playerJumper;
     }
 
     public WeaponHolder WeaponHolder { get; private set; }

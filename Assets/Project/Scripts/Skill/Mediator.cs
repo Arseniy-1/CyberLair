@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Random = UnityEngine.Random;
 
 public class Mediator : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class Mediator : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Level _level;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
+    [SerializeField] private Jumper _playerJumper;
     
     private SkillHolder _playerSkillHolder;
 
@@ -28,7 +31,7 @@ public class Mediator : MonoBehaviour
         _availableSkills.AddRange(_simpleSkills);
 
         _playerStats = _player.PlayerStats;
-        _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats));
+        _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats, _playerJumper));
 
         _level.LevelRaised += ShowSkills;
 
