@@ -17,6 +17,7 @@ using Project.Prefabs.Configs.Skills.MercuryMimicry;
 using Project.Prefabs.Configs.Skills.StormBlade;
 using Project.Prefabs.Configs.Skills.StreamingEnergy;
 using Project.Prefabs.Configs.Skills.StunZap;
+using Project.Prefabs.Configs.Skills.TeleportationJump;
 using Project.Prefabs.Configs.Skills.ThunderStorm;
 using Project.Scripts.Weapon.ActiveSkills;
 using Project.Scripts.Weapon.ActiveSkills.MagicArrow;
@@ -183,6 +184,10 @@ public class SkillHolder
             
             case StreamingEnergySkill streamingEnergySkill:
                 _skillInstances.Add(new StreamingEnergySpawner(streamingEnergySkill));
+                break;
+            
+            case TeleportationJumpSkill teleportationJumpSkill:
+                _skillInstances.Add(new TeleportationJump(_skillData, teleportationJumpSkill));
                 break;
         }
     }
