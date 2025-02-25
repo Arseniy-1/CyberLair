@@ -13,6 +13,7 @@ public class Health : BaseStat
     public event Action<float> DamageTaken;
 
     public float MaxHealth => CalculateValue();
+    public ShieldAmount ShieldAmount => _shieldAmount;
 
     public void Initialize(ShieldAmount shieldAmount)
     {

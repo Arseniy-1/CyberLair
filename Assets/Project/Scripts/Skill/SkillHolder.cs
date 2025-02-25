@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Project.Prefabs.Configs.Skills;
 using Project.Prefabs.Configs.Skills.AffectedArea;
+using Project.Prefabs.Configs.Skills.AllOnLine;
 using Project.Prefabs.Configs.Skills.ArtayaShield;
 using Project.Prefabs.Configs.Skills.Athletics;
 using Project.Prefabs.Configs.Skills.Boomerang;
@@ -165,6 +166,10 @@ public class SkillHolder
             
             case ArtayaWillSkill artayaWillSkill:
                 _skillInstances.Add(new ArtayaWill(_skillData, artayaWillSkill));
+                break;
+            
+            case AllOnLineSkill allOnLineSkill:
+                _skillInstances.Add(new AllOnLine(_skillData, allOnLineSkill));
                 break;
         }
     }

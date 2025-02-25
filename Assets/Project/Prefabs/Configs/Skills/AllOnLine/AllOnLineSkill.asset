@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0980b4f8402741938ec99e9dea76b5f5, type: 3}
+  m_Name: AllOnLineSkill
+  m_EditorClassIdentifier: 
+  <SkillInfo>k__BackingField:
+    <SkillName>k__BackingField: "\u0412\u0441\u0435 \u043D\u0430 \u043A\u043E\u043D\u0443"
+    <Description>k__BackingField: "\u0443\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442
+      \u0442\u0435\u043A\u0443\u0449\u0435\u0435 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435
+      \u043D\u0430 1 \u0438 \u0443\u0431\u0438\u0440\u0430\u0435\u0442 \u0442\u0435\u043A\u0443\u0449\u0438\u0439
+      \u0449\u0438\u0442 \u0438 \u0434\u0430\u0435\u0442 \u043F\u0440\u0438\u0440\u043E\u0441\u0442
+      \u043A \u0443\u0440\u043E\u043D\u0443 \u0432 2 \u0440\u0430\u0437\u0430"
+    <Icon>k__BackingField: {fileID: 21300000, guid: 6f559fd089f5ddd4f907314e413c0b2d, type: 3}
+  NeededSkills:
+  - {fileID: 11400000, guid: 7c7820f278f9e4c118179d32c953e301, type: 2}
+  - {fileID: 11400000, guid: 25109efcdd00d47d5866813024fca4d3, type: 2}
+  - {fileID: 11400000, guid: 6d1f0578fffbf4c8da482e210616bc7a, type: 2}
+  <DamageModifier>k__BackingField:
+    <Value>k__BackingField: 2
+    <Type>k__BackingField: 1
+    <Duration>k__BackingField: 0
