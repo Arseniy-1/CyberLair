@@ -16,6 +16,7 @@ using Project.Prefabs.Configs.Skills.Lair_1;
 using Project.Prefabs.Configs.Skills.MercuryMimicry;
 using Project.Prefabs.Configs.Skills.StormBlade;
 using Project.Prefabs.Configs.Skills.StunZap;
+using Project.Prefabs.Configs.Skills.ThunderStorm;
 using Project.Scripts.Weapon.ActiveSkills;
 using Project.Scripts.Weapon.ActiveSkills.MagicArrow;
 
@@ -170,6 +171,13 @@ public class SkillHolder
             
             case AllOnLineSkill allOnLineSkill:
                 _skillInstances.Add(new AllOnLine(_skillData, allOnLineSkill));
+                break;
+            
+            case ThunderStormSkill thunderStormSkill:
+                var thunder = _skillInstances.
+                    FirstOrDefault(skillInstance => skillInstance.GetType() == typeof(Thunder));
+                
+                _skillInstances.Add(new ThunderStorm(thunderStormSkill, thunder as Thunder));
                 break;
         }
     }
