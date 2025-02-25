@@ -15,6 +15,7 @@ using Project.Prefabs.Configs.Skills.JumpSwirl;
 using Project.Prefabs.Configs.Skills.Lair_1;
 using Project.Prefabs.Configs.Skills.MercuryMimicry;
 using Project.Prefabs.Configs.Skills.StormBlade;
+using Project.Prefabs.Configs.Skills.StreamingEnergy;
 using Project.Prefabs.Configs.Skills.StunZap;
 using Project.Prefabs.Configs.Skills.ThunderStorm;
 using Project.Scripts.Weapon.ActiveSkills;
@@ -178,6 +179,10 @@ public class SkillHolder
                     FirstOrDefault(skillInstance => skillInstance.GetType() == typeof(Thunder));
                 
                 _skillInstances.Add(new ThunderStorm(thunderStormSkill, thunder as Thunder));
+                break;
+            
+            case StreamingEnergySkill streamingEnergySkill:
+                _skillInstances.Add(new StreamingEnergySpawner(streamingEnergySkill));
                 break;
         }
     }
