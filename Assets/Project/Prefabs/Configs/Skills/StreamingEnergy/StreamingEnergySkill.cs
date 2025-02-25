@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.StreamingEnergy
 {
-    [CreateAssetMenu(fileName = "ThunderStormSkill", menuName = "Skill/Mutant/ThunderStorm", order = 51)]
+    [CreateAssetMenu(fileName = "StreamingEnergySkill", menuName = "Skill/Mutant/StreamingEnergy", order = 51)]
     public class StreamingEnergySkill : MutantSkill
     {
         [field: SerializeField] public StreamingEnergy Prefab { get; private set; }
