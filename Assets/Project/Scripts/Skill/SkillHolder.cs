@@ -13,6 +13,7 @@ using Project.Prefabs.Configs.Skills.Harding;
 using Project.Prefabs.Configs.Skills.InternalVoltage;
 using Project.Prefabs.Configs.Skills.JumpSwirl;
 using Project.Prefabs.Configs.Skills.Lair_1;
+using Project.Prefabs.Configs.Skills.MercuryBless;
 using Project.Prefabs.Configs.Skills.MercuryMimicry;
 using Project.Prefabs.Configs.Skills.StormBlade;
 using Project.Prefabs.Configs.Skills.StreamingEnergy;
@@ -188,6 +189,10 @@ public class SkillHolder
             
             case TeleportationJumpSkill teleportationJumpSkill:
                 _skillInstances.Add(new TeleportationJump(_skillData, teleportationJumpSkill));
+                break;
+            
+            case MercuryBlessSkill mercuryBlessSkill:
+                _skillInstances.Add(new MercuryBless(_skillData, mercuryBlessSkill));
                 break;
         }
     }
