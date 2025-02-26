@@ -23,7 +23,7 @@ namespace Project.Scripts.EnemySystem
         
         public event Action<Enemy> OnDestroyed;
 
-        [field: SerializeField] public Health Health {get; private set; }
+       
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
         [field: SerializeField] public EnemyStats EnemyStats { get; private set; }
 
@@ -35,6 +35,7 @@ namespace Project.Scripts.EnemySystem
         private void Update()
         {
             _stateMachine?.Update();
+            EnemyStats.Update();
         }
 
         public void Initialize(Player player)
@@ -47,11 +48,10 @@ namespace Project.Scripts.EnemySystem
                 new EnemyStunnedState(this, _mover)
             };
             
-            Health.CalculateCurrentValue();
-            
+            EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);
             _attacker.Initialize(_enemyTargetProvider, EnemyStats);
-            _destroyer.Initialize(Health, this);
+            _destroyer.Initialize(EnemyStats.Health, this);
             
             _stateMachine = new EntityStateMachine(states);
 
@@ -66,7 +66,7 @@ namespace Project.Scripts.EnemySystem
         
         public void TakeDamage(float amount)
         {
-            Health.TakeDamage(amount);
+            EnemyStats.Health.TakeDamage(amount);
         }
         
         public void TakeStun(float time)

@@ -20,4 +20,9 @@ public class EnemySpawner : Spawner<Enemy>
 
         Pool = new EnemyPool(Prefab, fabric, StartAmount);
     }
+
+    public void ApplyModifier(StatModifier statModifier)
+    {
+        (Pool as EnemyPool)?.ApplyModifier(statModifier);
+    }
 }

@@ -26,4 +26,12 @@ public class MainEnemySpawner : MonoBehaviour
         
         return spawner.Spawn();
     }
+
+    public void ApplyModifier(StatModifier modifier)
+    {
+        foreach (EnemySpawner enemySpawner in _spawners.Values)
+        {
+            enemySpawner.ApplyModifier(modifier);
+        }
+    }
 }

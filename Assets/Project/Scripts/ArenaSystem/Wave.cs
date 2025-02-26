@@ -31,6 +31,8 @@ namespace Project.Scripts.ArenaSystem
         {
             WaitingEnd();
             
+            _mainEnemySpawner.ApplyModifier(_config.EnemyStatModifiers);
+            
             var enemyPrefabs = new List<Enemy>();
                 
             foreach (KeyValuePair<Enemy, int> pair in _config.Enemies)
@@ -51,9 +53,9 @@ namespace Project.Scripts.ArenaSystem
 
             foreach (var enemyPrefab in enemies)
             {
-                int secondMultiplyer = 1000;
+                int secondMultiplier = 1000;
 
-                int delay = Convert.ToInt32(_config.SpawnDuration * secondMultiplyer);
+                int delay = Convert.ToInt32(_config.SpawnDuration * secondMultiplier);
                 await UniTask.Delay(delay);
                 
                 Enemy enemy = _mainEnemySpawner.Spawn(enemyPrefab.EnemyType);
@@ -66,9 +68,9 @@ namespace Project.Scripts.ArenaSystem
 
         private async UniTaskVoid WaitingEnd()
         {
-            int secondMultiplyer = 1000;
+            int secondMultiplier = 1000;
             
-            await UniTask.Delay(_config.WaveDuration * secondMultiplyer);
+            await UniTask.Delay(_config.WaveDuration * secondMultiplier);
             OnWaveFinished?.Invoke(this);
         }
 

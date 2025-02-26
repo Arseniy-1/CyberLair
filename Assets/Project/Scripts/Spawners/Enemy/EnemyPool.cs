@@ -1,10 +1,11 @@
-﻿using Project.Scripts.CompositionRoot;
+﻿using System.Collections.Generic;
+using Project.Scripts.CompositionRoot;
 using Project.Scripts.EnemySystem;
-using UnityEngine;
 
 public class EnemyPool : Pool<Enemy>
 {
     private readonly EnemyFabric _enemyFabric;
+    private List<Enemy> _enemies;
 
     public EnemyPool(Enemy prefab, EnemyFabric enemyFabric, int startAmount) : base(prefab, startAmount)
     {
@@ -12,13 +13,23 @@ public class EnemyPool : Pool<Enemy>
         CreateStartCount();
     }
 
+    public void ApplyModifier(StatModifier statModifier)
+    {
+        foreach (Enemy enemy in _enemies)
+        {
+           enemy.EnemyStats.Speed.AddModifier(statModifier);
+           enemy.EnemyStats.Health.AddModifier(statModifier);
+        }
+    }
+        
     protected override Enemy Create()
     {
         var enemy = _enemyFabric.Create(Prefab);
 
         enemy.gameObject.SetActive(false);
-        // Stack.Push(enemy);
+        _enemies.Add(enemy);
 
         return enemy;
     }
+    
 }
