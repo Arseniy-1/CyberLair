@@ -4,73 +4,70 @@ using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 
-namespace Project.Prefabs.Configs.Skills.StreamingEnergy
+public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
 {
-    public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
+    [SerializeField] private float _stunDuration = 0.2f;
+    [SerializeField] private StatModifier _speedModifier;
+    [SerializeField] private float _stunInterval = 1.5f;
+    [SerializeField] private LayerMask _targetLayer;
+    [SerializeField] private float _lifeTime = 3.5f;
+
+    private readonly List<Enemy> _enemies = new();
+
+    private Coroutine _waitingDestroy;
+    private Coroutine _stunIterating;
+
+    public event Action<StreamingEnergy> OnDestroyed;
+
+    private void OnEnable()
     {
-        [SerializeField] private float _stunDuration = 0.2f;
-        [SerializeField] private StatModifier _speedModifier;
-        [SerializeField] private float _stunInterval = 1.5f;
-        [SerializeField] private LayerMask _targetLayer;
-        [SerializeField] private float _lifeTime = 3.5f;
+        _waitingDestroy = StartCoroutine(WaitingDestroy());
+        _stunIterating = StartCoroutine(StunIterating());
+    }
 
-        private readonly List<Enemy> _enemies = new();
-
-        private Coroutine _waitingDestroy;
-        private Coroutine _stunIterating;
-
-        public event Action<StreamingEnergy> OnDestroyed;
-
-        private void OnEnable()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Enemy enemy) & (_targetLayer << collision.gameObject.layer) != 0)
         {
-            _waitingDestroy = StartCoroutine(WaitingDestroy());
-            _stunIterating = StartCoroutine(StunIterating());
+            _enemies.Add(enemy);
         }
+    }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Enemy enemy) & (_targetLayer << collision.gameObject.layer) != 0)
         {
-            if (collision.TryGetComponent(out Enemy enemy) & (_targetLayer << collision.gameObject.layer) != 0)
-            {
-                _enemies.Add(enemy);
-            }
+            _enemies.Remove(enemy);
         }
+    }
 
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.TryGetComponent(out Enemy enemy) & (_targetLayer << collision.gameObject.layer) != 0)
-            {
-                _enemies.Remove(enemy);
-            }
-        }
+    private void OnDisable()
+    {
+        StopCoroutine(_waitingDestroy);
+        StopCoroutine(_stunIterating);
+    }
 
-        private void OnDisable()
+    private void ApplyStun()
+    {
+        foreach (var enemy in _enemies)
         {
-            StopCoroutine(_waitingDestroy);
-            StopCoroutine(_stunIterating);
+            enemy.TakeStun(_stunDuration);
+            enemy.EnemyStats.Speed.AddModifier(_speedModifier.Copy());
         }
+    }
 
-        private void ApplyStun()
+    private IEnumerator StunIterating()
+    {
+        while (isActiveAndEnabled)
         {
-            foreach (var enemy in _enemies)
-            {
-                enemy.TakeStun(_stunDuration);
-                enemy.EnemyStats.Speed.AddModifier(_speedModifier.Copy());
-            }
+            ApplyStun();
+            yield return new WaitForSeconds(_stunInterval);
         }
+    }
 
-        private IEnumerator StunIterating()
-        {
-            while (isActiveAndEnabled)
-            {
-                ApplyStun();
-                yield return new WaitForSeconds(_stunInterval);
-            }
-        }
-
-        private IEnumerator WaitingDestroy()
-        {
-            yield return new WaitForSeconds(_lifeTime);
-            OnDestroyed?.Invoke(this);
-        }
+    private IEnumerator WaitingDestroy()
+    {
+        yield return new WaitForSeconds(_lifeTime);
+        OnDestroyed?.Invoke(this);
     }
 }
