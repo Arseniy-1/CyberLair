@@ -1,5 +1,5 @@
 using System;
-using Project.Prefabs.Configs.Skills.Durability;
+using Project.Scripts.EnemySystem;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,10 +15,8 @@ namespace Project.Scripts.Weapon.ActiveSkills
         private float _shootsNeeded;
 
         private float _shootsPassed;
-        private Transform _target;
+        private Transform _holder;
         private Weapon _weapon;
-
-        private Vector2 Position => _target.position;
 
         public Thunder(SkillData skillData, IThunderStats thunderSkill)
         {
@@ -29,11 +27,13 @@ namespace Project.Scripts.Weapon.ActiveSkills
             _shootsNeeded = thunderSkill.ShootsNeeded;
 
             _shootsPassed = 0;
-            _target = skillData.WeaponHolder.transform;
+            _holder = skillData.WeaponHolder.transform;
             _weapon = skillData.WeaponHolder.Weapon;
 
             _weapon.Shooted += HandleShoot;
         }
+
+        public event Action<Enemy> EnemyStruck;
 
         public void Disable()
         {
@@ -52,7 +52,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
         private void Strike()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(Position, _actionRadius, _layerMask);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(_holder.position, _actionRadius, _layerMask);
 
             for (int i = 0; i < _strikesCount; i++)
             {
@@ -61,10 +61,11 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
                 Collider2D strickenCollider = colliders[Random.Range(0, colliders.Length)];
 
-                if (strickenCollider.TryGetComponent(out IDamageable affected))
-                {
-                    affected.TakeDamage(_damage);
-                }
+                if (!strickenCollider.TryGetComponent(out Enemy affected))
+                    continue;
+                
+                affected.TakeDamage(_damage);
+                EnemyStruck?.Invoke(affected);
             }
         }
     }

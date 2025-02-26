@@ -1,0 +1,11 @@
+using UnityEngine;
+
+namespace Project.Prefabs.Configs.Skills.TeleportationJump
+{
+    [CreateAssetMenu(fileName = "TeleportationJumpSkill", menuName = "Skill/Mutant/TeleportationJump", order = 51)]
+    public class TeleportationJumpSkill : MutantSkill
+    {
+        [field: SerializeField] public StatModifier JumpTimeModifier { get; private set; }
+        [field: SerializeField] public StatModifier JumpDistanceModifier { get; private set; }
+    }
+}
