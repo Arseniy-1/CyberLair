@@ -141,13 +141,13 @@ MonoBehaviour:
   _jumpStats:
     <JumpDistance>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
 --- !u!114 &442572439295423526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,16 +179,15 @@ MonoBehaviour:
   _destroyer: {fileID: 4789583573764484402}
   _enemyTargetProvider: {fileID: 363723337743644631}
   _attackDistance: 2
-  <Health>k__BackingField:
-    <BaseValue>k__BackingField: 100
-    CurrentValue: 0
-    MaxHealth: 100
   <EnemyType>k__BackingField: 0
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 2
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 4
-      CurrentValue: 4
+      <CurrentValue>k__BackingField: 0
+    <Health>k__BackingField:
+      <BaseValue>k__BackingField: 50
+      <CurrentValue>k__BackingField: 0
     <CollisionDamage>k__BackingField: 0
     <AttackDelay>k__BackingField: 1
     <AttackRecovery>k__BackingField: 1.5

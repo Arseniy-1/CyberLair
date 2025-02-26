@@ -12,8 +12,9 @@ namespace Project.Scripts.Servises
         public WeightedRandomPicker(List<T> prefabs, List<float> weights)
         {
             _prefabs = prefabs;
+            _weights = weights;
             
-            foreach (float weight in weights)
+            foreach (float weight in _weights)
             {
                 _totalWeight += weight;
             }
@@ -31,14 +32,6 @@ namespace Project.Scripts.Servises
                 if(partialWeight > pickedWeight)
                     return _prefabs[i];
             }
-
-            // foreach (T tileObject in _prefabs)
-            // {
-            //     partialWeight += tileObject.Weight;
-            //     
-            //     if(partialWeight > pickedWeight)
-            //         return tileObject.Prefab;
-            // }
             
             return _prefabs[0];
         }

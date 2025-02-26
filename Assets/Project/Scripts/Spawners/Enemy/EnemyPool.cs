@@ -5,7 +5,7 @@ using Project.Scripts.EnemySystem;
 public class EnemyPool : Pool<Enemy>
 {
     private readonly EnemyFabric _enemyFabric;
-    private List<Enemy> _enemies;
+    private readonly List<Enemy> _enemies = new();
 
     public EnemyPool(Enemy prefab, EnemyFabric enemyFabric, int startAmount) : base(prefab, startAmount)
     {
@@ -15,6 +15,8 @@ public class EnemyPool : Pool<Enemy>
 
     public void ApplyModifier(StatModifier statModifier)
     {
+        
+        
         foreach (Enemy enemy in _enemies)
         {
            enemy.EnemyStats.Speed.AddModifier(statModifier);
