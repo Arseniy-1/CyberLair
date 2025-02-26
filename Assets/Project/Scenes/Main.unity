@@ -35259,7 +35259,7 @@ MonoBehaviour:
   _hardSkills: []
   _mutantSkills: []
   _simpleSkills:
-  - {fileID: 11400000, guid: 2a4edcbe756454041af699b21bac2094, type: 2}
+  - {fileID: 11400000, guid: 1acf96a4457101644849f20040ba52bd, type: 2}
   _availableSkills: []
   _raisedSkills: []
   _skillViews:

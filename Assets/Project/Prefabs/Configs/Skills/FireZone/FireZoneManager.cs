@@ -14,6 +14,8 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
         private SkillData _skillData;
         
+        public event Action<FireZone> FireZoneSpawned;
+        
         public FireZoneManager(SkillData skillData, FireZoneSkill fireZoneSkill)
         {
             _skillData = skillData;
@@ -36,6 +38,8 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
             var fireZone = _fireZoneSpawner.Spawn();
             fireZone.transform.position = bullet.transform.position;
+            
+            FireZoneSpawned?.Invoke(fireZone);
         }
 
         public void Disable()
