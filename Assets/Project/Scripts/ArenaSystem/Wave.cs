@@ -62,11 +62,16 @@ namespace Project.Scripts.ArenaSystem
                 {
                     break;
                 }
-                
-                Enemy enemy = _mainEnemySpawner.Spawn(picker.Pick().EnemyType);
-                enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
-                enemy.ResetState();
-                EnemySpawned?.Invoke(enemy);
+
+                EnemyTypes preferredEnemy = picker.Pick().EnemyType;
+
+                for (int i = 0; i < _config.SpawnClusterSize; i++)
+                {
+                    Enemy enemy = _mainEnemySpawner.Spawn(preferredEnemy);
+                    enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
+                    enemy.ResetState();
+                    EnemySpawned?.Invoke(enemy);
+                }
             }
         } 
 
