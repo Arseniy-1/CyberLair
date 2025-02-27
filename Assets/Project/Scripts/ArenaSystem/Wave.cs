@@ -64,8 +64,9 @@ namespace Project.Scripts.ArenaSystem
                 }
 
                 EnemyTypes preferredEnemy = picker.Pick().EnemyType;
+                int enemyCount = Random.Range(_config.SpawnClusterSize.x, _config.SpawnClusterSize.y + 1);
 
-                for (int i = 0; i < _config.SpawnClusterSize; i++)
+                for (int i = 0; i < enemyCount; i++)
                 {
                     Enemy enemy = _mainEnemySpawner.Spawn(preferredEnemy);
                     enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
