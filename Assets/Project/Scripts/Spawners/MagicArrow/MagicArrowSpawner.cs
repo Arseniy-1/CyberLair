@@ -103,6 +103,8 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
         private void DestroyArrow(MagicArrow magicArrow)
         {
+            magicArrow.OnDestroyed -= DestroyArrow;
+            
             Object.Destroy(magicArrow.gameObject);
         }
     }
