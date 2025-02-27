@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Project.Scripts.Servises;
 using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -14,22 +16,16 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
         [Header("Tilemap and Objects")]
         [SerializeField] private Tilemap _targetTilemap;
         [SerializeField] private Tilemap[] _obstacleTilemaps;
-        [SerializeField] private TileObject[] _tileObjects;
+        [SerializeField] private List<ObjectWeightPair<MapEnvironment>> _tileObjects;
         [SerializeField, Range(0f, 1f)] private float _objectFillPercentage;
-        
-        // [Header("Clusters")]
-        // [SerializeField] private float _clusterSpacing;
-        // [SerializeField] private float _maxObjectsPerCluster;
 
         private List<Vector3> _bannedPositions = new();
         private List<Vector2> _placedObjectsPositions = new();
 
         public void Place()
         {
-            if(_tileObjects.Length <= 0)
-            {
+            if(_tileObjects.Count <= 0)
                 return;
-            }
             
             List<Vector3> availablePositions = _targetTilemap.GetTileWorldPositionsWithTiles();
             
@@ -46,7 +42,8 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
                 if(Random.value > _objectFillPercentage)
                     continue;
             
-                var picker = new WeightedRandomPicker(_tileObjects);
+                var picker = new WeightedRandomPicker<MapEnvironment>(_tileObjects.Select(pair => pair.Prefab).ToList(),
+                    _tileObjects.Select(pair => pair.Weight).ToList());
                 
                 PlaceIndividual(picker.Pick(), position);
             }
@@ -59,22 +56,6 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
                 
             Object.Instantiate(prefab, position, Quaternion.identity);
             _placedObjectsPositions.Add(position);
-            
-            // var objectsCount = Random.Range(1, _maxObjectsPerCluster + 1);
-            //
-            // for (int i = 0; i < objectsCount; i++)
-            // {
-            //     var currentPosition = Random.insideUnitCircle * _clusterSpacing + (Vector2)position;
-            //     
-            //     if(_bannedPositions.Contains(currentPosition))
-            //         continue;
-            //     
-            //     if(_placedObjectsPositions.Contains(currentPosition))
-            //         continue;
-            //     
-            //     Object.Instantiate(prefab, currentPosition, Quaternion.identity);
-            //     _placedObjectsPositions.Add(currentPosition);
-            // }
         }
     }
 }
