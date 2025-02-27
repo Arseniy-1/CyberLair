@@ -15,12 +15,10 @@ public class EnemyPool : Pool<Enemy>
 
     public void ApplyModifier(StatModifier statModifier)
     {
-        
-        
         foreach (Enemy enemy in _enemies)
         {
-           enemy.EnemyStats.Speed.AddModifier(statModifier);
-           enemy.EnemyStats.Health.AddModifier(statModifier);
+           enemy.EnemyStats.Speed.AddModifier(statModifier.Copy());
+           enemy.EnemyStats.Health.AddModifier(statModifier.Copy());
         }
     }
         
