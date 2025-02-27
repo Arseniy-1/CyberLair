@@ -23,6 +23,6 @@ public class ExperienceParticle : MonoBehaviour, IInteractable, IMoveable, IDest
 
     public void Interact()
     {
-        Destroy(gameObject);
+        OnDestroyed?.Invoke(this);
     }
 }
