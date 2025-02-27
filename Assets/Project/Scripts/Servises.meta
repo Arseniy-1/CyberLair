@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Project/Scripts/Servises.meta
 guid: b1d4b1495a2e20444a9fc453b9303c21
+========
+guid: 54bce24c5a2414acf8afefa4e49dc419
+>>>>>>>> MapGeneration&RandomSeed:Assets/Project/Prefabs/Environment.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
