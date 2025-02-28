@@ -53,6 +53,6 @@ public class MainEnemySpawner : MonoBehaviour
 
     private void MoveEnemy(Enemy enemy)
     {
-        enemy.Rigidbody2D.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
+        enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
     }
 }

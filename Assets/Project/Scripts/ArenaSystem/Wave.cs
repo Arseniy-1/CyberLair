@@ -51,15 +51,6 @@ namespace Project.Scripts.ArenaSystem
             
             while(_isActive)
             { 
-                try
-                {
-                    await UniTask.Delay(TimeSpan.FromSeconds(_config.SpawnDuration), cancellationToken: _cancellationToken.Token);
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
-
                 EnemyTypes preferredEnemy = picker.Pick().EnemyType;
                 int enemyCount = Random.Range(_config.SpawnClusterSize.x, _config.SpawnClusterSize.y + 1);
 
@@ -69,6 +60,15 @@ namespace Project.Scripts.ArenaSystem
                     
                     enemy.ResetState();
                     EnemySpawned?.Invoke(enemy);
+                }
+                
+                try
+                {
+                    await UniTask.Delay(TimeSpan.FromSeconds(_config.SpawnDuration), cancellationToken: _cancellationToken.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
                 }
             }
         } 

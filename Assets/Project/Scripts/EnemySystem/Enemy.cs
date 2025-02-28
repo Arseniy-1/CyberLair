@@ -3,7 +3,6 @@ using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
-using UniRx;
 using System.Collections;
 using Sirenix.OdinInspector;
 

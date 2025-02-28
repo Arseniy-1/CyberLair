@@ -14,7 +14,7 @@ namespace Project.Scripts.CompositionRoot
         }
         
         private void HandleCollision(Collider2D collider)
-        {
+        { 
             if (collider.TryGetComponent(out Enemy enemy))
             {
                 EnemyDespawnNeeded?.Invoke(enemy);
