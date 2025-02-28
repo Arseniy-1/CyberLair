@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Project.Scripts.CompositionRoot
@@ -22,9 +23,11 @@ namespace Project.Scripts.CompositionRoot
         
         public IReadOnlyList<Transform> EdgeObjects => _edgeObjects;
         
-        public void SpawnOnEdges()
+        public List<Transform> SpawnOnEdges()
         {
             CalculateCameraBounds();
+            
+            var edgeObjects = new List<Transform>();
 
             var edges = new (Vector2 start, Vector2 end, int count)[]
             {
@@ -37,18 +40,24 @@ namespace Project.Scripts.CompositionRoot
 
             foreach ((Vector2 start, Vector2 end, int count) edge in edges)
             {
-                SpawnLine(edge.start, edge.end, edge.count);
+                edgeObjects.AddRange(SpawnLine(edge.start, edge.end, edge.count));
             }
+            
+            return edgeObjects;
         }
 
-        private void SpawnLine(Vector2 start, Vector2 end, int count)
+        private List<Transform> SpawnLine(Vector2 start, Vector2 end, int count)
         {
+            var lineObjects = new List<Transform>();
             var direction = end - start;
             var step = 1f / (count - 1);
 
             for (int i = 0; i < count; i++)
             {
                 Vector2 position = start + direction * step * i;
+
+                if (_edgeObjects.FirstOrDefault(edgeObject => (Vector2)edgeObject.position == position) != null)
+                    continue;
 
                 var edgeObject = new GameObject($"EdgeObject {i}")
                 {
@@ -59,8 +68,10 @@ namespace Project.Scripts.CompositionRoot
                     }
                 };
                 
-                _edgeObjects.Add(edgeObject.transform);
+                lineObjects.Add(edgeObject.transform);
             }
+            
+            return lineObjects;
         }
 
         private void CalculateCameraBounds()

@@ -14,11 +14,10 @@ namespace Project.Scripts.CompositionRoot
         
         private void Awake()
         {
-            _edgeSpawner.SpawnOnEdges();
+            _mainEnemySpawner.Initialize(_player, _edgeSpawner.SpawnOnEdges());
             
-            _mainEnemySpawner.Initialize(_player);
             var waves = new Queue<Wave>(_arena.WavesConfigs
-                .Select(config => new Wave(config, _mainEnemySpawner, _edgeSpawner.EdgeObjects.ToList())).ToList());
+                .Select(config => new Wave(config, _mainEnemySpawner)));
 
             _arena.Initialize(waves);
             _arena.Work();

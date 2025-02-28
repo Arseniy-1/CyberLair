@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Project.Scripts.EnemySystem;
-using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Project.Scripts.Servises;
 using Random = UnityEngine.Random;
@@ -15,17 +14,15 @@ namespace Project.Scripts.ArenaSystem
         private readonly WaveConfig _config;
 
         private readonly MainEnemySpawner _mainEnemySpawner;
-        private readonly IReadOnlyList<Transform> _spawnPoints;
 
         private readonly List<ObjectWeightPair<Enemy>> _enemyWeights = new();
         private bool _isActive;
         private CancellationTokenSource _cancellationToken;
 
-        public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner, List<Transform> spawnPoints)
+        public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner)
         {
             _config = config;
             _mainEnemySpawner = mainEnemySpawner;
-            _spawnPoints = spawnPoints;
             
             _enemyWeights.AddRange(_config.EnemyWeights);
         }
@@ -69,7 +66,7 @@ namespace Project.Scripts.ArenaSystem
                 for (int i = 0; i < enemyCount; i++)
                 {
                     Enemy enemy = _mainEnemySpawner.Spawn(preferredEnemy);
-                    enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
+                    
                     enemy.ResetState();
                     EnemySpawned?.Invoke(enemy);
                 }

@@ -23,7 +23,6 @@ namespace Project.Scripts.EnemySystem
         
         public event Action<Enemy> OnDestroyed;
 
-       
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
         [field: SerializeField] public EnemyStats EnemyStats { get; private set; }
 
