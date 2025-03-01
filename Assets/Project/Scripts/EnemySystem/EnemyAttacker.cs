@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
+using Project.Scripts.EnemySystem.AttackTypes;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem
 {
     public abstract class EnemyAttacker : MonoBehaviour
     {
-        private IAttackerStats _stats;
+        [SerializeField] private BaseEnemyAttackStats _stats;
         
         protected EnemyTargetProvider EnemyTargetProvider;
         private Transform _transform;
@@ -20,10 +21,9 @@ namespace Project.Scripts.EnemySystem
             StartCoroutine(Performing());
         }
         
-        public virtual void Initialize(EnemyTargetProvider enemyTargetProvider, IAttackerStats stats)
+        public virtual void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
             EnemyTargetProvider = enemyTargetProvider;
-            _stats = stats;
             _transform = transform;
         }
         

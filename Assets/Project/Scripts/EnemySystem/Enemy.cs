@@ -3,7 +3,6 @@ using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
-using UniRx;
 using System.Collections;
 using Sirenix.OdinInspector;
 
@@ -23,7 +22,6 @@ namespace Project.Scripts.EnemySystem
         
         public event Action<Enemy> OnDestroyed;
 
-       
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
         [field: SerializeField] public EnemyStats EnemyStats { get; private set; }
 
@@ -50,7 +48,7 @@ namespace Project.Scripts.EnemySystem
             
             EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);
-            _attacker.Initialize(_enemyTargetProvider, EnemyStats);
+            _attacker.Initialize(_enemyTargetProvider);
             _destroyer.Initialize(EnemyStats.Health, this);
             
             _stateMachine = new EntityStateMachine(states);

@@ -16,10 +16,10 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             _jumper = GetComponent<Jumper>();
         }
 
-        public override void Initialize(EnemyTargetProvider enemyTargetProvider, IAttackerStats stats)
+        public override void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
             _jumper.Initialize(_jumpStats);
-            base.Initialize(enemyTargetProvider, stats);
+            base.Initialize(enemyTargetProvider);
         }
         
         protected override void Attack()

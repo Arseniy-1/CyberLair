@@ -21,11 +21,11 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             temporaryImps.ToList().ForEach(imp => Destroy(imp.gameObject));
         }
 
-        public override void Initialize(EnemyTargetProvider enemyTargetProvider, IAttackerStats stats)
+        public override void Initialize(EnemyTargetProvider enemyTargetProvider)
         { 
             _impSpawner = new EnemySpawner(_impPrefab, enemyTargetProvider.Player, _startCount);
             
-            base.Initialize(enemyTargetProvider, stats);
+            base.Initialize(enemyTargetProvider);
         }
 
         protected override void Attack()

@@ -12,10 +12,10 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             _holder.SpotTarget(EnemyTargetProvider.Player);
         }
 
-        public override void Initialize(EnemyTargetProvider enemyTargetProvider, IAttackerStats stats)
+        public override void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
             _holder.Weapon.Initialize(_weaponStats);
-            base.Initialize(enemyTargetProvider, stats);
+            base.Initialize(enemyTargetProvider);
         }
 
         protected override void Attack()
