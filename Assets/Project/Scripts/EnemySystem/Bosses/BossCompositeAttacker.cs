@@ -36,10 +36,10 @@ namespace Project.Scripts.EnemySystem.Bosses
                 _performingTimeAttacks = StartCoroutine(PerformingTimeAttacks());
         }
         
-        protected override void Attack()
+        protected override IEnumerator Attack()
         {
             _currentAttack.AttackPerformed += HandleAttackPerformed;
-            _currentAttack.Attack();
+            yield return _currentAttack.Attack();
         }
 
         private void HandleAttackPerformed()

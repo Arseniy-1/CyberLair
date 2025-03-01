@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -28,13 +29,14 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             base.Initialize(enemyTargetProvider);
         }
 
-        protected override void Attack()
+        protected override IEnumerator Attack()
         {
             Enemy imp = _impSpawner.Spawn();
             imp.OnDestroyed += RemoveImp;
             imp.transform.position = Position;
             
             _imps.Add(imp);
+            yield return null;
         }
 
         private void RemoveImp(Enemy imp)

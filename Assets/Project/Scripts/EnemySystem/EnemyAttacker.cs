@@ -27,7 +27,7 @@ namespace Project.Scripts.EnemySystem
             _transform = transform;
         }
         
-        protected abstract void Attack();
+        protected abstract IEnumerator Attack();
         
         private void EndAttack()
         {
@@ -36,13 +36,13 @@ namespace Project.Scripts.EnemySystem
 
         private IEnumerator Performing()
         {
-            WaitForSeconds waitDelay = new WaitForSeconds(_stats.AttackDelay);
-            WaitForSeconds waitRecovery = new WaitForSeconds(_stats.AttackRecovery);
+            var waitDelay = new WaitForSeconds(_stats.AttackDelay);
+            var waitRecovery = new WaitForSeconds(_stats.AttackRecovery);
             
             for (int i = 0; i < _stats.AttackCount; i++)
             {
                 yield return waitDelay;
-                Attack();
+                yield return Attack();
             }
 
             yield return waitRecovery;

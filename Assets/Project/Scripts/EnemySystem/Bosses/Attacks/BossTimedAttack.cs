@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses
@@ -6,6 +7,6 @@ namespace Project.Scripts.EnemySystem.Bosses
     {
         [field: SerializeField] public float Time { get; private set; }
         
-        public abstract override void Attack();
+        public abstract override IEnumerator Attack();
     }
 }
