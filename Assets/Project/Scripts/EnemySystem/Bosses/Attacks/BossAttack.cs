@@ -8,6 +8,7 @@ namespace Project.Scripts.EnemySystem.Bosses
     public abstract class BossAttack : MonoBehaviour
     {
         [SerializeField] protected BaseEnemyAttackStats Stats;
+        [SerializeField] protected AttackAnimationEvents AnimationEvents;
         
         public event Action AttackPerformed;
         
@@ -17,5 +18,10 @@ namespace Project.Scripts.EnemySystem.Bosses
         public abstract IEnumerator Attack();
         
         public abstract void Disable();
+
+        protected void EndAttack()
+        {
+            AttackPerformed?.Invoke();
+        }
     }
 }
