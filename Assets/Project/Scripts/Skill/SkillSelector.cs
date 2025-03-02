@@ -54,7 +54,6 @@ public class SkillSelector : MonoBehaviour
 
             _lastSelectedSkill = skillView;
             _selectedSkills.Add(skillView);
-
         }
 
         if (_selectedSkills.Count >= _maxSelectedSkills)
@@ -66,25 +65,25 @@ public class SkillSelector : MonoBehaviour
     public void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
         Time.timeScale = 0;
-
         gameObject.SetActive(true);
-
-        List<Skill> availableSkills = skills;
-
         _maxSelectedSkills = outputSkillsCount;
+    
         inputSkillsCount = Mathf.Min(inputSkillsCount, skills.Count);
-
+        
         if (inputSkillsCount == 0)
             return;
-
+    
+        List<Skill> shuffledSkills = new List<Skill>(skills);
+        for (int i = shuffledSkills.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (shuffledSkills[i], shuffledSkills[j]) = (shuffledSkills[j], shuffledSkills[i]);
+        }
+    
         for (int i = 0; i < inputSkillsCount; i++)
         {
-            int randomIndex = Random.Range(0, availableSkills.Count);
-
             _skillViews[i].gameObject.SetActive(true);
-            _skillViews[i].SetSkill(availableSkills[randomIndex]);
-
-            availableSkills.RemoveAt(randomIndex);
+            _skillViews[i].SetSkill(shuffledSkills[i]);
         }
     }
 
@@ -92,20 +91,22 @@ public class SkillSelector : MonoBehaviour
     {
         HideSkills();
         
-        gameObject.SetActive(false);
-
         List<Skill> skills = new List<Skill>();
 
         foreach (var skillView in _selectedSkills)
             skills.Add(skillView.Skill);
 
+        _lastSelectedSkill = null;
+        _selectedSkills = new List<SkillView>();
+        _applyButton.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        
         SkillApplyed?.Invoke(skills);
-        Time.timeScale = 1;
     }
 
     private void HideSkills()
     {
-        foreach (SkillView skillView in _selectedSkills)
+        foreach (SkillView skillView in _skillViews)
         {
             skillView.Deselect();
             skillView.gameObject.SetActive(false);

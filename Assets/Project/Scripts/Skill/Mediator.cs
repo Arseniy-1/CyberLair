@@ -30,9 +30,10 @@ public class Mediator : MonoBehaviour
     {
         _skillSelector.SkillApplyed += OnSkillsApplied;
         _level.LevelRaised += HandleLevelUp;
-
+        
         _availableSkills.AddRange(_simpleSkills);
-
+        _simpleSkills = null;
+            
         _playerStats = _player.PlayerStats;
         _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats, _playerJumper));
         
@@ -41,6 +42,7 @@ public class Mediator : MonoBehaviour
 
     private void OnDisable()
     {
+        _skillSelector.SkillApplyed -= OnSkillsApplied;
         _level.LevelRaised -= HandleLevelUp;
     }
 

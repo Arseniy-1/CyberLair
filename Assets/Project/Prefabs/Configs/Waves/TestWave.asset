@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _enemiesWeights:
-  - _prefab: {fileID: 0}
+  - _prefab: {fileID: -4304947118811211038, guid: 6048dee4b8fa34db68c58b2ca18955a2, type: 3}
     _weight: 0.425
   _spawnClusterSize: {x: 2, y: 3}
   _waveDuration: 30

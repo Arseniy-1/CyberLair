@@ -15,7 +15,7 @@ namespace Project.Scripts.Servises
             DefaultScale = SelfTransform.localScale;
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
             CorrectFlip();
         }

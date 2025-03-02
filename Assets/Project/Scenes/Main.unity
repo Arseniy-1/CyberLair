@@ -35386,6 +35386,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4b28fee20e298b94683ca76b257b742c, type: 2}
   - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
   - {fileID: 11400000, guid: 3572f783faa47490a8595315be041fc9, type: 2}
+  - {fileID: 11400000, guid: 6d1f0578fffbf4c8da482e210616bc7a, type: 2}
+  - {fileID: 11400000, guid: 0e18fc28f448b422da981b19141748fa, type: 2}
+  - {fileID: 11400000, guid: 89f4f5a49f8f76d4f98d206f1ceb82ec, type: 2}
+  - {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
+  - {fileID: 11400000, guid: 1acf96a4457101644849f20040ba52bd, type: 2}
   _availableSkills: []
   _raisedSkills: []
   _player: {fileID: 514287532650993254}
@@ -35394,8 +35399,8 @@ MonoBehaviour:
   _playerWeaponHolder: {fileID: 1530372875744497257}
   _playerJumper: {fileID: 6971642770294263730}
   _skillSelector: {fileID: 1766018631}
-  _startInputSkillsCount: 4
-  _startOutputSkillsCount: 2
+  _startInputSkillsCount: 5
+  _startOutputSkillsCount: 3
 --- !u!4 &1913272216
 Transform:
   m_ObjectHideFlags: 0
@@ -35592,6 +35597,10 @@ PrefabInstance:
       propertyPath: _magnet
       value: 
       objectReference: {fileID: 928932857}
+    - target: {fileID: 1839153734533521245, guid: c618f355e3dd6584281e16cc93f60971, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2322837535290629352, guid: c618f355e3dd6584281e16cc93f60971, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -35630,6 +35639,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2322837535290629352, guid: c618f355e3dd6584281e16cc93f60971, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710954943248970764, guid: c618f355e3dd6584281e16cc93f60971, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316804313565143699, guid: c618f355e3dd6584281e16cc93f60971, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8318270843996436592, guid: c618f355e3dd6584281e16cc93f60971, type: 3}
