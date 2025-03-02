@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using Random = UnityEngine.Random;
+using UnityEngine.Serialization;
 
 public class Mediator : MonoBehaviour
 {
@@ -13,96 +12,70 @@ public class Mediator : MonoBehaviour
 
     [SerializeField] private List<Skill> _availableSkills;
     [SerializeField] private List<Skill> _raisedSkills;
-    [SerializeField] private List<SkillView> _skillViews;
 
     [SerializeField] private Player _player;
     [SerializeField] private Level _level;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
     [SerializeField] private Jumper _playerJumper;
+
+    [SerializeField] private SkillSelector _skillSelector;
+    [SerializeField] private int _startInputSkillsCount;
+    [SerializeField] private int _startOutputSkillsCount;
     
     private SkillHolder _playerSkillHolder;
-
-    private readonly int _skillsCount = 3;
-
     private PlayerStats _playerStats;
 
+    private void Start()
+    {
+        _skillSelector.ShowSkills(_availableSkills, _startInputSkillsCount, _startOutputSkillsCount);
+    }
+    
     private void OnEnable()
     {
+        _skillSelector.SkillApplyed += OnSkillsApplied;
+        _level.LevelRaised += HandleLevelUp;
+
         _availableSkills.AddRange(_simpleSkills);
 
         _playerStats = _player.PlayerStats;
         _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats, _playerJumper));
-
-        _level.LevelRaised += ShowSkills;
-
-        foreach (var skillView in _skillViews)
-        {
-            skillView.OnClicked += OnSkillApplied;
-        }
-
-        ShowSkills();
     }
 
     private void OnDisable()
     {
-        _level.LevelRaised -= ShowSkills;
-
-        foreach (var skillView in _skillViews)
-        {
-            skillView.OnClicked -= OnSkillApplied;
-        }
+        _level.LevelRaised -= HandleLevelUp;
+    }
+    
+    private void HandleLevelUp()
+    {
+        int inputSkillsCount = 3;
+        int outputSkillsCount = 1;
+        
+        _skillSelector.ShowSkills(_availableSkills, inputSkillsCount, outputSkillsCount);
     }
 
     [Button]
-    private void OnSkillApplied(Skill skill)
+    private void OnSkillsApplied(List<Skill> skills)
     {
-        _availableSkills.Remove(skill);
-        _raisedSkills.Add(skill);
-
-        foreach (HardSkill hardSkill in _hardSkills.Where(hardSkill => hardSkill.IsAvailable(_raisedSkills)))
+        foreach (var skill in skills)
         {
-            _availableSkills.Add(hardSkill);
-        }
-        
-        foreach (MutantSkill mutantSkill in _mutantSkills.Where(mutantSkill => mutantSkill.IsAvailable(_raisedSkills)))
-        {
-            _availableSkills.Add(mutantSkill);
-        }
+            _availableSkills.Remove(skill);
+            _raisedSkills.Add(skill);
 
-        _playerSkillHolder.CreateSkillHui(skill);
+            foreach (HardSkill hardSkill in _hardSkills.Where(hardSkill => hardSkill.IsAvailable(_raisedSkills)))
+            {
+                _availableSkills.Add(hardSkill);
+            }
 
-        HideSkills();
+            foreach (MutantSkill mutantSkill in _mutantSkills.Where(mutantSkill =>
+                         mutantSkill.IsAvailable(_raisedSkills)))
+            {
+                _availableSkills.Add(mutantSkill);
+            }
 
-        Time.timeScale = 1;
-    }
+            _playerSkillHolder.CreateSkillHui(skill);
 
-    [Button]
-    private void ShowSkills()
-    {
-        int skillsNeeded = _skillsCount;
-        
-        if(_availableSkills.Count < _skillsCount)
-            skillsNeeded = _availableSkills.Count;
-
-        if (skillsNeeded == 0)
-            return;
-        
-        for (int i = 0; i < _skillsCount; i++)
-        {
-            int randomIndex = Random.Range(0, _availableSkills.Count);
-            
-            _skillViews[i].gameObject.SetActive(true);
-            _skillViews[i].SetSkill(_availableSkills[randomIndex]);
-        }
-
-        Time.timeScale = 0;
-    }
-
-    private void HideSkills()
-    {
-        foreach (SkillView skillView in _skillViews)
-        {
-            skillView.gameObject.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 }

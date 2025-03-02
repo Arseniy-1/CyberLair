@@ -12,7 +12,9 @@ public class SkillView : MonoBehaviour
     
     private Skill _skill;
     
-    public event Action<Skill> OnClicked;
+    public Skill Skill => _skill;
+    
+    public event Action<SkillView> OnClicked;
 
     private void OnEnable()
     {
@@ -24,16 +26,26 @@ public class SkillView : MonoBehaviour
         _button.onClick.RemoveListener(HandleClick);
     }
     
-    private void HandleClick()
-    {
-        OnClicked?.Invoke(_skill);
-    }
-    
     public void SetSkill(Skill skill)
     {
         _skill = skill;
         _nameText.text = _skill.SkillInfo.SkillName;
         _descriptionText.text = _skill.SkillInfo.Description;
         _image.sprite = _skill.SkillInfo.Icon;
+    }
+
+    public void Select()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Deselect()
+    {
+        gameObject.SetActive(true);
+    }
+    
+    private void HandleClick()
+    {
+        OnClicked?.Invoke(this);
     }
 }
