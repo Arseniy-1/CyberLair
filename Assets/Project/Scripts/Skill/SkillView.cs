@@ -36,12 +36,12 @@ public class SkillView : MonoBehaviour
 
     public void Select()
     {
-        gameObject.SetActive(false);
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0.2f);
     }
 
     public void Deselect()
     {
-        gameObject.SetActive(true);
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 1);
     }
     
     private void HandleClick()

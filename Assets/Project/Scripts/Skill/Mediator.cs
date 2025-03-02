@@ -14,6 +14,7 @@ public class Mediator : MonoBehaviour
     [SerializeField] private List<Skill> _raisedSkills;
 
     [SerializeField] private Player _player;
+    [SerializeField] private GameObject _gameUI;
     [SerializeField] private Level _level;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
     [SerializeField] private Jumper _playerJumper;
@@ -25,11 +26,6 @@ public class Mediator : MonoBehaviour
     private SkillHolder _playerSkillHolder;
     private PlayerStats _playerStats;
 
-    private void Start()
-    {
-        _skillSelector.ShowSkills(_availableSkills, _startInputSkillsCount, _startOutputSkillsCount);
-    }
-    
     private void OnEnable()
     {
         _skillSelector.SkillApplyed += OnSkillsApplied;
@@ -39,19 +35,28 @@ public class Mediator : MonoBehaviour
 
         _playerStats = _player.PlayerStats;
         _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats, _playerJumper));
+        
+        ShowSkills(_availableSkills, _startInputSkillsCount, _startOutputSkillsCount);
     }
 
     private void OnDisable()
     {
         _level.LevelRaised -= HandleLevelUp;
     }
+
+    private void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
+    {
+        Time.timeScale = 0;
+        _gameUI.gameObject.SetActive(false);
+        _skillSelector.ShowSkills(skills, inputSkillsCount, outputSkillsCount);
+    }
     
     private void HandleLevelUp()
     {
         int inputSkillsCount = 3;
         int outputSkillsCount = 1;
-        
-        _skillSelector.ShowSkills(_availableSkills, inputSkillsCount, outputSkillsCount);
+
+        ShowSkills(_availableSkills, inputSkillsCount, outputSkillsCount);
     }
 
     [Button]
@@ -74,8 +79,9 @@ public class Mediator : MonoBehaviour
             }
 
             _playerSkillHolder.CreateSkillHui(skill);
-
-            Time.timeScale = 1;
         }
+        
+        Time.timeScale = 1;
+        _gameUI.gameObject.SetActive(true);
     }
 }
