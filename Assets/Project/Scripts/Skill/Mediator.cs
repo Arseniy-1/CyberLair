@@ -80,7 +80,7 @@ public class Mediator : MonoBehaviour
                 _availableSkills.Add(mutantSkill);
             }
 
-            _playerSkillHolder.CreateSkillHui(skill);
+            _playerSkillHolder.CreateSkill(skill);
         }
         
         Time.timeScale = 1;

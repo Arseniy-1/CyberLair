@@ -32,7 +32,7 @@ public class SkillHolder
         _skillData = skillData;
     }
 
-    public void CreateSkillHui(Skill skill)
+    public void CreateSkill(Skill skill)
     {
         switch (skill)
         {

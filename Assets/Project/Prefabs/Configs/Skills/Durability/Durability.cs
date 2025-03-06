@@ -14,10 +14,10 @@ namespace Project.Prefabs.Configs.Skills.Durability
             _healthModifier = skill.HealthModifier.Copy();
             _regenerateModifier = skill.RegenerationModifier.Copy();
             
-            _data.PlayerStats.Health.AddModifier(skill.HealthModifier.Copy());
-            _data.PlayerStats.HealthRegenerateAmount.AddModifier(skill.RegenerationModifier.Copy());
+            _data.PlayerStats.Health.AddModifier(_healthModifier);
+            _data.PlayerStats.HealthRegenerateAmount.AddModifier(_regenerateModifier);
         }
-
+    
         public void Disable()
         {
             _data.PlayerStats.Health.RemoveModifier(_healthModifier);
