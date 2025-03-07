@@ -111,51 +111,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &474391713368416704
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8833126005563002850}
-  - component: {fileID: 8422871491206318851}
-  m_Layer: 9
-  m_Name: Health
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8833126005563002850
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474391713368416704}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3564388593015311227}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8422871491206318851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474391713368416704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9a8f642c1a841e4d90c7e87a3597fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <BaseValue>k__BackingField: 0
 --- !u!1 &577191666399518174
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,26 +683,59 @@ MonoBehaviour:
   _weaponHolder: {fileID: 3610522453060248735}
   _playerInputController: {fileID: 5945253301860135379}
   _rigidbody2D: {fileID: 6501623627911074627}
-  _health: {fileID: 8422871491206318851}
   _experienceStorage: {fileID: 4387813712044711947}
   _jumper: {fileID: 5181282685344146756}
   _targetScanner: {fileID: 4452062042968775251}
   _destroyer: {fileID: 1672635397201743999}
   _magnet: {fileID: 0}
+  _healthRegenerator: {fileID: 0}
+  _shieldRegenerator: {fileID: 0}
   <PlayerStats>k__BackingField:
-    <Health>k__BackingField: {fileID: 8422871491206318851}
-    <Speed>k__BackingField: {fileID: 0}
-    <JumpDistance>k__BackingField: {fileID: 0}
-    <JumpTime>k__BackingField: {fileID: 0}
-    <JumpReloadTime>k__BackingField: {fileID: 0}
-    <WeaponSpread>k__BackingField: {fileID: 0}
-    <WeaponDamage>k__BackingField: {fileID: 0}
-    <BulletPerShootCount>k__BackingField: {fileID: 0}
-    <WeaponBulletReloadTime>k__BackingField: {fileID: 0}
-    <WeaponRechargingTime>k__BackingField: {fileID: 0}
-    <WeaponMagazineSize>k__BackingField: {fileID: 0}
-    <MagnetRange>k__BackingField: {fileID: 0}
-    <MagnetForce>k__BackingField: {fileID: 0}
+    <Health>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <HealthRegenerateAmount>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <ShieldAmount>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <Speed>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <JumpDistance>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <JumpTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <JumpReloadTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <WeaponSpread>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <WeaponDamage>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <BulletPerShootCount>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <WeaponBulletReloadTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <WeaponRechargingTime>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <WeaponMagazineSize>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <MagnetRange>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
+    <MagnetForce>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
 --- !u!114 &759872763843480161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,7 +1665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0758ddf51679f974083db911b3492fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 0}
   StatsBarView: {fileID: 1784829041958984027}
 --- !u!1 &4152770025089855069
 GameObject:
@@ -3799,7 +3786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0758ddf51679f974083db911b3492fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 4387813712044711947}
   StatsBarView: {fileID: 1273571318590014670}
 --- !u!1 &8548396729185787448
 GameObject:
@@ -4016,7 +4002,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8833126005563002850}
   - {fileID: 2681664527010328091}
   m_Father: {fileID: 4579364475423813543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4729,7 +4714,7 @@ PrefabInstance:
     - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: _bulletEffectors.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 4b28fee20e298b94683ca76b257b742c, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: _bulletEffectors.Array.data[1]
       value: 
@@ -4737,7 +4722,7 @@ PrefabInstance:
     - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: _bulletEffectors.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 0e64c929d606a914493e8c4ef0b4d8c1, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8523679823643724054, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: m_Layer
       value: 9

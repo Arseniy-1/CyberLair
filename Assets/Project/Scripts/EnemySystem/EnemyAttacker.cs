@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Project.Scripts.EnemySystem.AttackTypes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem
@@ -18,7 +19,7 @@ namespace Project.Scripts.EnemySystem
 
         public void PerformAttack()
         {
-            StartCoroutine(Performing());
+           StartCoroutine(Performing());
         }
         
         public virtual void Initialize(EnemyTargetProvider enemyTargetProvider)

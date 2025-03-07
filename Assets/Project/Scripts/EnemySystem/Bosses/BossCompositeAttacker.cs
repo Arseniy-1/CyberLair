@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -23,7 +21,7 @@ namespace Project.Scripts.EnemySystem.Bosses
             if (_performingOnceAttacks != null)
                 StopCoroutine(_performingOnceAttacks);
             
-            if (_timePerformingAttacks != null)
+            if (_performingTimeAttacks != null)
                 StopCoroutine(_performingTimeAttacks);
         }
 
@@ -34,19 +32,21 @@ namespace Project.Scripts.EnemySystem.Bosses
             
             if(_timePerformingAttacks.IsNullOrEmpty() == false)
                 _performingTimeAttacks = StartCoroutine(PerformingTimeAttacks());
+
+            _currentAttack = _oncePerformingAttacks[Random.Range(0, _oncePerformingAttacks.Count)];
+            
+            base.Initialize(enemyTargetProvider);
         }
         
         protected override IEnumerator Attack()
         {
-            _currentAttack.AttackPerformed += HandleAttackPerformed;
-            yield return _currentAttack.Attack();
+            yield return _currentAttack.Performing();
+            
+            ApplyAttack();
         }
 
-        private void HandleAttackPerformed()
+        private void ApplyAttack()
         {
-            _currentAttack.AttackPerformed -= HandleAttackPerformed;
-            _currentAttack.Disable();
-            
             _currentAttack = _attacksOrder.Dequeue();
             EnemyTargetProvider.Initialize(EnemyTargetProvider.Player, _currentAttack.Range);
         }
@@ -57,9 +57,10 @@ namespace Project.Scripts.EnemySystem.Bosses
             {
                 foreach (BossAttack attack in _oncePerformingAttacks)
                 {
+                    var waitUntil = new WaitUntil(() => _attacksOrder.Contains(attack) == false);
+                    yield return waitUntil;
+                    
                     _attacksOrder.Enqueue(attack);
-
-                    yield return WaitForEvent(attack);
                 }
             }
         }
@@ -70,28 +71,14 @@ namespace Project.Scripts.EnemySystem.Bosses
             {
                 foreach (BossTimedAttack attack in _timePerformingAttacks)
                 {
-                    yield return new WaitForSeconds(attack.Time);
+                    var waitUntil = new WaitUntil(() => _attacksOrder.Contains(attack) == false);
+                    yield return waitUntil;
+                    
+                    var waitAttackTime = new WaitForSeconds(attack.Time);
+                    yield return waitAttackTime;
                     
                     _attacksOrder.Enqueue(attack);
-
-                    yield return WaitForEvent(attack);
                 }
-            }
-        }
-        
-        private async UniTaskVoid WaitForEvent(BossAttack attack)
-        {
-            var tcs = new TaskCompletionSource<bool>();
-
-            attack.AttackPerformed += OnAttack;
-
-            await tcs.Task;
-            return;
-
-            void OnAttack()
-            {
-                attack.AttackPerformed -= OnAttack;
-                tcs.SetResult(true);
             }
         }
     }
