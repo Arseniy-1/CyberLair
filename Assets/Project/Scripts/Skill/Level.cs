@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] private ExperienceStorage _experienceStorage;
     [SerializeField] private LevelConfig _levelConfig;
-    
+
+    private ExperienceStorage _experienceStorage;
     private int _currentLevel = 0;
 
     public event Action LevelRaised;
 
-    private void OnEnable()
+    public void Initialize(ExperienceStorage experienceStorage)
     {
+        _experienceStorage = experienceStorage;
         _experienceStorage.LevelRaised += UpgradeLevel;
         _experienceStorage.ResetExperience(_levelConfig.ExperienceValues[_currentLevel]);
     }
-    
+
+    private void OnDisable()
+    {
+        _experienceStorage.LevelRaised -= UpgradeLevel;
+    }
+
     [Button]
     private void UpgradeLevel()
     {
         _currentLevel++;
         LevelRaised?.Invoke();
-        
+
         _experienceStorage.ResetExperience(_levelConfig.ExperienceValues[_currentLevel]);
     }
 }

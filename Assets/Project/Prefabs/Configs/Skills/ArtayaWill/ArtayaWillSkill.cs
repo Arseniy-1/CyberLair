@@ -3,6 +3,7 @@
 [CreateAssetMenu(fileName = "ArtayaWillSkill", menuName = "Skill/Hard/ArtayaWill", order = 51)]
 public class ArtayaWillSkill : Skill
 {
-    [field: SerializeField] public float MaxHealth { get; private set; } = 1;
-    [field: SerializeField] public float ShieldMultiplier { get; private set; } = 3;
+    [field: SerializeField] public StatModifier ZeroModifier { get; private set; }
+    [field: SerializeField] public StatModifier HeatlhModifier { get; private set; }
+    [field: SerializeField] public StatModifier ShieldModifier { get; private set; }
 }

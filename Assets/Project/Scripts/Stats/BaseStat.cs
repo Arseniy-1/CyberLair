@@ -16,7 +16,6 @@ public abstract class BaseStat
     public void CalculateCurrentValue()
     {
         CurrentValue = CalculateValue();
-        OnAmountChanged();
     }
 
     public virtual void Update()
@@ -41,9 +40,9 @@ public abstract class BaseStat
         return finalValue;
     }
 
-    protected void OnAmountChanged()
+    protected void OnAmountChanged(float currentValue, float baseValue)
     {
-        AmountChanged?.Invoke(CurrentValue, BaseValue);
+        AmountChanged?.Invoke(currentValue, baseValue);
     }
     
     public void AddModifier(StatModifier modifier)

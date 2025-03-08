@@ -26,8 +26,8 @@ public class Health : BaseStat
         if (amount < 0)
             throw new ArgumentOutOfRangeException(nameof(amount));
 
-        OnAmountChanged();
         CurrentValue = Mathf.Clamp(CurrentValue + amount, 0f, MaxHealth);
+        OnAmountChanged(CurrentValue, MaxHealth);
     }
 
     [Button]
@@ -46,6 +46,7 @@ public class Health : BaseStat
         if (amount > 0)
             CurrentValue -= amount;
 
+        OnAmountChanged(CurrentValue, MaxHealth);
         DamageTaken?.Invoke(amount);
 
         if (CurrentValue <= 0)
@@ -55,10 +56,10 @@ public class Health : BaseStat
     [Button]
     public void SetMaxHealth(float amount)
     {
-        if(amount <= 0)
+        if (amount <= 0)
             return;
-     
-        BaseValue = amount;
+
+        OnAmountChanged(CurrentValue, MaxHealth);
     }
 
     private void HandleDeath()

@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class StatsBar : StatsView
 {
-    [SerializeField] protected Slider StatsBarView;
+    [SerializeField] protected Image StatsBarView;
 
     protected override void ShowStats(float currentValue, float maxValue)
     {
-        StatsBarView.value = currentValue / maxValue;
+        StatsBarView.fillAmount = currentValue / maxValue;
     }
 }

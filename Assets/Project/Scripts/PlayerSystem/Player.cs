@@ -15,20 +15,21 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private WeaponHolder _weaponHolder;
     [SerializeField] private PlayerInputController _playerInputController;
     [SerializeField] private Rigidbody2D _rigidbody2D;
-    [SerializeField] private ExperienceStorage _experienceStorage;
     [SerializeField] private Jumper _jumper;
     [SerializeField] private TargetScanner _targetScanner;
     [SerializeField] private Destroyer _destroyer;
     [SerializeField] private Magnet _magnet;
-    
+
     [SerializeField] private HealthRegenerator _healthRegenerator;
     [SerializeField] private ShieldRegenerator _shieldRegenerator;
-    
+
     private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
+    private ExperienceStorage _experienceStorage = new ExperienceStorage();
 
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
+    public ExperienceStorage ExperienceStorage => _experienceStorage;
 
     public bool IsStunned { get; private set; } = false;
 
@@ -79,10 +80,10 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _playerCollisionHandler.Initialize(PlayerStats.Health, _experienceStorage);
         _jumper.Initialize(PlayerStats);
         _magnet.Initialize(PlayerStats, transform);
-        
+
         _healthRegenerator.Initialize(PlayerStats.Health, PlayerStats.HealthRegenerateAmount);
         _shieldRegenerator.Initialize(PlayerStats.ShieldAmount, PlayerStats.Health);
-        
+
         _weaponHolder.Weapon.Initialize(PlayerStats);
     }
 
