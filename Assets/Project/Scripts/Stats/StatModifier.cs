@@ -5,6 +5,13 @@ using UnityEngine;
 [Serializable]
 public class StatModifier
 {
+    public StatModifier(float value, ModifierType type, float duration)
+    {
+        Value = value;
+        Type = type;
+        Duration = duration;
+    }
+
     [field: SerializeField] public float Value { get; private set; }
     [field: SerializeField] public ModifierType Type { get; private set; }
     [field: SerializeField, MinValue(0)] public float Duration { get; private set; }
@@ -12,7 +19,7 @@ public class StatModifier
     private float _elapsedTime = 0;
 
     public event Action<StatModifier> ValueExpired;
-
+    
     public void Update()
     {
         if (Duration > 0f)
@@ -33,13 +40,7 @@ public class StatModifier
 
     public StatModifier Copy()
     {
-        var copy = new StatModifier
-        {
-            Value = Value,
-            Type = Type,
-            Duration = Duration,
-            _elapsedTime = 0
-        };
+        var copy = new StatModifier(Value, Type, Duration);
 
         return copy;
     }
