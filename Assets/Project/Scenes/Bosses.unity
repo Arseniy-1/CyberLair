@@ -35671,6 +35671,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5861942942893735959, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6413698433737955829, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: _bulletEffectors.Array.size
       value: 0
