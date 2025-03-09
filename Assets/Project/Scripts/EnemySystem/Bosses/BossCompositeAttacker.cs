@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -35,7 +36,8 @@ namespace Project.Scripts.EnemySystem.Bosses
             
             base.Initialize(enemyTargetProvider);
             
-            ApplyAttack(_oncePerformingAttacks[Random.Range(0, _oncePerformingAttacks.Count)]);
+            List<BossAttack> allAttacks = _oncePerformingAttacks.Concat(_timePerformingAttacks).ToList();
+            ApplyAttack(allAttacks[Random.Range(0, allAttacks.Count)]);
         }
         
         protected override IEnumerator Attack()
