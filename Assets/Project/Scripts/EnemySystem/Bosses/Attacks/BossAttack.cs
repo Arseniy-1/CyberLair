@@ -11,13 +11,15 @@ namespace Project.Scripts.EnemySystem.Bosses
         [SerializeField] protected Animator Animator;
         [SerializeField] protected SpriteRenderer View;
         
+        protected readonly int AttackTrigger = Animator.StringToHash("Attack");
+        
         [field: SerializeField] public float Range { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
         [field: SerializeField] public BaseEnemyAttackStats AttackStats { get; private set; }
         
         protected abstract void Disable();
         
-        public IEnumerator Performing()
+        public virtual IEnumerator Performing()
         {
             var waitDelay = new WaitForSeconds(AttackStats.AttackDelay);
             var waitRecovery = new WaitForSeconds(AttackStats.AttackRecovery);
@@ -29,8 +31,6 @@ namespace Project.Scripts.EnemySystem.Bosses
             }
 
             yield return waitRecovery;
-            
-            Disable();
         }
         
         protected abstract IEnumerator Attack();

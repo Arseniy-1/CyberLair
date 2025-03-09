@@ -8,7 +8,6 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         [SerializeField] private EnemyCollisionHandler _laser;
         [SerializeField] private Collider2D _collider;
         
-        private readonly int _attackTrigger = Animator.StringToHash("Attack");
         private bool _isAttacking;
 
         public void OnEnable()
@@ -16,6 +15,13 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             Disable();
             
             _laser.Initialize(Damage);
+        }
+
+        public override IEnumerator Performing()
+        {
+            yield return base.Performing();
+            
+            Disable();
         }
 
         protected override IEnumerator Attack()
@@ -26,7 +32,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             AnimatorEvents.Attacking += HandleAttacking;
             _isAttacking = true;
             
-            Animator.SetTrigger(_attackTrigger);
+            Animator.SetTrigger(AttackTrigger);
 
             while (_isAttacking)
             {

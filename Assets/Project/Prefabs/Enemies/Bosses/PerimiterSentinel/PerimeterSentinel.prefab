@@ -9,6 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3669197235116758457}
+  - component: {fileID: 6223178253571820545}
+  - component: {fileID: 3588086428202692097}
+  - component: {fileID: 1500366225651058416}
+  - component: {fileID: 2472160287796770807}
+  - component: {fileID: 2810388828033610586}
+  - component: {fileID: 1302679334391996479}
   m_Layer: 3
   m_Name: Shield
   m_TagString: Untagged
@@ -32,6 +38,130 @@ Transform:
   - {fileID: 3329857691008325673}
   m_Father: {fileID: 8293496826232878509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6223178253571820545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129077656236785991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fded98c15bf4314abde8539394e58d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorEvents: {fileID: 2810388828033610586}
+  Animator: {fileID: 2472160287796770807}
+  View: {fileID: 1139067928334522275}
+  <Range>k__BackingField: 15
+  <Damage>k__BackingField: 0
+  <AttackStats>k__BackingField:
+    <AttackDelay>k__BackingField: 0.3
+    <AttackRecovery>k__BackingField: 0
+    <AttackCount>k__BackingField: 1
+  <Time>k__BackingField: 1
+  _skillCollisionHandler: {fileID: 3588086428202692097}
+  _invincibilityCollisionHandler: {fileID: 1500366225651058416}
+  _shieldCollider: {fileID: 1302679334391996479}
+  _boss: {fileID: 1787623519210625677}
+  _bossStunTime: 3
+--- !u!114 &3588086428202692097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129077656236785991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e404160b702429397a8cacf68ab3629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionDamage: 0
+  _contactLimit: 1
+--- !u!114 &1500366225651058416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129077656236785991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbc146e1e5144b5adc51285ff0a31ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!95 &2472160287796770807
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129077656236785991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b4246e61b4234731b2cf214e8ec64a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2810388828033610586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129077656236785991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea599b240de84b0280e248f39f69c6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1302679334391996479
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129077656236785991}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4.16
 --- !u!1 &546046825978959032
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,15 +469,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3329857691008325673}
   - component: {fileID: 1139067928334522275}
-  - component: {fileID: 8286447288827924120}
-  - component: {fileID: 7881070653127105763}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3329857691008325673
 Transform:
   m_ObjectHideFlags: 0
@@ -403,7 +531,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.495283, g: 0.9888578, b: 1, a: 0.15686275}
   m_FlipX: 0
@@ -415,35 +543,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8286447288827924120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799577278201730859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pushForce: 400
-  _stunTime: 1
---- !u!114 &7881070653127105763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799577278201730859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbc146e1e5144b5adc51285ff0a31ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!1 &5238833727110669655
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +631,8 @@ MonoBehaviour:
     <AttackCount>k__BackingField: 1
   _oncePerformingAttacks:
   - {fileID: 7486585226317169851}
-  _timePerformingAttacks: []
+  _timePerformingAttacks:
+  - {fileID: 6223178253571820545}
 --- !u!50 &7275485897962648385
 Rigidbody2D:
   serializedVersion: 4
