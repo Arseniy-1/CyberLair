@@ -32,22 +32,22 @@ namespace Project.Scripts.EnemySystem.Bosses
             
             if(_timePerformingAttacks.IsNullOrEmpty() == false)
                 _performingTimeAttacks = StartCoroutine(PerformingTimeAttacks());
-
-            _currentAttack = _oncePerformingAttacks[Random.Range(0, _oncePerformingAttacks.Count)];
             
             base.Initialize(enemyTargetProvider);
+            
+            ApplyAttack(_oncePerformingAttacks[Random.Range(0, _oncePerformingAttacks.Count)]);
         }
         
         protected override IEnumerator Attack()
         {
             yield return _currentAttack.Performing();
             
-            ApplyAttack();
+            ApplyAttack(_attacksOrder.Dequeue());
         }
 
-        private void ApplyAttack()
+        private void ApplyAttack(BossAttack attack)
         {
-            _currentAttack = _attacksOrder.Dequeue();
+            _currentAttack = attack;
             EnemyTargetProvider.Initialize(EnemyTargetProvider.Player, _currentAttack.Range);
         }
 

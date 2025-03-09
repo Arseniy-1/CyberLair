@@ -20,8 +20,6 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 
         protected override IEnumerator Attack()
         {
-            Debug.Log("Laser Attacks");
-            
             _collider.enabled = true;
             View.enabled = true;
             
