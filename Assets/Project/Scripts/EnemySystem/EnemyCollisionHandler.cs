@@ -17,8 +17,6 @@ public class EnemyCollisionHandler : CollisionHandler
         if (collider.TryGetComponent(out Player player) == false)
             return;
         
-        Debug.Log("Player collided");
-        
         if (player is IStunable stunable)
         {
             stunable.TakeStun(_stunTime);

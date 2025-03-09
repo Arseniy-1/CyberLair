@@ -7,8 +7,9 @@ namespace Project.Scripts.EnemySystem.Bosses
 {
     public abstract class BossAttack : MonoBehaviour
     {
-        [SerializeField] protected AttackAnimationEvents View;
+        [SerializeField] protected AttackAnimationEvents AnimatorEvents;
         [SerializeField] protected Animator Animator;
+        [SerializeField] protected SpriteRenderer View;
         
         [field: SerializeField] public float Range { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
