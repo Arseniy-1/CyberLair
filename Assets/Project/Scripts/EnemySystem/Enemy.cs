@@ -19,6 +19,7 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private float _attackDistance;
 
         private EntityStateMachine _stateMachine;
+        private EnemyAttackCooldown _cooldown;
         
         public event Action<Enemy> OnDestroyed;
 
@@ -41,10 +42,12 @@ namespace Project.Scripts.EnemySystem
             var states = new List<IState>
             {
                 new EnemyIdleState(this, _rigidbody, _enemyTargetProvider),
-                new EnemyMoveState(this, _mover, _enemyTargetProvider),
+                new EnemyMoveState(this, _mover, _enemyTargetProvider, _cooldown),
                 new EnemyAttackState(this, _mover, _attacker),
                 new EnemyStunnedState(this, _mover)
             };
+
+            _cooldown = new EnemyAttackCooldown();
             
             EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);

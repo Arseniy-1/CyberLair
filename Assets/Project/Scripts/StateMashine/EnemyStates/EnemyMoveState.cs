@@ -8,12 +8,14 @@ namespace StateMashineSytem.EnemyStates
         private readonly EnemyMover _mover;
         private readonly Enemy _enemy;
         private readonly EnemyTargetProvider _enemyTargetProvider;
+        private readonly EnemyAttackCooldown _cooldown;
 
-        public EnemyMoveState(Enemy enemy, EnemyMover mover, EnemyTargetProvider enemyTargetProvider)
+        public EnemyMoveState(Enemy enemy, EnemyMover mover, EnemyTargetProvider enemyTargetProvider, EnemyAttackCooldown cooldown)
         {
             _enemy = enemy;
             _mover = mover;
             _enemyTargetProvider = enemyTargetProvider;
+            _cooldown = cooldown;
         }
         
         public void Enter()
@@ -29,7 +31,7 @@ namespace StateMashineSytem.EnemyStates
             if(_enemyTargetProvider.HasPlayer == false)
                 _stateSwitcher.SwitchState<EnemyIdleState>();
             
-            if(_enemyTargetProvider.IsPlayerInRange)
+            if(_enemyTargetProvider.IsPlayerInRange && _cooldown.IsOnCooldown == false)
                 _stateSwitcher.SwitchState<EnemyAttackState>();
         }
 
