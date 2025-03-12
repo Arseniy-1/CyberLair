@@ -17,8 +17,10 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         
         private Coroutine _timerCoroutine;
 
-        private void OnEnable()
+        public override void Initialize()
         {
+            BossAttackAnimationTrigger = Animator.StringToHash("ShieldTimedAttack");
+            
             Disable();
         }
 
@@ -43,7 +45,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             AnimatorEvents.Attacking += Activate;
             
             View.gameObject.SetActive(true);
-            Animator.SetTrigger(AttackTrigger);
+            AttackAnimator.SetTrigger(AttackTrigger);
 
             yield return null;
         }

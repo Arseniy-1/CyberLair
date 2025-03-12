@@ -8,7 +8,7 @@ namespace Project.Scripts.EnemySystem.Bosses
     public abstract class BossAttack : MonoBehaviour
     {
         [SerializeField] protected AttackAnimationEvents AnimatorEvents;
-        [SerializeField] protected Animator Animator;
+        [SerializeField] protected Animator AttackAnimator;
         [SerializeField] protected SpriteRenderer View;
         
         protected readonly int AttackTrigger = Animator.StringToHash("Attack");
@@ -16,17 +16,18 @@ namespace Project.Scripts.EnemySystem.Bosses
         [field: SerializeField] public float Range { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
         [field: SerializeField] public BaseEnemyAttackStats AttackStats { get; private set; }
+        public int BossAttackAnimationTrigger { get; protected set; }
+
+        public abstract void Initialize();
         
         protected abstract void Disable();
         
         public virtual IEnumerator Performing()
         {
-            var waitDelay = new WaitForSeconds(AttackStats.AttackDelay);
             var waitRecovery = new WaitForSeconds(AttackStats.AttackRecovery);
             
             for (int i = 0; i < AttackStats.AttackCount; i++)
             {
-                yield return waitDelay;
                 yield return Attack();
             }
 

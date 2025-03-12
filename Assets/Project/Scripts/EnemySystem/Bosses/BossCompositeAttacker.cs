@@ -8,11 +8,14 @@ namespace Project.Scripts.EnemySystem.Bosses
 {
     public class BossCompositeAttacker : EnemyAttacker
     {
+        [SerializeField] private Animator _bossAnimator;
+        [SerializeField] private AttackAnimationEvents _bossAnimationEvents;
         [SerializeField] private List<BossAttack> _oncePerformingAttacks;
         [SerializeField] private List<BossTimedAttack> _timePerformingAttacks;
 
         private readonly Queue<BossAttack> _attacksOrder = new();
         private BossAttack _currentAttack;
+        private bool _isAttacking;
         
         private Coroutine _performingOnceAttacks;
         private Coroutine _performingTimeAttacks;
@@ -28,6 +31,13 @@ namespace Project.Scripts.EnemySystem.Bosses
 
         public override void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
+            List<BossAttack> allAttacks = _oncePerformingAttacks.Concat(_timePerformingAttacks).ToList();
+
+            foreach (BossAttack bossAttack in allAttacks)
+            {
+                bossAttack.Initialize();
+            }
+            
             if(_oncePerformingAttacks.IsNullOrEmpty() == false)
                 _performingOnceAttacks = StartCoroutine(PerformingOnceAttacks());
             
@@ -36,12 +46,18 @@ namespace Project.Scripts.EnemySystem.Bosses
             
             base.Initialize(enemyTargetProvider);
             
-            List<BossAttack> allAttacks = _oncePerformingAttacks.Concat(_timePerformingAttacks).ToList();
             ApplyAttack(allAttacks[Random.Range(0, allAttacks.Count)]);
         }
         
         protected override IEnumerator Attack()
         {
+            yield return new WaitForSeconds(_currentAttack.AttackStats.AttackDelay);
+            
+            _bossAnimator.SetTrigger(_currentAttack.BossAttackAnimationTrigger);
+            _bossAnimationEvents.Attacking += HandleBossAttackEvent;
+            
+            yield return new WaitUntil(() => _isAttacking);
+            
             yield return _currentAttack.Performing();
             
             ApplyAttack(_attacksOrder.Dequeue());
@@ -49,6 +65,7 @@ namespace Project.Scripts.EnemySystem.Bosses
 
         private void ApplyAttack(BossAttack attack)
         {
+            _isAttacking = false;
             _currentAttack = attack;
             EnemyTargetProvider.Initialize(EnemyTargetProvider.Player, _currentAttack.Range);
         }
@@ -82,6 +99,12 @@ namespace Project.Scripts.EnemySystem.Bosses
                     _attacksOrder.Enqueue(attack);
                 }
             }
+        }
+
+        private void HandleBossAttackEvent()
+        {
+            _bossAnimationEvents.Attacking -= HandleBossAttackEvent;
+            _isAttacking = true;
         }
     }
 }

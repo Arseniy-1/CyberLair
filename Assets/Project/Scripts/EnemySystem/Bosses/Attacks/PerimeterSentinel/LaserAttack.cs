@@ -10,8 +10,10 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         
         private bool _isAttacking;
 
-        public void OnEnable()
+        public override void Initialize()
         {
+            BossAttackAnimationTrigger = Animator.StringToHash("LaserAttack");
+            
             Disable();
             
             _laser.Initialize(Damage);
@@ -25,19 +27,19 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         }
 
         protected override IEnumerator Attack()
-        {
+        {   
+            
+            yield return new WaitUntil(() => _isAttacking);
+            
             _collider.enabled = true;
             View.enabled = true;
             
             AnimatorEvents.Attacking += HandleAttacking;
             _isAttacking = true;
             
-            Animator.SetTrigger(AttackTrigger);
-
-            while (_isAttacking)
-            {
-                yield return null;
-            }
+            AttackAnimator.SetTrigger(AttackTrigger);
+            
+            yield return new WaitUntil(() => _isAttacking == false);
         }
 
         protected override void Disable()
@@ -52,6 +54,11 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             Disable();
             
             _isAttacking = false;
+        }
+
+        private void BossStartAttack()
+        {
+            _isAttacking = true;
         }
     }
 }
