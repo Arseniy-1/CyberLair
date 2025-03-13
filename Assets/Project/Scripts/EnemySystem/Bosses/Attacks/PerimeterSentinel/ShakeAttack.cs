@@ -40,8 +40,6 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             int shakeCount = Random.Range(_spawnLimits.x, _spawnLimits.y);
             View.gameObject.SetActive(true);
             AttackAnimator.SetTrigger(AttackTrigger);
-            
-            Debug.Log("ShakeAttack is on");
 
             for (int i = 0; i < shakeCount; i++)
             {
