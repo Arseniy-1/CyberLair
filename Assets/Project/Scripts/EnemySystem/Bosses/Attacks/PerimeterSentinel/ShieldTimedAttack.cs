@@ -6,7 +6,6 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 {
     public class ShieldTimedAttack : BossTimedAttack
     {
-        [SerializeField] private Shield shield;
         [SerializeField] private SkillCollisionHandler _skillCollisionHandler;
         [SerializeField] private InvincibilityCollisionHandler _invincibilityCollisionHandler;
         [SerializeField] private Collider2D _shieldCollider;

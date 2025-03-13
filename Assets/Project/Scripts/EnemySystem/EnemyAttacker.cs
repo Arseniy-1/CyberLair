@@ -15,7 +15,7 @@ namespace Project.Scripts.EnemySystem
         
         public event Action AttackPerformed;
         
-        public BaseEnemyAttackStats Stats => _stats;
+        public virtual BaseEnemyAttackStats Stats => _stats;
         protected Vector2 Position => _transform.position;
 
         public void PerformAttack()

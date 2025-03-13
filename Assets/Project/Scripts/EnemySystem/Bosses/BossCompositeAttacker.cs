@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.EnemySystem.AttackTypes;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ namespace Project.Scripts.EnemySystem.Bosses
         
         private Coroutine _performingOnceAttacks;
         private Coroutine _performingTimeAttacks;
+        
+        public override BaseEnemyAttackStats Stats => _currentAttack.AttackStats;
 
         private void OnDisable()
         {

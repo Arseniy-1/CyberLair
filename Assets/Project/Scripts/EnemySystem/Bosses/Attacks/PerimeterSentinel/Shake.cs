@@ -30,6 +30,8 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         
         public void Initialize(int damage)
         {
+            _collides = new List<IDamageable>();
+            
             _damage = damage;
 
             _animationEvents.Attacking += DealDamage;
