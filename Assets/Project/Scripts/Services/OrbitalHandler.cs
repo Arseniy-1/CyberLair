@@ -7,14 +7,17 @@ namespace Project.Scripts.Servises
     public class OrbitalHandler
     {
         private readonly List<Orbital> _orbitals = new();
-        
-        public IReadOnlyList<Orbital> Orbitals => _orbitals;
 
         public void AddOrbital(Orbital orbital, Transform holder)
         {
             _orbitals.Add(orbital);
 
             DistributeEqually(holder);
+        }
+
+        public void Clear()
+        {
+            _orbitals.Clear();
         }
         
         private void DistributeEqually(Transform holder)

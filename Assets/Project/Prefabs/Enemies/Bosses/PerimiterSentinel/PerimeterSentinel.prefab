@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimatorEvents: {fileID: 2810388828033610586}
-  AttackAnimator: {fileID: 0}
+  AttackAnimator: {fileID: 2472160287796770807}
   View: {fileID: 1139067928334522275}
   <Range>k__BackingField: 15
   <Damage>k__BackingField: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimatorEvents: {fileID: 7554087603330885626}
-  AttackAnimator: {fileID: 0}
+  AttackAnimator: {fileID: 6184328590744599166}
   View: {fileID: 1242530447979048067}
   <Range>k__BackingField: 15
   <Damage>k__BackingField: 0
@@ -709,9 +709,9 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 5
-  _shakePrefab: {fileID: 557765036821876407, guid: 8197224359ad24401b5478c79f0390e1, type: 3}
-  _spawnLimits: {x: 10, y: 18}
-  _spawnPeriodLimits: {x: 0.20521145, y: 0.33716443}
+  Prefab: {fileID: 557765036821876407, guid: 8197224359ad24401b5478c79f0390e1, type: 3}
+  ObjectCount: 20
+  SpawnPeriodLimits: {x: 0.14375606, y: 0.24936198}
 --- !u!114 &3655950577623271647
 MonoBehaviour:
   m_ObjectHideFlags: 0

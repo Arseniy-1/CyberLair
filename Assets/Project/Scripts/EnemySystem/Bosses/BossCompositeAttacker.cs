@@ -56,8 +56,8 @@ namespace Project.Scripts.EnemySystem.Bosses
         {
             yield return new WaitForSeconds(_currentAttack.AttackStats.AttackDelay);
             
-            _bossAnimator.SetTrigger(_currentAttack.BossAttackAnimationTrigger);
             _bossAnimationEvents.Attacking += HandleBossAttackEvent;
+            _bossAnimator.SetTrigger(_currentAttack.BossAttackAnimationTrigger);
             
             yield return new WaitUntil(() => _isAttacking);
             

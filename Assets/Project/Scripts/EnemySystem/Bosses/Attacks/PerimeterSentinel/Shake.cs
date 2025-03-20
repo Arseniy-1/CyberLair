@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 {
-    public class Shake : MonoBehaviour, IDestoyable<Shake>
+    public class Shake : MonoBehaviour, IDestoyable<Shake>, IReturnable
     {
         [SerializeField] private AttackAnimationEvents _animationEvents;
         [SerializeField] private Animator _animator;

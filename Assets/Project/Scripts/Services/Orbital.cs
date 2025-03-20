@@ -13,7 +13,7 @@ namespace Project.Scripts.Servises
         
         private Vector3 CenterPosition => _targetTransform.position;
         
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             _angle += _speed * Time.fixedDeltaTime;
 
@@ -28,7 +28,7 @@ namespace Project.Scripts.Servises
             _rigidbody.MoveRotation(lookAngle);
         }
 
-        public void Initialize(Transform targetTransform)
+        public virtual void Initialize(Transform targetTransform)
         {
             _targetTransform = targetTransform;
             CalculateOffset();
