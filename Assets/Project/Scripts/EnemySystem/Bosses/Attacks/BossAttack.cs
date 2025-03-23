@@ -28,7 +28,6 @@ namespace Project.Scripts.EnemySystem.Bosses
             var waitRecovery = new WaitForSeconds(AttackStats.AttackRecovery);
             IsAttacking = false;
             
-            
             View.gameObject.SetActive(true);
             AnimatorEvents.Attacking += HandleAttacking;
             AttackAnimator.SetTrigger(AttackTrigger);
