@@ -37,18 +37,28 @@ namespace Project.Scripts.ArenaSystem
         {
             WaitingEnd();
             
-            _mainEnemySpawner.ApplyModifier(_config.EnemyStatModifiers);
+            if(_config.EnemyStatModifiers.Value > 0)
+                _mainEnemySpawner.ApplyModifier(_config.EnemyStatModifiers);
             
             _isActive = true;
             _cancellationToken = new CancellationTokenSource();
 
-            SpawningEnemies(_enemyWeights);
+            ObjectWeightPair<Enemy> boss = _enemyWeights
+                .FirstOrDefault(pair => Enum.IsDefined(typeof(BossTypes), (int)pair.Prefab.EnemyType));
+            
+            List<ObjectWeightPair<Enemy>> filteredWeights = _enemyWeights.ToList();
+
+            if (boss != null)
+            {
+                filteredWeights.Remove(boss);
+                _mainEnemySpawner.Spawn(boss.Prefab.EnemyType);
+            }
+
+            SpawningEnemies(filteredWeights);
         }
 
         private async UniTaskVoid SpawningEnemies(List<ObjectWeightPair<Enemy>> enemies)
         {
-            enemies = enemies.OrderBy(x=> Random.value).ToList();
-
             var picker = new WeightedRandomPicker<Enemy>(enemies.Select(pair => pair.Prefab).ToList(),
                 enemies.Select(pair => pair.Weight).ToList());
             
@@ -79,7 +89,10 @@ namespace Project.Scripts.ArenaSystem
         private async UniTaskVoid WaitingEnd()
         {
             await UniTask.Delay(TimeSpan.FromSeconds(_config.WaveDuration));
+            
             _cancellationToken.Cancel();
+            _isActive = false;
+            
             OnWaveFinished?.Invoke(this);
         }
     }

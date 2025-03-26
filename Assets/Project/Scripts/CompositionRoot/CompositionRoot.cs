@@ -12,7 +12,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Player _player;
         [SerializeField] private MainEnemySpawner _mainEnemySpawner;
         [SerializeField] private EdgeSpawner _edgeSpawner;
-        [SerializeField] private Enemy _boss;
+        // [SerializeField] private Enemy _boss;
         
         private void Awake()
         {
@@ -25,8 +25,8 @@ namespace Project.Scripts.CompositionRoot
             _arena.Initialize(waves);
             _arena.Work();
 
-            var boss = Instantiate(_boss);
-            boss.Initialize(_player);
+            // var boss = Instantiate(_boss);
+            // boss.Initialize(_player);
         }
     }
 }

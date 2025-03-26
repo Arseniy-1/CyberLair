@@ -784,7 +784,7 @@ MonoBehaviour:
   _destroyer: {fileID: 2268827703938706879}
   _enemyTargetProvider: {fileID: 8954570385825564128}
   _attackDistance: 6
-  <EnemyType>k__BackingField: 8
+  <EnemyType>k__BackingField: 9
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
     <Speed>k__BackingField:

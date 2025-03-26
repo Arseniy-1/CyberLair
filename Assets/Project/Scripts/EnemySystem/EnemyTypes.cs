@@ -1,4 +1,6 @@
-﻿public enum EnemyTypes
+﻿using System;
+
+public enum EnemyTypes
 {
     Walker,
     Hawk,
@@ -8,5 +10,15 @@
     Sniper,
     Doomguard,
     Imp,
-    Boss
+    Boss,
+    PerimeterSentinel,
+    FireColossus,
+    DeathReaper
+}
+
+public enum BossTypes
+{
+    PerimeterSentinel = EnemyTypes.PerimeterSentinel,
+    FireColossus = EnemyTypes.FireColossus,
+    DeathReaper = EnemyTypes.DeathReaper
 }
