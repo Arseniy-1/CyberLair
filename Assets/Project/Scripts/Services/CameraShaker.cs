@@ -9,7 +9,7 @@ namespace DefaultNamespace.Tween
         
         private Vector3 _originalPosition;
 
-        public void Shake(float duration = 0.5f, float strength = 0.5f, int vibrato = 10, float randomness = 90f)
+        public void Shake(float duration, float strength, int vibrato, float randomness)
         {
             _originalPosition = _camera.transform.localPosition;
             
