@@ -51,7 +51,8 @@ namespace Project.Scripts.ArenaSystem
             if (boss != null)
             {
                 filteredWeights.Remove(boss);
-                _mainEnemySpawner.Spawn(boss.Prefab.EnemyType);
+                
+                MessageBrokerHolder.Enemy.Publish(new BossSpawnedMessage(_mainEnemySpawner.Spawn(boss.Prefab.EnemyType)));
             }
 
             SpawningEnemies(filteredWeights);
