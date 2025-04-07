@@ -1,0 +1,39 @@
+using System.Collections;
+using Project.Scripts.Servises;
+using UnityEngine;
+
+namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
+{
+    public class OrbitalAttack : SpawnAttack<SoulOrbital>
+    {
+        private readonly OrbitalHandler _orbitalHandler = new();
+        
+        private Transform _transform;
+        
+        public override void Initialize()
+        {
+            BossAttackAnimationTrigger = Animator.StringToHash("OrbitalAttack");
+            
+            Spawner = new AttackInstancesSpawner<SoulOrbital>(new SoulOrbitalPool(Prefab, ObjectCount));
+            _transform = transform;
+            
+            Disable();
+        }
+
+        protected override IEnumerator Attack()
+        {
+            for (int i = 0; i < ObjectCount; i++)
+            {
+                SoulOrbital orbital = Spawner.Spawn();
+                orbital.Initialize(_transform);
+                orbital.OnDestroyed += UnsubscribeObject;
+                
+                SpawnedObjects.Add(orbital);
+                _orbitalHandler.AddOrbital(orbital, _transform);
+                
+                var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));
+                yield return wait;
+            }
+        }
+    }
+}

@@ -3,13 +3,12 @@ using StateMashineSytem;
 using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
-using UniRx;
 using System.Collections;
 using Sirenix.OdinInspector;
 
 namespace Project.Scripts.EnemySystem
 {
-    public class Enemy : MonoBehaviour, ITarget, IDamageable, IDieable, IDestoyable<Enemy>, IMoveable, IStunable
+    public class Enemy : MonoBehaviour, ITarget, IDamageable, IDieable, IDestoyable<Enemy>, IStunable
     {
         [SerializeField] private EnemyCollisionHandler _collisionHandler;
         [SerializeField] protected EnemyMover _mover;
@@ -18,12 +17,13 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private Destroyer _destroyer;
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         [SerializeField] private float _attackDistance;
+        [SerializeField] private EnemyView _view;
 
         private EntityStateMachine _stateMachine;
+        private EnemyAttackCooldown _cooldown;
         
         public event Action<Enemy> OnDestroyed;
 
-       
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
         [field: SerializeField] public EnemyStats EnemyStats { get; private set; }
 
@@ -40,17 +40,20 @@ namespace Project.Scripts.EnemySystem
 
         public void Initialize(Player player)
         {
+            _cooldown = new EnemyAttackCooldown();
+            
             var states = new List<IState>
             {
                 new EnemyIdleState(this, _rigidbody, _enemyTargetProvider),
-                new EnemyMoveState(this, _mover, _enemyTargetProvider),
-                new EnemyAttackState(this, _mover, _attacker),
+                new EnemyMoveState(this, _mover, _enemyTargetProvider, _cooldown),
+                new EnemyAttackState(_mover, _attacker, _cooldown),
                 new EnemyStunnedState(this, _mover)
             };
             
+            _view.Initialize();
             EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);
-            _attacker.Initialize(_enemyTargetProvider, EnemyStats);
+            _attacker.Initialize(_enemyTargetProvider);
             _destroyer.Initialize(EnemyStats.Health, this);
             
             _stateMachine = new EntityStateMachine(states);
@@ -67,6 +70,7 @@ namespace Project.Scripts.EnemySystem
         public void TakeDamage(float amount)
         {
             EnemyStats.Health.TakeDamage(amount);
+            _view.Blink();
         }
         
         public void TakeStun(float time)
@@ -82,7 +86,7 @@ namespace Project.Scripts.EnemySystem
         [Button]
         public void Die()
         {
-            MessageBrokerHolder.Enemy.Publish(new M_Enemy_Death());
+            MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath());
             OnDestroyed?.Invoke(this);
         }
         

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
+using Project.Scripts.EnemySystem.Bosses;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable
+public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
 {
     [SerializeField] protected float Speed;
     [SerializeField] protected float LifeTime;
@@ -30,7 +31,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable
             OnDamagableCollided?.Invoke(damagable);
             damagable.TakeDamage(_damage);
 
-            Destory();
+            ReturnToPool();
         }
     }
 
@@ -51,14 +52,15 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable
         _coroutine = StartCoroutine(WaitDestroy());
     }
 
-    private void Destory()
-    {
-        OnDestroyed?.Invoke(this);
-    }
-
     private IEnumerator WaitDestroy()
     {
         yield return _waitLife;
-        Destory();
+        
+        ReturnToPool();
+    }
+
+    public void ReturnToPool()
+    {
+        OnDestroyed?.Invoke(this);
     }
 }

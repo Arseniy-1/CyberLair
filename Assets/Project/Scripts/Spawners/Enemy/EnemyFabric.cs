@@ -6,7 +6,7 @@ namespace Project.Scripts.CompositionRoot
 {
     public class EnemyFabric
     {
-        private Player _player;
+        private readonly Player _player;
 
         public EnemyFabric(Player player)
         {

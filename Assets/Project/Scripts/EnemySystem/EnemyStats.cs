@@ -2,15 +2,12 @@
 using UnityEngine;
 
 [Serializable]
-public class EnemyStats : IMoverStats, IAttackerStats
+public class EnemyStats : IMoverStats
 {
     [field: SerializeField] public int Experience { get; private set; }
     [field: SerializeField] public Speed Speed { get; private set; }
     [field: SerializeField] public Health Health {get; private set; }
     [field: SerializeField] public int CollisionDamage { get; private set; }
-    [field: SerializeField] public float AttackDelay { get; private set; }
-    [field: SerializeField] public float AttackRecovery { get; private set; }
-    [field: SerializeField] public int AttackCount {  get; private set; }
 
     public void Initialize()
     {

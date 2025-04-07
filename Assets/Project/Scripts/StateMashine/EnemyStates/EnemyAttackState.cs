@@ -6,15 +6,15 @@ namespace StateMashineSytem.EnemyStates
     public class EnemyAttackState : IState
     {
         private IStateSwitcher _stateSwitcher;
-        private Enemy _enemy;
-        private EnemyMover _mover;
-        private EnemyAttacker _attacker;
+        private readonly EnemyMover _mover;
+        private readonly EnemyAttacker _attacker;
+        private readonly EnemyAttackCooldown _cooldown;
 
-        public EnemyAttackState(Enemy enemy, EnemyMover mover, EnemyAttacker attacker)
+        public EnemyAttackState(EnemyMover mover, EnemyAttacker attacker, EnemyAttackCooldown cooldown)
         {
-            _enemy = enemy;
             _mover = mover;
             _attacker = attacker;
+            _cooldown = cooldown;
         }
 
         public void Enter()
@@ -39,6 +39,7 @@ namespace StateMashineSytem.EnemyStates
 
         private void OnAttackPerformed()
         {
+            _cooldown.StartCooldown(_attacker.Stats.Cooldown);
             _stateSwitcher.SwitchState<EnemyIdleState>();
         }
     }

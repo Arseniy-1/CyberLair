@@ -16,7 +16,7 @@ namespace Project.Prefabs.Configs.Skills.ArtayaShield
             _shieldRepairAmount = skill.ShieldRepairAmount;
         
             _disposable = new CompositeDisposable();
-            MessageBrokerHolder.Enemy.Receive<M_Enemy_Death>().Subscribe((message) => HandleEnemyDeath())
+            MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => HandleEnemyDeath())
                 .AddTo(_disposable);
         }
 
