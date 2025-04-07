@@ -20,5 +20,6 @@ MonoBehaviour:
       \u043F\u043E\u0441\u0442\u043E\u044F\u043D\u043D\u044B\u0439 \u0449\u0438\u0442
       \u0432 \u0440\u0430\u0437\u043C\u0435\u0440\u0435 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E
       \u0425\u041F * 3"
-    <Icon>k__BackingField: {fileID: 21300000, guid: 54628aafa20f64b40ae661038ee7abf0, type: 3}
+    <Icon>k__BackingField: {fileID: 21300000, guid: 602749516ec9d436ebea7e8b946977dd, type: 3}
+  NeededSkills: []
   <ShieldMultiplier>k__BackingField: 3

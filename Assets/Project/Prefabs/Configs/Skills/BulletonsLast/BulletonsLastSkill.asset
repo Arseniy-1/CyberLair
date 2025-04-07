@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: BulletonsLastSkill
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: 
-    <Description>k__BackingField: 
-    <Icon>k__BackingField: {fileID: 0}
+    <SkillName>k__BackingField: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0439
+      \u0438\u0437 \u041F\u0430\u0442\u0440\u043E\u043D\u044F\u043D"
+    <Description>k__BackingField: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0439
+      \u043F\u0430\u0442\u0440\u043E\u043D \u043D\u0430\u043D\u043E\u0441\u0438\u0442
+      \u043A\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u0443\u0440\u043E\u043D"
+    <Icon>k__BackingField: {fileID: 21300000, guid: bc76d83f7f4994505905d6c3a848b615, type: 3}
   NeededSkills:
   - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
   - {fileID: 11400000, guid: 95fd6710fc5784a98914846ca07ba1cc, type: 2}

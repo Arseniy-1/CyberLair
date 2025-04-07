@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "HellCatsSkill", fileName = "Skill/Mutant/Harding", order = 51)]
+[CreateAssetMenu(fileName = "HellCatsSkill", menuName = "Skill/Mutant/HellCatsSkill", order = 51)]
 public class HellCatsSkill : MutantSkill
 {
     [field: SerializeField] public HellCat HellCatPrefab { get; private set; }
