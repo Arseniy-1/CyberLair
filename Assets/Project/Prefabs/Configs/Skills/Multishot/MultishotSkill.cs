@@ -1,6 +1,4 @@
-using TMPro.EditorUtilities;
 using UnityEngine;
-using UnityEngine.Serialization;
 
     [CreateAssetMenu(fileName = "MultishotSkill", menuName = "Skill/Simple/Multishot", order = 51)]
     public class MultishotSkill : Skill

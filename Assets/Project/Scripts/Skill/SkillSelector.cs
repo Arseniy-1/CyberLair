@@ -10,6 +10,11 @@ public class SkillSelector : MonoBehaviour
     [SerializeField] private Button _applyButton;
 
     [SerializeField] private List<SkillView> _selectedSkills = new List<SkillView>();
+    
+    [SerializeField] private Sprite _defaultBanner;
+    [SerializeField] private Sprite _hardBanner;
+    [SerializeField] private Sprite _mutantBanner;
+    
     private SkillView _lastSelectedSkill;
     private int _maxSelectedSkills;
 
@@ -82,8 +87,23 @@ public class SkillSelector : MonoBehaviour
     
         for (int i = 0; i < inputSkillsCount; i++)
         {
+            var selectedSkill = shuffledSkills[i];
             _skillViews[i].gameObject.SetActive(true);
-            _skillViews[i].SetSkill(shuffledSkills[i]);
+
+            switch (selectedSkill)
+            {
+                case MutantSkill:
+                    _skillViews[i].SetSkill(shuffledSkills[i], _mutantBanner);
+                    break;
+                
+                case HardSkill:
+                    _skillViews[i].SetSkill(shuffledSkills[i], _hardBanner);
+                    break;
+                
+                default:
+                    _skillViews[i].SetSkill(shuffledSkills[i], _defaultBanner);
+                    break;
+            }
         }
     }
 

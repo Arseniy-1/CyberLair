@@ -81,7 +81,7 @@ public class PlayerInputController : MonoBehaviour
         if (_isMobile)
             _deviceControlls.gameObject.SetActive(true);
         else
-            _desktopControlls.gameObject.SetActive(false);
+            _desktopControlls.gameObject.SetActive(true);
     }
 
     private void HandleMobileShooting()

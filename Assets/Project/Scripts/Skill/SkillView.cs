@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SkillView : MonoBehaviour
@@ -8,7 +9,11 @@ public class SkillView : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _descriptionText;
-    [SerializeField] private Image _image;
+    [SerializeField] private Image _skillIcon;
+    [SerializeField] private Image _skillBanner;
+    
+    private float _maxBrightness = 1f;
+    private float _minBrightness = 0.5f;
     
     private Skill _skill;
     
@@ -26,22 +31,23 @@ public class SkillView : MonoBehaviour
         _button.onClick.RemoveListener(HandleClick);
     }
     
-    public void SetSkill(Skill skill)
+    public void SetSkill(Skill skill, Sprite skillBanner)
     {
         _skill = skill;
         _nameText.text = _skill.SkillInfo.SkillName;
         _descriptionText.text = _skill.SkillInfo.Description;
-        _image.sprite = _skill.SkillInfo.Icon;
+        _skillBanner.sprite = skillBanner;
+        _skillIcon.sprite = _skill.SkillInfo.Icon;
     }
 
     public void Select()
     {
-        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 0.2f);
+        _skillBanner.color = new Color(_skillIcon.color.r, _skillIcon.color.g, _skillIcon.color.b, _minBrightness);
     }
 
     public void Deselect()
     {
-        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 1);
+        _skillBanner.color = new Color(_skillIcon.color.r, _skillIcon.color.g, _skillIcon.color.b, _maxBrightness);
     }
     
     private void HandleClick()
