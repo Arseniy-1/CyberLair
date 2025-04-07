@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using UnityEngine.Serialization;
 
 public class Mediator : MonoBehaviour
 {
-    [SerializeField] private List<HardSkill> _hardSkills;
     [SerializeField] private List<MutantSkill> _mutantSkills;
+    [SerializeField] private List<HardSkill> _hardSkills;
     [SerializeField] private List<Skill> _simpleSkills;
 
     [SerializeField] private List<Skill> _availableSkills;

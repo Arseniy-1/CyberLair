@@ -50,7 +50,7 @@ namespace Project.Scripts.EnemySystem
                 new EnemyStunnedState(this, _mover)
             };
             
-            _view.Initialize();
+            // _view.Initialize();
             EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);
             _attacker.Initialize(_enemyTargetProvider);
