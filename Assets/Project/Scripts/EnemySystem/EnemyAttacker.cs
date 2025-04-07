@@ -1,33 +1,35 @@
 using System;
 using System.Collections;
+using Project.Scripts.EnemySystem.AttackTypes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem
 {
     public abstract class EnemyAttacker : MonoBehaviour
     {
-        private IAttackerStats _stats;
+        [SerializeField] private BaseEnemyAttackStats _stats;
         
         protected EnemyTargetProvider EnemyTargetProvider;
         private Transform _transform;
         
         public event Action AttackPerformed;
         
+        public virtual BaseEnemyAttackStats Stats => _stats;
         protected Vector2 Position => _transform.position;
 
         public void PerformAttack()
         {
-            StartCoroutine(Performing());
+           StartCoroutine(Performing());
         }
         
-        public virtual void Initialize(EnemyTargetProvider enemyTargetProvider, IAttackerStats stats)
+        public virtual void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
             EnemyTargetProvider = enemyTargetProvider;
-            _stats = stats;
             _transform = transform;
         }
         
-        protected abstract void Attack();
+        protected abstract IEnumerator Attack();
         
         private void EndAttack()
         {
@@ -36,13 +38,13 @@ namespace Project.Scripts.EnemySystem
 
         private IEnumerator Performing()
         {
-            WaitForSeconds waitDelay = new WaitForSeconds(_stats.AttackDelay);
-            WaitForSeconds waitRecovery = new WaitForSeconds(_stats.AttackRecovery);
+            var waitDelay = new WaitForSeconds(_stats.AttackDelay);
+            var waitRecovery = new WaitForSeconds(_stats.AttackRecovery);
             
             for (int i = 0; i < _stats.AttackCount; i++)
             {
                 yield return waitDelay;
-                Attack();
+                yield return Attack();
             }
 
             yield return waitRecovery;

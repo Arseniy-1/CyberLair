@@ -1,12 +1,21 @@
 ﻿public enum EnemyTypes
 {
-    Walker,
-    Hawk,
-    Kamikaze,
-    Blight,
-    Trooper,
-    Sniper,
-    Doomguard,
-    Imp,
-    Boss
+    Walker = 0,
+    Hawk = 1,
+    Kamikaze = 2,
+    Blight = 3,
+    Trooper = 4,
+    Sniper = 5,
+    Doomguard = 6,
+    Imp = 7,
+    PerimeterSentinel = 8,
+    FireColossus = 9,
+    DeathReaper = 10
+}
+
+public enum BossTypes
+{
+    PerimeterSentinel = EnemyTypes.PerimeterSentinel,
+    FireColossus = EnemyTypes.FireColossus,
+    DeathReaper = EnemyTypes.DeathReaper
 }

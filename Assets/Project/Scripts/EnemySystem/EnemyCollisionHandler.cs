@@ -14,20 +14,20 @@ public class EnemyCollisionHandler : CollisionHandler
     
     protected override void HandleCollision(Collider2D collider)
     {
-        if (collider.TryGetComponent(out Player player))
+        if (collider.TryGetComponent(out Player player) == false)
+            return;
+        
+        if (player is IStunable stunable)
         {
-            if (player is IStunable stunable)
-            {
-                stunable.TakeStun(_stunTime);
-                Vector3 pushDirection = (transform.position - player.transform.position).normalized;
+            stunable.TakeStun(_stunTime);
+            Vector3 pushDirection = (player.transform.position - transform.position).normalized;
 
-                stunable.Rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
-            }
+            stunable.Rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
+        }
 
-            if (player is IDamageable damagable)
-            {
-                damagable.TakeDamage(_collisionDamage);
-            }
+        if (player is IDamageable damagable)
+        {
+            damagable.TakeDamage(_collisionDamage);
         }
     }
 }

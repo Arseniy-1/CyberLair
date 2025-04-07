@@ -20,9 +20,7 @@ namespace Project.Scripts.Servises
 
         protected override void HandleCollision(Collider2D collider)
         {
-            if (!collider.TryGetComponent(out Enemy enemy)) return;
-
-            if (enemy is not IDamageable damagable) return;
+            if (!collider.TryGetComponent(out IDamageable damagable)) return;
             
             damagable.TakeDamage(_collisionDamage);
 
@@ -32,7 +30,7 @@ namespace Project.Scripts.Servises
         
         private void HandleContactLimit()
         {
-            if(_contactCount == _contactLimit)
+            if(_contactCount >= _contactLimit)
                 ContactLimitExpired?.Invoke();
         }
     }
