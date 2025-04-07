@@ -1,8 +1,8 @@
 using Project.Scripts.EnemySystem;
 
-public struct BossSpawnedMessage
+public struct M_BossSpawned
 {
-    public BossSpawnedMessage(Enemy enemy)
+    public M_BossSpawned(Enemy enemy)
     {
         Boss = enemy;
     }

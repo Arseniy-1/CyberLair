@@ -32,8 +32,6 @@ namespace Project.Scripts.EnemySystem.Bosses
             
             SpawnedObjects.Clear();
         }
-
-        protected abstract override IEnumerator Attack();
         
         protected void UnsubscribeObject(T spawnedObject)
         {

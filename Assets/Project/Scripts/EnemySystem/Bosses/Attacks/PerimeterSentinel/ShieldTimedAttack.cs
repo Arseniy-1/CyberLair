@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 {
-    public class ShieldTimedAttack : BossTimedAttack
+    public class ShieldTimedAttack : BossAttack
     {
         [SerializeField] private SkillCollisionHandler _skillCollisionHandler;
         [SerializeField] private InvincibilityCollisionHandler _invincibilityCollisionHandler;

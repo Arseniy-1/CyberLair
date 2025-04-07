@@ -17,6 +17,7 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private Destroyer _destroyer;
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         [SerializeField] private float _attackDistance;
+        [SerializeField] private EnemyView _view;
 
         private EntityStateMachine _stateMachine;
         private EnemyAttackCooldown _cooldown;
@@ -49,6 +50,7 @@ namespace Project.Scripts.EnemySystem
                 new EnemyStunnedState(this, _mover)
             };
             
+            _view.Initialize();
             EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);
             _attacker.Initialize(_enemyTargetProvider);
@@ -68,6 +70,7 @@ namespace Project.Scripts.EnemySystem
         public void TakeDamage(float amount)
         {
             EnemyStats.Health.TakeDamage(amount);
+            _view.Blink();
         }
         
         public void TakeStun(float time)
@@ -83,7 +86,7 @@ namespace Project.Scripts.EnemySystem
         [Button]
         public void Die()
         {
-            MessageBrokerHolder.Enemy.Publish(new M_Enemy_Death());
+            MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath());
             OnDestroyed?.Invoke(this);
         }
         

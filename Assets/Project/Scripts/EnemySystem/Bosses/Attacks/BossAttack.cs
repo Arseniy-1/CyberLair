@@ -17,6 +17,7 @@ namespace Project.Scripts.EnemySystem.Bosses
         [field: SerializeField] public float Range { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
         [field: SerializeField] public BaseEnemyAttackStats AttackStats { get; private set; }
+        [field: SerializeField] public float CoolDawn { get; private set; }
         public int BossAttackAnimationTrigger { get; protected set; }
 
         public abstract void Initialize();

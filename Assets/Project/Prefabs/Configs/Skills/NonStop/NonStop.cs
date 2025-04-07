@@ -21,7 +21,7 @@ public class NonStop : ISkillInstance
         _landMineSpawner = new LandMineSpanwer(skill.LandMinePrefab);
 
         _disposable = new CompositeDisposable();
-        MessageBrokerHolder.Enemy.Receive<M_Enemy_Death>().Subscribe((message) => HandleEnemyDeath())
+        MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => HandleEnemyDeath())
             .AddTo(_disposable);
 
         _data.PlayerJumper.JumpPerformed += OnJumpPerformed;

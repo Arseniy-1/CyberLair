@@ -6,6 +6,7 @@ using Project.Scripts.EnemySystem;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Project.Scripts.Servises;
+using Sirenix.Utilities;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.ArenaSystem
@@ -18,7 +19,6 @@ namespace Project.Scripts.ArenaSystem
         private readonly IReadOnlyList<Transform> _spawnPoints;
 
         private readonly List<ObjectWeightPair<Enemy>> _enemyWeights = new();
-        private bool _isActive;
         private CancellationTokenSource _cancellationToken;
 
         public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner, List<Transform> spawnPoints)
@@ -40,22 +40,14 @@ namespace Project.Scripts.ArenaSystem
             if(_config.EnemyStatModifiers.Value > 0)
                 _mainEnemySpawner.ApplyModifier(_config.EnemyStatModifiers);
             
-            _isActive = true;
             _cancellationToken = new CancellationTokenSource();
 
-            ObjectWeightPair<Enemy> boss = _enemyWeights
-                .FirstOrDefault(pair => Enum.IsDefined(typeof(BossTypes), (int)pair.Prefab.EnemyType));
-            
-            List<ObjectWeightPair<Enemy>> filteredWeights = _enemyWeights.ToList();
-
-            if (boss != null)
+            if (_config.Boss != false)
             {
-                filteredWeights.Remove(boss);
-                
-                MessageBrokerHolder.Enemy.Publish(new BossSpawnedMessage(_mainEnemySpawner.Spawn(boss.Prefab.EnemyType)));
+                MessageBrokerHolder.Enemy.Publish(new M_BossSpawned(_mainEnemySpawner.Spawn(_config.Boss.EnemyType)));
             }
 
-            SpawningEnemies(filteredWeights);
+            SpawningEnemies(_enemyWeights);
         }
 
         private async UniTaskVoid SpawningEnemies(List<ObjectWeightPair<Enemy>> enemies)
@@ -63,16 +55,9 @@ namespace Project.Scripts.ArenaSystem
             var picker = new WeightedRandomPicker<Enemy>(enemies.Select(pair => pair.Prefab).ToList(),
                 enemies.Select(pair => pair.Weight).ToList());
             
-            while(_isActive)
+            while(_cancellationToken.Token.IsCancellationRequested == false)
             { 
-                try
-                {
-                    await UniTask.Delay(TimeSpan.FromSeconds(_config.SpawnDuration), cancellationToken: _cancellationToken.Token);
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
+                await UniTask.Delay(TimeSpan.FromSeconds(_config.SpawnDuration), cancellationToken: _cancellationToken.Token);
 
                 EnemyTypes preferredEnemy = picker.Pick().EnemyType;
                 int enemyCount = Random.Range(_config.SpawnClusterSize.x, _config.SpawnClusterSize.y + 1);
@@ -92,7 +77,6 @@ namespace Project.Scripts.ArenaSystem
             await UniTask.Delay(TimeSpan.FromSeconds(_config.WaveDuration));
             
             _cancellationToken.Cancel();
-            _isActive = false;
             
             OnWaveFinished?.Invoke(this);
         }
