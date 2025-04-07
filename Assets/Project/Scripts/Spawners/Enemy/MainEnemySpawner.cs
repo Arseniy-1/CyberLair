@@ -6,8 +6,6 @@ public class MainEnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<Enemy> _enemyPrefabs;
     [SerializeField] private int _startPoolCount;
-    
-    [SerializeField] private List<EnemySpawner> _enemySpawners;
 
     private Dictionary<EnemyTypes, EnemySpawner> _spawners = new();
     
