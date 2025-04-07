@@ -137,16 +137,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stats:
+    <AttackDelay>k__BackingField: 0
+    <AttackRecovery>k__BackingField: 0
+    <AttackCount>k__BackingField: 0
+    <Cooldown>k__BackingField: 0
   _jumpStats:
     <JumpDistance>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
 --- !u!114 &442572439295423526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,23 +183,17 @@ MonoBehaviour:
   _destroyer: {fileID: 4789583573764484402}
   _enemyTargetProvider: {fileID: 363723337743644631}
   _attackDistance: 2
-  <Health>k__BackingField:
-    <BaseValue>k__BackingField: 100
-    CurrentValue: 100
-    _regenerationTime: 0
-    <RegenerateAmount>k__BackingField:
-      <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+  _view: {fileID: 0}
   <EnemyType>k__BackingField: 0
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 1
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
+    <Health>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
     <CollisionDamage>k__BackingField: 0
-    <AttackDelay>k__BackingField: 1
-    <AttackRecovery>k__BackingField: 1.5
-    <AttackCount>k__BackingField: 1
 --- !u!114 &3709468705532820958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6922820114681478569}
   - component: {fileID: 1190384996198840073}
+  - component: {fileID: 8296496326482268042}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -306,8 +306,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: cc35afd292fc349128b36a291fb3a165, type: 3}
-  m_Color: {r: 0.9622642, g: 0.52939856, b: 0.503827, a: 1}
+  m_Sprite: {fileID: -1897556438, guid: 28293226c06dd49dd9c0995d054037bc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -317,3 +317,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8296496326482268042
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334475162931949207}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f221156d07904718a62e5aadf5bdd79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

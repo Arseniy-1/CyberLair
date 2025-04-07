@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8874581048393126019}
   - component: {fileID: 5790200004671664442}
+  - component: {fileID: 4010559065433486733}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: cc35afd292fc349128b36a291fb3a165, type: 3}
-  m_Color: {r: 0.6037736, g: 0.14590465, b: 0.116767526, a: 1}
+  m_Sprite: {fileID: -900228556, guid: c6fb9fcec47a84d5c8f3d71aab887c6f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4010559065433486733
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967895049974165014}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff028cfc3dc7f4762bdddfc885e79e74, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8516281782993950264
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,16 +243,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stats:
+    <AttackDelay>k__BackingField: 0
+    <AttackRecovery>k__BackingField: 0
+    <AttackCount>k__BackingField: 0
+    <Cooldown>k__BackingField: 0
   _jumpStats:
     <JumpDistance>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
 --- !u!114 &836791218599047312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,23 +289,17 @@ MonoBehaviour:
   _destroyer: {fileID: 5418070314658009890}
   _enemyTargetProvider: {fileID: 1779165943002181910}
   _attackDistance: 2
-  <Health>k__BackingField:
-    <BaseValue>k__BackingField: 0
-    CurrentValue: 0
-    _regenerationTime: 0
-    <RegenerateAmount>k__BackingField:
-      <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+  _view: {fileID: 0}
   <EnemyType>k__BackingField: 7
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 2
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
+    <Health>k__BackingField:
+      <BaseValue>k__BackingField: 0
+      <CurrentValue>k__BackingField: 0
     <CollisionDamage>k__BackingField: 10
-    <AttackDelay>k__BackingField: 1.5
-    <AttackRecovery>k__BackingField: 1.5
-    <AttackCount>k__BackingField: 1
 --- !u!114 &8046208475861855243
 MonoBehaviour:
   m_ObjectHideFlags: 0
