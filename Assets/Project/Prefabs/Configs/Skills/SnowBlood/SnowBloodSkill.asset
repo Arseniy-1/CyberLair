@@ -14,21 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: "\u041A\u0440\u043E\u0432\u044C \u043D\u0430 \u0441\u043D\u0435\u0433\u0443"
-    <Description>k__BackingField: "\u0443\u043C\u0435\u043D\u044C\u0448\u0430\u0435\u0442
+    <Description>k__BackingField: "\u0423\u043C\u0435\u043D\u044C\u0448\u0430\u0435\u0442
       \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E
       HP \u0432 2 \u0440\u0430\u0437\u0430, \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
       \u0443\u0440\u043E\u043D\u0430 \u0438\u0433\u0440\u043E\u043A\u0430 \u0432
       50%"
-    <Icon>k__BackingField: {fileID: 21300000, guid: 6a8b78127d28c5a4f80ff6dc667dadb5, type: 3}
+    <Icon>k__BackingField: {fileID: 21300000, guid: 0a965ed0b714a4275bc639c916cbc86c, type: 3}
   NeededSkills:
   - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
-  _healthModifier:
+  - {fileID: 11400000, guid: 11fe661258bfa4567883781da551b0ae, type: 2}
+  <HealthModifier>k__BackingField:
     <Value>k__BackingField: 0.5
     <Type>k__BackingField: 1
     <Duration>k__BackingField: 0
-    _elapsedTime: 0
-  _damageModifier:
+  <DamageModifier>k__BackingField:
     <Value>k__BackingField: 1.5
     <Type>k__BackingField: 1
     <Duration>k__BackingField: 0
-    _elapsedTime: 0

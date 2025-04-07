@@ -17,11 +17,10 @@ MonoBehaviour:
     <Description>k__BackingField: "\u041A\u043B\u0438\u043D\u043E\u043A-\u0431\u0443\u043C\u0435\u0440\u0430\u043D\u0433
       \u0434\u0432\u0438\u0436\u0435\u0442\u0441\u044F \u0441 \u043F\u0435\u0440\u0435\u043C\u0435\u043D\u0447\u0438\u0432\u044B\u043C
       \u0440\u0430\u0434\u0438\u0443\u0441\u043E\u043C"
-    <Icon>k__BackingField: {fileID: 21300000, guid: 530ee7374dc63ca46869cb7998486c10, type: 3}
+    <Icon>k__BackingField: {fileID: 21300000, guid: e60f0c657d2c2426da55c6e8b4665bcd, type: 3}
   NeededSkills:
   - {fileID: 11400000, guid: 3572f783faa47490a8595315be041fc9, type: 2}
   - {fileID: 11400000, guid: e18572bf8d0b7d24cb7dae87a156099e, type: 2}
-  _stormBlade:
-    _maxRadius: 6
-    _minRadius: 1
-    _changingSpeed: 3
+  <MaxRadius>k__BackingField: 5
+  <MinRadius>k__BackingField: 3
+  <ChangingSpeed>k__BackingField: 3
