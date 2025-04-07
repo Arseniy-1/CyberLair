@@ -18,12 +18,11 @@ MonoBehaviour:
       \u043F\u043E \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E\u043C\u0443 \u0432\u0440\u0430\u0433\u0443
       \u0432 \u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u0432\u043E\u043A\u0440\u0443\u0433
       \u0438\u0433\u0440\u043E\u043A\u0430"
-    <Icon>k__BackingField: {fileID: 21300000, guid: a460b2c513f71499faff1ccc31abecc5, type: 3}
-  <Thunder>k__BackingField:
-    _actionRadius: 10
-    _layerMask:
-      serializedVersion: 2
-      m_Bits: 8
-    _damage: 20
-    _strikesCount: 1
-    _shootsNeeded: 2
+    <Icon>k__BackingField: {fileID: 21300000, guid: 3f466d2c8e73d45e580fa461a3874dfb, type: 3}
+  <ActionRadius>k__BackingField: 3
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8
+  <Damage>k__BackingField: 3
+  <StrikesCount>k__BackingField: 3
+  <ShootsNeeded>k__BackingField: 3

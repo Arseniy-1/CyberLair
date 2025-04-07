@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: "\u041D\u0430\u043F\u0440\u044F\u0436\u0435\u043D\u0438\u0435"
-    <Description>k__BackingField: "\u0441\u0442\u0430\u043D 0.1 \u0441\u0435\u043A\u0443\u043D\u0434\u044B
+    <Description>k__BackingField: "C\u0442\u0430\u043D 0.1 \u0441\u0435\u043A\u0443\u043D\u0434\u044B
       \u043F\u0440\u0438 \u043F\u043E\u043F\u0430\u0434\u0430\u043D\u0438\u0438"
-    <Icon>k__BackingField: {fileID: 21300000, guid: e0ba09cd209ac5b4ea0750c45495e562, type: 3}
-  _stunZap:
-    _stunDuration: 0.1
+    <Icon>k__BackingField: {fileID: 21300000, guid: 5a3ebed7e945641868b6a211ca41d6de, type: 3}
+  <StunDuration>k__BackingField: 0.1
