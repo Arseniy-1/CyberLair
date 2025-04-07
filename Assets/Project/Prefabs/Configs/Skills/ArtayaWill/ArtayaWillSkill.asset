@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: ArtayaWillSkill
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: "\u041F\u044F\u0443"
-    <Description>k__BackingField: Made by KS KS
+    <SkillName>k__BackingField: "\u0412\u043E\u043B\u044F \u0410\u0440\u0442\u0430\u0439\u0430"
+    <Description>k__BackingField: "\u0423\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442
+      \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E
+      \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F \u043D\u0430 1 \u0438 \u043F\u0440\u0438\u0431\u0430\u0432\u043B\u044F\u0435\u0442
+      \u043F\u043E\u0441\u0442\u043E\u044F\u043D\u043D\u044B\u0439 \u0449\u0438\u0442
+      \u0432 \u0440\u0430\u0437\u043C\u0435\u0440\u0435 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E
+      \u0425\u041F * 3"
     <Icon>k__BackingField: {fileID: 21300000, guid: 54628aafa20f64b40ae661038ee7abf0, type: 3}
-  <MaxHealth>k__BackingField: 1
   <ShieldMultiplier>k__BackingField: 3
