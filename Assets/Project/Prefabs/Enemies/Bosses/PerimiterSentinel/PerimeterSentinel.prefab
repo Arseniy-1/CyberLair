@@ -60,7 +60,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 3
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 0
-  <Time>k__BackingField: 1
+  <CoolDawn>k__BackingField: 0
   _skillCollisionHandler: {fileID: 3588086428202692097}
   _invincibilityCollisionHandler: {fileID: 1500366225651058416}
   _shieldCollider: {fileID: 1302679334391996479}
@@ -461,6 +461,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 0
+  <CoolDawn>k__BackingField: 0
   _laser: {fileID: 7680972408625136855}
   _collider: {fileID: 3923064011031436337}
 --- !u!1 &2133513638634037479
@@ -709,6 +710,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 5
+  <CoolDawn>k__BackingField: 0
   Prefab: {fileID: 557765036821876407, guid: 8197224359ad24401b5478c79f0390e1, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.14375606, y: 0.24936198}
@@ -784,6 +786,7 @@ MonoBehaviour:
   _destroyer: {fileID: 2268827703938706879}
   _enemyTargetProvider: {fileID: 8954570385825564128}
   _attackDistance: 6
+  _view: {fileID: 4548246736520012204}
   <EnemyType>k__BackingField: 9
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
@@ -952,6 +955,7 @@ GameObject:
   - component: {fileID: 4483056047778179784}
   - component: {fileID: 3718740134849954087}
   - component: {fileID: 8331253974619774144}
+  - component: {fileID: 4548246736520012204}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -1059,3 +1063,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea599b240de84b0280e248f39f69c6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4548246736520012204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8338589489908715743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b04699a3ed643afb5b90a541233ac04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 4483056047778179784}
+  _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
+  _blinkDuration: 0.1

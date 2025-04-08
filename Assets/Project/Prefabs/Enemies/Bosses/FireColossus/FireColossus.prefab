@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6160653832846540280}
   - component: {fileID: 127949211253741946}
   - component: {fileID: 1950079115353240760}
+  - component: {fileID: 409781911876493519}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -119,6 +120,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea599b240de84b0280e248f39f69c6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &409781911876493519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263191306320595544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b04699a3ed643afb5b90a541233ac04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 6160653832846540280}
+  _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
+  _blinkDuration: 0.1
 --- !u!1 &3245823787185263385
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +190,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 1
+  <CoolDawn>k__BackingField: 0
   Prefab: {fileID: 1740366717519680712, guid: 8edb5729261f54863b061789f6788290, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.10889517, y: 0.19078715}
@@ -266,6 +283,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 1
+  <CoolDawn>k__BackingField: 0
   Prefab: {fileID: 9040316264659818666, guid: c20597819d0824674b41243213eaf607, type: 3}
   ObjectCount: 1
   SpawnPeriodLimits: {x: 0.13995765, y: 0.20914225}
@@ -325,6 +343,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 1
+  <CoolDawn>k__BackingField: 20
   _hitbox: {fileID: 4831708927947466481}
   _filter:
     useTriggers: 1
@@ -554,6 +573,7 @@ MonoBehaviour:
   _destroyer: {fileID: 225613228993504980}
   _enemyTargetProvider: {fileID: 4443314086097051585}
   _attackDistance: 6
+  _view: {fileID: 409781911876493519}
   <EnemyType>k__BackingField: 8
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
@@ -585,7 +605,9 @@ MonoBehaviour:
   _bossAnimationEvents: {fileID: 1950079115353240760}
   _oncePerformingAttacks:
   - {fileID: 453675808833536495}
-  _timePerformingAttacks: []
+  - {fileID: 8757042914405979128}
+  _timePerformingAttacks:
+  - {fileID: 8404616166681584264}
 --- !u!50 &6811167916787461174
 Rigidbody2D:
   serializedVersion: 4

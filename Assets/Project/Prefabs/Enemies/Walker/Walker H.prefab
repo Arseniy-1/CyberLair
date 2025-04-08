@@ -183,15 +183,15 @@ MonoBehaviour:
   _destroyer: {fileID: 4789583573764484402}
   _enemyTargetProvider: {fileID: 363723337743644631}
   _attackDistance: 2
-  _view: {fileID: 0}
+  _view: {fileID: 6817799365412032722}
   <EnemyType>k__BackingField: 0
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 1
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 3
       <CurrentValue>k__BackingField: 0
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 50
       <CurrentValue>k__BackingField: 0
     <CollisionDamage>k__BackingField: 0
 --- !u!114 &3709468705532820958
@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 6922820114681478569}
   - component: {fileID: 1190384996198840073}
   - component: {fileID: 8296496326482268042}
+  - component: {fileID: 6817799365412032722}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -338,3 +339,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6817799365412032722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334475162931949207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b04699a3ed643afb5b90a541233ac04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 1190384996198840073}
+  _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
+  _blinkDuration: 0.1

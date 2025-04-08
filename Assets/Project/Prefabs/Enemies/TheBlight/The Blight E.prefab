@@ -137,6 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stats:
+    <AttackDelay>k__BackingField: 0
+    <AttackRecovery>k__BackingField: 0
+    <AttackCount>k__BackingField: 0
+    <Cooldown>k__BackingField: 0
   _jumpStats:
     <JumpDistance>k__BackingField:
       <BaseValue>k__BackingField: 0
@@ -178,6 +183,7 @@ MonoBehaviour:
   _destroyer: {fileID: 6391322191596903747}
   _enemyTargetProvider: {fileID: 6311730808988131680}
   _attackDistance: 4
+  _view: {fileID: 7392884637481049168}
   <EnemyType>k__BackingField: 3
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 4
@@ -188,9 +194,6 @@ MonoBehaviour:
       <BaseValue>k__BackingField: 40
       <CurrentValue>k__BackingField: 0
     <CollisionDamage>k__BackingField: 0
-    <AttackDelay>k__BackingField: 0.5
-    <AttackRecovery>k__BackingField: 2
-    <AttackCount>k__BackingField: 2
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +243,7 @@ GameObject:
   - component: {fileID: 2543074565528694283}
   - component: {fileID: 3948316353497071274}
   - component: {fileID: 3630374792071387719}
+  - component: {fileID: 7392884637481049168}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -259,8 +263,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6882773872167868586}
+  m_Children: []
   m_Father: {fileID: 3335654862418739538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3948316353497071274
@@ -336,34 +339,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &1889057684960242127
-GameObject:
+--- !u!114 &7392884637481049168
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6882773872167868586}
-  m_Layer: 3
-  m_Name: WeaponHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6882773872167868586
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889057684960242127}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2543074565528694283}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 786434052027316470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b04699a3ed643afb5b90a541233ac04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 3948316353497071274}
+  _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
+  _blinkDuration: 0.1

@@ -55,6 +55,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 1
+  <CoolDawn>k__BackingField: 0
   Prefab: {fileID: 3279646485583062671, guid: 97ae33b6a529945b5be1d4f780cc98aa, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.18275137, y: 0.29785928}
@@ -70,6 +71,7 @@ GameObject:
   - component: {fileID: 5703273196764355873}
   - component: {fileID: 8081249287118153077}
   - component: {fileID: 8327600072873280291}
+  - component: {fileID: 2024785022066577145}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -177,6 +179,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea599b240de84b0280e248f39f69c6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2024785022066577145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055001191066945106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b04699a3ed643afb5b90a541233ac04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5703273196764355873}
+  _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
+  _blinkDuration: 0.1
 --- !u!1 &1842073208056738535
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +254,7 @@ MonoBehaviour:
   _destroyer: {fileID: 3077523738677945245}
   _enemyTargetProvider: {fileID: 6214079916044508221}
   _attackDistance: 6
+  _view: {fileID: 2024785022066577145}
   <EnemyType>k__BackingField: 8
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
@@ -566,6 +584,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 1
+  <CoolDawn>k__BackingField: 0
   _hitbox: {fileID: 4383461490509946514}
   _filter:
     useTriggers: 1
@@ -800,6 +819,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 1
+  <CoolDawn>k__BackingField: 0
   Prefab: {fileID: 485471398250535266, guid: 67b28be34109d4e609fb13d81917f383, type: 3}
   ObjectCount: 6
   SpawnPeriodLimits: {x: 0.1, y: 0.2597743}
