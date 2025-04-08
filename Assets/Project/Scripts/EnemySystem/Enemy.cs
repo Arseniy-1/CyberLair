@@ -70,7 +70,7 @@ namespace Project.Scripts.EnemySystem
         public void TakeDamage(float amount)
         {
             EnemyStats.Health.TakeDamage(amount);
-            _view.Blink();
+            // _view.Blink();
         }
         
         public void TakeStun(float time)

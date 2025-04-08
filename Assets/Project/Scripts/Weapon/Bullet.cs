@@ -26,14 +26,26 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        ReturnToPool();
+        
         if (collision.TryGetComponent(out IDamageable damagable))
         {
             OnDamagableCollided?.Invoke(damagable);
             damagable.TakeDamage(_damage);
-
-            ReturnToPool();
         }
+
     }
+
+    // private void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     ReturnToPool();
+    //
+    //     if (other.collider.TryGetComponent(out IDamageable damagable))
+    //     {
+    //         OnDamagableCollided?.Invoke(damagable);
+    //         damagable.TakeDamage(_damage);
+    //     }
+    // }
 
     public void Activate()
     {
@@ -55,7 +67,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
     private IEnumerator WaitDestroy()
     {
         yield return _waitLife;
-        
+
         ReturnToPool();
     }
 

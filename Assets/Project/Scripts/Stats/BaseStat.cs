@@ -9,7 +9,7 @@ public abstract class BaseStat
     [field: SerializeField] public float BaseValue { get; protected set; }
     [field: SerializeField] public float CurrentValue { get; protected set; }
     
-    private List<StatModifier> _modifiers = new();
+    [field: SerializeField] private List<StatModifier> _modifiers = new();
 
     public event Action<float, float> AmountChanged;
     

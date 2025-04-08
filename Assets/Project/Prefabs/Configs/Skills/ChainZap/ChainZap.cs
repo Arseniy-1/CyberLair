@@ -67,7 +67,7 @@ public class ChainZap : ISkillInstance
             hitTargets.Add(currentTarget);
 
             currentTarget.TakeDamage(_weapon.WeaponStats.WeaponDamage.CurrentValue * Mathf.Pow(_damageFalloff, bounce));
-            currentTarget.EnemyStats.Speed.AddModifier(_enemySpeedModifier);
+            currentTarget.EnemyStats.Speed.AddModifier(_enemySpeedModifier.Copy());
 
             if (bounce != 0)
                 DrawLightning(currentPosition, currentTarget.transform.position, bullet);
