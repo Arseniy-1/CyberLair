@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.71714294}
   m_AnchorMax: {x: 1, y: 0.71714294}
-  m_AnchoredPosition: {x: 0, y: 28.6}
-  m_SizeDelta: {x: -59.999996, y: 176.2}
+  m_AnchoredPosition: {x: 0, y: 20.8}
+  m_SizeDelta: {x: -59.999996, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7148549235769862061
 CanvasRenderer:
@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.45714292}
   m_AnchorMax: {x: 1, y: 0.45714292}
-  m_AnchoredPosition: {x: 0.9458008, y: 47.4}
-  m_SizeDelta: {x: -88.6417, y: 57.6}
+  m_AnchoredPosition: {x: 0.9458008, y: 38.1}
+  m_SizeDelta: {x: -88.64, y: 76.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8862298270707857203
 CanvasRenderer:
@@ -140,19 +140,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Skill Name
-
-'
+  m_text: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0439 \u0438\u0437 \u041F\u0430\u0442\u0440\u043E\u043D\u044F\u043D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281479783
+  m_fontColor: {r: 0.4056604, g: 0.19708973, b: 0.19708973, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -169,7 +167,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 18
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -245,8 +243,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.45714292}
   m_AnchorMax: {x: 1, y: 0.45714292}
-  m_AnchoredPosition: {x: 0.94555664, y: -119.432846}
-  m_SizeDelta: {x: -88.642, y: 238.8655}
+  m_AnchoredPosition: {x: 0.94555664, y: -101.83}
+  m_SizeDelta: {x: -88.64, y: 203.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3637143088956298057
 CanvasRenderer:
@@ -280,15 +278,15 @@ MonoBehaviour:
     \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0431\u0443\u0434\u0435\u0442 \u043F\u0435\u0440\u0435\u0434\u0432\u0438\u0433\u0430\u0442\u044C\u0441\u044F
     \u0437\u0430 \u0438\u0433\u0440\u043E\u043A\u043E\u043C"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -305,15 +303,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.5
+  m_fontSize: 18
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 34.5
+  m_fontSizeMax: 26.3
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -558,4 +556,5 @@ MonoBehaviour:
   _button: {fileID: 3102596010140539042}
   _nameText: {fileID: 1513954411280456168}
   _descriptionText: {fileID: 6319863297475532515}
-  _image: {fileID: 17070317288076801}
+  _skillIcon: {fileID: 17070317288076801}
+  _skillBanner: {fileID: 4597329121942335982}

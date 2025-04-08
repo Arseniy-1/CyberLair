@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -22,7 +23,7 @@ public class SkillSelector : MonoBehaviour
 
     private void OnEnable()
     {
-        _applyButton.onClick.AddListener(OnApplyed);
+        _applyButton.onClick.AddListener(OnApplied);
 
         foreach (var skillView in _skillViews)
         {
@@ -32,7 +33,7 @@ public class SkillSelector : MonoBehaviour
 
     private void OnDisable()
     {
-        _applyButton.onClick.RemoveListener(OnApplyed);
+        _applyButton.onClick.RemoveListener(OnApplied);
 
         foreach (var skillView in _skillViews)
         {
@@ -69,7 +70,6 @@ public class SkillSelector : MonoBehaviour
 
     public void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
-        Time.timeScale = 0;
         gameObject.SetActive(true);
         _maxSelectedSkills = outputSkillsCount;
     
@@ -78,12 +78,9 @@ public class SkillSelector : MonoBehaviour
         if (inputSkillsCount == 0)
             return;
     
-        List<Skill> shuffledSkills = new List<Skill>(skills);
-        for (int i = shuffledSkills.Count - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            (shuffledSkills[i], shuffledSkills[j]) = (shuffledSkills[j], shuffledSkills[i]);
-        }
+        Time.timeScale = 0;
+        
+        List<Skill> shuffledSkills = skills.OrderBy( skill => Random.value ).ToList( );
     
         for (int i = 0; i < inputSkillsCount; i++)
         {
@@ -93,28 +90,25 @@ public class SkillSelector : MonoBehaviour
             switch (selectedSkill)
             {
                 case MutantSkill:
-                    _skillViews[i].SetSkill(shuffledSkills[i], _mutantBanner);
+                    _skillViews[i].SetSkill(selectedSkill, _mutantBanner);
                     break;
                 
                 case HardSkill:
-                    _skillViews[i].SetSkill(shuffledSkills[i], _hardBanner);
+                    _skillViews[i].SetSkill(selectedSkill, _hardBanner);
                     break;
                 
                 default:
-                    _skillViews[i].SetSkill(shuffledSkills[i], _defaultBanner);
+                    _skillViews[i].SetSkill(selectedSkill, _defaultBanner);
                     break;
             }
         }
     }
 
-    private void OnApplyed()
+    private void OnApplied()
     {
         HideSkills();
         
-        List<Skill> skills = new List<Skill>();
-
-        foreach (var skillView in _selectedSkills)
-            skills.Add(skillView.Skill);
+        List<Skill> skills = _selectedSkills.Select(skillView => skillView.Skill).ToList();
 
         _lastSelectedSkill = null;
         _selectedSkills = new List<SkillView>();
