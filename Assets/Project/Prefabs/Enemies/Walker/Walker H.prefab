@@ -146,12 +146,15 @@ MonoBehaviour:
     <JumpDistance>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
 --- !u!114 &442572439295423526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,9 +193,11 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 3
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 50
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <CollisionDamage>k__BackingField: 0
 --- !u!114 &3709468705532820958
 MonoBehaviour:
@@ -261,8 +266,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.2, y: 3.2, z: 3.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2522299794617721286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -307,7 +312,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1897556438, guid: 28293226c06dd49dd9c0995d054037bc, type: 3}
+  m_Sprite: {fileID: 1970125079, guid: a4a2fd25c8ec949fda2754e046dfd5fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

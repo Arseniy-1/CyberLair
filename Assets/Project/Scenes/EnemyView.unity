@@ -35215,6 +35215,7 @@ MonoBehaviour:
   _healAmount: 20
   _wavesConfigs:
   - {fileID: 11400000, guid: 0ff0dec2e9cbfd547b755362e955ff61, type: 2}
+  _cagePrefab: {fileID: 0}
 --- !u!114 &957021903894020399 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2698357796983621825, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28293226c06dd49dd9c0995d054037bc
+guid: a839c17d379934a4983ec3aea01849fe
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 376
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walker_0
+      name: Blight_0
       rect:
         serializedVersion: 2
-        x: 178
-        y: 63
-        width: 619
-        height: 849
+        x: 0
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad2c8c25c0dde449a8ced54b6bb7fd5b
-      internalID: -1897556438
+      spriteID: cdadc91569cee4d45b0b398413da7076
+      internalID: -1678185814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_1
+      name: Blight_1
       rect:
         serializedVersion: 2
-        x: 1203
-        y: 63
-        width: 614
-        height: 858
+        x: 256
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e753095ece3cc43e3b5c65e30c4b7c41
-      internalID: -40693059
+      spriteID: 40aabea781b4040d7a76c793f7084a69
+      internalID: 328969248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_2
+      name: Blight_2
       rect:
         serializedVersion: 2
-        x: 2233
-        y: 63
-        width: 594
-        height: 864
+        x: 512
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f845d22b90d424591933509eec45601a
-      internalID: 1391870457
+      spriteID: 03e8a5794ef754929b23e804066ac5b4
+      internalID: -804690183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_3
+      name: Blight_3
       rect:
         serializedVersion: 2
-        x: 3263
-        y: 62
-        width: 579
-        height: 875
+        x: 768
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73bce61ae7a4140e3a3b8d9c8f04e572
-      internalID: 1008091538
+      spriteID: 567dd20f00d7c4770a5ff9116852a239
+      internalID: -1063747665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_4
+      name: Blight_4
       rect:
         serializedVersion: 2
-        x: 4298
-        y: 72
-        width: 554
-        height: 875
+        x: 0
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0283e5fbcfff140169009f2896e9cd04
-      internalID: -1902810213
+      spriteID: 6c82e675b8abd4b7d985f8ce73f6b26a
+      internalID: -2010901733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_5
+      name: Blight_5
       rect:
         serializedVersion: 2
-        x: 5333
-        y: 72
-        width: 539
-        height: 890
+        x: 256
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 658377cb028254841baf981383acb02a
-      internalID: -1944909485
+      spriteID: 344fa7a3cdaac4a41aeb880ebc29591a
+      internalID: -326384499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_6
+      name: Blight_6
       rect:
         serializedVersion: 2
-        x: 6348
-        y: 72
-        width: 554
-        height: 875
+        x: 512
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dda919c9caec24e218c247b29f317adb
-      internalID: -692944599
+      spriteID: 54ba170c6a20346e8a8bd62f1a1f3507
+      internalID: 496003862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_7
+      name: Blight_7
       rect:
         serializedVersion: 2
-        x: 7358
-        y: 62
-        width: 579
-        height: 875
+        x: 768
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6168925c25724ca0a0ac14f9bb7549a
-      internalID: -1343681346
+      spriteID: 2b55ac5e9174f484da8eb4cc0d1aeacc
+      internalID: 2131109058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_8
+      name: Blight_8
       rect:
         serializedVersion: 2
-        x: 8378
-        y: 63
-        width: 594
-        height: 864
+        x: 0
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed86b6ba648384750945ed864a90dd0c
-      internalID: -157691148
+      spriteID: 74b3364f6618c450193436e45e16047d
+      internalID: 586986573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walker_9
+      name: Blight_9
       rect:
         serializedVersion: 2
-        x: 9393
-        y: 63
-        width: 614
-        height: 858
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,8 +326,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96fb8637f4cb3464c886d18d664cccb5
-      internalID: -842529632
+      spriteID: 032b3a6ddc84e4eae8c5ab43d9c2d5a5
+      internalID: 348454838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blight_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7922638e903444357b470dd2aa40bd2f
+      internalID: -674367613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blight_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43e3d64001ce8472b9ffb73230d4b131
+      internalID: 868551472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blight_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50757fb83111b46eb961478f40a3432e
+      internalID: -263002119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blight_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b15395a7297413891360548ae67028
+      internalID: -1129784310
       vertices: []
       indices: 
       edges: []
@@ -343,16 +427,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walker_0: -1897556438
-      Walker_1: -40693059
-      Walker_2: 1391870457
-      Walker_3: 1008091538
-      Walker_4: -1902810213
-      Walker_5: -1944909485
-      Walker_6: -692944599
-      Walker_7: -1343681346
-      Walker_8: -157691148
-      Walker_9: -842529632
+      Blight_0: -1678185814
+      Blight_1: 328969248
+      Blight_10: -674367613
+      Blight_11: 868551472
+      Blight_12: -263002119
+      Blight_13: -1129784310
+      Blight_2: -804690183
+      Blight_3: -1063747665
+      Blight_4: -2010901733
+      Blight_5: -326384499
+      Blight_6: 496003862
+      Blight_7: 2131109058
+      Blight_8: 586986573
+      Blight_9: 348454838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

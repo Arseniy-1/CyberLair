@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3a9f951f3a84946d6a0e690bab7dccfd
+guid: 7002e91d7562d438d81cf44713543e06
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 376
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Night Hawk_0
+      name: DoomguardAtlas_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 85
-        width: 840
-        height: 911
+        x: 0
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e305c8eb072e429292548367223534b
-      internalID: 86665942
+      spriteID: f30bc0cba8a594cafb620fe7ba6ac5da
+      internalID: 2137766329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_1
+      name: DoomguardAtlas_1
       rect:
         serializedVersion: 2
-        x: 1068
-        y: 84
-        width: 848
-        height: 912
+        x: 256
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce0ca12329adf4651b58928b1a64655b
-      internalID: -323163430
+      spriteID: aae2667511ed54c8491f471b2e27cbaf
+      internalID: 1658101573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_2
+      name: DoomguardAtlas_2
       rect:
         serializedVersion: 2
-        x: 2092
-        y: 84
-        width: 848
-        height: 912
+        x: 512
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acf3d7e2a8d364ded99b93d26878939d
-      internalID: 1541373239
+      spriteID: c63627b92a47247169db91a9b8e90c93
+      internalID: -1882213605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_3
+      name: DoomguardAtlas_3
       rect:
         serializedVersion: 2
-        x: 3108
-        y: 84
-        width: 856
-        height: 912
+        x: 768
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e31781eae356428294ac1ac0cdfcb5c
-      internalID: -2114738066
+      spriteID: 32914a568b57c41aaac57bcd0ea3b0e0
+      internalID: -1120144539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_4
+      name: DoomguardAtlas_4
       rect:
         serializedVersion: 2
-        x: 4132
-        y: 76
-        width: 856
-        height: 912
+        x: 0
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7188138a4d2fb4993aaf7bfa3cecd613
-      internalID: 1192639955
+      spriteID: e718d232e942b4c3baff52eedfca2021
+      internalID: 951091946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_5
+      name: DoomguardAtlas_5
       rect:
         serializedVersion: 2
-        x: 5148
-        y: 76
-        width: 856
-        height: 912
+        x: 256
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b09cfba7a5772482285171246d752203
-      internalID: -425769375
+      spriteID: 578c07f3f66d54573aae66fe83a80677
+      internalID: -1114427815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_6
+      name: DoomguardAtlas_6
       rect:
         serializedVersion: 2
-        x: 6172
-        y: 76
-        width: 856
-        height: 904
+        x: 512
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff7524ceee49a4c36ad32cb5d02b676a
-      internalID: 799595486
+      spriteID: 16afafadf8e414f05a77e177ef8eb3a2
+      internalID: -1713893331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_7
+      name: DoomguardAtlas_7
       rect:
         serializedVersion: 2
-        x: 7188
-        y: 68
-        width: 856
-        height: 904
+        x: 768
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae5e7177bdd274c538713f64759508bc
-      internalID: 1700255993
+      spriteID: e6feddd707a9742eabb6a2fd6b3fb910
+      internalID: -1338867534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_8
+      name: DoomguardAtlas_8
       rect:
         serializedVersion: 2
-        x: 8212
-        y: 76
-        width: 856
-        height: 896
+        x: 0
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f585ba658f64a4289b5bb1f2d7d7095e
-      internalID: -114622749
+      spriteID: 6cae8e2330d274b39b1027a051e53bc3
+      internalID: -672123323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Night Hawk_9
+      name: DoomguardAtlas_9
       rect:
         serializedVersion: 2
-        x: 9236
-        y: 68
-        width: 856
-        height: 904
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,134 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77b56f817a5664dbe8b3f1e6cc01a1d0
-      internalID: -525691450
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Night Hawk_10
-      rect:
-        serializedVersion: 2
-        x: 10268
-        y: 76
-        width: 856
-        height: 904
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7d5682a4b96048a2b5da00f2ec82f32
-      internalID: -1020411686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Night Hawk_11
-      rect:
-        serializedVersion: 2
-        x: 11292
-        y: 76
-        width: 856
-        height: 912
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95cffc2d637a444c7987d5a69e83a6ae
-      internalID: 660312681
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Night Hawk_12
-      rect:
-        serializedVersion: 2
-        x: 12324
-        y: 76
-        width: 856
-        height: 912
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98c3e6de569f64b34a4abefabd10665f
-      internalID: -1246865089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Night Hawk_13
-      rect:
-        serializedVersion: 2
-        x: 13348
-        y: 84
-        width: 856
-        height: 912
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5ac4b6b7cb9d4f5ca7c6dd8c05a7a08
-      internalID: -1994466325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Night Hawk_14
-      rect:
-        serializedVersion: 2
-        x: 14380
-        y: 84
-        width: 848
-        height: 912
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 545ecaec013044f5383ffdd3fb6b5da3
-      internalID: -816178951
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Night Hawk_15
-      rect:
-        serializedVersion: 2
-        x: 15404
-        y: 84
-        width: 848
-        height: 912
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 670fdf3ee698e4befa71da76ce7fe060
-      internalID: 1120529311
+      spriteID: bf09c8ace6317410ab603a5cfe4682cd
+      internalID: 228557204
       vertices: []
       indices: 
       edges: []
@@ -469,22 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Night Hawk_0: 86665942
-      Night Hawk_1: -323163430
-      Night Hawk_10: -1020411686
-      Night Hawk_11: 660312681
-      Night Hawk_12: -1246865089
-      Night Hawk_13: -1994466325
-      Night Hawk_14: -816178951
-      Night Hawk_15: 1120529311
-      Night Hawk_2: 1541373239
-      Night Hawk_3: -2114738066
-      Night Hawk_4: 1192639955
-      Night Hawk_5: -425769375
-      Night Hawk_6: 799595486
-      Night Hawk_7: 1700255993
-      Night Hawk_8: -114622749
-      Night Hawk_9: -525691450
+      DoomguardAtlas_0: 2137766329
+      DoomguardAtlas_1: 1658101573
+      DoomguardAtlas_2: -1882213605
+      DoomguardAtlas_3: -1120144539
+      DoomguardAtlas_4: 951091946
+      DoomguardAtlas_5: -1114427815
+      DoomguardAtlas_6: -1713893331
+      DoomguardAtlas_7: -1338867534
+      DoomguardAtlas_8: -672123323
+      DoomguardAtlas_9: 228557204
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

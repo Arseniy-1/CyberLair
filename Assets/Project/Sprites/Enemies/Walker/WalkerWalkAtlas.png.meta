@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c38fd810dc5704053b1b83d27d7e6600
+guid: a4a2fd25c8ec949fda2754e046dfd5fb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 350
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Doomguard_0
+      name: WalkerWalkAtlas_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 42
-        width: 509
-        height: 914
+        x: 0
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f21a120c85702431f97aacecd5730c3f
-      internalID: -1056258115
+      spriteID: 24be66eed93c54dcaa3ef8cdae17ad07
+      internalID: 1970125079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_1
+      name: WalkerWalkAtlas_1
       rect:
         serializedVersion: 2
-        x: 1223
-        y: 42
-        width: 519
-        height: 915
+        x: 256
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2f0688cc0e9c4e31b3e5c53d87ae9af
-      internalID: 1083648371
+      spriteID: 23d4aa5662b2a428285a474e36362924
+      internalID: 1553739077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_2
+      name: WalkerWalkAtlas_2
       rect:
         serializedVersion: 2
-        x: 2238
-        y: 42
-        width: 529
-        height: 919
+        x: 512
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ba9d5b9ecf27470cb288ef8daace341
-      internalID: 1910684162
+      spriteID: 9465dd7d65a004e90b616b8469faf7a0
+      internalID: 353853149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_3
+      name: WalkerWalkAtlas_3
       rect:
         serializedVersion: 2
-        x: 3253
-        y: 38
-        width: 534
-        height: 924
+        x: 768
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e1e8b7c79cc74c55ae17c15f7517d9f
-      internalID: 1285304716
+      spriteID: 1543dad8236a3412090e985c8556d7bb
+      internalID: -1839194225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_4
+      name: WalkerWalkAtlas_4
       rect:
         serializedVersion: 2
-        x: 4273
-        y: 38
-        width: 534
-        height: 928
+        x: 0
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d545877c018ba439b949f0370340f256
-      internalID: 1947204742
+      spriteID: 9257a34076b5f4ccd908f2e919fa6f1c
+      internalID: -1610099462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_5
+      name: WalkerWalkAtlas_5
       rect:
         serializedVersion: 2
-        x: 5293
-        y: 38
-        width: 539
-        height: 929
+        x: 256
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 673716ba366df427b9c9cbac872c6fdf
-      internalID: -468658686
+      spriteID: 898dcba9847de4fe6a08a8ce6d02df0f
+      internalID: 1522303048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_6
+      name: WalkerWalkAtlas_6
       rect:
         serializedVersion: 2
-        x: 6323
-        y: 38
-        width: 534
-        height: 928
+        x: 512
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c14830180e7974456b5058dcb547e1a3
-      internalID: -239808519
+      spriteID: f68b8baef0bf745d7b59f5ffa7104a9e
+      internalID: 1392808181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_7
+      name: WalkerWalkAtlas_7
       rect:
         serializedVersion: 2
-        x: 7350
-        y: 38
-        width: 535
-        height: 924
+        x: 768
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3467e17d8f6034635ac3aff21fd0754b
-      internalID: -1395743537
+      spriteID: e5c268bc7e44743b2b084905f697885b
+      internalID: 699631612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_8
+      name: WalkerWalkAtlas_8
       rect:
         serializedVersion: 2
-        x: 8383
-        y: 42
-        width: 529
-        height: 919
+        x: 0
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1069e49b79b424d3898bf378654c9829
-      internalID: -132400876
+      spriteID: 083fb1cac553749baaf16835429f061b
+      internalID: -78425878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Doomguard_9
+      name: WalkerWalkAtlas_9
       rect:
         serializedVersion: 2
-        x: 9418
-        y: 42
-        width: 519
-        height: 915
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,8 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3c85ddcda2c14131960a3c95c12b658
-      internalID: 1034357236
+      spriteID: 8dd616e12aa2a43b6919f5aaa981122a
+      internalID: -101781586
       vertices: []
       indices: 
       edges: []
@@ -343,16 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Doomguard_0: -1056258115
-      Doomguard_1: 1083648371
-      Doomguard_2: 1910684162
-      Doomguard_3: 1285304716
-      Doomguard_4: 1947204742
-      Doomguard_5: -468658686
-      Doomguard_6: -239808519
-      Doomguard_7: -1395743537
-      Doomguard_8: -132400876
-      Doomguard_9: 1034357236
+      WalkerWalkAtlas_0: 1970125079
+      WalkerWalkAtlas_1: 1553739077
+      WalkerWalkAtlas_2: 353853149
+      WalkerWalkAtlas_3: -1839194225
+      WalkerWalkAtlas_4: -1610099462
+      WalkerWalkAtlas_5: 1522303048
+      WalkerWalkAtlas_6: 1392808181
+      WalkerWalkAtlas_7: 699631612
+      WalkerWalkAtlas_8: -78425878
+      WalkerWalkAtlas_9: -101781586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

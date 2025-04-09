@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7475311435034593935}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -900228556, guid: c6fb9fcec47a84d5c8f3d71aab887c6f, type: 3}
+  m_Sprite: {fileID: 1583675424, guid: 61bab133c95d44085b264d9f24d5c54c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -268,12 +268,15 @@ MonoBehaviour:
     <JumpDistance>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
 --- !u!114 &836791218599047312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,9 +315,11 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <CollisionDamage>k__BackingField: 10
 --- !u!114 &8046208475861855243
 MonoBehaviour:

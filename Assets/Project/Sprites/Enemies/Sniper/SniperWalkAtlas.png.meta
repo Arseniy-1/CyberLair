@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 87dbb563e0dbd4f58a4dcf2d2bcceea1
+guid: 1b1e13d69c9c14f558cd74c079b0ff95
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 376
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kamikaze_0
+      name: SniperWalkAtlas_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4aedd694676c14a828fe050702164111
-      internalID: 1785193208
+      spriteID: 03f2bf7e2c85a46dfb652a67ab98657f
+      internalID: 277136907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_1
+      name: SniperWalkAtlas_1
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 1024
-        height: 1024
+        x: 256
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 944adab560d4e4fb69978dac9acba80e
-      internalID: -54328668
+      spriteID: 1cd59fc86634e4febb383c17dae73508
+      internalID: 5782441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_2
+      name: SniperWalkAtlas_2
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 1024
-        height: 1024
+        x: 512
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 250204b9c85f541e3b468797dfd0cb9c
-      internalID: 502578244
+      spriteID: a778cfc0a6bdc48848485e993a52c393
+      internalID: 1652314223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_3
+      name: SniperWalkAtlas_3
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 0
-        width: 1024
-        height: 1024
+        x: 768
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 432fd37ed18d74382a565102247dc41f
-      internalID: -268128167
+      spriteID: 1c0a7c5abecb044169a6b78a11570de6
+      internalID: -796730487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_4
+      name: SniperWalkAtlas_4
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 0
-        width: 1024
-        height: 1024
+        x: 0
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8bf01211963b4074b8cb4df199c4838
-      internalID: -1903817368
+      spriteID: bec5e2e48775847c7b5226cfbb436e80
+      internalID: 1387488983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_5
+      name: SniperWalkAtlas_5
       rect:
         serializedVersion: 2
-        x: 5120
-        y: 0
-        width: 1024
-        height: 1024
+        x: 256
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3514d9229d394ec6816c81dd57efa96
-      internalID: -1993276825
+      spriteID: f65bdf6236f5941708c7810c8fcc2ee5
+      internalID: -1657374152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_6
+      name: SniperWalkAtlas_6
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 0
-        width: 1024
-        height: 1024
+        x: 512
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bda5d6f0128834079b97658627e3d1dd
-      internalID: -1244221343
+      spriteID: 715fbc86d9fb249429e390e82f0f86e0
+      internalID: 726016206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_7
+      name: SniperWalkAtlas_7
       rect:
         serializedVersion: 2
-        x: 7168
-        y: 0
-        width: 1024
-        height: 1024
+        x: 768
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1766c6230c8ea4f8d9dee83c608f7e9f
-      internalID: 938183666
+      spriteID: bb28c263ca15d44f090fe50733ddc07c
+      internalID: 1434090312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_8
+      name: SniperWalkAtlas_8
       rect:
         serializedVersion: 2
-        x: 8192
-        y: 0
-        width: 1024
-        height: 1024
+        x: 0
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbca6b0aa45254d07aeca1b2ebae7220
-      internalID: -84214876
+      spriteID: c292ee339597643ec955105d195a941a
+      internalID: 45487624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kamikaze_9
+      name: SniperWalkAtlas_9
       rect:
         serializedVersion: 2
-        x: 9216
-        y: 0
-        width: 1024
-        height: 1024
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,92 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb8ae4f36c1dd4f1abf385efeb765e38
-      internalID: -2091024730
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kamikaze_10
-      rect:
-        serializedVersion: 2
-        x: 10240
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdbf863d132684848b41d7fc92c5eac8
-      internalID: 1296783076
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kamikaze_11
-      rect:
-        serializedVersion: 2
-        x: 11264
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ca31a8a45f99b43d9a2d4a1fbda0acb5
-      internalID: 509983287
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kamikaze_12
-      rect:
-        serializedVersion: 2
-        x: 12288
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c29e91193dac64150a7d27ccb104ba90
-      internalID: -1169511748
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kamikaze_13
-      rect:
-        serializedVersion: 2
-        x: 13312
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94f1cdbaf3b73496ca50a1d0e4e83384
-      internalID: -793367528
+      spriteID: 779cb546f8ace4bac9eb5cfe9125a7a9
+      internalID: 1982358929
       vertices: []
       indices: 
       edges: []
@@ -427,20 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Kamikaze_0: 1785193208
-      Kamikaze_1: -54328668
-      Kamikaze_10: 1296783076
-      Kamikaze_11: 509983287
-      Kamikaze_12: -1169511748
-      Kamikaze_13: -793367528
-      Kamikaze_2: 502578244
-      Kamikaze_3: -268128167
-      Kamikaze_4: -1903817368
-      Kamikaze_5: -1993276825
-      Kamikaze_6: -1244221343
-      Kamikaze_7: 938183666
-      Kamikaze_8: -84214876
-      Kamikaze_9: -2091024730
+      SniperWalkAtlas_0: 277136907
+      SniperWalkAtlas_1: 5782441
+      SniperWalkAtlas_2: 1652314223
+      SniperWalkAtlas_3: -796730487
+      SniperWalkAtlas_4: 1387488983
+      SniperWalkAtlas_5: -1657374152
+      SniperWalkAtlas_6: 726016206
+      SniperWalkAtlas_7: 1434090312
+      SniperWalkAtlas_8: 45487624
+      SniperWalkAtlas_9: 1982358929
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
