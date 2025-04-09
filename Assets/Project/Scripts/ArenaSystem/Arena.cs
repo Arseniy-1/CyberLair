@@ -21,7 +21,7 @@ namespace Project.Scripts.ArenaSystem
         
         [SerializeField] private Cage _cagePrefab;
         
-        private readonly CompositeDisposable _disposable;
+        private readonly CompositeDisposable _disposable = new();
         
         private Queue<Wave> _waves;
         private Transform _playerTransform;
@@ -33,11 +33,12 @@ namespace Project.Scripts.ArenaSystem
         public void Initialize(Queue<Wave> waves, Transform playerTransform)
         {
             _waves = waves;
+            _playerTransform = playerTransform;
             
             _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
             _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);
             
-            MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => SpawnCage())
+            MessageBrokerHolder.Enemy.Receive<M_BossSpawned>().Subscribe((message) => SpawnCage())
                 .AddTo(_disposable);
         }
 
