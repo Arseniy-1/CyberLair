@@ -1,27 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses
 {
     public abstract class ColliderAttack : BossAttack
     {
-        [SerializeField] private Collider2D _hitbox;
-        [SerializeField] private ContactFilter2D _filter;
+        [SerializeField] private Vector2 _offset;
+        [SerializeField] private Vector2 _size;
+        [SerializeField] private LayerMask _layerMask;
 
         protected override void Disable()
         {
             View.gameObject.SetActive(false);
-            _hitbox.enabled = false;
         }
 
         protected override IEnumerator Attack()
         {
-            List<Collider2D> affectedColliders = new();
-            
-            _hitbox.enabled = true;
-            Physics2D.OverlapCollider(_hitbox, _filter, affectedColliders);
-            _hitbox.enabled = false;
+            List<Collider2D> affectedColliders = Physics2D
+                .OverlapBoxAll((Vector2)transform.position + _offset, _size, _layerMask).ToList();
 
             foreach (Collider2D collider in affectedColliders)
             {
@@ -32,6 +30,13 @@ namespace Project.Scripts.EnemySystem.Bosses
             Disable();
             
             yield return null;
+        }
+
+        protected void OnDrawGizmos()
+        {
+            Gizmos.color = Color.magenta;
+            
+            Gizmos.DrawWireCube((Vector2)transform.position + _offset, _size);
         }
     }
 }

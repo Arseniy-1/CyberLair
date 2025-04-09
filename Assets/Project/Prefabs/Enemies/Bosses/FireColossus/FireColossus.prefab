@@ -297,7 +297,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1697982919551818061}
   - component: {fileID: 8404616166681584264}
-  - component: {fileID: 4831708927947466481}
   m_Layer: 3
   m_Name: FireAreaAttack
   m_TagString: Untagged
@@ -344,56 +343,11 @@ MonoBehaviour:
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 1
   <CoolDawn>k__BackingField: 20
-  _hitbox: {fileID: 4831708927947466481}
-  _filter:
-    useTriggers: 1
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 512
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
---- !u!70 &4831708927947466481
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5847787316395809709}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
+  _offset: {x: 0, y: 0}
+  _size: {x: 26.68, y: 17.9}
+  _layerMask:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0000011966256, y: 0}
-  m_Size: {x: 1.01, y: 1.01}
-  m_Direction: 1
+    m_Bits: 512
 --- !u!1 &6000014777496233194
 GameObject:
   m_ObjectHideFlags: 0
