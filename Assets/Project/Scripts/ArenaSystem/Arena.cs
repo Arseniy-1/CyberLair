@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UniRx;
 
 namespace Project.Scripts.ArenaSystem
 {
@@ -17,19 +18,27 @@ namespace Project.Scripts.ArenaSystem
         [SerializeField] private int _healAmount;
         
         [SerializeField] private List<WaveConfig> _wavesConfigs;
-
+        
+        [SerializeField] private Cage _cagePrefab;
+        
+        private readonly CompositeDisposable _disposable;
+        
         private Queue<Wave> _waves;
-
+        private Transform _playerTransform;
+        
         public event Action WavesDone;
         
         public IReadOnlyList<WaveConfig> WavesConfigs => _wavesConfigs;
 
-        public void Initialize(Queue<Wave> waves)
+        public void Initialize(Queue<Wave> waves, Transform playerTransform)
         {
             _waves = waves;
             
             _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
             _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);
+            
+            MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => SpawnCage())
+                .AddTo(_disposable);
         }
 
         public void Work()
@@ -57,6 +66,11 @@ namespace Project.Scripts.ArenaSystem
             wave.OnWaveFinished -= HandleWavesEnd;
 
             StartNewWave();
+        }
+
+        private void SpawnCage()
+        {
+            Instantiate(_cagePrefab, _playerTransform.position, Quaternion.identity);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Project.Scripts.CompositionRoot
             var waves = new Queue<Wave>(_arena.WavesConfigs
                 .Select(config => new Wave(config, _mainEnemySpawner, _edgeSpawner.EdgeObjects.ToList())).ToList());
 
-            _arena.Initialize(waves);
+            _arena.Initialize(waves, _player.transform);
             _arena.Work();
             
             _level.Initialize(_player.ExperienceStorage);

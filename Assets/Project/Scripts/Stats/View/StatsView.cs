@@ -6,7 +6,8 @@ public abstract class StatsView : MonoBehaviour
 
     private void OnDisable()
     {
-        _stats.AmountChanged -= ShowStats;
+        if(_stats != null)
+            _stats.AmountChanged -= ShowStats;
     }
 
     public void Initialize(BaseStat stats)
