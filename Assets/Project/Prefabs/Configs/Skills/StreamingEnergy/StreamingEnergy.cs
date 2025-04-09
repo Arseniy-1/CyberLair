@@ -27,7 +27,7 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Enemy enemy) & (_targetLayer << collision.gameObject.layer) != 0)
+        if (collision.TryGetComponent(out Enemy enemy))
         {
             _enemies.Add(enemy);
         }
@@ -35,7 +35,7 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Enemy enemy) & (_targetLayer << collision.gameObject.layer) != 0)
+        if (collision.TryGetComponent(out Enemy enemy))
         {
             _enemies.Remove(enemy);
         }
@@ -61,6 +61,7 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
         while (isActiveAndEnabled)
         {
             ApplyStun();
+            
             yield return new WaitForSeconds(_stunInterval);
         }
     }
@@ -68,6 +69,7 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
     private IEnumerator WaitingDestroy()
     {
         yield return new WaitForSeconds(_lifeTime);
+        
         OnDestroyed?.Invoke(this);
     }
 }
