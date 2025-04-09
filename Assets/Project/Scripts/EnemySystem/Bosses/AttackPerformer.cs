@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses
 {
     public class AttackPerformer
     {
-        private CancellationTokenSource _cancellationToken;
+        private readonly CancellationTokenSource _cancellationToken;
         private readonly Queue<BossAttack> _attacksOrder;
         private readonly List<BossAttack> _attacks;
 
@@ -15,11 +16,13 @@ namespace Project.Scripts.EnemySystem.Bosses
         {
             _attacksOrder = attacksOrder;
             _attacks = attacks;
+            
+            _cancellationToken = new CancellationTokenSource();
         }
 
         public void Start()
         {
-            PerformingAttack();
+            PerformingAttack().Forget();
         }
 
         public void Disable()
@@ -29,7 +32,7 @@ namespace Project.Scripts.EnemySystem.Bosses
         
         private async UniTaskVoid PerformingAttack()
         {
-            while(_cancellationToken.Token.IsCancellationRequested == false)
+            while(_cancellationToken.IsCancellationRequested == false)
             {
                 foreach (BossAttack attack in _attacks)
                 {
@@ -39,6 +42,8 @@ namespace Project.Scripts.EnemySystem.Bosses
                     
                     _attacksOrder.Enqueue(attack);
                 }
+                
+                await UniTask.Yield();
             }
         }
     }

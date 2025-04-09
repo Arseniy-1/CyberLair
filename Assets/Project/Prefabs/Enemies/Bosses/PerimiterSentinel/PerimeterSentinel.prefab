@@ -787,15 +787,17 @@ MonoBehaviour:
   _enemyTargetProvider: {fileID: 8954570385825564128}
   _attackDistance: 6
   _view: {fileID: 4548246736520012204}
-  <EnemyType>k__BackingField: 9
+  <EnemyType>k__BackingField: 8
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 60
       <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <CollisionDamage>k__BackingField: 0
 --- !u!114 &933088573023203972
 MonoBehaviour:
