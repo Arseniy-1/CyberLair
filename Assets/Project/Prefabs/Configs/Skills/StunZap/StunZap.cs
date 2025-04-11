@@ -2,6 +2,7 @@ using System;
 using Project.Prefabs.Configs.Skills.StunZap;
 using System.Collections.Generic;
 using Project.Prefabs.Configs.Skills.Durability;
+using Project.Scripts.EnemySystem;
 
 [Serializable]
 public class StunZap : ISkillInstance
@@ -39,6 +40,9 @@ public class StunZap : ISkillInstance
 
     private void StunEnemy(IDamageable damageable)
     {
+        if (damageable is Enemy enemy && Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+            return;
+        
         (damageable as IStunable)?.TakeStun(_stunDuration);
     }
 }

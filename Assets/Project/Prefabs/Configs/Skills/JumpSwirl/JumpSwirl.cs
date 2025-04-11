@@ -1,11 +1,13 @@
+using System;
+using Project.Scripts.EnemySystem;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.JumpSwirl
 {
     public class JumpSwirl : ISkillInstance
     {
-        private SkillData _skillData;
-        private JumpSwirlSkill _skill;
+        private readonly SkillData _skillData;
+        private readonly JumpSwirlSkill _skill;
 
         public JumpSwirl(SkillData skillData, JumpSwirlSkill skill)
         {
@@ -23,17 +25,20 @@ namespace Project.Prefabs.Configs.Skills.JumpSwirl
         private void HandleJump()
         {
             var playerPosition = _skillData.PlayerJumper.transform.position;
-            var enemies = Physics2D.OverlapCircleAll(playerPosition, _skill.KnockbackRadius, _skill.EnemyLayer);
+            var affectedColliders = Physics2D.OverlapCircleAll(playerPosition, _skill.KnockbackRadius, _skill.EnemyLayer);
 
-            foreach (var enemy in enemies)
+            foreach (var collider in affectedColliders)
             {
-                if (enemy.TryGetComponent(out IStunable stunable))
-                {
-                    stunable.TakeStun(_skill.StunTime);
+                if (!collider.TryGetComponent(out Enemy enemy))
+                    continue;
+                
+                if (Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+                    return;
+                    
+                enemy.TakeStun(_skill.StunTime);
                  
-                    Vector2 knockbackDirection = (enemy.transform.position - playerPosition).normalized;
-                    stunable.Rigidbody2D.AddForce(knockbackDirection * _skill.KnockbackForce, ForceMode2D.Impulse);
-                }
+                Vector2 knockbackDirection = ((Vector3)enemy.Position - playerPosition).normalized;
+                enemy.Rigidbody2D.AddForce(knockbackDirection * _skill.KnockbackForce, ForceMode2D.Impulse);
             }
         }
     }

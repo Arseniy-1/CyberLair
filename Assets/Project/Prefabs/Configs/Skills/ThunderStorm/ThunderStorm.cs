@@ -1,20 +1,19 @@
+using System;
 using System.Linq;
 using Project.Scripts.EnemySystem;
 using Project.Scripts.Weapon.ActiveSkills;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Project.Prefabs.Configs.Skills.ThunderStorm
 {
     public class ThunderStorm : ISkillInstance
     {
         private readonly float _chance;
-        private readonly EnemyTypes[] _bannedTypes;
         private readonly Thunder _thunder;
 
         public ThunderStorm(ThunderStormSkill skill, Thunder thunder)
         {
             _chance = skill.Chance;
-            _bannedTypes = skill.BannedTypes;
             _thunder = thunder;
 
             _thunder.EnemyStruck += CriticalStrike;
@@ -30,7 +29,7 @@ namespace Project.Prefabs.Configs.Skills.ThunderStorm
             if (Random.value > _chance)
                 return;
 
-            if (_bannedTypes.Contains(enemy.EnemyType))
+            if (Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
                 return;
 
             enemy.Die();

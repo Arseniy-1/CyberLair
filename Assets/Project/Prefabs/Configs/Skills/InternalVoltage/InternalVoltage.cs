@@ -1,5 +1,6 @@
 using System;
 using Project.Prefabs.Configs.Skills.Durability;
+using Project.Scripts.EnemySystem;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -42,10 +43,13 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
 
             foreach (Collider2D strickenCollider in colliders)
             {
-                if (strickenCollider.TryGetComponent(out IStunable affected))
-                {
-                    affected.TakeStun(_stunTime);
-                }
+                if (!strickenCollider.TryGetComponent(out Enemy enemy))
+                    continue;
+                
+                if (Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+                    continue;
+                    
+                enemy.TakeStun(_stunTime);
             }
         }
 

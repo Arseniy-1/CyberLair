@@ -2,31 +2,28 @@
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using DG.Tweening;
-using Project.Prefabs.Configs.Skills.Durability;
 using Project.Prefabs.Configs.Skills.Zap;
 using Project.Scripts.Weapon;
 using Random = UnityEngine.Random;
 
 public class ChainZap : ISkillInstance
 {
-    private float _chainRadius;
-    private int _maxBounces;
-    private float _damageFalloff;
-    private ChainZapView _zapView;
-    private LayerMask _enemyLayer;
-    private int _segments;
-    private float _chance;
-    private StatModifier _enemySpeedModifier;
+    private readonly float _chainRadius;
+    private readonly int _maxBounces;
+    private readonly float _damageFalloff;
+    private readonly LayerMask _enemyLayer;
+    private readonly int _segments;
+    private readonly float _chance;
+    private readonly StatModifier _enemySpeedModifier;
 
-    private Weapon _weapon;
-    private ChainZapViewSpawner _viewSpawner;
+    private readonly Weapon _weapon;
+    private readonly ChainZapViewSpawner _viewSpawner;
 
     public ChainZap(SkillData skillData, IChainZapStats stats)
     {
         _chainRadius = stats.ChainRadius;
         _maxBounces = stats.MaxBounces;
         _damageFalloff = stats.DamageFalloff;
-        _zapView = stats.ZapView;
         _enemyLayer = stats.EnemyLayer;
         _segments = stats.Segments;
         _chance = stats.Chance;
@@ -35,7 +32,8 @@ public class ChainZap : ISkillInstance
         _weapon = skillData.WeaponHolder.Weapon;
         _weapon.Shooted += InnerSubscribe;
 
-        _viewSpawner = new ChainZapViewSpawner(_zapView, 0);
+        ChainZapView zapView = stats.ZapView;
+        _viewSpawner = new ChainZapViewSpawner(zapView, 0);
     }   
 
     public void Disable()
@@ -116,7 +114,6 @@ public class ChainZap : ISkillInstance
             point += Vector2.Perpendicular(end - start).normalized * offset;
             view.ZapView.SetPosition(i, point);
         }
-
 
         view.ZapView.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
         

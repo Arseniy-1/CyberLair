@@ -49,8 +49,11 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
 
     private void ApplyStun()
     {
-        foreach (var enemy in _enemies)
+        foreach (Enemy enemy in _enemies)
         {
+            if (Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+                continue;
+            
             enemy.TakeStun(_stunDuration);
             enemy.EnemyStats.Speed.AddModifier(_speedModifier.Copy());
         }
