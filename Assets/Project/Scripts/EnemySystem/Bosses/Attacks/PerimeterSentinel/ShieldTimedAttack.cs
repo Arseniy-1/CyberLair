@@ -23,7 +23,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             Disable();
         }
 
-        protected override void Disable()
+        public override void Disable()
         {
             if (_timerCoroutine != null)
             {

@@ -1,10 +1,13 @@
 using System.Collections;
+using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 {
     public class ShakeAttack : SpawnAttack<Shake>
     {
+        [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+        
         public override void Initialize()
         {
             BossAttackAnimationTrigger = Animator.StringToHash("ShakeAttack");
@@ -18,6 +21,8 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         {
             View.gameObject.SetActive(true);
             AttackAnimator.SetTrigger(AttackTrigger);
+            
+            MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
 
             for (int i = 0; i < ObjectCount; i++)
             {

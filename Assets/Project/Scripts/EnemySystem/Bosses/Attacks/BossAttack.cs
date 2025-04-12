@@ -22,7 +22,7 @@ namespace Project.Scripts.EnemySystem.Bosses
 
         public abstract void Initialize();
         
-        protected abstract void Disable();
+        public abstract void Disable();
         
         public IEnumerator Performing()
         {

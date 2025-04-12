@@ -1,4 +1,5 @@
 using System.Collections;
+using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
@@ -7,6 +8,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
     {
         [SerializeField] private EnemyCollisionHandler _laser;
         [SerializeField] private Collider2D _collider;
+        [SerializeField] private CameraShakeSettings _cameraShakeSettings;
 
         public override void Initialize()
         {
@@ -21,12 +23,14 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         {   
             _collider.enabled = true;
             
+            MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
+            
             yield return new WaitUntil(() => IsAttacking == false);
             
             Disable();
         }
 
-        protected override void Disable()
+        public override void Disable()
         {
             _collider.enabled = false;
             View.enabled = false;

@@ -1,5 +1,6 @@
 using System;
 using Project.Scripts.EnemySystem;
+using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,6 +14,7 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
         private float _damageProportion;
         private float _chance;
 
+        private CameraShakeSettings _shakeSettings;
         private IWeaponStats _weaponStats;
         private SkillData _skillData;
         
@@ -20,11 +22,13 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
         {
             skillData.WeaponHolder.Weapon.Shooted += InnerSubscribe;
 
-            _weaponStats = skillData.WeaponHolder.Weapon.WeaponStats;
             _radius = affectedAreaSkill.Radius;
             _layerMask = affectedAreaSkill.LayerMask;
             _damageProportion = affectedAreaSkill.DamageProportion;
             _chance = affectedAreaSkill.Chance;
+            
+            _shakeSettings = affectedAreaSkill.ShakeSettings;
+            _weaponStats = skillData.WeaponHolder.Weapon.WeaponStats;
             _skillData = skillData;
         }
 
@@ -49,6 +53,8 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
                     affectedEnemy.TakeDamage(_weaponStats.WeaponDamage.CurrentValue * _damageProportion);
                 }
             }
+            
+            MessageBrokerHolder.Camera.Publish(new M_CameraShake(_shakeSettings));
         }
 
         public void Disable()

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
@@ -17,7 +16,7 @@ namespace Project.Scripts.EnemySystem.Bosses
 
         public abstract override void Initialize();
 
-        protected override void Disable()
+        public override void Disable()
         {
             View.gameObject.SetActive(false);
             

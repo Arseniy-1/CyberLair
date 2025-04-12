@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.EnemySystem.AttackTypes;
+using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses
@@ -26,6 +27,8 @@ namespace Project.Scripts.EnemySystem.Bosses
         {
             _onceAttacksPerformer.Disable();
             _timeAttacksPerformer.Disable();
+            
+            _currentAttack.Disable();
         }
 
         public override void Initialize(EnemyTargetProvider enemyTargetProvider)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses
@@ -10,8 +11,9 @@ namespace Project.Scripts.EnemySystem.Bosses
         [SerializeField] private Vector2 _offset;
         [SerializeField] private Vector2 _size;
         [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private CameraShakeSettings _cameraShakeSettings;
 
-        protected override void Disable()
+        public override void Disable()
         {
             View.gameObject.SetActive(false);
         }
@@ -20,6 +22,8 @@ namespace Project.Scripts.EnemySystem.Bosses
         {
             List<Collider2D> affectedColliders = Physics2D
                 .OverlapBoxAll((Vector2)transform.position + _offset, _size, _layerMask).ToList();
+            
+            MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
 
             foreach (Collider2D collider in affectedColliders)
             {

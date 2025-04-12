@@ -1,7 +1,6 @@
 using DG.Tweening;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using UniRx;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DefaultNamespace.Tween
@@ -9,21 +8,16 @@ namespace DefaultNamespace.Tween
     public class CameraShaker : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
-
-        [Header("Shake Settings")]
-        [SerializeField] private float _duration;
-        [SerializeField] private float _strength;
-        [SerializeField] private int _vibrato;
-        [SerializeField] private float _randomness;
         
-        private Vector3 _originalPosition;
         private CompositeDisposable _disposable;
+        private Transform _cameraTransform;
 
         private void OnEnable()
         {
             _disposable = new CompositeDisposable();
+            _cameraTransform = _camera.transform;
             
-            MessageBrokerHolder.Enemy.Receive<CameraShakeMessage>().Subscribe(_ => Shake())
+            MessageBrokerHolder.Camera.Receive<M_CameraShake>().Subscribe(Shake)
                 .AddTo(_disposable);
         }
 
@@ -32,12 +26,13 @@ namespace DefaultNamespace.Tween
             _disposable.Dispose();
         }
 
-        private void Shake()
+        private void Shake(M_CameraShake settings)
         {
-            _originalPosition = _camera.transform.localPosition;
+            Vector3 originalPosition = _cameraTransform.localPosition;
             
-            _camera.transform.DOShakePosition(_duration, _strength, _vibrato, _randomness)
-                .OnComplete(() => _camera.transform.localPosition = _originalPosition);
+            _camera.transform.DOShakePosition(settings.ShakeSettings.Duration,
+                    settings.ShakeSettings.Strength, settings.ShakeSettings.Vibrato, settings.ShakeSettings.Randomness)
+                .OnComplete(() => _cameraTransform.localPosition = originalPosition);
         }
     }
 }
