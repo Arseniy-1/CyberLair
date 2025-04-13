@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/BannerTest.unity
     guid: 0a6e8a2c83b7949fa9798dc0995f9c86
+  - enabled: 1
+    path: Assets/Project/Scenes/Menu.unity
+    guid: 9764968bd0b03bb4f80a269a29f7a1d7
+  - enabled: 1
+    path: Assets/Project/Scenes/Main.unity
+    guid: fde8568b48a040d459f2cf8072fc7534
   m_configObjects: {}

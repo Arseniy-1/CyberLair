@@ -15,44 +15,19 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: -4304947118811211038, guid: 6048dee4b8fa34db68c58b2ca18955a2, type: 3}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: _enemies
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Project.Scripts.EnemySystem.Enemy,
-        Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Project.Scripts.EnemySystem.Enemy,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 0
-    - Name: $v
-      Entry: 3
-      Data: 20
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
+  _enemiesWeights: []
+  _boss: {fileID: 0}
+  _spawnClusterSize: {x: 1, y: 4}
   _waveDuration: 20
   _spawnDuration: 1.5
+  _enemyStatModifiers:
+    <Value>k__BackingField: 0
+    <Type>k__BackingField: 0
+    <Duration>k__BackingField: 0
+    _elapsedTime: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.ArenaSystem;
@@ -80,11 +81,21 @@ namespace Project.Scripts.CompositionRoot
                 return;
             
             _player.PlayerStats.Health.Heal(_player.PlayerStats.Health.MaxHealth);
+            StartCoroutine(GivePlayerInvulnerability(_player));
             
             Time.timeScale = 1;
             
             _gameCanvas.gameObject.SetActive(true);
             _endGameCanvas.gameObject.SetActive(false);
+        }
+
+        private IEnumerator GivePlayerInvulnerability(Player player)
+        {
+            float invulnerabilityTime = 1.5f;
+            
+            player.Collider2D.enabled = false;
+            yield return new WaitForSeconds(invulnerabilityTime);
+            player.Collider2D.enabled = true;
         }
         
         private void OnRewarded(int id)

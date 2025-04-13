@@ -25,3 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 28fc9838c81b24ed18d68d5f4b66ff3a, type: 2}
   - {fileID: 11400000}
   <FireZonePrefab>k__BackingField: {fileID: 9040316264659818666, guid: 78e6c3f922bf5e74ba479b9f9f58783b, type: 3}
+  <SpawnChance>k__BackingField: 0.2

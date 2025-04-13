@@ -17,7 +17,6 @@ namespace Project.Scripts.Weapon
         protected bool _isReloaded;
         protected IWeaponStats _weaponStats;
 
-        public bool IsReloaded => _isReloaded;
         public IWeaponStats WeaponStats => _weaponStats;
         public event Action<Bullet> Shooted;
 
@@ -47,18 +46,18 @@ namespace Project.Scripts.Weapon
 
         public abstract bool TryAttack();
 
-        protected virtual void Reload()
+        protected void Reload()
         {
             _currentTime = 0;
             _isReloaded = true;
         }
 
-        protected virtual void Attack()
+        protected void Attack()
         {
             for (int i = 0; i < _weaponStats.BulletPerShootCount.CurrentValue; i++)
             {
                 Bullet bullet = _ammoSpawner.Spawn();
-                bullet.Init(_shootPoint.position, GetBulletDirection(), (int)(_weaponStats.WeaponDamage.CurrentValue));
+                bullet.Init(_shootPoint.position, GetBulletDirection(), (int)_weaponStats.WeaponDamage.CurrentValue);
 
                 Shooted?.Invoke(bullet);
 
@@ -66,7 +65,7 @@ namespace Project.Scripts.Weapon
             }
         }
 
-        protected virtual Quaternion GetBulletDirection()
+        protected Quaternion GetBulletDirection()
         {
             Quaternion rotation = transform.rotation;
             rotation.z += Random.Range(-_weaponStats.WeaponSpread.CurrentValue, _weaponStats.WeaponSpread.CurrentValue);

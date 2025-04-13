@@ -1,7 +1,4 @@
 using System;
-using Project.Prefabs.Configs.Skills.Durability;
-using Project.Scripts.Weapon;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Project.Prefabs.Configs.Skills.FireZone
@@ -19,7 +16,8 @@ namespace Project.Prefabs.Configs.Skills.FireZone
         public FireZoneManager(SkillData skillData, FireZoneSkill fireZoneSkill)
         {
             _skillData = skillData;
-            
+
+            _chance = fireZoneSkill.SpawnChance;
             _fireZoneSpawner = new FireZoneSpawner(fireZoneSkill.FireZonePrefab);
             skillData.WeaponHolder.Weapon.Shooted += OnShot;
         }

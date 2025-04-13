@@ -32,7 +32,7 @@ namespace Project.Prefabs.Configs.Skills.JumpSwirl
                 if (!collider.TryGetComponent(out Enemy enemy))
                     continue;
                 
-                if (Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+                if (Enum.IsDefined(typeof(BossTypes), (BossTypes)(int)enemy.EnemyType))
                     return;
                     
                 enemy.TakeStun(_skill.StunTime);

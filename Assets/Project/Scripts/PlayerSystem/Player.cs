@@ -5,7 +5,6 @@ using System;
 using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
@@ -31,6 +30,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
+    public Collider2D Collider2D => _collider;
     public ExperienceStorage ExperienceStorage => _experienceStorage;
 
     public bool IsStunned { get; private set; } = false;

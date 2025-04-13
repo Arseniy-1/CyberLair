@@ -20,7 +20,7 @@ MonoBehaviour:
     <Icon>k__BackingField: {fileID: 21300000, guid: 06ad5f942cb094272b92a96319b2e4cc, type: 3}
   <ChainRadius>k__BackingField: 10
   <MaxBounces>k__BackingField: 10
-  <DamageFalloff>k__BackingField: 0.1
+  <DamageFalloff>k__BackingField: 0.5
   <ZapView>k__BackingField: {fileID: 1801309511109169991, guid: 665688c73c4abd4489377eadcb9465f7, type: 3}
   <EnemyLayer>k__BackingField:
     serializedVersion: 2
@@ -28,7 +28,7 @@ MonoBehaviour:
   <Segments>k__BackingField: 20
   <Chance>k__BackingField: 1
   <EnemySpeedModifier>k__BackingField:
-    <Value>k__BackingField: 0.5
+    <Value>k__BackingField: 0.1
     <Type>k__BackingField: 1
-    <Duration>k__BackingField: 1
+    <Duration>k__BackingField: 0.3
     _elapsedTime: 0

@@ -28,13 +28,13 @@ public class ChainZap : ISkillInstance
         _segments = stats.Segments;
         _chance = stats.Chance;
         _enemySpeedModifier = stats.EnemySpeedModifier;
-        
+
         _weapon = skillData.WeaponHolder.Weapon;
         _weapon.Shooted += InnerSubscribe;
 
         ChainZapView zapView = stats.ZapView;
         _viewSpawner = new ChainZapViewSpawner(zapView, 0);
-    }   
+    }
 
     public void Disable()
     {
@@ -49,7 +49,7 @@ public class ChainZap : ISkillInstance
     private void CastLightning(Bullet bullet)
     {
         bullet.OnDestroyed -= CastLightning;
-        
+
         if (Random.value > _chance)
             return;
 
@@ -65,10 +65,12 @@ public class ChainZap : ISkillInstance
             hitTargets.Add(currentTarget);
 
             currentTarget.TakeDamage(_weapon.WeaponStats.WeaponDamage.CurrentValue * Mathf.Pow(_damageFalloff, bounce));
-            currentTarget.EnemyStats.Speed.AddModifier(_enemySpeedModifier.Copy());
 
             if (bounce != 0)
+            {
+                currentTarget.EnemyStats.Speed.AddModifier(_enemySpeedModifier.Copy());
                 DrawLightning(currentPosition, currentTarget.transform.position, bullet);
+            }
 
             currentPosition = currentTarget.transform.position;
             currentTarget = FindClosestTarget(currentPosition, hitTargets);
@@ -87,7 +89,7 @@ public class ChainZap : ISkillInstance
             if (hit.TryGetComponent(out Enemy target) && !excludedTargets.Contains(target))
             {
                 float distance = Vector2.Distance(position, target.transform.position);
-                
+
                 if (distance < closestDistance)
                 {
                     closestTarget = target;
@@ -110,13 +112,13 @@ public class ChainZap : ISkillInstance
             float t = i / (float)(_segments - 1);
             Vector2 point = Vector2.Lerp(start, end, t);
             float offset = Random.Range(-0.2f, 0.2f);
-            
+
             point += Vector2.Perpendicular(end - start).normalized * offset;
             view.ZapView.SetPosition(i, point);
         }
 
         view.ZapView.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
-        
+
         float duration = 0.2f;
         view.ZapView.material.DOFade(0f, duration).SetEase(Ease.InOutFlash).OnComplete(() =>
         {

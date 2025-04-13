@@ -2,11 +2,10 @@
 using System.Collections;
 using Project.Scripts.Weapon;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class IncrementalReloadWeapon : Weapon
 {
-    [SerializeField] private int currentCurrentMagazineSize;
+    [SerializeField] private int currentMagazineSize;
 
     private Coroutine _reloadCoroutine;
 
@@ -16,19 +15,19 @@ public class IncrementalReloadWeapon : Weapon
     public event Action<int, int> OnAmmoUpdated;
 
     public bool IsReloading { get; private set; }
-    public int CurrentMagazineSize => currentCurrentMagazineSize;
+    public int CurrentMagazineSize => currentMagazineSize;
 
     public override void Initialize(IWeaponStats weaponStats)
     {
         base.Initialize(weaponStats);
-        currentCurrentMagazineSize = _magazineSize;
+        currentMagazineSize = _magazineSize;
 
-        OnAmmoUpdated?.Invoke(currentCurrentMagazineSize, _magazineSize);
+        OnAmmoUpdated?.Invoke(currentMagazineSize, _magazineSize);
     }
 
     public override bool TryAttack()
     {
-        if (currentCurrentMagazineSize > 0 && _isReloaded)
+        if (currentMagazineSize > 0 && _isReloaded)
         {
             if (_reloadCoroutine != null)
             {
@@ -37,12 +36,12 @@ public class IncrementalReloadWeapon : Weapon
 
             IsReloading = false;
 
-            currentCurrentMagazineSize--;
+            currentMagazineSize--;
             _reloadCoroutine = StartCoroutine(ReloadCoroutine());
 
             Attack();
 
-            OnAmmoUpdated?.Invoke(currentCurrentMagazineSize, _magazineSize);
+            OnAmmoUpdated?.Invoke(currentMagazineSize, _magazineSize);
             _isReloaded = false;
 
             return true;
@@ -59,15 +58,15 @@ public class IncrementalReloadWeapon : Weapon
 
         IsReloading = true;
 
-        while (currentCurrentMagazineSize < _magazineSize)
+        while (currentMagazineSize < _magazineSize)
         {
-            OnAmmoUpdated?.Invoke(currentCurrentMagazineSize, _magazineSize);
+            OnAmmoUpdated?.Invoke(currentMagazineSize, _magazineSize);
  
             yield return new WaitForSeconds(_currentRecharchingTime);
 
-            currentCurrentMagazineSize++;
+            currentMagazineSize++;
 
-            if (currentCurrentMagazineSize >= _magazineSize)
+            if (currentMagazineSize >= _magazineSize)
             {
                 _reloadCoroutine = null;
                 IsReloading = false;

@@ -5,4 +5,5 @@ using UnityEngine;
 public class FireZoneSkill : HardSkill
 {
     [field: SerializeField] public FireZone FireZonePrefab { get; private set; }
+    [field: SerializeField] public float SpawnChance { get; private set; }
 }
