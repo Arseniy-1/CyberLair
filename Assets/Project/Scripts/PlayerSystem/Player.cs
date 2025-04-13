@@ -27,6 +27,8 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     private EntityStateMachine _entityStateMachine;
     private ExperienceStorage _experienceStorage = new ExperienceStorage();
 
+    public event Action OnDeath;
+    
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public ExperienceStorage ExperienceStorage => _experienceStorage;
@@ -113,6 +115,6 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        OnDeath?.Invoke();
     }
 }

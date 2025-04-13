@@ -138,22 +138,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0
-    <AttackRecovery>k__BackingField: 0
-    <AttackCount>k__BackingField: 0
-    <Cooldown>k__BackingField: 0
+    <AttackDelay>k__BackingField: 0.3
+    <AttackRecovery>k__BackingField: 0.5
+    <AttackCount>k__BackingField: 2
+    <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpDistance>k__BackingField:
-      <BaseValue>k__BackingField: 0
-      <CurrentValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 2
+      <CurrentValue>k__BackingField: 1
       _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 0
-      <CurrentValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 0.4
+      <CurrentValue>k__BackingField: 1
       _modifiers: []
     <JumpReloadTime>k__BackingField:
-      <BaseValue>k__BackingField: 0
-      <CurrentValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 1
+      <CurrentValue>k__BackingField: 1
       _modifiers: []
 --- !u!114 &442572439295423526
 MonoBehaviour:
@@ -195,10 +195,10 @@ MonoBehaviour:
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 50
+      <BaseValue>k__BackingField: 40
       <CurrentValue>k__BackingField: 0
       _modifiers: []
-    <CollisionDamage>k__BackingField: 0
+    <CollisionDamage>k__BackingField: 10
 --- !u!114 &3709468705532820958
 MonoBehaviour:
   m_ObjectHideFlags: 0

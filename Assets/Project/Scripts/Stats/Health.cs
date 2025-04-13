@@ -44,7 +44,7 @@ public class Health : BaseStat
         }
 
         if (amount > 0)
-            CurrentValue -= amount;
+            CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxHealth);
 
         OnAmountChanged(CurrentValue, MaxHealth);
         DamageTaken?.Invoke(amount);

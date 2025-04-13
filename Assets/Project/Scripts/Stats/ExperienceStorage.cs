@@ -5,26 +5,26 @@ public class ExperienceStorage : BaseStat
 {
     public event Action LevelRaised;
 
-    public float MaxValue;
+    private float _maxValue;
 
     public void AddExperience(int amount)
     {
         if (amount <= 0)
             return;
 
-        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, MaxValue);
+        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, _maxValue);
 
-        if (CurrentValue >= MaxValue)
+        if (CurrentValue >= _maxValue)
             LevelRaised?.Invoke();
 
-        OnAmountChanged(CurrentValue, MaxValue);
+        OnAmountChanged(CurrentValue, _maxValue);
     }
 
     public void ResetExperience(int maxValue)
     {
         CurrentValue = 0;
-        MaxValue = maxValue;
+        _maxValue = maxValue;
 
-        OnAmountChanged(CurrentValue, MaxValue);
+        OnAmountChanged(CurrentValue, _maxValue);
     }
 }
