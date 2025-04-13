@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using YG;
 
 public class PlayerInputController : MonoBehaviour
@@ -15,13 +16,12 @@ public class PlayerInputController : MonoBehaviour
     public event Action OnJumpButtonPressed;
     public event Action OnMoveButtonPressed;
     public event Action OnShootButtonPressed;
-    public event Action OnSwitchButtonPressed;
 
-    public bool _isMobile;
+    private bool _isDevice;
 
     private void Awake()
     {
-        _isMobile = YandexGame.EnvironmentData.isMobile;
+        _isDevice = YandexGame.EnvironmentData.isMobile;
         _playerInput = new PlayerInput();
         _playerInput.Enable();
 
@@ -44,12 +44,12 @@ public class PlayerInputController : MonoBehaviour
     {
         ReadMovementInput();
 
-        if (!_isMobile && _playerInput.Land.Shoot.IsPressed())
+        if (!_isDevice && _playerInput.Land.Shoot.IsPressed())
         {
             OnShootButtonPressed?.Invoke();
         }
 
-        if (_isMobile)
+        if (_isDevice)
         {
             HandleMobileShooting();
         }
@@ -62,7 +62,7 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnShootPerformed(InputAction.CallbackContext callbackContext)
     {
-        if (!_isMobile)
+        if (!_isDevice)
         {
             OnShootButtonPressed?.Invoke();
         }
@@ -78,7 +78,7 @@ public class PlayerInputController : MonoBehaviour
 
     private void SelectControlScheme()
     {
-        if (_isMobile)
+        if (_isDevice)
             _deviceControlls.gameObject.SetActive(true);
         else
             _desktopControlls.gameObject.SetActive(true);
