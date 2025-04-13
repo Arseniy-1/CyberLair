@@ -3,18 +3,18 @@
 public abstract class StatsView : MonoBehaviour
 {
     private BaseStat _stats;
-
-    private void OnDisable()
-    {
-        if(_stats != null)
-            _stats.AmountChanged -= ShowStats;
-    }
-
+    
     public void Initialize(BaseStat stats)
     {
         _stats = stats;
         _stats.AmountChanged += ShowStats;
     }
     
+    private void OnDestroy()
+    {
+        if(_stats != null)
+            _stats.AmountChanged -= ShowStats;
+    }
+
     protected abstract void ShowStats(float currentValue, float maxValue);
 }

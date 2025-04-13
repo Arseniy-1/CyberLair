@@ -144,7 +144,7 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpDistance>k__BackingField:
-      <BaseValue>k__BackingField: 2
+      <BaseValue>k__BackingField: 5
       <CurrentValue>k__BackingField: 1
       _modifiers: []
     <JumpTime>k__BackingField:
@@ -185,7 +185,7 @@ MonoBehaviour:
   _attacker: {fileID: 6300912649283175769}
   _destroyer: {fileID: 4789583573764484402}
   _enemyTargetProvider: {fileID: 363723337743644631}
-  _attackDistance: 2
+  _attackDistance: 5
   _view: {fileID: 6817799365412032722}
   <EnemyType>k__BackingField: 0
   <EnemyStats>k__BackingField:
