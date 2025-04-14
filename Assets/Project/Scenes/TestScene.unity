@@ -33437,14 +33437,14 @@ MonoBehaviour:
   - {fileID: 5845098830540116084, guid: be5e2c3d8c7e84e83ad5233ac8a24a10, type: 3}
   - {fileID: 1787623519210625677, guid: 8d25e22901c234a1f8cdb2cc3a7fcfcc, type: 3}
   - {fileID: 5850759209062934795, guid: 4fc294186d5f24457914b3100e6eda8a, type: 3}
-  - {fileID: 8511549520770673055, guid: a58b2cc01c88b44ebacc95da4b15607e, type: 3}
   - {fileID: 951908415480540463, guid: 5814b7e990cfe4b3f8a6021a7984cac2, type: 3}
   - {fileID: 6014211762987851508, guid: 9629869b2fccb4cff8ddb8b4a46f5a32, type: 3}
   - {fileID: 263878080555140060, guid: 68493cc3985e94702bfb35f8817a67b8, type: 3}
   - {fileID: 4399603215803775128, guid: d7203ac9ffc6144698bd094afaab65e6, type: 3}
   - {fileID: 4382913821471026158, guid: c5cd427ff58ac4be9b534cf856fe6a4c, type: 3}
   - {fileID: 4399603215803775128, guid: 75bf669011b8f42ce8b3cdbf132211e0, type: 3}
-  - {fileID: -4304947118811211038, guid: 7e05066c9a47844f88feb8f204215d56, type: 3}
+  - {fileID: -4304947118811211038, guid: 4680d415be7f64afd9ea09ff514a7149, type: 3}
+  - {fileID: 8511549520770673055, guid: bd60b6bbe162541d1a89b33ba9f4af45, type: 3}
   _startPoolCount: 10
 --- !u!4 &1354792444
 Transform:
@@ -33524,7 +33524,17 @@ MonoBehaviour:
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
   _heartSpawnChance: 10
   _healAmount: 20
-  _wavesConfigs: []
+  _wavesConfigs:
+  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
+  - {fileID: 11400000, guid: f89f4eb4bbbfd174798c226e5e574657, type: 2}
+  - {fileID: 11400000, guid: eefcda05b29f1d940903477f3d3ca2f4, type: 2}
+  - {fileID: 11400000, guid: faebe27a0f665a245be5dc010bc3a9e1, type: 2}
+  - {fileID: 11400000, guid: 96aacf38772c4984cba74bf9f5002945, type: 2}
+  - {fileID: 11400000, guid: b24a3c3404f7ca64d834418f5eab496b, type: 2}
+  - {fileID: 11400000, guid: 4fc314dbd4d965440b35451ac239d608, type: 2}
+  - {fileID: 11400000, guid: aa487ff90254f1742950c926a1c5f7c9, type: 2}
+  - {fileID: 11400000, guid: 1f7e076b5df9e544e94a94df5b9fd249, type: 2}
+  - {fileID: 11400000, guid: 3ba4a94d896748c46b9f4fc04dd32bb9, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
 --- !u!114 &957021903894020399 stripped
 MonoBehaviour:

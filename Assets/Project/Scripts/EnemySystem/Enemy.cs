@@ -75,7 +75,8 @@ namespace Project.Scripts.EnemySystem
         
         public void TakeStun(float time)
         {
-            StartCoroutine(TakingStun(time));
+            if(enabled)
+                StartCoroutine(TakingStun(time));
         }
 
         public void ResetState()

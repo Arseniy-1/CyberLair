@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -9,24 +8,16 @@ public class Timer : MonoBehaviour
     private float _timeElapsed = 0f;
     private int _minutes = 0;
     private int _seconds = 0;
+    private float _nextUpdateTime = 0f;
 
-    private WaitForSeconds _secondWait;
-
-    private void Start()
+    private void FixedUpdate()
     {
-        int secondAmount = 1;
-        _secondWait = new WaitForSeconds(secondAmount);
+        _timeElapsed += Time.fixedDeltaTime;
         
-        StartCoroutine(SettingTime());
-    }
-
-    private IEnumerator SettingTime()
-    {
-        while (true)
+        if (_timeElapsed >= _nextUpdateTime)
         {
-            yield return _secondWait;
-
-            _timeElapsed++;
+            _nextUpdateTime = Mathf.Floor(_timeElapsed) + 1f;
+            
             _seconds = Mathf.FloorToInt(_timeElapsed) % 60;
             _minutes = Mathf.FloorToInt(_timeElapsed) / 60;
 

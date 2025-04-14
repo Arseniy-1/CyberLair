@@ -40,7 +40,7 @@ public class StunZap : ISkillInstance
 
     private void StunEnemy(IDamageable damageable)
     {
-        if (damageable is Enemy enemy && Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+        if (damageable is Enemy enemy && Enum.IsDefined(typeof(BossTypes), (BossTypes)enemy.EnemyType))
             return;
         
         (damageable as IStunable)?.TakeStun(_stunDuration);

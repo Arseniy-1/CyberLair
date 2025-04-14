@@ -67,22 +67,23 @@ public class Mediator : MonoBehaviour
             _availableSkills.Remove(skill);
             _raisedSkills.Add(skill);
 
-            for (int i = 0; i < _hardSkills.Count; i++)
-            {
-                if (_hardSkills[i].IsAvailable(_raisedSkills))
-                {
-                    _availableSkills.Add(_hardSkills[i]);
-                    _hardSkills.Remove(_hardSkills[i]);
-                }
+            if(_hardSkills.Contains(skill))
+                _hardSkills.Remove((HardSkill)skill);
+            
+            if(_mutantSkills.Contains(skill))
+                _mutantSkills.Remove((MutantSkill)skill);
+
+            foreach (HardSkill hardSkill in _hardSkills.Where(hardSkill => hardSkill.IsAvailable(_raisedSkills)))
+            { 
+                if(_availableSkills.Contains(hardSkill) == false)
+                    _availableSkills.Add(hardSkill);
             }
 
-            for (int i = 0; i < _mutantSkills.Count; i++)
+            foreach (MutantSkill mutantSkill in _mutantSkills.Where(mutantSkill =>
+                         mutantSkill.IsAvailable(_raisedSkills)))
             {
-                if (_mutantSkills[i].IsAvailable(_raisedSkills))
-                {
-                    _availableSkills.Add(_mutantSkills[i]);
-                    _mutantSkills.Add(_mutantSkills[i]);
-                }
+                if(_availableSkills.Contains(mutantSkill) == false)
+                    _availableSkills.Add(mutantSkill);
             }
             
             _playerSkillHolder.CreateSkill(skill);
