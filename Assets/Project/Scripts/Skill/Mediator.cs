@@ -21,7 +21,7 @@ public class Mediator : MonoBehaviour
     [SerializeField] private SkillSelector _skillSelector;
     [SerializeField] private int _startInputSkillsCount;
     [SerializeField] private int _startOutputSkillsCount;
-    
+
     private SkillHolder _playerSkillHolder;
     private PlayerStats _playerStats;
 
@@ -29,13 +29,13 @@ public class Mediator : MonoBehaviour
     {
         _skillSelector.SkillApplyed += OnSkillsApplied;
         _level.LevelRaised += HandleLevelUp;
-        
+
         _availableSkills.AddRange(_simpleSkills);
         _simpleSkills = null;
-            
+
         _playerStats = _player.PlayerStats;
         _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats, _playerJumper));
-        
+
         ShowSkills(_availableSkills, _startInputSkillsCount, _startOutputSkillsCount);
     }
 
@@ -47,10 +47,10 @@ public class Mediator : MonoBehaviour
 
     private void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
-        // _gameUI.gameObject.SetActive(false);
+        _gameUI.gameObject.SetActive(false);
         _skillSelector.ShowSkills(skills, inputSkillsCount, outputSkillsCount);
     }
-    
+
     private void HandleLevelUp()
     {
         int inputSkillsCount = 3;
@@ -67,20 +67,27 @@ public class Mediator : MonoBehaviour
             _availableSkills.Remove(skill);
             _raisedSkills.Add(skill);
 
-            foreach (HardSkill hardSkill in _hardSkills.Where(hardSkill => hardSkill.IsAvailable(_raisedSkills)))
+            for (int i = 0; i < _hardSkills.Count; i++)
             {
-                _availableSkills.Add(hardSkill);
+                if (_hardSkills[i].IsAvailable(_raisedSkills))
+                {
+                    _availableSkills.Add(_hardSkills[i]);
+                    _hardSkills.Remove(_hardSkills[i]);
+                }
             }
 
-            foreach (MutantSkill mutantSkill in _mutantSkills.Where(mutantSkill =>
-                         mutantSkill.IsAvailable(_raisedSkills)))
+            for (int i = 0; i < _mutantSkills.Count; i++)
             {
-                _availableSkills.Add(mutantSkill);
+                if (_mutantSkills[i].IsAvailable(_raisedSkills))
+                {
+                    _availableSkills.Add(_mutantSkills[i]);
+                    _mutantSkills.Add(_mutantSkills[i]);
+                }
             }
-
+            
             _playerSkillHolder.CreateSkill(skill);
         }
-        
+
         Time.timeScale = 1;
         _gameUI.gameObject.SetActive(true);
     }

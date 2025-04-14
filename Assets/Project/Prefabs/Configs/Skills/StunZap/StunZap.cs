@@ -11,7 +11,7 @@ public class StunZap : ISkillInstance
 
     private SkillData _date;
     
-    private List<Bullet> _subscribedBullets;
+    private List<Bullet> _subscribedBullets = new List<Bullet>();
     
     public StunZap(SkillData skillData, StunZapSkill skill)
     {
