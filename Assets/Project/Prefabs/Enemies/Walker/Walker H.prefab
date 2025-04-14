@@ -191,14 +191,14 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 1
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 3
+      <BaseValue>k__BackingField: 3.6
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 40
+      <BaseValue>k__BackingField: 50
       <CurrentValue>k__BackingField: 0
       _modifiers: []
-    <CollisionDamage>k__BackingField: 10
+    <CollisionDamage>k__BackingField: 15
 --- !u!114 &3709468705532820958
 MonoBehaviour:
   m_ObjectHideFlags: 0

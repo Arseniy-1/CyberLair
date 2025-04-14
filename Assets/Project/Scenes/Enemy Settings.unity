@@ -33524,7 +33524,8 @@ MonoBehaviour:
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
   _heartSpawnChance: 10
   _healAmount: 20
-  _wavesConfigs: []
+  _wavesConfigs:
+  - {fileID: 11400000, guid: 9de250105e226f042b1976e6d7ca9870, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
 --- !u!114 &957021903894020399 stripped
 MonoBehaviour:
@@ -34184,6 +34185,18 @@ PrefabInstance:
       propertyPath: _playerWeaponHolder
       value: 
       objectReference: {fileID: 8024084153468684837}
+    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
+      propertyPath: _hardSkills.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
+      propertyPath: _mutantSkills.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
+      propertyPath: _simpleSkills.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8550108228541669086, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
       propertyPath: m_Name
       value: Mediator

@@ -47,7 +47,7 @@ public class Mediator : MonoBehaviour
 
     private void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
-        _gameUI.gameObject.SetActive(false);
+        // _gameUI.gameObject.SetActive(false);
         _skillSelector.ShowSkills(skills, inputSkillsCount, outputSkillsCount);
     }
     

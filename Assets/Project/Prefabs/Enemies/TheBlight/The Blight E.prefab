@@ -138,17 +138,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0
-    <AttackRecovery>k__BackingField: 0
-    <AttackCount>k__BackingField: 0
-    <Cooldown>k__BackingField: 0
+    <AttackDelay>k__BackingField: 1
+    <AttackRecovery>k__BackingField: 0.5
+    <AttackCount>k__BackingField: 2
+    <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpDistance>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 3
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 0.3
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpReloadTime>k__BackingField:
@@ -189,16 +189,16 @@ MonoBehaviour:
   _view: {fileID: 7392884637481049168}
   <EnemyType>k__BackingField: 3
   <EnemyStats>k__BackingField:
-    <Experience>k__BackingField: 4
+    <Experience>k__BackingField: 2
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 5
+      <BaseValue>k__BackingField: 3.3
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 40
       <CurrentValue>k__BackingField: 0
       _modifiers: []
-    <CollisionDamage>k__BackingField: 0
+    <CollisionDamage>k__BackingField: 10
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -255,7 +255,7 @@ MonoBehaviour:
     _layerMask:
       serializedVersion: 2
       m_Bits: 512
-    _explosionDamage: 50
+    _explosionDamage: 70
 --- !u!114 &9010007184260890335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e27961b558d4e33a17294c69e283783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 3.6
+  _maxSpeed: 4
 --- !u!114 &263878080555140060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,14 +293,14 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 6
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 2
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 35
       <CurrentValue>k__BackingField: 0
       _modifiers: []
-    <CollisionDamage>k__BackingField: 0
+    <CollisionDamage>k__BackingField: 3
 --- !u!114 &1709608626960835559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,20 +364,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0
-    <AttackRecovery>k__BackingField: 0
-    <AttackCount>k__BackingField: 0
-    <Cooldown>k__BackingField: 0
+    <AttackDelay>k__BackingField: 0.3
+    <AttackRecovery>k__BackingField: 0.5
+    <AttackCount>k__BackingField: 1
+    <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpDistance>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 3
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 0.4
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpReloadTime>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 1
       <CurrentValue>k__BackingField: 0
       _modifiers: []
