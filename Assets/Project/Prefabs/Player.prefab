@@ -414,7 +414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4341189786550203293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2168,8 +2168,8 @@ RectTransform:
   - {fileID: 7278090131750237516}
   - {fileID: 5084363299854289602}
   - {fileID: 3444590858381727137}
-  - {fileID: 4341189786550203293}
   - {fileID: 8803514980242656049}
+  - {fileID: 4341189786550203293}
   m_Father: {fileID: 3511851598890402755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4417,8 +4417,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5241846481109511507}
   - {fileID: 3511851598890402755}
+  - {fileID: 5241846481109511507}
   - {fileID: 2588770477637105536}
   m_Father: {fileID: 3237670856865732149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5069,7 +5069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -665.87, y: -443.6}
+  m_AnchoredPosition: {x: -665.87, y: -443.59998}
   m_SizeDelta: {x: 1331.74, y: 887.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1597440054612431021
@@ -5624,7 +5624,7 @@ MonoBehaviour:
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <BulletPerShootCount>k__BackingField:
-      <BaseValue>k__BackingField: 10
+      <BaseValue>k__BackingField: 1
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <WeaponBulletReloadTime>k__BackingField:
@@ -5673,6 +5673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deviceControlls: {fileID: 3907977541972206919}
   _desktopControlls: {fileID: 939863190761780086}
+  _shootZone: {fileID: 0}
 --- !u!114 &6292401253427132800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6055,8 +6056,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2091626901575927783}
   - {fileID: 4723623954655070327}
+  - {fileID: 2091626901575927783}
   m_Father: {fileID: 6324875710125123461}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

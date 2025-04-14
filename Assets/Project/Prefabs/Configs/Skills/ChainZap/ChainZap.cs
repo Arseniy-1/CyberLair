@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using DG.Tweening;
@@ -68,8 +69,10 @@ public class ChainZap : ISkillInstance
 
             if (bounce != 0)
             {
-                currentTarget.EnemyStats.Speed.AddModifier(_enemySpeedModifier.Copy());
                 DrawLightning(currentPosition, currentTarget.transform.position, bullet);
+
+                if (Enum.IsDefined(typeof(BossTypes), (BossTypes)(int)currentTarget.EnemyType))
+                    currentTarget.EnemyStats.Speed.AddModifier(_enemySpeedModifier.Copy());
             }
 
             currentPosition = currentTarget.transform.position;

@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using YG;
 
 public class PlayerInputController : MonoBehaviour
 {
     [SerializeField] private DeviceControlls _deviceControlls;
     [SerializeField] private DesktopControlls _desktopControlls;
+    [SerializeField] private MobileShootZone _shootZone;
 
     private PlayerInput _playerInput;
 
@@ -30,12 +30,14 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnEnable()
     {
+        _shootZone.OnShootButtonPressed += Shoot;
         _playerInput.Land.Shoot.performed += OnShootPerformed;
         _playerInput.Land.Jump.performed += OnJumpPerformed;
     }
 
     private void OnDisable()
     {
+        _shootZone.OnShootButtonPressed -= Shoot;
         _playerInput.Land.Shoot.performed -= OnShootPerformed;
         _playerInput.Land.Jump.performed -= OnJumpPerformed;
     }
@@ -49,10 +51,10 @@ public class PlayerInputController : MonoBehaviour
             OnShootButtonPressed?.Invoke();
         }
 
-        if (_isDevice)
-        {
-            HandleMobileShooting();
-        }
+        // if (_isDevice)
+        // {
+        //     HandleMobileShooting();
+        // }
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext callbackContext)
@@ -86,17 +88,11 @@ public class PlayerInputController : MonoBehaviour
 
     private void HandleMobileShooting()
     {
-        foreach (var touch in Touchscreen.current.touches)
-        {
-            if (!touch.press.isPressed) continue;
+        _shootZone.OnShootButtonPressed += Shoot;
+    }
 
-            Vector2 touchPosition = touch.position.ReadValue();
-            var shootPosition = Screen.width / 2;
-
-            if (touchPosition.x > shootPosition)
-            {
-                OnShootButtonPressed?.Invoke();
-            }
-        }
+    private void Shoot()
+    {
+        OnShootButtonPressed?.Invoke();
     }
 }
