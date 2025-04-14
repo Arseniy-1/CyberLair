@@ -51,7 +51,7 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
     {
         foreach (Enemy enemy in _enemies)
         {
-            if (Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+            if (Enum.IsDefined(typeof(BossTypes), (BossTypes)(int)enemy.EnemyType))
                 continue;
             
             enemy.TakeStun(_stunDuration);

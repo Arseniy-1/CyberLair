@@ -29,7 +29,7 @@ namespace Project.Prefabs.Configs.Skills.ThunderStorm
             if (Random.value > _chance)
                 return;
 
-            if (Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+            if (Enum.IsDefined(typeof(BossTypes), (BossTypes)(int)enemy.EnemyType))
                 return;
 
             enemy.Die();

@@ -46,7 +46,7 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
                 if (!strickenCollider.TryGetComponent(out Enemy enemy))
                     continue;
                 
-                if (Enum.IsDefined(typeof(BossTypes), enemy.EnemyType))
+                if (Enum.IsDefined(typeof(BossTypes), (BossTypes)(int)enemy.EnemyType))
                     continue;
                     
                 enemy.TakeStun(_stunTime);
