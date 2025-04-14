@@ -137,16 +137,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ab3184356649889f7499089035e59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stats:
+    <AttackDelay>k__BackingField: 0
+    <AttackRecovery>k__BackingField: 0
+    <AttackCount>k__BackingField: 0
+    <Cooldown>k__BackingField: 0
   _jumpStats:
     <JumpDistance>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <CurrentValue>k__BackingField: 0
+      _modifiers: []
 --- !u!114 &705212269321072690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,23 +186,19 @@ MonoBehaviour:
   _destroyer: {fileID: 6391322191596903747}
   _enemyTargetProvider: {fileID: 6311730808988131680}
   _attackDistance: 4
-  <Health>k__BackingField:
-    <BaseValue>k__BackingField: 0
-    CurrentValue: 0
-    _regenerationTime: 0
-    <RegenerateAmount>k__BackingField:
-      <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+  _view: {fileID: 7392884637481049168}
   <EnemyType>k__BackingField: 3
   <EnemyStats>k__BackingField:
-    <Experience>k__BackingField: 3
+    <Experience>k__BackingField: 4
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 0
-      CurrentValue: 0
+      <BaseValue>k__BackingField: 5
+      <CurrentValue>k__BackingField: 0
+      _modifiers: []
+    <Health>k__BackingField:
+      <BaseValue>k__BackingField: 40
+      <CurrentValue>k__BackingField: 0
+      _modifiers: []
     <CollisionDamage>k__BackingField: 0
-    <AttackDelay>k__BackingField: 0.5
-    <AttackRecovery>k__BackingField: 2
-    <AttackCount>k__BackingField: 2
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 30
+  _pushForce: 3
   _stunTime: 0.5
 --- !u!114 &6311730808988131680
 MonoBehaviour:
@@ -243,6 +247,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2543074565528694283}
   - component: {fileID: 3948316353497071274}
+  - component: {fileID: 3630374792071387719}
+  - component: {fileID: 7392884637481049168}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -260,8 +266,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3335654862418739538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -306,8 +312,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: cc35afd292fc349128b36a291fb3a165, type: 3}
-  m_Color: {r: 0.23616053, g: 0.6168041, b: 0.8207547, a: 1}
+  m_Sprite: {fileID: -1678185814, guid: a839c17d379934a4983ec3aea01849fe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -317,3 +323,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3630374792071387719
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786434052027316470}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 447f887e8b2114760bbc836ca229a282, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7392884637481049168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786434052027316470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b04699a3ed643afb5b90a541233ac04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 3948316353497071274}
+  _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
+  _blinkDuration: 0.1
