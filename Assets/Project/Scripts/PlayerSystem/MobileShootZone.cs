@@ -2,14 +2,27 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MobileShootZone : MonoBehaviour, IPointerDownHandler
+public class MobileShootZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public event Action OnShootButtonPressed;
+    
+    private bool _isButtonPressed;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        
-        Debug.Log("OnPointerDown");
-        OnShootButtonPressed?.Invoke();
+        _isButtonPressed = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        _isButtonPressed = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isButtonPressed)
+        {
+            OnShootButtonPressed?.Invoke();
+        }
     }
 }
