@@ -11,40 +11,46 @@ namespace Project.Scripts.EnemySystem.Bosses
     {
         [SerializeField] private Animator _bossAnimator;
         [SerializeField] private AttackAnimationEvents _bossAnimationEvents;
-        [SerializeField] private List<BossAttack> _oncePerformingAttacks;
-        [SerializeField] private List<BossAttack> _timePerformingAttacks;
+        [SerializeField] private List<BossAttack> _generalAttacks;
+        [SerializeField] private List<BossAttack> _specialAttacks;
 
-        private readonly Queue<BossAttack> _attacksOrder = new();
+        private Queue<BossAttack> _attacksOrder;
         private BossAttack _currentAttack;
         private bool _isAttacking;
         
-        private AttackPerformer _onceAttacksPerformer;
-        private AttackPerformer _timeAttacksPerformer;
+        private AttackPerformer _generalAttacksPerformer;
+        private AttackPerformer _specialAttacksPerformer;
         
         public override BaseEnemyAttackStats Stats => _currentAttack.AttackStats;
 
+        private void OnEnable()
+        {
+            _generalAttacksPerformer?.Start();
+            _specialAttacksPerformer?.Start();
+        }
+        
         private void OnDisable()
         {
-            _onceAttacksPerformer.Disable();
-            _timeAttacksPerformer.Disable();
+            Debug.Log("Disabling boss attacker");
+            
+            _generalAttacksPerformer.Disable();
+            _specialAttacksPerformer.Disable();
             
             _currentAttack.Disable();
         }
 
         public override void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
-            List<BossAttack> allAttacks = _oncePerformingAttacks.Concat(_timePerformingAttacks).ToList();
+            List<BossAttack> allAttacks = _generalAttacks.Concat(_specialAttacks).ToList();
 
             foreach (BossAttack bossAttack in allAttacks)
             {
                 bossAttack.Initialize();
             }
 
-            _onceAttacksPerformer = new AttackPerformer(_attacksOrder, _oncePerformingAttacks);
-            _timeAttacksPerformer = new AttackPerformer(_attacksOrder, _timePerformingAttacks);
-            
-            _onceAttacksPerformer.Start();
-            _timeAttacksPerformer.Start();
+            _attacksOrder = new Queue<BossAttack>();
+            _generalAttacksPerformer = new AttackPerformer(_attacksOrder, _generalAttacks);
+            _specialAttacksPerformer = new AttackPerformer(_attacksOrder, _specialAttacks);
             
             base.Initialize(enemyTargetProvider);
             
