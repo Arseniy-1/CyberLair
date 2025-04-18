@@ -35,8 +35,6 @@ namespace Project.Scripts.ArenaSystem
 
         public void Begin()
         {
-            WaitingEnd();
-            
             if(_config.EnemyStatModifiers.Value > 0)
                 _mainEnemySpawner.ApplyModifier(_config.EnemyStatModifiers);
             
@@ -47,6 +45,15 @@ namespace Project.Scripts.ArenaSystem
                 MessageBrokerHolder.Enemy.Publish(new M_BossSpawned(_mainEnemySpawner.Spawn(_config.Boss.EnemyType)));
             }
 
+            if (_enemyWeights.IsNullOrEmpty())
+            {
+                OnWaveFinished?.Invoke(this);
+                
+                return;
+            }
+
+            WaitingEnd();
+            
             SpawningEnemies(_enemyWeights);
         }
 

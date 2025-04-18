@@ -54,11 +54,16 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 1
+    <Cooldown>k__BackingField: 3
   <CoolDawn>k__BackingField: 0
   Prefab: {fileID: 3279646485583062671, guid: 97ae33b6a529945b5be1d4f780cc98aa, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.18275137, y: 0.29785928}
+  _cameraShakeSettings:
+    <Duration>k__BackingField: 0
+    <Strength>k__BackingField: 0
+    <Vibrato>k__BackingField: 0
+    <Randomness>k__BackingField: 0
 --- !u!1 &1055001191066945106
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +94,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -8, y: 8, z: 1.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4242142199542157013}
@@ -135,11 +140,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
-  m_Color: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
+  m_Sprite: {fileID: -165862644, guid: ab4d1b34849fb42d182b54fae998e16e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 0
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -286,9 +291,11 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 0
   _bossAnimator: {fileID: 8081249287118153077}
   _bossAnimationEvents: {fileID: 8327600072873280291}
-  _oncePerformingAttacks:
+  _generalAttacks:
+  - {fileID: 5500504345139488005}
+  - {fileID: 7316707432193725778}
+  _specialAttacks:
   - {fileID: 2897137228822598528}
-  _timePerformingAttacks: []
 --- !u!50 &8609150688543176165
 Rigidbody2D:
   serializedVersion: 4
@@ -429,7 +436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4860075459481875796
 Transform:
   m_ObjectHideFlags: 0
@@ -584,13 +591,18 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 1
+    <Cooldown>k__BackingField: 0.1
   <CoolDawn>k__BackingField: 0
   _offset: {x: 6.37569, y: 0}
   _size: {x: 10.13, y: 16.65}
   _layerMask:
     serializedVersion: 2
     m_Bits: 512
+  _cameraShakeSettings:
+    <Duration>k__BackingField: 0
+    <Strength>k__BackingField: 0
+    <Vibrato>k__BackingField: 0
+    <Randomness>k__BackingField: 0
 --- !u!1 &4184696483967535576
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3063282131096745744
 Transform:
   m_ObjectHideFlags: 0
@@ -619,9 +631,9 @@ Transform:
   m_GameObject: {fileID: 4184696483967535576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 4.86, y: 3.63, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 1.65, y: 3.53, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6734470891845610920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
@@ -665,7 +677,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 29
   m_Sprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -764,7 +776,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 1
+    <Cooldown>k__BackingField: 0.1
   <CoolDawn>k__BackingField: 0
   Prefab: {fileID: 485471398250535266, guid: 67b28be34109d4e609fb13d81917f383, type: 3}
   ObjectCount: 6
@@ -821,7 +833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5219518222136123589
 Transform:
   m_ObjectHideFlags: 0

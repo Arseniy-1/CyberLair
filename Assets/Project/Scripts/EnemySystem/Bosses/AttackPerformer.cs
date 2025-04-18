@@ -8,20 +8,20 @@ namespace Project.Scripts.EnemySystem.Bosses
 {
     public class AttackPerformer
     {
-        private readonly CancellationTokenSource _cancellationToken;
         private readonly Queue<BossAttack> _attacksOrder;
         private readonly List<BossAttack> _attacks;
+        private  CancellationTokenSource _cancellationToken;
 
         public AttackPerformer(Queue<BossAttack> attacksOrder, List<BossAttack> attacks)
         {
             _attacksOrder = attacksOrder;
             _attacks = attacks;
-            
-            _cancellationToken = new CancellationTokenSource();
         }
 
         public void Start()
         {
+            _cancellationToken = new CancellationTokenSource();
+            
             PerformingAttack().Forget();
         }
 
@@ -30,15 +30,15 @@ namespace Project.Scripts.EnemySystem.Bosses
             _cancellationToken.Cancel();
         }
         
-        private async UniTaskVoid PerformingAttack()
+        private async UniTask PerformingAttack()
         {
             while(_cancellationToken.IsCancellationRequested == false)
             {
                 foreach (BossAttack attack in _attacks)
                 {
                     await UniTask.WaitUntil(() => _attacksOrder.Contains(attack) == false, cancellationToken: _cancellationToken.Token);
-                    
-                    await UniTask.Delay(TimeSpan.FromSeconds(attack.CoolDawn), cancellationToken: _cancellationToken.Token);
+
+                    await UniTask.Delay(TimeSpan.FromSeconds(attack.AttackStats.Cooldown), cancellationToken: _cancellationToken.Token);
                     
                     _attacksOrder.Enqueue(attack);
                 }
