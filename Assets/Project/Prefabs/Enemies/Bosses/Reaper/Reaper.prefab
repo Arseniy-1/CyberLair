@@ -264,14 +264,14 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 3.5
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 60
+      <BaseValue>k__BackingField: 400
       <CurrentValue>k__BackingField: 0
       _modifiers: []
-    <CollisionDamage>k__BackingField: 0
+    <CollisionDamage>k__BackingField: 20
 --- !u!114 &4645820690688015025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +288,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0.1
     <AttackRecovery>k__BackingField: 0.1
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 0
+    <Cooldown>k__BackingField: 3
   _bossAnimator: {fileID: 8081249287118153077}
   _bossAnimationEvents: {fileID: 8327600072873280291}
   _generalAttacks:

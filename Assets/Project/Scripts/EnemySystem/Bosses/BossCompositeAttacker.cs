@@ -31,8 +31,6 @@ namespace Project.Scripts.EnemySystem.Bosses
         
         private void OnDisable()
         {
-            Debug.Log("Disabling boss attacker");
-            
             _generalAttacksPerformer.Disable();
             _specialAttacksPerformer.Disable();
             

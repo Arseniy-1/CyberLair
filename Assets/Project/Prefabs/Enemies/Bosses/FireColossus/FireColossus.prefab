@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4008112368057257064}
@@ -76,11 +76,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
-  m_Color: {r: 0.6462264, g: 0.8777029, b: 1, a: 1}
+  m_Sprite: {fileID: -872440680, guid: e0537128010534a08a9c2e79e56f8856, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 0
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -348,6 +348,11 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 512
+  _cameraShakeSettings:
+    <Duration>k__BackingField: 0
+    <Strength>k__BackingField: 0
+    <Vibrato>k__BackingField: 0
+    <Randomness>k__BackingField: 0
 --- !u!1 &6000014777496233194
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,11 +564,8 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 0
   _bossAnimator: {fileID: 127949211253741946}
   _bossAnimationEvents: {fileID: 1950079115353240760}
-  _oncePerformingAttacks:
-  - {fileID: 453675808833536495}
-  - {fileID: 8757042914405979128}
-  _timePerformingAttacks:
-  - {fileID: 8404616166681584264}
+  _generalAttacks: []
+  _specialAttacks: []
 --- !u!50 &6811167916787461174
 Rigidbody2D:
   serializedVersion: 4
@@ -659,7 +661,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.36273503, y: -0.027902365}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -670,7 +672,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.03, y: 5.03}
+  m_Size: {x: 1.2910409, y: 3.969698}
   m_EdgeRadius: 0
 --- !u!114 &44626753063159235
 MonoBehaviour:
