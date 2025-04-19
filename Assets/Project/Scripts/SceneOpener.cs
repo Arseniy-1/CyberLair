@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SceneOpener : MonoBehaviour
 {
-    [SerializeField] private string sceneName;
+    [SerializeField] private string _sceneName;
     [SerializeField] private Button _button;
 
     private void OnEnable()
@@ -17,11 +18,16 @@ public class SceneOpener : MonoBehaviour
         _button.onClick.RemoveListener(OpenScene);
     }
 
+    public void SetScene(string sceneName)
+    {
+        _sceneName = sceneName;    
+    } 
+
     private void OpenScene()
     {
-        if (!string.IsNullOrEmpty(sceneName))
+        if (!string.IsNullOrEmpty(_sceneName))
         {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(_sceneName);
         }
         else
         {

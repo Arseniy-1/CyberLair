@@ -1,5 +1,4 @@
-﻿using Project.Prefabs.Configs.Skills.Durability;
-
+﻿
 public class BerserkHealthRegenerator : ISkillInstance
 {
     private readonly float _criticalHealthLevel;
