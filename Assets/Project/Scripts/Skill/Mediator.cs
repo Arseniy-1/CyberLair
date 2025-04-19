@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using UniRx;
 
 public class Mediator : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Mediator : MonoBehaviour
 
     private SkillHolder _playerSkillHolder;
     private PlayerStats _playerStats;
+    
+    private readonly CompositeDisposable _disposable = new();
 
     private void OnEnable()
     {
@@ -37,6 +40,9 @@ public class Mediator : MonoBehaviour
         _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats, _playerJumper));
 
         ShowSkills(_availableSkills, _startInputSkillsCount, _startOutputSkillsCount);
+        
+        MessageBrokerHolder.Chest.Receive<M_ChestRaised>().Subscribe((message) => HandleRaiseChest())
+            .AddTo(_disposable);
     }
 
     private void OnDisable()
@@ -45,6 +51,11 @@ public class Mediator : MonoBehaviour
         _level.LevelRaised -= HandleLevelUp;
     }
 
+    private void HandleRaiseChest()
+    {
+        HandleLevelUp();
+    }
+    
     private void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
         _gameUI.gameObject.SetActive(false);

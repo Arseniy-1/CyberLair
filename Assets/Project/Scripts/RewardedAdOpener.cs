@@ -17,7 +17,6 @@ public class RewardedAdOpener : MonoBehaviour
         _rewardedAdButton.onClick.RemoveListener(OpenRewardedAd);
     }
     
-
     private void OpenRewardedAd()
     {
         YandexGame.RewVideoShow((int)_rewardedAdType);

@@ -27,8 +27,6 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Canvas _endGameCanvas;
         [SerializeField] private Canvas _gameCanvas;
 
-        private bool _secondChanceTaken = false;
-        
         private void OnEnable()
         {
             _player.OnDeath += OnPlayerDied;
@@ -69,17 +67,10 @@ namespace Project.Scripts.CompositionRoot
             _gameCanvas.gameObject.SetActive(false);
             _endGameCanvas.gameObject.SetActive(true);
             Time.timeScale = 0;
-            
-            YandexGame.CloseVideoEvent += BringBackPlayer;
         }
 
         private void BringBackPlayer()
         {
-            YandexGame.CloseVideoEvent += BringBackPlayer;
-            
-            if (_secondChanceTaken)
-                return;
-            
             _player.PlayerStats.Health.Heal(_player.PlayerStats.Health.MaxHealth);
             StartCoroutine(GivePlayerInvulnerability(_player));
             
@@ -102,7 +93,7 @@ namespace Project.Scripts.CompositionRoot
         {
             if (id == (int)RewardedAdType.SecondChance)
             {
-                _secondChanceTaken = true;
+                BringBackPlayer();
             }
         }
     }

@@ -35769,6 +35769,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf9732433f4dc044845763962493607, type: 3}
+--- !u!114 &337490857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8219410260677203043, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+  m_PrefabInstance: {fileID: 6238359536911950662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b14e7b36f9243c7b790deb5ef8ece8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &337490858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5456338631281932873, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+  m_PrefabInstance: {fileID: 6238359536911950662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0758ddf51679f974083db911b3492fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &500295095
 GameObject:
   m_ObjectHideFlags: 0
@@ -35812,6 +35834,10 @@ MonoBehaviour:
   _HealthText: {fileID: 8582967515293831242}
   _experienceBar: {fileID: 4946501485891752596}
   _experienceText: {fileID: 7512353398351869972}
+  _shieldBar: {fileID: 337490858}
+  _shieldText: {fileID: 337490857}
+  _endGameCanvas: {fileID: 841879393}
+  _gameCanvas: {fileID: 1234634403}
 --- !u!4 &500295097
 Transform:
   m_ObjectHideFlags: 0
@@ -35827,6 +35853,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!223 &841879393 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7972115200322422822, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+  m_PrefabInstance: {fileID: 6238359536911950662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &928932853
 GameObject:
   m_ObjectHideFlags: 0
@@ -36041,6 +36072,11 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!223 &1234634403 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1158502641387553049, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+  m_PrefabInstance: {fileID: 6238359536911950662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1354792442
 GameObject:
   m_ObjectHideFlags: 0

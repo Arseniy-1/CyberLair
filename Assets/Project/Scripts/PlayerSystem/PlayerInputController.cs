@@ -31,14 +31,12 @@ public class PlayerInputController : MonoBehaviour
     private void OnEnable()
     {
         _shootZone.OnShootButtonPressed += Shoot;
-        _playerInput.Land.Shoot.performed += OnShootPerformed;
         _playerInput.Land.Jump.performed += OnJumpPerformed;
     }
 
     private void OnDisable()
     {
         _shootZone.OnShootButtonPressed -= Shoot;
-        _playerInput.Land.Shoot.performed -= OnShootPerformed;
         _playerInput.Land.Jump.performed -= OnJumpPerformed;
     }
 
@@ -50,24 +48,11 @@ public class PlayerInputController : MonoBehaviour
         {
             OnShootButtonPressed?.Invoke();
         }
-
-        // if (_isDevice)
-        // {
-        //     HandleMobileShooting();
-        // }
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext callbackContext)
     {
         OnJumpButtonPressed?.Invoke();
-    }
-
-    private void OnShootPerformed(InputAction.CallbackContext callbackContext)
-    {
-        if (!_isDevice)
-        {
-            OnShootButtonPressed?.Invoke();
-        }
     }
 
     private void ReadMovementInput()
@@ -84,11 +69,6 @@ public class PlayerInputController : MonoBehaviour
             _deviceControlls.gameObject.SetActive(true);
         else
             _desktopControlls.gameObject.SetActive(true);
-    }
-
-    private void HandleMobileShooting()
-    {
-        _shootZone.OnShootButtonPressed += Shoot;
     }
 
     private void Shoot()

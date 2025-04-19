@@ -23,6 +23,7 @@ namespace Project.Scripts.ArenaSystem
         
         private readonly CompositeDisposable _disposable = new();
         
+        private ChestSpawner _chestSpawner;
         private Queue<Wave> _waves;
         private Transform _playerTransform;
         
@@ -34,6 +35,7 @@ namespace Project.Scripts.ArenaSystem
         {
             _waves = waves;
             _playerTransform = playerTransform;
+            _chestSpawner = new ChestSpawner();
             
             _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
             _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);

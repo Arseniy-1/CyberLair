@@ -110,6 +110,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     private void Shoot()
     {
+        Debug.Log("222");
         _weaponHolder.Shoot();
     }
 
