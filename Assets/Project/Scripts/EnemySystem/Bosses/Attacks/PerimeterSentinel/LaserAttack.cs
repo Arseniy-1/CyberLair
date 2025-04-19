@@ -22,6 +22,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         protected override IEnumerator Attack()
         {   
             _collider.enabled = true;
+            View.gameObject.SetActive(true);
             
             MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
             
@@ -33,7 +34,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         public override void Disable()
         {
             _collider.enabled = false;
-            View.enabled = false;
+            View.gameObject.SetActive(false);
         }
     }
 }

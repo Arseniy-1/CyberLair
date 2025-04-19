@@ -20,7 +20,6 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         protected override IEnumerator Attack()
         {
             View.gameObject.SetActive(true);
-            AttackAnimator.SetTrigger(AttackTrigger);
             
             MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
 

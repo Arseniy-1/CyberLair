@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 {
-    public class ShieldTimedAttack : BossAttack
+    public class ShieldAttack : BossAttack
     {
         [SerializeField] private SkillCollisionHandler _skillCollisionHandler;
         [SerializeField] private InvincibilityCollisionHandler _invincibilityCollisionHandler;
@@ -12,13 +12,14 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         [SerializeField] private float _duration;
         
         [SerializeField, Header("Boss")] private Enemy _boss;
+        [SerializeField] private EnemyCollisionHandler _enemyCollisionHandler;
         [SerializeField] private float _bossStunTime;
         
         private Coroutine _timerCoroutine;
 
         public override void Initialize()
         {
-            BossAttackAnimationTrigger = Animator.StringToHash("ShieldTimedAttack");
+            BossAttackAnimationTrigger = Animator.StringToHash("ShieldAttack");
             
             Disable();
         }
@@ -33,6 +34,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             
             _shieldCollider.enabled = false;
             _skillCollisionHandler.enabled = false;
+            _enemyCollisionHandler.enabled = true;
             
             _invincibilityCollisionHandler.enabled = false;
             View.gameObject.SetActive(false);
@@ -41,10 +43,9 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         protected override IEnumerator Attack()
         {
             _skillCollisionHandler.ContactLimitExpired += Stun;
-            AnimatorEvents.Attacking += Activate;
+            Activate();
             
             View.gameObject.SetActive(true);
-            AttackAnimator.SetTrigger(AttackTrigger);
 
             yield return null;
         }
@@ -64,6 +65,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             _shieldCollider.enabled = true;
             _skillCollisionHandler.enabled = true;
             _invincibilityCollisionHandler.enabled = true;
+            _enemyCollisionHandler.enabled = false;
 
             _timerCoroutine = StartCoroutine(DisableTimer());
         }

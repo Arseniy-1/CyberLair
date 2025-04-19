@@ -59,12 +59,13 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0.3
     <AttackRecovery>k__BackingField: 3
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 0
+    <Cooldown>k__BackingField: 1.03
   _skillCollisionHandler: {fileID: 3588086428202692097}
   _invincibilityCollisionHandler: {fileID: 1500366225651058416}
   _shieldCollider: {fileID: 1302679334391996479}
   _duration: 4
   _boss: {fileID: 1787623519210625677}
+  _enemyCollisionHandler: {fileID: 8046616435554837084}
   _bossStunTime: 3
 --- !u!114 &3588086428202692097
 MonoBehaviour:
@@ -459,7 +460,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 0
+    <Cooldown>k__BackingField: 2
   _laser: {fileID: 7680972408625136855}
   _collider: {fileID: 3923064011031436337}
   _cameraShakeSettings:
@@ -712,7 +713,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 5
+    <Cooldown>k__BackingField: 3
   Prefab: {fileID: 557765036821876407, guid: 8197224359ad24401b5478c79f0390e1, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.14375606, y: 0.24936198}
@@ -766,7 +767,7 @@ Transform:
   m_GameObject: {fileID: 5238833727110669655}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7231865, y: -2.2863858, z: 0.8100736}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
