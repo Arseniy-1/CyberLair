@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.EnemySystem;
 using UnityEngine;
 using UniRx;
 
@@ -20,10 +21,10 @@ namespace Project.Scripts.ArenaSystem
         [SerializeField] private List<WaveConfig> _wavesConfigs;
         
         [SerializeField] private Cage _cagePrefab;
+        [SerializeField] private BossChest _bossChestPrefab;
         
         private readonly CompositeDisposable _disposable = new();
         
-        private ChestSpawner _chestSpawner;
         private Queue<Wave> _waves;
         private Transform _playerTransform;
         
@@ -35,12 +36,11 @@ namespace Project.Scripts.ArenaSystem
         {
             _waves = waves;
             _playerTransform = playerTransform;
-            _chestSpawner = new ChestSpawner();
             
             _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
             _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);
             
-            MessageBrokerHolder.Enemy.Receive<M_BossSpawned>().Subscribe((message) => SpawnCage())
+            MessageBrokerHolder.Enemy.Receive<M_BossSpawned>().Subscribe((message) => HandleBossSpawn(message.Boss))
                 .AddTo(_disposable);
         }
 
@@ -71,9 +71,17 @@ namespace Project.Scripts.ArenaSystem
             StartNewWave();
         }
 
-        private void SpawnCage()
+        private void HandleBossSpawn(Enemy enemy)
         {
+            enemy.OnDestroyed += SpawnChest;
             Instantiate(_cagePrefab, _playerTransform.position, Quaternion.identity);
+        }
+        
+        private void SpawnChest(Enemy enemy)
+        {
+            enemy.OnDestroyed -= SpawnChest;
+
+            Instantiate(_bossChestPrefab, enemy.transform.position, Quaternion.identity);
         }
     }
 }
