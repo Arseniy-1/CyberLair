@@ -27,7 +27,7 @@ namespace Project.Scripts.EnemySystem.Bosses
 
         public void Disable()
         {
-            _cancellationToken.Cancel();
+            _cancellationToken?.Cancel();
         }
         
         private async UniTask PerformingAttack()

@@ -60,11 +60,10 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 3
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 0
-  <CoolDawn>k__BackingField: 0
   _skillCollisionHandler: {fileID: 3588086428202692097}
   _invincibilityCollisionHandler: {fileID: 1500366225651058416}
   _shieldCollider: {fileID: 1302679334391996479}
-  _duration: 0
+  _duration: 4
   _boss: {fileID: 1787623519210625677}
   _bossStunTime: 3
 --- !u!114 &3588086428202692097
@@ -180,7 +179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4521212802469845492
 Transform:
   m_ObjectHideFlags: 0
@@ -461,9 +460,13 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 0
-  <CoolDawn>k__BackingField: 0
   _laser: {fileID: 7680972408625136855}
   _collider: {fileID: 3923064011031436337}
+  _cameraShakeSettings:
+    <Duration>k__BackingField: 0
+    <Strength>k__BackingField: 0
+    <Vibrato>k__BackingField: 0
+    <Randomness>k__BackingField: 0
 --- !u!1 &2133513638634037479
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8508639042244233942
 Transform:
   m_ObjectHideFlags: 0
@@ -564,7 +567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3329857691008325673
 Transform:
   m_ObjectHideFlags: 0
@@ -710,10 +713,14 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 5
-  <CoolDawn>k__BackingField: 0
   Prefab: {fileID: 557765036821876407, guid: 8197224359ad24401b5478c79f0390e1, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.14375606, y: 0.24936198}
+  _cameraShakeSettings:
+    <Duration>k__BackingField: 0
+    <Strength>k__BackingField: 0
+    <Vibrato>k__BackingField: 0
+    <Randomness>k__BackingField: 0
 --- !u!114 &3655950577623271647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,11 +825,11 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 0
   _bossAnimator: {fileID: 3718740134849954087}
   _bossAnimationEvents: {fileID: 8331253974619774144}
-  _oncePerformingAttacks:
-  - {fileID: 211241688673151194}
-  - {fileID: 7486585226317169851}
-  _timePerformingAttacks:
+  _generalAttacks:
   - {fileID: 6223178253571820545}
+  - {fileID: 7486585226317169851}
+  _specialAttacks:
+  - {fileID: 211241688673151194}
 --- !u!50 &7275485897962648385
 Rigidbody2D:
   serializedVersion: 4
@@ -849,7 +856,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &2268827703938706879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,7 +982,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7264254749267914664}
@@ -1025,7 +1032,7 @@ SpriteRenderer:
   m_Color: {r: 0.6132076, g: 0.46569064, b: 0.46569064, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 0
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

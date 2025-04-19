@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.EnemySystem.AttackTypes;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses
@@ -14,7 +15,7 @@ namespace Project.Scripts.EnemySystem.Bosses
         [SerializeField] private List<BossAttack> _generalAttacks;
         [SerializeField] private List<BossAttack> _specialAttacks;
 
-        private Queue<BossAttack> _attacksOrder;
+        private readonly Queue<BossAttack> _attacksOrder = new();
         private BossAttack _currentAttack;
         private bool _isAttacking;
         
@@ -31,24 +32,30 @@ namespace Project.Scripts.EnemySystem.Bosses
         
         private void OnDisable()
         {
-            _generalAttacksPerformer.Disable();
-            _specialAttacksPerformer.Disable();
+            _generalAttacksPerformer?.Disable();
+            _specialAttacksPerformer?.Disable();
             
-            _currentAttack.Disable();
+            _currentAttack?.Disable();
         }
 
         public override void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
             List<BossAttack> allAttacks = _generalAttacks.Concat(_specialAttacks).ToList();
 
-            foreach (BossAttack bossAttack in allAttacks)
-            {
-                bossAttack.Initialize();
-            }
+            allAttacks.ForEach(attack => attack.Initialize());
+            
+            // foreach (BossAttack bossAttack in allAttacks)
+            // {
+            //     bossAttack.Initialize();
+            // }
 
-            _attacksOrder = new Queue<BossAttack>();
-            _generalAttacksPerformer = new AttackPerformer(_attacksOrder, _generalAttacks);
-            _specialAttacksPerformer = new AttackPerformer(_attacksOrder, _specialAttacks);
+            // _attacksOrder = new Queue<BossAttack>();
+            
+            if(_generalAttacks.IsNullOrEmpty() == false)
+                _generalAttacksPerformer = new AttackPerformer(_attacksOrder, _generalAttacks);
+            
+            if(_specialAttacks.IsNullOrEmpty() == false)
+                _specialAttacksPerformer = new AttackPerformer(_attacksOrder, _specialAttacks);
             
             base.Initialize(enemyTargetProvider);
             

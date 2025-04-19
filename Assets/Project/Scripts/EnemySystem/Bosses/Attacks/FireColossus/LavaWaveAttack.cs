@@ -16,8 +16,6 @@ namespace Project.Scripts.EnemySystem.Bosses.FireColossus
 
         protected override IEnumerator Attack()
         {
-            Debug.Log("Lava Wave");
-            
             View.gameObject.SetActive(true);
             AttackAnimator.SetTrigger(AttackTrigger);
 

@@ -189,8 +189,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 1
-  <CoolDawn>k__BackingField: 0
+    <Cooldown>k__BackingField: 0.1
   Prefab: {fileID: 1740366717519680712, guid: 8edb5729261f54863b061789f6788290, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.10889517, y: 0.19078715}
@@ -282,8 +281,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 1
-  <CoolDawn>k__BackingField: 0
+    <Cooldown>k__BackingField: 0.1
   Prefab: {fileID: 9040316264659818666, guid: c20597819d0824674b41243213eaf607, type: 3}
   ObjectCount: 1
   SpawnPeriodLimits: {x: 0.13995765, y: 0.20914225}
@@ -341,8 +339,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 1
-  <CoolDawn>k__BackingField: 20
+    <Cooldown>k__BackingField: 0.1
   _offset: {x: 0, y: 0}
   _size: {x: 26.68, y: 17.9}
   _layerMask:
@@ -564,8 +561,11 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 0
   _bossAnimator: {fileID: 127949211253741946}
   _bossAnimationEvents: {fileID: 1950079115353240760}
-  _generalAttacks: []
-  _specialAttacks: []
+  _generalAttacks:
+  - {fileID: 8404616166681584264}
+  - {fileID: 8757042914405979128}
+  _specialAttacks:
+  - {fileID: 453675808833536495}
 --- !u!50 &6811167916787461174
 Rigidbody2D:
   serializedVersion: 4
@@ -592,7 +592,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &225613228993504980
 MonoBehaviour:
   m_ObjectHideFlags: 0
