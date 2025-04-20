@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/Menu.unity
     guid: 9764968bd0b03bb4f80a269a29f7a1d7
+  - enabled: 1
+    path: Assets/Project/Scenes/FirstMap/FEScene.unity
+    guid: 88adc276930199244844050c00309d78
+  - enabled: 1
+    path: Assets/Project/Scenes/FirstMap/FHScene.unity
+    guid: a78fb36773d368641885d17d0c37638c
+  - enabled: 1
+    path: Assets/Project/Scenes/SecondMap/SEScene.unity
+    guid: 948a4cc4418e9e040b190d2287b97145
+  - enabled: 1
+    path: Assets/Project/Scenes/SecondMap/SHScene.unity
+    guid: ceb4dc9ef9cbb3941b7b3594d824d4ea
   m_configObjects: {}

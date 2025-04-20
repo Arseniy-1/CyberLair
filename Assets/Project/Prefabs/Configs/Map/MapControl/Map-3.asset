@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36105b94d7454b8f831b8c42187c203e, type: 3}
   m_Name: Map-3
   m_EditorClassIdentifier: 
-  <MapName>k__BackingField: "\u041D\u0435 \u0421\u043D\u0435\u0436\u043D\u044B\u0439
-    \u043B\u0435\u0441"
-  <MapImage>k__BackingField: {fileID: 21300000, guid: ec5a1c51861b74d3d857708a1829cee7, type: 3}
+  <MapName>k__BackingField: Comming soon...
+  <MapImage>k__BackingField: {fileID: 1970125079, guid: a4a2fd25c8ec949fda2754e046dfd5fb, type: 3}
   <EasyMap>k__BackingField: SEScene
   <HardMap>k__BackingField: SHScene
