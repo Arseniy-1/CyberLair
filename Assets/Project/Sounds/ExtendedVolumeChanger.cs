@@ -8,7 +8,7 @@ public class ExtendedVolumeChanger : MonoBehaviour
     [SerializeField] private AudioMixerGroup _audioMixer;
     [SerializeField] private Slider _slider;
 
-    private bool _isEnabled = true;
+    [SerializeField] private bool _isEnabled = true;
     private float _minlVolume = -80;
 
     private void OnEnable()
@@ -25,7 +25,7 @@ public class ExtendedVolumeChanger : MonoBehaviour
 
     private void ToggleMusic(bool isMuted)
     {
-        if (isMuted == false)
+        if (isMuted)
             _audioMixer.audioMixer.SetFloat(_audioMixer.name, _minlVolume);
         else
             SetCurrentVolume(_slider.value);
