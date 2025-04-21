@@ -87,7 +87,7 @@ namespace Project.Scripts.EnemySystem
         [Button]
         public void Die()
         {
-            MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath());
+            MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath(transform.position));
             OnDestroyed?.Invoke(this);
         }
         

@@ -14,13 +14,13 @@ namespace Project.Prefabs.Configs.Skills.TeleportationJump
             _skillData = skillData;
 
             _skillData.PlayerStats.JumpTime.AddModifier(_jumpTimeModifier);
-            _skillData.PlayerStats.JumpDistance.AddModifier(_jumpDistanceModifier);
+            _skillData.PlayerStats.JumpSpeed.AddModifier(_jumpDistanceModifier);
         }
 
         public void Disable()
         {
             _skillData.PlayerStats.JumpTime.RemoveModifier(_jumpTimeModifier);
-            _skillData.PlayerStats.JumpDistance.RemoveModifier(_jumpDistanceModifier);
+            _skillData.PlayerStats.JumpSpeed.RemoveModifier(_jumpDistanceModifier);
         }
     }
 }
