@@ -42,9 +42,6 @@ namespace StateMashineSytem.PlayerStateMashine
             if (_targetScanner.HasTarget)
                 _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);
 
-            if (_player.IsStunned)
-                _stateSwitcher.SwitchState<PlayerStunnedState>();
-
             if (_playerMover.IsRunning)
                 _stateSwitcher.SwitchState<PlayerMoveState>();
         }

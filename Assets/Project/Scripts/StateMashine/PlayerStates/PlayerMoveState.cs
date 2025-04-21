@@ -44,9 +44,6 @@
             if (_targetScanner.HasTarget)
                 _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);
 
-            if (_player.IsStunned)
-                _stateSwitcher.SwitchState<PlayerStunnedState>();
-
             if (_playerMover.IsRunning == false)
                 _stateSwitcher.SwitchState<PlayerIdleState>();
         }

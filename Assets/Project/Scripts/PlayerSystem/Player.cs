@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private HealthRegenerator _healthRegenerator;
     [SerializeField] private ShieldRegenerator _shieldRegenerator;
 
-    private Collider2D _collider;
+    [SerializeField] private Collider2D _collider;
     private EntityStateMachine _entityStateMachine;
     private ExperienceStorage _experienceStorage = new ExperienceStorage();
 
@@ -33,13 +33,10 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     public Collider2D Collider2D => _collider;
     public ExperienceStorage ExperienceStorage => _experienceStorage;
 
-    public bool IsStunned { get; private set; } = false;
-
     public Vector2 Position => transform.position;
 
     private void Awake()
     {
-        _collider = GetComponent<Collider2D>();
         InitializeComponents();
     }
 
@@ -66,7 +63,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
             new PlayerIdleState(this, _playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
             new PlayerMoveState(this, _playerInputController, _playerMover, _weaponHolder, _targetScanner, _jumper),
             new PlayerJumpState(_playerInputController, _collider, _jumper),
-            new PlayerStunnedState(this, _playerMover)
+            new PlayerStunnedState(this, _playerMover, _jumper)
         };
 
         _entityStateMachine = new EntityStateMachine(playerStates);
@@ -102,15 +99,15 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     private IEnumerator TakingStun(float time)
     {
-        IsStunned = true;
+        _entityStateMachine.SwitchState<PlayerStunnedState>();
+        
         yield return new WaitForSeconds(time);
-
-        IsStunned = false;
+        
+        _entityStateMachine.SwitchState<PlayerIdleState>();
     }
 
     private void Shoot()
     {
-        Debug.Log("222");
         _weaponHolder.Shoot();
     }
 
