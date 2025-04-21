@@ -9,7 +9,7 @@ public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, I
     [field: SerializeField] public HealthRegenerateAmount HealthRegenerateAmount { get; private set; }
     [field: SerializeField] public ShieldAmount ShieldAmount { get; private set; }
     [field: SerializeField] public Speed Speed { get; private set; }
-    [field: SerializeField] public JumpDistance JumpSpeed { get; private set; }
+    [field: SerializeField] public JumpSpeed JumpSpeed { get; private set; }
     [field: SerializeField] public JumpTime JumpTime { get; private set; }
     [field: SerializeField] public JumpReloadTime JumpReloadTime { get; private set; }
     [field: SerializeField] public WeaponSpread WeaponSpread { get; private set; }
