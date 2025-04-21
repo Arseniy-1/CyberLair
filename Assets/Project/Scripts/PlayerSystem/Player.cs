@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private ShieldRegenerator _shieldRegenerator;
 
     [SerializeField] private Collider2D _collider;
+    
     private EntityStateMachine _entityStateMachine;
     private ExperienceStorage _experienceStorage = new ExperienceStorage();
 
