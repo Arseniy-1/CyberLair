@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Project.Scripts.EnemySystem.MoveTypes
 {
     public class EnemyWalkMover : EnemyMover
@@ -9,7 +7,7 @@ namespace Project.Scripts.EnemySystem.MoveTypes
             if(EnemyTargetProvider.HasPlayer == false)
                 return;
 
-            EnemyRigidbody.MovePosition(EnemyPrefab.Position + Direction * (MoverStats.Speed.CurrentValue * Time.fixedDeltaTime));
+            EnemyRigidbody.velocity = Direction.normalized * MoverStats.Speed.CurrentValue;
         }
     }
 }

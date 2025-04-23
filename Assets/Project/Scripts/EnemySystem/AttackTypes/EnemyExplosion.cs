@@ -11,16 +11,19 @@ namespace Project.Scripts.EnemySystem.AttackTypes
 
         private void OnEnable()
         {
-            _attacker.AttackPerformed += Explode;
+            _attacker.AttackPerforming += Explode;
         }
 
         private void OnDisable()
         {
-            _attacker.AttackPerformed -= Explode;
+            _attacker.AttackPerforming -= Explode;
         }
         
-        private void Explode()
+        private void Explode(bool isContinuing)
         {
+            if (isContinuing)
+                return;
+            
             _explosion.Explode(transform.position);
             
             EndExplosion();
@@ -28,7 +31,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
 
         private void EndExplosion()
         {
-            _attacker.AttackPerformed -= Explode;
+            _attacker.AttackPerforming -= Explode;
             
             _enemy.Die();
         }

@@ -9,7 +9,7 @@ namespace Project.Scripts.EnemySystem
 
         public void StartCooldown(float cooldown)
         {
-            Cooldown(cooldown);
+            Cooldown(cooldown).Forget();
         }
         
         private async UniTaskVoid Cooldown(float cooldown)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5873509135308858456}
   - component: {fileID: 944130735266774027}
   - component: {fileID: 7847256968724968504}
+  - component: {fileID: 6420055209070959762}
   m_Layer: 7
   m_Name: View
   m_TagString: Untagged
@@ -123,6 +124,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 4456997105926156495}
   _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
   _blinkDuration: 0.1
+  <Animator>k__BackingField: {fileID: 5873509135308858456}
 --- !u!61 &7847256968724968504
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -168,6 +170,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23484689, y: 0.61742353}
   m_EdgeRadius: 0
+--- !u!114 &6420055209070959762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8044513475588172888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -4, y: 4, z: 4}
+  _rigidbody: {fileID: 4669096686366673745}
 --- !u!1 &8874718456016739414
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,4 +396,5 @@ MonoBehaviour:
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 3
   _impPrefab: {fileID: 951908415480540463, guid: 5814b7e990cfe4b3f8a6021a7984cac2, type: 3}
+  _spawnPeriod: {x: 0.14081039, y: 0.26200038}
   _startCount: 3

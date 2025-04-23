@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1422075624549261699}
   - component: {fileID: 8881414196173872664}
   - component: {fileID: 624489385691389382}
+  - component: {fileID: 7140164021676345266}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -122,6 +123,21 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1422075624549261699}
   _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
   _blinkDuration: 0.1
+  <Animator>k__BackingField: {fileID: 8881414196173872664}
+--- !u!114 &7140164021676345266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780023936938558337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -3.6, y: 3.6, z: 3.6}
+  _rigidbody: {fileID: 26766439269764555}
 --- !u!1 &6321936822601242699
 GameObject:
   m_ObjectHideFlags: 0

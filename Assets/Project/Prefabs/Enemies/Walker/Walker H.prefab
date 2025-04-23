@@ -140,15 +140,15 @@ MonoBehaviour:
   _stats:
     <AttackDelay>k__BackingField: 0.3
     <AttackRecovery>k__BackingField: 0.5
-    <AttackCount>k__BackingField: 2
+    <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpDistance>k__BackingField:
-      <BaseValue>k__BackingField: 5
+      <BaseValue>k__BackingField: 8
       <CurrentValue>k__BackingField: 1
       _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 0.4
+      <BaseValue>k__BackingField: 0.75
       <CurrentValue>k__BackingField: 1
       _modifiers: []
     <JumpReloadTime>k__BackingField:
@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 1190384996198840073}
   - component: {fileID: 8296496326482268042}
   - component: {fileID: 6817799365412032722}
+  - component: {fileID: 6050600532140018890}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -359,3 +360,18 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1190384996198840073}
   _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
   _blinkDuration: 0.1
+  <Animator>k__BackingField: {fileID: 8296496326482268042}
+--- !u!114 &6050600532140018890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334475162931949207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -3.2, y: 3.2, z: 3.2}
+  _rigidbody: {fileID: 7203213127982778909}

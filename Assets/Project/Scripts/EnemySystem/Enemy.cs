@@ -44,10 +44,10 @@ namespace Project.Scripts.EnemySystem
             
             var states = new List<IState>
             {
-                new EnemyIdleState(this, _rigidbody, _enemyTargetProvider),
-                new EnemyMoveState(this, _mover, _enemyTargetProvider, _cooldown),
-                new EnemyAttackState(_mover, _attacker, _cooldown),
-                new EnemyStunnedState(this, _mover)
+                new EnemyIdleState(this, _mover, _enemyTargetProvider, _view.Animator),
+                new EnemyMoveState(this, _mover, _enemyTargetProvider, _cooldown, _view.Animator),
+                new EnemyAttackState(_mover, _attacker, _cooldown, _view.Animator),
+                new EnemyStunnedState(this, _mover, _view.Animator)
             };
             
             _view.Initialize();

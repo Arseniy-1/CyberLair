@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 3630374792071387719}
   - component: {fileID: 7392884637481049168}
   - component: {fileID: 7979730198287546028}
+  - component: {fileID: 6567043377754802210}
   m_Layer: 7
   m_Name: View
   m_TagString: Untagged
@@ -360,6 +361,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 3948316353497071274}
   _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
   _blinkDuration: 0.1
+  <Animator>k__BackingField: {fileID: 0}
 --- !u!58 &7979730198287546028
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -395,3 +397,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.26
+--- !u!114 &6567043377754802210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786434052027316470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -2.5, y: 2.5, z: 2.5}
+  _rigidbody: {fileID: 9187278981319853839}

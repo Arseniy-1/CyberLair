@@ -33439,11 +33439,11 @@ MonoBehaviour:
   - {fileID: 1787623519210625677, guid: 8d25e22901c234a1f8cdb2cc3a7fcfcc, type: 3}
   - {fileID: 8511549520770673055, guid: a58b2cc01c88b44ebacc95da4b15607e, type: 3}
   - {fileID: 951908415480540463, guid: 5814b7e990cfe4b3f8a6021a7984cac2, type: 3}
-  - {fileID: 6014211762987851508, guid: 9629869b2fccb4cff8ddb8b4a46f5a32, type: 3}
-  - {fileID: 263878080555140060, guid: 68493cc3985e94702bfb35f8817a67b8, type: 3}
-  - {fileID: 4399603215803775128, guid: d7203ac9ffc6144698bd094afaab65e6, type: 3}
-  - {fileID: 4382913821471026158, guid: c5cd427ff58ac4be9b534cf856fe6a4c, type: 3}
-  - {fileID: 4399603215803775128, guid: 75bf669011b8f42ce8b3cdbf132211e0, type: 3}
+  - {fileID: 6014211762987851508, guid: 338992e8846a14d50a64d2516fd0303f, type: 3}
+  - {fileID: 263878080555140060, guid: 98f810b0b6f1d4b43a22b7def2a7911c, type: 3}
+  - {fileID: 4399603215803775128, guid: 78e66248b5ecd4fd994072f65ba6c541, type: 3}
+  - {fileID: 4382913821471026158, guid: 8f516f1b41d1d4171a8eec1cebc5bff8, type: 3}
+  - {fileID: 4399603215803775128, guid: bf39cde49cea344dd8a596376cc1a31e, type: 3}
   - {fileID: -4304947118811211038, guid: 7e05066c9a47844f88feb8f204215d56, type: 3}
   _startPoolCount: 0
 --- !u!4 &1354792444
@@ -33527,6 +33527,7 @@ MonoBehaviour:
   _wavesConfigs:
   - {fileID: 11400000, guid: 9de250105e226f042b1976e6d7ca9870, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
+  _bossChestPrefab: {fileID: 0}
 --- !u!114 &957021903894020399 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2698357796983621825, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
@@ -33974,6 +33975,10 @@ PrefabInstance:
       propertyPath: _magnet
       value: 
       objectReference: {fileID: 928932857}
+    - target: {fileID: 6123138739029961668, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6258458470774013203, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
