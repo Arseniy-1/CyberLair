@@ -5,6 +5,8 @@ using System;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Jumper : MonoBehaviour
 {
+    [SerializeField] private SoundPlayer _jumpSoundPlayer;
+    
     private Rigidbody2D _rigidbody;
     
     private bool _isMoving = false;
@@ -73,6 +75,7 @@ public class Jumper : MonoBehaviour
             if (direction == Vector3.zero)
                 return;
 
+            _jumpSoundPlayer.Play();
             _jumpDirection = direction.normalized;
             _elapsedTime = 0f;
             _isMoving = true;

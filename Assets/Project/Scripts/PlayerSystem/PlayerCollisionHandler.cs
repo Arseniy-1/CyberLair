@@ -2,6 +2,8 @@
 
 public class PlayerCollisionHandler : CollisionHandler
 {
+    [SerializeField] private SoundPlayer _experienceSoundPlayer;
+    
     private Health _health;
     private ExperienceStorage _experienceStorage;
 
@@ -16,6 +18,7 @@ public class PlayerCollisionHandler : CollisionHandler
         if (collider.TryGetComponent(out ExperienceParticle experienceParticle))
         {
             _experienceStorage.AddExperience(experienceParticle.ExperienceAmount);
+            _experienceSoundPlayer.Play();
         }
         else if (collider.TryGetComponent(out HealingHeart sphere))
         {

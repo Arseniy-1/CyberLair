@@ -23,9 +23,9 @@ MonoBehaviour:
     SerializationNodes: []
   _enemiesWeights:
   - _prefab: {fileID: 8511549520770673055, guid: bd60b6bbe162541d1a89b33ba9f4af45, type: 3}
-    _weight: 0.075
+    _weight: 0
   _boss: {fileID: 0}
-  _spawnClusterSize: {x: 1, y: 2}
+  _spawnClusterSize: {x: 1, y: 1}
   _waveDuration: 282
   _spawnDuration: 2
   _enemyStatModifiers:

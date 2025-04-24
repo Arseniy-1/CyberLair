@@ -6,6 +6,6 @@ namespace Project.Prefabs.Configs.Skills.TeleportationJump
     public class TeleportationJumpSkill : MutantSkill
     {
         [field: SerializeField] public StatModifier JumpTimeModifier { get; private set; }
-        [field: SerializeField] public StatModifier JumpDistanceModifier { get; private set; }
+        [field: SerializeField] public StatModifier JumpSpeedModifier { get; private set; }
     }
 }

@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMover : MonoBehaviour
 {
+    [field: SerializeField] public SoundPlayer WalkSoundPlayer { get; private set; }
+    
     private PlayerInputController _playerInputController;
     private Rigidbody2D _rigidbody2D;
     private IMoverStats _moverStats;
@@ -23,8 +26,8 @@ public class PlayerMover : MonoBehaviour
         _rigidbody2D = rigidbody2D;
         _moverStats = moverStats;
     }
-
-    public void Run()
+    
+    private void Run()
     {
         _rigidbody2D.velocity = _playerInputController.InputDirection.normalized * _moverStats.Speed.CurrentValue;
     }

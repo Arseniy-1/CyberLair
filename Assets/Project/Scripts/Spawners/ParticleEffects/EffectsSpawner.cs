@@ -19,7 +19,7 @@ public class EffectsSpawner : Spawner<Effect>
 
     private void HandleEnemyDeath(Vector2 position)
     {
-        var effect = Pool.Get();
+        var effect = Spawn();
         effect.transform.position = position;
     }
 }

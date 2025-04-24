@@ -12,6 +12,8 @@ public class SkillView : MonoBehaviour
     [SerializeField] private Image _skillIcon;
     [SerializeField] private Image _skillBanner;
     
+    [SerializeField] private SoundPlayer _selectSoundPlayer;
+    
     private float _maxBrightness = 1f;
     private float _minBrightness = 0.5f;
     
@@ -43,6 +45,7 @@ public class SkillView : MonoBehaviour
     public void Select()
     {
         _skillBanner.color = new Color(_skillIcon.color.r, _skillIcon.color.g, _skillIcon.color.b, _minBrightness);
+        _selectSoundPlayer.Play();
     }
 
     public void Deselect()

@@ -30,12 +30,14 @@
         public virtual void Enter()
         {
             _playerMover.enabled = true;
+            _playerMover.WalkSoundPlayer.PlayLoop();
             _playerInputController.OnJumpButtonPressed += OnJumpButtonPressed;
         }
 
         public virtual void Exit()
         {
             _playerMover.enabled = false;
+            _playerMover.WalkSoundPlayer.StopLoop();
             _playerInputController.OnJumpButtonPressed -= OnJumpButtonPressed;
         }
 
