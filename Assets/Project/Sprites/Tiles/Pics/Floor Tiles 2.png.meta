@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e32c91e066a1d477b82c98073ea65f42
+guid: e9eb4c0724cd3464c904a7604f645d3f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -74,7 +74,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -123,7 +123,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Snow w_o bg 256x256_0
+      name: Game Tiles 2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78656537801ea4868bf57e55dbafeaf2
+      internalID: -1979787522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Tiles 2_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f583398bd0049b0a43fd34bccf0c56
+      internalID: -1047049808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Tiles 2_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5d5a96288bf4bcca0ea414bacb2a09
+      internalID: -86188686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Tiles 2_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 731230c55187a4e4aac1525bca3c30fe
+      internalID: 575879632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Tiles 2_4
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e08c31bffdc94b8287d679b06b4e9e5
-      internalID: -1733677975
+      spriteID: 92798ff0dd58b4030ac85a9bc4e183bf
+      internalID: 1420168228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow w_o bg 256x256_1
+      name: Game Tiles 2_5
       rect:
         serializedVersion: 2
         x: 256
@@ -158,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1aa4c621d649f49e8bacec8eb10a56c3
-      internalID: -1411225597
+      spriteID: f5677bc470c7746748742ff0ea585ded
+      internalID: 516653166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow w_o bg 256x256_2
+      name: Game Tiles 2_6
       rect:
         serializedVersion: 2
         x: 512
@@ -179,14 +263,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7109b19745b94ac7b1682a60b90e4ef
-      internalID: 1601855934
+      spriteID: 437cbf6418a7746acaeeb2e12e85a238
+      internalID: -1820488437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow w_o bg 256x256_3
+      name: Game Tiles 2_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef59f2b2dee10430199db582592fd795
+      internalID: -363752557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Tiles 2_8
       rect:
         serializedVersion: 2
         x: 0
@@ -200,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de29a25adcede4329985164061eb2942
-      internalID: 792290719
+      spriteID: a3072bbd7c0414f00ba3d154314cb976
+      internalID: 1076831518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow w_o bg 256x256_4
+      name: Game Tiles 2_9
       rect:
         serializedVersion: 2
         x: 256
@@ -221,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c029195cd1be481e81d58285c5c1404
-      internalID: 1886775508
+      spriteID: d7fdd8c2748ac4ee5852b3de5551264f
+      internalID: 388532850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow w_o bg 256x256_5
+      name: Game Tiles 2_10
       rect:
         serializedVersion: 2
         x: 512
@@ -242,14 +347,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1726fbd573664004bbb3c8269dc98e0
-      internalID: -237250901
+      spriteID: 2b186cb2384084f89bff45e0c6a5005d
+      internalID: 2122261552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow w_o bg 256x256_6
+      name: Game Tiles 2_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5330ae0c696a474a9e4400c10fdf7c4
+      internalID: 1008206157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Tiles 2_12
       rect:
         serializedVersion: 2
         x: 0
@@ -263,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d147c885475f4d09a3bfe59cc78907e
-      internalID: 296131900
+      spriteID: 4df61ce7d8cfb4f859b50a5cf07bd86d
+      internalID: 928850991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow w_o bg 256x256_7
+      name: Game Tiles 2_13
       rect:
         serializedVersion: 2
         x: 256
@@ -284,29 +410,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 432fc25dc4b3e476bbff43a1a040831e
-      internalID: -1552603811
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snow w_o bg 256x256_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0685495a52334ebe864abe02b83bffa
-      internalID: 233845880
+      spriteID: 2de8c7f33edc844dcb0fe45bdd940bf1
+      internalID: 1308192424
       vertices: []
       indices: 
       edges: []
@@ -322,15 +427,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Snow w_o bg 256x256_0: -1733677975
-      Snow w_o bg 256x256_1: -1411225597
-      Snow w_o bg 256x256_2: 1601855934
-      Snow w_o bg 256x256_3: 792290719
-      Snow w_o bg 256x256_4: 1886775508
-      Snow w_o bg 256x256_5: -237250901
-      Snow w_o bg 256x256_6: 296131900
-      Snow w_o bg 256x256_7: -1552603811
-      Snow w_o bg 256x256_8: 233845880
+      Game Tiles 2_0: -1979787522
+      Game Tiles 2_1: -1047049808
+      Game Tiles 2_10: 2122261552
+      Game Tiles 2_11: 1008206157
+      Game Tiles 2_12: 928850991
+      Game Tiles 2_13: 1308192424
+      Game Tiles 2_2: -86188686
+      Game Tiles 2_3: 575879632
+      Game Tiles 2_4: 1420168228
+      Game Tiles 2_5: 516653166
+      Game Tiles 2_6: -1820488437
+      Game Tiles 2_7: -363752557
+      Game Tiles 2_8: 1076831518
+      Game Tiles 2_9: 388532850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
