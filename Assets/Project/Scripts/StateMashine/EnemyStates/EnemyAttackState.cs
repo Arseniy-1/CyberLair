@@ -44,6 +44,8 @@ namespace StateMashineSytem.EnemyStates
             _attacker.AttackPerforming -= OnAttackPerforming;
             _attacker.AttackPerformed -= OnAttackPerformed;
             
+            _animator.ResetTrigger(_attackTrigger);
+            
             _mover.enabled = true;
         }
 

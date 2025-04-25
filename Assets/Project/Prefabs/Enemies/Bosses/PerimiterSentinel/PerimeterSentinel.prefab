@@ -313,7 +313,7 @@ Transform:
   m_GameObject: {fileID: 656781723161010957}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -793,7 +793,7 @@ MonoBehaviour:
   _attacker: {fileID: 933088573023203972}
   _destroyer: {fileID: 2268827703938706879}
   _enemyTargetProvider: {fileID: 8954570385825564128}
-  _attackDistance: 6
+  _attackDistance: 20
   _view: {fileID: 4548246736520012204}
   <EnemyType>k__BackingField: 8
   <EnemyStats>k__BackingField:
@@ -823,14 +823,14 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0.1
     <AttackRecovery>k__BackingField: 0.1
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 0
+    <Cooldown>k__BackingField: 3
   _bossAnimator: {fileID: 3718740134849954087}
   _bossAnimationEvents: {fileID: 8331253974619774144}
   _generalAttacks:
-  - {fileID: 6223178253571820545}
+  - {fileID: 211241688673151194}
   - {fileID: 7486585226317169851}
   _specialAttacks:
-  - {fileID: 211241688673151194}
+  - {fileID: 6223178253571820545}
 --- !u!50 &7275485897962648385
 Rigidbody2D:
   serializedVersion: 4
@@ -966,6 +966,7 @@ GameObject:
   - component: {fileID: 3718740134849954087}
   - component: {fileID: 8331253974619774144}
   - component: {fileID: 4548246736520012204}
+  - component: {fileID: 4128889245333125174}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -983,7 +984,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7264254749267914664}
@@ -1029,8 +1030,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
-  m_Color: {r: 0.6132076, g: 0.46569064, b: 0.46569064, a: 1}
+  m_Sprite: {fileID: 1041308799, guid: d764babf516784b3391ada1c2a29b8f8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1088,3 +1089,18 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 4483056047778179784}
   _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
   _blinkDuration: 0.1
+  <Animator>k__BackingField: {fileID: 3718740134849954087}
+--- !u!114 &4128889245333125174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8338589489908715743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -5, y: 55, z: 5}
+  _rigidbody: {fileID: 7275485897962648385}
