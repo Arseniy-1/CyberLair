@@ -291,7 +291,7 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpSpeed>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 5
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpTime>k__BackingField:
@@ -589,9 +589,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f7dca54267e59e24b9e45f5101cd8087, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 29204889e1cc48346b1a8f3d04610a01, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8d85f924a14fb08ec404641fa470dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pitchRange: {x: 1, y: 2}
+  _pitchRange: {x: 1.2, y: 1.6}
 --- !u!1001 &4784686526773626604
 PrefabInstance:
   m_ObjectHideFlags: 0

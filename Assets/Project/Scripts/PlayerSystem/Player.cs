@@ -20,7 +20,8 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private Destroyer _destroyer;
     [SerializeField] private Magnet _magnet;
     [SerializeField] private CameraShakeSettings _cameraShakeSettings;
-
+    [SerializeField] private InjuredScreenView _injuredScreenView;
+    
     [SerializeField] private SoundPlayer _damageSoundPlayer;
     
     [SerializeField] private HealthRegenerator _healthRegenerator;
@@ -90,6 +91,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _shieldRegenerator.Initialize(PlayerStats.ShieldAmount, PlayerStats.Health);
 
         _weaponHolder.Weapon.Initialize(PlayerStats);
+        _injuredScreenView.Initialize(PlayerStats.Health);
     }
 
     [Button]

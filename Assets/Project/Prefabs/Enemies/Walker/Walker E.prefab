@@ -434,7 +434,7 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpSpeed>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 5
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpTime>k__BackingField:
