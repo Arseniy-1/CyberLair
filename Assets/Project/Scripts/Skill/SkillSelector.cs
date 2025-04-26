@@ -16,6 +16,8 @@ public class SkillSelector : MonoBehaviour
     [SerializeField] private Sprite _hardBanner;
     [SerializeField] private Sprite _mutantBanner;
     
+    [SerializeField] private SoundPlayer _selectSoundPlayer;
+    
     private SkillView _lastSelectedSkill;
     private int _maxSelectedSkills;
 
@@ -43,6 +45,8 @@ public class SkillSelector : MonoBehaviour
 
     private void HandleSkillClicked(SkillView skillView)
     {
+        _selectSoundPlayer.Play();
+        
         if (_selectedSkills.Contains(skillView))
         {
             skillView.Deselect();

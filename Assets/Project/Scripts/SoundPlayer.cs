@@ -20,6 +20,21 @@ public class SoundPlayer : MonoBehaviour
         _audioSource.pitch = Random.Range(_pitchRange.x, _pitchRange.y);
         _audioSource.PlayOneShot(_audioSource.clip);
     }
+    
+    public void PlayAtPoint(Vector2 position)
+    {
+        GameObject temp = new GameObject("TempAudio");
+        temp.transform.position = position;
+
+        AudioSource source = temp.AddComponent<AudioSource>();
+        source.clip = _audioSource.clip;
+        source.volume = _audioSource.volume;
+        source.pitch = Random.Range(_pitchRange.x, _pitchRange.y);
+        source.spatialBlend = 0f;
+        source.Play();
+
+        Destroy(temp, source.clip.length / source.pitch);
+    }
 
     public void PlayLoop()
     {

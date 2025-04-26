@@ -6,6 +6,7 @@ using System;
 public class Jumper : MonoBehaviour
 {
     [SerializeField] private SoundPlayer _jumpSoundPlayer;
+    [SerializeField] private ParticleSystem _jumpEffector;
     
     private Rigidbody2D _rigidbody;
     
@@ -76,6 +77,7 @@ public class Jumper : MonoBehaviour
                 return;
 
             _jumpSoundPlayer.Play();
+            _jumpEffector.Play();
             _jumpDirection = direction.normalized;
             _elapsedTime = 0f;
             _isMoving = true;

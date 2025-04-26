@@ -8,6 +8,7 @@ public class IncrementalReloadWeapon : Weapon
 {
     [SerializeField] private int _currentMagazineSize;
     
+    [SerializeField] private ParticleSystem _shootParticles;
     [SerializeField] private SoundPlayer _reloadSoundPlayer;
     [SerializeField] private SoundPlayer _fullReloadSoundPlayer;
     [SerializeField] private SoundPlayer _outOfAmmoSoundPlayer;
@@ -44,6 +45,7 @@ public class IncrementalReloadWeapon : Weapon
             _currentMagazineSize--;
             _reloadCoroutine = StartCoroutine(ReloadCoroutine());
 
+            _shootParticles.Play();
             Attack();
 
         if (_currentMagazineSize == 0)

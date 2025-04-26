@@ -18,7 +18,8 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         [SerializeField] private float _attackDistance;
         [SerializeField] private EnemyView _view;
-
+        [SerializeField] private SoundPlayer _damageSoundPlayer;
+        
         private EntityStateMachine _stateMachine;
         private EnemyAttackCooldown _cooldown;
         
@@ -69,8 +70,9 @@ namespace Project.Scripts.EnemySystem
         
         public void TakeDamage(float amount)
         {
-            EnemyStats.Health.TakeDamage(amount);
+            _damageSoundPlayer.Play();
             _view.Blink();
+            EnemyStats.Health.TakeDamage(amount);
         }
         
         public void TakeStun(float time)
@@ -87,6 +89,7 @@ namespace Project.Scripts.EnemySystem
         [Button]
         public void Die()
         {
+            _damageSoundPlayer.PlayAtPoint(transform.position);
             MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath(transform.position));
             OnDestroyed?.Invoke(this);
         }

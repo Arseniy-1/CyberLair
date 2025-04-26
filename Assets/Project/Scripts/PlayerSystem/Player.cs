@@ -5,6 +5,7 @@ using System;
 using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
+using Project.Scripts.MessageBroker.CameraMessageBrokers;
 
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
@@ -18,7 +19,10 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private TargetScanner _targetScanner;
     [SerializeField] private Destroyer _destroyer;
     [SerializeField] private Magnet _magnet;
+    [SerializeField] private CameraShakeSettings _cameraShakeSettings;
 
+    [SerializeField] private SoundPlayer _damageSoundPlayer;
+    
     [SerializeField] private HealthRegenerator _healthRegenerator;
     [SerializeField] private ShieldRegenerator _shieldRegenerator;
 
@@ -91,6 +95,8 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [Button]
     public void TakeDamage(float amount)
     {
+        _damageSoundPlayer.Play();
+        MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
         PlayerStats.Health.TakeDamage(amount);
     }
 
