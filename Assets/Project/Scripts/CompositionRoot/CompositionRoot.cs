@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.ArenaSystem;
+using Project.Scripts.Services;
 using UnityEngine;
 using YG;
 
@@ -13,6 +14,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Player _player;
         [SerializeField] private MainEnemySpawner _mainEnemySpawner;
         [SerializeField] private EdgeSpawner _edgeSpawner;
+        [SerializeField] private EnemyDespawner _enemyDespawner;
         [SerializeField] private Level _level;
         
         [SerializeField] private StatsBar _HealthBar;
@@ -43,9 +45,9 @@ namespace Project.Scripts.CompositionRoot
         {
             _edgeSpawner.SpawnOnEdges();
             
-            _mainEnemySpawner.Initialize(_player);
+            _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects.ToList(), _enemyDespawner);
             var waves = new Queue<Wave>(_arena.WavesConfigs
-                .Select(config => new Wave(config, _mainEnemySpawner, _edgeSpawner.EdgeObjects.ToList())).ToList());
+                .Select(config => new Wave(config, _mainEnemySpawner)).ToList());
 
             _arena.Initialize(waves, _player.transform);
             _arena.Work();

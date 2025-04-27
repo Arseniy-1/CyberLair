@@ -1,16 +1,26 @@
 ﻿using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Services;
 using UnityEngine;
 
 public class MainEnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<Enemy> _enemyPrefabs;
     [SerializeField] private int _startPoolCount;
+    [SerializeField] private float _spawnOffset;
+    
+    private IReadOnlyList<Transform> _spawnPoints;
+    private EnemyDespawner _despawner;
 
     private readonly Dictionary<EnemyTypes, EnemySpawner> _spawners = new();
     
-    public void Initialize(Player player)
+    public void Initialize(Player player, List<Transform> spawnPoints, EnemyDespawner despawner)
     {
+        _spawnPoints = spawnPoints;
+        _despawner = despawner;
+
+        _despawner.EnemyDespawn += MoveEnemy;
+        
         foreach (var enemyPrefab in _enemyPrefabs)
         {
             var enemySpawner = new EnemySpawner(enemyPrefab, player, _startPoolCount);
@@ -22,7 +32,10 @@ public class MainEnemySpawner : MonoBehaviour
     {
         var spawner = _spawners[type];
         
-        return spawner.Spawn();
+        Enemy enemy = spawner.Spawn();
+        MoveEnemy(enemy);
+        
+        return enemy;
     }
 
     public void ApplyModifier(StatModifier modifier)
@@ -31,5 +44,11 @@ public class MainEnemySpawner : MonoBehaviour
         {
             enemySpawner.ApplyModifier(modifier);
         }
+    }
+
+    private void MoveEnemy(Enemy enemy)
+    {
+        enemy.transform.position = Random.insideUnitCircle * _spawnOffset +
+                                   (Vector2)_spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
     }
 }

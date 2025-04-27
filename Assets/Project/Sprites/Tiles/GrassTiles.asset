@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: GrassTiles
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: -699324191, guid: 7c33f32e6035241b68b859bae3088b07, type: 3}
+  m_DefaultSprite: {fileID: -1982198069, guid: 85267cb2b2b1b4a239d8065c2215fa91, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 0
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: -699324191, guid: 7c33f32e6035241b68b859bae3088b07, type: 3}
-    - {fileID: -1374495908, guid: 7c579d10910024935a694ac4487e4a6f, type: 3}
+    - {fileID: -1982198069, guid: 85267cb2b2b1b4a239d8065c2215fa91, type: 3}
+    - {fileID: -1979787522, guid: e9eb4c0724cd3464c904a7604f645d3f, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
