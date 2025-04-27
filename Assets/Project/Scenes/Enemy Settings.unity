@@ -33808,7 +33808,7 @@ MonoBehaviour:
   _heartSpawnChance: 10
   _healAmount: 20
   _wavesConfigs:
-  - {fileID: 11400000, guid: 9de250105e226f042b1976e6d7ca9870, type: 2}
+  - {fileID: 11400000, guid: 0b0ee73d93609af4a92fa525a1be111a, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
   _bossChestPrefab: {fileID: 0}
   _effectPrefab: {fileID: 0}
@@ -34373,6 +34373,10 @@ PrefabInstance:
       propertyPath: _magnet
       value: 
       objectReference: {fileID: 928932857}
+    - target: {fileID: 5961620063364427724, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<Speed>k__BackingField.<BaseValue>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6123138739029961668, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_IsTrigger
       value: 1
