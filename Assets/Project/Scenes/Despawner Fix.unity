@@ -192,22 +192,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDespawner
       objectReference: {fileID: 0}
-    - target: {fileID: 6867663353878286975, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7829018673415439617, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
-      propertyPath: m_Size.x
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 7829018673415439617, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
-      propertyPath: m_Size.y
-      value: 60.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7829018673415439617, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8257525753918919039, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
