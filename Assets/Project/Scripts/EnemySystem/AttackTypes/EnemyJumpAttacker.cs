@@ -20,7 +20,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
         public override void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
             _jumpStats.JumpTime.CalculateCurrentValue();
-            _jumpStats.JumpDistance.CalculateCurrentValue();
+            _jumpStats.JumpSpeed.CalculateCurrentValue();
             _jumpStats.JumpReloadTime.CalculateCurrentValue();
             
             _jumper.Initialize(_jumpStats);

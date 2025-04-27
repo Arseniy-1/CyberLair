@@ -24,7 +24,7 @@ MonoBehaviour:
   _enemiesWeights:
   - _prefab: {fileID: 4382913821471026158, guid: c5cd427ff58ac4be9b534cf856fe6a4c, type: 3}
     _weight: 0.6
-  - _prefab: {fileID: 4399603215803775128, guid: 75bf669011b8f42ce8b3cdbf132211e0, type: 3}
+  - _prefab: {fileID: 4399603215803775128, guid: 2022369b02cb24e1ba9b2337e8c76b40, type: 3}
     _weight: 0.4
   _boss: {fileID: 0}
   _spawnClusterSize: {x: 3, y: 7}

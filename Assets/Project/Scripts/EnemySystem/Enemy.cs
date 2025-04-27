@@ -18,10 +18,11 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         [SerializeField] private float _attackDistance;
         [SerializeField] private EnemyView _view;
-
+        [SerializeField] private SoundPlayer _damageSoundPlayer;
+        
         private EntityStateMachine _stateMachine;
         private EnemyAttackCooldown _cooldown;
-        
+
         public event Action<Enemy> OnDestroyed;
 
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
@@ -42,6 +43,8 @@ namespace Project.Scripts.EnemySystem
         {
             _cooldown = new EnemyAttackCooldown();
             
+            _view.Initialize();
+            
             var states = new List<IState>
             {
                 new EnemyIdleState(this, _mover, _enemyTargetProvider, _view.Animator),
@@ -50,7 +53,6 @@ namespace Project.Scripts.EnemySystem
                 new EnemyStunnedState(this, _mover, _view.Animator)
             };
             
-            _view.Initialize();
             EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);
             _attacker.Initialize(_enemyTargetProvider);
@@ -69,8 +71,9 @@ namespace Project.Scripts.EnemySystem
         
         public void TakeDamage(float amount)
         {
-            EnemyStats.Health.TakeDamage(amount);
+            _damageSoundPlayer.Play();
             _view.Blink();
+            EnemyStats.Health.TakeDamage(amount);
         }
         
         public void TakeStun(float time)
@@ -87,16 +90,18 @@ namespace Project.Scripts.EnemySystem
         [Button]
         public void Die()
         {
-            MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath());
+            _damageSoundPlayer.PlayAtPoint(transform.position);
+            MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath(transform.position));
             OnDestroyed?.Invoke(this);
         }
         
         private IEnumerator TakingStun(float time)
         {
-            IsStunned = true;
+            _stateMachine.SwitchState<EnemyStunnedState>();
+        
             yield return new WaitForSeconds(time);
-
-            IsStunned = false;
+        
+            _stateMachine.SwitchState<EnemyIdleState>();
         }
         
         private void OnDrawGizmos()

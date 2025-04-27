@@ -5,6 +5,7 @@ using System;
 using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
+using Project.Scripts.MessageBroker.CameraMessageBrokers;
 
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
@@ -18,11 +19,16 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private TargetScanner _targetScanner;
     [SerializeField] private Destroyer _destroyer;
     [SerializeField] private Magnet _magnet;
-
+    [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+    [SerializeField] private InjuredScreenView _injuredScreenView;
+    
+    [SerializeField] private SoundPlayer _damageSoundPlayer;
+    
     [SerializeField] private HealthRegenerator _healthRegenerator;
     [SerializeField] private ShieldRegenerator _shieldRegenerator;
 
-    private Collider2D _collider;
+    [SerializeField] private Collider2D _collider;
+    
     private EntityStateMachine _entityStateMachine;
     private ExperienceStorage _experienceStorage = new ExperienceStorage();
 
@@ -31,15 +37,13 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public Collider2D Collider2D => _collider;
+    public PlayerInputController PlayerInputController => _playerInputController;
     public ExperienceStorage ExperienceStorage => _experienceStorage;
-
-    public bool IsStunned { get; private set; } = false;
 
     public Vector2 Position => transform.position;
 
     private void Awake()
     {
-        _collider = GetComponent<Collider2D>();
         InitializeComponents();
     }
 
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
             new PlayerIdleState(this, _playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
             new PlayerMoveState(this, _playerInputController, _playerMover, _weaponHolder, _targetScanner, _jumper),
             new PlayerJumpState(_playerInputController, _collider, _jumper),
-            new PlayerStunnedState(this, _playerMover)
+            new PlayerStunnedState(this, _playerMover, _jumper)
         };
 
         _entityStateMachine = new EntityStateMachine(playerStates);
@@ -87,11 +91,14 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _shieldRegenerator.Initialize(PlayerStats.ShieldAmount, PlayerStats.Health);
 
         _weaponHolder.Weapon.Initialize(PlayerStats);
+        _injuredScreenView.Initialize(PlayerStats.Health);
     }
 
     [Button]
     public void TakeDamage(float amount)
     {
+        _damageSoundPlayer.Play();
+        MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
         PlayerStats.Health.TakeDamage(amount);
     }
 
@@ -102,15 +109,15 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     private IEnumerator TakingStun(float time)
     {
-        IsStunned = true;
+        _entityStateMachine.SwitchState<PlayerStunnedState>();
+        
         yield return new WaitForSeconds(time);
-
-        IsStunned = false;
+        
+        _entityStateMachine.SwitchState<PlayerIdleState>();
     }
 
     private void Shoot()
     {
-        Debug.Log("222");
         _weaponHolder.Shoot();
     }
 

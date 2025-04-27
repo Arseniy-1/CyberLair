@@ -30,12 +30,14 @@
         public virtual void Enter()
         {
             _playerMover.enabled = true;
+            _playerMover.WalkSoundPlayer.PlayLoop();
             _playerInputController.OnJumpButtonPressed += OnJumpButtonPressed;
         }
 
         public virtual void Exit()
         {
             _playerMover.enabled = false;
+            _playerMover.WalkSoundPlayer.StopLoop();
             _playerInputController.OnJumpButtonPressed -= OnJumpButtonPressed;
         }
 
@@ -43,9 +45,6 @@
         {
             if (_targetScanner.HasTarget)
                 _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);
-
-            if (_player.IsStunned)
-                _stateSwitcher.SwitchState<PlayerStunnedState>();
 
             if (_playerMover.IsRunning == false)
                 _stateSwitcher.SwitchState<PlayerIdleState>();

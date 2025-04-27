@@ -30,9 +30,6 @@ namespace StateMashineSytem.EnemyStates
 
         public void Update()
         {
-            if (_enemy.IsStunned)
-                _stateSwitcher.SwitchState<EnemyStunnedState>();
-            
             if(_enemyTargetProvider.HasPlayer)
                 _stateSwitcher.SwitchState<EnemyMoveState>();
         }

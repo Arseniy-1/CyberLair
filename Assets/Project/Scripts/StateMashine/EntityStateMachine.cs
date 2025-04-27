@@ -7,7 +7,7 @@ namespace StateMashineSytem
     public class EntityStateMachine : IStateSwitcher
     {
         private List<IState> _states;
-        private IState _currentState;
+        public IState _currentState;
 
         public EntityStateMachine(List<IState> states)
         {

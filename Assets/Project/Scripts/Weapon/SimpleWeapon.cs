@@ -10,11 +10,11 @@ public class SimpleWeapon : Weapon
 {
     public override bool TryAttack()
     {
-        if (!_isReloaded)
+        if (!IsReloaded)
             return false;
 
         Attack();
-        _isReloaded = false;
+        IsReloaded = false;
 
         return true;
     }

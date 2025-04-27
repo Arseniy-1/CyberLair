@@ -5,18 +5,22 @@ using System;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Jumper : MonoBehaviour
 {
+    [SerializeField] private SoundPlayer _jumpSoundPlayer;
+    [SerializeField] private ParticleSystem _jumpEffector;
+    
     private Rigidbody2D _rigidbody;
     
-    private Vector3 _targetPosition;
     private bool _isMoving = false;
     private bool _isOnCooldown = false;
     private float _elapsedTime = 0f;
     private float _cooldownTimer = 0f;
 
+    private Vector3 _jumpDirection;
+
     private IJumpStats _jumpStats;
 
     public event Action JumpPerformed;
-    
+
     public bool IsOnCooldown => _isOnCooldown;
     public float CooldownTimer => _cooldownTimer;
     public IJumpStats JumpStats => _jumpStats;
@@ -34,14 +38,10 @@ public class Jumper : MonoBehaviour
         {
             _elapsedTime += Time.fixedDeltaTime;
 
-            float progress = _elapsedTime / _jumpStats.JumpTime.CurrentValue;
-
-            if (progress < 1f)
+            if (_elapsedTime < _jumpStats.JumpTime.CurrentValue)
             {
-                var newPosition = Vector3.MoveTowards(transform.position, _targetPosition,
-                    _jumpStats.JumpDistance.CurrentValue * Time.fixedDeltaTime / _jumpStats.JumpTime.CurrentValue);
-                
-                _rigidbody.MovePosition(newPosition);
+                Vector3 movement = _jumpDirection * _jumpStats.JumpSpeed.CurrentValue * Time.fixedDeltaTime;
+                _rigidbody.MovePosition(_rigidbody.position + (Vector2)movement);
             }
             else
             {
@@ -76,7 +76,9 @@ public class Jumper : MonoBehaviour
             if (direction == Vector3.zero)
                 return;
 
-            _targetPosition = transform.position + direction.normalized * _jumpStats.JumpDistance.CurrentValue;
+            _jumpSoundPlayer.Play();
+            _jumpEffector.Play();
+            _jumpDirection = direction.normalized;
             _elapsedTime = 0f;
             _isMoving = true;
         }
