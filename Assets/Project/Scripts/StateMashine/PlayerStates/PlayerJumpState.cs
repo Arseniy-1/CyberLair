@@ -42,7 +42,7 @@ namespace StateMashineSytem.PlayerStateMashine
 
         }
 
-        public void OnJumpPerformed()
+        private void OnJumpPerformed()
         {
             _stateSwitcher.SwitchState<PlayerIdleState>();
         }

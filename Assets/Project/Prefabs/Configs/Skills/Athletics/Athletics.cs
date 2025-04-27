@@ -16,13 +16,13 @@ namespace Project.Prefabs.Configs.Skills.Athletics
             
             _skillData = skillData;
             
-            skillData.PlayerStats.JumpDistance.AddModifier(_jumpDistanceModifier);
+            skillData.PlayerStats.JumpSpeed.AddModifier(_jumpDistanceModifier);
             skillData.PlayerStats.MagnetRange.AddModifier(_magnetRangeModifier);
         }
 
         public void Disable()
         {
-            _skillData.PlayerStats.JumpDistance.RemoveModifier(_jumpDistanceModifier);
+            _skillData.PlayerStats.JumpSpeed.RemoveModifier(_jumpDistanceModifier);
             _skillData.PlayerStats.MagnetRange.RemoveModifier(_magnetRangeModifier);
         }
     }

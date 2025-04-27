@@ -8,6 +8,7 @@ namespace Project.Scripts.EnemySystem
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Material _blinkMaterial;
+        [SerializeField] private ParticleSystem _takeDamageParticles;
         
         [SerializeField] private float _blinkDuration;
         
@@ -22,6 +23,7 @@ namespace Project.Scripts.EnemySystem
 
         public async UniTaskVoid Blink()
         {
+            _takeDamageParticles.Play();
             _spriteRenderer.material = _blinkMaterial;
 
             await UniTask.Delay(TimeSpan.FromSeconds(_blinkDuration));

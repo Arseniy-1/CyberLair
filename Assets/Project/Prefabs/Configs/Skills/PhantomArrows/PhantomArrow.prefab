@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8056698977683394992}
   - component: {fileID: -5008895013172540786}
   - component: {fileID: 6966984513860249003}
-  - component: {fileID: 2790034736549358457}
+  - component: {fileID: 5348708352590637453}
   m_Layer: 6
   m_Name: PhantomArrow
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9091217991042246640}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6966984513860249003}
-  _speed: 5
+  _speed: 20
   _timeToDespawn: 4
   _collisionHandler: {fileID: -5008895013172540786}
 --- !u!114 &-5008895013172540786
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collisionDamage: 15
-  _contactLimit: 0
+  _contactLimit: 5
 --- !u!50 &6966984513860249003
 Rigidbody2D:
   serializedVersion: 4
@@ -93,8 +93,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &2790034736549358457
-CircleCollider2D:
+--- !u!61 &5348708352590637453
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,12 +122,22 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.79, y: 0.3}
+  m_EdgeRadius: 0
 --- !u!1 &5215328734028727806
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,8 +211,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.5918476, g: 0.9433962, b: 0.8848571, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3763466d6020847598542c2e2fc53b9c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HealingHeart : MonoBehaviour, IMoveable, IInteractable, IDestoyable<HealingHeart>
 {

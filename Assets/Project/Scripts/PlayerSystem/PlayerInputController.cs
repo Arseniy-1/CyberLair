@@ -12,7 +12,8 @@ public class PlayerInputController : MonoBehaviour
     private PlayerInput _playerInput;
 
     public Vector2 InputDirection => _playerInput.Land.Move.ReadValue<Vector2>();
-
+    public PlayerInput PlayerInput => _playerInput;
+    
     public event Action OnJumpButtonPressed;
     public event Action OnMoveButtonPressed;
     public event Action OnShootButtonPressed;
@@ -46,7 +47,7 @@ public class PlayerInputController : MonoBehaviour
 
         if (!_isDevice && _playerInput.Land.Shoot.IsPressed())
         {
-            OnShootButtonPressed?.Invoke();
+            Shoot();
         }
     }
 

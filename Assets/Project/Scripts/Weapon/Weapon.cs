@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Weapon
 {
     public abstract class Weapon : MonoBehaviour
     {
-        [SerializeField] protected Bullet _bulletPrefab;
-        [SerializeField] protected Transform _shootPoint;
-        [SerializeField] protected Animator _weaponAnimator;
-        [SerializeField] protected AmmoSpawner _ammoSpawner;
-        [SerializeField] protected List<BulletEffector> _bulletEffectors;
-
-        protected float _currentTime = 0;
-        protected bool _isReloaded;
+        [SerializeField] private SoundPlayer _shootSoundPlayer;
+            
+        [SerializeField] protected Bullet BulletPrefab;
+        [SerializeField] protected Transform ShootPoint;
+        [SerializeField] protected Animator WeaponAnimator;
+        [SerializeField] protected AmmoSpawner AmmoSpawner;
+        [SerializeField] protected List<BulletEffector> BulletEffectors;
+        
+        protected float CurrentTime = 0;
+        protected bool IsReloaded;
         protected IWeaponStats _weaponStats;
 
         public IWeaponStats WeaponStats => _weaponStats;
@@ -22,9 +27,9 @@ namespace Project.Scripts.Weapon
 
         protected virtual void Awake()
         {
-            _ammoSpawner = new AmmoSpawner(_bulletPrefab);
+            AmmoSpawner = new AmmoSpawner(BulletPrefab);
 
-            foreach (var effector in _bulletEffectors)
+            foreach (var effector in BulletEffectors)
             {
                 effector.Initialize(this);
             }
@@ -37,27 +42,29 @@ namespace Project.Scripts.Weapon
 
         protected virtual void FixedUpdate()
         {
-            if (_currentTime < _weaponStats.WeaponBulletReloadTime.CurrentValue && !_isReloaded)
-                _currentTime += Time.deltaTime;
+            if (CurrentTime < _weaponStats.WeaponBulletReloadTime.CurrentValue && !IsReloaded)
+                CurrentTime += Time.deltaTime;
 
-            if (_currentTime >= _weaponStats.WeaponBulletReloadTime.CurrentValue)
+            if (CurrentTime >= _weaponStats.WeaponBulletReloadTime.CurrentValue)
                 Reload();
         }
 
         public abstract bool TryAttack();
 
-        protected void Reload()
+        private void Reload()
         {
-            _currentTime = 0;
-            _isReloaded = true;
+            CurrentTime = 0;
+            IsReloaded = true;
         }
 
         protected void Attack()
         {
+            _shootSoundPlayer.Play();
+            
             for (int i = 0; i < _weaponStats.BulletPerShootCount.CurrentValue; i++)
             {
-                Bullet bullet = _ammoSpawner.Spawn();
-                bullet.Init(_shootPoint.position, GetBulletDirection(), (int)_weaponStats.WeaponDamage.CurrentValue);
+                Bullet bullet = AmmoSpawner.Spawn();
+                bullet.Init(ShootPoint.position, GetBulletDirection(), (int)_weaponStats.WeaponDamage.CurrentValue);
 
                 Shooted?.Invoke(bullet);
 
@@ -65,16 +72,17 @@ namespace Project.Scripts.Weapon
             }
         }
 
-        protected Quaternion GetBulletDirection()
+        private Quaternion GetBulletDirection()
         {
             Quaternion rotation = transform.rotation;
             rotation.z += Random.Range(-_weaponStats.WeaponSpread.CurrentValue, _weaponStats.WeaponSpread.CurrentValue);
+            
             return rotation;
         }
 
         public void ApplyEffector(BulletEffector bulletEffector)
         {
-            _bulletEffectors.Add(bulletEffector);
+            BulletEffectors.Add(bulletEffector);
             bulletEffector.Initialize(this);
         }
     }

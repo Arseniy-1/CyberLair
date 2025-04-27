@@ -23,6 +23,9 @@ namespace Project.Scripts.ArenaSystem
         [SerializeField] private Cage _cagePrefab;
         [SerializeField] private BossChest _bossChestPrefab;
         
+        [SerializeField] private Effect _effectPrefab;
+        private EffectsSpawner _effectsSpawner;
+        
         private readonly CompositeDisposable _disposable = new();
         
         private Queue<Wave> _waves;
@@ -36,7 +39,8 @@ namespace Project.Scripts.ArenaSystem
         {
             _waves = waves;
             _playerTransform = playerTransform;
-            
+
+            _effectsSpawner = new EffectsSpawner(_effectPrefab, _disposable);
             _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
             _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);
             
