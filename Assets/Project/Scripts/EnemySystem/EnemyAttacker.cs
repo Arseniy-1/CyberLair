@@ -12,7 +12,9 @@ namespace Project.Scripts.EnemySystem
         
         protected EnemyTargetProvider EnemyTargetProvider;
         private Transform _transform;
-        
+
+        public event Action AttackStarted;
+        public event Action<bool> AttackPerforming;
         public event Action AttackPerformed;
         
         public virtual BaseEnemyAttackStats Stats => _stats;
@@ -43,11 +45,17 @@ namespace Project.Scripts.EnemySystem
             
             for (int i = 0; i < _stats.AttackCount; i++)
             {
+                AttackStarted?.Invoke();
                 yield return waitDelay;
+                
+                AttackPerforming?.Invoke(true);
                 yield return Attack();
+                
+                AttackPerforming?.Invoke(false);
             }
 
             yield return waitRecovery;
+            
             EndAttack();
         }
     }

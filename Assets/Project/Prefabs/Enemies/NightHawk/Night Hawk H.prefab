@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1422075624549261699}
   - component: {fileID: 8881414196173872664}
   - component: {fileID: 624489385691389382}
+  - component: {fileID: 6036219577560206491}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -122,6 +123,21 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1422075624549261699}
   _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
   _blinkDuration: 0.1
+  <Animator>k__BackingField: {fileID: 8881414196173872664}
+--- !u!114 &6036219577560206491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780023936938558337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -3.6, y: 3.6, z: 3.6}
+  _rigidbody: {fileID: 26766439269764555}
 --- !u!1 &6321936822601242699
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +206,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7671894555850046273
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -287,7 +303,7 @@ MonoBehaviour:
   _attacker: {fileID: 6962832339083455307}
   _destroyer: {fileID: 5625599109945990570}
   _enemyTargetProvider: {fileID: 2166195250440910278}
-  _attackDistance: 2.5
+  _attackDistance: 7.42
   _view: {fileID: 624489385691389382}
   <EnemyType>k__BackingField: 1
   <EnemyStats>k__BackingField:
@@ -370,11 +386,11 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpDistance>k__BackingField:
-      <BaseValue>k__BackingField: 3
+      <BaseValue>k__BackingField: 7
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 0.4
+      <BaseValue>k__BackingField: 1
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpReloadTime>k__BackingField:

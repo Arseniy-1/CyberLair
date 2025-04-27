@@ -5,21 +5,27 @@ namespace StateMashineSytem.EnemyStates
 {
     public class EnemyIdleState : IState
     {
+        private readonly Enemy _enemy;
+        private readonly EnemyMover _mover;
+        private readonly EnemyTargetProvider _enemyTargetProvider;
         private IStateSwitcher _stateSwitcher;
-        private Enemy _enemy;
-        private Rigidbody2D _rigidbody;
-        private EnemyTargetProvider _enemyTargetProvider;
+        
+        private readonly Animator _animator;
+        private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
 
-        public EnemyIdleState(Enemy enemy, Rigidbody2D rigidbody, EnemyTargetProvider enemyTargetProvider)
+        public EnemyIdleState(Enemy enemy, EnemyMover mover, EnemyTargetProvider enemyTargetProvider, Animator animator)
         {
             _enemy = enemy;
-            _rigidbody = rigidbody;
+            _mover = mover;
             _enemyTargetProvider = enemyTargetProvider;
+            _animator = animator;
         }
         
         public void Enter()
         {
-            _rigidbody.velocity = Vector2.zero;
+            _mover.enabled = false;
+            
+            _animator.SetBool(_moveAnimation, _mover.enabled);
         }
 
         public void Update()

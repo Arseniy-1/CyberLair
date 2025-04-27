@@ -44,13 +44,6 @@ namespace Project.Scripts.EnemySystem.Bosses
 
             allAttacks.ForEach(attack => attack.Initialize());
             
-            // foreach (BossAttack bossAttack in allAttacks)
-            // {
-            //     bossAttack.Initialize();
-            // }
-
-            // _attacksOrder = new Queue<BossAttack>();
-            
             if(_generalAttacks.IsNullOrEmpty() == false)
                 _generalAttacksPerformer = new AttackPerformer(_attacksOrder, _generalAttacks);
             
@@ -79,6 +72,10 @@ namespace Project.Scripts.EnemySystem.Bosses
         private void ApplyAttack(BossAttack attack)
         {
             _isAttacking = false;
+
+            if (_currentAttack)
+                _bossAnimator.ResetTrigger(_currentAttack.BossAttackAnimationTrigger);
+            
             _currentAttack = attack;
             EnemyTargetProvider.Initialize(EnemyTargetProvider.Player, _currentAttack.Range);
         }
