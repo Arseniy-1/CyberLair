@@ -30,14 +30,12 @@ public class InjuredScreenView : MonoBehaviour
     {
         float healthPercent = Mathf.Clamp01(currentValue / baseValue);
 
-        // Альфа — от 0 (фулл хп) до 1 (0 хп)
         _baseAlpha = 1f - healthPercent;
 
-        // Скорость пульсации — от min до max в зависимости от здоровья
         _pulseSpeed = Mathf.Lerp(_maxPulseSpeed, _minPulseSpeed, healthPercent);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (_baseAlpha <= 0f)
         {
@@ -46,7 +44,7 @@ public class InjuredScreenView : MonoBehaviour
             return;
         }
 
-        float pulse = Mathf.Sin(Time.fixedTime * _pulseSpeed) * _pulseAmplitude;
+        float pulse = Mathf.Sin(Time.time * _pulseSpeed) * _pulseAmplitude;
         float finalAlpha = Mathf.Clamp01(_baseAlpha + pulse);
 
         SetImageAlpha(finalAlpha);
