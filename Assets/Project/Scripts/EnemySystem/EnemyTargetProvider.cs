@@ -5,6 +5,7 @@ namespace Project.Scripts.EnemySystem
     public class EnemyTargetProvider : MonoBehaviour
     {
         private float _attackDistance;
+        
         private Player _player;
         
         public Vector2 Position => transform.position;

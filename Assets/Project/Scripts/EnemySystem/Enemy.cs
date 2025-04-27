@@ -22,7 +22,7 @@ namespace Project.Scripts.EnemySystem
         
         private EntityStateMachine _stateMachine;
         private EnemyAttackCooldown _cooldown;
-        
+
         public event Action<Enemy> OnDestroyed;
 
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }
@@ -43,6 +43,8 @@ namespace Project.Scripts.EnemySystem
         {
             _cooldown = new EnemyAttackCooldown();
             
+            _view.Initialize();
+            
             var states = new List<IState>
             {
                 new EnemyIdleState(this, _mover, _enemyTargetProvider, _view.Animator),
@@ -51,7 +53,6 @@ namespace Project.Scripts.EnemySystem
                 new EnemyStunnedState(this, _mover, _view.Animator)
             };
             
-            _view.Initialize();
             EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);
             _attacker.Initialize(_enemyTargetProvider);
@@ -96,10 +97,11 @@ namespace Project.Scripts.EnemySystem
         
         private IEnumerator TakingStun(float time)
         {
-            IsStunned = true;
+            _stateMachine.SwitchState<EnemyStunnedState>();
+        
             yield return new WaitForSeconds(time);
-
-            IsStunned = false;
+        
+            _stateMachine.SwitchState<EnemyIdleState>();
         }
         
         private void OnDrawGizmos()

@@ -25,16 +25,14 @@ namespace StateMashineSytem.EnemyStates
             
             _animator.SetBool(_moveAnimation, _mover.enabled);
         }
-
-        public void Update()
-        {
-            if (_enemy.IsStunned == false)
-                _stateSwitcher.SwitchState<EnemyIdleState>();
-        }
-
+        
         public void Exit()
         {
             _mover.enabled = true;
+        }
+        
+        public void Update()
+        {
         }
 
         public void Initialize(IStateSwitcher stateSwitcher)
