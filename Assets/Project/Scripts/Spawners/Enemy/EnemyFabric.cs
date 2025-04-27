@@ -13,11 +13,6 @@ namespace Project.Scripts.CompositionRoot
             _player = player;
         }
         
-        // public void Initialize(Player player)
-        // {
-        //     _player = player;
-        // }
-        
         public Enemy Create(Enemy enemy)
         {
             Enemy doneEnemy = Object.Instantiate(enemy);

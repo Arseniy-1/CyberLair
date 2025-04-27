@@ -8,6 +8,11 @@ public class MobileShootZone : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     
     private bool _isButtonPressed;
 
+    private void OnDisable()
+    {
+        _isButtonPressed = false;
+    }
+    
     public void OnPointerDown(PointerEventData eventData)
     {
         _isButtonPressed = true;
@@ -17,8 +22,8 @@ public class MobileShootZone : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         _isButtonPressed = false;
     }
-
-    private void FixedUpdate()
+    
+    private void Update()
     {
         if (_isButtonPressed)
         {

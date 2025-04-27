@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5752018081842011187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517246989789658687}
+  - component: {fileID: 7158473380028332352}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517246989789658687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5752018081842011187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7158473380028332352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5752018081842011187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1167e8c3210c40289042c5b4c5fb9de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seed: 2
+  _mapLayers:
+  - _tilemap: {fileID: 0}
+    _terrainTile: {fileID: 11400000, guid: 4835deadd453348658f30c4f8e045e9b, type: 2}
+    _defaultTile: {fileID: 11400000, guid: d45662f9735c1472aa87990fd6a8b064, type: 2}
+    <Config>k__BackingField: {fileID: 11400000, guid: f28186d92062e4c3ba41c1792d583280, type: 2}
+  - _tilemap: {fileID: 0}
+    _terrainTile: {fileID: 11400000, guid: 5c784dfe5a11d449eaf5afee25a85c62, type: 2}
+    _defaultTile: {fileID: 0}
+    <Config>k__BackingField: {fileID: 11400000, guid: e066c39842f96429bafc7dc46343e44b, type: 2}
+  _mapObjectPlacer:
+    _targetTilemap: {fileID: 0}
+    _obstacleTilemaps:
+    - {fileID: 0}
+    _tileObjects:
+    - _prefab: {fileID: -8957675410574020881, guid: 509fa8cfd989742a289dcd05320aa421, type: 3}
+      _weight: 0.011
+    - _prefab: {fileID: 2084560162037663947, guid: b95df1d6754494fbfae4e7301cac3b18, type: 3}
+      _weight: 0.01
+    - _prefab: {fileID: 1440457428307328145, guid: 24383c8712030450988eef23a7d11804, type: 3}
+      _weight: 0.021
+    - _prefab: {fileID: -2090473839450888357, guid: b5b8be5593a8345bfb57cfe7cf263682, type: 3}
+      _weight: 0.02
+    - _prefab: {fileID: 2084560162037663947, guid: aac8e77c84b6c4f65b61526019fd1fc2, type: 3}
+      _weight: 0.015
+    - _prefab: {fileID: 2084560162037663947, guid: ff796df80747443bb8a3d86e1446fe57, type: 3}
+      _weight: 0.014
+    - _prefab: {fileID: -2090473839450888357, guid: b6feda11e1e634224a70f07a64604aca, type: 3}
+      _weight: 0.031
+    - _prefab: {fileID: 2084560162037663947, guid: 39195527c84554278b9906ad184a31bb, type: 3}
+      _weight: 0.02
+    - _prefab: {fileID: 2084560162037663947, guid: 5fdee87d494ea4798a08c138d44f3cd0, type: 3}
+      _weight: 0.019
+    - _prefab: {fileID: -2090473839450888357, guid: ab509ccc412c94281b5bc50e790ff191, type: 3}
+      _weight: 0.022
+    - _prefab: {fileID: -2090473839450888357, guid: 87946282fc3e84b71ad5c6c18b7ffdea, type: 3}
+      _weight: 0.021
+    - _prefab: {fileID: -2090473839450888357, guid: a4de11713d34740cd92cd910de2b9031, type: 3}
+      _weight: 0.03
+    - _prefab: {fileID: -8957675410574020881, guid: 3d791f1e06ef64c7fb8e0993db0ea228, type: 3}
+      _weight: 0.012
+    - _prefab: {fileID: 2084560162037663947, guid: d2db47a683b82463dbfece26dec60615, type: 3}
+      _weight: 0.011
+    - _prefab: {fileID: 2084560162037663947, guid: 1251e96206a284a6dbad70476c8f7663, type: 3}
+      _weight: 0.016
+    - _prefab: {fileID: 2084560162037663947, guid: 2304ec237298642f88344db82342279a, type: 3}
+      _weight: 0.015
+    - _prefab: {fileID: 2084560162037663947, guid: 6c3d5f7c18dec4a7bbb256ab86218448, type: 3}
+      _weight: 0.025
+    - _prefab: {fileID: 2084560162037663947, guid: cdc592db2c1b146a2a927926b6871773, type: 3}
+      _weight: 0.024
+    - _prefab: {fileID: -2090473839450888357, guid: 666315d955ae749b4b1c0c9a5c5ba0ea, type: 3}
+      _weight: 0.021
+    - _prefab: {fileID: -2090473839450888357, guid: fac83aa9c016a4f4893a69667fb0a92d, type: 3}
+      _weight: 0.031
+    _objectFillPercentage: 0.01

@@ -71,7 +71,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2591486324738904923
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,7 +158,6 @@ MonoBehaviour:
   _attackDistance: 2
   _view: {fileID: 1222469161822643883}
   _damageSoundPlayer: {fileID: 1232779897996677329}
-  stateName: 
   <EnemyType>k__BackingField: 2
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 4
