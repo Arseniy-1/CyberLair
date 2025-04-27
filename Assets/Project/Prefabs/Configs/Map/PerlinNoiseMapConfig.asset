@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47744b9fba3b474c986d0fd5408fb2f7, type: 3}
   m_Name: PerlinNoiseMapConfig
   m_EditorClassIdentifier: 
-  <Width>k__BackingField: 75
-  <Height>k__BackingField: 75
-  <FillPercent>k__BackingField: 0.5
-  <NoiseScale>k__BackingField: {x: 7.34155, y: 12.40317}
+  <Width>k__BackingField: 100
+  <Height>k__BackingField: 100
+  <FillPercent>k__BackingField: 0.249
+  <NoiseScale>k__BackingField: {x: 7.34155, y: 11.84005}
   <NoiseOffsetX>k__BackingField: {x: 10.211272, y: 37.05986}
   <NoiseOffsetY>k__BackingField: {x: 17.693666, y: 50.704227}

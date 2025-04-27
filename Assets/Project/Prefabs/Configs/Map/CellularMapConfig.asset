@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9391be1183843188cb130d3c2ee9b6a, type: 3}
   m_Name: CellularMapConfig
   m_EditorClassIdentifier: 
-  <Width>k__BackingField: 75
-  <Height>k__BackingField: 75
-  <FillPercent>k__BackingField: 0.6
-  <SmoothSteps>k__BackingField: 5
+  <Width>k__BackingField: 100
+  <Height>k__BackingField: 100
+  <FillPercent>k__BackingField: 0.22
+  <SmoothSteps>k__BackingField: 4.07
   <SmoothThreshold>k__BackingField: 5

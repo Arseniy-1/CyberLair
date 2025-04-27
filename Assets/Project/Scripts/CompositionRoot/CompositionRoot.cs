@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.ArenaSystem;
+using Project.Scripts.MapGenerationSystem;
 using Project.Scripts.Services;
 using UnityEngine;
 using YG;
@@ -11,6 +12,7 @@ namespace Project.Scripts.CompositionRoot
     public class CompositionRoot : MonoBehaviour
     {
         [SerializeField] private Arena _arena;
+        [SerializeField] private MapGenerator _mapGenerator;
         [SerializeField] private Player _player;
         [SerializeField] private MainEnemySpawner _mainEnemySpawner;
         [SerializeField] private EdgeSpawner _edgeSpawner;
@@ -44,6 +46,7 @@ namespace Project.Scripts.CompositionRoot
         private void Awake()
         {
             _edgeSpawner.SpawnOnEdges();
+            _mapGenerator.Initialize();
             
             _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects.ToList(), _enemyDespawner);
             var waves = new Queue<Wave>(_arena.WavesConfigs
