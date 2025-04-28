@@ -1526,6 +1526,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3153589571867756479, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1047049808, guid: e9eb4c0724cd3464c904a7604f645d3f, type: 3}
+    - target: {fileID: 3153589571867756479, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3237670856865732149, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
