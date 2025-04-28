@@ -12,6 +12,7 @@ namespace StateMashineSytem.EnemyStates
         
         private readonly Animator _animator;
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
+        private readonly int _attackAnimation = Animator.StringToHash("IsAttacking");
 
         public EnemyIdleState(Enemy enemy, EnemyMover mover, EnemyTargetProvider enemyTargetProvider, Animator animator)
         {
@@ -26,6 +27,7 @@ namespace StateMashineSytem.EnemyStates
             _mover.enabled = false;
             
             _animator.SetBool(_moveAnimation, _mover.enabled);
+            _animator.SetBool(_attackAnimation, false);
         }
 
         public void Update()

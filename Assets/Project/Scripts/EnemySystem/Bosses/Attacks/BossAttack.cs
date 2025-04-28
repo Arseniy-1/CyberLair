@@ -26,20 +26,26 @@ namespace Project.Scripts.EnemySystem.Bosses
         public IEnumerator Performing()
         {
             var waitRecovery = new WaitForSeconds(AttackStats.AttackRecovery);
-            IsAttacking = false;
+            
+            Debug.Log($"{gameObject.name} waiting IsAttacking = {IsAttacking}");
             
             View.gameObject.SetActive(true);
             AnimatorEvents.Attacking += HandleAttacking;
             AttackAnimator.SetTrigger(AttackTrigger);
             
             yield return new WaitUntil(() => IsAttacking);
+            Debug.Log($"{gameObject.name} IsAttacking = {IsAttacking}");
             
             for (int i = 0; i < AttackStats.AttackCount; i++)
             {
                 yield return Attack();
             }
 
+            Debug.Log($"{gameObject.name} recovery");
             yield return waitRecovery;
+            
+            Debug.Log($"{gameObject.name} done");
+            HandleEnding();
         }
         
         protected abstract IEnumerator Attack();

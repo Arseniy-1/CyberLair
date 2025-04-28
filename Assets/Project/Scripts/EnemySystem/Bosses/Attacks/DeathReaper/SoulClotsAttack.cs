@@ -19,9 +19,6 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
 
         protected override IEnumerator Attack()
         {
-            View.gameObject.SetActive(true);
-            AttackAnimator.SetTrigger(AttackTrigger);
-            
             MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
 
             for (int i = 0; i < ObjectCount; i++)
@@ -40,6 +37,8 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
                 var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));
                 yield return wait;
             }
+            
+            View.gameObject.SetActive(false);
         }
     }
 }

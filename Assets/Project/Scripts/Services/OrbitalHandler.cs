@@ -19,6 +19,11 @@ namespace Project.Scripts.Servises
         {
             _orbitals.Clear();
         }
+
+        public void RemoveOrbital(Orbital orbital)
+        {
+            _orbitals.Remove(orbital);
+        }
         
         private void DistributeEqually(Transform holder)
         {

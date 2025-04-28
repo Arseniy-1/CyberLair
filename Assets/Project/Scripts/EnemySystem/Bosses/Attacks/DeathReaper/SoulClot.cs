@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,21 +11,31 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
         [SerializeField] private float _duration = 1f;
         [SerializeField] private float _arcHeight = 2f;
         [SerializeField] private int _pathResolution = 10;
+        [SerializeField] private float _timeToDestroy = 1.5f;
         
         private Vector3 _target;
         private Vector3 _previousPosition;
         private Tweener _moveTween;
+        private Coroutine _destroyCoroutine;
         
         public event Action<SoulClot> OnDestroyed;
 
         public void Initialize(Vector3 target)
         {
             _target = target;
+            
+            _destroyCoroutine ??= StartCoroutine(WaitForDestroy());
         }
         
         public void ReturnToPool()
         {
             StopMove();
+            
+            if (_destroyCoroutine == null)
+                return;
+            
+            StopCoroutine(_destroyCoroutine);
+            _destroyCoroutine = null;
             
             OnDestroyed?.Invoke(this);
         }
@@ -71,11 +82,19 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
 
         private void StopMove()
         {
-            if (_moveTween != null && _moveTween.IsActive())
-            {
-                _moveTween.Kill();
-                _moveTween = null;
-            }
+            if (_moveTween == null || !_moveTween.IsActive()) 
+                return;
+            
+            _moveTween.Kill();
+            _moveTween = null;
+        }
+        
+        private IEnumerator WaitForDestroy()
+        {
+            var wait = new WaitForSeconds(_timeToDestroy);
+            yield return wait;
+
+            ReturnToPool();
         }
     }
 }

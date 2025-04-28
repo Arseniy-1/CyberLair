@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2529959024454632529}
   - component: {fileID: 3279646485583062671}
   - component: {fileID: 2225735777025388279}
-  m_Layer: 0
+  - component: {fileID: 8553889918406989579}
+  m_Layer: 11
   m_Name: SoulClot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 816911465877267318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.280192, y: 1.2762674, z: 0.4043988}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,6 +51,7 @@ MonoBehaviour:
   _duration: 1
   _arcHeight: 2
   _pathResolution: 10
+  _timeToDestroy: 1.5
 --- !u!114 &2225735777025388279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +66,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collisionDamage: 20
   _contactLimit: 1
+--- !u!58 &8553889918406989579
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816911465877267318}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.18, y: -0.15}
+  serializedVersion: 2
+  m_Radius: 1.31
 --- !u!1 &8112432094481149773
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +112,7 @@ GameObject:
   - component: {fileID: 1773631150528992416}
   - component: {fileID: 4081822223831558001}
   - component: {fileID: 559930394473493237}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +129,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.4043988}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2529959024454632529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

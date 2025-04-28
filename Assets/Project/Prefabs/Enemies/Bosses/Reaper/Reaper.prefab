@@ -54,7 +54,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 3
+    <Cooldown>k__BackingField: 10
   Prefab: {fileID: 3279646485583062671, guid: 97ae33b6a529945b5be1d4f780cc98aa, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.18275137, y: 0.29785928}
@@ -289,7 +289,7 @@ MonoBehaviour:
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 3000
+      <BaseValue>k__BackingField: 3600
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <CollisionDamage>k__BackingField: 20
@@ -309,7 +309,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0.1
     <AttackRecovery>k__BackingField: 0.1
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 3
+    <Cooldown>k__BackingField: 5
   _bossAnimator: {fileID: 8081249287118153077}
   _bossAnimationEvents: {fileID: 8327600072873280291}
   _generalAttacks:
@@ -330,7 +330,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -612,7 +612,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 0.1
+    <Cooldown>k__BackingField: 0.5
   _offset: {x: 6.37569, y: 0}
   _size: {x: 10.13, y: 16.65}
   _layerMask:
@@ -796,7 +796,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 0.1
+    <Cooldown>k__BackingField: 3
   Prefab: {fileID: 485471398250535266, guid: 67b28be34109d4e609fb13d81917f383, type: 3}
   ObjectCount: 6
   SpawnPeriodLimits: {x: 0.1, y: 0.15143034}

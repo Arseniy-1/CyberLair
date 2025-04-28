@@ -25,8 +25,8 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
             for (int i = 0; i < ObjectCount; i++)
             {
                 SoulOrbital orbital = Spawner.Spawn();
-                orbital.Initialize(_transform);
                 orbital.OnDestroyed += UnsubscribeObject;
+                orbital.Initialize(_transform);
                 
                 SpawnedObjects.Add(orbital);
                 _orbitalHandler.AddOrbital(orbital, _transform);
@@ -34,6 +34,15 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
                 var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));
                 yield return wait;
             }
+            
+            View.gameObject.SetActive(false);
+        }
+
+        protected override void UnsubscribeObject(SoulOrbital spawnedObject)
+        {
+            base.UnsubscribeObject(spawnedObject);
+            
+            _orbitalHandler.RemoveOrbital(spawnedObject);
         }
     }
 }

@@ -52,21 +52,30 @@ namespace Project.Scripts.EnemySystem.Bosses
             
             base.Initialize(enemyTargetProvider);
             
-            ApplyAttack(allAttacks[Random.Range(0, allAttacks.Count)]);
+            _attacksOrder.Enqueue(allAttacks[Random.Range(0, allAttacks.Count)]);
         }
         
         protected override IEnumerator Attack()
         {
+            // Debug.Log($"Waiting attack order = {_attacksOrder.Count > 0}");
+            yield return new WaitUntil(() => _attacksOrder.Count > 0);
+            // Debug.Log($"Waiting attack order = {_attacksOrder.Count > 0}");
+            
+            ApplyAttack(_attacksOrder.Dequeue());
+            
+            // Debug.Log($"{gameObject.name} delay");
             yield return new WaitForSeconds(_currentAttack.AttackStats.AttackDelay);
             
             _bossAnimationEvents.Attacking += HandleBossAttackEvent;
             _bossAnimator.SetTrigger(_currentAttack.BossAttackAnimationTrigger);
-            
+
             yield return new WaitUntil(() => _isAttacking);
+            
+            // Debug.Log($"Waiting {_currentAttack.name}");
             
             yield return _currentAttack.Performing();
             
-            ApplyAttack(_attacksOrder.Dequeue());
+            // Debug.Log($"{_currentAttack.name} is done");
         }
 
         private void ApplyAttack(BossAttack attack)

@@ -77,12 +77,16 @@ namespace Project.Scripts.ArenaSystem
 
         private void HandleBossSpawn(Enemy enemy)
         {
+            Debug.Log("BossSpawned");
+            
             enemy.OnDestroyed += SpawnChest;
             Instantiate(_cagePrefab, _playerTransform.position, Quaternion.identity);
         }
         
         private void SpawnChest(Enemy enemy)
         {
+            Debug.Log("ChestSpawned");
+            
             enemy.OnDestroyed -= SpawnChest;
 
             Instantiate(_bossChestPrefab, enemy.transform.position, Quaternion.identity);

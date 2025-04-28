@@ -32,9 +32,10 @@ namespace Project.Scripts.EnemySystem.Bosses
             SpawnedObjects.Clear();
         }
         
-        protected void UnsubscribeObject(T spawnedObject)
+        protected virtual void UnsubscribeObject(T spawnedObject)
         {
             spawnedObject.OnDestroyed -= UnsubscribeObject;
+            spawnedObject.ReturnToPool();
             SpawnedObjects.Remove(spawnedObject);
         }
     }

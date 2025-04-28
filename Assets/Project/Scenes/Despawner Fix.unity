@@ -1040,16 +1040,7 @@ MonoBehaviour:
   _heartSpawnChance: 10
   _healAmount: 20
   _wavesConfigs:
-  - {fileID: 11400000, guid: 3bfa847b46740446397e5195ffe5d83e, type: 2}
-  - {fileID: 11400000, guid: f89f4eb4bbbfd174798c226e5e574657, type: 2}
-  - {fileID: 11400000, guid: eefcda05b29f1d940903477f3d3ca2f4, type: 2}
-  - {fileID: 11400000, guid: faebe27a0f665a245be5dc010bc3a9e1, type: 2}
-  - {fileID: 11400000, guid: 96aacf38772c4984cba74bf9f5002945, type: 2}
-  - {fileID: 11400000, guid: b24a3c3404f7ca64d834418f5eab496b, type: 2}
-  - {fileID: 11400000, guid: 4fc314dbd4d965440b35451ac239d608, type: 2}
-  - {fileID: 11400000, guid: aa487ff90254f1742950c926a1c5f7c9, type: 2}
-  - {fileID: 11400000, guid: 1f7e076b5df9e544e94a94df5b9fd249, type: 2}
-  - {fileID: 11400000, guid: 3ba4a94d896748c46b9f4fc04dd32bb9, type: 2}
+  - {fileID: 11400000, guid: 0b0ee73d93609af4a92fa525a1be111a, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
   _bossChestPrefab: {fileID: -195615430801793006, guid: 1e7e8e16da4b2544fa6f22fb91a22aed, type: 3}
   _effectPrefab: {fileID: -5978131413057616576, guid: a643b9edda2d6bf448b00d308b9c4020, type: 3}
@@ -1558,6 +1549,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3275936182937218670, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LinearDrag
+      value: 18.34
+      objectReference: {fileID: 0}
     - target: {fileID: 3377497041866893364, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1664,7 +1659,7 @@ PrefabInstance:
       objectReference: {fileID: 928932857}
     - target: {fileID: 5961620063364427724, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<Speed>k__BackingField.<BaseValue>k__BackingField
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6062711531602379881, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_SortingOrder

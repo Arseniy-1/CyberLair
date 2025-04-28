@@ -25,19 +25,20 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
 
         public void ReturnToPool()
         {
-            if (_destroyCoroutine == null)
-                return;
+            if (_destroyCoroutine != null)
+                StopCoroutine(_destroyCoroutine);
             
-            StopCoroutine(_destroyCoroutine);
             _destroyCoroutine = null;
+            
+            OnDestroyed?.Invoke(this);
         }
 
         private IEnumerator WaitForDestroy()
         {
             var wait = new WaitForSeconds(_timeToDestroy);
             yield return wait;
-            
-            OnDestroyed?.Invoke(this);
+
+            ReturnToPool();
         }
     }
 }
