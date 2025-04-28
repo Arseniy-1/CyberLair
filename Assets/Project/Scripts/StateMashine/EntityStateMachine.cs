@@ -12,7 +12,10 @@ namespace StateMashineSytem
         public EntityStateMachine(List<IState> states)
         {
             _states = states;
+        }
 
+        public void Initialize()
+        {
             _currentState = _states[0];
             _currentState.Enter();
         }

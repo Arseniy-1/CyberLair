@@ -9,14 +9,13 @@ namespace StateMashineSytem.EnemyStates
         private readonly EnemyMover _mover;
         private IStateSwitcher _stateSwitcher;
 
-        private readonly Animator _animator;
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
+        private Animator _animator;
         
-        public EnemyStunnedState(Enemy enemy, EnemyMover mover, Animator animator)
+        public EnemyStunnedState(Enemy enemy, EnemyMover mover)
         {
             _enemy = enemy;
             _mover = mover;
-            _animator = animator;
         }
         
         public void Enter()
@@ -31,13 +30,12 @@ namespace StateMashineSytem.EnemyStates
             _mover.enabled = true;
         }
         
-        public void Update()
-        {
-        }
+        public void Update() { }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
     }
 }

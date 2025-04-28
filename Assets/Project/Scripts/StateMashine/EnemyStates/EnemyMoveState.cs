@@ -11,17 +11,16 @@ namespace StateMashineSytem.EnemyStates
         private readonly EnemyTargetProvider _enemyTargetProvider;
         private readonly EnemyAttackCooldown _cooldown;
         
-        private readonly Animator _animator;
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
+        private  Animator _animator;
 
         public EnemyMoveState(Enemy enemy, EnemyMover mover,
-            EnemyTargetProvider enemyTargetProvider, EnemyAttackCooldown cooldown, Animator animator)
+            EnemyTargetProvider enemyTargetProvider, EnemyAttackCooldown cooldown)
         {
             _enemy = enemy;
             _mover = mover;
             _enemyTargetProvider = enemyTargetProvider;
             _cooldown = cooldown;
-            _animator = animator;
         }
         
         public void Enter()
@@ -45,9 +44,10 @@ namespace StateMashineSytem.EnemyStates
             _mover.enabled = false;
         }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
     }
 }

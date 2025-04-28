@@ -1,4 +1,6 @@
-﻿namespace StateMashineSytem
+﻿using UnityEngine;
+
+namespace StateMashineSytem
 {
     public interface IState
     {
@@ -8,6 +10,6 @@
 
         public void Exit();
 
-        public void Initialize(IStateSwitcher stateSwitcher);
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator);
     }
 }

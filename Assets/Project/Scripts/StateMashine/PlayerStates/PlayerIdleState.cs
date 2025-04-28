@@ -1,43 +1,44 @@
-using TMPro;
 using UnityEngine;
 
 namespace StateMashineSytem.PlayerStateMashine
 {
     public class PlayerIdleState : IState
     {
-        private Player _player;
-        private PlayerMover _playerMover;
-        private Rigidbody2D _rigidbody2D;
-        private WeaponHolder _weaponHolder;
-        private TargetScanner _targetScanner;
-
+        private readonly PlayerMover _playerMover;
+        private readonly Rigidbody2D _rigidbody2D;
+        private readonly WeaponHolder _weaponHolder;
+        private readonly TargetScanner _targetScanner;
+        
+        private readonly int _walkAnimation = Animator.StringToHash("IsMoving");
+        
         private IStateSwitcher _stateSwitcher;
+        private Animator _animator;
 
-        public PlayerIdleState(Player player, PlayerMover playerMover, Rigidbody2D rigidbody2D,
+        public PlayerIdleState(PlayerMover playerMover, Rigidbody2D rigidbody2D,
             WeaponHolder weaponHolder, TargetScanner targetScanner)
         {
-            _player = player;
             _playerMover = playerMover;
             _rigidbody2D = rigidbody2D;
             _weaponHolder = weaponHolder;
             _targetScanner = targetScanner;
         }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
 
-        public virtual void Enter()
+        public void Enter()
         {
             _rigidbody2D.velocity = Vector3.zero;
+            
+            _animator.SetBool(_walkAnimation, false);
         }
 
-        public virtual void Exit()
-        {
-        }
+        public void Exit() { }
 
-        public virtual void Update()
+        public void Update()
         {
             if (_targetScanner.HasTarget)
                 _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);

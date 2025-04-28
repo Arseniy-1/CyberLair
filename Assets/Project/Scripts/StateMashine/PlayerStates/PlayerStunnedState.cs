@@ -1,4 +1,6 @@
-﻿namespace StateMashineSytem.PlayerStateMashine
+﻿using UnityEngine;
+
+namespace StateMashineSytem.PlayerStateMashine
 {
     public class PlayerStunnedState : IState
     {
@@ -7,10 +9,10 @@
         private Jumper _playerJumper;
 
         private IStateSwitcher _stateSwitcher;
+        private Animator _animator;
         
-        public PlayerStunnedState(Player player, PlayerMover playerMover, Jumper playerJumper)
+        public PlayerStunnedState(PlayerMover playerMover, Jumper playerJumper)
         {
-            _player = player;
             _playerMover = playerMover;
             _playerJumper = playerJumper;
         }
@@ -27,13 +29,12 @@
             _playerJumper.enabled = true;
         }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
 
-        public void Update()
-        {
-        }
+        public void Update() { }
     }
 }

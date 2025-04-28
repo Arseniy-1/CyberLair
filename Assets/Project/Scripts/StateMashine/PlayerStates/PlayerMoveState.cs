@@ -1,20 +1,23 @@
-﻿namespace StateMashineSytem.PlayerStateMashine
+﻿using UnityEngine;
+
+namespace StateMashineSytem.PlayerStateMashine
 {
     public class PlayerMoveState : IState
     {
-        private Player _player;
-        private PlayerMover _playerMover;
-        private PlayerInputController _playerInputController;
-        private WeaponHolder _weaponHolder;
-        private TargetScanner _targetScanner;
-        private Jumper _jumper;
+        private readonly PlayerMover _playerMover;
+        private readonly PlayerInputController _playerInputController;
+        private readonly WeaponHolder _weaponHolder;
+        private readonly TargetScanner _targetScanner;
+        private readonly Jumper _jumper;
 
+        private readonly int _walkAnimation = Animator.StringToHash("IsMoving");
+        
         private IStateSwitcher _stateSwitcher;
+        private Animator _animator;
 
-        public PlayerMoveState(Player player, PlayerInputController playerInputController, PlayerMover playerMover,
+        public PlayerMoveState(PlayerInputController playerInputController, PlayerMover playerMover,
             WeaponHolder weaponHolder, TargetScanner targetScanner, Jumper jumper)
         {
-            _player = player;
             _playerMover = playerMover;
             _playerInputController = playerInputController;
             _weaponHolder = weaponHolder;
@@ -22,9 +25,10 @@
             _jumper = jumper;
         }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
 
         public virtual void Enter()
@@ -32,6 +36,8 @@
             _playerMover.enabled = true;
             _playerMover.WalkSoundPlayer.PlayLoop();
             _playerInputController.OnJumpButtonPressed += OnJumpButtonPressed;
+            
+            _animator.SetBool(_walkAnimation, _playerMover.enabled);
         }
 
         public virtual void Exit()
@@ -39,6 +45,8 @@
             _playerMover.enabled = false;
             _playerMover.WalkSoundPlayer.StopLoop();
             _playerInputController.OnJumpButtonPressed -= OnJumpButtonPressed;
+            
+            _animator.SetBool(_walkAnimation, _playerMover.enabled);
         }
 
         public virtual void Update()
@@ -50,7 +58,7 @@
                 _stateSwitcher.SwitchState<PlayerIdleState>();
         }
 
-        public void OnJumpButtonPressed()
+        private void OnJumpButtonPressed()
         {
             if (_jumper.CanJump)
                 _stateSwitcher.SwitchState<PlayerJumpState>();

@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private InjuredScreenView _injuredScreenView;
     
     [SerializeField] private SoundPlayer _damageSoundPlayer;
+    [SerializeField] private Animator _animator;
     
     [SerializeField] private HealthRegenerator _healthRegenerator;
     [SerializeField] private ShieldRegenerator _shieldRegenerator;
@@ -67,19 +68,20 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     {
         List<IState> playerStates = new List<IState>
         {
-            new PlayerIdleState(this, _playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
-            new PlayerMoveState(this, _playerInputController, _playerMover, _weaponHolder, _targetScanner, _jumper),
+            new PlayerIdleState(_playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
+            new PlayerMoveState(_playerInputController, _playerMover, _weaponHolder, _targetScanner, _jumper),
             new PlayerJumpState(_playerInputController, _collider, _jumper),
-            new PlayerStunnedState(this, _playerMover, _jumper)
+            new PlayerStunnedState(_playerMover, _jumper)
         };
 
         _entityStateMachine = new EntityStateMachine(playerStates);
 
         foreach (IState state in playerStates)
         {
-            state.Initialize(_entityStateMachine);
+            state.Initialize(_entityStateMachine, _animator);
         }
 
+        _entityStateMachine.Initialize();
         PlayerStats.Initialize();
         _destroyer.Initialize(PlayerStats.Health, this);
         _playerMover.Initialize(_playerInputController, _rigidbody2D, PlayerStats);

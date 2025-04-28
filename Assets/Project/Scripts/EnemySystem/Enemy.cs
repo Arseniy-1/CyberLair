@@ -49,23 +49,25 @@ namespace Project.Scripts.EnemySystem
             
             var states = new List<IState>
             {
-                new EnemyIdleState(this, _mover, _enemyTargetProvider, _view.Animator),
-                new EnemyMoveState(this, _mover, _enemyTargetProvider, _cooldown, _view.Animator),
-                new EnemyAttackState(_mover, _attacker, _cooldown, _view.Animator),
-                new EnemyStunnedState(this, _mover, _view.Animator)
+                new EnemyIdleState(this, _mover, _enemyTargetProvider),
+                new EnemyMoveState(this, _mover, _enemyTargetProvider, _cooldown),
+                new EnemyAttackState(_mover, _attacker, _cooldown),
+                new EnemyStunnedState(this, _mover)
             };
             
+            _stateMachine = new EntityStateMachine(states);
+            
+            foreach (IState state in states)
+            {
+                state.Initialize(_stateMachine, _view.Animator);
+            }
+            
+            _stateMachine.Initialize();
             EnemyStats.Initialize();
             _enemyTargetProvider.Initialize(player, _attackDistance);
             _attacker.Initialize(_enemyTargetProvider);
             _destroyer.Initialize(EnemyStats.Health, this);
             
-            _stateMachine = new EntityStateMachine(states);
-
-            foreach (IState state in states)
-            {
-                state.Initialize(_stateMachine);
-            }
             
             _mover.Initialize(this, _enemyTargetProvider, _rigidbody, EnemyStats);
             _collisionHandler.Initialize(EnemyStats.CollisionDamage);
