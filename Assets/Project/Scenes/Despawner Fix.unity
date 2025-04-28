@@ -290,6 +290,10 @@ PrefabInstance:
       value: MapGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 7158473380028332352, guid: 0317af44b6125c1498a7055a7c467d1a, type: 3}
+      propertyPath: _seed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158473380028332352, guid: 0317af44b6125c1498a7055a7c467d1a, type: 3}
       propertyPath: _mapObjectPlacer._targetTilemap
       value: 
       objectReference: {fileID: 1357537259}
