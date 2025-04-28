@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -57,6 +58,14 @@ public class VariableJoystick : Joystick
             background.anchoredPosition += difference;
         }
         base.HandleInput(magnitude, normalised, radius, cam);
+    }
+
+    protected override void OnDisable()
+    {
+        if(joystickType != JoystickType.Fixed)
+            background.gameObject.SetActive(false);
+
+        base.OnDisable();
     }
 }
 
