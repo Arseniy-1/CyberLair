@@ -358,7 +358,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 0.1
-  _offset: {x: 0, y: -1.5}
+  _offset: {x: 0, y: 0.27}
   _size: {x: 21.98, y: 8.6}
   _layerMask:
     serializedVersion: 2
@@ -368,6 +368,7 @@ MonoBehaviour:
     <Strength>k__BackingField: 0
     <Vibrato>k__BackingField: 0
     <Randomness>k__BackingField: 0
+  _bossViewScale: {fileID: 3855592996027968264}
 --- !u!1 &6000014777496233194
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +552,7 @@ MonoBehaviour:
   _attackDistance: 6
   _view: {fileID: 409781911876493519}
   _damageSoundPlayer: {fileID: 4289721734082201511}
+  _enemyState: 
   <EnemyType>k__BackingField: 9
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 10

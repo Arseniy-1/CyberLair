@@ -94,7 +94,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -8, y: 8, z: 1.6}
+  m_LocalScale: {x: -8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4624874837084348369}
@@ -140,7 +140,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -165862644, guid: ab4d1b34849fb42d182b54fae998e16e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -281,6 +281,7 @@ MonoBehaviour:
   _attackDistance: 6
   _view: {fileID: 2024785022066577145}
   _damageSoundPlayer: {fileID: 752593008107726237}
+  _enemyState: 
   <EnemyType>k__BackingField: 10
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
@@ -613,7 +614,7 @@ MonoBehaviour:
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 0.5
-  _offset: {x: 6.37569, y: 0}
+  _offset: {x: -0.68, y: 0}
   _size: {x: 10.13, y: 16.65}
   _layerMask:
     serializedVersion: 2
@@ -623,6 +624,7 @@ MonoBehaviour:
     <Strength>k__BackingField: 0
     <Vibrato>k__BackingField: 0
     <Randomness>k__BackingField: 0
+  _bossViewScale: {fileID: 4835941464628503274}
 --- !u!1 &4184696483967535576
 GameObject:
   m_ObjectHideFlags: 0

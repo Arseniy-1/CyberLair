@@ -12,6 +12,8 @@ namespace Project.Scripts.EnemySystem.Bosses
         [SerializeField] private Vector2 _size;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+        
+        [SerializeField] private Transform _bossViewScale;
 
         public override void Disable()
         {
@@ -21,7 +23,7 @@ namespace Project.Scripts.EnemySystem.Bosses
         protected override IEnumerator Attack()
         {
             List<Collider2D> affectedColliders = Physics2D
-                .OverlapBoxAll((Vector2)transform.position + _offset, _size, _layerMask).ToList();
+                .OverlapBoxAll((Vector2)transform.position + _offset * _bossViewScale.localScale.x, _size, _layerMask).ToList();
             
             MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
 
@@ -40,7 +42,7 @@ namespace Project.Scripts.EnemySystem.Bosses
         {
             Gizmos.color = Color.magenta;
             
-            Gizmos.DrawWireCube((Vector2)transform.position + _offset, _size);
+            Gizmos.DrawWireCube((Vector2)transform.position + _offset * _bossViewScale.localScale.x, _size);
         }
     }
 }
