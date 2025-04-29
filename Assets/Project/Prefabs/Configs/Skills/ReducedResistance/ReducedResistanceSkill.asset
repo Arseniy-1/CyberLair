@@ -21,16 +21,17 @@ MonoBehaviour:
   NeededSkills:
   - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
   - {fileID: 11400000, guid: 6d1f0578fffbf4c8da482e210616bc7a, type: 2}
-  <ChainRadius>k__BackingField: 10
+  <ChainRadius>k__BackingField: 4
   <MaxBounces>k__BackingField: 5
-  <DamageFalloff>k__BackingField: 0.1
+  <DamageFalloff>k__BackingField: 0.5
   <ZapView>k__BackingField: {fileID: 1801309511109169991, guid: 665688c73c4abd4489377eadcb9465f7, type: 3}
   <EnemyLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
-  <Segments>k__BackingField: 20
-  <Chance>k__BackingField: 0.2
+  <Segments>k__BackingField: 10
+  <Chance>k__BackingField: 0.25
   <EnemySpeedModifier>k__BackingField:
-    <Value>k__BackingField: 0.1
+    <Value>k__BackingField: 0.01
     <Type>k__BackingField: 1
-    <Duration>k__BackingField: 1
+    <Duration>k__BackingField: 0.3
+    _elapsedTime: 0

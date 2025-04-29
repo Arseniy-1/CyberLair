@@ -19,7 +19,6 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private float _attackDistance;
         [SerializeField] private EnemyView _view;
         [SerializeField] private SoundPlayer _damageSoundPlayer;
-        [SerializeField] private string _enemyState;
         
         private EntityStateMachine _stateMachine;
         private EnemyAttackCooldown _cooldown;
@@ -35,8 +34,6 @@ namespace Project.Scripts.EnemySystem
         
         private void Update()
         {
-            _enemyState = _stateMachine._currentState.ToString();
-            
             _stateMachine?.Update();
             EnemyStats.Update();
         }
