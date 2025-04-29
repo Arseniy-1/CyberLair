@@ -21,6 +21,7 @@ namespace Project.Scripts.ArenaSystem
         [SerializeField] private List<WaveConfig> _wavesConfigs;
         
         [SerializeField] private Cage _cagePrefab;
+        [SerializeField] private Cage _cageInstance;
         [SerializeField] private BossChest _bossChestPrefab;
         
         [SerializeField] private Effect _effectPrefab;
@@ -77,18 +78,15 @@ namespace Project.Scripts.ArenaSystem
 
         private void HandleBossSpawn(Enemy enemy)
         {
-            Debug.Log("BossSpawned");
-            
-            enemy.OnDestroyed += SpawnChest;
-            Instantiate(_cagePrefab, _playerTransform.position, Quaternion.identity);
+            enemy.OnDestroyed += HandleBossDeath;
+            _cageInstance = Instantiate(_cagePrefab, _playerTransform.position, Quaternion.identity);
         }
         
-        private void SpawnChest(Enemy enemy)
+        private void HandleBossDeath(Enemy enemy)
         {
-            Debug.Log("ChestSpawned");
-            
-            enemy.OnDestroyed -= SpawnChest;
+            enemy.OnDestroyed -= HandleBossDeath;
 
+            Destroy(_cageInstance.gameObject, 1f);
             Instantiate(_bossChestPrefab, enemy.transform.position, Quaternion.identity);
         }
     }

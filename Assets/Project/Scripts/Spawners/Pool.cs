@@ -18,7 +18,6 @@ public abstract class Pool<T> where T : MonoBehaviour
 
     public void Release(T template)
     {
-        
         template.gameObject.SetActive(false); 
         Stack.Push(template);
     }

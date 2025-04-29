@@ -24,7 +24,7 @@ MonoBehaviour:
   _enemiesWeights:
   - _prefab: {fileID: 8511549520770673055, guid: bd60b6bbe162541d1a89b33ba9f4af45, type: 3}
     _weight: 0.4
-  - _prefab: {fileID: 4399603215803775128, guid: d7203ac9ffc6144698bd094afaab65e6, type: 3}
+  - _prefab: {fileID: 263878080555140060, guid: 68493cc3985e94702bfb35f8817a67b8, type: 3}
     _weight: 0.3
   - _prefab: {fileID: -4304947118811211038, guid: 4680d415be7f64afd9ea09ff514a7149, type: 3}
     _weight: 0.6
@@ -33,7 +33,7 @@ MonoBehaviour:
   _waveDuration: 60
   _spawnDuration: 1.5
   _enemyStatModifiers:
-    <Value>k__BackingField: 0
-    <Type>k__BackingField: 0
+    <Value>k__BackingField: 1.75
+    <Type>k__BackingField: 1
     <Duration>k__BackingField: 0
     _elapsedTime: 0

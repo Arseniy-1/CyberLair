@@ -768,8 +768,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3112729814196656165}
   - {fileID: 8530614426395434184}
@@ -798,6 +798,7 @@ MonoBehaviour:
   _attackDistance: 20
   _view: {fileID: 4548246736520012204}
   _damageSoundPlayer: {fileID: 1723599112768338640}
+  _enemyState: 
   <EnemyType>k__BackingField: 8
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0

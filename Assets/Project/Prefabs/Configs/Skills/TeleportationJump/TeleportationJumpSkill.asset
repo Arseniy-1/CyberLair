@@ -30,7 +30,7 @@ MonoBehaviour:
     <Duration>k__BackingField: 0
     _elapsedTime: 0
   <JumpSpeedModifier>k__BackingField:
-    <Value>k__BackingField: 30
+    <Value>k__BackingField: 80
     <Type>k__BackingField: 0
     <Duration>k__BackingField: 0
     _elapsedTime: 0

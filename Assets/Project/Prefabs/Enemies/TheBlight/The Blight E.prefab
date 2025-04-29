@@ -193,6 +193,7 @@ MonoBehaviour:
   _attackDistance: 4
   _view: {fileID: 7392884637481049168}
   _damageSoundPlayer: {fileID: 7612301211370353079}
+  _enemyState: 
   <EnemyType>k__BackingField: 3
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 2
@@ -217,8 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 3
-  _stunTime: 0.5
+  _pushForce: 500
+  _stunTime: 0.15
 --- !u!114 &6311730808988131680
 MonoBehaviour:
   m_ObjectHideFlags: 0

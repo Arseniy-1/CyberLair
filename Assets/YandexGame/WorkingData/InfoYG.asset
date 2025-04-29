@@ -25,7 +25,7 @@ MonoBehaviour:
     payingStatus: paying
     serverTime: 1721201231000
   AdWhenLoadingScene: 0
-  showFirstAd: 1
+  showFirstAd: 0
   rewardedAfterClosing: 1
   adDisplayCalls: 0
   fullscreenAdInterval: 60

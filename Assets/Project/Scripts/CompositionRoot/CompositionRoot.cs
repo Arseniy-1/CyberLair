@@ -87,7 +87,7 @@ namespace Project.Scripts.CompositionRoot
 
         private IEnumerator GivePlayerInvulnerability(Player player)
         {
-            float invulnerabilityTime = 1.5f;
+            float invulnerabilityTime = 5f;
             
             player.Collider2D.enabled = false;
             yield return new WaitForSeconds(invulnerabilityTime);

@@ -15,8 +15,6 @@ namespace Project.Scripts.Services
         
         private void HandleCollision(Collider2D collider)
         {
-            Debug.Log($"{collider.gameObject.name} despawned");
-            
             if (collider.TryGetComponent(out Enemy enemy))
             {
                 EnemyDespawn?.Invoke(enemy);

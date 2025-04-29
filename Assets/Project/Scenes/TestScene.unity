@@ -192,6 +192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDespawner
       objectReference: {fileID: 0}
+    - target: {fileID: 6867663353878286975, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7829018673415439617, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
       propertyPath: m_Size.x
       value: 40.21
@@ -624,6 +628,10 @@ PrefabInstance:
     - target: {fileID: 7115592341335882269, guid: 7ec4ec71c2842144badfca75276d5c21, type: 3}
       propertyPath: m_SortingOrder
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8565230177636170202, guid: 7ec4ec71c2842144badfca75276d5c21, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8565230177636170202, guid: 7ec4ec71c2842144badfca75276d5c21, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1059,6 +1067,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f7e076b5df9e544e94a94df5b9fd249, type: 2}
   - {fileID: 11400000, guid: 3ba4a94d896748c46b9f4fc04dd32bb9, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
+  _cageInstance: {fileID: 0}
   _bossChestPrefab: {fileID: -195615430801793006, guid: 1e7e8e16da4b2544fa6f22fb91a22aed, type: 3}
   _effectPrefab: {fileID: -5978131413057616576, guid: a643b9edda2d6bf448b00d308b9c4020, type: 3}
 --- !u!1 &1997032066
@@ -1502,6 +1511,14 @@ PrefabInstance:
       propertyPath: _selectSoundPlayer
       value: 
       objectReference: {fileID: 1599715271}
+    - target: {fileID: 2782715829393977127, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _scanDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029809163812899800, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3061960645092792805, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1622,6 +1639,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4121671344274396449, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _sceneName
+      value: TestScene
+      objectReference: {fileID: 0}
     - target: {fileID: 4666747635262796405, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1649,6 +1670,10 @@ PrefabInstance:
     - target: {fileID: 5568831725423335416, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_SortingOrder
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801731972179341125, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5899351763276015055, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1678,6 +1703,10 @@ PrefabInstance:
       propertyPath: _magnet
       value: 
       objectReference: {fileID: 928932857}
+    - target: {fileID: 5961620063364427724, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: <PlayerStats>k__BackingField.<WeaponDamage>k__BackingField.<BaseValue>k__BackingField
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6062711531602379881, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_SortingOrder
       value: 15
@@ -1822,7 +1851,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6292401253427132800, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3237670856865732149, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}

@@ -20,7 +20,7 @@ MonoBehaviour:
       \u043F\u043E\u0441\u0442\u043E\u044F\u043D\u043D\u044B\u0439 \u0449\u0438\u0442
       \u0432 \u0440\u0430\u0437\u043C\u0435\u0440\u0435 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E
       \u0425\u041F * 3"
-    <Icon>k__BackingField: {fileID: 21300000, guid: 602749516ec9d436ebea7e8b946977dd, type: 3}
+    <Icon>k__BackingField: {fileID: 21300000, guid: 720d9c72d2e3148b4bc63f50e4bcd18d, type: 3}
   NeededSkills:
   - {fileID: 11400000, guid: 0be651a97b60446b2a7eaa2ca6c159af, type: 2}
   - {fileID: 11400000, guid: 223557b8524044eddb9d4638a7b6fdd4, type: 2}
