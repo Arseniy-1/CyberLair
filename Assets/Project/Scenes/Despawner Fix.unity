@@ -1046,6 +1046,7 @@ MonoBehaviour:
   _wavesConfigs:
   - {fileID: 11400000, guid: 0b0ee73d93609af4a92fa525a1be111a, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
+  _cageInstance: {fileID: 0}
   _bossChestPrefab: {fileID: -195615430801793006, guid: 1e7e8e16da4b2544fa6f22fb91a22aed, type: 3}
   _effectPrefab: {fileID: -5978131413057616576, guid: a643b9edda2d6bf448b00d308b9c4020, type: 3}
 --- !u!1 &1997032066
