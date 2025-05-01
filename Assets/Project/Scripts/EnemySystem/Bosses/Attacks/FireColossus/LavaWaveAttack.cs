@@ -16,9 +16,6 @@ namespace Project.Scripts.EnemySystem.Bosses.FireColossus
 
         protected override IEnumerator Attack()
         {
-            View.gameObject.SetActive(true);
-            AttackAnimator.SetTrigger(AttackTrigger);
-
             for (int i = 0; i < ObjectCount; i++)
             {
                 float angle = i * Mathf.PI * 2 / ObjectCount;
