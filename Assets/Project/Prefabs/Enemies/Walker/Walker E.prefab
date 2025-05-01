@@ -72,17 +72,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0.3
-    <AttackRecovery>k__BackingField: 0.5
+    <AttackDelay>k__BackingField: 0.2
+    <AttackRecovery>k__BackingField: 0.2
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 3
+    <Cooldown>k__BackingField: 1.5
   _jumpStats:
     <JumpSpeed>k__BackingField:
-      <BaseValue>k__BackingField: 7
+      <BaseValue>k__BackingField: 10
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 0.6
+      <BaseValue>k__BackingField: 1.1
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpReloadTime>k__BackingField:
@@ -119,15 +119,14 @@ MonoBehaviour:
   _attacker: {fileID: 6300912649283175769}
   _destroyer: {fileID: 4789583573764484402}
   _enemyTargetProvider: {fileID: 363723337743644631}
-  _attackDistance: 5
+  _attackDistance: 9
   _view: {fileID: 6817799365412032722}
   _damageSoundPlayer: {fileID: 2155718394874326710}
-  _enemyState: 
   <EnemyType>k__BackingField: 0
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 1
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 3
+      <BaseValue>k__BackingField: 4.5
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:

@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using System.Collections;
-using UnityEngine.Profiling;
 
 public class TargetScanner : MonoBehaviour
 {
     [SerializeField] private float _scanRadius = 150f;
     [SerializeField] private LayerMask _targetLayer;
-    [SerializeField] private float _scanDelay = 1;
+    [SerializeField] private float _scanDelay = 1f;
+    [SerializeField] private int _maxColliders = 50;
 
     private WaitForSeconds _delay;
+
+    private Collider2D[] _hitsBuffer;
+    private readonly HashSet<ITarget> _targets = new HashSet<ITarget>();
+    private readonly List<ITarget> _sortedTargets = new List<ITarget>();
 
     public ITarget ClosestTarget { get; private set; }
     public bool HasTarget => ClosestTarget != null;
@@ -18,10 +21,11 @@ public class TargetScanner : MonoBehaviour
     private void Start()
     {
         _delay = new WaitForSeconds(_scanDelay);
-        StartCoroutine(Scaning());
+        _hitsBuffer = new Collider2D[_maxColliders];
+        StartCoroutine(Scanning());
     }
-    
-    private IEnumerator Scaning()
+
+    private IEnumerator Scanning()
     {
         while (enabled)
         {
@@ -32,25 +36,27 @@ public class TargetScanner : MonoBehaviour
 
     private void Scan()
     {
+        UnityEngine.Profiling.Profiler.BeginSample("Target Scan");
+
+        int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, _scanRadius, _hitsBuffer, _targetLayer);
+        _targets.Clear();
         Vector2 position = transform.position;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _scanRadius, _targetLayer);
-        HashSet<ITarget> targets = new HashSet<ITarget>();
-
-        foreach (Collider2D hit in hits)
-            if (hit.TryGetComponent(out ITarget target))
-                targets.Add(target);
-
-        List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - position).magnitude).ToList();
-
-        if (sortedTargets.Count > 0)
+        for (int i = 0; i < hitCount; i++)
         {
-            ClosestTarget = sortedTargets.ToArray()[0];
+            if (_hitsBuffer[i].TryGetComponent(out ITarget target))
+                _targets.Add(target);
         }
-        else
-        {
-            ClosestTarget = null;
-        }
+
+        _sortedTargets.Clear();
+        _sortedTargets.AddRange(_targets);
+
+        _sortedTargets.Sort((a, b) =>
+            (a.Position - position).sqrMagnitude.CompareTo((b.Position - position).sqrMagnitude));
+
+        ClosestTarget = _sortedTargets.Count > 0 ? _sortedTargets[0] : null;
+
+        UnityEngine.Profiling.Profiler.EndSample();
     }
 
     private void OnDrawGizmos()

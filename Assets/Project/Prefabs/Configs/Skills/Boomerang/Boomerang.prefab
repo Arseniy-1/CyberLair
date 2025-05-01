@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: -1055722217495513255}
   _speed: 5
-  _radius: 3
+  _radius: 4
 --- !u!114 &5542015353773409134
 MonoBehaviour:
   m_ObjectHideFlags: 0

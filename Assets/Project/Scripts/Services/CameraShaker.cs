@@ -3,36 +3,33 @@ using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using UniRx;
 using UnityEngine;
 
-namespace DefaultNamespace.Tween
+public class CameraShaker : MonoBehaviour
 {
-    public class CameraShaker : MonoBehaviour
+    [SerializeField] private Camera _camera;
+
+    private CompositeDisposable _disposable;
+    private Transform _cameraTransform;
+
+    private void OnEnable()
     {
-        [SerializeField] private Camera _camera;
-        
-        private CompositeDisposable _disposable;
-        private Transform _cameraTransform;
+        _disposable = new CompositeDisposable();
+        _cameraTransform = _camera.transform;
 
-        private void OnEnable()
-        {
-            _disposable = new CompositeDisposable();
-            _cameraTransform = _camera.transform;
-            
-            MessageBrokerHolder.Camera.Receive<M_CameraShake>().Subscribe(Shake)
-                .AddTo(_disposable);
-        }
+        MessageBrokerHolder.Camera.Receive<M_CameraShake>().Subscribe(Shake)
+            .AddTo(_disposable);
+    }
 
-        private void OnDisable()
-        {
-            _disposable.Dispose();
-        }
+    private void OnDisable()
+    {
+        _disposable.Dispose();
+    }
 
-        private void Shake(M_CameraShake settings)
-        {
-            Vector3 originalPosition = _cameraTransform.localPosition;
-            
-            _camera.transform.DOShakePosition(settings.ShakeSettings.Duration,
-                    settings.ShakeSettings.Strength, settings.ShakeSettings.Vibrato, settings.ShakeSettings.Randomness)
-                .OnComplete(() => _cameraTransform.localPosition = originalPosition);
-        }
+    private void Shake(M_CameraShake settings)
+    {
+        Vector3 originalPosition = _cameraTransform.localPosition;
+
+        _camera.transform.DOShakePosition(settings.ShakeSettings.Duration,
+                settings.ShakeSettings.Strength, settings.ShakeSettings.Vibrato, settings.ShakeSettings.Randomness)
+            .OnComplete(() => _cameraTransform.localPosition = originalPosition);
     }
 }

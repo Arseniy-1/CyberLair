@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.Serialization;
 
 public class WeaponView : MonoBehaviour
 {

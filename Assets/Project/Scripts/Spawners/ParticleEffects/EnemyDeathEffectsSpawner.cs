@@ -3,18 +3,15 @@ using UniRx;
 using UnityEngine;
 
 [Serializable]
-public class EffectsSpawner : Spawner<Effect>
+public class EnemyDeathEffectsSpawner : Spawner<Effect>
 {
-    private readonly CompositeDisposable _disposable;
-    
-    public EffectsSpawner(Effect effect, CompositeDisposable compositeDisposable)
+    public EnemyDeathEffectsSpawner(Effect effect, CompositeDisposable compositeDisposable)
     {
         Prefab = effect;
-        Pool = new EffectsPool(Prefab, StartAmount);
+        Pool = new DeathEffectsPool(Prefab, StartAmount);
         
-        _disposable = new CompositeDisposable();
         MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => HandleEnemyDeath(message.Position))
-            .AddTo(_disposable);
+            .AddTo(compositeDisposable);
     }
 
     private void HandleEnemyDeath(Vector2 position)

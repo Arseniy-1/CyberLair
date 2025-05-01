@@ -1,22 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
 public class Effect : MonoBehaviour, IDestoyable<Effect>
 {
-    [SerializeField] private ParticleSystem _particle;
-    
+    [SerializeField] private List<ParticleSystem> _particles;
+
     public event Action<Effect> OnDestroyed;
 
     private void OnEnable()
     {
-        _particle.Play();
-        WaitForParticleAsync();
+        foreach (var particle in _particles)
+        {
+            particle.Play();
+            WaitForParticleAsync(particle);
+        }
     }
-    
-    private async void WaitForParticleAsync()
+
+    private async void WaitForParticleAsync(ParticleSystem particle)
     {
-        while (_particle != null && _particle.IsAlive(true))
+        while (particle != null && particle.IsAlive(true))
         {
             await Task.Delay(100);
         }

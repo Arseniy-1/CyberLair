@@ -80,8 +80,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5, y: 3.56, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3346536705036720400}
   - {fileID: 1608936950931722454}
@@ -148,14 +148,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 1.3
-    <AttackRecovery>k__BackingField: 0.5
-    <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 3
+    <AttackDelay>k__BackingField: 1
+    <AttackRecovery>k__BackingField: 0.25
+    <AttackCount>k__BackingField: 3
+    <Cooldown>k__BackingField: 4
   _holder: {fileID: 6737547138716812977}
   _weaponStats:
     <WeaponDamage>k__BackingField:
-      <BaseValue>k__BackingField: 25
+      <BaseValue>k__BackingField: 18
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <BulletPerShootCount>k__BackingField:
@@ -163,7 +163,7 @@ MonoBehaviour:
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <WeaponSpread>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 0.05
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <WeaponBulletReloadTime>k__BackingField:
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 50
-  _stunTime: 0.3
+  _stunTime: 0.15
 --- !u!61 &4213689946170667695
 BoxCollider2D:
   m_ObjectHideFlags: 0

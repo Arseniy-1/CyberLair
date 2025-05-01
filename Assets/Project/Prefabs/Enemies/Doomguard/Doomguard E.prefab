@@ -325,9 +325,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 2
-    <AttackRecovery>k__BackingField: 4
-    <AttackCount>k__BackingField: 1
+    <AttackDelay>k__BackingField: 1
+    <AttackRecovery>k__BackingField: 0.1
+    <AttackCount>k__BackingField: 3
     <Cooldown>k__BackingField: 3
   _impPrefab: {fileID: 951908415480540463, guid: f2b7b9e68e5664fc2b6c2f0cb4c782be, type: 3}
   _spawnPeriod: {x: 0.14081039, y: 0.26200038}

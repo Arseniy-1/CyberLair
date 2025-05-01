@@ -1,4 +1,5 @@
 using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using YG;
@@ -11,9 +12,9 @@ public class PlayerInputController : MonoBehaviour
 
     private PlayerInput _playerInput;
 
-    public Vector2 InputDirection => _playerInput.Land.Move.ReadValue<Vector2>();
-    public PlayerInput PlayerInput => _playerInput;
+    private CompositeDisposable _disposable;
     
+    public Vector2 InputDirection => _playerInput.Land.Move.ReadValue<Vector2>();
     public event Action OnJumpButtonPressed;
     public event Action OnMoveButtonPressed;
     public event Action OnShootButtonPressed;
@@ -33,6 +34,14 @@ public class PlayerInputController : MonoBehaviour
     {
         _shootZone.OnShootButtonPressed += Shoot;
         _playerInput.Land.Jump.performed += OnJumpPerformed;
+
+        _disposable = new CompositeDisposable();
+        
+        MessageBrokerHolder.Game.Receive<M_GamePaused>().Subscribe((message) => DisableControlScheme())
+            .AddTo(_disposable);
+        
+        MessageBrokerHolder.Game.Receive<M_GameUnpaused>().Subscribe((message) => EnableControlScheme())
+            .AddTo(_disposable);
     }
 
     private void OnDisable()
@@ -41,6 +50,16 @@ public class PlayerInputController : MonoBehaviour
         _playerInput.Land.Jump.performed -= OnJumpPerformed;
     }
 
+    private void EnableControlScheme()
+    {
+        _playerInput.Enable();
+    }
+
+    private void DisableControlScheme()
+    {
+        _playerInput.Disable();
+    }
+    
     private void Update()
     {
         ReadMovementInput();

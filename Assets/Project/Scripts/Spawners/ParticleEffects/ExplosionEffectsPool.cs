@@ -1,8 +1,8 @@
-﻿using Object = UnityEngine.Object;
+﻿using UnityEngine;
 
-public class EffectsPool: Pool<Effect>
+public class ExplosionEffectsPool : Pool<Effect>
 {
-    public EffectsPool(Effect prefab, int startAmount) : base(prefab, startAmount)
+    public ExplosionEffectsPool(Effect prefab, int startAmount) : base(prefab, startAmount)
     {
     }
         
