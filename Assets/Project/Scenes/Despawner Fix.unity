@@ -493,6 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _arena: {fileID: 1919683545}
   _mapGenerator: {fileID: 681986879}
+  _bossHandler: {fileID: 854905311}
   _player: {fileID: 5435846466952783143}
   _mainEnemySpawner: {fileID: 1354792443}
   _edgeSpawner:
@@ -501,7 +502,7 @@ MonoBehaviour:
     _verticalObjectCount: 3
     _parent: {fileID: 1521250117392757923}
     _mainCamera: {fileID: 1162607429953371098}
-  _enemyDespawner: {fileID: 626275752}
+  _enemyDespawners: []
   _level: {fileID: 3868558644150045240}
   _HealthBar: {fileID: 2070061558695318722}
   _HealthText: {fileID: 8582967515293831242}
@@ -526,17 +527,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &626275752 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6810075990906553166, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
-  m_PrefabInstance: {fileID: 210815183}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e87a53a6434a1c893b6c02d5041cb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &626275754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8257525753918919039, guid: ea54c1cb190dec240804a163f9ced953, type: 3}
@@ -553,6 +543,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1167e8c3210c40289042c5b4c5fb9de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &854905310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854905312}
+  - component: {fileID: 854905311}
+  m_Layer: 0
+  m_Name: BossHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &854905311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854905310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a193a2a768048d0b44b4a8c5ef3926a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraZoomSize: {x: 9, y: 13.979158}
+  _zoomDuration: 5
+  _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
+  _bossChestPrefab: {fileID: -195615430801793006, guid: 1e7e8e16da4b2544fa6f22fb91a22aed, type: 3}
+--- !u!4 &854905312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854905310}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893038200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,9 +1084,9 @@ MonoBehaviour:
   _wavesConfigs:
   - {fileID: 11400000, guid: 0b0ee73d93609af4a92fa525a1be111a, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
-  _cageInstance: {fileID: 0}
   _bossChestPrefab: {fileID: -195615430801793006, guid: 1e7e8e16da4b2544fa6f22fb91a22aed, type: 3}
-  _effectPrefab: {fileID: -5978131413057616576, guid: a643b9edda2d6bf448b00d308b9c4020, type: 3}
+  _deathEffectPrefab: {fileID: 0}
+  _explosionEffectPrefab: {fileID: 0}
 --- !u!1 &1997032066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,6 +1980,7 @@ SceneRoots:
   - {fileID: 1919683544}
   - {fileID: 7109626840326126780}
   - {fileID: 500295097}
+  - {fileID: 854905312}
   - {fileID: 1354792444}
   - {fileID: 893038201}
   - {fileID: 63477826}

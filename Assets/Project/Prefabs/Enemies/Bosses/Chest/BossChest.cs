@@ -7,7 +7,6 @@ public class BossChest : MonoBehaviour
         if (collision.TryGetComponent(out Player player))
         {
             MessageBrokerHolder.Chest.Publish(new M_ChestRaised());
-            Destroy(gameObject);
         }
     }
 }

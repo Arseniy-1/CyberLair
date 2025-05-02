@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using Project.Scripts.EnemySystem;
 using Cysharp.Threading.Tasks;
+using Project.Scripts.MessageBroker.EnemyMessageBrokers;
 using Project.Scripts.Servises;
 using Sirenix.Utilities;
 using Random = UnityEngine.Random;
@@ -18,6 +19,8 @@ namespace Project.Scripts.ArenaSystem
 
         private readonly List<ObjectWeightPair<Enemy>> _enemyWeights = new();
         private CancellationTokenSource _cancellationToken;
+
+        private Enemy _bossInstance;
 
         public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner)
         {
@@ -39,7 +42,10 @@ namespace Project.Scripts.ArenaSystem
 
             if (_config.Boss != false)
             {
-                MessageBrokerHolder.Enemy.Publish(new M_BossSpawned(_mainEnemySpawner.Spawn(_config.Boss.EnemyType)));
+                _bossInstance = _mainEnemySpawner.Spawn(_config.Boss.EnemyType);
+                _bossInstance.OnDestroyed += HandleBossDeath;
+                
+                MessageBrokerHolder.Enemy.Publish(new M_BossSpawned(_bossInstance));
             }
 
             if (_enemyWeights.IsNullOrEmpty())
@@ -82,6 +88,13 @@ namespace Project.Scripts.ArenaSystem
             _cancellationToken.Cancel();
             
             OnWaveFinished?.Invoke(this);
+        }
+
+        private void HandleBossDeath(Enemy enemy)
+        {
+            enemy.OnDestroyed -= HandleBossDeath;
+            
+            MessageBrokerHolder.Enemy.Publish(new M_BossDeath(_bossInstance));
         }
     }
 }

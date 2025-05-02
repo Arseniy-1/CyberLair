@@ -13,6 +13,7 @@ namespace Project.Scripts.CompositionRoot
     {
         [SerializeField] private Arena _arena;
         [SerializeField] private MapGenerator _mapGenerator;
+        [SerializeField] private BossHandler _bossHandler;
         [SerializeField] private Player _player;
         [SerializeField] private MainEnemySpawner _mainEnemySpawner;
         [SerializeField] private EdgeSpawner _edgeSpawner;
@@ -30,29 +31,18 @@ namespace Project.Scripts.CompositionRoot
         
         [SerializeField] private Canvas _endGameCanvas;
         [SerializeField] private Canvas _gameCanvas;
-
-        private void OnEnable()
-        {
-            _player.OnDeath += OnPlayerDied;
-            YandexGame.RewardVideoEvent += OnRewarded;
-        }
-
-        private void OnDisable()
-        {
-            _player.OnDeath -= OnPlayerDied;
-            YandexGame.RewardVideoEvent -= OnRewarded;
-        }
         
         private void Awake()
         {
             _edgeSpawner.SpawnOnEdges();
             _mapGenerator.Initialize();
+            _bossHandler.Initialize(_player.transform);
             
             _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects.ToList(), _enemyDespawners);
             var waves = new Queue<Wave>(_arena.WavesConfigs
                 .Select(config => new Wave(config, _mainEnemySpawner)).ToList());
 
-            _arena.Initialize(waves, _player.transform);
+            _arena.Initialize(waves);
             _arena.Work();
             
             _level.Initialize(_player.ExperienceStorage);
@@ -65,6 +55,18 @@ namespace Project.Scripts.CompositionRoot
             
             _experienceBar.Initialize(_player.ExperienceStorage);
             _experienceText.Initialize(_player.ExperienceStorage);
+        }
+        
+        private void OnEnable()
+        {
+            _player.OnDeath += OnPlayerDied;
+            YandexGame.RewardVideoEvent += OnRewarded;
+        }
+
+        private void OnDisable()
+        {
+            _player.OnDeath -= OnPlayerDied;
+            YandexGame.RewardVideoEvent -= OnRewarded;
         }
         
         private void OnPlayerDied()

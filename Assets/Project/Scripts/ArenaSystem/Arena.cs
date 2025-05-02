@@ -35,25 +35,20 @@ namespace Project.Scripts.ArenaSystem
         private readonly CompositeDisposable _disposable = new();
         
         private Queue<Wave> _waves;
-        private Transform _playerTransform;
         
         public event Action WavesDone;
         
         public IReadOnlyList<WaveConfig> WavesConfigs => _wavesConfigs;
 
-        public void Initialize(Queue<Wave> waves, Transform playerTransform)
+        public void Initialize(Queue<Wave> waves)
         {
             _waves = waves;
-            _playerTransform = playerTransform;
 
             _enemyDeathEffectsSpawner = new EnemyDeathEffectsSpawner(_deathEffectPrefab, _disposable);
             _explosionEffectsSpawner = new ExplosionEffectsSpawner(_explosionEffectPrefab, _disposable); 
             
             _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
             _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);
-            
-            MessageBrokerHolder.Enemy.Receive<M_BossSpawned>().Subscribe((message) => HandleBossSpawn(message.Boss))
-                .AddTo(_disposable);
         }
 
         public void Work()
@@ -81,20 +76,6 @@ namespace Project.Scripts.ArenaSystem
             wave.OnWaveFinished -= HandleWavesEnd;
 
             StartNewWave();
-        }
-
-        private void HandleBossSpawn(Enemy enemy)
-        {
-            enemy.OnDestroyed += HandleBossDeath;
-            _cageInstance = Instantiate(_cagePrefab, _playerTransform.position, Quaternion.identity);
-        }
-        
-        private void HandleBossDeath(Enemy enemy)
-        {
-            enemy.OnDestroyed -= HandleBossDeath;
-
-            Destroy(_cageInstance.gameObject, 1f);
-            Instantiate(_bossChestPrefab, enemy.transform.position, Quaternion.identity);
         }
     }
 }
