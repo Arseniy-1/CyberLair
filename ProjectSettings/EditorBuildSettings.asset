@@ -12,15 +12,12 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Menu.unity
     guid: 9764968bd0b03bb4f80a269a29f7a1d7
   - enabled: 1
-    path: Assets/Project/Scenes/FirstMap/FEScene.unity
-    guid: 88adc276930199244844050c00309d78
+    path: Assets/Project/Scenes/FirstMap/EasyScene.unity
+    guid: 4e81aa713f2f4cd48b3f00f2ae3acd68
   - enabled: 1
-    path: Assets/Project/Scenes/FirstMap/FHScene.unity
-    guid: a78fb36773d368641885d17d0c37638c
+    path: Assets/Project/Scenes/FirstMap/HardScene.unity
+    guid: 5f5c43a0704e0e84893199a74d518319
   - enabled: 1
-    path: Assets/Project/Scenes/SecondMap/SEScene.unity
-    guid: 948a4cc4418e9e040b190d2287b97145
-  - enabled: 1
-    path: Assets/Project/Scenes/SecondMap/SHScene.unity
-    guid: ceb4dc9ef9cbb3941b7b3594d824d4ea
+    path: Assets/Project/Scenes/FirstMap/InfiniteScene.unity
+    guid: 9877e1f9fefe70a4dac4d348a6db343d
   m_configObjects: {}
