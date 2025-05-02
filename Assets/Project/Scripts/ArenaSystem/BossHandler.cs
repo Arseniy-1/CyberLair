@@ -15,6 +15,9 @@ namespace Project.Scripts.ArenaSystem
         [SerializeField, Header("Prefabs")] private Cage _cagePrefab;
         [SerializeField] private BossChest _bossChestPrefab;
         
+        [SerializeField, Header("BossViews")] private StatsBar _bossHealthBar;
+        [SerializeField] private StatsText _bossHealthText;
+        
         private readonly CompositeDisposable _disposable = new();
         private Cage _cageInstance;
         private BossChest _bossChestInstance;
@@ -22,13 +25,17 @@ namespace Project.Scripts.ArenaSystem
         private Camera _mainCamera;
         private Transform _playerTransform;
 
+        private Tween _cameraZoomTween;
+
         public void Initialize(Transform playerTransform)
         {
             _playerTransform = playerTransform;
             _mainCamera = Camera.main;
             _mainCamera.orthographicSize = _cameraZoomSize.x;
             
-            MessageBrokerHolder.Enemy.Receive<M_BossSpawned>().Subscribe(message => HandleBossSpawn())
+            _bossHealthBar.gameObject.SetActive(false);
+            
+            MessageBrokerHolder.Enemy.Receive<M_BossSpawned>().Subscribe(message => HandleBossSpawn(message.Boss))
                 .AddTo(_disposable);
             
             MessageBrokerHolder.Enemy.Receive<M_BossDeath>().Subscribe(message => HandleBossDeath(message.Boss))
@@ -38,15 +45,24 @@ namespace Project.Scripts.ArenaSystem
                 .AddTo(_disposable);
         }
 
-        private void HandleBossSpawn()
+        private void HandleBossSpawn(Enemy boss)
         {
             _cageInstance ??= Instantiate(_cagePrefab);
 
             _cageInstance.gameObject.SetActive(true);
             _cageInstance.transform.position = _playerTransform.position;
             
-            DOTween.To(() => _mainCamera.orthographicSize, x => _mainCamera.orthographicSize = x, _cameraZoomSize.y, _zoomDuration)
-                .SetEase(Ease.InOutSine);
+            _bossHealthBar.Initialize(boss.EnemyStats.Health);
+            _bossHealthText.Initialize(boss.EnemyStats.Health);
+            
+            _bossHealthBar.gameObject.SetActive(true);
+            
+            if(_cameraZoomTween != null)
+                DOTween.Kill(_cameraZoomTween);
+                
+            _cameraZoomTween = DOTween
+                .To(() => _mainCamera.orthographicSize, x => _mainCamera.orthographicSize = x, _cameraZoomSize.y, _zoomDuration)
+                .SetEase(Ease.InOutSine).OnComplete(() => _cameraZoomTween = null);
         }
         
         private void HandleBossDeath(Enemy enemy)
@@ -57,9 +73,14 @@ namespace Project.Scripts.ArenaSystem
             _bossChestInstance.transform.position = enemy.transform.position;
             
             _cageInstance.gameObject.SetActive(false);
+            _bossHealthBar.gameObject.SetActive(false);
             
-            DOTween.To(() => _mainCamera.orthographicSize, x => _mainCamera.orthographicSize = x, _cameraZoomSize.x, _zoomDuration)
-                .SetEase(Ease.InOutSine);
+            if(_cameraZoomTween != null)
+                DOTween.Kill(_cameraZoomTween);
+            
+            _cameraZoomTween = DOTween
+                .To(() => _mainCamera.orthographicSize, x => _mainCamera.orthographicSize = x, _cameraZoomSize.x, _zoomDuration)
+                .SetEase(Ease.InOutSine).OnComplete(() => _cameraZoomTween = null);
         }
 
         private void HandleChestRaised()

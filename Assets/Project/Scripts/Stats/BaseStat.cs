@@ -25,6 +25,20 @@ public abstract class BaseStat
             _modifiers[i].Update();
         }
     }
+    
+    public void AddModifier(StatModifier modifier)
+    {
+        modifier.ValueExpired += RemoveModifier;
+        _modifiers.Add(modifier);
+        CalculateCurrentValue();
+    }
+
+    public void RemoveModifier(StatModifier modifier)
+    {
+        modifier.ValueExpired -= RemoveModifier;
+        _modifiers.Remove(modifier);
+        CalculateCurrentValue();
+    }
 
     protected virtual float CalculateValue()
     {
@@ -43,19 +57,5 @@ public abstract class BaseStat
     protected void OnAmountChanged(float currentValue, float baseValue)
     {
         AmountChanged?.Invoke(currentValue, baseValue);
-    }
-    
-    public void AddModifier(StatModifier modifier)
-    {
-        modifier.ValueExpired += RemoveModifier;
-        _modifiers.Add(modifier);
-        CalculateCurrentValue();
-    }
-
-    public void RemoveModifier(StatModifier modifier)
-    {
-        modifier.ValueExpired -= RemoveModifier;
-        _modifiers.Remove(modifier);
-        CalculateCurrentValue();
     }
 }

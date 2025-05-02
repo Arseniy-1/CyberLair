@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Project.Scripts.EnemySystem.Bosses;
 using UnityEngine;
 
@@ -56,7 +57,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
         private void ApplyFireDamage()
         {
-            foreach (var damageable in _damageableTargets)
+            foreach (var damageable in _damageableTargets.ToList())
             {
                 damageable.TakeDamage(_damagePerIteration);
             }

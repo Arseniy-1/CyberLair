@@ -1,8 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class StatsView : MonoBehaviour
 {
     private BaseStat _stats;
+
+    private void OnDestroy()
+    {
+        if(_stats != null)
+            _stats.AmountChanged -= ShowStats;
+    }
     
     public void Initialize(BaseStat stats)
     {
@@ -10,11 +17,6 @@ public abstract class StatsView : MonoBehaviour
         _stats.AmountChanged += ShowStats;
     }
     
-    private void OnDestroy()
-    {
-        if(_stats != null)
-            _stats.AmountChanged -= ShowStats;
-    }
 
     protected abstract void ShowStats(float currentValue, float maxValue);
 }
