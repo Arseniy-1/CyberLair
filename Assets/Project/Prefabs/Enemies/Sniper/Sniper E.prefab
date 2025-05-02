@@ -108,7 +108,7 @@ MonoBehaviour:
   _attacker: {fileID: 8327977833412635372}
   _destroyer: {fileID: 4088665956458132345}
   _enemyTargetProvider: {fileID: 9157632587801091930}
-  _attackDistance: 17
+  _attackDistance: 22
   _view: {fileID: 7338955702833447358}
   _damageSoundPlayer: {fileID: 1283411241371673799}
   <EnemyType>k__BackingField: 5
@@ -151,7 +151,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 2.5
     <AttackRecovery>k__BackingField: 1
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 4
+    <Cooldown>k__BackingField: 3
   _holder: {fileID: 6737547138716812977}
   _weaponStats:
     <WeaponDamage>k__BackingField:
@@ -730,6 +730,10 @@ PrefabInstance:
       value: Gun
       objectReference: {fileID: 0}
     - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+      propertyPath: BulletPrefab
+      value: 
+      objectReference: {fileID: 8502437403070517348, guid: f20043386107f4b4db5f3fd7f0e6a5fb, type: 3}
+    - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: _bulletPrefab
       value: 
       objectReference: {fileID: 8502437403070517348, guid: 011d83382cbe84a928ca1099e21c0ec9, type: 3}
@@ -739,11 +743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8704551961970842611, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.68
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 8704551961970842611, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.48
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

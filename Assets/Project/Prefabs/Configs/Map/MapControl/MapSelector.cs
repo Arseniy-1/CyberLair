@@ -25,6 +25,8 @@ public class MapSelector : MonoBehaviour
         
         _nextButton.onClick.AddListener(OnNextButtonClick);
         _previousButton.onClick.AddListener(OnPreviousButtonClick);
+        
+        HandleButtonClick();
     }
     
     private void OnDisable()

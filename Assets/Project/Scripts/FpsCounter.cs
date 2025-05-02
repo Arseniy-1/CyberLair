@@ -15,6 +15,6 @@ public class FpsCounter : MonoBehaviour
     private void LateUpdate()
     {
         float fps = 1.0f / _deltaTime;
-        _fpsText.text = "FPS: " + Mathf.Ceil(fps).ToString();
+        _fpsText.text = "FPS: " + fps;
     }
 }

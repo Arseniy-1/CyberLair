@@ -81,8 +81,6 @@ public class SkillSelector : MonoBehaviour
         
         if (inputSkillsCount == 0)
             return;
-    
-        Time.timeScale = 0;
         
         List<Skill> shuffledSkills = skills.OrderBy( skill => Random.value ).ToList( );
     

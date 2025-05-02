@@ -4,6 +4,7 @@ using System.Linq;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using UniRx;
+using UnityEngine.Serialization;
 
 namespace Project.Scripts.ArenaSystem
 {
@@ -21,11 +22,15 @@ namespace Project.Scripts.ArenaSystem
         [SerializeField] private List<WaveConfig> _wavesConfigs;
         
         [SerializeField] private Cage _cagePrefab;
-        [SerializeField] private Cage _cageInstance;
         [SerializeField] private BossChest _bossChestPrefab;
         
-        [SerializeField] private Effect _effectPrefab;
-        private EffectsSpawner _effectsSpawner;
+        [SerializeField] private Effect _deathEffectPrefab;
+        [SerializeField] private Effect _explosionEffectPrefab;
+        
+        private Cage _cageInstance;
+        
+        private EnemyDeathEffectsSpawner _enemyDeathEffectsSpawner;
+        private ExplosionEffectsSpawner _explosionEffectsSpawner;
         
         private readonly CompositeDisposable _disposable = new();
         
@@ -41,7 +46,9 @@ namespace Project.Scripts.ArenaSystem
             _waves = waves;
             _playerTransform = playerTransform;
 
-            _effectsSpawner = new EffectsSpawner(_effectPrefab, _disposable);
+            _enemyDeathEffectsSpawner = new EnemyDeathEffectsSpawner(_deathEffectPrefab, _disposable);
+            _explosionEffectsSpawner = new ExplosionEffectsSpawner(_explosionEffectPrefab, _disposable); 
+            
             _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
             _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);
             

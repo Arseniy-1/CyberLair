@@ -11,7 +11,7 @@ namespace Project.Scripts.Servises
         [SerializeField] private float _range;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private int _explosionDamage;
-        
+
         public void Explode(Vector3 position)
         {
             List<IDamageable> affected = Physics2D.OverlapCircleAll(position, _range, _layerMask)
@@ -25,6 +25,8 @@ namespace Project.Scripts.Servises
             {
                 hit.TakeDamage(_explosionDamage);
             }
+
+            MessageBrokerHolder.Game.Publish(new M_Exploded(position));
         }
     }
 }

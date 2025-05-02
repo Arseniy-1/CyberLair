@@ -101,7 +101,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.04210019}
@@ -162,7 +162,7 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 4
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 3.6
+      <BaseValue>k__BackingField: 6.5
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 2
+  _pushForce: 0
   _stunTime: 0
 --- !u!114 &7848786051674692826
 MonoBehaviour:
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 1
+    <AttackDelay>k__BackingField: 0.2
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 3

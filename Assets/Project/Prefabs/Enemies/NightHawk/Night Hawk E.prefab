@@ -236,10 +236,9 @@ MonoBehaviour:
   _attacker: {fileID: 6962832339083455307}
   _destroyer: {fileID: 5625599109945990570}
   _enemyTargetProvider: {fileID: 2166195250440910278}
-  _attackDistance: 2.5
+  _attackDistance: 20
   _view: {fileID: 624489385691389382}
   _damageSoundPlayer: {fileID: 1256560786912563530}
-  _enemyState: 
   <EnemyType>k__BackingField: 1
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 3
@@ -323,11 +322,11 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 3
   _jumpStats:
     <JumpSpeed>k__BackingField:
-      <BaseValue>k__BackingField: 10
+      <BaseValue>k__BackingField: 15
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 0.5
+      <BaseValue>k__BackingField: 0.9
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <JumpReloadTime>k__BackingField:
@@ -363,7 +362,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -405,7 +404,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &471131312352248351
 PrefabInstance:
   m_ObjectHideFlags: 0

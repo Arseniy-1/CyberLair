@@ -11,9 +11,10 @@ public class StreamingEnergySpawner : Spawner<StreamingEnergy>, ISkillInstance
     {
         _chance = skill.Chance;
         Prefab = skill.Prefab;
+        Pool = new StreamingEnergyPool(Prefab, StartAmount);
 
         _disposable = new CompositeDisposable();
-        MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => HandleEnemyDeath())
+        MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => HandleEnemyDeath(message.Position))
             .AddTo(_disposable);
     }
 
@@ -22,11 +23,12 @@ public class StreamingEnergySpawner : Spawner<StreamingEnergy>, ISkillInstance
         _disposable?.Dispose();
     }
 
-    private void HandleEnemyDeath()
+    private void HandleEnemyDeath(Vector2 position)
     {
         if (Random.value > _chance)
             return;
 
-        Spawn();
+        var zone = Spawn();
+        zone.transform.position = position;
     }
 }

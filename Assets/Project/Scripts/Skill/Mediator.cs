@@ -26,8 +26,10 @@ public class Mediator : MonoBehaviour
     private SkillHolder _playerSkillHolder;
     private PlayerStats _playerStats;
     
-    private readonly CompositeDisposable _disposable = new();
+    private  CompositeDisposable _disposable = new();
 
+    public List<Skill> RaisedSkills => _raisedSkills;
+    
     private void OnEnable()
     {
         _skillSelector.SkillApplyed += OnSkillsApplied;
@@ -39,7 +41,6 @@ public class Mediator : MonoBehaviour
         _playerStats = _player.PlayerStats;
         _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats, _playerJumper));
 
-        
         MessageBrokerHolder.Chest.Receive<M_ChestRaised>().Subscribe((message) => HandleRaiseChest())
             .AddTo(_disposable);
     }
@@ -62,7 +63,10 @@ public class Mediator : MonoBehaviour
     
     private void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
-        _player.PlayerInputController.PlayerInput.Disable();
+        Time.timeScale = 0;
+        
+        MessageBrokerHolder.Game.Publish(new M_GamePaused());
+        
         _gameUI.gameObject.SetActive(false);
         _skillSelector.ShowSkills(skills, inputSkillsCount, outputSkillsCount);
     }
@@ -106,7 +110,7 @@ public class Mediator : MonoBehaviour
         }
 
         Time.timeScale = 1;
-        _player.PlayerInputController.PlayerInput.Enable();
+        MessageBrokerHolder.Game.Publish(new M_GameUnpaused());
         _gameUI.gameObject.SetActive(true);
     }
 }

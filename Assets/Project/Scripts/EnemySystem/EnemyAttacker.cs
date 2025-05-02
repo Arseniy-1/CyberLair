@@ -43,19 +43,21 @@ namespace Project.Scripts.EnemySystem
             var waitDelay = new WaitForSeconds(_stats.AttackDelay);
             var waitRecovery = new WaitForSeconds(_stats.AttackRecovery);
             
+            yield return waitDelay;
+
             for (int i = 0; i < _stats.AttackCount; i++)
             {
                 AttackStarted?.Invoke();
-                yield return waitDelay;
-                
+                yield return waitRecovery;
+
                 AttackPerforming?.Invoke(true);
                 yield return Attack();
-                
+
                 AttackPerforming?.Invoke(false);
             }
-
-            yield return waitRecovery;
             
+            yield return waitDelay;
+
             EndAttack();
         }
     }

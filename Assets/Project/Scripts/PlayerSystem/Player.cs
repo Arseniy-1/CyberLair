@@ -38,7 +38,6 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public Collider2D Collider2D => _collider;
-    public PlayerInputController PlayerInputController => _playerInputController;
     public ExperienceStorage ExperienceStorage => _experienceStorage;
 
     public Vector2 Position => transform.position;
