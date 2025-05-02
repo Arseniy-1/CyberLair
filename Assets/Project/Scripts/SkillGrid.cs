@@ -1,26 +1,27 @@
 ﻿using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SkillGrid : MonoBehaviour
 {
     [SerializeField] private Mediator _mediator;
-    [SerializeField] private Image[] _bulletIcons;
+    [SerializeField] private Image[] _skillIcons;
 
     private  CompositeDisposable _disposable = new();
 
-    private void Awake()
-    {
-        MessageBrokerHolder.Game.Receive<M_GamePaused>().Subscribe((message) => ShowSkills())
-            .AddTo(_disposable);
-    }
-    
-    private void ShowSkills()
+    // private void Start()
+    // {
+    //     MessageBrokerHolder.Game.Receive<M_GamePaused>().Subscribe((message) => ShowSkills())
+    //         .AddTo(_disposable);
+    // }
+    //
+    public void ShowSkills()
     {
         for(int i = 0; i < _mediator.RaisedSkills.Count; i++)
         {
-            _bulletIcons[i].sprite = _mediator.RaisedSkills[i].SkillInfo.Icon;
-            _bulletIcons[i].gameObject.SetActive(true);
+            _skillIcons[i].sprite = _mediator.RaisedSkills[i].SkillInfo.Icon;
+            _skillIcons[i].gameObject.SetActive(true);
         }
     }
 }

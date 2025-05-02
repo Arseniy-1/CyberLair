@@ -6,6 +6,8 @@ using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
+using Unity.VisualScripting;
+using IState = StateMashineSytem.IState;
 
 [RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
@@ -101,6 +103,9 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _damageSoundPlayer.Play();
         MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
         PlayerStats.Health.TakeDamage(amount);
+        
+        float imortalityTime = 1.5f;
+        StartCoroutine(TakingImortality(imortalityTime));
     }
 
     public void TakeStun(float time)
@@ -115,6 +120,13 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         yield return new WaitForSeconds(time);
         
         _entityStateMachine.SwitchState<PlayerIdleState>();
+    }
+    
+    private IEnumerator TakingImortality(float time)
+    {
+        _collider.enabled = false;
+        yield return new WaitForSeconds(time);
+        _collider.enabled = true;
     }
 
     private void Shoot()
