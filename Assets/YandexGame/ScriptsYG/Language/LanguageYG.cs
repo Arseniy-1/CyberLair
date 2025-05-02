@@ -86,8 +86,8 @@ namespace YG
 
         public void SwitchLanguage(string lang)
         {
-            if (!infoYG.LocalizationEnable)
-                return;
+            // if (!infoYG.LocalizationEnable)
+            //     return;
 
             for (int i = 0; i < languages.Length; i++)
             {
