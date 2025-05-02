@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
+using YG;
 
 public class MapSelector : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class MapSelector : MonoBehaviour
     
     [SerializeField] private SceneOpener _easySceneOpener;
     [SerializeField] private SceneOpener _hardSceneOpener;
+    [SerializeField] private LanguageYG _mapNameLanguage;
     
     private int _currentMapIndex = 0;
     

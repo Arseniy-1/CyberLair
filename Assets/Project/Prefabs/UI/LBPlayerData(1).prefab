@@ -295,6 +295,10 @@ MonoBehaviour:
     rank: {fileID: 1135701933892465250}
     name: {fileID: 6863402576695576330}
     score: {fileID: 2024087183213466320}
+  textMP:
+    rank: {fileID: 0}
+    name: {fileID: 0}
+    score: {fileID: 0}
 --- !u!222 &3018298854482249901
 CanvasRenderer:
   m_ObjectHideFlags: 0
