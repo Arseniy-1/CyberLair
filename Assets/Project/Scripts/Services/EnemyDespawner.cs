@@ -8,7 +8,7 @@ namespace Project.Scripts.Services
     {
         public event Action<Enemy> EnemyDespawn;
 
-        private void OnTriggerExit2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             HandleCollision(other);
         }

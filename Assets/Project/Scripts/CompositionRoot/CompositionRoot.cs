@@ -16,7 +16,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Player _player;
         [SerializeField] private MainEnemySpawner _mainEnemySpawner;
         [SerializeField] private EdgeSpawner _edgeSpawner;
-        [SerializeField] private EnemyDespawner _enemyDespawner;
+        [SerializeField] private List<EnemyDespawner> _enemyDespawners;
         [SerializeField] private Level _level;
         
         [SerializeField] private StatsBar _HealthBar;
@@ -48,7 +48,7 @@ namespace Project.Scripts.CompositionRoot
             _edgeSpawner.SpawnOnEdges();
             _mapGenerator.Initialize();
             
-            _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects.ToList(), _enemyDespawner);
+            _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects.ToList(), _enemyDespawners);
             var waves = new Queue<Wave>(_arena.WavesConfigs
                 .Select(config => new Wave(config, _mainEnemySpawner)).ToList());
 

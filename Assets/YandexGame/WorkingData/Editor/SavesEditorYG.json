@@ -1,0 +1,17 @@
+{
+    "idSave": 309,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "money": 1,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "IsCameraShakeEnabled": true,
+    "IsSoundsMuted": false,
+    "MusicVolume": 0.21456651389598847,
+    "SoundsVolume": 0.20403310656547547
+}

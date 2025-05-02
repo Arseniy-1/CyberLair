@@ -18,7 +18,11 @@ namespace YG
 
         // Ваши сохранения
 
-        // ...
+        public bool IsCameraShakeEnabled = true;
+        public bool IsSoundsMuted = false;
+        
+        public float MusicVolume = 1.0f;
+        public float SoundsVolume = 1.0f;
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 
@@ -27,7 +31,7 @@ namespace YG
         public SavesYG()
         {
             // Допустим, задать значения по умолчанию для отдельных элементов массива
-
+ 
             openLevels[1] = true;
         }
     }
