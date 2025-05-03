@@ -25,6 +25,7 @@ public class Effect : MonoBehaviour, IDestoyable<Effect>
             await Task.Delay(100);
         }
 
-        OnDestroyed?.Invoke(this);
+        if(isActiveAndEnabled)
+            OnDestroyed?.Invoke(this);
     }
 }

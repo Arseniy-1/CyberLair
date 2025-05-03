@@ -30,6 +30,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private StatsText _shieldText;
         
         [SerializeField] private Canvas _endGameCanvas;
+        [SerializeField] private Canvas _winGameCanvas;
         [SerializeField] private Canvas _gameCanvas;
         
         private void Awake()
@@ -60,13 +61,22 @@ namespace Project.Scripts.CompositionRoot
         private void OnEnable()
         {
             _player.OnDeath += OnPlayerDied;
+            _arena.WavesDone += ShowWinScreen;
             YandexGame.RewardVideoEvent += OnRewarded;
         }
 
         private void OnDisable()
         {
             _player.OnDeath -= OnPlayerDied;
+            _arena.WavesDone += ShowWinScreen;
             YandexGame.RewardVideoEvent -= OnRewarded;
+        }
+
+        private void ShowWinScreen()
+        {
+            _winGameCanvas.gameObject.SetActive(false);
+            _endGameCanvas.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
         
         private void OnPlayerDied()

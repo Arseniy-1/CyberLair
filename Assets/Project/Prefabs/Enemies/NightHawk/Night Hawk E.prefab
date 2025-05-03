@@ -236,7 +236,7 @@ MonoBehaviour:
   _attacker: {fileID: 6962832339083455307}
   _destroyer: {fileID: 5625599109945990570}
   _enemyTargetProvider: {fileID: 2166195250440910278}
-  _attackDistance: 20
+  _attackDistance: 25
   _view: {fileID: 624489385691389382}
   _damageSoundPlayer: {fileID: 1256560786912563530}
   <EnemyType>k__BackingField: 1
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 500
+  _pushForce: 0
   _stunTime: 0.15
 --- !u!114 &5625599109945990570
 MonoBehaviour:

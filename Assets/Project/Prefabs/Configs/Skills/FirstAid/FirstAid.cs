@@ -1,7 +1,3 @@
-using System;
-using Project.Prefabs.Configs.Skills.Durability;
-using UnityEngine;
-
 namespace Project.Prefabs.Configs.Skills
 {
     public class FirstAid : ISkillInstance

@@ -8,7 +8,7 @@ public class StatsText : StatsView
 
     protected override void ShowStats(float currentValue, float maxValue)
     {
-        CurrentValueText.text = currentValue.ToString();
+        CurrentValueText.text = Mathf.Round(currentValue).ToString();
         MaxValueText.text = maxValue.ToString();
     }
 }

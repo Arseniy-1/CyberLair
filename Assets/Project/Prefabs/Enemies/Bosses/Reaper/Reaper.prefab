@@ -281,7 +281,6 @@ MonoBehaviour:
   _attackDistance: 6
   _view: {fileID: 2024785022066577145}
   _damageSoundPlayer: {fileID: 752593008107726237}
-  _enemyState: 
   <EnemyType>k__BackingField: 10
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
@@ -330,7 +329,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -438,8 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6746bfc57f8548088883f00e73c43a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pushForce: 400
-  _stunTime: 1
+  _pushForce: 250
+  _stunTime: 0.15
 --- !u!1 &2242970751457415580
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,10 +45,11 @@ public class Health : BaseStat
             CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxHealth);
 
         OnAmountChanged(CurrentValue, MaxHealth);
-        DamageTaken?.Invoke(amount);
 
         if (CurrentValue <= 0)
             HandleDeath();
+        
+        DamageTaken?.Invoke(amount);
     }
 
     [Button]

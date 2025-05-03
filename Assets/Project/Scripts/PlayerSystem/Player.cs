@@ -6,7 +6,6 @@ using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
-using Unity.VisualScripting;
 using IState = StateMashineSytem.IState;
 
 [RequireComponent(typeof(Collider2D))]
