@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0.1
-    <AttackRecovery>k__BackingField: 0.1
+    <AttackDelay>k__BackingField: 0.4
+    <AttackRecovery>k__BackingField: 0.3
     <AttackCount>k__BackingField: 3
     <Cooldown>k__BackingField: 3
   _jumpStats:
