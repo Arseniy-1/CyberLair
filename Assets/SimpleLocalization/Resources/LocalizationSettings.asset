@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TableId: 1283BFFFONcLRZLfZUvQGAx_vF0moBHiVAuvG7S-8ymU
   Sheets:
-  - Name: "\u041B\u0438\u0441\u04421"
+  - Name: List
     Id: 0
-    TextAsset: {fileID: 4900000, guid: c9152560219b4934788ce4bef718c389, type: 3}
-  - Name: Skills
-    Id: 514933380
-    TextAsset: {fileID: 4900000, guid: 9a94ce399d5a5004a9fefc39c7c1d0f4, type: 3}
+    TextAsset: {fileID: 4900000, guid: f7598bf8c88f00241aa16e0222c8c7f9, type: 3}
   SaveFolder: {fileID: 102900000, guid: c392831e85f928548b8494fefd912562, type: 3}

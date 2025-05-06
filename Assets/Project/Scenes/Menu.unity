@@ -7856,7 +7856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 103, y: 28.040104}
+  m_AnchoredPosition: {x: 103, y: 28.04004}
   m_SizeDelta: {x: 0, y: -667.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1388058036
@@ -10628,7 +10628,6 @@ MonoBehaviour:
   _previousButton: {fileID: 27651978}
   _easySceneOpener: {fileID: 1119055844}
   _hardSceneOpener: {fileID: 1215838180}
-  _mapNameLanguage: {fileID: 635782738}
 --- !u!114 &2099958691
 MonoBehaviour:
   m_ObjectHideFlags: 0

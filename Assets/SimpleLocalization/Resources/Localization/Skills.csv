@@ -1,2 +1,37 @@
 Key,en,tr,ru
-Skill.Example.Title,Menu,Menü,Меню
+AthleticsSkill,Athletics,Atletizm,Легкая атлетика
+ReactiveBootsSkill,Reactive Boots,Reaktif Çizmeler,Реактивные ботинки
+HardingSkill,Harding,Harding,Хардинг
+DurabilitySkill,Durability,Dayanıklılık,Долговечность
+TacticalEfficiencySkill,Tactical Efficiency,Taktik Verimlilik,Тактическая эффективность
+Lair-1Skill,Lair-1,Yuva-1,Логово-1
+FirstAidSkill,FirstAid,İlk Yardım,Первая помощь
+ThunderSkill,Thunder,Gök gürültüsü,Гром
+StunZapSkill,Stun Zap,Sersemletme Zap'i,Оглушающий Разряд
+MagicArrowSkill,Magic Arrow,Sihirli Ok,Волшебная стрела
+ChainZapSkill,Chain Zap,Zincir Zap,Цепной Зап
+MultiShotSkill,MultiShot,Çoklu Çekim,Мультивыстрел
+AffectedAreaSkill,Affected Area,Etkilenen Bölge,Затронутая область
+JumpSwirlSkill,Jump Swirl,Girdap atlama,"Прыжок, вихрь"
+MercuryMimicrySkill,Mercury Mimicry,Merkür Taklidi,Мимикрия Меркурия
+TirelessSkill,Tireless,Yorulmak bilmez,Неутомимый
+SnowBloodSkill,Snow Blood,Kar Kanı,Снежная кровь
+RecoveryPainSkill,Recovery Pain,İyileşme Ağrısı,Восстановительная боль
+ArtayaShieldSkill,Artaya Shield,Artaya Kalkanı,Артайя Щит
+OverloadSkill,Overload,Aşırı yük,Перегрузка
+ReducedResistanceSkill,Reduced Resistance,Azaltılmış Direnç,Пониженное сопротивление
+InternalVoltageSkill,Internal Voltage,Dahili Gerilim,Внутреннее напряжение
+StormBladeSkill,Storm Blade,Fırtına Kılıcı,Штормовой клинок
+PhantomArrowsSkill,Phantom Arrows,Hayalet Oklar,Призрачные стрелы
+BulletonsLastSkill,Bulletons Last,Bültenler Son,Бюллетени последние
+FireZoneSkill,Fire Zone,Yangın Bölgesi,Пожарная зона
+TeleportationJumpSkill,Teleportation Jump,Işınlanma Atlaması,Телепортационный прыжок
+MercuryBlessSkill,Mercury Bless,Merkür Korusun,Меркурий благословляет
+NonStopSkill,Non Stop,Kesintisiz,нон-стоп
+BerserkRageSkill,Berserk Rage,Çılgına Dönük Öfke,Берсерк Ярость
+ArtayaWillSkill,Artaya Will,Artaya Will,Артая Уилл
+AllOnLineSkill,AllOnLine,Hepsi Çevrimiçi,Все на кону
+ThunderStormSkill,Thunder Storm,Gök Gürültüsü Fırtınası,Громовой Шторм
+StreamingEnergySkill,Streaming Energy,Enerji Akışı,Потоковая энергия
+SummonSkill,Summon,Çağır,Вызвать
+HellCatsSkill,Hell Cats,Cehennem Kedileri,Адские коты
