@@ -1,17 +1,17 @@
 {
-    "idSave": 718,
-    "isFirstSession": false,
-    "language": "en",
-    "promptDone": false,
-    "money": 1,
-    "newPlayerName": "Hello!",
-    "openLevels": [
-        false,
-        true,
-        false
-    ],
-    "IsCameraShakeEnabled": true,
-    "IsSoundsMuted": true,
-    "MusicVolume": 0.5427113175392151,
-    "SoundsVolume": 0.33596307039260867
+  "idSave": 734,
+  "isFirstSession": false,
+  "language": "en",
+  "promptDone": false,
+  "money": 1,
+  "newPlayerName": "Hello!",
+  "openLevels": [
+    false,
+    true,
+    false
+  ],
+  "IsCameraShakeEnabled": true,
+  "IsSoundsMuted": true,
+  "MusicVolume": 0.5427113,
+  "SoundsVolume": 0.33596307
 }

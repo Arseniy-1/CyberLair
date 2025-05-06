@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Map-1
   m_EditorClassIdentifier: 
   <MapNameKey>k__BackingField: WinterMapName
-  <MapImage>k__BackingField: {fileID: 21300000, guid: 96eea4e5f8a214b8e8be3d59948b8c61, type: 3}
+  <MapImage>k__BackingField: {fileID: 21300000, guid: 6d376a2cc03ae428fb285ac3e7288858, type: 3}
   <EasyMap>k__BackingField: TestScene
   <InfiniteMap>k__BackingField: TestScene
   <HardMap>k__BackingField: TestScene
