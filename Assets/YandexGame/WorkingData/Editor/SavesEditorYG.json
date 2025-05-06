@@ -1,5 +1,5 @@
 {
-  "idSave": 738,
+  "idSave": 1766,
   "isFirstSession": false,
   "language": "tr",
   "promptDone": false,
@@ -10,8 +10,8 @@
     true,
     false
   ],
-  "IsCameraShakeEnabled": true,
-  "IsSoundsMuted": true,
-  "MusicVolume": 0.5427113,
-  "SoundsVolume": 0.33596307
+  "IsCameraShakeEnabled": false,
+  "IsSoundsMuted": false,
+  "MusicVolume": 0.3713071,
+  "SoundsVolume": 0.418551
 }
