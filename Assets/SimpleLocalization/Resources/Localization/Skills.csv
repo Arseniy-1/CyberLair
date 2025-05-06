@@ -8,8 +8,9 @@ Lair-1Skill,Lair-1,Yuva-1,Логово-1
 FirstAidSkill,FirstAid,İlk Yardım,Первая помощь
 ThunderSkill,Thunder,Gök gürültüsü,Гром
 StunZapSkill,Stun Zap,Sersemletme Zap'i,Оглушающий Разряд
-MagicArrowSkill,Magic Arrow,Sihirli Ok,Волшебная стрела
 ChainZapSkill,Chain Zap,Zincir Zap,Цепной Зап
+MagicArrowSkill,Magic Arrow,Sihirli Ok,Волшебная стрела
+BoomerangSkill,Boomerang,Bumerang,Бумеранг
 MultiShotSkill,MultiShot,Çoklu Çekim,Мультивыстрел
 AffectedAreaSkill,Affected Area,Etkilenen Bölge,Затронутая область
 JumpSwirlSkill,Jump Swirl,Girdap atlama,"Прыжок, вихрь"

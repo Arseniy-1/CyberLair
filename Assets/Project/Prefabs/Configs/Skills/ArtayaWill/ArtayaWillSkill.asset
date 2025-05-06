@@ -13,13 +13,8 @@ MonoBehaviour:
   m_Name: ArtayaWillSkill
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
-    <SkillName>k__BackingField: "\u0412\u043E\u043B\u044F \u0410\u0440\u0442\u0430\u0439\u0430"
-    <Description>k__BackingField: "\u0423\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442
-      \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E
-      \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F \u043D\u0430 1 \u0438 \u043F\u0440\u0438\u0431\u0430\u0432\u043B\u044F\u0435\u0442
-      \u043F\u043E\u0441\u0442\u043E\u044F\u043D\u043D\u044B\u0439 \u0449\u0438\u0442
-      \u0432 \u0440\u0430\u0437\u043C\u0435\u0440\u0435 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E
-      \u0425\u041F * 3"
+    <SkillName>k__BackingField: ArtayaWillSkill
+    <Description>k__BackingField: ArtayaWillSkillDescription
     <Icon>k__BackingField: {fileID: 21300000, guid: 720d9c72d2e3148b4bc63f50e4bcd18d, type: 3}
   NeededSkills:
   - {fileID: 11400000, guid: 0be651a97b60446b2a7eaa2ca6c159af, type: 2}

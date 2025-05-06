@@ -14,11 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: TacticalEfficiencySkill
-    <Description>k__BackingField: "\u0423\u043C\u0435\u043D\u044C\u0448\u0435\u043D\u0438\u0435
-      \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E
-      \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F \u043D\u0430 30 \u0435\u0434\u0438\u043D\u0438\u0446,
-      \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u0430\u0442\u0430\u043A\u0438
-      \u043D\u0430 15%"
+    <Description>k__BackingField: TacticalEfficiencySkillDescription
     <Icon>k__BackingField: {fileID: 21300000, guid: dfe6caf18bd7e43c2be21e1f8ef16903, type: 3}
   <HealthModifier>k__BackingField:
     <Value>k__BackingField: -30

@@ -20,4 +20,7 @@ MonoBehaviour:
   - Name: Skills
     Id: 1877496556
     TextAsset: {fileID: 4900000, guid: afe2923027a7cf248800f22226fa1e64, type: 3}
+  - Name: SkillDescriptions
+    Id: 1243927388
+    TextAsset: {fileID: 4900000, guid: 0cbb37418e3059f49b5b1fd1b042527c, type: 3}
   SaveFolder: {fileID: 102900000, guid: c392831e85f928548b8494fefd912562, type: 3}

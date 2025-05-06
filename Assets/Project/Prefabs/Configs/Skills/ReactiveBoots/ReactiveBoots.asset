@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: ReactiveBootsSkill
-    <Description>k__BackingField: "+10% \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438"
+    <Description>k__BackingField: ReactiveBootsSkillDescription
     <Icon>k__BackingField: {fileID: 21300000, guid: a54ed6fd9206844beb960804cb8e19a6, type: 3}
   <SpeedModifier>k__BackingField:
     <Value>k__BackingField: 1.1

@@ -4,7 +4,6 @@ using Assets.SimpleLocalization.Scripts;
 using TMPro;
 using UnityEngine.UI;
 using YG;
-using System;
 
 public class MapSelector : MonoBehaviour
 {

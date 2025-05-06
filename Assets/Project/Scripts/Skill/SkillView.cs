@@ -1,8 +1,8 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Assets.SimpleLocalization.Scripts;
 
 public class SkillView : MonoBehaviour
 {
@@ -34,8 +34,8 @@ public class SkillView : MonoBehaviour
     public void SetSkill(Skill skill, Sprite skillBanner)
     {
         _skill = skill;
-        _nameText.text = _skill.SkillInfo.SkillName;
-        _descriptionText.text = _skill.SkillInfo.Description;
+        _nameText.text = LocalizationManager.Localize(_skill.SkillInfo.SkillName);
+        _descriptionText.text = LocalizationManager.Localize(_skill.SkillInfo.Description);
         _skillBanner.sprite = skillBanner;
         _skillIcon.sprite = _skill.SkillInfo.Icon;
     }

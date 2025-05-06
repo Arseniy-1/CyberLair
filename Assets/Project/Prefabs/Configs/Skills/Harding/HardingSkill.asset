@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: HardingSkill
-    <Description>k__BackingField: "-5% \u0432\u0440\u0435\u043C\u0435\u043D\u0438
-      \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F
-      \u0440\u044B\u0432\u043A\u0430"
+    <Description>k__BackingField: HardingSkillDescription
     <Icon>k__BackingField: {fileID: 21300000, guid: a203853291d7d44a1baa29e101ad88d6, type: 3}
   <JumpReloadTimeModifier>k__BackingField:
     <Value>k__BackingField: 0.95

@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SkillInfo>k__BackingField:
     <SkillName>k__BackingField: FirstAidSkill
-    <Description>k__BackingField: "10% \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u043C\u043E\u0433\u043E
-      \u0443\u0440\u043E\u043D\u0430 \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442\u0441\u044F
-      \u0438\u0433\u0440\u043E\u043A\u0443"
+    <Description>k__BackingField: FirstAidSkillDescription
     <Icon>k__BackingField: {fileID: 21300000, guid: 266474ff597f241b4ac9259a2900abc5, type: 3}
   <HealProportion>k__BackingField: 0.1
