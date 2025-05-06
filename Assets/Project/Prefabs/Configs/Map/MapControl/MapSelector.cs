@@ -1,70 +1,84 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Assets.SimpleLocalization.Scripts;
 using TMPro;
 using UnityEngine.UI;
 using YG;
+using System;
 
 public class MapSelector : MonoBehaviour
 {
     [SerializeField] private List<MapData> _maps;
 
-    [SerializeField] private TextMeshProUGUI _name;
+    [SerializeField] private LocalizedText _name;
     [SerializeField] private Image _image;
-    
+
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _previousButton;
-    
+
     [SerializeField] private SceneOpener _easySceneOpener;
     [SerializeField] private SceneOpener _hardSceneOpener;
-    [SerializeField] private LanguageYG _mapNameLanguage;
-    
+
     private int _currentMapIndex = 0;
-    
-    private void OnEnable()
-    {
-        _name.text = _maps[0].MapName;
-        _image.sprite = _maps[0].MapImage;
-        
-        _nextButton.onClick.AddListener(OnNextButtonClick);
-        _previousButton.onClick.AddListener(OnPreviousButtonClick);
-        
-        HandleButtonClick();
-    }
-    
-    private void OnDisable()
-    {
-        _nextButton.onClick.RemoveListener(OnNextButtonClick);
-        _previousButton.onClick.RemoveListener(OnPreviousButtonClick);
-    }
 
-    private void OnNextButtonClick()
+    public void Awake()
     {
-        _currentMapIndex += 1;
+        LocalizationManager.Read();
 
-        if (_currentMapIndex > _maps.Count - 1)
-            _currentMapIndex = 0;
+        LocalizationManager.Language = "English";
+}
 
-        HandleButtonClick();
-    }
+private void OnEnable()
+{
+    _image.sprite = _maps[0].MapImage;
 
-    private void OnPreviousButtonClick()
-    {
-        _currentMapIndex -= 1;
-        
-        if(_currentMapIndex < 0)
-            _currentMapIndex = _maps.Count - 1; 
-        
-        HandleButtonClick();
-    }
-    
-    private void HandleButtonClick()
-    {
-        MapData selectedMap = _maps[_currentMapIndex];
-        
-        _name.text = selectedMap.MapName;
-        _image.sprite = selectedMap.MapImage;
-        
-        _easySceneOpener.SetScene(selectedMap.EasyMap);
-        _hardSceneOpener.SetScene(selectedMap.HardMap);
-    }
+    _nextButton.onClick.AddListener(OnNextButtonClick);
+    _previousButton.onClick.AddListener(OnPreviousButtonClick);
+
+    HandleButtonClick();
+}
+
+private void LateUpdate()
+{
+    _name.LocalizationKey = _maps[0].MapNameKey;
+}
+
+private void OnDisable()
+{
+    _nextButton.onClick.RemoveListener(OnNextButtonClick);
+    _previousButton.onClick.RemoveListener(OnPreviousButtonClick);
+}
+
+private void OnNextButtonClick()
+{
+    _currentMapIndex += 1;
+
+    if (_currentMapIndex > _maps.Count - 1)
+        _currentMapIndex = 0;
+
+    HandleButtonClick();
+}
+
+private void OnPreviousButtonClick()
+{
+    _currentMapIndex -= 1;
+
+    if (_currentMapIndex < 0)
+        _currentMapIndex = _maps.Count - 1;
+
+    HandleButtonClick();
+}
+
+private void HandleButtonClick()
+{
+    MapData selectedMap = _maps[_currentMapIndex];
+
+    // _name.LocalizationKey = selectedMap.MapNameKey;
+    _image.sprite = selectedMap.MapImage;
+
+    _name.LocalizationKey = LocalizationManager.Localize(selectedMap.MapNameKey);
+
+    _easySceneOpener.SetScene(selectedMap.EasyMap);
+    _hardSceneOpener.SetScene(selectedMap.HardMap);
+}
 }

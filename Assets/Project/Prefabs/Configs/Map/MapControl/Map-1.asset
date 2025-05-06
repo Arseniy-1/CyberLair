@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36105b94d7454b8f831b8c42187c203e, type: 3}
   m_Name: Map-1
   m_EditorClassIdentifier: 
-  <MapName>k__BackingField: "\u0421\u043D\u0435\u0436\u043D\u044B\u0439 \u043B\u0435\u0441"
+  <MapNameKey>k__BackingField: 514933380
   <MapImage>k__BackingField: {fileID: 21300000, guid: 96eea4e5f8a214b8e8be3d59948b8c61, type: 3}
   <EasyMap>k__BackingField: TestScene
   <InfiniteMap>k__BackingField: TestScene

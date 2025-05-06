@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.SimpleLocalization.Scripts;
 using Project.Scripts.ArenaSystem;
 using Project.Scripts.MapGenerationSystem;
 using Project.Scripts.Services;
@@ -56,6 +57,9 @@ namespace Project.Scripts.CompositionRoot
             
             _experienceBar.Initialize(_player.ExperienceStorage);
             _experienceText.Initialize(_player.ExperienceStorage);
+            
+            LocalizationManager.Read();
+            LocalizationManager.Language = YandexGame.lang;
         }
         
         private void OnEnable()
