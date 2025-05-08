@@ -2,9 +2,9 @@
 
 public class CameraShakeToggle : SettingToggle
 {
-    protected override void OnEnable()
+    public override void Initialize()
     {
-        base.OnEnable();
+        base.Initialize();
         Toggle.isOn = YandexGame.savesData.IsCameraShakeEnabled;
     }
     

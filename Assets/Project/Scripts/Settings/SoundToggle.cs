@@ -1,10 +1,10 @@
 ﻿using YG;
 
-public class SoundToggl : SettingToggle
+public class SoundToggle : SettingToggle
 {
-    protected override void OnEnable()
+    public override void Initialize()
     {
-        base.OnEnable();
+        base.Initialize();
         Toggle.isOn = YandexGame.savesData.IsSoundsMuted;
     }
     

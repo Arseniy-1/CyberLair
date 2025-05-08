@@ -1,11 +1,10 @@
-﻿using UnityEngine.InputSystem.Interactions;
-using YG;
+﻿using YG;
 
 public class MusicSlider : SettingSlider
 {
-    protected override void OnEnable()
+    public override void Initialize()
     {
-        base.OnEnable();
+        base.Initialize();
         Slider.value = YandexGame.savesData.MusicVolume;
     }
     

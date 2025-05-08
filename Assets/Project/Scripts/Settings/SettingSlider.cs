@@ -5,7 +5,7 @@ public abstract class SettingSlider : MonoBehaviour
 {
     [SerializeField] protected Slider Slider; 
     
-    protected virtual void OnEnable()
+    public virtual void Initialize()
     {
         Slider.onValueChanged.AddListener(HandleSliderValueChanged);  
     }

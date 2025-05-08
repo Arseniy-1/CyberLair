@@ -1,13 +1,14 @@
-﻿using YG;
+﻿using UnityEngine;
+using YG;
 
 public class SoundSlider : SettingSlider
 {
-    protected override void OnEnable()
+    public override void Initialize()
     {
-        base.OnEnable();
+        base.Initialize();
         Slider.value = YandexGame.savesData.SoundsVolume;
     }
-    
+
     protected override void HandleSliderValueChanged(float amount)
     {
         YandexGame.savesData.SoundsVolume = amount;

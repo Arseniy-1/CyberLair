@@ -9,20 +9,21 @@ public class ExtendedVolumeChanger : MonoBehaviour
     [SerializeField] private Slider _slider;
 
     [SerializeField] private bool _isEnabled = true;
+    
     private float _minlVolume = -80;
 
-    private void OnEnable()
-    {
-        _button.onValueChanged.AddListener(ToggleMusic);
-        _slider.onValueChanged.AddListener(Change);
-    }
-
-    private void OnDisable()
+    private void OnDestroy()
     {
         _button.onValueChanged.RemoveListener(ToggleMusic);
         _slider.onValueChanged.RemoveListener(Change);
     }
 
+    public void Initialize()
+    {
+        _button.onValueChanged.AddListener(ToggleMusic);
+        _slider.onValueChanged.AddListener(Change);
+    }
+    
     private void ToggleMusic(bool isMuted)
     {
         if (isMuted)

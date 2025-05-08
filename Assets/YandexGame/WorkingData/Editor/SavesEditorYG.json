@@ -1,7 +1,7 @@
 {
-  "idSave": 1766,
+  "idSave": 1986,
   "isFirstSession": false,
-  "language": "tr",
+  "language": "en",
   "promptDone": false,
   "money": 1,
   "newPlayerName": "Hello!",
@@ -11,7 +11,7 @@
     false
   ],
   "IsCameraShakeEnabled": false,
-  "IsSoundsMuted": false,
-  "MusicVolume": 0.3713071,
-  "SoundsVolume": 0.418551
+  "IsSoundsMuted": true,
+  "MusicVolume": 0.2634296,
+  "SoundsVolume": 0.2770552
 }

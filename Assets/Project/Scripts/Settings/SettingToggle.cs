@@ -5,7 +5,7 @@ public abstract class SettingToggle : MonoBehaviour
 {
     [SerializeField] protected Toggle Toggle;
 
-    protected virtual void OnEnable()
+    public virtual void Initialize()
     {
         Toggle.onValueChanged.AddListener(HandleToggle);
     }
