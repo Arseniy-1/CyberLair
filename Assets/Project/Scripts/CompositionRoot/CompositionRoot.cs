@@ -33,6 +33,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Canvas _endGameCanvas;
         [SerializeField] private Canvas _winGameCanvas;
         [SerializeField] private Canvas _gameCanvas;
+        [SerializeField] private TutorialWindow _tutorialView;
         
         private void Awake()
         {
@@ -67,38 +68,65 @@ namespace Project.Scripts.CompositionRoot
             _player.OnDeath += OnPlayerDied;
             _arena.WavesDone += ShowWinScreen;
             YandexGame.RewardVideoEvent += OnRewarded;
+
+            if (YandexGame.savesData.isFirstSession)
+            {
+                _tutorialView.gameObject.SetActive(true);
+                _tutorialView.OnFinished += OnTutorialFinished;
+                PauseGame();
+
+                YandexGame.savesData.isFirstSession = false;
+                YandexGame.SaveProgress();
+            }
         }
 
         private void OnDisable()
         {
             _player.OnDeath -= OnPlayerDied;
-            _arena.WavesDone += ShowWinScreen;
+            _arena.WavesDone -= ShowWinScreen;
             YandexGame.RewardVideoEvent -= OnRewarded;
         }
 
+        private void OnTutorialFinished()
+        {
+            _tutorialView.gameObject.SetActive(false);
+            _tutorialView.OnFinished -= OnTutorialFinished;
+        }
+        
         private void ShowWinScreen()
         {
             _winGameCanvas.gameObject.SetActive(false);
             _endGameCanvas.gameObject.SetActive(true);
-            Time.timeScale = 0;
+            PauseGame();
         }
         
         private void OnPlayerDied()
         {
             _gameCanvas.gameObject.SetActive(false);
             _endGameCanvas.gameObject.SetActive(true);
-            Time.timeScale = 0;
+            PauseGame();
         }
 
         private void BringBackPlayer()
         {
             _player.PlayerStats.Health.Heal(_player.PlayerStats.Health.MaxHealth);
             StartCoroutine(GivePlayerInvulnerability(_player));
-            
-            Time.timeScale = 1;
+
+            UnPauseGame();
             
             _gameCanvas.gameObject.SetActive(true);
             _endGameCanvas.gameObject.SetActive(false);
+        }
+
+        private void PauseGame()
+        {
+            Time.timeScale = 0;
+            MessageBrokerHolder.Game.Publish(new M_GamePaused());
+        }
+        private void UnPauseGame()
+        {
+            Time.timeScale = 1;
+            MessageBrokerHolder.Game.Publish(new M_GameUnpaused());
         }
 
         private IEnumerator GivePlayerInvulnerability(Player player)
