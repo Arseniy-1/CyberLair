@@ -4,6 +4,10 @@ using Random = UnityEngine.Random;
 
 public class SummonMover : MonoBehaviour
 {
+    [SerializeField] private Animator _animator;
+    
+    private readonly int _walkAnimation = Animator.StringToHash("Walk");
+    
     private ISummonMoveStats _summonStats;
     
     private Rigidbody2D _rigidbody;
@@ -30,6 +34,8 @@ public class SummonMover : MonoBehaviour
     
     public void MoveToNextPosition()
     {
+        _animator.SetBool(_walkAnimation, (SelfPosition == _targetMovePosition) == false);
+        
         var newPosition = Vector2.MoveTowards(SelfPosition, _targetMovePosition,
             _summonStats.Speed.CurrentValue * Time.fixedDeltaTime);
 

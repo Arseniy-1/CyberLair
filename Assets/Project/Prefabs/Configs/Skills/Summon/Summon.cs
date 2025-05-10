@@ -1,4 +1,3 @@
-using Project.Scripts.Weapon;
 using UnityEngine;
 
 public class Summon : MonoBehaviour
@@ -24,6 +23,7 @@ public class Summon : MonoBehaviour
     public void Initialize(Transform targetTransform)
     {
         _mover.Initialize(targetTransform, _summonStats);
+        _summonStats.Initialize();
         
         _weaponHolder.Weapon.Initialize(_summonStats);
     }

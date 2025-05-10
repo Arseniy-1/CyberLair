@@ -11,4 +11,13 @@ public class SummonStats :  IWeaponStats, ISummonMoveStats
     [field: SerializeField] public WeaponDamage WeaponDamage { get; private set; }
     [field: SerializeField] public BulletPerShootCount BulletPerShootCount { get; private set; }
     [field: SerializeField] public WeaponBulletReloadTime WeaponBulletReloadTime { get; private set; }
+
+    public void Initialize()
+    {
+        Speed.CalculateCurrentValue();
+        WeaponSpread.CalculateCurrentValue();
+        WeaponDamage.CalculateCurrentValue();
+        BulletPerShootCount.CalculateCurrentValue();
+        WeaponBulletReloadTime.CalculateCurrentValue();
+    }
 }

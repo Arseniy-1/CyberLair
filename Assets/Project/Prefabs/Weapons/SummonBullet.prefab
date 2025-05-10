@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3777322196449997574}
   - component: {fileID: 8502437403070517348}
   m_Layer: 11
-  m_Name: EnemyRedLazer
+  m_Name: SummonBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,11 +202,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2454886154198848122, guid: 5ad76427048265540abb8164a0367289, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.4642115
+      value: 0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 2454886154198848122, guid: 5ad76427048265540abb8164a0367289, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.19999999
+      value: 0.48616973
       objectReference: {fileID: 0}
     - target: {fileID: 2454886154198848122, guid: 5ad76427048265540abb8164a0367289, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
@@ -214,15 +214,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2454886154198848122, guid: 5ad76427048265540abb8164a0367289, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.42403534
+      value: 0.15970986
       objectReference: {fileID: 0}
     - target: {fileID: 2454886154198848122, guid: 5ad76427048265540abb8164a0367289, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0.04160734
+      value: 0.6924196
       objectReference: {fileID: 0}
     - target: {fileID: 2454886154198848122, guid: 5ad76427048265540abb8164a0367289, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
-      value: 0.8018868
+      value: 0.9150943
       objectReference: {fileID: 0}
     - target: {fileID: 2454886154198848122, guid: 5ad76427048265540abb8164a0367289, type: 3}
       propertyPath: m_Parameters.colorGradient.key2.b
