@@ -11,6 +11,8 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
     [SerializeField] private float _stunInterval = 1.5f;
     [SerializeField] private LayerMask _targetLayer;
     [SerializeField] private float _lifeTime = 3.5f;
+    
+    [SerializeField] private AudioSource _audioSource;
 
     private readonly List<Enemy> _enemies = new();
 
@@ -64,6 +66,8 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
         while (isActiveAndEnabled)
         {
             ApplyStun();
+            
+            _audioSource.Play();
             
             yield return new WaitForSeconds(_stunInterval);
         }

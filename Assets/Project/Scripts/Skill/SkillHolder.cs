@@ -25,7 +25,7 @@ using Project.Scripts.Weapon.ActiveSkills.MagicArrow;
 public class SkillHolder
 {
     private readonly SkillData _skillData;
-    private List<ISkillInstance> _skillInstances = new();
+    private readonly List<ISkillInstance> _skillInstances = new();
 
     public SkillHolder(SkillData skillData)
     {

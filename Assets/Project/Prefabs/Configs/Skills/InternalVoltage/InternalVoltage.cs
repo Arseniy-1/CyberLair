@@ -1,6 +1,8 @@
 using System;
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Weapon.ActiveSkills;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Project.Prefabs.Configs.Skills.InternalVoltage
@@ -15,6 +17,8 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
         private readonly Health _health;
         private readonly Transform _holder;
 
+        private readonly CommonSkillView _view;
+
         private Vector2 Position => _holder.position;
 
         public InternalVoltage(SkillData skillData, InternalVoltageSkill skill)
@@ -23,6 +27,8 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
             _stunTime = skill.StunTime;
             _layerMask = skill.LayerMask;
             _chance = skill.Chance;
+
+            _view = Object.Instantiate(skill.SkillView);
             
             _holder = skillData.WeaponHolder.transform;
             _health = skillData.PlayerStats.Health;
@@ -36,6 +42,8 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
                 return;
             
             Collider2D[] colliders = Physics2D.OverlapCircleAll(Position, _actionRadius, _layerMask);
+            _view.transform.position = Position;
+            _view.Initialize();
 
             if(colliders.Length == 0)
                     return;
