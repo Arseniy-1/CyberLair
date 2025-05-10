@@ -13,6 +13,10 @@ public class LanguageSelectorButton : MonoBehaviour
     private void Awake()
     {
         _button = GetComponent<Button>();
+    }
+
+    private void OnEnable()
+    {
         _button.onClick.AddListener(HandleLanguageChanged);
     }
 

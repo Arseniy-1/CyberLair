@@ -14,8 +14,6 @@ namespace Project.Scripts.EnemySystem.Bosses
         protected AttackInstancesSpawner<T> Spawner;
         protected readonly List<T> SpawnedObjects = new();
 
-        public abstract override void Initialize();
-
         public override void Disable()
         {
             View.gameObject.SetActive(false);

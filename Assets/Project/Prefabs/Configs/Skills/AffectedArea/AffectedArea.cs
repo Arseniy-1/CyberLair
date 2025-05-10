@@ -20,7 +20,7 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
         
         public AffectedArea(SkillData skillData, AffectedAreaSkill affectedAreaSkill)
         {
-            skillData.WeaponHolder.Weapon.Shooted += InnerSubscribe;
+            skillData.WeaponHolder.Weapon.Shot += InnerSubscribe;
 
             _radius = affectedAreaSkill.Radius;
             _layerMask = affectedAreaSkill.LayerMask;
@@ -59,7 +59,7 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
 
         public void Disable()
         {
-            _skillData.WeaponHolder.Weapon.Shooted -= InnerSubscribe;
+            _skillData.WeaponHolder.Weapon.Shot -= InnerSubscribe;
         }
     }
 }

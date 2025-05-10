@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Map-2
   m_EditorClassIdentifier: 
   <MapNameKey>k__BackingField: DevelopedMap
-  <MapImage>k__BackingField: {fileID: 21300000, guid: 0ee40b36b38006d42951b93a2eb402b5, type: 3}
+  <MapImage>k__BackingField: {fileID: 21300000, guid: 2fbe6bce3267a4f85b248b86d4e1ccfb, type: 3}
   <EasyMap>k__BackingField: 
   <InfiniteMap>k__BackingField: 
   <HardMap>k__BackingField: 

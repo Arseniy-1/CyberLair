@@ -6,16 +6,26 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 {
     public class LaserAttack : BossAttack
     {
-        [SerializeField] private EnemyCollisionHandler _laser;
+        [SerializeField, Header("Laser Attack Settings")] private EnemyCollisionHandler _laser;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+        [SerializeField] private EnemyTargetProvider _targetProvider;
+        
+        [SerializeField, Header("Spring Settings")] private float _stiffness = 2f;
+        [SerializeField] private float _damping = 0.3f;
+
+        [SerializeField, Header("Rotation Settings")] private float _maxRotationSpeed = 360f;
+    
+        private Transform _laserOrigin;
+        private float _currentAngularVelocity;
 
         public override void Initialize()
         {
             BossAttackAnimationTrigger = Animator.StringToHash("LaserAttack");
             
             Disable();
-            
+
+            _laserOrigin = transform;
             _laser.Initialize(Damage);
         }
 
@@ -26,7 +36,26 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             
             MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
             
-            yield return new WaitUntil(() => IsAttacking == false);
+            while (IsAttacking)
+            {
+                Vector2 direction = _targetProvider.Player.Position - (Vector2)_laserOrigin.position;
+                float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                
+                float currentAngle = _laserOrigin.eulerAngles.z;
+                float angleDelta = Mathf.DeltaAngle(currentAngle, targetAngle);
+                
+                float springForce = angleDelta * _stiffness;
+                float dampingForce = -_currentAngularVelocity * _damping;
+                float torque = springForce + dampingForce;
+                
+                _currentAngularVelocity += torque * Time.deltaTime;
+                _currentAngularVelocity = Mathf.Clamp(_currentAngularVelocity, -_maxRotationSpeed, _maxRotationSpeed);
+
+                float newAngle = currentAngle + _currentAngularVelocity * Time.deltaTime;
+                _laserOrigin.rotation = Quaternion.Euler(0f, 0f, newAngle);
+                
+                yield return null;
+            }
             
             Disable();
         }

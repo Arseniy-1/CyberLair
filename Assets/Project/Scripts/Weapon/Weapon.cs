@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Weapon
@@ -23,7 +20,7 @@ namespace Project.Scripts.Weapon
         protected IWeaponStats _weaponStats;
 
         public IWeaponStats WeaponStats => _weaponStats;
-        public event Action<Bullet> Shooted;
+        public event Action<Bullet> Shot;
 
         protected virtual void Awake()
         {
@@ -66,7 +63,7 @@ namespace Project.Scripts.Weapon
                 Bullet bullet = AmmoSpawner.Spawn();
                 bullet.Init(ShootPoint.position, GetBulletDirection(), (int)_weaponStats.WeaponDamage.CurrentValue);
 
-                Shooted?.Invoke(bullet);
+                Shot?.Invoke(bullet);
 
                 bullet.Activate();
             }

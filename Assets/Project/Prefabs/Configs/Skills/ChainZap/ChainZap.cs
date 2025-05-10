@@ -31,7 +31,7 @@ public class ChainZap : ISkillInstance
         _enemySpeedModifier = stats.EnemySpeedModifier;
 
         _weapon = skillData.WeaponHolder.Weapon;
-        _weapon.Shooted += InnerSubscribe;
+        _weapon.Shot += InnerSubscribe;
 
         ChainZapView zapView = stats.ZapView;
         _viewSpawner = new ChainZapViewSpawner(zapView, 0);
@@ -39,7 +39,7 @@ public class ChainZap : ISkillInstance
 
     public void Disable()
     {
-        _weapon.Shooted -= InnerSubscribe;
+        _weapon.Shot -= InnerSubscribe;
     }
 
     private void InnerSubscribe(Bullet bullet)

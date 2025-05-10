@@ -25,10 +25,8 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private StatsText _HealthText;
         
         [SerializeField] private StatsBar _experienceBar;
-        [SerializeField] private StatsText _experienceText;
         
         [SerializeField] private StatsBar _shieldBar;
-        [SerializeField] private StatsText _shieldText;
         
         [SerializeField] private Canvas _endGameCanvas;
         [SerializeField] private Canvas _winGameCanvas;
@@ -51,13 +49,11 @@ namespace Project.Scripts.CompositionRoot
             _level.Initialize(_player.ExperienceStorage);
             
             _shieldBar.Initialize(_player.PlayerStats.ShieldAmount);
-            _shieldText.Initialize(_player.PlayerStats.ShieldAmount);
             
             _HealthBar.Initialize(_player.PlayerStats.Health);
             _HealthText.Initialize(_player.PlayerStats.Health);
             
             _experienceBar.Initialize(_player.ExperienceStorage);
-            _experienceText.Initialize(_player.ExperienceStorage);
             
             LocalizationManager.Read();
             LocalizationManager.Language = YandexGame.lang;

@@ -1,18 +1,22 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using Project.Scripts.Services;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
 {
     public class SoulClot : MonoBehaviour, IDestoyable<SoulClot>, IReturnable
     {
+        private const string ArriveSound = "Arrive";
+        
         [SerializeField] private Transform _transform;
         [SerializeField] private float _duration = 1f;
         [SerializeField] private float _arcHeight = 2f;
         [SerializeField] private int _pathResolution = 10;
         [SerializeField] private float _timeToDestroy = 1.5f;
-        
+        [SerializeField] private SoundAnimationEvents _soundEvents;
+
         private Vector3 _target;
         private Vector3 _previousPosition;
         private Tweener _moveTween;
@@ -42,11 +46,13 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
     
         public void Move()
         {
+            _soundEvents.PlaySound(ArriveSound);
+            
             _transform.DOPath(CalculatePath(), _duration).SetEase(Ease.Linear).OnUpdate(() => 
             {
                 Vector3 direction = _transform.position - _previousPosition;
                 
-                if (direction.sqrMagnitude > 0.0001f) 
+                if (direction.sqrMagnitude > 0) 
                 {
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                     

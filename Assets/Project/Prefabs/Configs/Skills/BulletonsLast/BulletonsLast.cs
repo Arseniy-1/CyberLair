@@ -14,7 +14,7 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
             _weapon = skillData.WeaponHolder.Weapon as IncrementalReloadWeapon;
             
             if (_weapon)
-                _weapon.Shooted += InnerSubscribe;
+                _weapon.Shot += InnerSubscribe;
         }
 
         private void InnerSubscribe(Bullet bullet)
@@ -38,7 +38,7 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
 
         public void Disable()
         {
-            _weapon.Shooted -= InnerSubscribe;
+            _weapon.Shot -= InnerSubscribe;
         }
     }
 }

@@ -12,17 +12,17 @@ public class ScaleEffector : BulletEffector
     {
         if (Weapon != null)
         {
-            Weapon.Shooted -= Shooted;
+            Weapon.Shot -= Shot;
         }
     }
 
     public override void Initialize(Weapon weapon)
     {
         Weapon = weapon;
-        weapon.Shooted += Shooted;
+        weapon.Shot += Shot;
     }
 
-    private void Shooted(Bullet bullet)
+    private void Shot(Bullet bullet)
     {
         bullet.transform.localScale = Vector3.one * _scaleMultiplier;
     }

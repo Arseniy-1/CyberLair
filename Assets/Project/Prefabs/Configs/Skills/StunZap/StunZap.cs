@@ -18,12 +18,12 @@ public class StunZap : ISkillInstance
         _date = skillData;
         _stunDuration = skill.StunDuration;
 
-        _date.WeaponHolder.Weapon.Shooted += InnerSubscribe;
+        _date.WeaponHolder.Weapon.Shot += InnerSubscribe;
     }
     
     public void Disable()
     {
-        _date.WeaponHolder.Weapon.Shooted -= InnerSubscribe;
+        _date.WeaponHolder.Weapon.Shot -= InnerSubscribe;
 
         foreach (var bullet in _subscribedBullets)
             bullet.OnDamagableCollided -= StunEnemy;

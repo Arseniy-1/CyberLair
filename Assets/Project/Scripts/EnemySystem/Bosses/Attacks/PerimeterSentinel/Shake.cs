@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
@@ -52,7 +53,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 
         private void DealDamage()
         {
-            _collides.ForEach(damageable => damageable.TakeDamage(_damage));
+            _collides.ToList().ForEach(damageable => damageable.TakeDamage(_damage));
         }
     }
 }

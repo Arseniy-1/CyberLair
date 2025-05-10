@@ -7,6 +7,9 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
     public class ShakeAttack : SpawnAttack<Shake>
     {
         [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+        [SerializeField] private EnemyTargetProvider _targetProvider;
+
+        private Vector2 _spawnPosition;
         
         public override void Initialize()
         {
@@ -25,10 +28,12 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 
             for (int i = 0; i < ObjectCount; i++)
             {
+                _spawnPosition = _targetProvider.Player.Position;
+                
                 Shake shake = Spawner.Spawn();
                 shake.Initialize(Damage);
                 shake.OnDestroyed += UnsubscribeObject;
-                shake.transform.position = Random.insideUnitCircle * Range + (Vector2)transform.position;
+                shake.transform.position = _spawnPosition;
                 SpawnedObjects.Add(shake);
                 
                 var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));

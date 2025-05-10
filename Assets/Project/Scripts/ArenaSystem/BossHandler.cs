@@ -57,12 +57,7 @@ namespace Project.Scripts.ArenaSystem
             
             _bossHealthBar.gameObject.SetActive(true);
             
-            if(_cameraZoomTween != null)
-                DOTween.Kill(_cameraZoomTween);
-                
-            _cameraZoomTween = DOTween
-                .To(() => _mainCamera.orthographicSize, x => _mainCamera.orthographicSize = x, _cameraZoomSize.y, _zoomDuration)
-                .SetEase(Ease.InOutSine).OnComplete(() => _cameraZoomTween = null);
+            ApplyCameraZoom(_cameraZoomSize.y);
         }
         
         private void HandleBossDeath(Enemy enemy)
@@ -74,18 +69,22 @@ namespace Project.Scripts.ArenaSystem
             
             _cageInstance.gameObject.SetActive(false);
             _bossHealthBar.gameObject.SetActive(false);
-            
-            if(_cameraZoomTween != null)
-                DOTween.Kill(_cameraZoomTween);
-            
-            _cameraZoomTween = DOTween
-                .To(() => _mainCamera.orthographicSize, x => _mainCamera.orthographicSize = x, _cameraZoomSize.x, _zoomDuration)
-                .SetEase(Ease.InOutSine).OnComplete(() => _cameraZoomTween = null);
+
+            ApplyCameraZoom(_cameraZoomSize.x);
         }
 
         private void HandleChestRaised()
         {
             _bossChestInstance.gameObject.SetActive(false);
+        }
+
+        private void ApplyCameraZoom(float endValue)
+        {
+            _cameraZoomTween?.Kill();
+                
+            _cameraZoomTween = DOTween
+                .To(() => _mainCamera.orthographicSize, currentValue => _mainCamera.orthographicSize = currentValue, endValue, _zoomDuration)
+                .SetEase(Ease.InOutSine).OnComplete(() => _cameraZoomTween = null);
         }
     }
 }

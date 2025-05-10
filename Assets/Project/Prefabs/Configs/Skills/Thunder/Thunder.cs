@@ -30,14 +30,14 @@ namespace Project.Scripts.Weapon.ActiveSkills
             _holder = skillData.WeaponHolder.transform;
             _weapon = skillData.WeaponHolder.Weapon;
 
-            _weapon.Shooted += HandleShoot;
+            _weapon.Shot += HandleShoot;
         }
 
         public event Action<Enemy> EnemyStruck;
 
         public void Disable()
         {
-            _weapon.Shooted -= HandleShoot;
+            _weapon.Shot -= HandleShoot;
         }
 
         private void HandleShoot(Bullet bullet)

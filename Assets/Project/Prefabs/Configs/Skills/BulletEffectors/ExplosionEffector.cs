@@ -10,10 +10,10 @@ public class ExplosionEffector : BulletEffector
     public override void Initialize(Weapon weapon)
     {
         Weapon = weapon;
-        weapon.Shooted += Shooted;
+        weapon.Shot += Shot;
     }
 
-    private void Shooted(Bullet bullet)
+    private void Shot(Bullet bullet)
     {
         bullet.OnDestroyed += Explode;
     }

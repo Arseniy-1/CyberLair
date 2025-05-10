@@ -10,9 +10,10 @@ namespace Project.Scripts.EnemySystem.Bosses
         [SerializeField] protected AttackAnimationEvents AnimatorEvents;
         [SerializeField] protected Animator AttackAnimator;
         [SerializeField] protected SpriteRenderer View;
-        
-        protected readonly int AttackTrigger = Animator.StringToHash("Attack");
+
+        private readonly int _attackTrigger = Animator.StringToHash("Attack");
         protected bool IsAttacking;
+        private EnemyTargetProvider _provider;
         
         [field: SerializeField] public float Range { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
@@ -31,7 +32,7 @@ namespace Project.Scripts.EnemySystem.Bosses
             
             View.gameObject.SetActive(true);
             AnimatorEvents.Attacking += HandleAttacking;
-            AttackAnimator.SetTrigger(AttackTrigger);
+            AttackAnimator.SetTrigger(_attackTrigger);
             
             yield return new WaitUntil(() => IsAttacking);
             // Debug.Log($"{gameObject.name} IsAttacking = {IsAttacking}");
