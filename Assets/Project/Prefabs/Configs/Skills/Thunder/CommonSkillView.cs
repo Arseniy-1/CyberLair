@@ -3,51 +3,51 @@ using UnityEngine;
 
 namespace Project.Scripts.Weapon.ActiveSkills
 {
-    public class ThunderView : MonoBehaviour
+    public class CommonSkillView : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private float _lifeTime = 0.4f;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private SpriteRenderer _sprite;
         
-        private readonly int _strikeTrigger = Animator.StringToHash("Strike");
-        private Coroutine _striking;
+        private readonly int _playingTrigger = Animator.StringToHash("Playing");
+        private Coroutine _playingCoroutine;
 
         private void OnDisable()
         {
-            EndStriking();
+            EndPlaying();
         }
 
         public void Initialize()
         {
-            EndStriking();
+            EndPlaying();
             
             _sprite.enabled = true;
 
-            _striking = StartCoroutine(Striking());
+            _playingCoroutine = StartCoroutine(Playing());
         }
 
-        public void EndStriking()
+        public void EndPlaying()
         {
-            _animator.ResetTrigger(_strikeTrigger);
+            _animator.ResetTrigger(_playingTrigger);
             
-            if(_striking != null)
-                StopCoroutine(_striking);
+            if(_playingCoroutine != null)
+                StopCoroutine(_playingCoroutine);
             
-            _striking = null;
+            _playingCoroutine = null;
             
             _sprite.enabled = false;
         }
 
-        private IEnumerator Striking()
+        private IEnumerator Playing()
         {
             var wait = new WaitForSeconds(_lifeTime);
-            _animator.SetTrigger(_strikeTrigger);
+            _animator.SetTrigger(_playingTrigger);
             _audioSource.Play();
             
             yield return wait;
             
-            EndStriking();
+            EndPlaying();
         }
     }
 }

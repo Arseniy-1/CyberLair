@@ -195,7 +195,6 @@ public class SkillHolder
                 break;
 
             case HellCatsSkill hellCatsSkill:
-
                 var fireZoneInstance =
                     _skillInstances.FirstOrDefault(skillInstance => skillInstance.GetType() == typeof(FireZoneManager));
 

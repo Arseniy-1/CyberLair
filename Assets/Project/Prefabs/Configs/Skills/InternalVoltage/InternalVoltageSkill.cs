@@ -1,3 +1,4 @@
+using Project.Scripts.Weapon.ActiveSkills;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.InternalVoltage
@@ -9,5 +10,6 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
         [field: SerializeField] public float StunTime { get; private set; }
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
         [field: SerializeField, Range(0f, 1f)] public float Chance { get; private set; }
+        [field: SerializeField] public CommonSkillView SkillView { get; private set; }
     }
 }

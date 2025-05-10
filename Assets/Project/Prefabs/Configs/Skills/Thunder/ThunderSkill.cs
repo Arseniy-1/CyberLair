@@ -9,5 +9,5 @@ public class ThunderSkill : Skill, IThunderStats
     [field: SerializeField] public int Damage { get; private set; }
     [field: SerializeField] public float StrikesCount { get; private set; }
     [field: SerializeField] public float ShootsNeeded { get; private set; }
-    [field : SerializeField] public ThunderView ThunderView { get; private set; }
+    [field : SerializeField] public CommonSkillView CommonSkillView { get; private set; }
 }

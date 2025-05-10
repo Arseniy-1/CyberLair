@@ -20,7 +20,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
         private Transform _holder;
         private Weapon _weapon;
         
-        private readonly List<ThunderView> _views = new();
+        private readonly List<CommonSkillView> _views = new();
 
         public Thunder(SkillData skillData, IThunderStats thunderSkill)
         {
@@ -36,10 +36,10 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
             for (int i = 0; i < _strikesCount; i++)
             {
-                ThunderView thunderView = Object.Instantiate(thunderSkill.ThunderView);
-                thunderView.EndStriking();
+                CommonSkillView commonSkillView = Object.Instantiate(thunderSkill.CommonSkillView);
+                commonSkillView.EndPlaying();
                 
-                _views.Add(thunderView);
+                _views.Add(commonSkillView);
             }
 
             _weapon.Shot += HandleShoot;
@@ -78,7 +78,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
                 
                 affected.TakeDamage(_damage);
                 
-                ThunderView view = _views[i];
+                CommonSkillView view = _views[i];
                 view.transform.position = affected.transform.position;
                 view.Initialize();
                 

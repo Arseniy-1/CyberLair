@@ -1,5 +1,4 @@
 using System;
-using Project.Prefabs.Configs.Skills.Durability;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 using Random = UnityEngine.Random;

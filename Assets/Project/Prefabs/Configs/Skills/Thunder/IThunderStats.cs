@@ -8,5 +8,5 @@ public interface IThunderStats
     int Damage { get; }
     float StrikesCount { get; }
     float ShootsNeeded { get; }
-    ThunderView ThunderView { get; }
+    CommonSkillView CommonSkillView { get; }
 }
