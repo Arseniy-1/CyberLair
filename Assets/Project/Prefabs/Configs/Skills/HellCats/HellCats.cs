@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class HellCats : ISkillInstance
 {
-    private HellCatSpawner _hellCatSpawner;
-    private FireZoneManager _fireZoneInstance;
+    private readonly HellCatSpawner _hellCatSpawner;
+    private readonly FireZoneManager _fireZoneInstance;
 
-    private HellCatsSkill _skill;
+    private readonly HellCatsSkill _skill;
 
     public HellCats(HellCatsSkill skill, FireZoneManager fireZoneInstance)
     {
-        //Котятки, люблю котяток :3 ^_^ мяу
         _skill = skill;
         _fireZoneInstance = fireZoneInstance;
         _hellCatSpawner = new HellCatSpawner(_skill.HellCatPrefab);

@@ -20,7 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
   - {fileID: 11400000, guid: cc1a59bfccf404c6dbfe4c854ce60637, type: 2}
   - {fileID: 11400000, guid: 4b28fee20e298b94683ca76b257b742c, type: 2}
-  <HellCatPrefab>k__BackingField: {fileID: 0}
-  <SummonSpawnDelay>k__BackingField: 0
+  <HellCatPrefab>k__BackingField: {fileID: 8377941412824711740, guid: 127113c9db8b941118f56ce2959c3600, type: 3}
   <MaxSummonCount>k__BackingField: 3
   <MinSummonCount>k__BackingField: 1

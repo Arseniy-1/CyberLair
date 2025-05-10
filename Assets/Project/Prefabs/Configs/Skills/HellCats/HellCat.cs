@@ -6,16 +6,41 @@ using UnityEngine;
 public class HellCat : MonoBehaviour, IDestoyable<HellCat>
 {
     [SerializeField] private LayerMask _targetLayer;
-    [SerializeField] private SummonMover _mover;
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private AudioSource _audioSource;
     
-    private float _scanRadius = 150;
+    [SerializeField, Header("Hell Cat Stats")] private float _speed;
+    [SerializeField] private float _damage;
+    [SerializeField] private float _scanRadius = 150;
+    
     private ITarget _target;
     
     public event Action<HellCat> OnDestroyed;
 
     private void OnEnable()
     {
+        _audioSource.Play();
+        
         FindTarget();
+    }
+
+    private void FixedUpdate()
+    {
+        if (_target == null)
+            return;
+        
+        var newPosition = Vector2.MoveTowards(_rigidbody.position, _target.Position,
+            _speed * Time.fixedDeltaTime);
+        
+        _rigidbody.MovePosition(newPosition);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out IDamageable damageable))
+            damageable.TakeDamage(_damage);
+        
+        OnDestroyed?.Invoke(this);
     }
     
     private void FindTarget()
@@ -31,14 +56,6 @@ public class HellCat : MonoBehaviour, IDestoyable<HellCat>
 
         List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - position).magnitude).ToList();
 
-        if (sortedTargets.Count > 0)
-            _target = sortedTargets.ToArray()[0];
-        else
-            _target = null;
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        OnDestroyed?.Invoke(this);
+        _target = sortedTargets.Count > 0 ? sortedTargets.ToArray()[0] : null;
     }
 }
