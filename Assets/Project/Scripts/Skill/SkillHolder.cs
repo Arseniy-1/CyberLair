@@ -105,7 +105,7 @@ public class SkillHolder
                 break;
 
             case OverloadSkill overloadSkill:
-                _skillInstances.FirstOrDefault(skill => skill.GetType() == typeof(Thunder)).Disable();
+                _skillInstances.FirstOrDefault(thunder => thunder.GetType() == typeof(Thunder))?.Disable();
 
                 _skillInstances.Add(new Thunder(_skillData, overloadSkill));
                 break;
@@ -197,7 +197,7 @@ public class SkillHolder
             case HellCatsSkill hellCatsSkill:
 
                 var fireZoneInstance =
-                    _skillInstances.FirstOrDefault(skillInstance => skillInstance.GetType() == typeof(Boomerang));
+                    _skillInstances.FirstOrDefault(skillInstance => skillInstance.GetType() == typeof(FireZoneManager));
 
                 if (fireZoneInstance != null)
                     _skillInstances.Add(new HellCats(hellCatsSkill, fireZoneInstance as FireZoneManager));

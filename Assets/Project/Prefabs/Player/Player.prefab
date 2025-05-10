@@ -17705,7 +17705,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.658
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -20435,7 +20435,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.863
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -20845,7 +20845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9917021757250061, guid: 14f7f0e1c07afe341ac8213433f89486, type: 3}
       propertyPath: m_FillAmount
-      value: 0.515
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4130494286265148683, guid: 14f7f0e1c07afe341ac8213433f89486, type: 3}
       propertyPath: m_Pivot.x

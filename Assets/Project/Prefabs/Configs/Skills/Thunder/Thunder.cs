@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Weapon.ActiveSkills
@@ -17,6 +19,8 @@ namespace Project.Scripts.Weapon.ActiveSkills
         private float _shootsPassed;
         private Transform _holder;
         private Weapon _weapon;
+        
+        private readonly List<ThunderView> _views = new();
 
         public Thunder(SkillData skillData, IThunderStats thunderSkill)
         {
@@ -29,6 +33,14 @@ namespace Project.Scripts.Weapon.ActiveSkills
             _shootsPassed = 0;
             _holder = skillData.WeaponHolder.transform;
             _weapon = skillData.WeaponHolder.Weapon;
+
+            for (int i = 0; i < _strikesCount; i++)
+            {
+                ThunderView thunderView = Object.Instantiate(thunderSkill.ThunderView);
+                thunderView.EndStriking();
+                
+                _views.Add(thunderView);
+            }
 
             _weapon.Shot += HandleShoot;
         }
@@ -61,10 +73,15 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
                 Collider2D strickenCollider = colliders[Random.Range(0, colliders.Length)];
 
-                if (!strickenCollider.TryGetComponent(out Enemy affected))
+                if (strickenCollider.TryGetComponent(out Enemy affected) == false)
                     continue;
                 
                 affected.TakeDamage(_damage);
+                
+                ThunderView view = _views[i];
+                view.transform.position = affected.transform.position;
+                view.Initialize();
+                
                 EnemyStruck?.Invoke(affected);
             }
         }

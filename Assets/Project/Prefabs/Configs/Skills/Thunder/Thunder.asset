@@ -16,10 +16,11 @@ MonoBehaviour:
     <SkillName>k__BackingField: ThunderSkill
     <Description>k__BackingField: ThunderSkillDescription
     <Icon>k__BackingField: {fileID: 21300000, guid: 3f466d2c8e73d45e580fa461a3874dfb, type: 3}
-  <ActionRadius>k__BackingField: 3
+  <ActionRadius>k__BackingField: 15
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
-  <Damage>k__BackingField: 3
-  <StrikesCount>k__BackingField: 3
-  <ShootsNeeded>k__BackingField: 3
+  <Damage>k__BackingField: 20
+  <StrikesCount>k__BackingField: 1
+  <ShootsNeeded>k__BackingField: 2
+  <ThunderView>k__BackingField: {fileID: 6088791159437934664, guid: 2b56ce0bc03964d5d8e5d285824cf1d9, type: 3}

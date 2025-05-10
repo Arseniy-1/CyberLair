@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Weapon.ActiveSkills;
+using UnityEngine;
 
 public interface IThunderStats
 {
@@ -7,4 +8,5 @@ public interface IThunderStats
     int Damage { get; }
     float StrikesCount { get; }
     float ShootsNeeded { get; }
+    ThunderView ThunderView { get; }
 }

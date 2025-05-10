@@ -19,10 +19,11 @@ MonoBehaviour:
   NeededSkills:
   - {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
   - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
-  <ActionRadius>k__BackingField: 10
+  <ActionRadius>k__BackingField: 20
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
-  <Damage>k__BackingField: 25
-  <StrikesCount>k__BackingField: 5
-  <ShootsNeeded>k__BackingField: 3
+  <Damage>k__BackingField: 30
+  <StrikesCount>k__BackingField: 2
+  <ShootsNeeded>k__BackingField: 2
+  <ThunderView>k__BackingField: {fileID: 6088791159437934664, guid: 2b56ce0bc03964d5d8e5d285824cf1d9, type: 3}

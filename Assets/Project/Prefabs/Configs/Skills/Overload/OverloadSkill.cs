@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using Project.Scripts.Weapon.ActiveSkills;
 using UnityEngine;
 
@@ -11,4 +9,5 @@ public class OverloadSkill : HardSkill, IThunderStats
     [field: SerializeField] public int Damage { get; private set; }
     [field: SerializeField] public float StrikesCount { get; private set; }
     [field: SerializeField] public float ShootsNeeded { get; private set; }
+    [field: SerializeField] public ThunderView ThunderView { get; private set; }
 }
