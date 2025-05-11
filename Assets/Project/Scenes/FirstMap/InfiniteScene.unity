@@ -576,7 +576,7 @@ MonoBehaviour:
   _endGameCanvas: {fileID: 1282717382}
   _winGameCanvas: {fileID: 1664809518}
   _gameCanvas: {fileID: 1684390272}
-  _tutorialView: {fileID: 0}
+  _tutorialView: {fileID: 6238359536911950663}
 --- !u!4 &500295097
 Transform:
   m_ObjectHideFlags: 0
@@ -7314,6 +7314,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+--- !u!114 &6238359536911950663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2992189841355590333, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+  m_PrefabInstance: {fileID: 6238359536911950662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b8bee7d16d4baab2025601d42b85fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6238359536911950666 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2782715829393977127, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}

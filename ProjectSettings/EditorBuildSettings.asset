@@ -7,17 +7,17 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Project/Scenes/Menu.unity
-    guid: 9764968bd0b03bb4f80a269a29f7a1d7
+    guid: e709b975764fd46db9d96d7e8646a0bb
   - enabled: 1
     path: Assets/Project/Scenes/TestScene.unity
     guid: d1c1274adff8fe74686609a5700c73c7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/FirstMap/EasyScene.unity
-    guid: 4e81aa713f2f4cd48b3f00f2ae3acd68
-  - enabled: 0
+    guid: d02b931123c57d241b058f19cebd1c82
+  - enabled: 1
     path: Assets/Project/Scenes/FirstMap/HardScene.unity
-    guid: 5f5c43a0704e0e84893199a74d518319
-  - enabled: 0
+    guid: 1520703f864c0de40af54c468de7d59a
+  - enabled: 1
     path: Assets/Project/Scenes/FirstMap/InfiniteScene.unity
-    guid: 9877e1f9fefe70a4dac4d348a6db343d
+    guid: a44582b61d0d5da4e80a507e9bcb83ad
   m_configObjects: {}
