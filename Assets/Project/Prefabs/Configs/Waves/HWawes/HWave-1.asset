@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0d7c20c2aae472495da09ba054d203e, type: 3}
-  m_Name: NWave-7
+  m_Name: HWave-1
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -22,14 +22,14 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _enemiesWeights:
-  - _prefab: {fileID: 263878080555140060, guid: 68493cc3985e94702bfb35f8817a67b8, type: 3}
-    _weight: 0.7
-  - _prefab: {fileID: 6014211762987851508, guid: 9629869b2fccb4cff8ddb8b4a46f5a32, type: 3}
-    _weight: 0.3
+  - _prefab: {fileID: -4304947118811211038, guid: 1c3cdc1e57a3ee942a8b586c3884fbee, type: 3}
+    _weight: 0.8
+  - _prefab: {fileID: 4382913821471026158, guid: 2488ebb50f2f74f4d81b5d5c118e4115, type: 3}
+    _weight: 0.2
   _boss: {fileID: 0}
-  _spawnClusterSize: {x: 7, y: 10}
+  _spawnClusterSize: {x: 2, y: 4}
   _waveDuration: 60
-  _spawnDuration: 1.5
+  _spawnDuration: 3
   _enemyStatModifiers:
     <Value>k__BackingField: 0
     <Type>k__BackingField: 0

@@ -65,7 +65,7 @@ namespace Project.Scripts.CompositionRoot
             _arena.WavesDone += ShowWinScreen;
             YandexGame.RewardVideoEvent += OnRewarded;
 
-            if (YandexGame.savesData.isFirstSession)
+            if (false)
             {
                 _tutorialView.gameObject.SetActive(true);
                 _tutorialView.OnFinished += OnTutorialFinished;

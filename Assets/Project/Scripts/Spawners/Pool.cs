@@ -39,7 +39,8 @@ public abstract class Pool<T> where T : MonoBehaviour
     {
         for (int i = 0; i < _startAmount; i++)
         {
-            Create();
+            T obj = Create();
+            Release(obj);
         }
     }
 

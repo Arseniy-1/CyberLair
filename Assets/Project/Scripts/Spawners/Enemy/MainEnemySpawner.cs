@@ -2,6 +2,7 @@
 using Project.Scripts.EnemySystem;
 using Project.Scripts.Services;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MainEnemySpawner : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class MainEnemySpawner : MonoBehaviour
     private List<EnemyDespawner> _despawners;
 
     private readonly Dictionary<EnemyTypes, EnemySpawner> _spawners = new();
+
+    private void OnDestroy()
+    {
+        foreach (var despawner in _despawners)
+        {
+            despawner.EnemyDespawn -= MoveEnemy;
+        }
+    }
 
     public void Initialize(Player player, List<Transform> spawnPoints, List<EnemyDespawner> despawners)
     {
