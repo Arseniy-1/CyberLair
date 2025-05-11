@@ -26,4 +26,4 @@ MonoBehaviour:
   <Damage>k__BackingField: 30
   <StrikesCount>k__BackingField: 2
   <ShootsNeeded>k__BackingField: 2
-  <ThunderView>k__BackingField: {fileID: 6088791159437934664, guid: 2b56ce0bc03964d5d8e5d285824cf1d9, type: 3}
+  <CommonSkillView>k__BackingField: {fileID: 6088791159437934664, guid: 2b56ce0bc03964d5d8e5d285824cf1d9, type: 3}
