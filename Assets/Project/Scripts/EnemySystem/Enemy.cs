@@ -23,6 +23,7 @@ namespace Project.Scripts.EnemySystem
         private EntityStateMachine _stateMachine;
         private EnemyAttackCooldown _cooldown;
 
+        public event Action OnDeath;
         public event Action<Enemy> OnDestroyed;
 
         [field: SerializeField] public EnemyTypes EnemyType { get; private set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using UniRx;
 
 public class Mediator : MonoBehaviour
@@ -63,6 +64,9 @@ public class Mediator : MonoBehaviour
     
     private void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
+        if (skills.IsNullOrEmpty())
+            return;
+        
         Time.timeScale = 0;
         
         MessageBrokerHolder.Game.Publish(new M_GamePaused());

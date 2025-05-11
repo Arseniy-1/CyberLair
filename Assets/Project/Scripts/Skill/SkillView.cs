@@ -11,9 +11,7 @@ public class SkillView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _descriptionText;
     [SerializeField] private Image _skillIcon;
     [SerializeField] private Image _skillBanner;
-    
-    private float _maxBrightness = 1f;
-    private float _minBrightness = 0.5f;
+    [SerializeField] private Material _selectedMaterial;
     
     private Skill _skill;
     
@@ -42,12 +40,12 @@ public class SkillView : MonoBehaviour
 
     public void Select()
     {
-        _skillBanner.color = new Color(_skillIcon.color.r, _skillIcon.color.g, _skillIcon.color.b, _minBrightness);
+        _skillBanner.material = _selectedMaterial;
     }
 
     public void Deselect()
     {
-        _skillBanner.color = new Color(_skillIcon.color.r, _skillIcon.color.g, _skillIcon.color.b, _maxBrightness);
+        _skillBanner.material = null;
     }
     
     private void HandleClick()

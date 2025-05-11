@@ -19,9 +19,10 @@ MonoBehaviour:
   NeededSkills:
   - {fileID: 11400000, guid: 95fd6710fc5784a98914846ca07ba1cc, type: 2}
   - {fileID: 11400000, guid: 79bbb4527739b4428b0f0eba3d54714f, type: 2}
-  <ActionRadius>k__BackingField: 3
+  <ActionRadius>k__BackingField: 20
   <StunTime>k__BackingField: 0.5
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
   <Chance>k__BackingField: 0.2
+  <SkillView>k__BackingField: {fileID: 6088791159437934664, guid: 462a62c3de655432e97edb3773da5412, type: 3}

@@ -29,6 +29,7 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
             _chance = skill.Chance;
 
             _view = Object.Instantiate(skill.SkillView);
+            _view.EndPlaying();
             
             _holder = skillData.WeaponHolder.transform;
             _health = skillData.PlayerStats.Health;

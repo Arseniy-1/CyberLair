@@ -273,7 +273,7 @@ MonoBehaviour:
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <WeaponBulletReloadTime>k__BackingField:
-      <BaseValue>k__BackingField: 0
+      <BaseValue>k__BackingField: 0.5
       <CurrentValue>k__BackingField: 0
       _modifiers: []
   _targetScanner: {fileID: 4177437872860269052}
@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 8110797425291762515}
   - component: {fileID: 3475711263964595441}
   - component: {fileID: 2667866192767152567}
+  - component: {fileID: 340237956726847528}
   m_Layer: 3
   m_Name: View
   m_TagString: Untagged
@@ -419,7 +420,7 @@ Transform:
   m_GameObject: {fileID: 8266974789114446711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.36, y: 0.95, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.9, y: 2.9, z: 2.9}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -500,6 +501,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &340237956726847528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266974789114446711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -2.9, y: 2.9, z: 2.9}
+  _rigidbody: {fileID: 338829131333349496}
 --- !u!1001 &2306637776084755692
 PrefabInstance:
   m_ObjectHideFlags: 0

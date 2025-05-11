@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4783027384808543349}
   - component: {fileID: 3777322196449997574}
   - component: {fileID: 8502437403070517348}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: SummonBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

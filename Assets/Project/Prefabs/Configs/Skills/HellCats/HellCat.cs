@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
+using Project.Scripts.EnemySystem;
 using UnityEngine;
 
 public class HellCat : MonoBehaviour, IDestoyable<HellCat>
@@ -12,14 +14,21 @@ public class HellCat : MonoBehaviour, IDestoyable<HellCat>
     [SerializeField, Header("Hell Cat Stats")] private float _speed;
     [SerializeField] private float _damage;
     [SerializeField] private float _scanRadius = 150;
+    [SerializeField] private float _timeToDespawn = 6f;
     
     private ITarget _target;
+    
+    private Coroutine _timer;
     
     public event Action<HellCat> OnDestroyed;
 
     private void OnEnable()
     {
         _audioSource.Play();
+        
+        EndTimer();
+        
+        _timer = StartCoroutine(DespawnTimer());
         
         FindTarget();
     }
@@ -42,6 +51,11 @@ public class HellCat : MonoBehaviour, IDestoyable<HellCat>
         
         OnDestroyed?.Invoke(this);
     }
+
+    private void OnDisable()
+    {
+        EndTimer();
+    }
     
     private void FindTarget()
     {
@@ -57,5 +71,32 @@ public class HellCat : MonoBehaviour, IDestoyable<HellCat>
         List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - position).magnitude).ToList();
 
         _target = sortedTargets.Count > 0 ? sortedTargets.ToArray()[0] : null;
+        
+        if (_target != null) 
+            _target.OnDeath += OnTargetDeath;
+    }
+
+    private void OnTargetDeath()
+    {
+        _target.OnDeath -= OnTargetDeath;
+
+        FindTarget();
+    }
+
+    private void EndTimer()
+    {
+        if(_timer != null)
+            StopCoroutine(_timer);
+        
+        _timer = null;
+    }
+
+    private IEnumerator DespawnTimer()
+    {
+        var wait = new WaitForSeconds(_timeToDespawn);
+        
+        yield return wait;
+        
+        OnDestroyed?.Invoke(this);
     }
 }

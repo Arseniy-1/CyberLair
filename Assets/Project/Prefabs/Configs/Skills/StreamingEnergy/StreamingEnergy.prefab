@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3258358709690082931}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.84, z: 0}
+  m_LocalPosition: {x: 0, y: 1.08, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -328,6 +328,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _lifeTime: 5
+  _audioSource: {fileID: 5308097025154152599}
 --- !u!1 &8594320351353763311
 GameObject:
   m_ObjectHideFlags: 0

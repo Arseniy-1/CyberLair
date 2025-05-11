@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5272296964361376296}
   - component: {fileID: 6742755915331437084}
   - component: {fileID: 4325249370683564792}
+  - component: {fileID: 9030481823130934381}
   m_Layer: 10
   m_Name: View
   m_TagString: Untagged
@@ -106,6 +107,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9030481823130934381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476940472837802505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b50b20ca9f4d78af418e84efe70b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlipScale: {x: -2.5, y: 2.5, z: 2.5}
+  _rigidbody: {fileID: 9115576827623096693}
 --- !u!1 &5744252034973321087
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,10 +301,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rigidbody: {fileID: 9115576827623096693}
-  _audioSource: {fileID: 0}
-  _speed: 4
+  _audioSource: {fileID: 8777325860559652815}
+  _speed: 8
   _damage: 20
   _scanRadius: 150
+  _timeToDespawn: 6
 --- !u!50 &9115576827623096693
 Rigidbody2D:
   serializedVersion: 4
@@ -346,7 +362,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

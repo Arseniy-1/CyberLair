@@ -75,8 +75,8 @@ public class SkillSelector : MonoBehaviour
     public void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
         gameObject.SetActive(true);
-        _maxSelectedSkills = outputSkillsCount;
-    
+        
+        _maxSelectedSkills = Mathf.Clamp(outputSkillsCount, 1, inputSkillsCount);
         inputSkillsCount = Mathf.Min(inputSkillsCount, skills.Count);
         
         if (inputSkillsCount == 0)
