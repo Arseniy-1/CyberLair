@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 675f30507dc22494b890595cd2b14de4, type: 2}
   <CriticalHealthLevel>k__BackingField: 30
   <HealthRegeneratorModifier>k__BackingField:
-    <Value>k__BackingField: 0
+    <Value>k__BackingField: 2
     <Type>k__BackingField: 0
     <Duration>k__BackingField: 0
     _elapsedTime: 0

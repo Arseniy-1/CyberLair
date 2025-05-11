@@ -31,5 +31,5 @@ MonoBehaviour:
   <EnemySpeedModifier>k__BackingField:
     <Value>k__BackingField: 0.01
     <Type>k__BackingField: 1
-    <Duration>k__BackingField: 0.3
+    <Duration>k__BackingField: 0.7
     _elapsedTime: 0

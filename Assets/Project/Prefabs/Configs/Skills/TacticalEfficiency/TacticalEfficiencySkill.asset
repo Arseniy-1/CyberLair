@@ -22,7 +22,7 @@ MonoBehaviour:
     <Duration>k__BackingField: 0
     _elapsedTime: 0
   <DamageModifier>k__BackingField:
-    <Value>k__BackingField: 1.15
+    <Value>k__BackingField: 1.25
     <Type>k__BackingField: 1
     <Duration>k__BackingField: 0
     _elapsedTime: 0
