@@ -787,10 +787,10 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 1
     <AttackRecovery>k__BackingField: 4
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 10
+    <Cooldown>k__BackingField: 2
   Prefab: {fileID: 1740366717519680712, guid: 8edb5729261f54863b061789f6788290, type: 3}
-  ObjectCount: 20
-  SpawnPeriodLimits: {x: 0.10889517, y: 0.19078715}
+  ObjectCount: 30
+  SpawnPeriodLimits: {x: 0.10889517, y: 0.12671386}
 --- !u!1 &3455229931989791772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,17 +1323,17 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0.5
     <AttackRecovery>k__BackingField: 2
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 2
+    <Cooldown>k__BackingField: 3
   _offset: {x: 0, y: 0.27}
   _size: {x: 31.66, y: 8.6}
   _layerMask:
     serializedVersion: 2
     m_Bits: 512
   _cameraShakeSettings:
-    <Duration>k__BackingField: 0
-    <Strength>k__BackingField: 0
-    <Vibrato>k__BackingField: 0
-    <Randomness>k__BackingField: 0
+    <Duration>k__BackingField: 0.5
+    <Strength>k__BackingField: 0.5
+    <Vibrato>k__BackingField: 10
+    <Randomness>k__BackingField: 90
   _bossViewScale: {fileID: 3855592996027968264}
 --- !u!1 &6000014777496233194
 GameObject:
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 10
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 5
+      <BaseValue>k__BackingField: 6
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
@@ -1564,10 +1564,10 @@ MonoBehaviour:
   _bossAnimator: {fileID: 127949211253741946}
   _bossAnimationEvents: {fileID: 1950079115353240760}
   _generalAttacks:
-  - {fileID: 8404616166681584264}
+  - {fileID: 453675808833536495}
   - {fileID: 8757042914405979128}
   _specialAttacks:
-  - {fileID: 453675808833536495}
+  - {fileID: 8404616166681584264}
 --- !u!114 &225613228993504980
 MonoBehaviour:
   m_ObjectHideFlags: 0
