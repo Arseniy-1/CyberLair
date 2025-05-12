@@ -21,6 +21,6 @@ public class EnemySpawner : Spawner<Enemy>
 
     public void ApplyModifier(StatModifier statModifier)
     {
-        (Pool as EnemyPool)?.ApplyModifier(statModifier);
+        (Pool as EnemyPool)?.AddModifier(statModifier);
     }
 }
