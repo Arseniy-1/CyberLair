@@ -20,12 +20,11 @@ public class Effect : MonoBehaviour, IDestoyable<Effect>
 
     private async void WaitForParticleAsync(ParticleSystem particle)
     {
-        while (particle != null && particle.IsAlive(true))
+        while (isActiveAndEnabled == false && particle.IsAlive(true))
         {
-            await Task.Delay(100);
+            await Task.Yield();
         }
 
-        if(isActiveAndEnabled)
-            OnDestroyed?.Invoke(this);
+        OnDestroyed?.Invoke(this);
     }
 }

@@ -204,7 +204,7 @@ MonoBehaviour:
       <BaseValue>k__BackingField: 40
       <CurrentValue>k__BackingField: 0
       _modifiers: []
-    <CollisionDamage>k__BackingField: 10
+    <CollisionDamage>k__BackingField: 25
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
   m_ObjectHideFlags: 0

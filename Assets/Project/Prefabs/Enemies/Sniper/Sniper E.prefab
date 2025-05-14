@@ -155,7 +155,7 @@ MonoBehaviour:
   _holder: {fileID: 6737547138716812977}
   _weaponStats:
     <WeaponDamage>k__BackingField:
-      <BaseValue>k__BackingField: 60
+      <BaseValue>k__BackingField: 80
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <BulletPerShootCount>k__BackingField:

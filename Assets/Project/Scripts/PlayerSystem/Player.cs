@@ -22,20 +22,22 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private Magnet _magnet;
     [SerializeField] private CameraShakeSettings _cameraShakeSettings;
     [SerializeField] private InjuredScreenView _injuredScreenView;
-    
+
     [SerializeField] private SoundPlayer _damageSoundPlayer;
     [SerializeField] private Animator _animator;
-    
+
     [SerializeField] private HealthRegenerator _healthRegenerator;
     [SerializeField] private ShieldRegenerator _shieldRegenerator;
 
     [SerializeField] private Collider2D _collider;
-    
+
+    private bool _isDamaged = false;
+    private Coroutine _imortalityCoroutine;
     private EntityStateMachine _entityStateMachine;
     private ExperienceStorage _experienceStorage = new ExperienceStorage();
 
     public event Action OnDeath;
-    
+
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public Collider2D Collider2D => _collider;
@@ -101,10 +103,16 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     {
         _damageSoundPlayer.Play();
         MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
-        PlayerStats.Health.TakeDamage(amount);
+
+        if (_isDamaged == false)
+            PlayerStats.Health.TakeDamage(amount);
         
-        float imortalityTime = 1.5f;
-        StartCoroutine(TakingImortality(imortalityTime));
+        float imortalityTime = 0.7f;
+        
+        if(_imortalityCoroutine!= null)
+            StopCoroutine(_imortalityCoroutine);
+        
+        _imortalityCoroutine = StartCoroutine(TakingImortality(imortalityTime));
     }
 
     public void TakeStun(float time)
@@ -115,17 +123,17 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     private IEnumerator TakingStun(float time)
     {
         _entityStateMachine.SwitchState<PlayerStunnedState>();
-        
+
         yield return new WaitForSeconds(time);
-        
+
         _entityStateMachine.SwitchState<PlayerIdleState>();
     }
-    
+
     private IEnumerator TakingImortality(float time)
     {
-        _collider.enabled = false;
+        _isDamaged = true;
         yield return new WaitForSeconds(time);
-        _collider.enabled = true;
+        _isDamaged = false;
     }
 
     private void Shoot()

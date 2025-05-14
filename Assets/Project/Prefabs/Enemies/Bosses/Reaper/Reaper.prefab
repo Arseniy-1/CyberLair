@@ -762,7 +762,7 @@ MonoBehaviour:
   AnimatorEvents: {fileID: 7933956317699005398}
   AttackAnimator: {fileID: 8382125984883451150}
   View: {fileID: 8979883064705354816}
-  <Range>k__BackingField: 10
+  <Range>k__BackingField: 15
   <Damage>k__BackingField: 50
   <AttackStats>k__BackingField:
     <AttackDelay>k__BackingField: 0

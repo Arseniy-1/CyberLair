@@ -213,14 +213,14 @@ MonoBehaviour:
   _attacker: {fileID: 8162099568526081951}
   _destroyer: {fileID: 846970336447539646}
   _enemyTargetProvider: {fileID: 4425134607618233944}
-  _attackDistance: 15
+  _attackDistance: 20
   _view: {fileID: 944130735266774027}
   _damageSoundPlayer: {fileID: 4146216321280551398}
   <EnemyType>k__BackingField: 6
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 5
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 3.3
+      <BaseValue>k__BackingField: 1
       <CurrentValue>k__BackingField: 0
       _modifiers: []
     <Health>k__BackingField:
@@ -282,7 +282,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 1
     <AttackRecovery>k__BackingField: 0.1
     <AttackCount>k__BackingField: 3
-    <Cooldown>k__BackingField: 3
+    <Cooldown>k__BackingField: 4
   _impPrefab: {fileID: 951908415480540463, guid: f2b7b9e68e5664fc2b6c2f0cb4c782be, type: 3}
   _spawnPeriod: {x: 0.14081039, y: 0.26200038}
   _startCount: 3

@@ -132,7 +132,7 @@ MonoBehaviour:
   _enemy: {fileID: 6014211762987851508}
   _attacker: {fileID: -9061006521750571887}
   _explosion:
-    _range: 6
+    _range: 3
     _layerMask:
       serializedVersion: 2
       m_Bits: 512
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0.2
+    <AttackDelay>k__BackingField: 0.1
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 3

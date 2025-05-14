@@ -178,7 +178,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3261183325231791886}
   - {fileID: 8874581048393126019}
@@ -344,7 +344,7 @@ MonoBehaviour:
       <BaseValue>k__BackingField: 35
       <CurrentValue>k__BackingField: 0
       _modifiers: []
-    <CollisionDamage>k__BackingField: 3
+    <CollisionDamage>k__BackingField: 10
 --- !u!114 &8046208475861855243
 MonoBehaviour:
   m_ObjectHideFlags: 0

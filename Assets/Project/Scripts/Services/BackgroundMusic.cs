@@ -27,14 +27,11 @@ namespace Project.Scripts.Services
 
         private void OnGamePaused()
         {
-            Debug.Log("On Game Paused");
-            
             ApplyCutoffFrequency(_musicCutoffRange.x);
         }
 
         private void OnGameUnpaused()
         {
-            Debug.Log("On Game UnPaused");
             ApplyCutoffFrequency(_musicCutoffRange.y);
         }
 

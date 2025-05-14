@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NWave-1
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -26,6 +26,8 @@ MonoBehaviour:
     _weight: 0.8
   - _prefab: {fileID: 4382913821471026158, guid: c5cd427ff58ac4be9b534cf856fe6a4c, type: 3}
     _weight: 0.2
+  - _prefab: {fileID: 6014211762987851508, guid: 9629869b2fccb4cff8ddb8b4a46f5a32, type: 3}
+    _weight: 0.1
   _boss: {fileID: 0}
   _spawnClusterSize: {x: 2, y: 4}
   _waveDuration: 60

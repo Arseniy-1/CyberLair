@@ -200,7 +200,7 @@ MonoBehaviour:
   _enemy: {fileID: 263878080555140060}
   _attacker: {fileID: 6962832339083455307}
   _explosion:
-    _range: 5
+    _range: 3
     _layerMask:
       serializedVersion: 2
       m_Bits: 512

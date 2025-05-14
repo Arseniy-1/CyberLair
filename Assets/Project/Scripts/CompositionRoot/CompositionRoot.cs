@@ -20,6 +20,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private EdgeSpawner _edgeSpawner;
         [SerializeField] private List<EnemyDespawner> _enemyDespawners;
         [SerializeField] private Level _level;
+        [SerializeField] private Timer _timer;
         
         [SerializeField] private StatsBar _HealthBar;
         [SerializeField] private StatsText _HealthText;
@@ -28,10 +29,12 @@ namespace Project.Scripts.CompositionRoot
         
         [SerializeField] private StatsBar _shieldBar;
         
-        [SerializeField] private Canvas _endGameCanvas;
+        [SerializeField] private EndGameCanvas _endGameCanvas;
         [SerializeField] private Canvas _winGameCanvas;
         [SerializeField] private Canvas _gameCanvas;
         [SerializeField] private TutorialWindow _tutorialView;
+        
+        private Coroutine _invulnerability;
         
         private void Awake()
         {
@@ -91,8 +94,8 @@ namespace Project.Scripts.CompositionRoot
         
         private void ShowWinScreen()
         {
-            _winGameCanvas.gameObject.SetActive(false);
-            _endGameCanvas.gameObject.SetActive(true);
+            _gameCanvas.gameObject.SetActive(false);
+            _winGameCanvas.gameObject.SetActive(true);
             PauseGame();
         }
         
@@ -100,15 +103,22 @@ namespace Project.Scripts.CompositionRoot
         {
             _gameCanvas.gameObject.SetActive(false);
             _endGameCanvas.gameObject.SetActive(true);
+            _endGameCanvas.ShowStats(_timer.CurrentTime);
             PauseGame();
         }
 
         private void BringBackPlayer()
         {
             _player.PlayerStats.Health.Heal(_player.PlayerStats.Health.MaxHealth);
-            StartCoroutine(GivePlayerInvulnerability(_player));
+
+            if (_invulnerability != null)
+                StopCoroutine(_invulnerability);
+            
+            _invulnerability = StartCoroutine(GivePlayerInvulnerability(_player));
 
             UnPauseGame();
+            
+            Debug.Log("BringBackPlayer");
             
             _gameCanvas.gameObject.SetActive(true);
             _endGameCanvas.gameObject.SetActive(false);
@@ -127,10 +137,12 @@ namespace Project.Scripts.CompositionRoot
 
         private IEnumerator GivePlayerInvulnerability(Player player)
         {
-            float invulnerabilityTime = 5f;
+            float invulnerabilityTime = 2.5f;
             
+            Debug.Log("Collider2D.disabled");
             player.Collider2D.enabled = false;
             yield return new WaitForSeconds(invulnerabilityTime);
+            Debug.Log("Collider2D.enabled");
             player.Collider2D.enabled = true;
         }
         

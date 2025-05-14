@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e404160b702429397a8cacf68ab3629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionDamage: 15
+  _collisionDamage: 10
   _contactLimit: 5
 --- !u!50 &6966984513860249003
 Rigidbody2D:

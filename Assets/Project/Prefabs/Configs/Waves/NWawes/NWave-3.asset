@@ -26,6 +26,8 @@ MonoBehaviour:
     _weight: 0.6
   - _prefab: {fileID: 4399603215803775128, guid: 2022369b02cb24e1ba9b2337e8c76b40, type: 3}
     _weight: 0.4
+  - _prefab: {fileID: 4399603215803775128, guid: 630b4d91639354fa1bf39108ac607db2, type: 3}
+    _weight: 0.1
   _boss: {fileID: 0}
   _spawnClusterSize: {x: 3, y: 7}
   _waveDuration: 60

@@ -10,6 +10,8 @@ public class Timer : MonoBehaviour
     private int _seconds = 0;
     private float _nextUpdateTime = 0f;
 
+    public string CurrentTime => _time.text.ToString();
+    
     private void FixedUpdate()
     {
         _timeElapsed += Time.fixedDeltaTime;
