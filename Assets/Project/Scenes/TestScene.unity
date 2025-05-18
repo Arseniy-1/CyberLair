@@ -6900,6 +6900,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 807695211959790866, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0014648438
+      objectReference: {fileID: 0}
     - target: {fileID: 931979975341904359, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7166,15 +7170,23 @@ PrefabInstance:
       objectReference: {fileID: 928932857}
     - target: {fileID: 5961620063364427724, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<Health>k__BackingField.<BaseValue>k__BackingField
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5961620063364427724, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: <PlayerStats>k__BackingField.<ShieldAmount>k__BackingField.<BaseValue>k__BackingField
-      value: 1
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123138739029961668, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4532413
       objectReference: {fileID: 0}
     - target: {fileID: 6123138739029961668, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123138739029961668, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.07679731
       objectReference: {fileID: 0}
     - target: {fileID: 6258458470774013203, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y

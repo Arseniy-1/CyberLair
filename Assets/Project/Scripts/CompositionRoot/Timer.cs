@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     private float _nextUpdateTime = 0f;
 
     public string CurrentTime => _time.text.ToString();
+    public int CurrentSeconds => _minutes * 60 + _seconds;
     
     private void FixedUpdate()
     {

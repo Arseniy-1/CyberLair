@@ -1,9 +1,10 @@
 {
-  "idSave": 2395,
+  "idSave": 2420,
   "isFirstSession": false,
   "language": "en",
   "promptDone": false,
   "money": 1,
+  "bestTime": 85,
   "newPlayerName": "Hello!",
   "openLevels": [
     false,

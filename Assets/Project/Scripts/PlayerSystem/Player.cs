@@ -106,13 +106,11 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
         if (_isDamaged == false)
             PlayerStats.Health.TakeDamage(amount);
-        
+
         float imortalityTime = 0.7f;
-        
-        if(_imortalityCoroutine!= null)
-            StopCoroutine(_imortalityCoroutine);
-        
-        _imortalityCoroutine = StartCoroutine(TakingImortality(imortalityTime));
+
+        if (_imortalityCoroutine == null)
+            _imortalityCoroutine = StartCoroutine(TakingImortality(imortalityTime));
     }
 
     public void TakeStun(float time)
