@@ -563,12 +563,14 @@ MonoBehaviour:
     _verticalObjectCount: 3
     _parent: {fileID: 1521250117392757923}
     _mainCamera: {fileID: 1162607429953371098}
+    _pointPrefab: {fileID: 496602985892482628, guid: abdcef9c9e92e4eff880abc989f93940, type: 3}
   _enemyDespawners:
   - {fileID: 1415095363}
   - {fileID: 1056446307}
   - {fileID: 1677344654}
   - {fileID: 894402894}
   _level: {fileID: 3868558644150045240}
+  _timer: {fileID: 0}
   _HealthBar: {fileID: 2070061558695318722}
   _HealthText: {fileID: 8582967515293831242}
   _experienceBar: {fileID: 4946501485891752596}

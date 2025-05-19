@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Project.Scripts.EnemySystem;
 using Project.Scripts.Services;
 using UnityEngine;
@@ -60,7 +61,8 @@ public class MainEnemySpawner : MonoBehaviour
 
     private void MoveEnemy(Enemy enemy)
     {
-        enemy.transform.position = Random.insideUnitCircle * _spawnOffset +
-                                   (Vector2)_spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
+        Vector2 spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
+        
+        enemy.transform.position = Random.insideUnitCircle * _spawnOffset + spawnPoint;
     }
 }

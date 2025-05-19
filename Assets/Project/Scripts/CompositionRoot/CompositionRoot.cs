@@ -43,6 +43,7 @@ namespace Project.Scripts.CompositionRoot
             _bossHandler.Initialize(_player.transform);
 
             _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects.ToList(), _enemyDespawners);
+            
             var waves = new Queue<Wave>(_arena.WavesConfigs
                 .Select(config => new Wave(config, _mainEnemySpawner)).ToList());
 

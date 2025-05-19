@@ -7,6 +7,8 @@ public class SceneOpener : MonoBehaviour
 {
     [SerializeField] private string _sceneName;
     [SerializeField] private Button _button;
+    
+    private string _currentScene;
 
     private void OnEnable()
     {
@@ -25,7 +27,7 @@ public class SceneOpener : MonoBehaviour
 
     private void OpenScene()
     {
-        if (!string.IsNullOrEmpty(_sceneName))
+        if (string.IsNullOrEmpty(_sceneName) == false)
         {
             SceneManager.LoadScene(_sceneName);
         }

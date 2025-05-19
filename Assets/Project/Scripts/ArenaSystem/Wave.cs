@@ -7,6 +7,7 @@ using Cysharp.Threading.Tasks;
 using Project.Scripts.MessageBroker.EnemyMessageBrokers;
 using Project.Scripts.Servises;
 using Sirenix.Utilities;
+using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.ArenaSystem
@@ -43,8 +44,8 @@ namespace Project.Scripts.ArenaSystem
             if (_config.Boss != false)
             {
                 _bossInstance = _mainEnemySpawner.Spawn(_config.Boss.EnemyType);
-                _bossInstance.OnDestroyed += HandleBossDeath;
                 
+                _bossInstance.OnDestroyed += HandleBossDeath;
                 MessageBrokerHolder.Enemy.Publish(new M_BossSpawned(_bossInstance));
             }
 
@@ -75,6 +76,7 @@ namespace Project.Scripts.ArenaSystem
                 for (int i = 0; i < enemyCount; i++)
                 {
                     Enemy enemy = _mainEnemySpawner.Spawn(preferredEnemy);
+                    
                     enemy.ResetState();
                     EnemySpawned?.Invoke(enemy);
                 }

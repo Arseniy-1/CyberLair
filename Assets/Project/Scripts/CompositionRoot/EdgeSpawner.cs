@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Project.Scripts.CompositionRoot
 {
@@ -13,18 +14,21 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private int _verticalObjectCount;
         [SerializeField] private Transform _parent;
         [SerializeField] private Camera _mainCamera;
+        [SerializeField] private GameObject _pointPrefab;
 
         private Vector2 _cameraCenter;
         private float _width;
         private float _height;
         
-        private List<Transform> _edgeObjects = new();
+        private List<Transform> _edgeObjects;
         
         public IReadOnlyList<Transform> EdgeObjects => _edgeObjects;
         
         public void SpawnOnEdges()
         {
             CalculateCameraBounds();
+
+            _edgeObjects = new List<Transform>();
 
             var edges = new (Vector2 start, Vector2 end, int count)[]
             {
@@ -49,15 +53,9 @@ namespace Project.Scripts.CompositionRoot
             for (int i = 0; i < count; i++)
             {
                 Vector2 position = start + direction * step * i;
-
-                var edgeObject = new GameObject($"EdgeObject {i}")
-                {
-                    transform =
-                    {
-                        parent = _parent,
-                        position = position
-                    }
-                };
+                
+                var edgeObject = Object.Instantiate(_pointPrefab, position, Quaternion.identity);
+                edgeObject.transform.SetParent(_parent);
                 
                 _edgeObjects.Add(edgeObject.transform);
             }
