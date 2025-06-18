@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses
 {
@@ -20,6 +19,7 @@ namespace Project.Scripts.EnemySystem.Bosses
 
         public void Start()
         {
+            _cancellationToken?.Cancel();
             _cancellationToken = new CancellationTokenSource();
             
             PerformingAttack().Forget();

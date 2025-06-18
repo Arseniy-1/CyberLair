@@ -16,7 +16,6 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         private LayerMask _layerMask;
 
         private List<MagicArrow> _magicArrows = new();
-        private bool _isActive;
         private CancellationTokenSource _cancellationToken;
         
         private Transform _transform;
@@ -32,17 +31,15 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
             _transform = skillData.WeaponHolder.transform;
             
-            _isActive = true;
             _cancellationToken = new CancellationTokenSource();
-            SpawnIterating().Forget();
+            SpawnIterating(_cancellationToken.Token).Forget();
         }
 
         public void Disable()
         {
             Unsubscribe();
-            _isActive = false;
             
-            _cancellationToken.Cancel();
+            _cancellationToken?.Cancel();
         }
 
         private Vector3 FindEnemyPosition()
@@ -65,18 +62,11 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             return Quaternion.Euler(0, 0, angle);
         }
 
-        private async UniTask SpawnIterating()
+        private async UniTask SpawnIterating(CancellationToken token)
         {
-            while (_isActive)
+            while (token.IsCancellationRequested == false)
             {
-                try
-                {
-                    await UniTask.Delay(TimeSpan.FromSeconds(_delay), cancellationToken: _cancellationToken.Token);
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
+                await UniTask.Delay(TimeSpan.FromSeconds(_delay), cancellationToken: token);
                 
                 var enemyPosition = FindEnemyPosition();
                 var rotation = CalculateRotation(enemyPosition);

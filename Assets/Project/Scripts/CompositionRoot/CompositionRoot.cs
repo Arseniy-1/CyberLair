@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Assets.SimpleLocalization.Scripts;
 using Project.Scripts.ArenaSystem;
 using Project.Scripts.MapGenerationSystem;
@@ -35,19 +36,24 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private TutorialWindow _tutorialView;
 
         private Coroutine _invulnerability;
+        private CancellationTokenSource _cancellationToken;
 
         private void Awake()
         {
+            _cancellationToken?.Cancel();
+            _cancellationToken = new CancellationTokenSource();
+            
             _edgeSpawner.SpawnOnEdges();
             _mapGenerator.Initialize();
-            _bossHandler.Initialize(_player.transform);
+            _bossHandler.Initialize(_player.transform, _cancellationToken.Token);
 
-            _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects.ToList(), _enemyDespawners);
+            _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects, _enemyDespawners);
             
             var waves = new Queue<Wave>(_arena.WavesConfigs
-                .Select(config => new Wave(config, _mainEnemySpawner)).ToList());
+                .Select(config => new Wave(config, _mainEnemySpawner))
+                .ToList());
 
-            _arena.Initialize(waves);
+            _arena.Initialize(waves, _cancellationToken.Token);
             _arena.Work();
 
             _level.Initialize(_player.ExperienceStorage);
@@ -69,19 +75,21 @@ namespace Project.Scripts.CompositionRoot
             _arena.WavesDone += ShowWinScreen;
             YandexGame.RewardVideoEvent += OnRewarded;
 
-            if (YandexGame.savesData.isFirstSession)
-            {
-                _tutorialView.gameObject.SetActive(true);
-                _tutorialView.OnFinished += OnTutorialFinished;
-                PauseGame();
+            if (!YandexGame.savesData.isFirstSession) 
+                return;
+            
+            _tutorialView.gameObject.SetActive(true);
+            _tutorialView.OnFinished += OnTutorialFinished;
+            PauseGame();
 
-                YandexGame.savesData.isFirstSession = false;
-                YandexGame.SaveProgress();
-            }
+            YandexGame.savesData.isFirstSession = false;
+            YandexGame.SaveProgress();
         }
 
         private void OnDisable()
         {
+            _cancellationToken?.Cancel();
+            
             _player.OnDeath -= OnPlayerDied;
             _arena.WavesDone -= ShowWinScreen;
             YandexGame.RewardVideoEvent -= OnRewarded;

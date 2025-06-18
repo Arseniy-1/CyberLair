@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Project.Scripts.EnemySystem;
 using Project.Scripts.MessageBroker.EnemyMessageBrokers;
@@ -18,7 +20,6 @@ namespace Project.Scripts.ArenaSystem
         [SerializeField, Header("BossViews")] private StatsBar _bossHealthBar;
         [SerializeField] private StatsText _bossHealthText;
         
-        private readonly CompositeDisposable _disposable = new();
         private Cage _cageInstance;
         private BossChest _bossChestInstance;
         
@@ -27,7 +28,7 @@ namespace Project.Scripts.ArenaSystem
 
         private Tween _cameraZoomTween;
 
-        public void Initialize(Transform playerTransform)
+        public void Initialize(Transform playerTransform, CancellationToken token)
         {
             _playerTransform = playerTransform;
             _mainCamera = Camera.main;
@@ -35,14 +36,20 @@ namespace Project.Scripts.ArenaSystem
             
             _bossHealthBar.gameObject.SetActive(false);
             
-            MessageBrokerHolder.Enemy.Receive<M_BossSpawned>().Subscribe(message => HandleBossSpawn(message.Boss))
-                .AddTo(_disposable);
+            MessageBrokerHolder.Enemy
+                .Receive<M_BossSpawned>()
+                .Subscribe(message => HandleBossSpawn(message.Boss))
+                .AddTo(token);
             
-            MessageBrokerHolder.Enemy.Receive<M_BossDeath>().Subscribe(message => HandleBossDeath(message.Boss))
-                .AddTo(_disposable);
+            MessageBrokerHolder.Enemy
+                .Receive<M_BossDeath>()
+                .Subscribe(message => HandleBossDeath(message.Boss))
+                .AddTo(token);
             
-            MessageBrokerHolder.Chest.Receive<M_ChestRaised>().Subscribe(message => HandleChestRaised())
-                .AddTo(_disposable);
+            MessageBrokerHolder.Chest
+                .Receive<M_ChestRaised>()
+                .Subscribe(message => HandleChestRaised())
+                .AddTo(token);
         }
 
         private void HandleBossSpawn(Enemy boss)

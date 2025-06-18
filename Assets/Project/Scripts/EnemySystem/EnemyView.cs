@@ -12,10 +12,10 @@ namespace Project.Scripts.EnemySystem
         
         [SerializeField] private float _blinkDuration;
         
+        private Material _defaultMaterial;
+        
         [field: SerializeField] public Animator Animator { get; private set; }
         
-        private Material _defaultMaterial;
-
         public void Initialize()
         {
             _defaultMaterial = _spriteRenderer.material;

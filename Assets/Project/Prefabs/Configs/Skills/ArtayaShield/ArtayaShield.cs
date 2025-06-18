@@ -1,4 +1,5 @@
-using Project.Prefabs.Configs.Skills.Durability;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UniRx;
 
 namespace Project.Prefabs.Configs.Skills.ArtayaShield
@@ -8,22 +9,19 @@ namespace Project.Prefabs.Configs.Skills.ArtayaShield
         private readonly float _shieldRepairAmount;
     
         private readonly ShieldAmount _shield;
-        private readonly CompositeDisposable _disposable;
         
-        public ArtayaShield(SkillData skillData, ArtayaShieldSkill skill)
+        public ArtayaShield(SkillData skillData, ArtayaShieldSkill skill, CancellationToken token)
         {
             _shield = skillData.PlayerStats.ShieldAmount;
             _shieldRepairAmount = skill.ShieldRepairAmount;
         
-            _disposable = new CompositeDisposable();
-            MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => HandleEnemyDeath())
-                .AddTo(_disposable);
+            MessageBrokerHolder.Enemy
+                .Receive<M_EnemyDeath>()
+                .Subscribe(_ => HandleEnemyDeath())
+                .AddTo(token);
         }
 
-        public void Disable()
-        {
-            _disposable.Dispose();
-        }
+        public void Disable() {}
         
         private void HandleEnemyDeath()
         {

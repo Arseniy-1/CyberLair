@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UniRx;
@@ -27,7 +29,7 @@ public class Mediator : MonoBehaviour
     private SkillHolder _playerSkillHolder;
     private PlayerStats _playerStats;
     
-    private  CompositeDisposable _disposable = new();
+    private CancellationTokenSource _cancellationToken;
 
     public List<Skill> RaisedSkills => _raisedSkills;
     
@@ -39,17 +41,26 @@ public class Mediator : MonoBehaviour
         _availableSkills.AddRange(_simpleSkills);
         _simpleSkills = null;
 
+        _cancellationToken?.Cancel();
+        _cancellationToken = new CancellationTokenSource();
+        
         _playerStats = _player.PlayerStats;
-        _playerSkillHolder = new SkillHolder(new SkillData(_playerWeaponHolder, _playerStats, _playerJumper));
+        _playerSkillHolder = new SkillHolder(
+            new SkillData(_playerWeaponHolder, _playerStats, _playerJumper), _cancellationToken.Token);
 
-        MessageBrokerHolder.Chest.Receive<M_ChestRaised>().Subscribe((message) => HandleRaiseChest())
-            .AddTo(_disposable);
+        MessageBrokerHolder.Chest
+            .Receive<M_ChestRaised>()
+            .Subscribe(_ => HandleRaiseChest())
+            .AddTo(_cancellationToken.Token);
     }
 
     private void OnDisable()
     {
         _skillSelector.SkillApplyed -= OnSkillsApplied;
         _level.LevelRaised -= HandleLevelUp;
+        
+        _cancellationToken.Cancel();
+        _playerSkillHolder?.Disable();
     }
     
     private void Start()
@@ -69,7 +80,8 @@ public class Mediator : MonoBehaviour
         
         Time.timeScale = 0;
         
-        MessageBrokerHolder.Game.Publish(new M_GamePaused());
+        MessageBrokerHolder.Game
+            .Publish(new M_GamePaused());
         
         _gameUI.gameObject.SetActive(false);
         _skillSelector.ShowSkills(skills, inputSkillsCount, outputSkillsCount);

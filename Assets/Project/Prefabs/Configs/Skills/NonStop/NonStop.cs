@@ -1,28 +1,28 @@
-﻿using Project.Prefabs.Configs.Skills.Durability;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
+using Project.Prefabs.Configs.Skills.Durability;
 using UniRx;
 
 public class NonStop : ISkillInstance
 {
-    private int _nedeedDiedEnemyCount;
+    private readonly int _neededDiedEnemyCount;
     private int _currentDiedEnemyCount;
 
-    private LandMineSpanwer _landMineSpawner;
+    private readonly LandMineSpanwer _landMineSpawner;
+    private readonly SkillData _data;
 
-    private SkillData _data;
-
-    private readonly CompositeDisposable _disposable;
-
-    public NonStop(SkillData skillData, NonStopSkill skill)
+    public NonStop(SkillData skillData, NonStopSkill skill, CancellationToken token)
     {
         _data = skillData;
 
         _currentDiedEnemyCount = 0;
-        _nedeedDiedEnemyCount = skill.NedeedDiedEnemyCount;
+        _neededDiedEnemyCount = skill.NedeedDiedEnemyCount;
         _landMineSpawner = new LandMineSpanwer(skill.LandMinePrefab);
 
-        _disposable = new CompositeDisposable();
-        MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => HandleEnemyDeath())
-            .AddTo(_disposable);
+        MessageBrokerHolder.Enemy
+            .Receive<M_EnemyDeath>()
+            .Subscribe(_ => HandleEnemyDeath())
+            .AddTo(token);
 
         _data.PlayerJumper.JumpPerformed += OnJumpPerformed;
     }
@@ -39,11 +39,11 @@ public class NonStop : ISkillInstance
 
     private void OnJumpPerformed()
     {
-        if (_currentDiedEnemyCount < _nedeedDiedEnemyCount)
+        if (_currentDiedEnemyCount < _neededDiedEnemyCount)
             return;
 
         _currentDiedEnemyCount = 0;
-        var mine = _landMineSpawner.Spawn();
+        LandMine mine = _landMineSpawner.Spawn();
         mine.transform.position = _data.PlayerJumper.transform.position;
     }
 }

@@ -17,12 +17,25 @@ namespace Project.Scripts.Services
         private void Awake()
         {
             _lowPassFilter.cutoffFrequency = _musicCutoffRange.y;
-            
-            MessageBrokerHolder.Game.Receive<M_GamePaused>().Subscribe(message => OnGamePaused())
+        }
+
+        private void OnEnable()
+        {
+            MessageBrokerHolder.Game
+                .Receive<M_GamePaused>()
+                .Subscribe(_ => OnGamePaused())
                 .AddTo(_disposable);
             
-            MessageBrokerHolder.Game.Receive<M_GameUnpaused>().Subscribe(message => OnGameUnpaused())
+            MessageBrokerHolder.Game
+                .Receive<M_GameUnpaused>()
+                .Subscribe(_ => OnGameUnpaused())
                 .AddTo(_disposable);
+        }
+
+        private void OnDisable()
+        {
+            _disposable.Clear();
+            _cutoffTween?.Kill();
         }
 
         private void OnGamePaused()

@@ -39,6 +39,13 @@ namespace Project.Scripts.EnemySystem
             EnemyStats.Update();
         }
 
+        private void OnDisable()
+        {
+            OnDestroyed?.Invoke(this);
+            
+            _cooldown?.EndCooldown();
+        }
+
         public void Initialize(Player player)
         {
             _cooldown = new EnemyAttackCooldown();
@@ -74,7 +81,7 @@ namespace Project.Scripts.EnemySystem
         public void TakeDamage(float amount)
         {
             _damageSoundPlayer.Play();
-            _view.Blink();
+            _view.Blink().Forget();
             EnemyStats.Health.TakeDamage(amount);
         }
         

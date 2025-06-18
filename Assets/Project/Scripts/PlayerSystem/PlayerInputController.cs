@@ -1,4 +1,6 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,9 +12,9 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField] private DesktopControlls _desktopControlls;
     [SerializeField] private MobileShootZone _shootZone;
 
-    private PlayerInput _playerInput;
+    private readonly CompositeDisposable _disposable = new();
 
-    private CompositeDisposable _disposable;
+    private PlayerInput _playerInput;
     
     public Vector2 InputDirection => _playerInput.Land.Move.ReadValue<Vector2>();
     public event Action OnJumpButtonPressed;
@@ -34,13 +36,15 @@ public class PlayerInputController : MonoBehaviour
     {
         _shootZone.OnShootButtonPressed += Shoot;
         _playerInput.Land.Jump.performed += OnJumpPerformed;
-
-        _disposable = new CompositeDisposable();
         
-        MessageBrokerHolder.Game.Receive<M_GamePaused>().Subscribe((message) => DisableControlScheme())
+        MessageBrokerHolder.Game
+            .Receive<M_GamePaused>()
+            .Subscribe(_ => DisableControlScheme())
             .AddTo(_disposable);
         
-        MessageBrokerHolder.Game.Receive<M_GameUnpaused>().Subscribe((message) => EnableControlScheme())
+        MessageBrokerHolder.Game
+            .Receive<M_GameUnpaused>()
+            .Subscribe(_ => EnableControlScheme())
             .AddTo(_disposable);
     }
 
@@ -48,6 +52,8 @@ public class PlayerInputController : MonoBehaviour
     {
         _shootZone.OnShootButtonPressed -= Shoot;
         _playerInput.Land.Jump.performed -= OnJumpPerformed;
+        
+        _disposable?.Clear();
     }
 
     private void EnableControlScheme()
@@ -64,10 +70,8 @@ public class PlayerInputController : MonoBehaviour
     {
         ReadMovementInput();
 
-        if (!_isDevice && _playerInput.Land.Shoot.IsPressed())
-        {
+        if (_isDevice == false && _playerInput.Land.Shoot.IsPressed())
             Shoot();
-        }
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext callbackContext)
@@ -78,9 +82,7 @@ public class PlayerInputController : MonoBehaviour
     private void ReadMovementInput()
     {
         if (InputDirection != Vector2.zero)
-        {
             OnMoveButtonPressed?.Invoke();
-        }
     }
 
     private void SelectControlScheme()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using UniRx;
 
@@ -30,28 +31,32 @@ namespace Project.Scripts.ArenaSystem
         private EnemyDeathEffectsSpawner _enemyDeathEffectsSpawner;
         private ExplosionEffectsSpawner _explosionEffectsSpawner;
         
-        private readonly CompositeDisposable _disposable = new();
-        
         private Queue<Wave> _waves;
+        private Wave _currentWave;
         
         public event Action WavesDone;
         
         public IReadOnlyList<WaveConfig> WavesConfigs => _wavesConfigs;
 
-        public void Initialize(Queue<Wave> waves)
+        public void Initialize(Queue<Wave> waves, CancellationToken token)
         {
             _waves = waves;
 
-            _enemyDeathEffectsSpawner = new EnemyDeathEffectsSpawner(_deathEffectPrefab, _disposable);
-            _explosionEffectsSpawner = new ExplosionEffectsSpawner(_explosionEffectPrefab, _disposable); 
+            _enemyDeathEffectsSpawner = new EnemyDeathEffectsSpawner(_deathEffectPrefab, token);
+            _explosionEffectsSpawner = new ExplosionEffectsSpawner(_explosionEffectPrefab, token); 
             
-            _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab);
-            _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount);
+            _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab, token);
+            _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount, token);
         }
 
         public void Work()
         {
             StartNewWave();
+        }
+
+        public void OnDisable()
+        {
+            _currentWave.Disable();
         }
 
         private void StartNewWave()
@@ -63,10 +68,10 @@ namespace Project.Scripts.ArenaSystem
                 return;
             }
 
-            Wave wave = _waves.Dequeue();
+            _currentWave = _waves.Dequeue();
 
-            wave.OnWaveFinished += HandleWavesEnd;
-            wave.Begin();
+            _currentWave.OnWaveFinished += HandleWavesEnd;
+            _currentWave.Begin();
         }
 
         private void HandleWavesEnd(Wave wave)

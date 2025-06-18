@@ -1,6 +1,5 @@
 ﻿using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SkillGrid : MonoBehaviour
@@ -16,6 +15,12 @@ public class SkillGrid : MonoBehaviour
     //         .AddTo(_disposable);
     // }
     //
+
+    private void OnDisable()
+    {
+        _disposable?.Clear();
+    }
+
     public void ShowSkills()
     {
         for(int i = 0; i < _mediator.RaisedSkills.Count; i++)

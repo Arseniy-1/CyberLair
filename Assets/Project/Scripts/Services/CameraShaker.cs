@@ -8,12 +8,11 @@ public class CameraShaker : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
 
-    private CompositeDisposable _disposable;
+    private readonly CompositeDisposable _disposable = new();
     private Transform _cameraTransform;
 
     private void OnEnable()
     {
-        _disposable = new CompositeDisposable();
         _cameraTransform = _camera.transform;
 
         MessageBrokerHolder.Camera.Receive<M_CameraShake>().Subscribe(Shake)
@@ -22,7 +21,7 @@ public class CameraShaker : MonoBehaviour
 
     private void OnDisable()
     {
-        _disposable.Dispose();
+        _disposable?.Clear();
     }
 
     private void Shake(M_CameraShake settings)

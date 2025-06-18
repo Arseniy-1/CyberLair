@@ -7,19 +7,26 @@ public class ExplosionHandler : MonoBehaviour
     [SerializeField] private SoundPlayer _explosionSound;
     [SerializeField] private CameraShakeSettings _cameraShakeSettings;
 
-    private CompositeDisposable _disposable;
+    private readonly CompositeDisposable _disposable = new();
     
     private void Awake()
     {
-        _disposable = new CompositeDisposable();
-        
-        MessageBrokerHolder.Game.Receive<M_Exploded>().Subscribe((message) => HandleExplosion())
+        MessageBrokerHolder.Game
+            .Receive<M_Exploded>()
+            .Subscribe(_ => HandleExplosion())
             .AddTo(_disposable);
     }
-    
+
+    private void OnDisable()
+    {
+        _disposable?.Clear();
+    }
+
     private void HandleExplosion()
     {
-        MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
+        MessageBrokerHolder.Camera
+            .Publish(new M_CameraShake(_cameraShakeSettings));
+        
         _explosionSound.Play();
     }
 }

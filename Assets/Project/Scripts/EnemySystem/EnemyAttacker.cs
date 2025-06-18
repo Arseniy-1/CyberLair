@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Project.Scripts.EnemySystem.AttackTypes;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem
@@ -12,6 +11,7 @@ namespace Project.Scripts.EnemySystem
         
         protected EnemyTargetProvider EnemyTargetProvider;
         private Transform _transform;
+        private Coroutine _attackCoroutine;
 
         public event Action AttackStarted;
         public event Action<bool> AttackPerforming;
@@ -20,9 +20,15 @@ namespace Project.Scripts.EnemySystem
         public virtual BaseEnemyAttackStats Stats => _stats;
         protected Vector2 Position => _transform.position;
 
+        private void OnDisable()
+        {
+            if(_attackCoroutine != null)
+                StopCoroutine(_attackCoroutine);
+        }
+
         public void PerformAttack()
         {
-           StartCoroutine(Performing());
+            _attackCoroutine = StartCoroutine(Performing());
         }
         
         public virtual void Initialize(EnemyTargetProvider enemyTargetProvider)

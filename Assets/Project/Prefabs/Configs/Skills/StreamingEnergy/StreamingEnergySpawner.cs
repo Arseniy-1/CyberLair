@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 
@@ -5,30 +7,26 @@ public class StreamingEnergySpawner : Spawner<StreamingEnergy>, ISkillInstance
 {
     private readonly float _chance;
 
-    private readonly CompositeDisposable _disposable;
-
-    public StreamingEnergySpawner(StreamingEnergySkill skill)
+    public StreamingEnergySpawner(StreamingEnergySkill skill, CancellationToken token)
     {
         _chance = skill.Chance;
         Prefab = skill.Prefab;
         Pool = new StreamingEnergyPool(Prefab, StartAmount);
 
-        _disposable = new CompositeDisposable();
-        MessageBrokerHolder.Enemy.Receive<M_EnemyDeath>().Subscribe((message) => HandleEnemyDeath(message.Position))
-            .AddTo(_disposable);
+        MessageBrokerHolder.Enemy
+            .Receive<M_EnemyDeath>()
+            .Subscribe(message => HandleEnemyDeath(message.Position))
+            .AddTo(token);
     }
 
-    public void Disable()
-    {
-        _disposable?.Dispose();
-    }
+    public void Disable() { }
 
     private void HandleEnemyDeath(Vector2 position)
     {
         if (Random.value > _chance)
             return;
 
-        var zone = Spawn();
+        StreamingEnergy zone = Spawn();
         zone.transform.position = position;
     }
 }

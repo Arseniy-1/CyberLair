@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Project.Prefabs.Configs.Skills;
 using Project.Prefabs.Configs.Skills.AffectedArea;
 using Project.Prefabs.Configs.Skills.AllOnLine;
@@ -26,10 +27,12 @@ public class SkillHolder
 {
     private readonly SkillData _skillData;
     private readonly List<ISkillInstance> _skillInstances = new();
+    private readonly CancellationToken _token;
 
-    public SkillHolder(SkillData skillData)
+    public SkillHolder(SkillData skillData, CancellationToken token)
     {
         _skillData = skillData;
+        _token = token;
     }
 
     public void CreateSkill(Skill skill)
@@ -45,7 +48,7 @@ public class SkillHolder
                 break;
 
             case ArtayaShieldSkill artayaShieldSkill:
-                _skillInstances.Add(new ArtayaShield(_skillData, artayaShieldSkill));
+                _skillInstances.Add(new ArtayaShield(_skillData, artayaShieldSkill, _token));
                 break;
 
             case AthleticsSkill athleticsSkill:
@@ -139,7 +142,7 @@ public class SkillHolder
                     _skillInstances.FirstOrDefault(skillInstance => skillInstance.GetType() == typeof(Boomerang));
 
                 if (boomerang != null)
-                    _skillInstances.Add(new StormBlade(stormBladeSkill, (boomerang as Boomerang)?.Orbital));
+                    _skillInstances.Add(new StormBlade(stormBladeSkill, (boomerang as Boomerang)?.Orbital, _token));
 
                 break;
 
@@ -164,7 +167,7 @@ public class SkillHolder
                 break;
 
             case NonStopSkill nonStopSkill:
-                _skillInstances.Add(new NonStop(_skillData, nonStopSkill));
+                _skillInstances.Add(new NonStop(_skillData, nonStopSkill, _token));
                 break;
 
             case ArtayaWillSkill artayaWillSkill:
@@ -183,7 +186,7 @@ public class SkillHolder
                 break;
 
             case StreamingEnergySkill streamingEnergySkill:
-                _skillInstances.Add(new StreamingEnergySpawner(streamingEnergySkill));
+                _skillInstances.Add(new StreamingEnergySpawner(streamingEnergySkill, _token));
                 break;
 
             case TeleportationJumpSkill teleportationJumpSkill:
@@ -200,7 +203,13 @@ public class SkillHolder
 
                 if (fireZoneInstance != null)
                     _skillInstances.Add(new HellCats(hellCatsSkill, fireZoneInstance as FireZoneManager));
+                
                 break;
         }
+    }
+
+    public void Disable()
+    {
+        _skillInstances.ForEach(skill => skill.Disable());
     }
 }

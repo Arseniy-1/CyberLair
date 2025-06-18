@@ -24,10 +24,13 @@ public class MainEnemySpawner : MonoBehaviour
         }
     }
 
-    public void Initialize(Player player, List<Transform> spawnPoints, List<EnemyDespawner> despawners)
+    public void Initialize(Player player, IReadOnlyList<Transform> spawnPoints, List<EnemyDespawner> despawners)
     {
         _spawnPoints = spawnPoints;
+        Debug.Log($"Spawn points: {_spawnPoints != null}");
+        
         _despawners = despawners;
+        Debug.Log($"Despawners: {_despawners != null}");
 
         foreach (var despawner in _despawners)
         {
@@ -46,6 +49,8 @@ public class MainEnemySpawner : MonoBehaviour
         var spawner = _spawners[type];
 
         Enemy enemy = spawner.Spawn();
+        Debug.Log($"Enemy spawned: {enemy != null}");
+        
         MoveEnemy(enemy);
 
         return enemy;
@@ -61,6 +66,9 @@ public class MainEnemySpawner : MonoBehaviour
 
     private void MoveEnemy(Enemy enemy)
     {
+        Debug.Log($"Enemy move: {enemy != null}");
+        Debug.Log($"Spawn points: {_spawnPoints != null}");
+        
         Vector2 spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
         
         enemy.transform.position = Random.insideUnitCircle * _spawnOffset + spawnPoint;

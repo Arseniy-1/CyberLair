@@ -1,7 +1,7 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Prefabs.Configs.Skills.Boomerang;
-using Project.Prefabs.Configs.Skills.Durability;
 using Project.Prefabs.Configs.Skills.StormBlade;
 using Project.Scripts.Servises;
 using UnityEngine;
@@ -13,33 +13,28 @@ public class StormBlade : ISkillInstance
     private float _minRadius;
     private float _changingSpeed;
 
-    private bool _isActive;
     private BoomerangOrbital _boomerang;
 
-    public StormBlade(StormBladeSkill stormBladeSkill, Orbital boomerang)
+    public StormBlade(StormBladeSkill stormBladeSkill, Orbital boomerang, CancellationToken token)
     {
         _maxRadius = stormBladeSkill.MaxRadius;
         _minRadius = stormBladeSkill.MinRadius;
         _changingSpeed = stormBladeSkill.ChangingSpeed;
         
-        _isActive = true;
         _boomerang = boomerang as BoomerangOrbital;
-        RadiusChanging().Forget();
+        RadiusChanging(token).Forget();
     }
 
-    private async UniTaskVoid RadiusChanging()
+    private async UniTaskVoid RadiusChanging(CancellationToken token)
     {
-        while (_isActive)
+        while (token.IsCancellationRequested == false)
         {
             _boomerang.ApplyRadius(
                 Mathf.PingPong(Time.fixedTime * _changingSpeed, _maxRadius - _minRadius) + _minRadius);
 
-            await UniTask.Yield(PlayerLoopTiming.FixedUpdate);
+            await UniTask.Yield(PlayerLoopTiming.FixedUpdate, cancellationToken: token);
         }
     }
 
-    public void Disable()
-    {
-        throw new NotImplementedException();
-    }
+    public void Disable() { }
 }
