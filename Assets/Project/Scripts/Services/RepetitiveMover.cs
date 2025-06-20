@@ -22,6 +22,8 @@ namespace Project.Scripts.Services
         {
             _startPosition = _transform.position;
             Vector2 targetPos = _startPosition + _offset;
+            
+            _moveTween?.Kill();
 
             _moveTween ??= transform.DOMove(targetPos, _duration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         }
@@ -29,7 +31,6 @@ namespace Project.Scripts.Services
         private void OnDisable()
         {
             _moveTween?.Kill();
-            _moveTween = null;
             
             _transform.position = _startPosition;
         }

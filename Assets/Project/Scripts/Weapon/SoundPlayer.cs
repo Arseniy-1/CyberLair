@@ -11,8 +11,14 @@ public class SoundPlayer : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        
         _audioSource.playOnAwake = false;
         _audioSource.loop = false;
+    }
+
+    private void OnDisable()
+    {
+        _audioSource.Stop();
     }
 
     public void Play()

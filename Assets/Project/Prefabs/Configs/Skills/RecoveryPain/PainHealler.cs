@@ -23,6 +23,6 @@ public class PainHealler : ISkillInstance
 
     public void Disable()
     {
-        throw new NotImplementedException();
+        _data.PlayerStats.Health.DamageTaken -= Heal;
     }
 }

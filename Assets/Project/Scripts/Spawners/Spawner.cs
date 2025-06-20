@@ -9,8 +9,6 @@ public class Spawner<T> where T : MonoBehaviour, IDestoyable<T>
 
     protected Pool<T> Pool;
 
-    public event Action<int, int, int> CountChanged;
-
     public T Spawn()
     {
         T spawnedObject = Pool.Get();

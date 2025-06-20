@@ -44,6 +44,7 @@ namespace Project.Scripts.EnemySystem
             OnDestroyed?.Invoke(this);
             
             _cooldown?.EndCooldown();
+            _view?.EndBlink();
         }
 
         public void Initialize(Player player)
@@ -73,7 +74,6 @@ namespace Project.Scripts.EnemySystem
             _attacker.Initialize(_enemyTargetProvider);
             _destroyer.Initialize(EnemyStats.Health, this);
             
-            
             _mover.Initialize(this, _enemyTargetProvider, _rigidbody, EnemyStats);
             _collisionHandler.Initialize(EnemyStats.CollisionDamage);
         }
@@ -81,7 +81,7 @@ namespace Project.Scripts.EnemySystem
         public void TakeDamage(float amount)
         {
             _damageSoundPlayer.Play();
-            _view.Blink().Forget();
+            _view.StartBlink();
             EnemyStats.Health.TakeDamage(amount);
         }
         

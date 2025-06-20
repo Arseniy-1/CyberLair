@@ -31,7 +31,6 @@ namespace Project.Scripts.ArenaSystem
         }
         
         public event Action<Wave> OnWaveFinished;
-        public event Action<Enemy> EnemySpawned;
 
         public void Begin()
         {
@@ -83,7 +82,6 @@ namespace Project.Scripts.ArenaSystem
                     Enemy enemy = _mainEnemySpawner.Spawn(preferredEnemy);
                     
                     enemy.ResetState();
-                    EnemySpawned?.Invoke(enemy);
                 }
             }
         } 

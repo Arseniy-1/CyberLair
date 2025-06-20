@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using DG.Tweening;
 using UnityEngine;
 using UniRx;
 
@@ -45,8 +46,8 @@ namespace Project.Scripts.ArenaSystem
             _enemyDeathEffectsSpawner = new EnemyDeathEffectsSpawner(_deathEffectPrefab, token);
             _explosionEffectsSpawner = new ExplosionEffectsSpawner(_explosionEffectPrefab, token); 
             
-            _experienceSpawner.Initialize(waves.ToList(), _experienceAmount, _experienceParticlePrefab, token);
-            _healthSpawner.Initialize(waves.ToList(), _heartPrefab, _heartSpawnChance, _healAmount, token);
+            _experienceSpawner.Initialize(_experienceAmount, _experienceParticlePrefab, token);
+            _healthSpawner.Initialize(_heartPrefab, _heartSpawnChance, _healAmount, token);
         }
 
         public void Work()
@@ -56,11 +57,13 @@ namespace Project.Scripts.ArenaSystem
 
         public void OnDisable()
         {
-            _currentWave.Disable();
+            _currentWave?.Disable();
         }
 
         private void StartNewWave()
         {
+            _currentWave?.Disable();
+            
             if (_waves.Count == 0)
             {
                 WavesDone?.Invoke();

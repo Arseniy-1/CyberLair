@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -27,6 +28,11 @@ namespace Project.Scripts.ArenaSystem
         private Transform _playerTransform;
 
         private Tween _cameraZoomTween;
+
+        private void OnDisable()
+        {
+            _cameraZoomTween?.Kill();
+        }
 
         public void Initialize(Transform playerTransform, CancellationToken token)
         {
@@ -91,7 +97,7 @@ namespace Project.Scripts.ArenaSystem
                 
             _cameraZoomTween = DOTween
                 .To(() => _mainCamera.orthographicSize, currentValue => _mainCamera.orthographicSize = currentValue, endValue, _zoomDuration)
-                .SetEase(Ease.InOutSine).OnComplete(() => _cameraZoomTween = null);
+                .SetEase(Ease.InOutSine);
         }
     }
 }

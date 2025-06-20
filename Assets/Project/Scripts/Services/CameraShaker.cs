@@ -10,10 +10,15 @@ public class CameraShaker : MonoBehaviour
 
     private readonly CompositeDisposable _disposable = new();
     private Transform _cameraTransform;
+    
+    private Vector3 _cameraOriginalPosition;
+    private Tween _shakeTween;
 
     private void OnEnable()
     {
         _cameraTransform = _camera.transform;
+        
+        _cameraOriginalPosition = _cameraTransform.localPosition;
 
         MessageBrokerHolder.Camera.Receive<M_CameraShake>().Subscribe(Shake)
             .AddTo(_disposable);
@@ -22,6 +27,7 @@ public class CameraShaker : MonoBehaviour
     private void OnDisable()
     {
         _disposable?.Clear();
+        _shakeTween?.Kill();
     }
 
     private void Shake(M_CameraShake settings)
@@ -29,10 +35,10 @@ public class CameraShaker : MonoBehaviour
         if(YandexGame.savesData.IsCameraShakeEnabled == false)
             return;
         
-        Vector3 originalPosition = _cameraTransform.localPosition;
+        _shakeTween?.Kill();
 
-        _camera.transform.DOShakePosition(settings.ShakeSettings.Duration,
+        _shakeTween = _camera.transform.DOShakePosition(settings.ShakeSettings.Duration,
                 settings.ShakeSettings.Strength, settings.ShakeSettings.Vibrato, settings.ShakeSettings.Randomness)
-            .OnComplete(() => _cameraTransform.localPosition = originalPosition);
+            .OnComplete(() => _cameraTransform.localPosition = _cameraOriginalPosition);
     }
 }

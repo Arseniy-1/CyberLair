@@ -55,7 +55,7 @@ namespace Project.Scripts.Services
             _cutoffTween = DOTween
                 .To(() => _lowPassFilter.cutoffFrequency, currentValue => _lowPassFilter.cutoffFrequency = currentValue, endValue, _musicCutoffDuration)
                 .SetUpdate(true)
-                .SetEase(Ease.InOutSine).OnComplete(() => _cutoffTween = null);
+                .SetEase(Ease.InOutSine);
         }
     }
 }

@@ -680,6 +680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 7552625122573232970, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ef1252971d204d02a1e2c913880a7d9, type: 3}
     - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: _bulletPrefab
       value: 

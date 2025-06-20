@@ -22,7 +22,7 @@ namespace Project.Scripts.EnemySystem.Bosses
             _cancellationToken?.Cancel();
             _cancellationToken = new CancellationTokenSource();
             
-            PerformingAttack().Forget();
+            PerformingAttack(_cancellationToken.Token).Forget();
         }
 
         public void Disable()
@@ -30,20 +30,20 @@ namespace Project.Scripts.EnemySystem.Bosses
             _cancellationToken?.Cancel();
         }
         
-        private async UniTask PerformingAttack()
+        private async UniTask PerformingAttack(CancellationToken token)
         {
             while(_cancellationToken.IsCancellationRequested == false)
             {
                 foreach (BossAttack attack in _attacks)
                 {
-                    await UniTask.WaitUntil(() => _attacksOrder.Contains(attack) == false, cancellationToken: _cancellationToken.Token);
+                    await UniTask.WaitUntil(() => _attacksOrder.Contains(attack) == false, cancellationToken: token);
 
-                    await UniTask.Delay(TimeSpan.FromSeconds(attack.AttackStats.Cooldown), cancellationToken: _cancellationToken.Token);
+                    await UniTask.Delay(TimeSpan.FromSeconds(attack.AttackStats.Cooldown), cancellationToken: token);
                     
                     _attacksOrder.Enqueue(attack);
                 }
                 
-                await UniTask.Yield();
+                await UniTask.Yield(cancellationToken: token);
             }
         }
     }

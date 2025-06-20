@@ -1,28 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class Effect : MonoBehaviour, IDestoyable<Effect>
 {
     [SerializeField] private List<ParticleSystem> _particles;
 
+    private CancellationTokenSource _cancellationToken;
+    
     public event Action<Effect> OnDestroyed;
 
     private void OnEnable()
     {
+        _cancellationToken?.Cancel();
+        _cancellationToken = new CancellationTokenSource();
+        
         foreach (var particle in _particles)
         {
             particle.Play();
-            WaitForParticleAsync(particle);
+            WaitForParticleAsync(particle, _cancellationToken.Token).Forget();
         }
     }
 
-    private async void WaitForParticleAsync(ParticleSystem particle)
+    private void OnDisable()
+    {
+        _cancellationToken?.Cancel();
+    }
+
+    private async UniTaskVoid WaitForParticleAsync(ParticleSystem particle, CancellationToken token)
     {
         while (isActiveAndEnabled == false && particle.IsAlive(true))
         {
-            await Task.Yield();
+            await UniTask.Yield(cancellationToken: token);
         }
 
         OnDestroyed?.Invoke(this);
