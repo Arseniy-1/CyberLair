@@ -31,7 +31,7 @@ public class InvincibilityCollisionHandler : CollisionHandler
 
         bullet.Rigidbody2D.velocity = newVelocity;
 
-        if (!(newVelocity.sqrMagnitude > 0))
+        if (newVelocity.sqrMagnitude <= 0)
             return;
         
         float angle = Mathf.Atan2(newVelocity.y, newVelocity.x) * Mathf.Rad2Deg;

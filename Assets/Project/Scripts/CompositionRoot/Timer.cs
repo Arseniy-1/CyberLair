@@ -16,15 +16,15 @@ public class Timer : MonoBehaviour
     private void FixedUpdate()
     {
         _timeElapsed += Time.fixedDeltaTime;
-        
-        if (_timeElapsed >= _nextUpdateTime)
-        {
-            _nextUpdateTime = Mathf.Floor(_timeElapsed) + 1f;
-            
-            _seconds = Mathf.FloorToInt(_timeElapsed) % 60;
-            _minutes = Mathf.FloorToInt(_timeElapsed) / 60;
 
-            _time.text = string.Format("{0:00}:{1:00}", _minutes, _seconds);
-        }
+        if (_timeElapsed < _nextUpdateTime) 
+            return;
+        
+        _nextUpdateTime = Mathf.Floor(_timeElapsed) + 1f;
+            
+        _seconds = Mathf.FloorToInt(_timeElapsed) % 60;
+        _minutes = Mathf.FloorToInt(_timeElapsed) / 60;
+
+        _time.text = string.Format("{0:00}:{1:00}", _minutes, _seconds);
     }
 }

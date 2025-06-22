@@ -23,6 +23,8 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
         private void OnEnable()
         {
+            EndWaitingDestroy();
+            
             _waitingDestroy = StartCoroutine(WaitingDestroy());
         }
     
@@ -52,7 +54,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
         private void OnDisable()
         {
-            StopCoroutine(_waitingDestroy);
+            EndWaitingDestroy();
         }
 
         private void ApplyFireDamage()
@@ -73,6 +75,15 @@ namespace Project.Prefabs.Configs.Skills.FireZone
         public void ReturnToPool()
         {
             OnDestroyed?.Invoke(this);
+        }
+
+        private void EndWaitingDestroy()
+        {
+            if (_waitingDestroy == null) 
+                return;
+            
+            StopCoroutine(_waitingDestroy);
+            _waitingDestroy = null;
         }
     }
 }

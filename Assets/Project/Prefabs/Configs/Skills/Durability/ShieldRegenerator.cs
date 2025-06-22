@@ -20,6 +20,18 @@ public class ShieldRegenerator : MonoBehaviour
     private void OnDisable()
     {
         _health.DamageTaken -= OnDamageTaken;
+
+        if (_regenerationCoroutine == null)
+            return;
+        
+        StopCoroutine(_regenerationCoroutine);
+        _regenerationCoroutine = null;
+
+        if (_resumeCoroutine == null)
+            return;
+        
+        StopCoroutine(_resumeCoroutine);
+        _resumeCoroutine = null;
     }
 
     public void Initialize(ShieldAmount shield, Health health)

@@ -30,7 +30,7 @@ public class Magnet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_player != null)
+        if (_player)
         {
             transform.position = _player.position;
         }

@@ -13,6 +13,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         [SerializeField] private SkillCollisionHandler _collisionHandler;
         
         private Transform _transform;
+        private Coroutine _lifetimeCoroutine;
         
         public event Action<MagicArrow> OnDestroyed;
         
@@ -24,12 +25,16 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             
             _transform = transform;
             
-            StartCoroutine(Lifetime());
+            EndLifetime();
+            
+            _lifetimeCoroutine = StartCoroutine(Lifetime());
         }
 
         private void OnDisable()
         {
             _collisionHandler.ContactLimitExpired -= Return;
+            
+            EndLifetime();
         }
         
         private void FixedUpdate()
@@ -49,6 +54,12 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
         private void Return()
         {
             OnDestroyed?.Invoke(this);
+        }
+
+        private void EndLifetime()
+        {
+            if(_lifetimeCoroutine != null)
+                StopCoroutine(_lifetimeCoroutine);
         }
     }
 }

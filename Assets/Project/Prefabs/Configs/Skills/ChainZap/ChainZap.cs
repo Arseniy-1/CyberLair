@@ -19,6 +19,9 @@ public class ChainZap : ISkillInstance
 
     private readonly Weapon _weapon;
     private readonly ChainZapViewSpawner _viewSpawner;
+    
+    private Tween _fadeInTween;
+    private Tween _fadeOutTween;
 
     public ChainZap(SkillData skillData, IChainZapStats stats)
     {
@@ -40,6 +43,9 @@ public class ChainZap : ISkillInstance
     public void Disable()
     {
         _weapon.Shot -= InnerSubscribe;
+        
+        _fadeInTween?.Kill();
+        _fadeOutTween?.Kill();
     }
 
     private void InnerSubscribe(Bullet bullet)
@@ -89,16 +95,16 @@ public class ChainZap : ISkillInstance
 
         foreach (Collider2D hit in hits)
         {
-            if (hit.TryGetComponent(out Enemy target) && !excludedTargets.Contains(target))
-            {
-                float distance = Vector2.Distance(position, target.transform.position);
+            if (hit.TryGetComponent(out Enemy target) == false || excludedTargets.Contains(target))
+                continue;
+            
+            float distance = Vector2.Distance(position, target.transform.position);
 
-                if (distance < closestDistance)
-                {
-                    closestTarget = target;
-                    closestDistance = distance;
-                }
-            }
+            if (distance >= closestDistance) 
+                continue;
+            
+            closestTarget = target;
+            closestDistance = distance;
         }
 
         return closestTarget;
@@ -122,11 +128,19 @@ public class ChainZap : ISkillInstance
 
         view.ZapView.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
 
+        _fadeInTween?.Kill();
+        
         float duration = 0.2f;
-        view.ZapView.material.DOFade(0f, duration).SetEase(Ease.InOutFlash).OnComplete(() =>
-        {
-            view.Disable();
-            view.ZapView.material.DOFade(1f, 0f);
-        });
+        
+        _fadeInTween = view.ZapView.material
+            .DOFade(0f, duration)
+            .SetEase(Ease.InOutFlash)
+            .OnComplete(() =>
+            {
+                view.Disable();
+                
+                _fadeOutTween?.Kill();
+                _fadeOutTween = view.ZapView.material.DOFade(1f, 0f);
+            });
     }
 }

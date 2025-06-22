@@ -16,6 +16,5 @@ public abstract class StatsView : MonoBehaviour
         _stats.AmountChanged += ShowStats;
     }
     
-
     protected abstract void ShowStats(float currentValue, float maxValue);
 }

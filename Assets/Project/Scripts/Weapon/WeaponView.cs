@@ -8,18 +8,18 @@ public class WeaponView : MonoBehaviour
     [SerializeField] private Image[] _bulletIcons;
     [SerializeField] private Sprite _emptyBulletSprite;
     [SerializeField] private Sprite _fullBulletSprite;
-    [SerializeField] private Image _reloadSpinner;
 
     [SerializeField] private IncrementalReloadWeapon _weapon;
 
     [SerializeField] private Color _clearColor;
-    [SerializeField] private Color _emptyBulletColor = new Color(1f, 1f, 1f, 0.2f);
+    [SerializeField] private Color _emptyBulletColor = new (1f, 1f, 1f, 0.2f);
 
     [SerializeField] private float _blinkDelay = 0.15f;
+    
     private Coroutine _blinkCoroutine;
     private WaitForSeconds _blinkWait;
-
-
+    private Tween _rotateTween;
+    
     private void OnEnable()
     {
         _blinkWait = new WaitForSeconds(_blinkDelay);
@@ -29,6 +29,12 @@ public class WeaponView : MonoBehaviour
     private void OnDisable()
     {
         _weapon.OnAmmoUpdated -= UpdateAmmoView;
+
+        if (_blinkCoroutine == null)
+            return;
+        
+        StopCoroutine(_blinkCoroutine);
+        _blinkCoroutine = null;
     }
 
     private void UpdateAmmoView(int ammoCount, int maxAmmoCount)
@@ -59,20 +65,11 @@ public class WeaponView : MonoBehaviour
             _blinkCoroutine = null;
         }
 
-        if (_weapon.IsReloading && ammoCount < maxAmmoCount)
-        {
-            int nextBulletIndex = ammoCount;
-            _blinkCoroutine = StartCoroutine(BlinkBullet(nextBulletIndex));
-        }
-
-        if (_weapon.IsReloading)
-        {
-            StartReloadSpinner();
-        }
-        else
-        {
-            StopReloadSpinner();
-        }
+        if (!_weapon.IsReloading || ammoCount >= maxAmmoCount) 
+            return;
+        
+        int nextBulletIndex = ammoCount;
+        _blinkCoroutine = StartCoroutine(BlinkBullet(nextBulletIndex));
     }
 
     private IEnumerator BlinkBullet(int bulletIndex)
@@ -90,24 +87,5 @@ public class WeaponView : MonoBehaviour
         }
 
         _bulletIcons[bulletIndex].sprite = _fullBulletSprite;
-    }
-
-    private void StartReloadSpinner()
-    {
-        if (_reloadSpinner != null)
-        {
-            _reloadSpinner.gameObject.SetActive(true);
-            _reloadSpinner.transform.DORotate(new Vector3(0, 0, 360f), 1f, RotateMode.FastBeyond360)
-                .SetLoops(-1, LoopType.Restart);
-        }
-    }
-
-    private void StopReloadSpinner()
-    {
-        if (_reloadSpinner != null)
-        {
-            _reloadSpinner.gameObject.SetActive(false);
-            _reloadSpinner.DOKill();
-        }
     }
 }

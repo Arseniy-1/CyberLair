@@ -25,7 +25,7 @@ namespace Project.Scripts.Services
             
             _moveTween?.Kill();
 
-            _moveTween ??= transform.DOMove(targetPos, _duration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+            _moveTween = transform.DOMove(targetPos, _duration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         }
 
         private void OnDisable()

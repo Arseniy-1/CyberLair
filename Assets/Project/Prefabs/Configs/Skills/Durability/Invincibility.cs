@@ -10,17 +10,26 @@ public class Invincibility : MonoBehaviour
     [SerializeField] private float _activeTime = 2f;
 
     [SerializeField] private InvincibilityCollisionHandler invincibilityCollision;
+    
+    private Coroutine _invincibilityCoroutine;
 
     private void OnEnable()
     {
         invincibilityCollision.gameObject.SetActive(false);
 
-        StartCoroutine(InvulnerabilityRoutine());
+        DisableInvincibility();
+        
+        _invincibilityCoroutine = StartCoroutine(InvincibilityRoutine());
     }
 
-    private IEnumerator InvulnerabilityRoutine()
+    private void OnDisable()
     {
-        while (true)
+        DisableInvincibility();
+    }
+
+    private IEnumerator InvincibilityRoutine()
+    {
+        while (isActiveAndEnabled)
         {
             float randomDelay = Random.Range(_minDisableTime, _maxDisableTime);
             yield return new WaitForSeconds(randomDelay);
@@ -41,5 +50,14 @@ public class Invincibility : MonoBehaviour
     private void DeactivateShield()
     {
         invincibilityCollision.gameObject.SetActive(false);
+    }
+
+    private void DisableInvincibility()
+    {
+        if(_invincibilityCoroutine == null)
+            return;
+        
+        StopCoroutine(_invincibilityCoroutine);
+        _invincibilityCoroutine = null;
     }
 }

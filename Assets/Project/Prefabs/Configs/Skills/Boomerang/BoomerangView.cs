@@ -32,7 +32,6 @@ namespace Project.Prefabs.Configs.Skills.Boomerang
         private void StopRotation()
         {
             _rotationTween?.Kill();
-            _rotationTween = null;
         }
     }
 }

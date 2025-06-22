@@ -19,8 +19,10 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
 
         private Vector3 _target;
         private Vector3 _previousPosition;
-        private Tweener _moveTween;
         private Coroutine _destroyCoroutine;
+        
+        private Tween _pathTween;
+        private Tween _rotationTween;
         
         public event Action<SoulClot> OnDestroyed;
 
@@ -35,20 +37,21 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
         {
             StopMove();
             
+            OnDestroyed?.Invoke(this);
+            
             if (_destroyCoroutine == null)
                 return;
             
             StopCoroutine(_destroyCoroutine);
             _destroyCoroutine = null;
-            
-            OnDestroyed?.Invoke(this);
         }
     
         public void Move()
         {
             _soundEvents.PlaySound(ArriveSound);
             
-            _transform.DOPath(CalculatePath(), _duration).SetEase(Ease.Linear).OnUpdate(() => 
+            _pathTween?.Kill();
+            _pathTween = _transform.DOPath(CalculatePath(), _duration).SetEase(Ease.Linear).OnUpdate(() => 
             {
                 Vector3 direction = _transform.position - _previousPosition;
                 
@@ -56,7 +59,8 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
                 {
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                     
-                    _transform.DORotate(new Vector3(0, 0, angle), 0.1f).SetEase(Ease.OutSine);
+                    _rotationTween?.Kill();
+                    _rotationTween = _transform.DORotate(new Vector3(0, 0, angle), 0.1f).SetEase(Ease.OutSine);
                 }
                 
                 _previousPosition = _transform.position;
@@ -88,11 +92,8 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
 
         private void StopMove()
         {
-            if (_moveTween == null || !_moveTween.IsActive()) 
-                return;
-            
-            _moveTween.Kill();
-            _moveTween = null;
+            _pathTween?.Kill();
+            _rotationTween?.Kill();
         }
         
         private IEnumerator WaitForDestroy()

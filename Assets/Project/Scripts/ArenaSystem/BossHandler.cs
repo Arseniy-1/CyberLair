@@ -1,10 +1,8 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using Project.Scripts.EnemySystem;
+using Project.Scripts.MessageBroker;
 using Project.Scripts.MessageBroker.EnemyMessageBrokers;
-using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
 
@@ -12,9 +10,6 @@ namespace Project.Scripts.ArenaSystem
 {
     public class BossHandler : MonoBehaviour
     {
-        [SerializeField, MinMaxSlider(9f, 20f), Header("Camera")] private Vector2 _cameraZoomSize;
-        [SerializeField] private float _zoomDuration;
-        
         [SerializeField, Header("Prefabs")] private Cage _cagePrefab;
         [SerializeField] private BossChest _bossChestPrefab;
         
@@ -24,21 +19,11 @@ namespace Project.Scripts.ArenaSystem
         private Cage _cageInstance;
         private BossChest _bossChestInstance;
         
-        private Camera _mainCamera;
         private Transform _playerTransform;
-
-        private Tween _cameraZoomTween;
-
-        private void OnDisable()
-        {
-            _cameraZoomTween?.Kill();
-        }
 
         public void Initialize(Transform playerTransform, CancellationToken token)
         {
             _playerTransform = playerTransform;
-            _mainCamera = Camera.main;
-            _mainCamera.orthographicSize = _cameraZoomSize.x;
             
             _bossHealthBar.gameObject.SetActive(false);
             
@@ -70,7 +55,8 @@ namespace Project.Scripts.ArenaSystem
             
             _bossHealthBar.gameObject.SetActive(true);
             
-            ApplyCameraZoom(_cameraZoomSize.y);
+            MessageBrokerHolder.Camera
+                .Publish(new M_CameraZoomOut());
         }
         
         private void HandleBossDeath(Enemy enemy)
@@ -83,21 +69,13 @@ namespace Project.Scripts.ArenaSystem
             _cageInstance.gameObject.SetActive(false);
             _bossHealthBar.gameObject.SetActive(false);
 
-            ApplyCameraZoom(_cameraZoomSize.x);
+            MessageBrokerHolder.Camera
+                .Publish(new M_CameraZoomIn());
         }
 
         private void HandleChestRaised()
         {
             _bossChestInstance.gameObject.SetActive(false);
-        }
-
-        private void ApplyCameraZoom(float endValue)
-        {
-            _cameraZoomTween?.Kill();
-                
-            _cameraZoomTween = DOTween
-                .To(() => _mainCamera.orthographicSize, currentValue => _mainCamera.orthographicSize = currentValue, endValue, _zoomDuration)
-                .SetEase(Ease.InOutSine);
         }
     }
 }
