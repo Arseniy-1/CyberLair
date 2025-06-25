@@ -18,7 +18,7 @@ namespace Project.Scripts.EnemySystem
         [SerializeField] private EnemyTargetProvider _enemyTargetProvider;
         [SerializeField] private float _attackDistance;
         [SerializeField] private EnemyView _view;
-        [SerializeField] private SoundPlayer _damageSoundPlayer;
+        [SerializeField] private AudioID _damageSound = AudioID.EnemyTakeDamage;
         
         private EntityStateMachine _stateMachine;
         private EnemyAttackCooldown _cooldown;
@@ -80,7 +80,7 @@ namespace Project.Scripts.EnemySystem
         
         public void TakeDamage(float amount)
         {
-            _damageSoundPlayer.Play();
+            _damageSound.Play();
             _view.StartBlink();
             EnemyStats.Health.TakeDamage(amount);
         }
@@ -99,7 +99,6 @@ namespace Project.Scripts.EnemySystem
         [Button]
         public void Die()
         {
-            _damageSoundPlayer.PlayAtPoint(transform.position);
             MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath(transform.position));
             OnDestroyed?.Invoke(this);
         }

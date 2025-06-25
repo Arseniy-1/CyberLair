@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerMover : MonoBehaviour
 {
     private PlayerInputController _playerInputController;
     private Rigidbody2D _rigidbody2D;
     private IMoverStats _moverStats;
-    
-    [field: SerializeField] public SoundPlayer WalkSoundPlayer { get; private set; }
+
+    [field: SerializeField] public AudioID WalkSound { get; private set; } = AudioID.PlayerWalk;
     public bool IsRunning => _playerInputController.InputDirection != Vector2.zero;
 
     private void OnEnable()

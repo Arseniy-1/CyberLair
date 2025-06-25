@@ -7,7 +7,7 @@ namespace Project.Scripts.Weapon
 {
     public abstract class Weapon : MonoBehaviour
     {
-        [SerializeField] private SoundPlayer _shootSoundPlayer;
+        [SerializeField] private AudioID _shootSound = AudioID.PlayerShoot;
             
         [SerializeField] protected Bullet BulletPrefab;
         [SerializeField] protected Transform ShootPoint;
@@ -56,7 +56,7 @@ namespace Project.Scripts.Weapon
 
         protected void Attack()
         {
-            _shootSoundPlayer.Play();
+            _shootSound.Play();
             
             for (int i = 0; i < _weaponStats.BulletPerShootCount.CurrentValue; i++)
             {

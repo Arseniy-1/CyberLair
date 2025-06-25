@@ -5,7 +5,7 @@ using System;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Jumper : MonoBehaviour
 {
-    [SerializeField] private SoundPlayer _jumpSoundPlayer;
+    [SerializeField] private AudioID _jumpSound = AudioID.PlayerJump;
     [SerializeField] private ParticleSystem _jumpEffector;
     
     private Rigidbody2D _rigidbody;
@@ -40,7 +40,7 @@ public class Jumper : MonoBehaviour
 
             if (_elapsedTime < _jumpStats.JumpTime.CurrentValue)
             {
-                Vector3 movement = _jumpDirection * _jumpStats.JumpSpeed.CurrentValue * Time.fixedDeltaTime;
+                Vector3 movement = _jumpDirection * (_jumpStats.JumpSpeed.CurrentValue * Time.fixedDeltaTime);
                 _rigidbody.MovePosition(_rigidbody.position + (Vector2)movement);
             }
             else
@@ -71,17 +71,17 @@ public class Jumper : MonoBehaviour
     [Button]
     public void Jump(Vector3 direction)
     {
-        if (CanJump)
-        {
-            if (direction == Vector3.zero)
-                return;
+        if (CanJump == false)
+            return;
+        
+        if (direction == Vector3.zero)
+            return;
 
-            _jumpSoundPlayer.Play();
-            _jumpEffector.Play();
-            _jumpDirection = direction.normalized;
-            _elapsedTime = 0f;
-            _isMoving = true;
-        }
+        _jumpSound.Play();
+        _jumpEffector.Play();
+        _jumpDirection = direction.normalized;
+        _elapsedTime = 0f;
+        _isMoving = true;
     }
 
     private void StartCooldown()

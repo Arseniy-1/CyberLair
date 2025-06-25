@@ -23,11 +23,7 @@ namespace Project.Scripts.Services
         {
             SoundAnimation sound = _soundAnimations.FirstOrDefault(x => x.Name == soundAnimation);
 
-            if(sound == null)
-                return;
-            
-            sound.Source.pitch = Random.Range(sound.PitchRange.x, sound.PitchRange.y);
-            sound.Source.Play();
+            sound?.Audio.Play();
         }
     }
 }

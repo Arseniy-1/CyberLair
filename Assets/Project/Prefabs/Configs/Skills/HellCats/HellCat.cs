@@ -2,14 +2,13 @@
 using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
-using Project.Scripts.EnemySystem;
 using UnityEngine;
 
 public class HellCat : MonoBehaviour, IDestoyable<HellCat>
 {
     [SerializeField] private LayerMask _targetLayer;
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioID _audio = AudioID.HellCat;
     
     [SerializeField, Header("Hell Cat Stats")] private float _speed;
     [SerializeField] private float _damage;
@@ -24,7 +23,7 @@ public class HellCat : MonoBehaviour, IDestoyable<HellCat>
 
     private void OnEnable()
     {
-        _audioSource.Play();
+        _audio.Play();
         
         EndTimer();
         

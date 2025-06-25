@@ -16,7 +16,8 @@ public class SkillSelector : MonoBehaviour
     [SerializeField] private Sprite _hardBanner;
     [SerializeField] private Sprite _mutantBanner;
     
-    [SerializeField] private SoundPlayer _selectSoundPlayer;
+    [SerializeField] private AudioID _selectSound = AudioID.SkillSelect;
+    [SerializeField] private AudioID _applySound = AudioID.SkillApply;
     
     private SkillView _lastSelectedSkill;
     private int _maxSelectedSkills;
@@ -45,7 +46,7 @@ public class SkillSelector : MonoBehaviour
 
     private void HandleSkillClicked(SkillView skillView)
     {
-        _selectSoundPlayer.Play();
+        _selectSound.Play();
         
         if (_selectedSkills.Contains(skillView))
         {
@@ -114,7 +115,10 @@ public class SkillSelector : MonoBehaviour
 
         _lastSelectedSkill = null;
         _selectedSkills = new List<SkillView>();
+        
         _applyButton.gameObject.SetActive(false);
+        _applySound.Play();
+        
         gameObject.SetActive(false);
         
         SkillApplyed?.Invoke(skills);

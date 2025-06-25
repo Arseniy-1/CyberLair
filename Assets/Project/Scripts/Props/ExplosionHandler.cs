@@ -4,7 +4,7 @@ using UniRx;
 
 public class ExplosionHandler : MonoBehaviour
 {
-    [SerializeField] private SoundPlayer _explosionSound;
+    [SerializeField] private AudioID _explosionSound = AudioID.Explosion;
     [SerializeField] private CameraShakeSettings _cameraShakeSettings;
 
     private readonly CompositeDisposable _disposable = new();

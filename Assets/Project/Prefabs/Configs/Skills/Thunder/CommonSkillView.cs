@@ -7,7 +7,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private float _lifeTime = 0.4f;
-        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioID _audio;
         [SerializeField] private SpriteRenderer _sprite;
         
         private readonly int _playingTrigger = Animator.StringToHash("Playing");
@@ -43,7 +43,7 @@ namespace Project.Scripts.Weapon.ActiveSkills
         {
             var wait = new WaitForSeconds(_lifeTime);
             _animator.SetTrigger(_playingTrigger);
-            _audioSource.Play();
+            _audio.Play();
             
             yield return wait;
             

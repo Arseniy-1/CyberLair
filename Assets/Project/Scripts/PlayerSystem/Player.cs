@@ -23,7 +23,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private CameraShakeSettings _cameraShakeSettings;
     [SerializeField] private InjuredScreenView _injuredScreenView;
 
-    [SerializeField] private SoundPlayer _damageSoundPlayer;
+    [SerializeField] private AudioID _damageSound = AudioID.PlayerTakeDamage;
     [SerializeField] private Animator _animator;
 
     [SerializeField] private HealthRegenerator _healthRegenerator;
@@ -31,10 +31,10 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     [SerializeField] private Collider2D _collider;
 
+    private readonly ExperienceStorage _experienceStorage = new();
     private bool _isDamaged = false;
     private Coroutine _imortalityCoroutine;
     private EntityStateMachine _entityStateMachine;
-    private ExperienceStorage _experienceStorage = new ExperienceStorage();
 
     public event Action OnDeath;
 
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [Button]
     public void TakeDamage(float amount)
     {
-        _damageSoundPlayer.Play();
+        _damageSound.Play();
         MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
 
         if (_isDamaged == false)
@@ -130,7 +130,9 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     private IEnumerator TakingImortality(float time)
     {
         _isDamaged = true;
+        
         yield return new WaitForSeconds(time);
+        
         _isDamaged = false;
     }
 

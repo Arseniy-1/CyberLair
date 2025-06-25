@@ -694,6 +694,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6364331433842670574, guid: f7ecc41908a6d7d4b83f6836a6f989ba, type: 2}
     - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+      propertyPath: _shootSound
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881955136329227856, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       propertyPath: BulletPrefab
       value: 
       objectReference: {fileID: 8502437403070517348, guid: a87908c93e23c4d03a0f6e7bc0b2dfcc, type: 3}
@@ -717,6 +721,7 @@ PrefabInstance:
     - {fileID: 1345678172798210184, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
     - {fileID: 5356645660179516411, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
     - {fileID: 2336591957696236096, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
+    - {fileID: 4765418448388330670, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6299138363646056453, guid: 69ecc02b0d848904c9fa33724c1b7355, type: 3}
       insertIndex: -1

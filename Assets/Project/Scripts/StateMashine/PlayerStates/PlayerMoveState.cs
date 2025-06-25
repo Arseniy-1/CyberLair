@@ -34,7 +34,7 @@ namespace StateMashineSytem.PlayerStateMashine
         public virtual void Enter()
         {
             _playerMover.enabled = true;
-            _playerMover.WalkSoundPlayer.PlayLoop();
+            _playerMover.WalkSound.Play();
             _playerInputController.OnJumpButtonPressed += OnJumpButtonPressed;
             
             _animator.SetBool(_walkAnimation, _playerMover.enabled);
@@ -43,7 +43,7 @@ namespace StateMashineSytem.PlayerStateMashine
         public virtual void Exit()
         {
             _playerMover.enabled = false;
-            _playerMover.WalkSoundPlayer.StopLoop();
+            _playerMover.WalkSound.Stop();
             _playerInputController.OnJumpButtonPressed -= OnJumpButtonPressed;
             
             _animator.SetBool(_walkAnimation, _playerMover.enabled);

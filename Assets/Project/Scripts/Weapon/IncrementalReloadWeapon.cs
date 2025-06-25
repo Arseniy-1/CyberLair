@@ -2,16 +2,15 @@
 using System.Collections;
 using Project.Scripts.Weapon;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class IncrementalReloadWeapon : Weapon
 {
     [SerializeField] private int _currentMagazineSize;
     
     [SerializeField] private ParticleSystem _shootParticles;
-    [SerializeField] private SoundPlayer _reloadSoundPlayer;
-    [SerializeField] private SoundPlayer _fullReloadSoundPlayer;
-    [SerializeField] private SoundPlayer _outOfAmmoSoundPlayer;
+    [SerializeField] private AudioID _reloadSound = AudioID.Reload;
+    [SerializeField] private AudioID _fullReloadSound = AudioID.FullReload;
+    [SerializeField] private AudioID _outOfAmmoSound = AudioID.OutOfAmmo;
     
     private Coroutine _reloadCoroutine;
 
@@ -33,31 +32,29 @@ public class IncrementalReloadWeapon : Weapon
 
     public override bool TryAttack()
     {
-        if (_currentMagazineSize > 0 && IsReloaded)
-        {
-            if (_reloadCoroutine != null)
-            {
-                StopCoroutine(_reloadCoroutine);
-            }
+        if (_currentMagazineSize <= 0 || !IsReloaded) 
+            return false;
+        
+        if (_reloadCoroutine != null)
+            StopCoroutine(_reloadCoroutine);
 
-            IsReloading = false;
+        IsReloading = false;
 
-            _currentMagazineSize--;
-            _reloadCoroutine = StartCoroutine(ReloadCoroutine());
-
-            _shootParticles.Play();
-            Attack();
+        _currentMagazineSize--;
+        _reloadCoroutine = StartCoroutine(ReloadCoroutine());
+        _shootParticles.Play();
+        
+        Attack();
 
         if (_currentMagazineSize == 0)
-            _outOfAmmoSoundPlayer.Play();
+            _outOfAmmoSound.Play();
         
-            OnAmmoUpdated?.Invoke(_currentMagazineSize, _magazineSize);
-            IsReloaded = false;
+        OnAmmoUpdated?.Invoke(_currentMagazineSize, _magazineSize);
+        
+        IsReloaded = false;
 
-            return true;
-        }
+        return true;
 
-        return false;
     }
 
     private IEnumerator ReloadCoroutine()
@@ -75,15 +72,15 @@ public class IncrementalReloadWeapon : Weapon
             yield return new WaitForSeconds(_currentRecharchingTime);
 
             _currentMagazineSize++;
-            _reloadSoundPlayer.Play();
+            _reloadSound.Play();
+
+            if (_currentMagazineSize < _magazineSize)
+                continue;
             
-            if (_currentMagazineSize >= _magazineSize)
-            {
-                _reloadCoroutine = null;
-                IsReloading = false;
-                _fullReloadSoundPlayer.Play();
-                yield break;
-            }
+            _reloadCoroutine = null;
+            IsReloading = false;
+            _fullReloadSound.Play();
+            yield break;
         }
     }
 }
