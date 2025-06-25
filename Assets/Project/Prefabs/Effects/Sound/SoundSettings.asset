@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e5e932d93523491fa25c3170249809ee, type: 3}
   m_Name: SoundSettings
-  m_EditorClassIdentifier: Assembly-CSharp::SoundSettings
+  m_EditorClassIdentifier: 
   _audioData:
   - <AudioID>k__BackingField: 0
     <AudioClip>k__BackingField: {fileID: 8300000, guid: 943a173b9a400844793a54e0ad598370, type: 3}
@@ -247,4 +247,4 @@ MonoBehaviour:
     <Volume>k__BackingField: 0.4
     <PitchRange>k__BackingField: {x: 0.95, y: 1}
     <IsLooped>k__BackingField: 0
-  <AudioPrefab>k__BackingField: {fileID: 0}
+  <AudioPrefab>k__BackingField: {fileID: 3020316244169451730, guid: 7db054cd313444a05aac86959130dcd0, type: 3}

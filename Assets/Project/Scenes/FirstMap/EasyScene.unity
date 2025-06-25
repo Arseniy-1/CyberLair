@@ -533,6 +533,7 @@ GameObject:
   - component: {fileID: 500295097}
   - component: {fileID: 500295096}
   - component: {fileID: 500295098}
+  - component: {fileID: 500295099}
   m_Layer: 0
   m_Name: CompositionRoot
   m_TagString: Untagged
@@ -610,6 +611,19 @@ MonoBehaviour:
   _bossChestPrefab: {fileID: -195615430801793006, guid: 1e7e8e16da4b2544fa6f22fb91a22aed, type: 3}
   _bossHealthBar: {fileID: 242534861}
   _bossHealthText: {fileID: 242534860}
+--- !u!114 &500295099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500295095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8d85f924a14fb08ec404641fa470dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundSettings: {fileID: 11400000, guid: a575b6f1a7654431ea0993ebe771a958, type: 2}
 --- !u!4 &507637128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2393122324973176342, guid: d202cdbf8866b0a4fb6dcc3b2da7e70e, type: 3}

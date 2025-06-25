@@ -24,7 +24,7 @@ namespace Project.Scripts.Spawners.Audio
             audioSource.pitch = Random.Range(audioData.PitchRange.x, audioData.PitchRange.y);
             audioSource.loop = audioData.IsLooped;
             
-            Stop();
+            audioSource.Stop();
         }
         
         public void PlayLoop() => audioSource.Play();
