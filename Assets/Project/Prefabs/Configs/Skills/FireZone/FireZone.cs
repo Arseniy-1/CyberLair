@@ -30,7 +30,8 @@ namespace Project.Prefabs.Configs.Skills.FireZone
     
         private void FixedUpdate()
         {
-            if (!(Time.time >= _currentTime)) return;
+            if (Time.time < _currentTime) 
+                return;
         
             ApplyFireDamage();
             _currentTime = Time.time + _burnInterval;
@@ -38,7 +39,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out IDamageable damagable) & (_targetLayer << collision.gameObject.layer) != 0)
+            if (collision.TryGetComponent(out IDamageable damagable) & _targetLayer == collision.gameObject.layer)
             {
                 _damageableTargets.Add(damagable);
             }
@@ -46,7 +47,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out IDamageable damagable) & (_targetLayer << collision.gameObject.layer) != 0)
+            if (collision.TryGetComponent(out IDamageable damagable) & _targetLayer == collision.gameObject.layer)
             {
                 _damageableTargets.Remove(damagable);
             }
@@ -55,6 +56,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
         private void OnDisable()
         {
             EndWaitingDestroy();
+            ReturnToPool();
         }
 
         private void ApplyFireDamage()

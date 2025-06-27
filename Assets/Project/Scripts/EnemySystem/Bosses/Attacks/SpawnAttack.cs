@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
@@ -21,19 +22,17 @@ namespace Project.Scripts.EnemySystem.Bosses
             if(SpawnedObjects.IsNullOrEmpty())
                 return;
             
-            foreach (T spawnedObject in SpawnedObjects)
+            foreach (T spawnedObject in SpawnedObjects.ToList())
             {
-                spawnedObject.OnDestroyed -= UnsubscribeObject;
-                spawnedObject.ReturnToPool();
+                spawnedObject.gameObject.SetActive(false);
+                UnsubscribeObject(spawnedObject);
             }
-            
-            SpawnedObjects.Clear();
         }
         
         protected virtual void UnsubscribeObject(T spawnedObject)
         {
             spawnedObject.OnDestroyed -= UnsubscribeObject;
-            spawnedObject.ReturnToPool();
+            // spawnedObject.ReturnToPool();
             SpawnedObjects.Remove(spawnedObject);
         }
     }

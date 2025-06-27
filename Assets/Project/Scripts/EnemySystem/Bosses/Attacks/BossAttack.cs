@@ -28,24 +28,19 @@ namespace Project.Scripts.EnemySystem.Bosses
         {
             var waitRecovery = new WaitForSeconds(AttackStats.AttackRecovery);
             
-            // Debug.Log($"{gameObject.name} waiting IsAttacking = {IsAttacking}");
-            
             View.gameObject.SetActive(true);
             AnimatorEvents.Attacking += HandleAttacking;
             AttackAnimator.SetTrigger(_attackTrigger);
             
             yield return new WaitUntil(() => IsAttacking);
-            // Debug.Log($"{gameObject.name} IsAttacking = {IsAttacking}");
             
             for (int i = 0; i < AttackStats.AttackCount; i++)
             {
                 yield return Attack();
             }
 
-            // Debug.Log($"{gameObject.name} recovery");
             yield return waitRecovery;
             
-            // Debug.Log($"{gameObject.name} done");
             HandleEnding();
         }
         

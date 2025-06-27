@@ -32,6 +32,8 @@ namespace Project.Scripts.EnemySystem.Bosses
         
         private void OnDisable()
         {
+            Debug.Log("Boss Composite Attacker is disabled");
+            
             _generalAttacksPerformer?.Disable();
             _specialAttacksPerformer?.Disable();
             

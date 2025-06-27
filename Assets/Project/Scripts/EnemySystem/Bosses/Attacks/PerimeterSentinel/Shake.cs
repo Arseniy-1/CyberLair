@@ -15,7 +15,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         private List<IDamageable> _collides;
         
         public event Action<Shake> OnDestroyed;
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             if(other.TryGetComponent(out IDamageable damageable))
@@ -26,6 +26,11 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         {
             if(other.TryGetComponent(out IDamageable damageable))
                 _collides.Remove(damageable);
+        }
+        
+        private void OnDisable()
+        {
+            ReturnToPool();
         }
         
         public void Initialize(int damage)
@@ -44,9 +49,6 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         {
             _animationEvents.Attacking -= DealDamage;
             _animationEvents.Ending -= ReturnToPool;
-            
-            _animator.ResetTrigger(_shake);
-            _animator.StopPlayback();
             
             OnDestroyed?.Invoke(this);
         }

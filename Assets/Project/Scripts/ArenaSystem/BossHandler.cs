@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Scripts.EnemySystem;
@@ -18,8 +19,15 @@ namespace Project.Scripts.ArenaSystem
         
         private Cage _cageInstance;
         private BossChest _bossChestInstance;
+        private Enemy _bossInstance;
         
         private Transform _playerTransform;
+
+        private void OnDisable()
+        {
+            if (_bossInstance == false)
+                _bossInstance.OnDestroyed -= HandleBossDeath;
+        }
 
         public void Initialize(Transform playerTransform, CancellationToken token)
         {
@@ -32,10 +40,10 @@ namespace Project.Scripts.ArenaSystem
                 .Subscribe(message => HandleBossSpawn(message.Boss))
                 .AddTo(token);
             
-            MessageBrokerHolder.Enemy
-                .Receive<M_BossDeath>()
-                .Subscribe(message => HandleBossDeath(message.Boss))
-                .AddTo(token);
+            // MessageBrokerHolder.Enemy
+            //     .Receive<M_BossDeath>()
+            //     .Subscribe(message => HandleBossDeath(message.Boss))
+            //     .AddTo(token);
             
             MessageBrokerHolder.Chest
                 .Receive<M_ChestRaised>()
@@ -45,13 +53,16 @@ namespace Project.Scripts.ArenaSystem
 
         private void HandleBossSpawn(Enemy boss)
         {
+            _bossInstance = boss;
+            _bossInstance.OnDestroyed += HandleBossDeath;
+            
             _cageInstance ??= Instantiate(_cagePrefab);
 
             _cageInstance.gameObject.SetActive(true);
             _cageInstance.transform.position = _playerTransform.position;
             
-            _bossHealthBar.Initialize(boss.EnemyStats.Health);
-            _bossHealthText.Initialize(boss.EnemyStats.Health);
+            _bossHealthBar.Initialize(_bossInstance.EnemyStats.Health);
+            _bossHealthText.Initialize(_bossInstance.EnemyStats.Health);
             
             _bossHealthBar.gameObject.SetActive(true);
             
@@ -61,6 +72,7 @@ namespace Project.Scripts.ArenaSystem
         
         private void HandleBossDeath(Enemy enemy)
         {
+            _bossInstance.OnDestroyed -= HandleBossDeath;
             _bossChestInstance ??= Instantiate(_bossChestPrefab);
 
             _bossChestInstance.gameObject.SetActive(true);

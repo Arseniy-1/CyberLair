@@ -19,6 +19,11 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
         private Coroutine _destroyCoroutine;
 
         public event Action<SoulOrbital> OnDestroyed;
+        
+        private void OnDisable()
+        {
+            ReturnToPool();
+        }
 
         public override void Initialize(Transform targetTransform)
         {

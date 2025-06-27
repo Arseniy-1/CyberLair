@@ -28,12 +28,16 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ReturnToPool();
-        
-        if (collision.TryGetComponent(out IDamageable damagable))
-        {
-            OnDamagableCollided?.Invoke(damagable);
-            damagable.TakeDamage(_damage);
-        }
+
+        if (collision.TryGetComponent(out IDamageable damagable) == false) 
+            return;
+        OnDamagableCollided?.Invoke(damagable);
+        damagable.TakeDamage(_damage);
+    }
+    
+    private void OnDisable()
+    {
+        ReturnToPool();
     }
     
     public void Activate()

@@ -41,7 +41,7 @@ namespace Project.Scripts.EnemySystem
 
         private void OnDisable()
         {
-            OnDestroyed?.Invoke(this);
+            // OnDestroyed?.Invoke(this);
             
             _cooldown?.EndCooldown();
             _view?.EndBlink();

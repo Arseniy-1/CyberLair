@@ -25,6 +25,11 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
         private Tween _rotationTween;
         
         public event Action<SoulClot> OnDestroyed;
+        
+        private void OnDisable()
+        {
+            ReturnToPool();
+        }
 
         public void Initialize(Vector3 target)
         {

@@ -20,8 +20,6 @@ namespace Project.Scripts.ArenaSystem
         private readonly List<ObjectWeightPair<Enemy>> _enemyWeights = new();
         private CancellationTokenSource _cancellationToken;
 
-        private Enemy _bossInstance;
-
         public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner)
         {
             _config = config;
@@ -42,10 +40,11 @@ namespace Project.Scripts.ArenaSystem
 
             if (_config.Boss != false)
             {
-                _bossInstance = _mainEnemySpawner.Spawn(_config.Boss.EnemyType);
-                
-                _bossInstance.OnDestroyed += HandleBossDeath;
-                MessageBrokerHolder.Enemy.Publish(new M_BossSpawned(_bossInstance));
+                // _bossInstance = _mainEnemySpawner.Spawn(_config.Boss.EnemyType);
+                //
+                // _bossInstance.OnDestroyed += HandleBossDeath;
+                MessageBrokerHolder.Enemy
+                    .Publish(new M_BossSpawned(_mainEnemySpawner.Spawn(_config.Boss.EnemyType)));
             }
 
             if (_enemyWeights.IsNullOrEmpty())
@@ -93,12 +92,12 @@ namespace Project.Scripts.ArenaSystem
             OnWaveFinished?.Invoke(this);
         }
 
-        private void HandleBossDeath(Enemy enemy)
-        {
-            enemy.OnDestroyed -= HandleBossDeath;
-            
-            MessageBrokerHolder.Enemy
-                .Publish(new M_BossDeath(_bossInstance));
-        }
+        // private void HandleBossDeath(Enemy enemy)
+        // {
+        //     enemy.OnDestroyed -= HandleBossDeath;
+        //     
+        //     MessageBrokerHolder.Enemy
+        //         .Publish(new M_BossDeath(_bossInstance));
+        // }
     }
 }

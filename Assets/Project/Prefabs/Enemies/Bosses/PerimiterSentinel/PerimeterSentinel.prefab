@@ -361,10 +361,10 @@ MonoBehaviour:
   _laser: {fileID: 3774545974475585584}
   _collider: {fileID: 1345334337045451331}
   _cameraShakeSettings:
-    <Duration>k__BackingField: 0
-    <Strength>k__BackingField: 0
-    <Vibrato>k__BackingField: 0
-    <Randomness>k__BackingField: 0
+    <Duration>k__BackingField: 0.5
+    <Strength>k__BackingField: 0.5
+    <Vibrato>k__BackingField: 10
+    <Randomness>k__BackingField: 90
   _targetProvider: {fileID: 8954570385825564128}
   _stiffness: 4
   _damping: 2
