@@ -6,6 +6,7 @@ using UnityEngine;
 public class IncrementalReloadWeapon : Weapon
 {
     [SerializeField] private int _currentMagazineSize;
+    [SerializeField] private float _reloadDelay = 1f;
     
     [SerializeField] private ParticleSystem _shootParticles;
     [SerializeField] private AudioID _reloadSound = AudioID.Reload;
@@ -13,9 +14,11 @@ public class IncrementalReloadWeapon : Weapon
     [SerializeField] private AudioID _outOfAmmoSound = AudioID.OutOfAmmo;
     
     private Coroutine _reloadCoroutine;
+    private WaitForSeconds _waitForDelay;
+    private WaitForSeconds _waitForRechargingTime;
 
-    private int _magazineSize => (int)((IIncrementalWeaponStats)_weaponStats).WeaponMagazineSize.CurrentValue;
-    private float _currentRecharchingTime => ((IIncrementalWeaponStats)_weaponStats).WeaponRechargingTime.CurrentValue;
+    private int MagazineSize => (int)((IIncrementalWeaponStats)_weaponStats).WeaponMagazineSize.CurrentValue;
+    private float CurrentRechargingTime => ((IIncrementalWeaponStats)_weaponStats).WeaponRechargingTime.CurrentValue;
 
     public event Action<int, int> OnAmmoUpdated;
 
@@ -25,9 +28,12 @@ public class IncrementalReloadWeapon : Weapon
     public override void Initialize(IWeaponStats weaponStats)
     {
         base.Initialize(weaponStats);
-        _currentMagazineSize = _magazineSize;
+        _currentMagazineSize = MagazineSize;
+        
+        _waitForDelay ??= new WaitForSeconds(_reloadDelay);
+        _waitForRechargingTime ??= new WaitForSeconds(CurrentRechargingTime);
 
-        OnAmmoUpdated?.Invoke(_currentMagazineSize, _magazineSize);
+        OnAmmoUpdated?.Invoke(_currentMagazineSize, MagazineSize);
     }
 
     public override bool TryAttack()
@@ -49,7 +55,7 @@ public class IncrementalReloadWeapon : Weapon
         if (_currentMagazineSize == 0)
             _outOfAmmoSound.Play();
         
-        OnAmmoUpdated?.Invoke(_currentMagazineSize, _magazineSize);
+        OnAmmoUpdated?.Invoke(_currentMagazineSize, MagazineSize);
         
         IsReloaded = false;
 
@@ -59,22 +65,20 @@ public class IncrementalReloadWeapon : Weapon
 
     private IEnumerator ReloadCoroutine()
     {
-        float reloadDelay = 1f;
-
-        yield return new WaitForSeconds(reloadDelay);
+        yield return _waitForDelay;
 
         IsReloading = true;
 
-        while (_currentMagazineSize < _magazineSize)
+        while (_currentMagazineSize < MagazineSize)
         {
-            OnAmmoUpdated?.Invoke(_currentMagazineSize, _magazineSize);
+            OnAmmoUpdated?.Invoke(_currentMagazineSize, MagazineSize);
  
-            yield return new WaitForSeconds(_currentRecharchingTime);
+            yield return _waitForRechargingTime;
 
             _currentMagazineSize++;
             _reloadSound.Play();
 
-            if (_currentMagazineSize < _magazineSize)
+            if (_currentMagazineSize < MagazineSize)
                 continue;
             
             _reloadCoroutine = null;

@@ -122,18 +122,22 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     private IEnumerator TakingStun(float time)
     {
+        var waitForStunTime = new WaitForSeconds(time);
+        
         _entityStateMachine.SwitchState<PlayerStunnedState>();
 
-        yield return new WaitForSeconds(time);
+        yield return waitForStunTime;
 
         _entityStateMachine.SwitchState<PlayerIdleState>();
     }
 
     private IEnumerator TakingImortality(float time)
     {
+        var waitForImmortalityTime = new WaitForSeconds(time);
+        
         _isDamaged = true;
         
-        yield return new WaitForSeconds(time);
+        yield return waitForImmortalityTime;
         
         _isDamaged = false;
     }

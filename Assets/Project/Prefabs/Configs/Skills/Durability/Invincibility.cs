@@ -31,12 +31,14 @@ public class Invincibility : MonoBehaviour
     {
         while (isActiveAndEnabled)
         {
-            float randomDelay = Random.Range(_minDisableTime, _maxDisableTime);
-            yield return new WaitForSeconds(randomDelay);
+            var waitForDelay = new WaitForSeconds(Random.Range(_minDisableTime, _maxDisableTime));
+            var waitForActiveTime = new WaitForSeconds(_activeTime); 
+            
+            yield return waitForDelay;
 
             ActivateShield();
 
-            yield return new WaitForSeconds(_activeTime);
+            yield return waitForActiveTime;
 
             DeactivateShield();
         }

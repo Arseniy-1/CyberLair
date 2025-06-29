@@ -19,10 +19,16 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
     private Coroutine _waitingDestroy;
     private Coroutine _stunIterating;
 
+    private WaitForSeconds _waitForStunInterval;
+    private WaitForSeconds _waitForLifetime;
+
     public event Action<StreamingEnergy> OnDestroyed;
 
     private void OnEnable()
     {
+        _waitForStunInterval ??= new WaitForSeconds(_stunInterval);
+        _waitForLifetime ??= new WaitForSeconds(_lifeTime);
+        
         _waitingDestroy = StartCoroutine(WaitingDestroy());
         _stunIterating = StartCoroutine(StunIterating());
     }
@@ -69,13 +75,13 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
             
             _audio.Play();
             
-            yield return new WaitForSeconds(_stunInterval);
+            yield return _waitForStunInterval;
         }
     }
 
     private IEnumerator WaitingDestroy()
     {
-        yield return new WaitForSeconds(_lifeTime);
+        yield return _waitForLifetime;
         
         OnDestroyed?.Invoke(this);
     }

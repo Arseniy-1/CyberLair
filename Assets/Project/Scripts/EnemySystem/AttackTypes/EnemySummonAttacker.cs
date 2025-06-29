@@ -33,7 +33,9 @@ namespace Project.Scripts.EnemySystem.AttackTypes
 
         protected override IEnumerator Attack()
         {
-            yield return new WaitForSeconds(Random.Range(_spawnPeriod.x, _spawnPeriod.y));
+            var waitForDelay = new WaitForSeconds(Random.Range(_spawnPeriod.x, _spawnPeriod.y));
+            
+            yield return waitForDelay;
             
             Enemy imp = _impSpawner.Spawn();
             imp.OnDestroyed += RemoveImp;

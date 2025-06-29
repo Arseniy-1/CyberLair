@@ -18,12 +18,15 @@ namespace Project.Prefabs.Configs.Skills.FireZone
         private float _currentTime = 0f;
 
         private Coroutine _waitingDestroy;
+        private WaitForSeconds _waitForLifetime;
 
         public event Action<FireZone> OnDestroyed;
 
         private void OnEnable()
         {
             EndWaitingDestroy();
+
+            _waitForLifetime ??= new WaitForSeconds(_lifeTime);
             
             _waitingDestroy = StartCoroutine(WaitingDestroy());
         }
@@ -69,7 +72,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
 
         private IEnumerator WaitingDestroy()
         {
-            yield return new WaitForSeconds(_lifeTime);
+            yield return _waitForLifetime;
             
             ReturnToPool();
         }

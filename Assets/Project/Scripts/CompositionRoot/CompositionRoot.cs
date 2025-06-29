@@ -162,9 +162,10 @@ namespace Project.Scripts.CompositionRoot
         private IEnumerator GivePlayerInvulnerability(Player player)
         {
             float invulnerabilityTime = 2.5f;
+            var waitForInvulnerability = new WaitForSeconds(invulnerabilityTime);
 
             player.Collider2D.enabled = false;
-            yield return new WaitForSeconds(invulnerabilityTime);
+            yield return waitForInvulnerability;
             player.Collider2D.enabled = true;
         }
 

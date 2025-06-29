@@ -16,10 +16,13 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         [SerializeField] private float _bossStunTime;
         
         private Coroutine _timerCoroutine;
+        private WaitForSeconds _waitForDuration;
 
         public override void Initialize()
         {
             BossAttackAnimationTrigger = Animator.StringToHash("ShieldAttack");
+            
+            _waitForDuration = new WaitForSeconds(_duration);
             
             Disable();
         }
@@ -72,7 +75,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 
         private IEnumerator DisableTimer()
         {
-            yield return new WaitForSeconds(_duration);
+            yield return _waitForDuration;
             
             Disable();
         }

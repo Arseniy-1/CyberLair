@@ -9,6 +9,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
         [SerializeField] private EnemyJumpStats _jumpStats;
         
         private Jumper _jumper;
+        private WaitForSeconds _waitForJump;
         
         private Vector2 Direction => (EnemyTargetProvider.Player.Position - Position).normalized;
 
@@ -24,13 +25,14 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             _jumpStats.JumpReloadTime.CalculateCurrentValue();
             
             _jumper.Initialize(_jumpStats);
+            _waitForJump = new WaitForSeconds(_jumpStats.JumpTime.CurrentValue);
             base.Initialize(enemyTargetProvider);
         }
         
         protected override IEnumerator Attack()
         {
             _jumper.Jump(Direction);
-            yield return new WaitForSeconds(_jumpStats.JumpTime.CurrentValue);
+            yield return _waitForJump;
         }
     }
 }

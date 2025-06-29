@@ -27,12 +27,13 @@ namespace Project.Scripts.EnemySystem.Bosses
         public IEnumerator Performing()
         {
             var waitRecovery = new WaitForSeconds(AttackStats.AttackRecovery);
+            var waitForAttack = new WaitUntil(() => IsAttacking);
             
             View.gameObject.SetActive(true);
             AnimatorEvents.Attacking += HandleAttacking;
             AttackAnimator.SetTrigger(_attackTrigger);
             
-            yield return new WaitUntil(() => IsAttacking);
+            yield return waitForAttack;
             
             for (int i = 0; i < AttackStats.AttackCount; i++)
             {

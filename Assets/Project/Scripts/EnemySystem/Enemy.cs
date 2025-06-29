@@ -103,9 +103,11 @@ namespace Project.Scripts.EnemySystem
         
         private IEnumerator TakingStun(float time)
         {
+            var waitForStunTime = new WaitForSeconds(time);
+            
             _stateMachine.SwitchState<EnemyStunnedState>();
         
-            yield return new WaitForSeconds(time);
+            yield return waitForStunTime;
         
             _stateMachine.SwitchState<EnemyIdleState>();
         }
