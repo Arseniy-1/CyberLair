@@ -1,5 +1,7 @@
 using System.Collections;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
@@ -8,7 +10,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
     {
         [SerializeField, Header("Laser Attack Settings")] private EnemyCollisionHandler _laser;
         [SerializeField] private Collider2D _collider;
-        [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+        [SerializeField] private ShakeID _shakeID = ShakeID.LongLight;
         [SerializeField] private EnemyTargetProvider _targetProvider;
         
         [SerializeField, Header("Spring Settings")] private float _stiffness = 2f;
@@ -34,7 +36,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             _collider.enabled = true;
             View.gameObject.SetActive(true);
             
-            MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
+            _shakeID.Shake();
             
             while (IsAttacking)
             {

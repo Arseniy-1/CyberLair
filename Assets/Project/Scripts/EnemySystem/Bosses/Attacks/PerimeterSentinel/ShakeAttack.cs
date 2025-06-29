@@ -1,12 +1,14 @@
 using System.Collections;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
 {
     public class ShakeAttack : SpawnAttack<Shake>
     {
-        [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+        [SerializeField] private ShakeID _shakeID = ShakeID.Medium;
         [SerializeField] private EnemyTargetProvider _targetProvider;
 
         private Vector2 _spawnPosition;
@@ -24,7 +26,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         {
             View.gameObject.SetActive(true);
             
-            MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
+            _shakeID.Shake();
 
             for (int i = 0; i < ObjectCount; i++)
             {

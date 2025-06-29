@@ -1,5 +1,7 @@
 using DG.Tweening;
+using Project.Scripts.EnemySystem.Bosses.PerimeterSentinel;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
+using Project.Scripts.Services.Enum;
 using UniRx;
 using UnityEngine;
 using YG;
@@ -7,6 +9,7 @@ using YG;
 public class CameraShaker : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
+    [SerializeField] private CameraShakeSettings _settings;
 
     private readonly CompositeDisposable _disposable = new();
     private Transform _cameraTransform;
@@ -20,7 +23,9 @@ public class CameraShaker : MonoBehaviour
         
         _cameraOriginalPosition = _cameraTransform.localPosition;
 
-        MessageBrokerHolder.Camera.Receive<M_CameraShake>().Subscribe(Shake)
+        MessageBrokerHolder.Camera
+            .Receive<M_CameraShake>()
+            .Subscribe(message => Shake(message.ShakeID))
             .AddTo(_disposable);
     }
 
@@ -30,15 +35,18 @@ public class CameraShaker : MonoBehaviour
         _shakeTween?.Kill();
     }
 
-    private void Shake(M_CameraShake settings)
+    private void Shake(ShakeID shakeID)
     {
         if(YandexGame.savesData.IsCameraShakeEnabled == false)
+            return;
+
+        if (_settings.TryGet(shakeID, out CameraShakeData shake) == false)
             return;
         
         _shakeTween?.Kill();
 
-        _shakeTween = _camera.transform.DOShakePosition(settings.ShakeSettings.Duration,
-                settings.ShakeSettings.Strength, settings.ShakeSettings.Vibrato, settings.ShakeSettings.Randomness)
-            .OnComplete(() => _cameraTransform.localPosition = _cameraOriginalPosition);
+        _shakeTween = _camera.transform.DOShakePosition(shake.Duration,
+                shake.Strength, shake.Vibrato, shake.Randomness)
+            .OnKill(() => _cameraTransform.localPosition = _cameraOriginalPosition);
     }
 }

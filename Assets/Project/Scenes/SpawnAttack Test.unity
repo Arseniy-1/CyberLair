@@ -6183,11 +6183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionSound: 12
-  _cameraShakeSettings:
-    <Duration>k__BackingField: 0.826
-    <Strength>k__BackingField: 0.504
-    <Vibrato>k__BackingField: 5
-    <Randomness>k__BackingField: 1
+  _shakeID: 1
 --- !u!4 &1863588365
 Transform:
   m_ObjectHideFlags: 0
@@ -6660,6 +6656,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4117332714188850563, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _settings
+      value: 
+      objectReference: {fileID: 11400000, guid: 04479ce692af0438b99efd95e8c4eb76, type: 2}
     - target: {fileID: 4666747635262796405, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

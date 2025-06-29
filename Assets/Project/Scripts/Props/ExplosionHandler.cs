@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
 using UniRx;
 
 public class ExplosionHandler : MonoBehaviour
 {
     [SerializeField] private AudioID _explosionSound = AudioID.Explosion;
-    [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+    [SerializeField] private ShakeID _shakeID = ShakeID.Medium;
 
     private readonly CompositeDisposable _disposable = new();
     
@@ -24,8 +26,7 @@ public class ExplosionHandler : MonoBehaviour
 
     private void HandleExplosion()
     {
-        MessageBrokerHolder.Camera
-            .Publish(new M_CameraShake(_cameraShakeSettings));
+        _shakeID.Shake();
         
         _explosionSound.Play();
     }

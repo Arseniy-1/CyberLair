@@ -1,12 +1,14 @@
+using Project.Scripts.Services.Enum;
+
 namespace Project.Scripts.MessageBroker.CameraMessageBrokers
 {
     public struct M_CameraShake
     {
-        public M_CameraShake(CameraShakeSettings shakeSettings)
+        public M_CameraShake(ShakeID shakeId)
         {
-            ShakeSettings = shakeSettings;
+            ShakeID = shakeId;
         }
     
-        public CameraShakeSettings ShakeSettings { get; private set; }
+        public ShakeID ShakeID { get; private set; }
     }
 }

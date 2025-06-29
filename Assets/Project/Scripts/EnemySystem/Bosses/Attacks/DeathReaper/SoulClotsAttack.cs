@@ -1,12 +1,14 @@
 using System.Collections;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
 {
     public class SoulClotsAttack : SpawnAttack<SoulClot>
     {
-        [SerializeField] private CameraShakeSettings _cameraShakeSettings;
+        [SerializeField] private ShakeID _shakeID = ShakeID.Medium;
         
         public override void Initialize()
         {
@@ -19,7 +21,7 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
 
         protected override IEnumerator Attack()
         {
-            MessageBrokerHolder.Camera.Publish(new M_CameraShake(_cameraShakeSettings));
+            _shakeID.Shake();
 
             for (int i = 0; i < ObjectCount; i++)
             {
