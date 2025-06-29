@@ -360,15 +360,11 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 2
   _laser: {fileID: 3774545974475585584}
   _collider: {fileID: 1345334337045451331}
-  _cameraShakeSettings:
-    <Duration>k__BackingField: 0.5
-    <Strength>k__BackingField: 0.5
-    <Vibrato>k__BackingField: 10
-    <Randomness>k__BackingField: 90
+  _shakeID: 3
   _targetProvider: {fileID: 8954570385825564128}
-  _stiffness: 4
-  _damping: 2
-  _maxRotationSpeed: 360
+  _stiffness: 1.14
+  _damping: 0.5
+  _maxRotationSpeed: 90
 --- !u!1 &2133513638634037479
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +451,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -469,7 +465,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.24, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &2913502758180602017
 MonoBehaviour:
@@ -768,11 +764,7 @@ MonoBehaviour:
   Prefab: {fileID: 557765036821876407, guid: 8197224359ad24401b5478c79f0390e1, type: 3}
   ObjectCount: 80
   SpawnPeriodLimits: {x: 0.1, y: 0.10478581}
-  _cameraShakeSettings:
-    <Duration>k__BackingField: 0.5
-    <Strength>k__BackingField: 1
-    <Vibrato>k__BackingField: 15
-    <Randomness>k__BackingField: 90
+  _shakeID: 1
   _targetProvider: {fileID: 8954570385825564128}
 --- !u!114 &3655950577623271647
 MonoBehaviour:

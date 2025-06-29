@@ -41,7 +41,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             while (IsAttacking)
             {
                 Vector2 direction = _targetProvider.Player.Position - (Vector2)_laserOrigin.position;
-                float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                float targetAngle = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
                 
                 float currentAngle = _laserOrigin.eulerAngles.z;
                 float angleDelta = Mathf.DeltaAngle(currentAngle, targetAngle);

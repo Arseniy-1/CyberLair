@@ -32,8 +32,6 @@ namespace Project.Scripts.EnemySystem.Bosses
         
         private void OnDisable()
         {
-            Debug.Log("Boss Composite Attacker is disabled");
-            
             _generalAttacksPerformer?.Disable();
             _specialAttacksPerformer?.Disable();
             
@@ -59,13 +57,10 @@ namespace Project.Scripts.EnemySystem.Bosses
         
         protected override IEnumerator Attack()
         {
-            // Debug.Log($"Waiting attack order = {_attacksOrder.Count > 0}");
             yield return new WaitUntil(() => _attacksOrder.Count > 0);
-            // Debug.Log($"Waiting attack order = {_attacksOrder.Count > 0}");
             
             ApplyAttack(_attacksOrder.Dequeue());
             
-            // Debug.Log($"{gameObject.name} delay");
             yield return new WaitForSeconds(_currentAttack.AttackStats.AttackDelay);
             
             _bossAnimationEvents.Attacking += HandleBossAttackEvent;
@@ -73,11 +68,7 @@ namespace Project.Scripts.EnemySystem.Bosses
 
             yield return new WaitUntil(() => _isAttacking);
             
-            // Debug.Log($"Waiting {_currentAttack.name}");
-            
             yield return _currentAttack.Performing();
-            
-            // Debug.Log($"{_currentAttack.name} is done");
         }
 
         private void ApplyAttack(BossAttack attack)
