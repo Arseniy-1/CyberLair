@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using YG;
+﻿using YG;
 
 public class SoundSlider : SettingSlider
 {

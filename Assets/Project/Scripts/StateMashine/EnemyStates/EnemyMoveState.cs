@@ -7,17 +7,14 @@ namespace StateMashineSytem.EnemyStates
     {
         private IStateSwitcher _stateSwitcher;
         private readonly EnemyMover _mover;
-        private readonly Enemy _enemy;
         private readonly EnemyTargetProvider _enemyTargetProvider;
         private readonly EnemyAttackCooldown _cooldown;
         
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
         private  Animator _animator;
 
-        public EnemyMoveState(Enemy enemy, EnemyMover mover,
-            EnemyTargetProvider enemyTargetProvider, EnemyAttackCooldown cooldown)
+        public EnemyMoveState(EnemyMover mover, EnemyTargetProvider enemyTargetProvider, EnemyAttackCooldown cooldown)
         {
-            _enemy = enemy;
             _mover = mover;
             _enemyTargetProvider = enemyTargetProvider;
             _cooldown = cooldown;

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 

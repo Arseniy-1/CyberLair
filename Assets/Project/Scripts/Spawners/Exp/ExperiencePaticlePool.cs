@@ -2,9 +2,7 @@
 
 public class ExperiencePaticlePool : Pool<ExperienceParticle>
 {
-    public ExperiencePaticlePool(ExperienceParticle prefab, int startAmount) : base(prefab, startAmount)
-    {
-    }
+    public ExperiencePaticlePool(ExperienceParticle prefab, int startAmount) : base(prefab, startAmount) { }
 
     protected override ExperienceParticle Create()
     {

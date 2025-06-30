@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Project.Scripts.EnemySystem;
 using UnityEngine;
 
@@ -57,11 +58,10 @@ public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
 
     private void ApplyStun()
     {
-        foreach (Enemy enemy in _enemies)
+        foreach (var enemy in _enemies
+                     .Where(enemy => Enum
+                         .IsDefined(typeof(BossTypes), (BossTypes)(int)enemy.EnemyType) == false))
         {
-            if (Enum.IsDefined(typeof(BossTypes), (BossTypes)(int)enemy.EnemyType))
-                continue;
-            
             enemy.TakeStun(_stunDuration);
             enemy.EnemyStats.Speed.AddModifier(_speedModifier.Copy());
         }

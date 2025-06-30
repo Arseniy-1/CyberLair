@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class ChainZap : ISkillInstance
 {
+    private const float Duration = 0.2f;
+    
     private readonly float _chainRadius;
     private readonly int _maxBounces;
     private readonly float _damageFalloff;
@@ -60,7 +62,7 @@ public class ChainZap : ISkillInstance
         if (Random.value > _chance)
             return;
 
-        List<Enemy> hitTargets = new List<Enemy>();
+        var hitTargets = new List<Enemy>();
         Vector2 currentPosition = bullet.transform.position;
         Enemy currentTarget = FindClosestTarget(currentPosition, hitTargets);
 
@@ -130,12 +132,10 @@ public class ChainZap : ISkillInstance
 
         _fadeInTween?.Kill();
         
-        float duration = 0.2f;
-        
         _fadeInTween = view.ZapView.material
-            .DOFade(0f, duration)
+            .DOFade(0f, Duration)
             .SetEase(Ease.InOutFlash)
-            .OnComplete(() =>
+            .OnKill(() =>
             {
                 view.Disable();
                 

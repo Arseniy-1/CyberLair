@@ -1,9 +1,7 @@
-﻿using Project.Prefabs.Configs.Skills.Durability;
-
-public class Multishot : ISkillInstance
+﻿public class Multishot : ISkillInstance
 {
-    private SkillData _data;
-    private MultishotSkill _multishotSkill;
+    private readonly SkillData _data;
+    private readonly MultishotSkill _multishotSkill;
         
     public Multishot(SkillData data, MultishotSkill multishotSkill)
     {

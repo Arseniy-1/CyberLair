@@ -1,10 +1,7 @@
-﻿using Project.Prefabs.Configs.Skills.Durability;
-
-public class SnowBlood : ISkillInstance
+﻿public class SnowBlood : ISkillInstance
 {
-    private SkillData _data;
-    private SnowBloodSkill _skill;
-    
+    private readonly SkillData _data;
+    private readonly SnowBloodSkill _skill;
     
     public SnowBlood(SkillData skillData, SnowBloodSkill snowBloodSkill)
     {

@@ -19,9 +19,9 @@ namespace Project.Scripts.Services
             _soundAnimationEvents.SoundInvoked -= OnSoundInvoked;
         }
 
-        private void OnSoundInvoked(string soundAnimation)
+        private void OnSoundInvoked(string soundAnimationName)
         {
-            SoundAnimation sound = _soundAnimations.FirstOrDefault(x => x.Name == soundAnimation);
+            SoundAnimation sound = _soundAnimations.FirstOrDefault(soundAnimation => soundAnimation.Name == soundAnimationName);
 
             sound?.Audio.Play();
         }

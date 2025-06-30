@@ -54,7 +54,7 @@ namespace Project.Scripts.EnemySystem
             var states = new List<IState>
             {
                 new EnemyIdleState(this, _mover, _enemyTargetProvider),
-                new EnemyMoveState(this, _mover, _enemyTargetProvider, _cooldown),
+                new EnemyMoveState(_mover, _enemyTargetProvider, _cooldown),
                 new EnemyAttackState(_mover, _attacker, _cooldown),
                 new EnemyStunnedState(this, _mover)
             };

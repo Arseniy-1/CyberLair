@@ -7,7 +7,7 @@ public class Level : MonoBehaviour
     [SerializeField] private LevelConfig _levelConfig;
 
     private ExperienceStorage _experienceStorage;
-    private int _currentLevel = 0;
+    private int _currentLevel;
 
     public event Action LevelRaised;
 

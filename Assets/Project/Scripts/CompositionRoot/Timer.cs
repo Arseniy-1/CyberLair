@@ -5,12 +5,12 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _time;
 
-    private float _timeElapsed = 0f;
-    private int _minutes = 0;
-    private int _seconds = 0;
-    private float _nextUpdateTime = 0f;
+    private float _timeElapsed;
+    private int _minutes;
+    private int _seconds;
+    private float _nextUpdateTime;
 
-    public string CurrentTime => _time.text.ToString();
+    public string CurrentTime => _time.text;
     public int CurrentSeconds => _minutes * 60 + _seconds;
     
     private void FixedUpdate()
@@ -25,6 +25,6 @@ public class Timer : MonoBehaviour
         _seconds = Mathf.FloorToInt(_timeElapsed) % 60;
         _minutes = Mathf.FloorToInt(_timeElapsed) / 60;
 
-        _time.text = string.Format("{0:00}:{1:00}", _minutes, _seconds);
+        _time.text = $"{_minutes:00}:{_seconds:00}";
     }
 }

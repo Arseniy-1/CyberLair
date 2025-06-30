@@ -1,9 +1,7 @@
-﻿using Project.Prefabs.Configs.Skills.Durability;
-
-public class TacticalEfficiency : ISkillInstance
+﻿public class TacticalEfficiency : ISkillInstance
 {
-    private SkillData _data;
-    private TacticalEfficiencySkill _skill;
+    private readonly SkillData _data;
+    private readonly TacticalEfficiencySkill _skill;
     
     public TacticalEfficiency(SkillData skillData, TacticalEfficiencySkill tacticalEfficiency)
     {

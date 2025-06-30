@@ -114,7 +114,7 @@ public class SkillHolder
                 break;
 
             case PhantomArrowsSkill phantomArrowsSkill:
-                _skillInstances.FirstOrDefault(skill => skill.GetType() == typeof(MagicArrowSpawner)).Disable();
+                _skillInstances.FirstOrDefault(magicArrow => magicArrow.GetType() == typeof(MagicArrowSpawner))?.Disable();
 
                 _skillInstances.Add(new MagicArrowSpawner(_skillData, phantomArrowsSkill));
                 break;
@@ -128,7 +128,7 @@ public class SkillHolder
                 break;
 
             case ReducedResistanceSkill reducedResistanceSkill:
-                _skillInstances.FirstOrDefault(skill => skill.GetType() == typeof(ChainZap)).Disable();
+                _skillInstances.FirstOrDefault(chainZap => chainZap.GetType() == typeof(ChainZap))?.Disable();
 
                 _skillInstances.Add(new ChainZap(_skillData, reducedResistanceSkill));
                 break;
@@ -139,7 +139,7 @@ public class SkillHolder
 
             case StormBladeSkill stormBladeSkill:
                 var boomerang =
-                    _skillInstances.FirstOrDefault(skillInstance => skillInstance.GetType() == typeof(Boomerang));
+                    _skillInstances.FirstOrDefault(boomerang => boomerang.GetType() == typeof(Boomerang));
 
                 if (boomerang != null)
                     _skillInstances.Add(new StormBlade(stormBladeSkill, (boomerang as Boomerang)?.Orbital, _token));

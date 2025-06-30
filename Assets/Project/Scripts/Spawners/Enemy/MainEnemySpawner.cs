@@ -35,9 +35,9 @@ public class MainEnemySpawner : MonoBehaviour
             despawner.EnemyDespawn += MoveEnemy;
         }
 
-        foreach (var enemyPrefab in _enemyPrefabs)
+        foreach (var enemySpawner in _enemyPrefabs
+                     .Select(enemyPrefab => new EnemySpawner(enemyPrefab, player, _startPoolCount)))
         {
-            var enemySpawner = new EnemySpawner(enemyPrefab, player, _startPoolCount);
             _spawners.Add(enemySpawner.EnemyType, enemySpawner);
         }
     }

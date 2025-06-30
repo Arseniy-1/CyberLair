@@ -5,7 +5,7 @@ namespace Project.Prefabs.Configs.Skills.Boomerang
 {
     public class OrbitalInstance : ISkillInstance
     {
-        public Orbital Orbital { get; private set; }
+        public Orbital Orbital { get; }
 
         protected OrbitalInstance(SkillData skillData, OrbitalSkill orbitalSkill)
         {

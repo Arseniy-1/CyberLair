@@ -11,7 +11,7 @@ public class TutorialWindow : Window
 
     [SerializeField] private List<Window> _windows;
 
-    private int _currentWindowIndex = 0;
+    private int _currentWindowIndex;
 
     public event Action OnFinished;
 
@@ -63,11 +63,8 @@ public class TutorialWindow : Window
             _nextButton.gameObject.SetActive(true);
             _finishButton.gameObject.SetActive(false);
         }
-        
-        if (_currentWindowIndex < 1)
-            _previousButton.gameObject.SetActive(false);
-        else
-            _previousButton.gameObject.SetActive(true);
+
+        _previousButton.gameObject.SetActive(_currentWindowIndex >= 1);
     }
 
     private void FinishTutorial()

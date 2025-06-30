@@ -1,9 +1,7 @@
-﻿using Project.Prefabs.Configs.Skills.Durability;
-
-public class ReactiveBoots : ISkillInstance
+﻿public class ReactiveBoots : ISkillInstance
 {
-    private SkillData _data;
-    private ReactiveBootsSkill _skill;
+    private readonly SkillData _data;
+    private readonly ReactiveBootsSkill _skill;
     
     public ReactiveBoots(SkillData data, ReactiveBootsSkill skill)
     {

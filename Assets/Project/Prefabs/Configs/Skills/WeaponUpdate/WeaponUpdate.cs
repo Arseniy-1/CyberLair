@@ -1,6 +1,4 @@
-﻿using Project.Prefabs.Configs.Skills.Durability;
-
-public class WeaponUpdate : ISkillInstance
+﻿public class WeaponUpdate : ISkillInstance
 {
     private readonly SkillData _data;
     private readonly WeaponUpdateSkill _skill;

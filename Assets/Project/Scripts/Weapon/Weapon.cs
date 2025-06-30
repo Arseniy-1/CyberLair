@@ -11,11 +11,10 @@ namespace Project.Scripts.Weapon
             
         [SerializeField] protected Bullet BulletPrefab;
         [SerializeField] protected Transform ShootPoint;
-        [SerializeField] protected Animator WeaponAnimator;
         [SerializeField] protected AmmoSpawner AmmoSpawner;
         [SerializeField] protected List<BulletEffector> BulletEffectors;
-        
-        protected float CurrentTime = 0;
+
+        private float CurrentTime;
         protected bool IsReloaded;
         protected IWeaponStats _weaponStats;
 
@@ -75,12 +74,6 @@ namespace Project.Scripts.Weapon
             rotation.z += Random.Range(-_weaponStats.WeaponSpread.CurrentValue, _weaponStats.WeaponSpread.CurrentValue);
             
             return rotation;
-        }
-
-        public void ApplyEffector(BulletEffector bulletEffector)
-        {
-            BulletEffectors.Add(bulletEffector);
-            bulletEffector.Initialize(this);
         }
     }
 }

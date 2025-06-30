@@ -26,7 +26,7 @@ namespace StateMashineSytem.PlayerStateMashine
             _animator = animator;
         }
 
-        public virtual void Enter()
+        public void Enter()
         {
             _playerInputController.enabled = false;
             _collider2D.enabled = false;
@@ -36,7 +36,7 @@ namespace StateMashineSytem.PlayerStateMashine
             _animator.SetTrigger(_jumpTrigger);
         }
 
-        public virtual void Exit()
+        public void Exit()
         {
             _playerInputController.enabled = true;
             _collider2D.enabled = true;
@@ -45,7 +45,7 @@ namespace StateMashineSytem.PlayerStateMashine
             _animator.ResetTrigger(_jumpTrigger);
         }
 
-        public virtual void Update() {}
+        public void Update() {}
 
         private void OnJumpPerformed()
         {

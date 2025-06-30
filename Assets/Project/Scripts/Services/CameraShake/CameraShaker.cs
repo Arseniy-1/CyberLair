@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Project.Scripts.EnemySystem.Bosses.PerimeterSentinel;
 using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using Project.Scripts.Services.Enum;
 using UniRx;

@@ -31,7 +31,7 @@ namespace StateMashineSytem.PlayerStateMashine
             _animator = animator;
         }
 
-        public virtual void Enter()
+        public void Enter()
         {
             _playerMover.enabled = true;
             _playerMover.WalkSound.Play();
@@ -40,7 +40,7 @@ namespace StateMashineSytem.PlayerStateMashine
             _animator.SetBool(_walkAnimation, _playerMover.enabled);
         }
 
-        public virtual void Exit()
+        public void Exit()
         {
             _playerMover.enabled = false;
             _playerMover.WalkSound.Stop();
@@ -49,7 +49,7 @@ namespace StateMashineSytem.PlayerStateMashine
             _animator.SetBool(_walkAnimation, _playerMover.enabled);
         }
 
-        public virtual void Update()
+        public void Update()
         {
             if (_targetScanner.HasTarget)
                 _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);

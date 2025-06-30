@@ -10,14 +10,14 @@ public class LandMine : MonoBehaviour, IDestoyable<LandMine>
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out IDamageable damageable))
-        {
-            if (other.TryGetComponent(out IStunable stunable))
-                stunable.TakeStun(_stunTime);
+        if (other.TryGetComponent(out IDamageable damageable) == false) 
+            return;
+        
+        if (other.TryGetComponent(out IStunable stunable))
+            stunable.TakeStun(_stunTime);
             
-            damageable.TakeDamage(_damage);
-            MessageBrokerHolder.Game.Publish(new M_Exploded(transform.position));
-            OnDestroyed?.Invoke(this);
-        }
+        damageable.TakeDamage(_damage);
+        MessageBrokerHolder.Game.Publish(new M_Exploded(transform.position));
+        OnDestroyed?.Invoke(this);
     }
 }

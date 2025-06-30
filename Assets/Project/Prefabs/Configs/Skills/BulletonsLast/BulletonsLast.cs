@@ -1,8 +1,3 @@
-using System;
-using Project.Prefabs.Configs.Skills.Durability;
-using Project.Scripts.Weapon;
-using UnityEngine;
-
 namespace Project.Prefabs.Configs.Skills.BulletonsLast
 {
     public class BulletonsLast : ISkillInstance

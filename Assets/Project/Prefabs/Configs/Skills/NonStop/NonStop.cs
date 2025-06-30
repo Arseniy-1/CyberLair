@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
-using Project.Prefabs.Configs.Skills.Durability;
 using UniRx;
 
 public class NonStop : ISkillInstance

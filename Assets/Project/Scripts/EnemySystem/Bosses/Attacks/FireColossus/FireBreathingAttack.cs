@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Project.Prefabs.Configs.Skills.FireZone;
 using UnityEngine;
 

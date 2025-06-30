@@ -19,7 +19,7 @@ public class MapSelector : MonoBehaviour
     [SerializeField] private SceneOpener _easySceneOpener;
     [SerializeField] private SceneOpener _hardSceneOpener;
 
-    private int _currentMapIndex = 0;
+    private int _currentMapIndex;
 
     private void OnEnable()
     {
@@ -60,8 +60,6 @@ public class MapSelector : MonoBehaviour
 
     private void HandleButtonClick()
     {
-        string developMapName = "DevelopedMap";
-
         MapData selectedMap = _maps[_currentMapIndex];
 
         LocalizationManager.Language = YandexGame.lang;
@@ -71,7 +69,5 @@ public class MapSelector : MonoBehaviour
 
         _easySceneOpener.SetScene(selectedMap.EasyMap);
         _hardSceneOpener.SetScene(selectedMap.HardMap);
-
-        _startGameButton.interactable = selectedMap.MapNameKey != developMapName;
     }
 }

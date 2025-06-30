@@ -10,7 +10,7 @@ public abstract class Pool<T> where T : MonoBehaviour
     protected T Prefab;
     protected Stack<T> Stack = new();
 
-    public Pool(T prefab, int startAmount)
+    protected Pool(T prefab, int startAmount)
     {
         Prefab = prefab;
         _startAmount = startAmount;

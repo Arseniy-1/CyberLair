@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Project.Scripts.ArenaSystem;
-using Project.Scripts.EnemySystem;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;

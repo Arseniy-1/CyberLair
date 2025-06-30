@@ -10,22 +10,17 @@ public class Jumper : MonoBehaviour
     
     private Rigidbody2D _rigidbody;
     
-    private bool _isMoving = false;
-    private bool _isOnCooldown = false;
-    private float _elapsedTime = 0f;
-    private float _cooldownTimer = 0f;
+    private bool _isMoving;
+    private float _elapsedTime;
 
     private Vector3 _jumpDirection;
 
-    private IJumpStats _jumpStats;
-
     public event Action JumpPerformed;
 
-    public bool IsOnCooldown => _isOnCooldown;
-    public float CooldownTimer => _cooldownTimer;
-    public IJumpStats JumpStats => _jumpStats;
-
-    public bool CanJump => !_isMoving && !_isOnCooldown;
+    public bool IsOnCooldown { get; private set; } = false;
+    public float CooldownTimer { get; private set; } = 0f;
+    public IJumpStats JumpStats { get; private set; }
+    public bool CanJump => !_isMoving && !IsOnCooldown;
 
     private void Awake()
     {
@@ -38,9 +33,9 @@ public class Jumper : MonoBehaviour
         {
             _elapsedTime += Time.fixedDeltaTime;
 
-            if (_elapsedTime < _jumpStats.JumpTime.CurrentValue)
+            if (_elapsedTime < JumpStats.JumpTime.CurrentValue)
             {
-                Vector3 movement = _jumpDirection * (_jumpStats.JumpSpeed.CurrentValue * Time.fixedDeltaTime);
+                Vector3 movement = _jumpDirection * (JumpStats.JumpSpeed.CurrentValue * Time.fixedDeltaTime);
                 _rigidbody.MovePosition(_rigidbody.position + (Vector2)movement);
             }
             else
@@ -51,21 +46,21 @@ public class Jumper : MonoBehaviour
             }
         }
 
-        if (_isOnCooldown)
-        {
-            _cooldownTimer += Time.deltaTime;
+        if (IsOnCooldown == false) 
+            return;
+        
+        CooldownTimer += Time.deltaTime;
 
-            if (_cooldownTimer >= _jumpStats.JumpReloadTime.CurrentValue)
-            {
-                _isOnCooldown = false;
-                _cooldownTimer = 0f;
-            }
-        }
+        if (CooldownTimer < JumpStats.JumpReloadTime.CurrentValue) 
+            return;
+            
+        IsOnCooldown = false;
+        CooldownTimer = 0f;
     }
 
     public void Initialize(IJumpStats jumpStats)
     {
-        _jumpStats = jumpStats;
+        JumpStats = jumpStats;
     }
 
     [Button]
@@ -86,7 +81,7 @@ public class Jumper : MonoBehaviour
 
     private void StartCooldown()
     {
-        _isOnCooldown = true;
-        _cooldownTimer = 0f;
+        IsOnCooldown = true;
+        CooldownTimer = 0f;
     }
 }

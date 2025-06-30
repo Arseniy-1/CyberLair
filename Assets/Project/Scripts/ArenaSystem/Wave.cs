@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using Project.Scripts.EnemySystem;
 using Cysharp.Threading.Tasks;
-using Project.Scripts.MessageBroker.EnemyMessageBrokers;
 using Project.Scripts.Servises;
 using Sirenix.Utilities;
 using Random = UnityEngine.Random;
@@ -40,9 +39,6 @@ namespace Project.Scripts.ArenaSystem
 
             if (_config.Boss != false)
             {
-                // _bossInstance = _mainEnemySpawner.Spawn(_config.Boss.EnemyType);
-                //
-                // _bossInstance.OnDestroyed += HandleBossDeath;
                 MessageBrokerHolder.Enemy
                     .Publish(new M_BossSpawned(_mainEnemySpawner.Spawn(_config.Boss.EnemyType)));
             }
@@ -91,13 +87,5 @@ namespace Project.Scripts.ArenaSystem
             
             OnWaveFinished?.Invoke(this);
         }
-
-        // private void HandleBossDeath(Enemy enemy)
-        // {
-        //     enemy.OnDestroyed -= HandleBossDeath;
-        //     
-        //     MessageBrokerHolder.Enemy
-        //         .Publish(new M_BossDeath(_bossInstance));
-        // }
     }
 }

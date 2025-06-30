@@ -1,6 +1,4 @@
 ﻿using System;
-using Project.Prefabs.Configs.Skills.Durability;
-using UnityEngine;
 
 [Serializable]
 public class PainHealler : ISkillInstance

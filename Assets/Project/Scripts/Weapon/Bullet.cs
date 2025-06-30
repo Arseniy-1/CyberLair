@@ -7,21 +7,20 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
 {
     [SerializeField] protected float Speed;
     [SerializeField] protected float LifeTime;
-    [SerializeField] private int _damage = 0;
+    [SerializeField] private int _damage;
     [SerializeField] private TrailRenderer _trail;
-    
-    private Rigidbody2D _rigidbody2D;
+
     private Coroutine _coroutine;
     private WaitForSeconds _waitLife;
 
     public event Action<Bullet> OnDestroyed;
     public event Action<IDamageable> OnDamagableCollided;
 
-    public Rigidbody2D Rigidbody2D => _rigidbody2D;
+    public Rigidbody2D Rigidbody2D { get; private set; }
 
     private void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        Rigidbody2D = GetComponent<Rigidbody2D>();
         _waitLife = new WaitForSeconds(LifeTime);
     }
 
@@ -42,7 +41,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
     
     public void Activate()
     {
-        _rigidbody2D.velocity = transform.right * Speed;
+        Rigidbody2D.velocity = transform.right * Speed;
     }
 
     public void Init(Vector3 startPosition, Quaternion rotation, int damage)
@@ -73,7 +72,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
         OnDestroyed?.Invoke(this);
     }
     
-    IEnumerator ReenableTrailNextFrame()
+    private IEnumerator ReenableTrailNextFrame()
     {
         yield return null;
         _trail.enabled = true;

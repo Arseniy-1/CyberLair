@@ -9,7 +9,6 @@ namespace Project.Scripts.MapGenerationSystem
     {
         [SerializeField] private List<MapLayer> _mapLayers;
         [SerializeField] private MapObjectPlacer _mapObjectPlacer;
-
         
         public void Initialize()
         {

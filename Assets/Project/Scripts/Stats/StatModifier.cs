@@ -16,7 +16,7 @@ public class StatModifier
     [field: SerializeField] public ModifierType Type { get; private set; }
     [field: SerializeField, MinValue(0)] public float Duration { get; private set; }
 
-    [SerializeField] private float _elapsedTime = 0;
+    [SerializeField] private float _elapsedTime;
 
     public event Action<StatModifier> ValueExpired;
     

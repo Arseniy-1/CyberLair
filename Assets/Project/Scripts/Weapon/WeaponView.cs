@@ -67,9 +67,8 @@ public class WeaponView : MonoBehaviour
 
         if (!_weapon.IsReloading || ammoCount >= maxAmmoCount) 
             return;
-        
-        int nextBulletIndex = ammoCount;
-        _blinkCoroutine = StartCoroutine(BlinkBullet(nextBulletIndex));
+
+        _blinkCoroutine = StartCoroutine(BlinkBullet(ammoCount));
     }
 
     private IEnumerator BlinkBullet(int bulletIndex)

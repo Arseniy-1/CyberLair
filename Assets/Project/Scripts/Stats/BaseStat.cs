@@ -20,9 +20,9 @@ public abstract class BaseStat
 
     public virtual void Update()
     {
-        for (int i = 0; i < _modifiers.Count; i++)
+        foreach (var modifier in _modifiers)
         {
-            _modifiers[i].Update();
+            modifier.Update();
         }
     }
     

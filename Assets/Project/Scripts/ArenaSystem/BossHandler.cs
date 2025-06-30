@@ -40,14 +40,9 @@ namespace Project.Scripts.ArenaSystem
                 .Subscribe(message => HandleBossSpawn(message.Boss))
                 .AddTo(token);
             
-            // MessageBrokerHolder.Enemy
-            //     .Receive<M_BossDeath>()
-            //     .Subscribe(message => HandleBossDeath(message.Boss))
-            //     .AddTo(token);
-            
             MessageBrokerHolder.Chest
                 .Receive<M_ChestRaised>()
-                .Subscribe(message => HandleChestRaised())
+                .Subscribe(_ => HandleChestRaised())
                 .AddTo(token);
         }
 

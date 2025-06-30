@@ -7,7 +7,7 @@ namespace Project.Scripts.Servises
     {
         private readonly List<T> _prefabs;
         private readonly List<float> _weights;
-        private readonly float _totalWeight = 0;
+        private readonly float _totalWeight;
 
         public WeightedRandomPicker(List<T> prefabs, List<float> weights)
         {

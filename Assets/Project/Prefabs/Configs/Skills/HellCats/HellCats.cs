@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class HellCats : ISkillInstance
 {
+    private const float SpawnOffsetScale = 0.7f;
+    
     private readonly HellCatSpawner _hellCatSpawner;
     private readonly FireZoneManager _fireZoneInstance;
 
@@ -35,14 +37,8 @@ public class HellCats : ISkillInstance
     
     private Vector2 GetSpawnPosition(Vector2 basePosition)
     {
-        float spawnOffsetX = 0.7f;
-        float spawnOffsetY = 0.7f;
+        Vector2 offset = Random.insideUnitCircle * SpawnOffsetScale;
         
-        Vector2 spawnOffset = new Vector2(spawnOffsetX, spawnOffsetY);
-        
-        float randomX = Random.Range(-spawnOffset.x, spawnOffset.x);
-        float randomY = Random.Range(-spawnOffset.y, spawnOffset.y);
-        
-        return new Vector2(basePosition.x + randomX, basePosition.y + randomY);
+        return basePosition + offset;
     }
 }

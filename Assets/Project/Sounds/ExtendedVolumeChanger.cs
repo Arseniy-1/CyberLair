@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class ExtendedVolumeChanger : MonoBehaviour
 {
+    private const float MinVolume = -80;
+    
     [SerializeField] private Toggle _button;
     [SerializeField] private AudioMixerGroup _audioMixer;
     [SerializeField] private Slider _slider;
 
     [SerializeField] private bool _isEnabled = true;
-    
-    private float _minlVolume = -80;
 
     private void OnDestroy()
     {
@@ -27,7 +27,7 @@ public class ExtendedVolumeChanger : MonoBehaviour
     private void ToggleMusic(bool isMuted)
     {
         if (isMuted)
-            _audioMixer.audioMixer.SetFloat(_audioMixer.name, _minlVolume);
+            _audioMixer.audioMixer.SetFloat(_audioMixer.name, MinVolume);
         else
             SetCurrentVolume(_slider.value);
 

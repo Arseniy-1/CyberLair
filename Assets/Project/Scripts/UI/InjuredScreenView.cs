@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class InjuredScreenView : MonoBehaviour
@@ -12,7 +11,7 @@ public class InjuredScreenView : MonoBehaviour
 
     private Health _health; 
     
-    private float _baseAlpha = 0f;
+    private float _baseAlpha;
     private float _pulseSpeed = 1f;
 
     private void OnDestroy()

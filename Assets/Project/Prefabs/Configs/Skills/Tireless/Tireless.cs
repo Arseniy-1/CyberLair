@@ -1,6 +1,4 @@
-﻿using Project.Prefabs.Configs.Skills.Durability;
-
-public class Tireless : ISkillInstance
+﻿public class Tireless : ISkillInstance
 {
     private readonly SkillData _data;
     private readonly TirelessSkill _skill;

@@ -5,17 +5,15 @@ using UnityEngine;
 [Serializable]
 public class Health : BaseStat
 {
-    private ShieldAmount _shieldAmount;
-
     public event Action LostHealth;
     public event Action<float> DamageTaken;
 
     public float MaxHealth => CalculateValue();
-    public ShieldAmount ShieldAmount => _shieldAmount;
+    public ShieldAmount ShieldAmount { get; private set; }
 
     public void Initialize(ShieldAmount shieldAmount)
     {
-        _shieldAmount = shieldAmount;
+        ShieldAmount = shieldAmount;
     }
 
     [Button]
@@ -34,10 +32,10 @@ public class Health : BaseStat
         if (amount < 0)
             throw new ArgumentOutOfRangeException(nameof(amount));
 
-        if (_shieldAmount != null)
+        if (ShieldAmount != null)
         {
-            float shieldDamage = Mathf.Min(_shieldAmount.CurrentValue, amount);
-            _shieldAmount.ReduceShield(shieldDamage);
+            float shieldDamage = Mathf.Min(ShieldAmount.CurrentValue, amount);
+            ShieldAmount.ReduceShield(shieldDamage);
             amount -= shieldDamage;
         }
 

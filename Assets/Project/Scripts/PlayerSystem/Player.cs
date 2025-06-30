@@ -5,7 +5,6 @@ using System;
 using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
-using Project.Scripts.MessageBroker.CameraMessageBrokers;
 using Project.Scripts.Services.Enum;
 using Project.Scripts.Services.Extensions;
 using IState = StateMashineSytem.IState;
@@ -33,8 +32,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     [SerializeField] private Collider2D _collider;
 
-    private readonly ExperienceStorage _experienceStorage = new();
-    private bool _isDamaged = false;
+    private bool _isDamaged;
     private Coroutine _imortalityCoroutine;
     private EntityStateMachine _entityStateMachine;
 
@@ -43,7 +41,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public Collider2D Collider2D => _collider;
-    public ExperienceStorage ExperienceStorage => _experienceStorage;
+    public ExperienceStorage ExperienceStorage { get; } = new();
 
     public Vector2 Position => transform.position;
 
@@ -70,7 +68,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     private void InitializeComponents()
     {
-        List<IState> playerStates = new List<IState>
+        var playerStates = new List<IState>
         {
             new PlayerIdleState(_playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
             new PlayerMoveState(_playerInputController, _playerMover, _weaponHolder, _targetScanner, _jumper),
@@ -89,7 +87,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         PlayerStats.Initialize();
         _destroyer.Initialize(PlayerStats.Health, this);
         _playerMover.Initialize(_playerInputController, _rigidbody2D, PlayerStats);
-        _playerCollisionHandler.Initialize(PlayerStats.Health, _experienceStorage);
+        _playerCollisionHandler.Initialize(PlayerStats.Health, ExperienceStorage);
         _jumper.Initialize(PlayerStats);
         _magnet.Initialize(PlayerStats, transform);
 
@@ -111,8 +109,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
         float imortalityTime = 0.7f;
 
-        if (_imortalityCoroutine == null)
-            _imortalityCoroutine = StartCoroutine(TakingImortality(imortalityTime));
+        _imortalityCoroutine ??= StartCoroutine(TakingImortality(imortalityTime));
     }
 
     public void TakeStun(float time)

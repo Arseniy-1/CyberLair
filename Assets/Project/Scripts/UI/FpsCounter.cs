@@ -5,7 +5,7 @@ public class FpsCounter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _fpsText;
     
-    private float _deltaTime = 0.0f;
+    private float _deltaTime;
 
     private void Update()
     {

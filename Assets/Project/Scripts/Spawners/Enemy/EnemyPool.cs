@@ -11,6 +11,7 @@ public class EnemyPool : Pool<Enemy>
     public EnemyPool(Enemy prefab, EnemyFabric enemyFabric, int startAmount) : base(prefab, startAmount)
     {
         _enemyFabric = enemyFabric;
+        
         CreateStartCount();
     }
 

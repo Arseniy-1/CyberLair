@@ -1,29 +1,26 @@
 using System;
 using Project.Prefabs.Configs.Skills.StunZap;
 using System.Collections.Generic;
-using Project.Prefabs.Configs.Skills.Durability;
 using Project.Scripts.EnemySystem;
 
 [Serializable]
 public class StunZap : ISkillInstance
 {
-    private float _stunDuration;
-
-    private SkillData _date;
-    
-    private List<Bullet> _subscribedBullets = new List<Bullet>();
+    private readonly float _stunDuration;
+    private readonly SkillData _data;
+    private readonly List<Bullet> _subscribedBullets = new();
     
     public StunZap(SkillData skillData, StunZapSkill skill)
     {
-        _date = skillData;
+        _data = skillData;
         _stunDuration = skill.StunDuration;
 
-        _date.WeaponHolder.Weapon.Shot += InnerSubscribe;
+        _data.WeaponHolder.Weapon.Shot += InnerSubscribe;
     }
     
     public void Disable()
     {
-        _date.WeaponHolder.Weapon.Shot -= InnerSubscribe;
+        _data.WeaponHolder.Weapon.Shot -= InnerSubscribe;
 
         foreach (var bullet in _subscribedBullets)
             bullet.OnDamagableCollided -= StunEnemy;

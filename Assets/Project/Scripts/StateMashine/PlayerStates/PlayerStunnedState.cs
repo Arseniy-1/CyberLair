@@ -5,12 +5,9 @@ namespace StateMashineSytem.PlayerStateMashine
     public class PlayerStunnedState : IState
     {
         private Player _player;
-        private PlayerMover _playerMover;
-        private Jumper _playerJumper;
+        private readonly PlayerMover _playerMover;
+        private readonly Jumper _playerJumper;
 
-        private IStateSwitcher _stateSwitcher;
-        private Animator _animator;
-        
         public PlayerStunnedState(PlayerMover playerMover, Jumper playerJumper)
         {
             _playerMover = playerMover;
@@ -29,11 +26,7 @@ namespace StateMashineSytem.PlayerStateMashine
             _playerJumper.enabled = true;
         }
 
-        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
-        {
-            _stateSwitcher = stateSwitcher;
-            _animator = animator;
-        }
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator) { }
 
         public void Update() { }
     }

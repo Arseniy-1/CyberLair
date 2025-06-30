@@ -1,9 +1,9 @@
 ﻿public class ArtayaWill : ISkillInstance
 {
-    private StatModifier _heatlhModifier;
-    private StatModifier _shieldModifier;
+    private readonly StatModifier _heatlhModifier;
+    private readonly StatModifier _shieldModifier;
 
-    private SkillData _data;
+    private readonly SkillData _data;
     
     public ArtayaWill(SkillData skillData, ArtayaWillSkill skill)
     {

@@ -15,7 +15,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
         [SerializeField] private float _lifeTime = 10f;
 
         private readonly List<IDamageable> _damageableTargets = new();
-        private float _currentTime = 0f;
+        private float _currentTime;
 
         private Coroutine _waitingDestroy;
         private WaitForSeconds _waitForLifetime;

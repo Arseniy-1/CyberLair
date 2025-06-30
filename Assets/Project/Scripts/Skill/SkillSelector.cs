@@ -10,7 +10,7 @@ public class SkillSelector : MonoBehaviour
     [SerializeField] private List<SkillView> _skillViews;
     [SerializeField] private Button _applyButton;
 
-    [SerializeField] private List<SkillView> _selectedSkills = new List<SkillView>();
+    [SerializeField] private List<SkillView> _selectedSkills = new();
     
     [SerializeField] private Sprite _defaultBanner;
     [SerializeField] private Sprite _hardBanner;
@@ -67,10 +67,7 @@ public class SkillSelector : MonoBehaviour
             _selectedSkills.Add(skillView);
         }
 
-        if (_selectedSkills.Count >= _maxSelectedSkills)
-            _applyButton.gameObject.SetActive(true);
-        else
-            _applyButton.gameObject.SetActive(false);
+        _applyButton.gameObject.SetActive(_selectedSkills.Count >= _maxSelectedSkills);
     }
 
     public void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
@@ -83,7 +80,7 @@ public class SkillSelector : MonoBehaviour
         if (inputSkillsCount == 0)
             return;
         
-        List<Skill> shuffledSkills = skills.OrderBy( skill => Random.value ).ToList( );
+        List<Skill> shuffledSkills = skills.OrderBy( _ => Random.value ).ToList( );
     
         for (int i = 0; i < inputSkillsCount; i++)
         {

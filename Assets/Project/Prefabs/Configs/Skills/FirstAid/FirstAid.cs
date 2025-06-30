@@ -3,7 +3,7 @@ namespace Project.Prefabs.Configs.Skills
     public class FirstAid : ISkillInstance
     {
         private readonly Health _health;
-        private float _healProportion;
+        private readonly float _healProportion;
         
         public FirstAid(SkillData skillData, FirstAidSkill skill)
         {

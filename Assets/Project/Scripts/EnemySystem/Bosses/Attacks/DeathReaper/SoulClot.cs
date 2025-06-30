@@ -77,7 +77,7 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
             Vector3 startPos = _transform.position;
             _previousPosition = startPos;
         
-            Vector3[] path = new Vector3[_pathResolution];
+            var path = new Vector3[_pathResolution];
         
             for (int i = 0; i < _pathResolution; i++)
             {

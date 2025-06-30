@@ -15,11 +15,6 @@ namespace Project.Scripts.Servises
             DistributeEqually(holder);
         }
 
-        public void Clear()
-        {
-            _orbitals.Clear();
-        }
-
         public void RemoveOrbital(Orbital orbital)
         {
             _orbitals.Remove(orbital);

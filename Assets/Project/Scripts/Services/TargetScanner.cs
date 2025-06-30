@@ -12,8 +12,8 @@ public class TargetScanner : MonoBehaviour
     private WaitForSeconds _delay;
 
     private Collider2D[] _hitsBuffer;
-    private readonly HashSet<ITarget> _targets = new HashSet<ITarget>();
-    private readonly List<ITarget> _sortedTargets = new List<ITarget>();
+    private readonly HashSet<ITarget> _targets = new();
+    private readonly List<ITarget> _sortedTargets = new();
 
     public ITarget ClosestTarget { get; private set; }
     public bool HasTarget => ClosestTarget != null;

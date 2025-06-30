@@ -61,7 +61,7 @@ public class HellCat : MonoBehaviour, IDestoyable<HellCat>
         Vector2 position = transform.position;
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _scanRadius, _targetLayer);
-        HashSet<ITarget> targets = new HashSet<ITarget>();
+        var targets = new HashSet<ITarget>();
 
         foreach (Collider2D hit in hits)
             if (hit.TryGetComponent(out ITarget target))
