@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UniRx;
 
@@ -95,7 +94,6 @@ public class Mediator : MonoBehaviour
         ShowSkills(_availableSkills, inputSkillsCount, outputSkillsCount);
     }
 
-    [Button]
     private void OnSkillsApplied(List<Skill> skills)
     {
         foreach (var skill in skills)

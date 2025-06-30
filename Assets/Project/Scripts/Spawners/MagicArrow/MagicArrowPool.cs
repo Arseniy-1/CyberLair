@@ -4,10 +4,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 {
     public class MagicArrowPool : Pool<MagicArrow>
     {
-        public MagicArrowPool(MagicArrow prefab, int startAmount) : base(prefab, startAmount)
-        {
-            
-        }
+        public MagicArrowPool(MagicArrow prefab, int startAmount) : base(prefab, startAmount) { }
         
         protected override MagicArrow Create()
         {

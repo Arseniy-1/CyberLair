@@ -1,6 +1,4 @@
 ﻿using System;
 
 [Serializable]
-public class HealthRegenerateAmount : BaseStat
-{
-}
+public class HealthRegenerateAmount : BaseStat { }

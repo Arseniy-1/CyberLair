@@ -36,6 +36,7 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
                 SpawnedObjects.Add(soulClot);
                 
                 var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));
+                
                 yield return wait;
             }
             

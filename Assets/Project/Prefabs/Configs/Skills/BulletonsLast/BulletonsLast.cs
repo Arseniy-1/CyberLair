@@ -11,6 +11,11 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
             if (_weapon)
                 _weapon.Shot += InnerSubscribe;
         }
+        
+        public void Disable()
+        {
+            _weapon.Shot -= InnerSubscribe;
+        }
 
         private void InnerSubscribe(Bullet bullet)
         {
@@ -29,11 +34,6 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
         {
             bullet.OnDamagableCollided -= DealCriticalDamage;
             bullet.OnDestroyed -= Unsubscribe;
-        }
-
-        public void Disable()
-        {
-            _weapon.Shot -= InnerSubscribe;
         }
     }
 }

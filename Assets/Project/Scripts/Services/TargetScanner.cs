@@ -22,6 +22,7 @@ public class TargetScanner : MonoBehaviour
     {
         _delay = new WaitForSeconds(_scanDelay);
         _hitsBuffer = new Collider2D[_maxColliders];
+        
         StartCoroutine(Scanning());
     }
 
@@ -30,6 +31,7 @@ public class TargetScanner : MonoBehaviour
         while (enabled)
         {
             yield return _delay;
+            
             Scan();
         }
     }
@@ -51,17 +53,11 @@ public class TargetScanner : MonoBehaviour
         _sortedTargets.Clear();
         _sortedTargets.AddRange(_targets);
 
-        _sortedTargets.Sort((a, b) =>
-            (a.Position - position).sqrMagnitude.CompareTo((b.Position - position).sqrMagnitude));
+        _sortedTargets.Sort((firstTarget, lastTarget) =>
+            (firstTarget.Position - position).sqrMagnitude.CompareTo((lastTarget.Position - position).sqrMagnitude));
 
         ClosestTarget = _sortedTargets.Count > 0 ? _sortedTargets[0] : null;
 
         UnityEngine.Profiling.Profiler.EndSample();
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _scanRadius);
     }
 }

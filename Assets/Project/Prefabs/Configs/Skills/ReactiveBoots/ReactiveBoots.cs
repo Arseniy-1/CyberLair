@@ -1,18 +1,18 @@
 ﻿public class ReactiveBoots : ISkillInstance
 {
     private readonly SkillData _data;
-    private readonly ReactiveBootsSkill _skill;
+    private readonly StatModifier _speedModifier;
     
     public ReactiveBoots(SkillData data, ReactiveBootsSkill skill)
     {
         _data = data;
-        _skill = skill;
+        _speedModifier = skill.SpeedModifier.Copy();
         
-        _data.PlayerStats.Speed.AddModifier(_skill.SpeedModifier);
+        _data.PlayerStats.Speed.AddModifier(_speedModifier);
     } 
     
     public void Disable()
     {
-        _data.PlayerStats.Speed.RemoveModifier(_skill.SpeedModifier);
+        _data.PlayerStats.Speed.RemoveModifier(_speedModifier);
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
 
 [Serializable]
-public class MagnetRange : BaseStat
-{
-}
+public class MagnetRange : BaseStat { }

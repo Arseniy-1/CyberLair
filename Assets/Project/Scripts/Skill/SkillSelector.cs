@@ -43,33 +43,7 @@ public class SkillSelector : MonoBehaviour
             skillView.OnClicked -= HandleSkillClicked;
         }
     }
-
-    private void HandleSkillClicked(SkillView skillView)
-    {
-        _selectSound.Play();
-        
-        if (_selectedSkills.Contains(skillView))
-        {
-            skillView.Deselect();
-            _selectedSkills.Remove(skillView);
-        }
-        else
-        {
-            if (_selectedSkills.Count >= _maxSelectedSkills)
-            {
-                _lastSelectedSkill.Deselect();
-                _selectedSkills.Remove(_lastSelectedSkill);
-            }
-
-            skillView.Select();
-
-            _lastSelectedSkill = skillView;
-            _selectedSkills.Add(skillView);
-        }
-
-        _applyButton.gameObject.SetActive(_selectedSkills.Count >= _maxSelectedSkills);
-    }
-
+    
     public void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
         gameObject.SetActive(true);
@@ -104,6 +78,32 @@ public class SkillSelector : MonoBehaviour
         }
     }
 
+    private void HandleSkillClicked(SkillView skillView)
+    {
+        _selectSound.Play();
+        
+        if (_selectedSkills.Contains(skillView))
+        {
+            skillView.Deselect();
+            _selectedSkills.Remove(skillView);
+        }
+        else
+        {
+            if (_selectedSkills.Count >= _maxSelectedSkills)
+            {
+                _lastSelectedSkill.Deselect();
+                _selectedSkills.Remove(_lastSelectedSkill);
+            }
+
+            skillView.Select();
+
+            _lastSelectedSkill = skillView;
+            _selectedSkills.Add(skillView);
+        }
+
+        _applyButton.gameObject.SetActive(_selectedSkills.Count >= _maxSelectedSkills);
+    }
+    
     private void OnApplied()
     {
         HideSkills();

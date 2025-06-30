@@ -37,8 +37,8 @@ public class HellCat : MonoBehaviour, IDestoyable<HellCat>
         if (_target == null)
             return;
         
-        var newPosition = Vector2.MoveTowards(_rigidbody.position, _target.Position,
-            _speed * Time.fixedDeltaTime);
+        var newPosition = Vector2
+            .MoveTowards(_rigidbody.position, _target.Position, _speed * Time.fixedDeltaTime);
         
         _rigidbody.MovePosition(newPosition);
     }
@@ -61,6 +61,7 @@ public class HellCat : MonoBehaviour, IDestoyable<HellCat>
         Vector2 position = transform.position;
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _scanRadius, _targetLayer);
+        
         var targets = new HashSet<ITarget>();
 
         foreach (Collider2D hit in hits)

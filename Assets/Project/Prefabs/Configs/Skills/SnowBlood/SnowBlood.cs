@@ -1,20 +1,24 @@
 ﻿public class SnowBlood : ISkillInstance
 {
     private readonly SkillData _data;
-    private readonly SnowBloodSkill _skill;
+
+    private readonly StatModifier _healthModifier;
+    private readonly StatModifier _damageModifier;
     
     public SnowBlood(SkillData skillData, SnowBloodSkill snowBloodSkill)
     {
         _data = skillData;
-        _skill = snowBloodSkill;
+
+        _healthModifier = snowBloodSkill.HealthModifier.Copy();
+        _damageModifier = snowBloodSkill.DamageModifier.Copy();
         
-        _data.PlayerStats.Health.AddModifier(_skill.HealthModifier);   
-        _data.PlayerStats.WeaponDamage.AddModifier(_skill.DamageModifier);   
+        _data.PlayerStats.Health.AddModifier(_healthModifier);   
+        _data.PlayerStats.WeaponDamage.AddModifier(_damageModifier);   
     }
     
     public void Disable()
     {
-        _data.PlayerStats.Health.RemoveModifier(_skill.HealthModifier);   
-        _data.PlayerStats.WeaponDamage.RemoveModifier(_skill.DamageModifier);
+        _data.PlayerStats.Health.RemoveModifier(_healthModifier);   
+        _data.PlayerStats.WeaponDamage.RemoveModifier(_damageModifier);
     }
 }

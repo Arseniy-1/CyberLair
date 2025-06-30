@@ -3,6 +3,7 @@ using System.Collections;
 using Project.Scripts.EnemySystem.Bosses;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
 {
     [SerializeField] protected float Speed;
@@ -21,6 +22,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
     private void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
+        
         _waitLife = new WaitForSeconds(LifeTime);
     }
 
@@ -30,7 +32,9 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
 
         if (collision.TryGetComponent(out IDamageable damagable) == false) 
             return;
+        
         OnDamagableCollided?.Invoke(damagable);
+        
         damagable.TakeDamage(_damage);
     }
     
@@ -75,6 +79,7 @@ public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
     private IEnumerator ReenableTrailNextFrame()
     {
         yield return null;
+        
         _trail.enabled = true;
     }
 }

@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using Project.Scripts.Weapon;
 using UnityEngine;
 
@@ -8,13 +7,11 @@ public class WeaponHolder : MonoBehaviour
 
     public Weapon Weapon => _currentWeapon;
     
-    [Button]
     public void Shoot()
     {
         _currentWeapon.TryAttack();
     }
 
-    [Button]
     public void SpotTarget(ITarget target)
     {
         Vector3 targetPosition = target.Position;

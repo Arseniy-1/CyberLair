@@ -2,9 +2,7 @@
 
 public class HellCatPool : Pool<HellCat>
 {
-    public HellCatPool(HellCat prefab, int startAmount) : base(prefab, startAmount)
-    {
-    }
+    public HellCatPool(HellCat prefab, int startAmount) : base(prefab, startAmount) { }
 
     protected override HellCat Create()
     {

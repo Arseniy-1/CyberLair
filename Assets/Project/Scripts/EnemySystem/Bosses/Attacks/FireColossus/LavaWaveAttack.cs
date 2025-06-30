@@ -30,6 +30,7 @@ namespace Project.Scripts.EnemySystem.Bosses.FireColossus
                 SpawnedObjects.Add(lavaWave);
                 
                 var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));
+                
                 yield return wait;
             }
         }

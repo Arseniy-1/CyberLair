@@ -29,6 +29,12 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             _laserOrigin = transform;
             _laser.Initialize(Damage);
         }
+        
+        public override void Disable()
+        {
+            _collider.enabled = false;
+            View.gameObject.SetActive(false);
+        }
 
         protected override IEnumerator Attack()
         {   
@@ -59,12 +65,6 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             }
             
             Disable();
-        }
-
-        public override void Disable()
-        {
-            _collider.enabled = false;
-            View.gameObject.SetActive(false);
         }
     }
 }

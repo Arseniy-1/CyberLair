@@ -37,10 +37,6 @@ namespace Project.Scripts.Services
         private void ApplyCameraZoom(float endValue)
         {
             _cameraZoomTween?.Kill();
-                
-            // _cameraZoomTween = DOTween
-            //     .To(() => _mainCamera.orthographicSize, currentValue => _mainCamera.orthographicSize = currentValue, endValue, _zoomDuration)
-            //     .SetEase(Ease.InOutSine);
             
             _cameraZoomTween = _camera.DOOrthoSize(endValue, _zoomDuration).SetEase(Ease.InOutSine);
         }

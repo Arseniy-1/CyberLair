@@ -1,3 +1,1 @@
-﻿public class M_GameUnpaused
-{
-}
+﻿public struct M_GameUnpaused { }

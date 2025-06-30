@@ -13,9 +13,6 @@ namespace Project.Prefabs.Configs.Skills.Boomerang
             skillData.PlayerStats.OrbitalHandler.AddOrbital(Orbital, skillData.WeaponHolder.transform);
         }
 
-        public void Disable()
-        {
-            // Object.Destroy(Orbital.gameObject);
-        }
+        public void Disable() { }
     }
 }

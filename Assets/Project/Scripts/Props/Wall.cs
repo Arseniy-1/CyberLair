@@ -1,5 +1,3 @@
 using UnityEngine;
 
-public class Wall : MonoBehaviour
-{
-}
+public class Wall : MonoBehaviour { }

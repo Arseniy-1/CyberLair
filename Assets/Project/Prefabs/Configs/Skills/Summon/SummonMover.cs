@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class SummonMover : MonoBehaviour
 {
     [SerializeField] private Animator _animator;

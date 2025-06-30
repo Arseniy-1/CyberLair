@@ -2,7 +2,5 @@
 
 namespace Project.Scripts.ArenaSystem
 {
-    public class Cage : MonoBehaviour
-    {
-    }
+    public class Cage : MonoBehaviour { }
 }

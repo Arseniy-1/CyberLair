@@ -39,6 +39,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
                 SpawnedObjects.Add(shake);
                 
                 var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));
+                
                 yield return wait;
             }
         }

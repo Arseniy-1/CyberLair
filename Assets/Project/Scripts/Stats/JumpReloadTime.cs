@@ -1,6 +1,4 @@
 ﻿using System;
 
 [Serializable]
-public class JumpReloadTime : BaseStat
-{
-}
+public class JumpReloadTime : BaseStat { }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
 using Project.Scripts.Services.Enum;
@@ -33,7 +32,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private Collider2D _collider;
 
     private bool _isDamaged;
-    private Coroutine _imortalityCoroutine;
+    private Coroutine _immortalityCoroutine;
     private EntityStateMachine _entityStateMachine;
 
     public event Action OnDeath;
@@ -55,15 +54,15 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _playerInputController.OnShootButtonPressed += Shoot;
     }
 
-    private void OnDisable()
-    {
-        _playerInputController.OnShootButtonPressed -= Shoot;
-    }
-
     private void Update()
     {
         PlayerStats.Update();
         _entityStateMachine.Update();
+    }
+    
+    private void OnDisable()
+    {
+        _playerInputController.OnShootButtonPressed -= Shoot;
     }
 
     private void InitializeComponents()
@@ -98,7 +97,6 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _injuredScreenView.Initialize(PlayerStats.Health);
     }
 
-    [Button]
     public void TakeDamage(float amount)
     {
         _damageSound.Play();
@@ -109,12 +107,17 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
         float imortalityTime = 0.7f;
 
-        _imortalityCoroutine ??= StartCoroutine(TakingImortality(imortalityTime));
+        _immortalityCoroutine ??= StartCoroutine(TakingImortality(imortalityTime));
     }
 
     public void TakeStun(float time)
     {
         StartCoroutine(TakingStun(time));
+    }
+    
+    public void Die()
+    {
+        OnDeath?.Invoke();
     }
 
     private IEnumerator TakingStun(float time)
@@ -142,10 +145,5 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     private void Shoot()
     {
         _weaponHolder.Shoot();
-    }
-
-    public void Die()
-    {
-        OnDeath?.Invoke();
     }
 }

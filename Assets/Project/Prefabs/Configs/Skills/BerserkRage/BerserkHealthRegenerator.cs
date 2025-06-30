@@ -10,11 +10,16 @@ public class BerserkHealthRegenerator : ISkillInstance
     public BerserkHealthRegenerator(SkillData skillData, BerserkRageSkill skill)
     {
         _criticalHealthLevel = skill.CriticalHealthLevel;
-        _healthRegeneratorModifier = skill.HealthRegeneratorModifier;
+        _healthRegeneratorModifier = skill.HealthRegeneratorModifier.Copy();
         _skillData = skillData;
         _healthRegenerateAmount = _skillData.PlayerStats.HealthRegenerateAmount;
         
         _skillData.PlayerStats.Health.AmountChanged += OnHealthChanged;
+    }
+    
+    public void Disable()
+    {
+        _skillData.PlayerStats.Health.AmountChanged -= OnHealthChanged;
     }
     
     private void OnHealthChanged(float maxHealth, float currentHealth)
@@ -23,10 +28,5 @@ public class BerserkHealthRegenerator : ISkillInstance
             _healthRegenerateAmount.AddModifier(_healthRegeneratorModifier);
         else
             _healthRegenerateAmount.RemoveModifier(_healthRegeneratorModifier);
-    }
-
-    public void Disable()
-    {
-        _skillData.PlayerStats.Health.AmountChanged -= OnHealthChanged;
     }
 }

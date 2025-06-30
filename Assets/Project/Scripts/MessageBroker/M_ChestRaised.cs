@@ -1,3 +1,1 @@
-﻿public class M_ChestRaised
-{
-}
+﻿public struct M_ChestRaised { }

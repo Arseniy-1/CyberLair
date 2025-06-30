@@ -12,7 +12,6 @@ namespace Project.Scripts.Weapon
         [SerializeField] protected Bullet BulletPrefab;
         [SerializeField] protected Transform ShootPoint;
         [SerializeField] protected AmmoSpawner AmmoSpawner;
-        [SerializeField] protected List<BulletEffector> BulletEffectors;
 
         private float CurrentTime;
         protected bool IsReloaded;
@@ -24,19 +23,9 @@ namespace Project.Scripts.Weapon
         protected virtual void Awake()
         {
             AmmoSpawner = new AmmoSpawner(BulletPrefab);
-
-            foreach (var effector in BulletEffectors)
-            {
-                effector.Initialize(this);
-            }
         }
 
-        public virtual void Initialize(IWeaponStats weaponStats)
-        {
-            _weaponStats = weaponStats;
-        }
-
-        protected virtual void FixedUpdate()
+        private void FixedUpdate()
         {
             if (CurrentTime < _weaponStats.WeaponBulletReloadTime.CurrentValue && !IsReloaded)
                 CurrentTime += Time.deltaTime;
@@ -44,14 +33,13 @@ namespace Project.Scripts.Weapon
             if (CurrentTime >= _weaponStats.WeaponBulletReloadTime.CurrentValue)
                 Reload();
         }
+        
+        public virtual void Initialize(IWeaponStats weaponStats)
+        {
+            _weaponStats = weaponStats;
+        }
 
         public abstract bool TryAttack();
-
-        private void Reload()
-        {
-            CurrentTime = 0;
-            IsReloaded = true;
-        }
 
         protected void Attack()
         {
@@ -66,6 +54,12 @@ namespace Project.Scripts.Weapon
 
                 bullet.Activate();
             }
+        }
+        
+        private void Reload()
+        {
+            CurrentTime = 0;
+            IsReloaded = true;
         }
 
         private Quaternion GetBulletDirection()

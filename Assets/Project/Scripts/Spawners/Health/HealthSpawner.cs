@@ -28,7 +28,7 @@ public class HealthSpawner : Spawner<HealingHeart>
 
     private void OnEnemyDeath(Vector2 position)
     {
-        if (!CanSpawn())
+        if (CanSpawn() == false)
             return;
         
         HealingHeart particle = Spawn();

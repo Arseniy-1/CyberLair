@@ -1,5 +1,3 @@
 ﻿using UnityEngine;
 
-public class DeviceControlls : MonoBehaviour
-{
-}
+public class DeviceControlls : MonoBehaviour { }

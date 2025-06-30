@@ -20,12 +20,7 @@ public class JumpReloadView : MonoBehaviour
     {
         jumper.JumpPerformed += OnJumpPerformed;
     }
-
-    private void OnDisable()
-    {
-        jumper.JumpPerformed -= OnJumpPerformed;
-    }
-
+    
     private void Update()
     {
         if (jumper.IsOnCooldown)
@@ -34,6 +29,11 @@ public class JumpReloadView : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        jumper.JumpPerformed -= OnJumpPerformed;
+    }
+    
     private void OnJumpPerformed()
     {
         _cooldownImage.fillAmount = 0f;

@@ -22,7 +22,8 @@ namespace Project.Scripts.Servises
         
         private void DistributeEqually(Transform holder)
         {
-            if (_orbitals.IsNullOrEmpty()) return;
+            if (_orbitals.IsNullOrEmpty()) 
+                return;
 
             int count = _orbitals.Count;
             float angleStep = 360f / count;

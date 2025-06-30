@@ -1,6 +1,4 @@
 ﻿using System;
 
 [Serializable]
-public class WeaponRechargingTime : BaseStat
-{
-}
+public class WeaponRechargingTime : BaseStat { }

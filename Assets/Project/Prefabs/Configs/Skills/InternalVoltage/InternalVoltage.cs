@@ -37,6 +37,11 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
             _health.DamageTaken += Shock;
         }
 
+        public void Disable()
+        {
+            _health.DamageTaken -= Shock;
+        }
+        
         private void Shock(float damage)
         {
             if(Random.value >= _chance)
@@ -59,11 +64,6 @@ namespace Project.Prefabs.Configs.Skills.InternalVoltage
                     
                 enemy.TakeStun(_stunTime);
             }
-        }
-
-        public void Disable()
-        {
-            _health.DamageTaken -= Shock;
         }
     }
 }

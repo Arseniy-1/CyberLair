@@ -2,9 +2,7 @@
 
 public class ExplosionEffectsPool : Pool<Effect>
 {
-    public ExplosionEffectsPool(Effect prefab, int startAmount) : base(prefab, startAmount)
-    {
-    }
+    public ExplosionEffectsPool(Effect prefab, int startAmount) : base(prefab, startAmount) { }
         
     protected override Effect Create()
     {

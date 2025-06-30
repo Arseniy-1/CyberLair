@@ -29,17 +29,17 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             
             _lifetimeCoroutine = StartCoroutine(Lifetime());
         }
+        
+        private void FixedUpdate()
+        {
+            _rigidbody.MovePosition(_rigidbody.position + Forward * (_speed * Time.fixedDeltaTime));
+        }
 
         private void OnDisable()
         {
             _collisionHandler.ContactLimitExpired -= Return;
             
             EndLifetime();
-        }
-        
-        private void FixedUpdate()
-        {
-            _rigidbody.MovePosition(_rigidbody.position + Forward * (_speed * Time.fixedDeltaTime));
         }
 
         private IEnumerator Lifetime()

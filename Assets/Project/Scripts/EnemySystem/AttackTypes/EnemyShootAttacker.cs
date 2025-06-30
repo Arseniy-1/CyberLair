@@ -21,12 +21,14 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             _weaponStats.WeaponBulletReloadTime.CalculateCurrentValue();
             
             _holder.Weapon.Initialize(_weaponStats);
+            
             base.Initialize(enemyTargetProvider);
         }
 
         protected override IEnumerator Attack()
         {
             _holder.Shoot();
+            
             yield return null;
         }
     }

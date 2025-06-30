@@ -124,7 +124,7 @@ public class SkillHolder
                 break;
 
             case RecoveryPainSkill recoveryPainSkill:
-                _skillInstances.Add(new PainHealler(_skillData, recoveryPainSkill));
+                _skillInstances.Add(new PainHealer(_skillData, recoveryPainSkill));
                 break;
 
             case ReducedResistanceSkill reducedResistanceSkill:

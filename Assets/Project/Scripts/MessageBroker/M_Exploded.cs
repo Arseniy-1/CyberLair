@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class M_Exploded
+public struct M_Exploded
 {    
     public M_Exploded(Vector2 position)
     {

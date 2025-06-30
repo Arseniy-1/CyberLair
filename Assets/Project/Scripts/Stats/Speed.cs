@@ -1,4 +1,2 @@
 ﻿[System.Serializable]
-public class Speed : BaseStat
-{
-}
+public class Speed : BaseStat { }

@@ -61,6 +61,11 @@ namespace Project.Prefabs.Configs.Skills.FireZone
             EndWaitingDestroy();
             ReturnToPool();
         }
+        
+        public void ReturnToPool()
+        {
+            OnDestroyed?.Invoke(this);
+        }
 
         private void ApplyFireDamage()
         {
@@ -75,11 +80,6 @@ namespace Project.Prefabs.Configs.Skills.FireZone
             yield return _waitForLifetime;
             
             ReturnToPool();
-        }
-
-        public void ReturnToPool()
-        {
-            OnDestroyed?.Invoke(this);
         }
 
         private void EndWaitingDestroy()

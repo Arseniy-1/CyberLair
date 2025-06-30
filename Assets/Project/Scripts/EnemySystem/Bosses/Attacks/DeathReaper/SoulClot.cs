@@ -48,6 +48,7 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
                 return;
             
             StopCoroutine(_destroyCoroutine);
+            
             _destroyCoroutine = null;
         }
     
@@ -56,7 +57,10 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
             _soundEvents.PlaySound(ArriveSound);
             
             _pathTween?.Kill();
-            _pathTween = _transform.DOPath(CalculatePath(), _duration).SetEase(Ease.Linear).OnUpdate(() => 
+            _pathTween = _transform
+                .DOPath(CalculatePath(), _duration)
+                .SetEase(Ease.Linear)
+                .OnUpdate(() => 
             {
                 Vector3 direction = _transform.position - _previousPosition;
                 
@@ -65,7 +69,9 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                     
                     _rotationTween?.Kill();
-                    _rotationTween = _transform.DORotate(new Vector3(0, 0, angle), 0.1f).SetEase(Ease.OutSine);
+                    _rotationTween = _transform
+                        .DORotate(new Vector3(0, 0, angle), 0.1f)
+                        .SetEase(Ease.OutSine);
                 }
                 
                 _previousPosition = _transform.position;

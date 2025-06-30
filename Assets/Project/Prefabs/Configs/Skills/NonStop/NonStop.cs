@@ -15,7 +15,7 @@ public class NonStop : ISkillInstance
         _data = skillData;
 
         _currentDiedEnemyCount = 0;
-        _neededDiedEnemyCount = skill.NedeedDiedEnemyCount;
+        _neededDiedEnemyCount = skill.NeededDiedEnemyCount;
         _landMineSpawner = new LandMineSpanwer(skill.LandMinePrefab);
 
         MessageBrokerHolder.Enemy

@@ -4,7 +4,6 @@ using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
 using System.Collections;
-using Sirenix.OdinInspector;
 
 namespace Project.Scripts.EnemySystem
 {
@@ -56,7 +55,7 @@ namespace Project.Scripts.EnemySystem
                 new EnemyIdleState(this, _mover, _enemyTargetProvider),
                 new EnemyMoveState(_mover, _enemyTargetProvider, _cooldown),
                 new EnemyAttackState(_mover, _attacker, _cooldown),
-                new EnemyStunnedState(this, _mover)
+                new EnemyStunnedState(_mover)
             };
             
             _stateMachine = new EntityStateMachine(states);
@@ -94,7 +93,6 @@ namespace Project.Scripts.EnemySystem
             _stateMachine.SwitchState<EnemyIdleState>();
         }
 
-        [Button]
         public void Die()
         {
             MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath(transform.position));
@@ -110,12 +108,6 @@ namespace Project.Scripts.EnemySystem
             yield return waitForStunTime;
         
             _stateMachine.SwitchState<EnemyIdleState>();
-        }
-        
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _attackDistance);
         }
     }
     

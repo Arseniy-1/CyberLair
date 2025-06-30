@@ -9,7 +9,7 @@ public abstract class BaseStat
     [field: SerializeField] public float BaseValue { get; protected set; }
     [field: SerializeField] public float CurrentValue { get; protected set; }
     
-    [field: SerializeField] private List<StatModifier> _modifiers = new();
+    private readonly List<StatModifier> _modifiers = new();
 
     public event Action<float, float> AmountChanged;
     
@@ -30,6 +30,7 @@ public abstract class BaseStat
     {
         modifier.ValueExpired += RemoveModifier;
         _modifiers.Add(modifier);
+        
         CalculateCurrentValue();
     }
 
@@ -37,6 +38,7 @@ public abstract class BaseStat
     {
         modifier.ValueExpired -= RemoveModifier;
         _modifiers.Remove(modifier);
+        
         CalculateCurrentValue();
     }
 
@@ -48,7 +50,8 @@ public abstract class BaseStat
             .Where(mod => mod.Type == ModifierType.Additive)
             .Aggregate(finalValue, (current, mod) => current + mod.Value);
 
-        finalValue = _modifiers.Where(mod => mod.Type == ModifierType.Multiplicative)
+        finalValue = _modifiers
+            .Where(mod => mod.Type == ModifierType.Multiplicative)
             .Aggregate(finalValue, (current, mod) => current * mod.Value);
 
         return finalValue;

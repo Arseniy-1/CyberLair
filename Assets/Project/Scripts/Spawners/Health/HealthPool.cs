@@ -2,9 +2,7 @@
 
 public class HealthPool : Pool<HealingHeart>
 {
-    public HealthPool(HealingHeart prefab, int startAmount) : base(prefab, startAmount)
-    {
-    }
+    public HealthPool(HealingHeart prefab, int startAmount) : base(prefab, startAmount) { }
         
     protected override HealingHeart Create()
     {

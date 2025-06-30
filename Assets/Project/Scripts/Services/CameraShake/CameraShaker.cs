@@ -44,8 +44,8 @@ public class CameraShaker : MonoBehaviour
         
         _shakeTween?.Kill();
 
-        _shakeTween = _camera.transform.DOShakePosition(shake.Duration,
-                shake.Strength, shake.Vibrato, shake.Randomness)
+        _shakeTween = _camera.transform
+            .DOShakePosition(shake.Duration, shake.Strength, shake.Vibrato, shake.Randomness)
             .OnKill(() => _cameraTransform.localPosition = _cameraOriginalPosition);
     }
 }

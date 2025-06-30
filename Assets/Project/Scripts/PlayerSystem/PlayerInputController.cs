@@ -45,6 +45,14 @@ public class PlayerInputController : MonoBehaviour
             .Subscribe(_ => EnableControlScheme())
             .AddTo(_disposable);
     }
+    
+    private void Update()
+    {
+        ReadMovementInput();
+
+        if (_isDevice == false && _playerInput.Land.Shoot.IsPressed())
+            Shoot();
+    }
 
     private void OnDisable()
     {
@@ -64,14 +72,6 @@ public class PlayerInputController : MonoBehaviour
         _playerInput.Disable();
     }
     
-    private void Update()
-    {
-        ReadMovementInput();
-
-        if (_isDevice == false && _playerInput.Land.Shoot.IsPressed())
-            Shoot();
-    }
-
     private void OnJumpPerformed(InputAction.CallbackContext callbackContext)
     {
         OnJumpButtonPressed?.Invoke();

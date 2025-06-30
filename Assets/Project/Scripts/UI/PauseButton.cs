@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class PauseButton : MonoBehaviour
 {
     [SerializeField] private Window _pauseWindow;
@@ -13,6 +14,7 @@ public class PauseButton : MonoBehaviour
     private void OnEnable()
     {
         _button = GetComponent<Button>();
+        
         _button.onClick.AddListener(PauseGame);
     }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -23,7 +22,6 @@ public class Level : MonoBehaviour
         _experienceStorage.LevelRaised -= UpgradeLevel;
     }
 
-    [Button]
     private void UpgradeLevel()
     {
         _currentLevel++;

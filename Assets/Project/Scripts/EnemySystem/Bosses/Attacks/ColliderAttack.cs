@@ -38,12 +38,5 @@ namespace Project.Scripts.EnemySystem.Bosses
             
             yield return null;
         }
-
-        protected void OnDrawGizmos()
-        {
-            Gizmos.color = Color.magenta;
-            
-            Gizmos.DrawWireCube((Vector2)transform.position + _offset * _bossViewScale.localScale.x, _size);
-        }
     }
 }

@@ -3,7 +3,6 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Scripts.EnemySystem;
 using Project.Scripts.MessageBroker;
-using Project.Scripts.MessageBroker.EnemyMessageBrokers;
 using UniRx;
 using UnityEngine;
 
@@ -25,7 +24,7 @@ namespace Project.Scripts.ArenaSystem
 
         private void OnDisable()
         {
-            if (_bossInstance == false)
+            if (_bossInstance)
                 _bossInstance.OnDestroyed -= HandleBossDeath;
         }
 

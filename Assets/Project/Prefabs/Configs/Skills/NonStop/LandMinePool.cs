@@ -2,9 +2,7 @@
 
 public class LandMinePool : Pool<LandMine>
 {
-    public LandMinePool(LandMine prefab, int startAmount) : base(prefab, startAmount)
-    {
-    }
+    public LandMinePool(LandMine prefab, int startAmount) : base(prefab, startAmount) { }
 
     protected override LandMine Create()
     {

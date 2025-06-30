@@ -1,5 +1,3 @@
 ﻿using UnityEngine;
 
-public class DesktopControlls : MonoBehaviour
-{
-}
+public class DesktopControlls : MonoBehaviour { }

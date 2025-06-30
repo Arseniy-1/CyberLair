@@ -6,7 +6,6 @@ public class Invincibility : MonoBehaviour
 {
     [SerializeField] private float _minDisableTime = 3f;
     [SerializeField] private float _maxDisableTime = 10f;
-
     [SerializeField] private float _activeTime = 2f;
 
     [SerializeField] private InvincibilityCollisionHandler invincibilityCollision;

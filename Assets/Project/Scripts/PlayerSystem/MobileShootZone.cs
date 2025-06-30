@@ -13,6 +13,14 @@ public class MobileShootZone : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         _isButtonPressed = false;
     }
     
+    private void Update()
+    {
+        if (_isButtonPressed)
+        {
+            OnShootButtonPressed?.Invoke();
+        }
+    }
+    
     public void OnPointerDown(PointerEventData eventData)
     {
         _isButtonPressed = true;
@@ -21,13 +29,5 @@ public class MobileShootZone : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public void OnPointerUp(PointerEventData eventData)
     {
         _isButtonPressed = false;
-    }
-    
-    private void Update()
-    {
-        if (_isButtonPressed)
-        {
-            OnShootButtonPressed?.Invoke();
-        }
     }
 }

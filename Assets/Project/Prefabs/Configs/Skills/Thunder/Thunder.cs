@@ -7,20 +7,19 @@ using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Weapon.ActiveSkills
 {
-    [Serializable]
     public class Thunder : ISkillInstance
     {
-        private float _actionRadius;
-        private LayerMask _layerMask;
-        private int _damage;
-        private float _strikesCount;
-        private float _shootsNeeded;
+        private readonly float _actionRadius;
+        private readonly LayerMask _layerMask;
+        private readonly int _damage;
+        private readonly float _strikesCount;
+        private readonly float _shootsNeeded;
 
-        private float _shootsPassed;
-        private Transform _holder;
-        private Weapon _weapon;
-        
+        private readonly Transform _holder;
+        private readonly Weapon _weapon;
         private readonly List<CommonSkillView> _views = new();
+        
+        private float _shootsPassed;
 
         public Thunder(SkillData skillData, IThunderStats thunderSkill)
         {

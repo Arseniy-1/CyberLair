@@ -11,7 +11,7 @@
         _data.PlayerStats.BulletPerShootCount.AddModifier(_multishotSkill.BulletsPerShootModifier);
     }
 
-    public  void Disable()
+    public void Disable()
     {
         _data.PlayerStats.BulletPerShootCount.RemoveModifier(_multishotSkill.BulletsPerShootModifier);
     }

@@ -21,6 +21,11 @@ namespace Project.Prefabs.Configs.Skills.FireZone
             _fireZoneSpawner = new FireZoneSpawner(fireZoneSkill.FireZonePrefab);
             skillData.WeaponHolder.Weapon.Shot += OnShot;
         }
+        
+        public void Disable()
+        {
+            _skillData.WeaponHolder.Weapon.Shot -= OnShot;
+        }
 
         private void OnShot(Bullet bullet)
         {
@@ -38,11 +43,6 @@ namespace Project.Prefabs.Configs.Skills.FireZone
             fireZone.transform.position = bullet.transform.position;
             
             FireZoneSpawned?.Invoke(fireZone);
-        }
-
-        public void Disable()
-        {
-            _skillData.WeaponHolder.Weapon.Shot -= OnShot;
         }
     }
 }

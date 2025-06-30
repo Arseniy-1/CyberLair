@@ -1,6 +1,4 @@
 ﻿using System;
 
 [Serializable]
-public class BulletPerShootCount : BaseStat
-{
-}
+public class BulletPerShootCount : BaseStat { }

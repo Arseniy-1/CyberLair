@@ -32,6 +32,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             if (_timerCoroutine != null)
             {
                 StopCoroutine(_timerCoroutine);
+                
                 _timerCoroutine = null;
             }
             
@@ -46,6 +47,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         protected override IEnumerator Attack()
         {
             _skillCollisionHandler.ContactLimitExpired += Stun;
+            
             Activate();
             
             View.gameObject.SetActive(true);
@@ -56,6 +58,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         private void Stun()
         {
             _skillCollisionHandler.ContactLimitExpired -= Stun;
+            
             _boss.TakeStun(_bossStunTime);
             
             Disable();

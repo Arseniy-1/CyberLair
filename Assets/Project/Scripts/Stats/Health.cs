@@ -1,5 +1,4 @@
 using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 [Serializable]
@@ -16,7 +15,6 @@ public class Health : BaseStat
         ShieldAmount = shieldAmount;
     }
 
-    [Button]
     public void Heal(float amount)
     {
         if (amount < 0)
@@ -26,7 +24,6 @@ public class Health : BaseStat
         OnAmountChanged(CurrentValue, MaxHealth);
     }
 
-    [Button]
     public void TakeDamage(float amount)
     {
         if (amount < 0)
@@ -50,7 +47,6 @@ public class Health : BaseStat
         DamageTaken?.Invoke(amount);
     }
 
-    [Button]
     public void SetMaxHealth(float amount)
     {
         if (amount <= 0)

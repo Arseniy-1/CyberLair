@@ -32,6 +32,11 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
             _weaponStats = skillData.WeaponHolder.Weapon.WeaponStats;
             _skillData = skillData;
         }
+        
+        public void Disable()
+        {
+            _skillData.WeaponHolder.Weapon.Shot -= InnerSubscribe;
+        }
 
         private void InnerSubscribe(Bullet bullet)
         {
@@ -56,11 +61,6 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
             }
             
             _shakeID.Shake();
-        }
-
-        public void Disable()
-        {
-            _skillData.WeaponHolder.Weapon.Shot -= InnerSubscribe;
         }
     }
 }

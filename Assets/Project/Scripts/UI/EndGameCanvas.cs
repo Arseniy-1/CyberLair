@@ -10,5 +10,4 @@ public class EndGameCanvas : MonoBehaviour
         Debug.Log(playTime);
         _timeView.text = playTime;
     }
-
 }

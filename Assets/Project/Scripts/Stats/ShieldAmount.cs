@@ -22,6 +22,7 @@ public class ShieldAmount : BaseStat
             return;
 
         CurrentValue = Mathf.Clamp(CurrentValue + repairAmount, 0f, MaxShield);
+        
         OnAmountChanged(CurrentValue, MaxShield);
     }
 
@@ -31,6 +32,7 @@ public class ShieldAmount : BaseStat
             return;
 
         BaseValue = amount;
+        
         OnAmountChanged(CurrentValue, MaxShield);
     }
 }

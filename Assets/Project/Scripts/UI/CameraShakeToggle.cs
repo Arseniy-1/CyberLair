@@ -11,6 +11,7 @@ public class CameraShakeToggle : SettingToggle
     protected override void HandleToggle(bool isOn)
     {
         YandexGame.savesData.IsCameraShakeEnabled = isOn;
+        
         YandexGame.SaveProgress();
     }
 }

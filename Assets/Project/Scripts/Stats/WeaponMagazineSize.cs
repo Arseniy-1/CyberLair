@@ -1,6 +1,4 @@
 ﻿using System;
 
 [Serializable]
-public class WeaponMagazineSize : BaseStat
-{
-}
+public class WeaponMagazineSize : BaseStat { }

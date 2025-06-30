@@ -20,11 +20,13 @@ public class StormBlade : ISkillInstance
         _maxRadius = stormBladeSkill.MaxRadius;
         _minRadius = stormBladeSkill.MinRadius;
         _changingSpeed = stormBladeSkill.ChangingSpeed;
-        
         _boomerang = boomerang as BoomerangOrbital;
+        
         RadiusChanging(token).Forget();
     }
 
+    public void Disable() { }
+    
     private async UniTaskVoid RadiusChanging(CancellationToken token)
     {
         while (token.IsCancellationRequested == false)
@@ -35,6 +37,4 @@ public class StormBlade : ISkillInstance
             await UniTask.Yield(PlayerLoopTiming.FixedUpdate, cancellationToken: token);
         }
     }
-
-    public void Disable() { }
 }

@@ -13,7 +13,7 @@ namespace Project.Scripts.Servises
         
         private Vector3 CenterPosition => _targetTransform.position;
         
-        protected virtual void FixedUpdate()
+        private void FixedUpdate()
         {
             _angle += _speed * Time.fixedDeltaTime;
 

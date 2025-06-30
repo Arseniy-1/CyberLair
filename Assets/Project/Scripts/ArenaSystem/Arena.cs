@@ -36,6 +36,11 @@ namespace Project.Scripts.ArenaSystem
         
         public IReadOnlyList<WaveConfig> WavesConfigs => _wavesConfigs;
 
+        private void OnDisable()
+        {
+            _currentWave?.Disable();
+        }
+        
         public void Initialize(Queue<Wave> waves, CancellationToken token)
         {
             _waves = waves;
@@ -50,11 +55,6 @@ namespace Project.Scripts.ArenaSystem
         public void Work()
         {
             StartNewWave();
-        }
-
-        public void OnDisable()
-        {
-            _currentWave?.Disable();
         }
 
         private void StartNewWave()

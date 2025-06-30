@@ -1,12 +1,12 @@
 ﻿using System;
 
 [Serializable]
-public class PainHealler : ISkillInstance
+public class PainHealer : ISkillInstance
 {
     private SkillData _data;
     private RecoveryPainSkill _skill;
     
-    public PainHealler(SkillData skillData, RecoveryPainSkill skill)
+    public PainHealer(SkillData skillData, RecoveryPainSkill skill)
     {
         _data = skillData;
         _skill = skill;

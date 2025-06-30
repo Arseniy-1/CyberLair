@@ -5,16 +5,13 @@ namespace StateMashineSytem.EnemyStates
 {
     public class EnemyStunnedState : IState
     {
-        private readonly Enemy _enemy;
         private readonly EnemyMover _mover;
-        private IStateSwitcher _stateSwitcher;
 
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
         private Animator _animator;
         
-        public EnemyStunnedState(Enemy enemy, EnemyMover mover)
+        public EnemyStunnedState(EnemyMover mover)
         {
-            _enemy = enemy;
             _mover = mover;
         }
         
@@ -34,7 +31,6 @@ namespace StateMashineSytem.EnemyStates
 
         public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
-            _stateSwitcher = stateSwitcher;
             _animator = animator;
         }
     }

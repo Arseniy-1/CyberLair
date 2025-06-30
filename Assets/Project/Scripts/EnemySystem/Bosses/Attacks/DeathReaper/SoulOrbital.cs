@@ -47,6 +47,7 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
         private IEnumerator WaitForDestroy()
         {
             var wait = new WaitForSeconds(_timeToDestroy);
+            
             yield return wait;
 
             ReturnToPool();

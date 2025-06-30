@@ -32,6 +32,7 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
                 _orbitalHandler.AddOrbital(orbital, _transform);
                 
                 var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));
+                
                 yield return wait;
             }
             

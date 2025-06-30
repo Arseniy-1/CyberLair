@@ -23,6 +23,7 @@ public class WeaponView : MonoBehaviour
     private void OnEnable()
     {
         _blinkWait = new WaitForSeconds(_blinkDelay);
+        
         _weapon.OnAmmoUpdated += UpdateAmmoView;
     }
 
@@ -34,6 +35,7 @@ public class WeaponView : MonoBehaviour
             return;
         
         StopCoroutine(_blinkCoroutine);
+        
         _blinkCoroutine = null;
     }
 
@@ -65,7 +67,7 @@ public class WeaponView : MonoBehaviour
             _blinkCoroutine = null;
         }
 
-        if (!_weapon.IsReloading || ammoCount >= maxAmmoCount) 
+        if (_weapon.IsReloading == false || ammoCount >= maxAmmoCount) 
             return;
 
         _blinkCoroutine = StartCoroutine(BlinkBullet(ammoCount));

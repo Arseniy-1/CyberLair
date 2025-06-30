@@ -11,6 +11,11 @@ namespace Project.Prefabs.Configs.Skills
             _healProportion = skill.HealProportion;
             _health.DamageTaken += HealPart;
         }
+        
+        public void Disable()
+        {
+            _health.DamageTaken -= HealPart;
+        }
 
         private void HealPart(float damage)
         {
@@ -18,11 +23,6 @@ namespace Project.Prefabs.Configs.Skills
                 return;
             
             _health.Heal(damage * _healProportion);
-        }
-
-        public void Disable()
-        {
-            _health.DamageTaken -= HealPart;
         }
     }
 }

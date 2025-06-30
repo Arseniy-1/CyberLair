@@ -1,6 +1,4 @@
 ﻿using System;
 
 [Serializable]
-public class JumpSpeed : BaseStat
-{
-}
+public class JumpSpeed : BaseStat { }

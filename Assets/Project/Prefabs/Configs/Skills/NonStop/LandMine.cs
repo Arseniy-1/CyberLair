@@ -17,7 +17,10 @@ public class LandMine : MonoBehaviour, IDestoyable<LandMine>
             stunable.TakeStun(_stunTime);
             
         damageable.TakeDamage(_damage);
-        MessageBrokerHolder.Game.Publish(new M_Exploded(transform.position));
+        
+        MessageBrokerHolder.Game
+            .Publish(new M_Exploded(transform.position));
+        
         OnDestroyed?.Invoke(this);
     }
 }

@@ -1,5 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -35,8 +34,8 @@ public class Jumper : MonoBehaviour
 
             if (_elapsedTime < JumpStats.JumpTime.CurrentValue)
             {
-                Vector3 movement = _jumpDirection * (JumpStats.JumpSpeed.CurrentValue * Time.fixedDeltaTime);
-                _rigidbody.MovePosition(_rigidbody.position + (Vector2)movement);
+                Vector3 movement = _jumpDirection * JumpStats.JumpSpeed.CurrentValue;
+                _rigidbody.velocity = movement;
             }
             else
             {
@@ -63,7 +62,6 @@ public class Jumper : MonoBehaviour
         JumpStats = jumpStats;
     }
 
-    [Button]
     public void Jump(Vector3 direction)
     {
         if (CanJump == false)
