@@ -75,7 +75,7 @@ namespace Project.Scripts.CompositionRoot
             _arena.WavesDone += ShowWinScreen;
             YandexGame.RewardVideoEvent += OnRewarded;
 
-            if (!YandexGame.savesData.isFirstSession) 
+            if (YandexGame.savesData.isFirstSession == false) 
                 return;
             
             _tutorialView.gameObject.SetActive(true);
@@ -108,12 +108,12 @@ namespace Project.Scripts.CompositionRoot
 
             PauseGame();
 
-            if (_timer.CurrentSeconds <= YandexGame.savesData.bestTime)
+            if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
                 return;
 
-            YandexGame.savesData.bestTime = _timer.CurrentSeconds;
+            YandexGame.savesData.BestTime = _timer.CurrentSeconds;
             YandexGame.SaveProgress();
-            YandexGame.NewLBScoreTimeConvert("Leaderboard", YandexGame.savesData.bestTime);
+            YandexGame.NewLBScoreTimeConvert("Leaderboard", YandexGame.savesData.BestTime);
         }
 
         private void OnPlayerDied()
@@ -124,12 +124,12 @@ namespace Project.Scripts.CompositionRoot
             
             PauseGame();
             
-            if (_timer.CurrentSeconds <= YandexGame.savesData.bestTime)
+            if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
                 return;
 
-            YandexGame.savesData.bestTime = _timer.CurrentSeconds;
+            YandexGame.savesData.BestTime = _timer.CurrentSeconds;
             YandexGame.SaveProgress();
-            YandexGame.NewLBScoreTimeConvert("Leaderboard", YandexGame.savesData.bestTime);
+            YandexGame.NewLBScoreTimeConvert("Leaderboard", YandexGame.savesData.BestTime);
         }
 
         private void BringBackPlayer()
@@ -165,16 +165,16 @@ namespace Project.Scripts.CompositionRoot
             var waitForInvulnerability = new WaitForSeconds(invulnerabilityTime);
 
             player.Collider2D.enabled = false;
+            
             yield return waitForInvulnerability;
+            
             player.Collider2D.enabled = true;
         }
 
         private void OnRewarded(int id)
         {
             if (id == (int)RewardedAdType.SecondChance)
-            {
                 BringBackPlayer();
-            }
         }
     }
 }
