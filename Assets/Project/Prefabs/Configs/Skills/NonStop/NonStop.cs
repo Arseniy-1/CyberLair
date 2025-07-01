@@ -7,7 +7,7 @@ public class NonStop : ISkillInstance
     private readonly int _neededDiedEnemyCount;
     private int _currentDiedEnemyCount;
 
-    private readonly LandMineSpanwer _landMineSpawner;
+    private readonly LandMineSpawner _landMineSpawner;
     private readonly SkillData _data;
 
     public NonStop(SkillData skillData, NonStopSkill skill, CancellationToken token)
@@ -16,7 +16,7 @@ public class NonStop : ISkillInstance
 
         _currentDiedEnemyCount = 0;
         _neededDiedEnemyCount = skill.NeededDiedEnemyCount;
-        _landMineSpawner = new LandMineSpanwer(skill.LandMinePrefab);
+        _landMineSpawner = new LandMineSpawner(skill.LandMinePrefab);
 
         MessageBrokerHolder.Enemy
             .Receive<M_EnemyDeath>()
