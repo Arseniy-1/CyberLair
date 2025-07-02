@@ -21,7 +21,6 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             _imps.CopyTo(temporaryImps);
             
             temporaryImps.ToList().ForEach(RemoveImp);
-            temporaryImps.ToList().ForEach(imp => imp.Die());
         }
 
         public override void Initialize(EnemyTargetProvider enemyTargetProvider)

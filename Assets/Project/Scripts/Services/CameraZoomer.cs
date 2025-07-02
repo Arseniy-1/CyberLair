@@ -8,7 +8,7 @@ namespace Project.Scripts.Services
 {
     public class CameraZoomer : MonoBehaviour
     {
-        [SerializeField, MinMaxSlider(9f, 20f)] private Vector2 _cameraZoomSize;
+        [SerializeField, MinMaxSlider(9f, 20f, showFields: true)] private Vector2 _cameraZoomSize;
         [SerializeField] private Camera _camera;
         [SerializeField] private float _zoomDuration;
         

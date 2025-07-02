@@ -58,12 +58,13 @@ namespace Project.Scripts.EnemySystem.Bosses
         protected override IEnumerator Attack()
         {
             var waitForOrderCount = new WaitUntil(() => _attacksOrder.Count > 0);
-            var waitForDelay = new WaitForSeconds(_currentAttack.AttackStats.AttackDelay);
             var waitForAttack = new WaitUntil(() => _isAttacking);
             
             yield return waitForOrderCount;
             
             ApplyAttack(_attacksOrder.Dequeue());
+            
+            var waitForDelay = new WaitForSeconds(_currentAttack.AttackStats.AttackDelay);
             
             yield return waitForDelay;
             

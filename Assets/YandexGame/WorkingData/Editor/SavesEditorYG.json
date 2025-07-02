@@ -1,16 +1,9 @@
 {
-    "idSave": 3355,
+    "idSave": 3375,
     "isFirstSession": false,
-    "language": "en",
+    "language": "ru",
     "promptDone": false,
-    "money": 1,
-    "bestTime": 238,
-    "newPlayerName": "Hello!",
-    "openLevels": [
-        false,
-        true,
-        false
-    ],
+    "BestTime": 407,
     "IsCameraShakeEnabled": true,
     "IsSoundsMuted": false,
     "MusicVolume": 0.6706026196479797,

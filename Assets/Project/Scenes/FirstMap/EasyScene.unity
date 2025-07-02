@@ -6886,7 +6886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e315fcd83446119e58bea3d3c06dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraZoomSize: {x: 9, y: 20}
+  _cameraZoomSize: {x: 10, y: 15}
   _camera: {fileID: 1162607429953371098}
   _zoomDuration: 5
 --- !u!114 &6238359536911950666 stripped
