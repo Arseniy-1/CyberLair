@@ -52,6 +52,11 @@ public class Mediator : MonoBehaviour
             .Subscribe(_ => HandleRaiseChest())
             .AddTo(_cancellationToken.Token);
     }
+    
+    private void Start()
+    {
+        ShowSkills(_availableSkills, _startInputSkillsCount, _startOutputSkillsCount);
+    }
 
     private void OnDisable()
     {
@@ -60,11 +65,6 @@ public class Mediator : MonoBehaviour
         
         _cancellationToken.Cancel();
         _playerSkillHolder?.Disable();
-    }
-    
-    private void Start()
-    {
-        ShowSkills(_availableSkills, _startInputSkillsCount, _startOutputSkillsCount);
     }
 
     private void HandleRaiseChest()
