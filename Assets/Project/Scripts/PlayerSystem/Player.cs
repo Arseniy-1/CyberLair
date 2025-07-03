@@ -105,9 +105,9 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         if (_isDamaged == false)
             PlayerStats.Health.TakeDamage(amount);
 
-        float imortalityTime = 0.7f;
+        float immortalityTime = 0.7f;
 
-        _immortalityCoroutine ??= StartCoroutine(TakingImortality(imortalityTime));
+        TakeImmortality(immortalityTime);
     }
 
     public void TakeStun(float time)
@@ -118,6 +118,21 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     public void Die()
     {
         OnDeath?.Invoke();
+        
+        EndImmortality();
+    }
+
+    public void TakeImmortality(float time)
+    {
+        _immortalityCoroutine ??= StartCoroutine(TakingImortality(time));
+    }
+
+    private void EndImmortality()
+    {
+        if(_immortalityCoroutine != null)
+            StopCoroutine(_immortalityCoroutine);
+        
+        _immortalityCoroutine = null;
     }
 
     private IEnumerator TakingStun(float time)
@@ -140,6 +155,8 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         yield return waitForImmortalityTime;
         
         _isDamaged = false;
+
+        EndImmortality();
     }
 
     private void Shoot()

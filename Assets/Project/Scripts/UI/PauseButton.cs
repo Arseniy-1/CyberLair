@@ -27,8 +27,9 @@ public class PauseButton : MonoBehaviour
     {
         _pauseWindow.gameObject.SetActive(true);
         _currentWindow.gameObject.SetActive(false);
-        MessageBrokerHolder.Game.Publish(new M_GamePaused());
-        Time.timeScale = 0;
+        
+        MessageBrokerHolder.Game
+            .Publish(new M_GamePaused());
         
         _unpauseButton.OnUnpause += ResumeGame;
     }
@@ -37,8 +38,9 @@ public class PauseButton : MonoBehaviour
     {
         _pauseWindow.gameObject.SetActive(false);
         _currentWindow.gameObject.SetActive(true);
-        MessageBrokerHolder.Game.Publish(new M_GameUnpaused());
-        Time.timeScale = 1;
+        
+        MessageBrokerHolder.Game
+            .Publish(new M_GameUnpaused());
         
         _unpauseButton.OnUnpause += ResumeGame;
     }

@@ -77,8 +77,6 @@ public class Mediator : MonoBehaviour
         if (skills.IsNullOrEmpty())
             return;
         
-        Time.timeScale = 0;
-        
         MessageBrokerHolder.Game
             .Publish(new M_GamePaused());
         
@@ -123,8 +121,9 @@ public class Mediator : MonoBehaviour
             _playerSkillHolder.CreateSkill(skill);
         }
 
-        Time.timeScale = 1;
-        MessageBrokerHolder.Game.Publish(new M_GameUnpaused());
+        MessageBrokerHolder.Game
+            .Publish(new M_GameUnpaused());
+        
         _gameUI.gameObject.SetActive(true);
     }
 }

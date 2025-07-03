@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -35,25 +34,29 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Canvas _gameCanvas;
         [SerializeField] private TutorialWindow _tutorialView;
 
+        private readonly List<ISubscribable> _subscribables = new();
+        
         private Coroutine _invulnerability;
         private CancellationTokenSource _cancellationToken;
+        
+        private GamePauser _gamePauser;
 
         private void Awake()
         {
             _cancellationToken?.Cancel();
             _cancellationToken = new CancellationTokenSource();
+            _gamePauser = new GamePauser(_cancellationToken.Token);
+            
+            _subscribables.Add(new PlayerDeathHandler(_player, _timer, _endGameCanvas, _gameCanvas));
+            _subscribables.Add(new WinScreenHandler(_timer, _arena, _winGameCanvas, _gameCanvas));
             
             _edgeSpawner.SpawnOnEdges();
             _mapGenerator.Initialize();
             _bossHandler.Initialize(_player.transform, _cancellationToken.Token);
 
             _mainEnemySpawner.Initialize(_player, _edgeSpawner.EdgeObjects, _enemyDespawners);
-            
-            var waves = new Queue<Wave>(_arena.WavesConfigs
-                .Select(config => new Wave(config, _mainEnemySpawner))
-                .ToList());
 
-            _arena.Initialize(waves, _cancellationToken.Token);
+            _arena.Initialize(_mainEnemySpawner, _cancellationToken.Token);
             _arena.Work();
 
             _level.Initialize(_player.ExperienceStorage);
@@ -71,16 +74,16 @@ namespace Project.Scripts.CompositionRoot
 
         private void OnEnable()
         {
-            _player.OnDeath += OnPlayerDied;
-            _arena.WavesDone += ShowWinScreen;
-            YandexGame.RewardVideoEvent += OnRewarded;
-
+            _subscribables.ForEach(subscribable => subscribable.Subscribe());
+            
             if (YandexGame.savesData.isFirstSession == false) 
                 return;
             
             _tutorialView.gameObject.SetActive(true);
             _tutorialView.OnFinished += OnTutorialFinished;
-            PauseGame();
+            
+            MessageBrokerHolder.Game
+                .Publish(new M_GamePaused());
 
             YandexGame.savesData.isFirstSession = false;
             YandexGame.SaveProgress();
@@ -90,91 +93,14 @@ namespace Project.Scripts.CompositionRoot
         {
             _cancellationToken?.Cancel();
             
-            _player.OnDeath -= OnPlayerDied;
-            _arena.WavesDone -= ShowWinScreen;
-            YandexGame.RewardVideoEvent -= OnRewarded;
+            _subscribables.ForEach(subscribable => subscribable.Unsubscribe());
         }
 
         private void OnTutorialFinished()
         {
             _tutorialView.gameObject.SetActive(false);
+            
             _tutorialView.OnFinished -= OnTutorialFinished;
-        }
-
-        private void ShowWinScreen()
-        {
-            _gameCanvas.gameObject.SetActive(false);
-            _winGameCanvas.gameObject.SetActive(true);
-
-            PauseGame();
-
-            if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
-                return;
-
-            YandexGame.savesData.BestTime = _timer.CurrentSeconds;
-            YandexGame.SaveProgress();
-            YandexGame.NewLBScoreTimeConvert("Leaderboard", YandexGame.savesData.BestTime);
-        }
-
-        private void OnPlayerDied()
-        {
-            _gameCanvas.gameObject.SetActive(false);
-            _endGameCanvas.gameObject.SetActive(true);
-            _endGameCanvas.ShowStats(_timer.CurrentTime);
-            
-            PauseGame();
-            
-            if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
-                return;
-
-            YandexGame.savesData.BestTime = _timer.CurrentSeconds;
-            YandexGame.SaveProgress();
-            YandexGame.NewLBScoreTimeConvert("Leaderboard", YandexGame.savesData.BestTime);
-        }
-
-        private void BringBackPlayer()
-        {
-            _player.PlayerStats.Health.Heal(_player.PlayerStats.Health.MaxHealth);
-
-            if (_invulnerability != null)
-                StopCoroutine(_invulnerability);
-
-            _invulnerability = StartCoroutine(GivePlayerInvulnerability(_player));
-
-            UnPauseGame();
-
-            _gameCanvas.gameObject.SetActive(true);
-            _endGameCanvas.gameObject.SetActive(false);
-        }
-
-        private void PauseGame()
-        {
-            Time.timeScale = 0;
-            MessageBrokerHolder.Game.Publish(new M_GamePaused());
-        }
-
-        private void UnPauseGame()
-        {
-            Time.timeScale = 1;
-            MessageBrokerHolder.Game.Publish(new M_GameUnpaused());
-        }
-
-        private IEnumerator GivePlayerInvulnerability(Player player)
-        {
-            float invulnerabilityTime = 2.5f;
-            var waitForInvulnerability = new WaitForSeconds(invulnerabilityTime);
-
-            player.Collider2D.enabled = false;
-            
-            yield return waitForInvulnerability;
-            
-            player.Collider2D.enabled = true;
-        }
-
-        private void OnRewarded(int id)
-        {
-            if (id == (int)RewardedAdType.SecondChance)
-                BringBackPlayer();
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Project.Scripts.ArenaSystem
@@ -29,21 +30,22 @@ namespace Project.Scripts.ArenaSystem
         private EnemyDeathEffectsSpawner _enemyDeathEffectsSpawner;
         private ExplosionEffectsSpawner _explosionEffectsSpawner;
         
+        private WaveQueueFactory _waveQueueFactory;
         private Queue<Wave> _waves;
         private Wave _currentWave;
         
         public event Action WavesDone;
-        
-        public IReadOnlyList<WaveConfig> WavesConfigs => _wavesConfigs;
 
         private void OnDisable()
         {
             _currentWave?.Disable();
         }
         
-        public void Initialize(Queue<Wave> waves, CancellationToken token)
+        public void Initialize(MainEnemySpawner mainEnemySpawner, CancellationToken token)
         {
-            _waves = waves;
+            _waveQueueFactory = new WaveQueueFactory();
+            
+            _waves = _waveQueueFactory.Create(_wavesConfigs, mainEnemySpawner);
 
             _enemyDeathEffectsSpawner = new EnemyDeathEffectsSpawner(_deathEffectPrefab, token);
             _explosionEffectsSpawner = new ExplosionEffectsSpawner(_explosionEffectPrefab, token); 
