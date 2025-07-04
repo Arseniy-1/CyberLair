@@ -21,13 +21,13 @@ public class PlayerDeathHandler : ISubscribable
     public void Subscribe()
     {
         _player.OnDeath += OnPlayerDied;
-        YandexGame.RewardVideoEvent -= OnRewarded;
+        YandexGame.RewardVideoEvent += OnRewarded;
     }
 
     public void Unsubscribe()
     {
         _player.OnDeath -= OnPlayerDied;
-        YandexGame.RewardVideoEvent += OnRewarded;
+        YandexGame.RewardVideoEvent -= OnRewarded;
     }
     
     private void OnPlayerDied()

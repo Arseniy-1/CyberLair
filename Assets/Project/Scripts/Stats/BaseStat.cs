@@ -20,7 +20,7 @@ public abstract class BaseStat
 
     public virtual void Update()
     {
-        foreach (var modifier in _modifiers.ToList()) //попробовать просто через for (он же проверяет условие, а не конкретную коллекцию, и не отреагирует на изменение коллкции)
+        foreach (var modifier in _modifiers.ToList()) 
         {
             modifier.Update();
         }

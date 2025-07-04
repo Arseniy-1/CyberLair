@@ -117,14 +117,14 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     
     public void Die()
     {
-        OnDeath?.Invoke();
-        
         EndImmortality();
+        
+        OnDeath?.Invoke();
     }
 
     public void TakeImmortality(float time)
     {
-        _immortalityCoroutine ??= StartCoroutine(TakingImortality(time));
+        _immortalityCoroutine ??= StartCoroutine(TakingImmortality(time));
     }
 
     private void EndImmortality()
@@ -146,7 +146,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _entityStateMachine.SwitchState<PlayerIdleState>();
     }
 
-    private IEnumerator TakingImortality(float time)
+    private IEnumerator TakingImmortality(float time)
     {
         var waitForImmortalityTime = new WaitForSeconds(time);
         
