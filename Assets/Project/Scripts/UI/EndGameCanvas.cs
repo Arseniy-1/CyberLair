@@ -7,7 +7,6 @@ public class EndGameCanvas : MonoBehaviour
 
     public void ShowStats(string playTime)
     {
-        Debug.Log(playTime);
         _timeView.text = playTime;
     }
 }

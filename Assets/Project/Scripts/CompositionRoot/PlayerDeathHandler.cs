@@ -3,6 +3,8 @@ using YG;
 
 public class PlayerDeathHandler : ISubscribable
 {
+    private const float InvulnerabilityTime = 2.5f;
+    
     private readonly Player _player;
     private readonly Timer _timer;
     
@@ -52,8 +54,7 @@ public class PlayerDeathHandler : ISubscribable
     {
         _player.PlayerStats.Health.Heal(_player.PlayerStats.Health.MaxHealth);
 
-        float invulnerabilityTime = 2.5f;
-        _player.TakeImmortality(invulnerabilityTime);
+        _player.TakeImmortality(InvulnerabilityTime);
 
         MessageBrokerHolder.Game
             .Publish(new M_GameUnpaused());

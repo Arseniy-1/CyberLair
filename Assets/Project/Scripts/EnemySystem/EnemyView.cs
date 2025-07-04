@@ -25,17 +25,22 @@ namespace Project.Scripts.EnemySystem
 
         public void StartBlink()
         {
-            _cancellationToken?.Cancel();
-            _cancellationToken = new CancellationTokenSource();
+            CancelBlink();
             
             Blink(_cancellationToken.Token).Forget();
         }
-
+        
         public void EndBlink()
         {
             _spriteRenderer.material = _defaultMaterial;
-            
+
+            CancelBlink();
+        }
+        
+        private void CancelBlink()
+        {
             _cancellationToken?.Cancel();
+            _cancellationToken = new CancellationTokenSource();
         }
 
         private async UniTaskVoid Blink(CancellationToken token)

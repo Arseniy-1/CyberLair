@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 263191306320595544}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.6, z: 0}
   m_LocalScale: {x: -5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -627,11 +627,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 512
-  _cameraShakeSettings:
-    <Duration>k__BackingField: 0.5
-    <Strength>k__BackingField: 0.5
-    <Vibrato>k__BackingField: 10
-    <Randomness>k__BackingField: 90
+  _shakeID: 0
   _bossViewScale: {fileID: 3855592996027968264}
 --- !u!1 &6000014777496233194
 GameObject:
@@ -835,11 +831,9 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 6
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 2500
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 0
 --- !u!114 &2726904778991220204
 MonoBehaviour:

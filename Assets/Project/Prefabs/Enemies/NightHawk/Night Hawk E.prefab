@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2780023936938558337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.25, z: 0}
   m_LocalScale: {x: 3.6, y: 3.6, z: 3.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &8881414196173872664
 Animator:
   serializedVersion: 5
@@ -243,11 +243,9 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 4
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 25
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 0
 --- !u!114 &1709608626960835559
 MonoBehaviour:
@@ -322,15 +320,12 @@ MonoBehaviour:
     <JumpSpeed>k__BackingField:
       <BaseValue>k__BackingField: 15
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0.9
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
 --- !u!61 &7671894555850046273
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8044513475588172888}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.72, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &5873509135308858456
 Animator:
   serializedVersion: 5
@@ -220,11 +220,9 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 1
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 90
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 5
 --- !u!114 &2244687451016219675
 MonoBehaviour:

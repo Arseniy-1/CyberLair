@@ -22,8 +22,7 @@ public class ChainZap : ISkillInstance
     private readonly Weapon _weapon;
     private readonly ChainZapViewSpawner _viewSpawner;
     
-    private Tween _fadeInTween;
-    private Tween _fadeOutTween;
+    private Tween _fadeTween;
 
     public ChainZap(SkillData skillData, IChainZapStats stats)
     {
@@ -46,8 +45,7 @@ public class ChainZap : ISkillInstance
     {
         _weapon.Shot -= InnerSubscribe;
         
-        _fadeInTween?.Kill();
-        _fadeOutTween?.Kill();
+        _fadeTween?.Kill();
     }
 
     private void InnerSubscribe(Bullet bullet)
@@ -130,17 +128,11 @@ public class ChainZap : ISkillInstance
 
         view.ZapView.material.mainTextureScale = new Vector2(Vector2.Distance(start, end), 1f);
 
-        _fadeInTween?.Kill();
-        
-        _fadeInTween = view.ZapView.material
+        _fadeTween?.Kill();
+
+        _fadeTween = view.ZapView.material
             .DOFade(0f, Duration)
             .SetEase(Ease.InOutFlash)
-            .OnKill(() =>
-            {
-                view.Disable();
-                
-                _fadeOutTween?.Kill();
-                _fadeOutTween = view.ZapView.material.DOFade(1f, 0f);
-            });
+            .OnKill(view.Disable);
     }
 }

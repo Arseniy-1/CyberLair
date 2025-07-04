@@ -27,11 +27,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.9, y: 2.9, z: 2.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6838051212812400227}
-  m_Father: {fileID: 8110797425291762515}
+  m_Father: {fileID: 171301975007036883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6737547138716812977
 MonoBehaviour:
@@ -165,6 +165,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8110797425291762515}
+  - {fileID: 3359893968982535274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &338829131333349496
@@ -257,25 +258,20 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 4
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <MoveRadius>k__BackingField: 3
     <MoveDelay>k__BackingField: 3
     <WeaponSpread>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <WeaponDamage>k__BackingField:
       <BaseValue>k__BackingField: 20
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <BulletPerShootCount>k__BackingField:
       <BaseValue>k__BackingField: 1
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <WeaponBulletReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0.5
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
   _targetScanner: {fileID: 4177437872860269052}
 --- !u!114 &4177437872860269052
 MonoBehaviour:
@@ -420,11 +416,10 @@ Transform:
   m_GameObject: {fileID: 8266974789114446711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.08, z: 0}
   m_LocalScale: {x: 2.9, y: 2.9, z: 2.9}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 3359893968982535274}
   - {fileID: 8366723739654206282}
   m_Father: {fileID: 171301975007036883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -545,7 +540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061352790078117798, guid: bac45710a126599459f0cf2c592b3bff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.366
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6061352790078117798, guid: bac45710a126599459f0cf2c592b3bff, type: 3}
       propertyPath: m_LocalPosition.z

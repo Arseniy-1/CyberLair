@@ -164,11 +164,9 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 6.5
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 40
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 5
 --- !u!114 &1802045359912388367
 MonoBehaviour:
@@ -255,15 +253,12 @@ MonoBehaviour:
     <JumpSpeed>k__BackingField:
       <BaseValue>k__BackingField: 15
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0.2
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
 --- !u!1 &8036182046258370948
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +288,7 @@ Transform:
   m_GameObject: {fileID: 8036182046258370948}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 2.7, y: 2.7, z: 2.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -350,7 +345,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &3145976921928725199
 Animator:
   serializedVersion: 5

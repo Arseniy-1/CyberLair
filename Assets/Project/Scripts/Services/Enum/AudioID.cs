@@ -45,5 +45,6 @@ public enum AudioID
     StreamingEnergy,
     Thunder,
     InternalVoltage,
-    HamsterWeapon
+    HamsterWeapon,
+    ChestArrived
 }

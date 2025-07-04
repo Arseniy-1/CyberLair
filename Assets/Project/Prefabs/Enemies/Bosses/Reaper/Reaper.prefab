@@ -58,11 +58,7 @@ MonoBehaviour:
   Prefab: {fileID: 3279646485583062671, guid: 97ae33b6a529945b5be1d4f780cc98aa, type: 3}
   ObjectCount: 20
   SpawnPeriodLimits: {x: 0.18275137, y: 0.29785928}
-  _cameraShakeSettings:
-    <Duration>k__BackingField: 0.5
-    <Strength>k__BackingField: 0.5
-    <Vibrato>k__BackingField: 10
-    <Randomness>k__BackingField: 90
+  _shakeID: 1
 --- !u!1 &1055001191066945106
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 1055001191066945106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.42, z: 0}
   m_LocalScale: {x: -8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -298,11 +294,9 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 3.5
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 3600
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 20
 --- !u!114 &4645820690688015025
 MonoBehaviour:
@@ -643,11 +637,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 512
-  _cameraShakeSettings:
-    <Duration>k__BackingField: 0.5
-    <Strength>k__BackingField: 0.5
-    <Vibrato>k__BackingField: 10
-    <Randomness>k__BackingField: 90
+  _shakeID: 0
   _bossViewScale: {fileID: 4835941464628503274}
 --- !u!1 &4184696483967535576
 GameObject:

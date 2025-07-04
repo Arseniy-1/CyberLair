@@ -247,4 +247,10 @@ MonoBehaviour:
     <Volume>k__BackingField: 0.4
     <PitchRange>k__BackingField: {x: 0.95, y: 1}
     <IsLooped>k__BackingField: 0
+  - <AudioID>k__BackingField: 39
+    <AudioClip>k__BackingField: {fileID: 8300000, guid: 48fa8d003ec0b485cac5a627f6c23090, type: 3}
+    <AudioMixer>k__BackingField: {fileID: -6364331433842670574, guid: f7ecc41908a6d7d4b83f6836a6f989ba, type: 2}
+    <Volume>k__BackingField: 0.5
+    <PitchRange>k__BackingField: {x: 1, y: 1.1}
+    <IsLooped>k__BackingField: 0
   <AudioPrefab>k__BackingField: {fileID: 3020316244169451730, guid: 7db054cd313444a05aac86959130dcd0, type: 3}

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3769576019823615280}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
@@ -116,11 +116,9 @@ MonoBehaviour:
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 3
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 50
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 15
 --- !u!114 &4679022288187799651
 MonoBehaviour:
@@ -156,19 +154,15 @@ MonoBehaviour:
     <WeaponDamage>k__BackingField:
       <BaseValue>k__BackingField: 80
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <BulletPerShootCount>k__BackingField:
       <BaseValue>k__BackingField: 1
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <WeaponSpread>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <WeaponBulletReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
 --- !u!114 &4088665956458132345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +456,7 @@ Transform:
   m_GameObject: {fileID: 8266974789114446711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.87, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -519,7 +513,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &8254375829248544736
 Animator:
   serializedVersion: 5
