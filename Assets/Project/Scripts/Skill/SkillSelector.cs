@@ -44,7 +44,7 @@ public class SkillSelector : MonoBehaviour
         }
     }
     
-    public void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
+    public void ShowSkills(IReadOnlyList<Skill> skills, int inputSkillsCount, int outputSkillsCount)
     {
         gameObject.SetActive(true);
         

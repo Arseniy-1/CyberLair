@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Sirenix.Utilities;
 using UniRx;
 
 public class Mediator : MonoBehaviour
@@ -11,51 +9,34 @@ public class Mediator : MonoBehaviour
     [SerializeField] private List<MutantSkill> _mutantSkills;
     [SerializeField] private List<HardSkill> _hardSkills;
     [SerializeField] private List<Skill> _simpleSkills;
-
-    [SerializeField] private List<Skill> _availableSkills;
-    [SerializeField] private List<Skill> _raisedSkills;
-
+    
     [SerializeField] private Player _player;
     [SerializeField] private GameObject _gameUI;
     [SerializeField] private Level _level;
     [SerializeField] private WeaponHolder _playerWeaponHolder;
     [SerializeField] private Jumper _playerJumper;
-
     [SerializeField] private SkillSelector _skillSelector;
+    
     [SerializeField] private int _startInputSkillsCount;
     [SerializeField] private int _startOutputSkillsCount;
 
+    private SkillHandler _skillHandler;
+    private SkillUIHandler _uiHandler;
     private SkillHolder _playerSkillHolder;
-    private PlayerStats _playerStats;
-    
     private CancellationTokenSource _cancellationToken;
 
-    public List<Skill> RaisedSkills => _raisedSkills;
-    
     private void OnEnable()
     {
-        _skillSelector.SkillApplyed += OnSkillsApplied;
-        _level.LevelRaised += HandleLevelUp;
-
-        _availableSkills.AddRange(_simpleSkills);
-        _simpleSkills = null;
-
-        _cancellationToken?.Cancel();
-        _cancellationToken = new CancellationTokenSource();
-        
-        _playerStats = _player.PlayerStats;
-        _playerSkillHolder = new SkillHolder(
-            new SkillData(_playerWeaponHolder, _playerStats, _playerJumper), _cancellationToken.Token);
-
-        MessageBrokerHolder.Chest
-            .Receive<M_ChestRaised>()
-            .Subscribe(_ => HandleRaiseChest())
-            .AddTo(_cancellationToken.Token);
+        InitializeComponents();
+        SubscribeToEvents();
     }
-    
+
     private void Start()
     {
-        ShowSkills(_availableSkills, _startInputSkillsCount, _startOutputSkillsCount);
+        _uiHandler.ShowSkillSelection(
+            _skillHandler.GetAvailableSkills(),
+            _startInputSkillsCount,
+            _startOutputSkillsCount);
     }
 
     private void OnDisable()
@@ -66,64 +47,42 @@ public class Mediator : MonoBehaviour
         _cancellationToken.Cancel();
         _playerSkillHolder?.Disable();
     }
-
-    private void HandleRaiseChest()
-    {
-        HandleLevelUp();
-    }
     
-    private void ShowSkills(List<Skill> skills, int inputSkillsCount, int outputSkillsCount)
+    private void InitializeComponents()
     {
-        if (skills.IsNullOrEmpty())
-            return;
+        _skillHandler = new SkillHandler(_simpleSkills, _mutantSkills, _hardSkills);
+        _uiHandler = new SkillUIHandler(_gameUI, _skillSelector);
         
-        MessageBrokerHolder.Game
-            .Publish(new M_GamePaused());
+        _cancellationToken = new CancellationTokenSource();
         
-        _gameUI.gameObject.SetActive(false);
-        _skillSelector.ShowSkills(skills, inputSkillsCount, outputSkillsCount);
+        _playerSkillHolder = new SkillHolder(
+            new SkillData(_playerWeaponHolder, _player.PlayerStats, _playerJumper),
+            _cancellationToken.Token);
     }
 
-    private void HandleLevelUp()
+    private void SubscribeToEvents()
     {
-        int inputSkillsCount = 3;
-        int outputSkillsCount = 1;
-
-        ShowSkills(_availableSkills, inputSkillsCount, outputSkillsCount);
+        _skillSelector.SkillApplyed += OnSkillsApplied;
+        _level.LevelRaised += HandleLevelUp;
+        
+        MessageBrokerHolder.Chest
+            .Receive<M_ChestRaised>()
+            .Subscribe(_ => HandleLevelUp())
+            .AddTo(_cancellationToken.Token);
     }
+
+    private void HandleLevelUp() =>
+        _uiHandler.ShowSkillSelection(_skillHandler.GetAvailableSkills(), 3, 1);
 
     private void OnSkillsApplied(List<Skill> skills)
     {
+        _skillHandler.ProcessSelectedSkills(skills);
+        
         foreach (var skill in skills)
         {
-            _availableSkills.Remove(skill);
-            _raisedSkills.Add(skill);
-
-            if(_hardSkills.Contains(skill))
-                _hardSkills.Remove((HardSkill)skill);
-            
-            if(_mutantSkills.Contains(skill))
-                _mutantSkills.Remove((MutantSkill)skill);
-
-            foreach (HardSkill hardSkill in _hardSkills.Where(hardSkill => hardSkill.IsAvailable(_raisedSkills)))
-            { 
-                if(_availableSkills.Contains(hardSkill) == false)
-                    _availableSkills.Add(hardSkill);
-            }
-
-            foreach (MutantSkill mutantSkill in _mutantSkills.Where(mutantSkill =>
-                         mutantSkill.IsAvailable(_raisedSkills)))
-            {
-                if(_availableSkills.Contains(mutantSkill) == false)
-                    _availableSkills.Add(mutantSkill);
-            }
-            
             _playerSkillHolder.CreateSkill(skill);
         }
-
-        MessageBrokerHolder.Game
-            .Publish(new M_GameUnpaused());
         
-        _gameUI.gameObject.SetActive(true);
+        _uiHandler.CloseSkillSelection();
     }
 }

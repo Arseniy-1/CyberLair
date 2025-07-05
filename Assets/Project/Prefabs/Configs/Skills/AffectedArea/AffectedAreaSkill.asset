@@ -21,9 +21,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   <DamageProportion>k__BackingField: 0.1
-  <Chance>k__BackingField: 1
-  <ShakeSettings>k__BackingField:
-    <Duration>k__BackingField: 0.2
-    <Strength>k__BackingField: 0.173
-    <Vibrato>k__BackingField: 5
-    <Randomness>k__BackingField: 90
+  <Chance>k__BackingField: 0.4
+  <ShakeID>k__BackingField: 0

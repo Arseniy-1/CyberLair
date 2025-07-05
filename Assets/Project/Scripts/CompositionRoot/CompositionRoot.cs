@@ -34,7 +34,7 @@ namespace Project.Scripts.CompositionRoot
         [SerializeField] private Canvas _gameCanvas;
         [SerializeField] private TutorialWindow _tutorialView;
 
-        private readonly List<ISubscribable> _subscribables = new();
+        private List<ISubscribable> _subscribables;
         
         private Coroutine _invulnerability;
         private CancellationTokenSource _cancellationToken;
@@ -46,9 +46,12 @@ namespace Project.Scripts.CompositionRoot
             _cancellationToken?.Cancel();
             _cancellationToken = new CancellationTokenSource();
             _gamePauser = new GamePauser(_cancellationToken.Token);
-            
-            _subscribables.Add(new PlayerDeathHandler(_player, _timer, _endGameCanvas, _gameCanvas));
-            _subscribables.Add(new WinScreenHandler(_timer, _arena, _winGameCanvas, _gameCanvas));
+
+            _subscribables = new List<ISubscribable>
+            {
+                new PlayerDeathHandler(_player, _timer, _endGameCanvas, _gameCanvas),
+                new WinScreenHandler(_timer, _arena, _winGameCanvas, _gameCanvas)
+            };
             
             _edgeSpawner.SpawnOnEdges();
             _mapGenerator.Initialize();
