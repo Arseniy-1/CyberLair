@@ -6,6 +6,9 @@ using UniRx;
 
 public class Mediator : MonoBehaviour
 {
+    private const int DefaultInputSkillsCount = 3;
+    private const int DefaultOutputSkillsCount = 1;
+    
     [SerializeField] private List<MutantSkill> _mutantSkills;
     [SerializeField] private List<HardSkill> _hardSkills;
     [SerializeField] private List<Skill> _simpleSkills;
@@ -34,7 +37,7 @@ public class Mediator : MonoBehaviour
     private void Start()
     {
         _uiHandler.ShowSkillSelection(
-            _skillHandler.GetAvailableSkills(),
+            _skillHandler.AvailableSkills,
             _startInputSkillsCount,
             _startOutputSkillsCount);
     }
@@ -72,7 +75,7 @@ public class Mediator : MonoBehaviour
     }
 
     private void HandleLevelUp() =>
-        _uiHandler.ShowSkillSelection(_skillHandler.GetAvailableSkills(), 3, 1);
+        _uiHandler.ShowSkillSelection(_skillHandler.AvailableSkills, DefaultInputSkillsCount, DefaultOutputSkillsCount);
 
     private void OnSkillsApplied(List<Skill> skills)
     {

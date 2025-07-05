@@ -16,7 +16,7 @@ public class SkillHandler
         _raisedSkills = new List<Skill>();
     }
 
-    public IReadOnlyList<Skill> GetAvailableSkills() => _availableSkills.AsReadOnly();
+    public IReadOnlyList<Skill> AvailableSkills => _availableSkills.AsReadOnly();
 
     public void ProcessSelectedSkills(List<Skill> selectedSkills)
     {
