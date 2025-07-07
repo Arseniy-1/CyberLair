@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes: []
   _enemiesWeights:
   - _prefab: {fileID: 8511549520770673055, guid: bd60b6bbe162541d1a89b33ba9f4af45, type: 3}
-    _weight: 0.55
+    _weight: 0.01
   - _prefab: {fileID: 6014211762987851508, guid: 9629869b2fccb4cff8ddb8b4a46f5a32, type: 3}
     _weight: 0.6
   - _prefab: {fileID: 263878080555140060, guid: 68493cc3985e94702bfb35f8817a67b8, type: 3}

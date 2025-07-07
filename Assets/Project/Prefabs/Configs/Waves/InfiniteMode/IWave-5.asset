@@ -27,9 +27,8 @@ MonoBehaviour:
   _boss: {fileID: 5850759209062934795, guid: 4fc294186d5f24457914b3100e6eda8a, type: 3}
   _spawnClusterSize: {x: 3, y: 6}
   _waveDuration: 90
-  _spawnDuration: 4
+  _spawnDuration: 3
   _enemyStatModifiers:
     <Value>k__BackingField: 0
     <Type>k__BackingField: 0
     <Duration>k__BackingField: 0
-    _elapsedTime: 0
