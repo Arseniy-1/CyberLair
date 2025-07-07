@@ -20549,7 +20549,7 @@ MonoBehaviour:
   _destroyer: {fileID: 9030552110350415176}
   _magnet: {fileID: 0}
   _injuredScreenView: {fileID: 5810129063412635078}
-  _shakeID: 2
+  _shakeID: 1
   _damageSound: 0
   _animator: {fileID: 4862102778778520414}
   _healthRegenerator: {fileID: 849013033050170552}
