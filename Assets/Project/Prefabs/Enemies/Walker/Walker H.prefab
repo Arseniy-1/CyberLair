@@ -76,17 +76,14 @@ MonoBehaviour:
     <Cooldown>k__BackingField: 1.5
   _jumpStats:
     <JumpSpeed>k__BackingField:
-      <BaseValue>k__BackingField: 10
+      <BaseValue>k__BackingField: 15
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 1.1
+      <BaseValue>k__BackingField: 0.6
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
 --- !u!114 &442572439295423526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,13 +121,11 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 1
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 4.5
+      <BaseValue>k__BackingField: 5
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 30
+      <BaseValue>k__BackingField: 50
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 30
 --- !u!114 &3709468705532820958
 MonoBehaviour:
@@ -271,7 +266,7 @@ Transform:
   m_GameObject: {fileID: 8334475162931949207}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.23, z: 0}
   m_LocalScale: {x: 3.2, y: 3.2, z: 3.2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -412,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5287874476240024569, guid: c700dc20b31418c42a6b5d5fefe458db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.020000001
+      value: 0.40437502
       objectReference: {fileID: 0}
     - target: {fileID: 5287874476240024569, guid: c700dc20b31418c42a6b5d5fefe458db, type: 3}
       propertyPath: m_LocalPosition.z

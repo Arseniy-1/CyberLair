@@ -19,7 +19,7 @@ MonoBehaviour:
   NeededSkills:
   - {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
   - {fileID: 11400000, guid: 6d1f0578fffbf4c8da482e210616bc7a, type: 2}
-  <KnockbackForce>k__BackingField: 1500
+  <KnockbackForce>k__BackingField: 20
   <KnockbackRadius>k__BackingField: 5
   <StunTime>k__BackingField: 0.25
   <EnemyLayer>k__BackingField:

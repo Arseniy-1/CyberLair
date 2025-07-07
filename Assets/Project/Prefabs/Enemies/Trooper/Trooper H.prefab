@@ -112,15 +112,13 @@ MonoBehaviour:
   _damageSound: 11
   <EnemyType>k__BackingField: 4
   <EnemyStats>k__BackingField:
-    <Experience>k__BackingField: 3
+    <Experience>k__BackingField: 2
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 3.6
+      <BaseValue>k__BackingField: 4.5
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 60
+      <BaseValue>k__BackingField: 80
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 15
 --- !u!114 &4679022288187799651
 MonoBehaviour:
@@ -154,21 +152,17 @@ MonoBehaviour:
   _holder: {fileID: 6737547138716812977}
   _weaponStats:
     <WeaponDamage>k__BackingField:
-      <BaseValue>k__BackingField: 20
+      <BaseValue>k__BackingField: 30
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <BulletPerShootCount>k__BackingField:
       <BaseValue>k__BackingField: 1
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <WeaponSpread>k__BackingField:
-      <BaseValue>k__BackingField: 0.05
+      <BaseValue>k__BackingField: 0.1
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <WeaponBulletReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
 --- !u!114 &4088665956458132345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +302,7 @@ Transform:
   m_GameObject: {fileID: 8266974789114446711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.26, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -365,7 +359,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &2008151160767974515
 Animator:
   serializedVersion: 5

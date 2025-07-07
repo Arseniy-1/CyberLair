@@ -832,7 +832,7 @@ MonoBehaviour:
       <BaseValue>k__BackingField: 6
       <CurrentValue>k__BackingField: 0
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 2500
+      <BaseValue>k__BackingField: 4000
       <CurrentValue>k__BackingField: 0
     <CollisionDamage>k__BackingField: 0
 --- !u!114 &2726904778991220204

@@ -132,11 +132,11 @@ MonoBehaviour:
   _enemy: {fileID: 6014211762987851508}
   _attacker: {fileID: -9061006521750571887}
   _explosion:
-    _range: 3
+    _range: 4
     _layerMask:
       serializedVersion: 2
       m_Bits: 512
-    _explosionDamage: 30
+    _explosionDamage: 50
 --- !u!114 &6014211762987851508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,20 +155,18 @@ MonoBehaviour:
   _attacker: {fileID: -9061006521750571887}
   _destroyer: {fileID: 5206861922117507840}
   _enemyTargetProvider: {fileID: 7848786051674692826}
-  _attackDistance: 2
+  _attackDistance: 5
   _view: {fileID: 1222469161822643883}
   _damageSound: 11
   <EnemyType>k__BackingField: 2
   <EnemyStats>k__BackingField:
-    <Experience>k__BackingField: 4
+    <Experience>k__BackingField: 2
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 6.5
+      <BaseValue>k__BackingField: 8
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 40
+      <BaseValue>k__BackingField: 70
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 5
 --- !u!114 &1802045359912388367
 MonoBehaviour:
@@ -247,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0.1
+    <AttackDelay>k__BackingField: 0.3
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 3
@@ -255,15 +253,12 @@ MonoBehaviour:
     <JumpSpeed>k__BackingField:
       <BaseValue>k__BackingField: 15
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpTime>k__BackingField:
       <BaseValue>k__BackingField: 0.2
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
 --- !u!1 &8036182046258370948
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +288,7 @@ Transform:
   m_GameObject: {fileID: 8036182046258370948}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 2.7, y: 2.7, z: 2.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -350,7 +345,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &3145976921928725199
 Animator:
   serializedVersion: 5

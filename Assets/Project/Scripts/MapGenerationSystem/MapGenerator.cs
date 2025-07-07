@@ -26,7 +26,6 @@ namespace Project.Scripts.MapGenerationSystem
             {
                 CellularMapConfig cellular => new CellularAutomataAlgorithm(cellular),
                 PerlinNoiseMapConfig perlinNoise => new PerlinNoiseAlgorithm(perlinNoise),
-                RandomWalkMapConfig randomWalk => new RandomWalkAlgorithm(randomWalk),
                 _ => null
             };
         }

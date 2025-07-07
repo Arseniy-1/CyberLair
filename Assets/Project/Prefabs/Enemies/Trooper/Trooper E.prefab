@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 50
-  _stunTime: 0.15
+  _stunTime: 0
 --- !u!61 &4213689946170667695
 BoxCollider2D:
   m_ObjectHideFlags: 0

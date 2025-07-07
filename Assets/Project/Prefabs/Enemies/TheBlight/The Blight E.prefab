@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 500
-  _stunTime: 0.15
+  _stunTime: 0
 --- !u!114 &6311730808988131680
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,13 +33,13 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     private bool _isDamaged;
     private Coroutine _immortalityCoroutine;
+    private Coroutine _stunCoroutine;
     private EntityStateMachine _entityStateMachine;
 
     public event Action OnDeath;
 
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
-    public Collider2D Collider2D => _collider;
     public ExperienceStorage ExperienceStorage { get; } = new();
 
     public Vector2 Position => transform.position;
@@ -112,12 +112,13 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     public void TakeStun(float time)
     {
-        StartCoroutine(TakingStun(time));
+        _stunCoroutine ??= StartCoroutine(TakingStun(time));
     }
     
     public void Die()
     {
-        EndImmortality();
+        EndCoroutine(ref _immortalityCoroutine);
+        EndCoroutine(ref _stunCoroutine);
         
         OnDeath?.Invoke();
     }
@@ -127,12 +128,12 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _immortalityCoroutine ??= StartCoroutine(TakingImmortality(time));
     }
 
-    private void EndImmortality()
+    private void EndCoroutine(ref Coroutine coroutine)
     {
-        if(_immortalityCoroutine != null)
-            StopCoroutine(_immortalityCoroutine);
-        
-        _immortalityCoroutine = null;
+        if(coroutine != null)
+            StopCoroutine(coroutine);
+    
+        coroutine = null;
     }
 
     private IEnumerator TakingStun(float time)
@@ -144,6 +145,8 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         yield return waitForStunTime;
 
         _entityStateMachine.SwitchState<PlayerIdleState>();
+        
+        EndCoroutine(ref _stunCoroutine);
     }
 
     private IEnumerator TakingImmortality(float time)
@@ -156,7 +159,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         
         _isDamaged = false;
 
-        EndImmortality();
+        EndCoroutine(ref _immortalityCoroutine);
     }
 
     private void Shoot()

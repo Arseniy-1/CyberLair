@@ -5957,14 +5957,14 @@ MonoBehaviour:
   - {fileID: 5845098830540116084, guid: be5e2c3d8c7e84e83ad5233ac8a24a10, type: 3}
   - {fileID: 1787623519210625677, guid: 8d25e22901c234a1f8cdb2cc3a7fcfcc, type: 3}
   - {fileID: 5850759209062934795, guid: 4fc294186d5f24457914b3100e6eda8a, type: 3}
-  - {fileID: 951908415480540463, guid: 24f2aef02ba53455fa52f921913eea5e, type: 3}
-  - {fileID: 6014211762987851508, guid: 1bfec0e70ee844b0e802bfad9f8a3636, type: 3}
-  - {fileID: 263878080555140060, guid: 8c5f0fd79edd9454086fb6cebcc4135b, type: 3}
-  - {fileID: 4382913821471026158, guid: 8df597108bd3644f4a4fbf412b8b8ca7, type: 3}
-  - {fileID: -4304947118811211038, guid: 16dd382a4bc72423cb823e56d13c718f, type: 3}
-  - {fileID: 8511549520770673055, guid: 4a55836fce1af4a3584565c5ae143bb7, type: 3}
-  - {fileID: 4399603215803775128, guid: 6e098fb84a4c64d50a514e387b176af2, type: 3}
-  - {fileID: 4399603215803775128, guid: 01b478598f76b4fab9151920b2723de9, type: 3}
+  - {fileID: 951908415480540463, guid: e375afa8028e84614ad7cbe0d247a0d0, type: 3}
+  - {fileID: 6014211762987851508, guid: d809e709c6e154514b07e47eceeef948, type: 3}
+  - {fileID: 263878080555140060, guid: 0184b578f76594c92aa0e1b270dd7477, type: 3}
+  - {fileID: 4382913821471026158, guid: b2c86790d9ef043e9b40cfce56d56427, type: 3}
+  - {fileID: -4304947118811211038, guid: f2516f25a76014d938c4f90bd2d46c8a, type: 3}
+  - {fileID: 8511549520770673055, guid: 4a16390225e2c4f6da0b587e1c79dff6, type: 3}
+  - {fileID: 4399603215803775128, guid: 91204fd018b9c410fa452a7ddfbe9b56, type: 3}
+  - {fileID: 4399603215803775128, guid: b7e77687116e94a73b2942ba379d0e7f, type: 3}
   _startPoolCount: 3
   _spawnOffset: 1.5
 --- !u!4 &1354792444
@@ -6250,12 +6250,12 @@ MonoBehaviour:
     _minPushForce: 0.0005
     _maxPushForce: 0.001
   _experienceParticlePrefab: {fileID: 9162688749952860791, guid: 3b25f1c57e76d5f41a18f15b247e8c68, type: 3}
-  _experienceAmount: 12
+  _experienceAmount: 6
   _healthSpawner:
     StartAmount: 5
   _heartPrefab: {fileID: 1770546755804863852, guid: 5037fa843c4da74458e364febd348331, type: 3}
-  _heartSpawnChance: 10
-  _healAmount: 20
+  _heartSpawnChance: 5
+  _healAmount: 15
   _wavesConfigs:
   - {fileID: 11400000, guid: 77eeefd3783f62d439e1296e3c8ed7d8, type: 2}
   - {fileID: 11400000, guid: c7543798cd8d8f047aa3d7d5c953f506, type: 2}
@@ -6431,6 +6431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 44009098135992567, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 221162746525676164, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6526,6 +6530,10 @@ PrefabInstance:
     - target: {fileID: 1253278734207560247, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544888262874906985, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1603014249784408517, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -6702,6 +6710,14 @@ PrefabInstance:
     - target: {fileID: 4666747635262796405, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220190849687717531, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801731972179341125, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5899351763276015055, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6896,7 +6912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e315fcd83446119e58bea3d3c06dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraZoomSize: {x: 9, y: 20}
+  _cameraZoomSize: {x: 10, y: 15}
   _camera: {fileID: 1162607429953371098}
   _zoomDuration: 5
 --- !u!114 &6238359536911950666 stripped

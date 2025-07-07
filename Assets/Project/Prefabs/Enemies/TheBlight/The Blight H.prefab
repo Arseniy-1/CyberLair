@@ -146,20 +146,17 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0.4
     <AttackRecovery>k__BackingField: 0.3
     <AttackCount>k__BackingField: 3
-    <Cooldown>k__BackingField: 3
+    <Cooldown>k__BackingField: 5
   _jumpStats:
     <JumpSpeed>k__BackingField:
-      <BaseValue>k__BackingField: 10
+      <BaseValue>k__BackingField: 15
       <CurrentValue>k__BackingField: 0.3
-      _modifiers: []
     <JumpTime>k__BackingField:
-      <BaseValue>k__BackingField: 0.4
+      <BaseValue>k__BackingField: 0.3
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <JumpReloadTime>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
 --- !u!114 &705212269321072690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,15 +192,13 @@ MonoBehaviour:
   _damageSound: 11
   <EnemyType>k__BackingField: 3
   <EnemyStats>k__BackingField:
-    <Experience>k__BackingField: 2
+    <Experience>k__BackingField: 1
     <Speed>k__BackingField:
       <BaseValue>k__BackingField: 5
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <Health>k__BackingField:
-      <BaseValue>k__BackingField: 40
+      <BaseValue>k__BackingField: 70
       <CurrentValue>k__BackingField: 0
-      _modifiers: []
     <CollisionDamage>k__BackingField: 25
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
@@ -272,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 786434052027316470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.93, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -329,7 +324,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &3630374792071387719
 Animator:
   serializedVersion: 5

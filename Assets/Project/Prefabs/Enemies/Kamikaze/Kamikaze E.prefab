@@ -155,7 +155,7 @@ MonoBehaviour:
   _attacker: {fileID: -9061006521750571887}
   _destroyer: {fileID: 5206861922117507840}
   _enemyTargetProvider: {fileID: 7848786051674692826}
-  _attackDistance: 2
+  _attackDistance: 4
   _view: {fileID: 1222469161822643883}
   _damageSound: 11
   <EnemyType>k__BackingField: 2
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0.1
+    <AttackDelay>k__BackingField: 0.3
     <AttackRecovery>k__BackingField: 0
     <AttackCount>k__BackingField: 1
     <Cooldown>k__BackingField: 3

@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 500
-  _stunTime: 0.15
+  _stunTime: 0
 --- !u!114 &846970336447539646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,9 +276,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats:
     <AttackDelay>k__BackingField: 1
-    <AttackRecovery>k__BackingField: 0.1
+    <AttackRecovery>k__BackingField: 1
     <AttackCount>k__BackingField: 3
-    <Cooldown>k__BackingField: 4
+    <Cooldown>k__BackingField: 10
   _impPrefab: {fileID: 951908415480540463, guid: f2b7b9e68e5664fc2b6c2f0cb4c782be, type: 3}
   _spawnPeriod: {x: 0.14081039, y: 0.26200038}
   _startCount: 3

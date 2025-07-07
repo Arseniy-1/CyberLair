@@ -41,7 +41,6 @@ MonoBehaviour:
   _waveDuration: 120
   _spawnDuration: 3
   _enemyStatModifiers:
-    <Value>k__BackingField: 5
+    <Value>k__BackingField: 1.7
     <Type>k__BackingField: 1
     <Duration>k__BackingField: 0
-    _elapsedTime: 0
