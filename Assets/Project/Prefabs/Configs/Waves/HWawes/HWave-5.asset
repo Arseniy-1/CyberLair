@@ -23,13 +23,16 @@ MonoBehaviour:
     SerializationNodes: []
   _enemiesWeights:
   - _prefab: {fileID: -4304947118811211038, guid: 4680d415be7f64afd9ea09ff514a7149, type: 3}
-    _weight: 0.6
+    _weight: 0.1
+  - _prefab: {fileID: 4399603215803775128, guid: 91204fd018b9c410fa452a7ddfbe9b56, type: 3}
+    _weight: 0.2
+  - _prefab: {fileID: 4399603215803775128, guid: b7e77687116e94a73b2942ba379d0e7f, type: 3}
+    _weight: 0.2
   _boss: {fileID: 5850759209062934795, guid: 4fc294186d5f24457914b3100e6eda8a, type: 3}
-  _spawnClusterSize: {x: 6, y: 8}
+  _spawnClusterSize: {x: 3, y: 4}
   _waveDuration: 90
   _spawnDuration: 4
   _enemyStatModifiers:
     <Value>k__BackingField: 0
     <Type>k__BackingField: 0
     <Duration>k__BackingField: 0
-    _elapsedTime: 0

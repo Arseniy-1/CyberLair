@@ -22,26 +22,25 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _enemiesWeights:
-  - _prefab: {fileID: 8511549520770673055, guid: b044e403cf5da074ead478401b2a0bf4, type: 3}
+  - _prefab: {fileID: 8511549520770673055, guid: 4a16390225e2c4f6da0b587e1c79dff6, type: 3}
+    _weight: 0.01
+  - _prefab: {fileID: 6014211762987851508, guid: d809e709c6e154514b07e47eceeef948, type: 3}
     _weight: 0.4
-  - _prefab: {fileID: 6014211762987851508, guid: aeabc0f5f4764924fa41cc8b68c41ab9, type: 3}
+  - _prefab: {fileID: 263878080555140060, guid: 0184b578f76594c92aa0e1b270dd7477, type: 3}
     _weight: 0.4
-  - _prefab: {fileID: 263878080555140060, guid: eb8f6f81113556948bf2ef61abb7c2a3, type: 3}
+  - _prefab: {fileID: 4399603215803775128, guid: 91204fd018b9c410fa452a7ddfbe9b56, type: 3}
     _weight: 0.4
-  - _prefab: {fileID: 4399603215803775128, guid: 55e139f111580f748b7bacb05ab05d3f, type: 3}
+  - _prefab: {fileID: 4382913821471026158, guid: b2c86790d9ef043e9b40cfce56d56427, type: 3}
     _weight: 0.4
-  - _prefab: {fileID: 4382913821471026158, guid: 2488ebb50f2f74f4d81b5d5c118e4115, type: 3}
+  - _prefab: {fileID: 4399603215803775128, guid: b7e77687116e94a73b2942ba379d0e7f, type: 3}
     _weight: 0.4
-  - _prefab: {fileID: 4399603215803775128, guid: 6b01e94017d34044f89fbb7940967cc3, type: 3}
-    _weight: 0.4
-  - _prefab: {fileID: -4304947118811211038, guid: 1c3cdc1e57a3ee942a8b586c3884fbee, type: 3}
+  - _prefab: {fileID: -4304947118811211038, guid: f2516f25a76014d938c4f90bd2d46c8a, type: 3}
     _weight: 0.4
   _boss: {fileID: 0}
-  _spawnClusterSize: {x: 6, y: 13}
+  _spawnClusterSize: {x: 6, y: 9}
   _waveDuration: 120
   _spawnDuration: 1
   _enemyStatModifiers:
-    <Value>k__BackingField: 0
-    <Type>k__BackingField: 0
+    <Value>k__BackingField: 1.2
+    <Type>k__BackingField: 1
     <Duration>k__BackingField: 0
-    _elapsedTime: 0
