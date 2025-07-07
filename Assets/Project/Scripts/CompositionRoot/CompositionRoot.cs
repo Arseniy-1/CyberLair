@@ -29,7 +29,9 @@ namespace Project.Scripts.CompositionRoot
 
         [SerializeField] private StatsBar _shieldBar;
 
+        [SerializeField] private int _triesCount;
         [SerializeField] private EndGameCanvas _endGameCanvas;
+        [SerializeField] private EndGameCanvas _continueScreenCanvas;
         [SerializeField] private Canvas _winGameCanvas;
         [SerializeField] private Canvas _gameCanvas;
         [SerializeField] private TutorialWindow _tutorialView;
@@ -49,7 +51,7 @@ namespace Project.Scripts.CompositionRoot
 
             _subscribables = new List<ISubscribable>
             {
-                new PlayerDeathHandler(_player, _timer, _endGameCanvas, _gameCanvas),
+                new PlayerDeathHandler(_player, _timer, _endGameCanvas, _continueScreenCanvas, _gameCanvas, _triesCount),
                 new WinScreenHandler(_timer, _arena, _winGameCanvas, _gameCanvas)
             };
             

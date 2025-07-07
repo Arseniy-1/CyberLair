@@ -9,15 +9,23 @@ public class PlayerDeathHandler : ISubscribable
     private readonly Timer _timer;
     
     private readonly EndGameCanvas _endGameCanvas;
+    private readonly EndGameCanvas _continueScreenCanvas;
     private readonly Canvas _gameCanvas;
+    private readonly int _triesCount;
     
-    public PlayerDeathHandler(Player player, Timer timer, EndGameCanvas endGameCanvas, Canvas gameCanvas)
+    private int _currentTriesCount;
+    
+    public PlayerDeathHandler(Player player, Timer timer, EndGameCanvas endGameCanvas, EndGameCanvas continueScreenCanvas,
+        Canvas gameCanvas, int triesCount)
     {
         _player = player;
         _timer = timer;
         
         _endGameCanvas = endGameCanvas;
+        _continueScreenCanvas = continueScreenCanvas;
         _gameCanvas = gameCanvas;
+        
+        _triesCount = triesCount;
     }
     
     public void Subscribe()
@@ -35,12 +43,21 @@ public class PlayerDeathHandler : ISubscribable
     private void OnPlayerDied()
     {
         _gameCanvas.gameObject.SetActive(false);
-        _endGameCanvas.gameObject.SetActive(true);
-        _endGameCanvas.ShowStats(_timer.CurrentTime);
-            
+        
         MessageBrokerHolder.Game
             .Publish(new M_GamePaused());
-            
+        
+        if(_currentTriesCount < _triesCount)
+            ShowContinueScreen();
+        else
+            ShowEndGameScreen();
+    }
+
+    private void ShowContinueScreen()
+    {
+        _continueScreenCanvas.gameObject.SetActive(true);
+        _continueScreenCanvas.ShowStats(_timer.CurrentTime);
+        
         if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
             return;
 
@@ -50,8 +67,16 @@ public class PlayerDeathHandler : ISubscribable
         YandexGame.NewLBScoreTimeConvert("Leaderboard", YandexGame.savesData.BestTime);
     }
     
+    private void ShowEndGameScreen()
+    {
+        _endGameCanvas.gameObject.SetActive(true);
+        _endGameCanvas.ShowStats(_timer.CurrentTime);
+    }
+    
     private void BringBackPlayer()
     {
+        _currentTriesCount++;
+        
         _player.PlayerStats.Health.Heal(_player.PlayerStats.Health.MaxHealth);
 
         _player.TakeImmortality(InvulnerabilityTime);
@@ -60,7 +85,7 @@ public class PlayerDeathHandler : ISubscribable
             .Publish(new M_GameUnpaused());
 
         _gameCanvas.gameObject.SetActive(true);
-        _endGameCanvas.gameObject.SetActive(false);
+        _continueScreenCanvas.gameObject.SetActive(false);
     }
     
     private void OnRewarded(int id)

@@ -576,7 +576,9 @@ MonoBehaviour:
   _HealthText: {fileID: 8582967515293831242}
   _experienceBar: {fileID: 4946501485891752596}
   _shieldBar: {fileID: 1321298218}
+  _triesCount: 0
   _endGameCanvas: {fileID: 1282717384}
+  _continueScreenCanvas: {fileID: 6238359536911950667}
   _winGameCanvas: {fileID: 1664809518}
   _gameCanvas: {fileID: 1684390272}
   _tutorialView: {fileID: 6238359536911950663}
@@ -6924,6 +6926,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d08e7a98f660e474da3b510920e26fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6238359536911950667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7111441077191675710, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+  m_PrefabInstance: {fileID: 6238359536911950662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9589dff300a44cc2934f88113d03d119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7109626840326126780
