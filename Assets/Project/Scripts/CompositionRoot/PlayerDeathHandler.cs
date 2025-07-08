@@ -77,9 +77,7 @@ public class PlayerDeathHandler : ISubscribable
     {
         _currentTriesCount++;
         
-        _player.PlayerStats.Health.Heal(_player.PlayerStats.Health.MaxHealth);
-
-        _player.TakeImmortality(InvulnerabilityTime);
+        _player.Revive(InvulnerabilityTime);
 
         MessageBrokerHolder.Game
             .Publish(new M_GameUnpaused());

@@ -840,7 +840,12 @@ MonoBehaviour:
   _destroyer: {fileID: 2268827703938706879}
   _enemyTargetProvider: {fileID: 8954570385825564128}
   _attackDistance: 20
-  _view: {fileID: 4548246736520012204}
+  _view:
+    _spriteRenderer: {fileID: 4483056047778179784}
+    _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
+    _blinkDuration: 0.1
+    _takeDamageParticles: {fileID: 8105790660740048201}
+    <Animator>k__BackingField: {fileID: 3718740134849954087}
   _damageSound: 11
   <EnemyType>k__BackingField: 8
   <EnemyStats>k__BackingField:
@@ -1010,7 +1015,6 @@ GameObject:
   - component: {fileID: 4483056047778179784}
   - component: {fileID: 3718740134849954087}
   - component: {fileID: 8331253974619774144}
-  - component: {fileID: 4548246736520012204}
   - component: {fileID: 4128889245333125174}
   - component: {fileID: 5076181198118207243}
   m_Layer: 3
@@ -1120,23 +1124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea599b240de84b0280e248f39f69c6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4548246736520012204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8338589489908715743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b04699a3ed643afb5b90a541233ac04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 4483056047778179784}
-  _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
-  _takeDamageParticles: {fileID: 8105790660740048201}
-  _blinkDuration: 0.1
-  <Animator>k__BackingField: {fileID: 3718740134849954087}
 --- !u!114 &4128889245333125174
 MonoBehaviour:
   m_ObjectHideFlags: 0

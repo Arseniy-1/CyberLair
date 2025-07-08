@@ -37,8 +37,10 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             yield return waitForDelay;
             
             Enemy imp = _impSpawner.Spawn();
+            
             imp.OnDestroyed += RemoveImp;
             imp.transform.position = Position;
+            imp.ResetState();
             
             _imps.Add(imp);
         }

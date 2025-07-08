@@ -95,7 +95,9 @@ namespace Project.Scripts.EnemySystem
 
         public void Die()
         {
-            MessageBrokerHolder.Enemy.Publish(new M_EnemyDeath(transform.position));
+            MessageBrokerHolder.Enemy
+                .Publish(new M_EnemyDeath(transform.position));
+            
             OnDestroyed?.Invoke(this);
         }
         

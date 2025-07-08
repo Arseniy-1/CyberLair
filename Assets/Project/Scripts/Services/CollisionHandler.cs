@@ -12,10 +12,5 @@ public abstract class CollisionHandler : MonoBehaviour
         HandleCollision(collision.collider);
     }
 
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        HandleCollision(other.collider);
-    }
-
     protected abstract void HandleCollision(Collider2D collider);
 }

@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 
-public class WallCollisionHandler : CollisionHandler
+public class WallCollisionHandler : MonoBehaviour
 {
     [SerializeField] private float _pushForce;
     [SerializeField] private float _stunTime;
 
-    protected override void HandleCollision(Collider2D collider)
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        HandleCollision(other.collider);
+    }
+
+    private void HandleCollision(Collider2D collider)
     {
         if (collider.TryGetComponent(out IStunable stunable) == false)
             return;

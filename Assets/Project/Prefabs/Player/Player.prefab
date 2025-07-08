@@ -2538,6 +2538,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5220190849687717531}
+  - {fileID: 5520947815286263762}
   m_Father: {fileID: 3237670856865732149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &44009098135992567
@@ -2591,7 +2592,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &3781839394992327179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7548,6 +7549,62 @@ MonoBehaviour:
   processTranslateLabel: 3/3 completed
   componentTextField: 1
   countLang: 3
+--- !u!1 &3829939873059297729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5520947815286263762}
+  - component: {fileID: 7587881898067385691}
+  m_Layer: 15
+  m_Name: TakeDamageEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5520947815286263762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3829939873059297729}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1544888262874906985}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7587881898067385691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3829939873059297729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d32ba1494984cf99767a2b57ef88ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakeID: 1
+  _damageSound: 0
+  _player: {fileID: 5961620063364427724}
+  _entityDamageView:
+    _spriteRenderer: {fileID: 44009098135992567}
+    _blinkMaterial: {fileID: 2100000, guid: 0e70bdd9debfc46a688ce6019fce6bf8, type: 2}
+    _blinkDuration: 0.7
+  _lowPassCutoffer:
+    _frequencyCutoff: {x: 2400, y: 22000}
+    _cutoffDuration: 0.2
+    _effectDuration: 1
+    _audioMixer: {fileID: 24100000, guid: f7ecc41908a6d7d4b83f6836a6f989ba, type: 2}
 --- !u!1 &3891292580376809679
 GameObject:
   m_ObjectHideFlags: 0
@@ -20549,8 +20606,6 @@ MonoBehaviour:
   _destroyer: {fileID: 9030552110350415176}
   _magnet: {fileID: 0}
   _injuredScreenView: {fileID: 5810129063412635078}
-  _shakeID: 1
-  _damageSound: 0
   _animator: {fileID: 4862102778778520414}
   _healthRegenerator: {fileID: 849013033050170552}
   _shieldRegenerator: {fileID: 4876068674361753525}

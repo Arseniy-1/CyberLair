@@ -4,8 +4,6 @@ using UnityEngine;
 using System;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
-using Project.Scripts.Services.Enum;
-using Project.Scripts.Services.Extensions;
 using IState = StateMashineSytem.IState;
 
 [RequireComponent(typeof(Collider2D))]
@@ -22,8 +20,6 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private Magnet _magnet;
     [SerializeField] private InjuredScreenView _injuredScreenView;
 
-    [SerializeField] private ShakeID _shakeID = ShakeID.Hard;
-    [SerializeField] private AudioID _damageSound = AudioID.PlayerTakeDamage;
     [SerializeField] private Animator _animator;
 
     [SerializeField] private HealthRegenerator _healthRegenerator;
@@ -37,12 +33,14 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     private EntityStateMachine _entityStateMachine;
 
     public event Action OnDeath;
+    public event Action OnTakeDamage;
 
     [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
+    
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
-    public ExperienceStorage ExperienceStorage { get; } = new();
-
     public Vector2 Position => transform.position;
+    
+    public ExperienceStorage ExperienceStorage { get; } = new();
 
     private void Awake()
     {
@@ -99,9 +97,6 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     public void TakeDamage(float amount)
     {
-        _damageSound.Play();
-        _shakeID.Shake();
-
         if (_isDamaged == false)
             PlayerStats.Health.TakeDamage(amount);
 
@@ -117,13 +112,21 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     
     public void Die()
     {
-        EndCoroutine(ref _immortalityCoroutine);
-        EndCoroutine(ref _stunCoroutine);
-        
         OnDeath?.Invoke();
     }
 
-    public void TakeImmortality(float time)
+    public void Revive(float immortalityTime)
+    {
+        EndCoroutine(ref _immortalityCoroutine);
+        EndCoroutine(ref _stunCoroutine);
+        
+        PlayerStats.Health.Heal(PlayerStats.Health.MaxHealth);
+        TakeImmortality(immortalityTime);
+        
+        _entityStateMachine.SwitchState<PlayerIdleState>();
+    }
+    
+    private void TakeImmortality(float time)
     {
         _immortalityCoroutine ??= StartCoroutine(TakingImmortality(time));
     }
@@ -154,6 +157,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         var waitForImmortalityTime = new WaitForSeconds(time);
         
         _isDamaged = true;
+        OnTakeDamage?.Invoke();
         
         yield return waitForImmortalityTime;
         
