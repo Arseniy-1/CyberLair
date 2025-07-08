@@ -29,10 +29,10 @@ MonoBehaviour:
   - _prefab: {fileID: 8511549520770673055, guid: 4a16390225e2c4f6da0b587e1c79dff6, type: 3}
     _weight: 0.01
   _boss: {fileID: 0}
-  _spawnClusterSize: {x: 3, y: 5}
+  _spawnClusterSize: {x: 3, y: 8}
   _waveDuration: 60
   _spawnDuration: 2
   _enemyStatModifiers:
-    <Value>k__BackingField: 1.1
-    <Type>k__BackingField: 1
+    <Value>k__BackingField: 0
+    <Type>k__BackingField: 0
     <Duration>k__BackingField: 0

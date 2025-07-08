@@ -9,7 +9,7 @@ public class SoundPlayer : MonoBehaviour
 {
     [SerializeField] private SoundSettings _soundSettings;
 
-    private readonly Dictionary<AudioID, Audio> _audioDatas = new ();
+    private readonly List<Audio> _audioDatas = new ();
     private readonly CompositeDisposable _disposable = new();
     private AudioSpawner _audioSpawner;
 
@@ -33,9 +33,9 @@ public class SoundPlayer : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (AudioID audioID in _audioDatas.Keys.ToList())
+        foreach (Audio audio in _audioDatas.ToList())
         {
-            Stop(audioID);
+            Stop(audio.AudioID);
         }
         
         _disposable?.Clear();
@@ -45,13 +45,12 @@ public class SoundPlayer : MonoBehaviour
     {
         if (_soundSettings.TryGet(audioID, out AudioData audioData) == false)
             return;
-
-        if (_audioDatas.TryGetValue(audioData.AudioID, out Audio audio) == false)
-            audio = _audioSpawner.Spawn();
+        
+        Audio audio = _audioSpawner.Spawn();
         
         audio.gameObject.SetActive(true);
         audio.Initialize(audioData);
-        _audioDatas.TryAdd(audioData.AudioID, audio);
+        _audioDatas.Add(audio);
         audio.OnDestroyed += RemoveAudio;
         
         if(audioData.IsLooped)
@@ -66,16 +65,18 @@ public class SoundPlayer : MonoBehaviour
 
     private void Stop(AudioID audioID)
     {
-        if (_audioDatas.TryGetValue(audioID, out Audio audio) == false)
+        Audio currentAudio = _audioDatas.FirstOrDefault(audio => audio.AudioID == audioID);
+        
+        if (currentAudio == false)
             return;
         
-        audio.Stop();
+        currentAudio.Stop();
     }
 
     private void RemoveAudio(Audio audio)
     {
         audio.OnDestroyed -= RemoveAudio;
         
-        _audioDatas.Remove(audio.AudioID);
+        _audioDatas.Remove(audio);
     }
 }

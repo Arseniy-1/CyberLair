@@ -27,7 +27,6 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
             Disable();
 
             _laserOrigin = transform;
-            _laser.Initialize(Damage);
         }
         
         public override void Disable()

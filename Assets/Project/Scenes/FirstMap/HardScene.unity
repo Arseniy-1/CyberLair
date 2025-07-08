@@ -576,7 +576,7 @@ MonoBehaviour:
   _HealthText: {fileID: 8582967515293831242}
   _experienceBar: {fileID: 4946501485891752596}
   _shieldBar: {fileID: 1321298218}
-  _triesCount: 0
+  _triesCount: 5
   _endGameCanvas: {fileID: 1282717384}
   _continueScreenCanvas: {fileID: 6238359536911950667}
   _winGameCanvas: {fileID: 1664809518}

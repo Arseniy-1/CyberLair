@@ -266,7 +266,7 @@ MonoBehaviour:
     <AttackDelay>k__BackingField: 0.1
     <AttackRecovery>k__BackingField: 0.75
     <AttackCount>k__BackingField: 1
-    <Cooldown>k__BackingField: 0.4
+    <Cooldown>k__BackingField: 2
   _jumpStats:
     <JumpSpeed>k__BackingField:
       <BaseValue>k__BackingField: 20
@@ -301,7 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionHandler: {fileID: 8046208475861855243}
   _mover: {fileID: 836791218599047312}
   _rigidbody: {fileID: 7478456786273949636}
   _attacker: {fileID: 5969356313728569078}
@@ -324,7 +323,6 @@ MonoBehaviour:
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 35
       <CurrentValue>k__BackingField: 0
-    <CollisionDamage>k__BackingField: 10
 --- !u!114 &8046208475861855243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 100
-  _stunTime: 0
+  _collisionDamage: 20
 --- !u!114 &5418070314658009890
 MonoBehaviour:
   m_ObjectHideFlags: 0

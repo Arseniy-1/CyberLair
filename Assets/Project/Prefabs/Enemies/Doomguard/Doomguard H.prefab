@@ -187,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionHandler: {fileID: 2244687451016219675}
   _mover: {fileID: 185552746671110269}
   _rigidbody: {fileID: 4669096686366673745}
   _attacker: {fileID: 8162099568526081951}
@@ -210,7 +209,6 @@ MonoBehaviour:
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 120
       <CurrentValue>k__BackingField: 0
-    <CollisionDamage>k__BackingField: 20
 --- !u!114 &2244687451016219675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 500
-  _stunTime: 0.15
+  _collisionDamage: 20
 --- !u!114 &846970336447539646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,12 +260,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    <AttackDelay>k__BackingField: 0.5
-    <AttackRecovery>k__BackingField: 0.1
+    <AttackDelay>k__BackingField: 1
+    <AttackRecovery>k__BackingField: 1
     <AttackCount>k__BackingField: 3
-    <Cooldown>k__BackingField: 5
+    <Cooldown>k__BackingField: 10
   _impPrefab: {fileID: 951908415480540463, guid: e375afa8028e84614ad7cbe0d247a0d0, type: 3}
-  _spawnPeriod: {x: 0.1278626, y: 0.22328246}
+  _spawnPeriod: {x: 0.37001935, y: 0.5}
   _startCount: 3
 --- !u!61 &3406921587590573143
 BoxCollider2D:

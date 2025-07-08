@@ -181,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionHandler: {fileID: -6442682817018359020}
   _mover: {fileID: 705212269321072690}
   _rigidbody: {fileID: 9187278981319853839}
   _attacker: {fileID: 2255569116647932330}
@@ -204,7 +203,6 @@ MonoBehaviour:
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 40
       <CurrentValue>k__BackingField: 0
-    <CollisionDamage>k__BackingField: 25
 --- !u!114 &-6442682817018359020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 500
-  _stunTime: 0
+  _collisionDamage: 25
 --- !u!114 &6311730808988131680
 MonoBehaviour:
   m_ObjectHideFlags: 0

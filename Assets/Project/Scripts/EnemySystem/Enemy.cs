@@ -9,7 +9,6 @@ namespace Project.Scripts.EnemySystem
 {
     public class Enemy : MonoBehaviour, ITarget, IDamageable, IDieable, IDestoyable<Enemy>, IStunable
     {
-        [SerializeField] private EnemyCollisionHandler _collisionHandler;
         [SerializeField] protected EnemyMover _mover;
         [SerializeField] protected Rigidbody2D _rigidbody;
         [SerializeField] private EnemyAttacker _attacker;
@@ -72,7 +71,6 @@ namespace Project.Scripts.EnemySystem
             _destroyer.Initialize(EnemyStats.Health, this);
             
             _mover.Initialize(this, _enemyTargetProvider, _rigidbody, EnemyStats);
-            _collisionHandler.Initialize(EnemyStats.CollisionDamage);
         }
         
         public void TakeDamage(float amount)

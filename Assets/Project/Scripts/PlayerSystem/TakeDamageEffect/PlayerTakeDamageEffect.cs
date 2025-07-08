@@ -19,24 +19,24 @@ namespace Project.Scripts.PlayerSystem.TakeDamageEffect
         
         private void OnEnable()
         {
-            _player.OnTakeDamage += HandleTakeDamage;
+            _player.PlayerStats.Health.DamageTaken += HandleTakeDamage;
         }
         
         private void OnDisable()
         {
-            _player.OnTakeDamage -= HandleTakeDamage;
+            _player.PlayerStats.Health.DamageTaken -= HandleTakeDamage;
             
             _entityDamageView.EndBlink();
             _lowPassCutoffer.CancelCutoff();
         }
 
-        private void HandleTakeDamage()
+        private void HandleTakeDamage(float damage)
         {
             _damageSound.Play();
             _shakeID.Shake();
 
             _entityDamageView.StartBlink();
-            _lowPassCutoffer.StartCutoff();
+            _lowPassCutoffer.StartCutoff(damage);
         }
     }
 }

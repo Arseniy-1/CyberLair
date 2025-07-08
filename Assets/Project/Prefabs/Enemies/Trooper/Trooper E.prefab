@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionHandler: {fileID: -8405115729108536640}
   _mover: {fileID: 4679022288187799651}
   _rigidbody: {fileID: 338829131333349496}
   _attacker: {fileID: 8327977833412635372}
@@ -124,7 +123,6 @@ MonoBehaviour:
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 60
       <CurrentValue>k__BackingField: 0
-    <CollisionDamage>k__BackingField: 15
 --- !u!114 &4679022288187799651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 50
-  _stunTime: 0
+  _collisionDamage: 30
 --- !u!61 &4213689946170667695
 BoxCollider2D:
   m_ObjectHideFlags: 0
