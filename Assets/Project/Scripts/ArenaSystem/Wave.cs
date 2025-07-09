@@ -6,6 +6,7 @@ using Project.Scripts.EnemySystem;
 using Cysharp.Threading.Tasks;
 using Project.Scripts.Servises;
 using Sirenix.Utilities;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.ArenaSystem
@@ -16,13 +17,17 @@ namespace Project.Scripts.ArenaSystem
 
         private readonly MainEnemySpawner _mainEnemySpawner;
 
-        private readonly List<ObjectWeightPair<Enemy>> _enemyWeights = new();
+        private readonly List<ObjectWeightPair<Enemy>> _enemyWeights;
         private CancellationTokenSource _cancellationToken;
 
         public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner)
         {
             _config = config;
             _mainEnemySpawner = mainEnemySpawner;
+            _enemyWeights = new List<ObjectWeightPair<Enemy>>();
+            
+            if(config == false)
+                Debug.Log("config not setted");
             
             _enemyWeights.AddRange(_config.EnemyWeights);
         }

@@ -2,12 +2,12 @@ namespace Project.Scripts.Services.Enum
 {
     public enum ShakeID
     {
-        Light,
-        Medium,
-        Hard,
+        Light = 0,
+        Medium = 1,
+        Hard = 2,
         
-        LongLight,
-        LongMedium,
-        LongHard
+        LongLight = 3,
+        LongMedium = 4,
+        LongHard = 5
     }
 }

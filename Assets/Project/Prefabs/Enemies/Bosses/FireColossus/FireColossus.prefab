@@ -798,7 +798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionHandler: {fileID: 44626753063159235}
   _mover: {fileID: 1167417343665853687}
   _rigidbody: {fileID: 6811167916787461174}
   _attacker: {fileID: 2726904778991220204}
@@ -816,12 +815,11 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 10
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 6
+      <BaseValue>k__BackingField: 4
       <CurrentValue>k__BackingField: 0
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 4000
       <CurrentValue>k__BackingField: 0
-    <CollisionDamage>k__BackingField: 0
 --- !u!114 &2726904778991220204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,7 +893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 250
-  _stunTime: 0.15
+  _collisionDamage: 0
 --- !u!50 &6811167916787461174
 Rigidbody2D:
   serializedVersion: 4

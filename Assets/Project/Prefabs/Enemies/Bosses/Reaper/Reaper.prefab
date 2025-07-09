@@ -48,8 +48,8 @@ MonoBehaviour:
   AnimatorEvents: {fileID: 7254060907168945336}
   AttackAnimator: {fileID: 843355967911760821}
   View: {fileID: 667628826225120929}
-  <Range>k__BackingField: 15
-  <Damage>k__BackingField: 30
+  <Range>k__BackingField: 30
+  <Damage>k__BackingField: 0
   <AttackStats>k__BackingField:
     <AttackDelay>k__BackingField: 0
     <AttackRecovery>k__BackingField: 0
@@ -261,7 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef563bc1da2864d8bed77a6d5683d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionHandler: {fileID: 8192940060751490718}
   _mover: {fileID: 1237523168137244655}
   _rigidbody: {fileID: 8609150688543176165}
   _attacker: {fileID: 4645820690688015025}
@@ -279,12 +278,11 @@ MonoBehaviour:
   <EnemyStats>k__BackingField:
     <Experience>k__BackingField: 0
     <Speed>k__BackingField:
-      <BaseValue>k__BackingField: 3.5
+      <BaseValue>k__BackingField: 5
       <CurrentValue>k__BackingField: 0
     <Health>k__BackingField:
       <BaseValue>k__BackingField: 3600
       <CurrentValue>k__BackingField: 0
-    <CollisionDamage>k__BackingField: 20
 --- !u!114 &4645820690688015025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushForce: 250
-  _stunTime: 0.15
+  _collisionDamage: 0
 --- !u!1 &2242970751457415580
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +610,7 @@ MonoBehaviour:
   AnimatorEvents: {fileID: 7933956317699005398}
   AttackAnimator: {fileID: 8382125984883451150}
   View: {fileID: 8979883064705354816}
-  <Range>k__BackingField: 15
+  <Range>k__BackingField: 25
   <Damage>k__BackingField: 50
   <AttackStats>k__BackingField:
     <AttackDelay>k__BackingField: 0
@@ -1097,7 +1095,7 @@ MonoBehaviour:
   AnimatorEvents: {fileID: 4767748391094884579}
   AttackAnimator: {fileID: 6363865901422558142}
   View: {fileID: 1551022077500257828}
-  <Range>k__BackingField: 15
+  <Range>k__BackingField: 20
   <Damage>k__BackingField: 0
   <AttackStats>k__BackingField:
     <AttackDelay>k__BackingField: 0

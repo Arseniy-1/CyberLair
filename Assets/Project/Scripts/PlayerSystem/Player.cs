@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 using StateMashineSytem;
 using StateMashineSytem.PlayerStateMashine;
 using IState = StateMashineSytem.IState;
@@ -95,6 +96,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _injuredScreenView.Initialize(PlayerStats.Health);
     }
 
+    [Button]
     public void TakeDamage(float amount)
     {
         if (_isDamaged == false)

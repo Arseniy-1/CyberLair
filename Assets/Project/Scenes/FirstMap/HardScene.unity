@@ -6268,7 +6268,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d8a1e140265f27d409388da381e54eeb, type: 2}
   - {fileID: 11400000, guid: 09f81dbaced05da47b8e107c8586d36b, type: 2}
   - {fileID: 11400000, guid: 122f41d2a8d019d4b847a9b1b16739f9, type: 2}
-  - {fileID: 11400000, guid: fd5f481596b2e1344912235318e0ed46, type: 2}
   _cagePrefab: {fileID: 8027024039533420385, guid: 516f03e05d229824cb4ca24ac09244c6, type: 3}
   _bossChestPrefab: {fileID: -195615430801793006, guid: 1e7e8e16da4b2544fa6f22fb91a22aed, type: 3}
   _deathEffectPrefab: {fileID: -5978131413057616576, guid: a643b9edda2d6bf448b00d308b9c4020, type: 3}

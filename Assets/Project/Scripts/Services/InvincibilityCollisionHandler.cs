@@ -9,10 +9,10 @@ public class InvincibilityCollisionHandler : CollisionHandler
         if (collider.GetComponent<Player>())
             return;
 
-        if (!collider.TryGetComponent(out Bullet bullet))
+        if (collider.TryGetComponent(out Bullet bullet) == false)
             return;
         
-        if (bullet.gameObject.layer == _bulletLayer)
+        if (bullet.gameObject.layer != _bulletLayer)
             return;
                 
         Vector2 currentVelocity = bullet.Rigidbody2D.velocity;
