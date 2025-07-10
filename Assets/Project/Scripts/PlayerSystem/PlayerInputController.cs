@@ -23,7 +23,8 @@ public class PlayerInputController : MonoBehaviour
 
     private void Awake()
     {
-        _isDevice = YandexGame.EnvironmentData.isMobile;
+        _isDevice = YandexGame.EnvironmentData.isMobile || YandexGame.EnvironmentData.isTablet;
+        
         _playerInput = new PlayerInput();
         _playerInput.Enable();
 
@@ -50,8 +51,8 @@ public class PlayerInputController : MonoBehaviour
     {
         ReadMovementInput();
 
-        if (_isDevice == false && _playerInput.Land.Shoot.IsPressed())
-            Shoot();
+        // if (_isDevice == false && _playerInput.Land.Shoot.IsPressed())
+        //     Shoot();
     }
 
     private void OnDisable()
@@ -85,10 +86,12 @@ public class PlayerInputController : MonoBehaviour
 
     private void SelectControlScheme()
     {
-        if (_isDevice)
-            _deviceControlls.gameObject.SetActive(true);
-        else
-            _desktopControlls.gameObject.SetActive(true);
+        _deviceControlls.gameObject.SetActive(true);
+        
+        // if (_isDevice)
+        //     _deviceControlls.gameObject.SetActive(true);
+        // else
+        //     _desktopControlls.gameObject.SetActive(true);
     }
 
     private void Shoot()

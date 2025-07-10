@@ -1,38 +1,38 @@
 Key,en,tr,ru
 AthleticsSkill,Athletics,Atletizm,Легкая атлетика
-ReactiveBootsSkill,Reactive Boots,Reaktif Çizmeler,Реактивные ботинки
-HardingSkill,Harding,Harding,Хардинг
-DurabilitySkill,Durability,Dayanıklılık,Долговечность
-TacticalEfficiencySkill,Tactical Efficiency,Taktik Verimlilik,Тактическая эффективность
-Lair-1Skill,Lair-1,Yuva-1,Логово-1
-FirstAidSkill,FirstAid,İlk Yardım,Первая помощь
+ReactiveBootsSkill,Reactive Boots,Reaktif Botlar,Реактивные ботинки
+HardingSkill,Harding,Sertleştirme,Закалка
+DurabilitySkill,Durability,Dayanıklılık,Выносливость
+TacticalEfficiencySkill,Tactical Efficiency,Taktiksel Verimlilik,Готовность к бою
+Lair-1Skill,Lair-1,İn-1,Берлога-1
+FirstAidSkill,First Aid,İlk yardım,Первая помощь
 ThunderSkill,Thunder,Gök gürültüsü,Гром
-StunZapSkill,Stun Zap,Sersemletme Zap'i,Оглушающий Разряд
-ChainZapSkill,Chain Zap,Zincir Zap,Цепной Зап
-MagicArrowSkill,Magic Arrow,Sihirli Ok,Волшебная стрела
+StunZapSkill,Stun Zap,Gerilim,Напряжение
+ChainZapSkill,Chain Zap,Uzun devre,Длинное замыкание
+MagicArrowSkill,Magic Arrow,Sihirli Ok,Магическая стрела
 BoomerangSkill,Boomerang,Bumerang,Бумеранг
-MultiShotSkill,MultiShot,Çoklu Çekim,Мультивыстрел
-AffectedAreaSkill,Affected Area,Etkilenen Bölge,Затронутая территория
-JumpSwirlSkill,Jump Swirl,Girdap atlama,"Прыжок, вихрь"
-MercuryMimicrySkill,Mercury Mimicry,Merkür Taklidi,Мимикрия Меркурия
-TirelessSkill,Tireless,Yorulmak bilmez,Неутомимый
-SnowBloodSkill,Snow Blood,Kar Kanı,Снежная кровь
-RecoveryPainSkill,Recovery Pain,İyileşme Ağrısı,Восстановительная боль
-ArtayaShieldSkill,Artaya Shield,Artaya Kalkanı,Артайя Щит
+MultiShotSkill,MultiShot,Çift Atış,Двойной выстрел
+AffectedAreaSkill,Affected Area,Etkilenen Bölge,Область поражения
+JumpSwirlSkill,Jump Swirl,Dodges Kasırgası,Вихрь уклонений
+MercuryMimicrySkill,Mercury Mimicry,Cıva Taklidi,Подражание Меркурию
+TirelessSkill,Tireless,Yorulmama,Неутомимость
+SnowBloodSkill,Snow Blood,Karda kan,Кровь на снегу
+RecoveryPainSkill,Recovery Pain,İyileşme Ağrısı,Боль при восстановлении
+ArtayaShieldSkill,Artaya Shield,Artaya Kalkanı,Шит Артайа
 OverloadSkill,Overload,Aşırı yük,Перегрузка
-ReducedResistanceSkill,Reduced Resistance,Azaltılmış Direnç,Пониженное сопротивление
-InternalVoltageSkill,Internal Voltage,Dahili Gerilim,Внутреннее напряжение
-StormBladeSkill,Storm Blade,Fırtına Kılıcı,Штормовой клинок
-PhantomArrowsSkill,Phantom Arrows,Hayalet Oklar,Призрачные стрелы
-BulletonsLastSkill,Bulletons Last,Bültenler Son,Бюллетени последние
-FireZoneSkill,Fire Zone,Yangın Bölgesi,Пожарная зона
-TeleportationJumpSkill,Teleportation Jump,Işınlanma Atlaması,Телепортационный прыжок
-MercuryBlessSkill,Mercury Bless,Merkür Korusun,Меркурий благословляет
-NonStopSkill,Non Stop,Kesintisiz,нон-стоп
-BerserkRageSkill,Berserk Rage,Çılgına Dönük Öfke,Берсерк Ярость
-ArtayaWillSkill,Artaya Will,Artaya Will,Артая Уилл
-AllOnLineSkill,AllOnLine,Hepsi Çevrimiçi,Все на кону
-ThunderStormSkill,Thunder Storm,Gök Gürültüsü Fırtınası,Громовой Шторм
-StreamingEnergySkill,Streaming Energy,Enerji Akışı,Потоковая энергия
-SummonSkill,Summon,Çağır,Вызвать
-HellCatsSkill,Hell Cats,Cehennem Kedileri,Адские коты
+ReducedResistanceSkill,Reduced Resistance,Azaltılmış direnç,Пониженное сопротивление
+InternalVoltageSkill,Internal Voltage,İç Voltaj,Внутреннее напряжение
+StormBladeSkill,Storm Blade,Fırtına Bıçağı,Лезвие Бури
+PhantomArrowsSkill,Phantom Arrows,Hayalet Oklar,Фантомные стрелы
+BulletonsLastSkill,Bulletons Last,Son Patron,Последний из Патронан
+FireZoneSkill,Fire Zone,Yangın Bölgesi,Адское пламя
+TeleportationJumpSkill,Teleportation Jump,Işınlanma Atlayışı,Телепортационный прыжок
+MercuryBlessSkill,Mercury Bless,Merkür'ün Bereketi,Благословение Меркурия
+NonStopSkill,Non Stop,Durmadan,Нон-стоп
+BerserkRageSkill,Berserk Rage,Çılgın Öfke,Ярость берсерка
+ArtayaWillSkill,Artaya Will,Artaya'nın Vasiyeti,Воля Артайа
+AllOnLineSkill,All On Line,Hepsi Çevrimiçi,Все на кону
+ThunderStormSkill,Thunder Storm,Fırtına,Грозовой шторм
+StreamingEnergySkill,Streaming Energy,Akış Enerjisi,Потоковая энергия
+SummonSkill,Summon,Çağırmak,Хомяк
+HellCatsSkill,Hell Cats,Cehennem Kedileri,Огнетята

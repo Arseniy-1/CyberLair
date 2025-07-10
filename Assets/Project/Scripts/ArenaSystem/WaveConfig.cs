@@ -11,9 +11,9 @@ namespace Project.Scripts.ArenaSystem
     {
         [SerializeField] private List<ObjectWeightPair<Enemy>> _enemiesWeights;
         [SerializeField] private Enemy _boss;
-        [SerializeField, MinMaxSlider(1, 15)] private Vector2Int _spawnClusterSize;
-        [SerializeField, Range(1, 1000)] private int _waveDuration;
-        [SerializeField,Range(0.01f, 10)] private float _spawnDuration;
+        [SerializeField] [MinMaxSlider(1, 15)] private Vector2Int _spawnClusterSize;
+        [SerializeField] [Range(1, 1000)] private int _waveDuration;
+        [SerializeField] [Range(0.01f, 10)] private float _spawnDuration;
         [SerializeField] private StatModifier _enemyStatModifiers;
         
         public IReadOnlyList<ObjectWeightPair<Enemy>> EnemyWeights => _enemiesWeights;

@@ -1,27 +1,24 @@
-using System;
 using UnityEngine;
 
-public abstract class CollisionHandler : MonoBehaviour
+namespace Project.Scripts.Services
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public abstract class CollisionHandler : MonoBehaviour
     {
-        HandleCollision(collision);
-    }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            HandleCollision(collision);
+        }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        HandleCollision(collision.collider);
-    }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            HandleCollision(collision.collider);
+        }
     
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        HandleCollision(collision.collider);
-    }
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            HandleCollision(collision.collider);
+        }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        HandleCollision(collision);
+        protected abstract void HandleCollision(Collider2D collider);
     }
-
-    protected abstract void HandleCollision(Collider2D collider);
 }

@@ -213,7 +213,7 @@ MonoBehaviour:
     <IsLooped>k__BackingField: 0
   - <AudioID>k__BackingField: 33
     <AudioClip>k__BackingField: {fileID: 8300000, guid: 295563886fa434b7ca3b49efefff68b7, type: 3}
-    <AudioMixer>k__BackingField: {fileID: 0}
+    <AudioMixer>k__BackingField: {fileID: -6364331433842670574, guid: f7ecc41908a6d7d4b83f6836a6f989ba, type: 2}
     <Volume>k__BackingField: 0.75
     <PitchRange>k__BackingField: {x: 1, y: 1}
     <IsLooped>k__BackingField: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
     <IsLooped>k__BackingField: 0
   - <AudioID>k__BackingField: 36
     <AudioClip>k__BackingField: {fileID: 8300000, guid: fb89116e98f5a4dd0ac8041e955887d7, type: 3}
-    <AudioMixer>k__BackingField: {fileID: 0}
+    <AudioMixer>k__BackingField: {fileID: -6364331433842670574, guid: f7ecc41908a6d7d4b83f6836a6f989ba, type: 2}
     <Volume>k__BackingField: 0.3
     <PitchRange>k__BackingField: {x: 1.1, y: 1.2}
     <IsLooped>k__BackingField: 0

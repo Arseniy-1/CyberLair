@@ -13,7 +13,7 @@ public class SettingsInitializer : MonoBehaviour
     private void Start()
     {
         YandexGame.LoadProgress();
-        YandexGame.SwitchLanguage(YandexGame.savesData.language);
+        YandexGame.SwitchLanguage(YandexGame.lang);
         
         _extendedVolumeChanger.Initialize();
         _volumeChanger.Initialize();

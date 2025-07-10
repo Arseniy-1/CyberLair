@@ -84,8 +84,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
   - {fileID: 11400000, guid: 6d1f0578fffbf4c8da482e210616bc7a, type: 2}
   - {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
-  _availableSkills: []
-  _raisedSkills: []
   _player: {fileID: 0}
   _gameUI: {fileID: 0}
   _level: {fileID: 0}

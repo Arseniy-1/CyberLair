@@ -20,7 +20,7 @@ MonoBehaviour:
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
-  <Damage>k__BackingField: 20
+  <Damage>k__BackingField: 15
   <StrikesCount>k__BackingField: 1
   <ShootsNeeded>k__BackingField: 2
   <CommonSkillView>k__BackingField: {fileID: 6088791159437934664, guid: 2b56ce0bc03964d5d8e5d285824cf1d9, type: 3}

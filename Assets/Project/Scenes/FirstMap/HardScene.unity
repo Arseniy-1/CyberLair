@@ -6842,6 +6842,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8078767472919430690, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
+      propertyPath: _sceneName
+      value: HardScene
+      objectReference: {fileID: 0}
     - target: {fileID: 8112440191473698377, guid: c83a15c5baacdc5408dcc5a519a541a8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7032,82 +7036,6 @@ PrefabInstance:
       propertyPath: _playerWeaponHolder
       value: 
       objectReference: {fileID: 8024084153468684837}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _mutantSkills.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.size
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _mutantSkills.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6a7d2fffa90f3b940b6b841129a9dd6e, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _mutantSkills.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: 48f6466c7ace74ec7b973c0dfe405a61, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: e18572bf8d0b7d24cb7dae87a156099e, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 0be651a97b60446b2a7eaa2ca6c159af, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 666a77861a2264f459e2cf6d143436d5, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 11fe661258bfa4567883781da551b0ae, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 402d13ebca1704f3bae60254036af829, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 79bbb4527739b4428b0f0eba3d54714f, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 95fd6710fc5784a98914846ca07ba1cc, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: 28fc9838c81b24ed18d68d5f4b66ff3a, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9851e9ee22e964e829bee3742b9e9ba2, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[12]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6d1f0578fffbf4c8da482e210616bc7a, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[13]
-      value: 
-      objectReference: {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
-    - target: {fileID: 3788297459816807445, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
-      propertyPath: _simpleSkills.Array.data[14]
-      value: 
-      objectReference: {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
     - target: {fileID: 8550108228541669086, guid: f9f3cd10376d87c41a345996a9af8d24, type: 3}
       propertyPath: m_Name
       value: Mediator

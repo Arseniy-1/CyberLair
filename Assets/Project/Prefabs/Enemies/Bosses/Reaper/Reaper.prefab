@@ -146,7 +146,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &8081249287118153077
 Animator:
   serializedVersion: 5
@@ -266,7 +266,7 @@ MonoBehaviour:
   _attacker: {fileID: 4645820690688015025}
   _destroyer: {fileID: 3077523738677945245}
   _enemyTargetProvider: {fileID: 6214079916044508221}
-  _attackDistance: 6
+  _attackDistance: 15
   _view:
     _spriteRenderer: {fileID: 5703273196764355873}
     _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}
@@ -402,7 +402,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.013031483, y: -0.05864179}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -413,7 +413,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.03, y: 5.03}
+  m_Size: {x: 3.8571596, y: 4.912716}
   m_EdgeRadius: 0
 --- !u!114 &8192940060751490718
 MonoBehaviour:
