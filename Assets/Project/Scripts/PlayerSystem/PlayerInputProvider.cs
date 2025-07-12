@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using YG;
 
-public class PlayerInputController : MonoBehaviour
+public class PlayerInputProvider : MonoBehaviour
 {
     [SerializeField] private DeviceControlls _deviceControlls;
     [SerializeField] private DesktopControlls _desktopControlls;
@@ -23,7 +23,7 @@ public class PlayerInputController : MonoBehaviour
 
     private void Awake()
     {
-        _isDevice = YandexGame.EnvironmentData.isMobile || YandexGame.EnvironmentData.isTablet;
+        _isDevice = IsUsingTouchInput();
         
         _playerInput = new PlayerInput();
         _playerInput.Enable();
@@ -50,9 +50,9 @@ public class PlayerInputController : MonoBehaviour
     private void Update()
     {
         ReadMovementInput();
-
-        // if (_isDevice == false && _playerInput.Land.Shoot.IsPressed())
-        //     Shoot();
+        
+        if(_isDevice == false && _playerInput.Land.Shoot.IsPressed())
+            Shoot();
     }
 
     private void OnDisable()
@@ -73,6 +73,15 @@ public class PlayerInputController : MonoBehaviour
         _playerInput.Disable();
     }
     
+    private void SelectControlScheme()
+    {
+        if (_isDevice)
+            _deviceControlls.gameObject.SetActive(true);
+        else
+            _desktopControlls.gameObject.SetActive(true);
+    }
+
+    
     private void OnJumpPerformed(InputAction.CallbackContext callbackContext)
     {
         OnJumpButtonPressed?.Invoke();
@@ -84,18 +93,13 @@ public class PlayerInputController : MonoBehaviour
             OnMoveButtonPressed?.Invoke();
     }
 
-    private void SelectControlScheme()
-    {
-        _deviceControlls.gameObject.SetActive(true);
-        
-        // if (_isDevice)
-        //     _deviceControlls.gameObject.SetActive(true);
-        // else
-        //     _desktopControlls.gameObject.SetActive(true);
-    }
-
     private void Shoot()
     {
         OnShootButtonPressed?.Invoke();
     }
+    
+    private bool IsUsingTouchInput()
+    {
+        return Input.touchSupported && Input.touchCount > 0;
+    } 
 }

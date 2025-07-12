@@ -5,7 +5,7 @@ namespace StateMashineSytem.PlayerStateMashine
     public class PlayerMoveState : IState
     {
         private readonly PlayerMover _playerMover;
-        private readonly PlayerInputController _playerInputController;
+        private readonly PlayerInputProvider _playerInputProvider;
         private readonly WeaponHolder _weaponHolder;
         private readonly TargetScanner _targetScanner;
         private readonly Jumper _jumper;
@@ -15,11 +15,11 @@ namespace StateMashineSytem.PlayerStateMashine
         private IStateSwitcher _stateSwitcher;
         private Animator _animator;
 
-        public PlayerMoveState(PlayerInputController playerInputController, PlayerMover playerMover,
+        public PlayerMoveState(PlayerInputProvider playerInputProvider, PlayerMover playerMover,
             WeaponHolder weaponHolder, TargetScanner targetScanner, Jumper jumper)
         {
             _playerMover = playerMover;
-            _playerInputController = playerInputController;
+            _playerInputProvider = playerInputProvider;
             _weaponHolder = weaponHolder;
             _targetScanner = targetScanner;
             _jumper = jumper;
@@ -35,7 +35,7 @@ namespace StateMashineSytem.PlayerStateMashine
         {
             _playerMover.enabled = true;
             _playerMover.WalkSound.Play();
-            _playerInputController.OnJumpButtonPressed += OnJumpButtonPressed;
+            _playerInputProvider.OnJumpButtonPressed += OnJumpButtonPressed;
             
             _animator.SetBool(_walkAnimation, _playerMover.enabled);
         }
@@ -44,7 +44,7 @@ namespace StateMashineSytem.PlayerStateMashine
         {
             _playerMover.enabled = false;
             _playerMover.WalkSound.Stop();
-            _playerInputController.OnJumpButtonPressed -= OnJumpButtonPressed;
+            _playerInputProvider.OnJumpButtonPressed -= OnJumpButtonPressed;
             
             _animator.SetBool(_walkAnimation, _playerMover.enabled);
         }

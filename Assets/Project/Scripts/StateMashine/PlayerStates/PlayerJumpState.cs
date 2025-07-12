@@ -5,7 +5,7 @@ namespace StateMashineSytem.PlayerStateMashine
     public class PlayerJumpState : IState
     {
         private readonly Jumper _jumper;
-        private readonly PlayerInputController _playerInputController;
+        private readonly PlayerInputProvider _playerInputProvider;
         private readonly Collider2D _collider2D;
 
         private readonly int _jumpTrigger = Animator.StringToHash("Jump");
@@ -13,9 +13,9 @@ namespace StateMashineSytem.PlayerStateMashine
         private IStateSwitcher _stateSwitcher;
         private Animator _animator;
 
-        public PlayerJumpState(PlayerInputController playerInputController, Collider2D collider2D, Jumper jumper)
+        public PlayerJumpState(PlayerInputProvider playerInputProvider, Collider2D collider2D, Jumper jumper)
         {
-            _playerInputController = playerInputController;
+            _playerInputProvider = playerInputProvider;
             _collider2D = collider2D;
             _jumper = jumper;
         }
@@ -28,9 +28,9 @@ namespace StateMashineSytem.PlayerStateMashine
 
         public void Enter()
         {
-            _playerInputController.enabled = false;
+            _playerInputProvider.enabled = false;
             _collider2D.enabled = false;
-            _jumper.Jump(_playerInputController.InputDirection);
+            _jumper.Jump(_playerInputProvider.InputDirection);
             _jumper.JumpPerformed += OnJumpPerformed;
             
             _animator.SetTrigger(_jumpTrigger);
@@ -38,7 +38,7 @@ namespace StateMashineSytem.PlayerStateMashine
 
         public void Exit()
         {
-            _playerInputController.enabled = true;
+            _playerInputProvider.enabled = true;
             _collider2D.enabled = true;
             _jumper.JumpPerformed -= OnJumpPerformed;
             

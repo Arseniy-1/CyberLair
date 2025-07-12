@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private WeaponHolder _weaponHolder;
-    [SerializeField] private PlayerInputController _playerInputController;
+    [SerializeField] private PlayerInputProvider playerInputProvider;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Jumper _jumper;
     [SerializeField] private TargetScanner _targetScanner;
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
 
     private void OnEnable()
     {
-        _playerInputController.OnShootButtonPressed += Shoot;
+        playerInputProvider.OnShootButtonPressed += Shoot;
     }
 
     private void Update()
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
     
     private void OnDisable()
     {
-        _playerInputController.OnShootButtonPressed -= Shoot;
+        playerInputProvider.OnShootButtonPressed -= Shoot;
     }
 
     private void InitializeComponents()
@@ -69,8 +69,8 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         var playerStates = new List<IState>
         {
             new PlayerIdleState(_playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
-            new PlayerMoveState(_playerInputController, _playerMover, _weaponHolder, _targetScanner, _jumper),
-            new PlayerJumpState(_playerInputController, _collider, _jumper),
+            new PlayerMoveState(playerInputProvider, _playerMover, _weaponHolder, _targetScanner, _jumper),
+            new PlayerJumpState(playerInputProvider, _collider, _jumper),
             new PlayerStunnedState(_playerMover, _jumper)
         };
 
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
         _entityStateMachine.Initialize();
         PlayerStats.Initialize();
         _destroyer.Initialize(PlayerStats.Health, this);
-        _playerMover.Initialize(_playerInputController, _rigidbody2D, PlayerStats);
+        _playerMover.Initialize(playerInputProvider, _rigidbody2D, PlayerStats);
         _playerCollisionHandler.Initialize(PlayerStats.Health, ExperienceStorage);
         _jumper.Initialize(PlayerStats);
         _magnet.Initialize(PlayerStats, transform);
