@@ -1,5 +1,10 @@
-﻿public interface IIncrementalWeaponStats : IWeaponStats
+﻿using Project.Scripts.Stats;
+
+namespace Project.Scripts.Interfaces
 {
-    WeaponRechargingTime WeaponRechargingTime { get; }
-    WeaponMagazineSize WeaponMagazineSize { get; }
+    public interface IIncrementalWeaponStats : IWeaponStats
+    {
+        public WeaponRechargingTime WeaponRechargingTime { get; }
+        public WeaponMagazineSize WeaponMagazineSize { get; }
+    }
 }

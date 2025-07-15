@@ -1,66 +1,71 @@
 ﻿using System;
-using Project.Scripts.Servises;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services;
+using Project.Scripts.Stats;
 using UnityEngine;
 
-[Serializable]
-public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, IJumpStats
+namespace Project.Scripts.PlayerSystem
 {
-    [field: SerializeField] public Health Health { get; private set; }
-    [field: SerializeField] public HealthRegenerateAmount HealthRegenerateAmount { get; private set; }
-    [field: SerializeField] public ShieldAmount ShieldAmount { get; private set; }
-    [field: SerializeField] public Speed Speed { get; private set; }
-    [field: SerializeField] public JumpSpeed JumpSpeed { get; private set; }
-    [field: SerializeField] public JumpTime JumpTime { get; private set; }
-    [field: SerializeField] public JumpReloadTime JumpReloadTime { get; private set; }
-    [field: SerializeField] public WeaponSpread WeaponSpread { get; private set; }
-    [field: SerializeField] public WeaponDamage WeaponDamage { get; private set; }
-    [field: SerializeField] public BulletPerShootCount BulletPerShootCount { get; private set; }
-    [field: SerializeField] public WeaponBulletReloadTime WeaponBulletReloadTime { get; private set; }
-    [field: SerializeField] public WeaponRechargingTime WeaponRechargingTime { get; private set; }
-    [field: SerializeField] public WeaponMagazineSize WeaponMagazineSize { get; private set; }
-    [field: SerializeField] public MagnetRange MagnetRange { get; private set; }
-    [field: SerializeField] public MagnetForce MagnetForce { get; private set; }
+    [Serializable]
+    public class PlayerStats : IMoverStats, IMagnetStats, IIncrementalWeaponStats, IJumpStats
+    {
+        [field: SerializeField] public Health Health { get; private set; }
+        [field: SerializeField] public HealthRegenerateAmount HealthRegenerateAmount { get; private set; }
+        [field: SerializeField] public ShieldAmount ShieldAmount { get; private set; }
+        [field: SerializeField] public Speed Speed { get; private set; }
+        [field: SerializeField] public JumpSpeed JumpSpeed { get; private set; }
+        [field: SerializeField] public JumpTime JumpTime { get; private set; }
+        [field: SerializeField] public JumpReloadTime JumpReloadTime { get; private set; }
+        [field: SerializeField] public WeaponSpread WeaponSpread { get; private set; }
+        [field: SerializeField] public WeaponDamage WeaponDamage { get; private set; }
+        [field: SerializeField] public BulletPerShootCount BulletPerShootCount { get; private set; }
+        [field: SerializeField] public WeaponBulletReloadTime WeaponBulletReloadTime { get; private set; }
+        [field: SerializeField] public WeaponRechargingTime WeaponRechargingTime { get; private set; }
+        [field: SerializeField] public WeaponMagazineSize WeaponMagazineSize { get; private set; }
+        [field: SerializeField] public MagnetRange MagnetRange { get; private set; }
+        [field: SerializeField] public MagnetForce MagnetForce { get; private set; }
     
-    public OrbitalHandler OrbitalHandler { get; private set; }
+        public OrbitalHandler OrbitalHandler { get; private set; }
 
-    public void Initialize()
-    {
-        OrbitalHandler = new OrbitalHandler();
+        public void Initialize()
+        {
+            OrbitalHandler = new OrbitalHandler();
         
-        Health.CalculateCurrentValue();
-        ShieldAmount.CalculateCurrentValue();
-        Health.Initialize(ShieldAmount);
-        HealthRegenerateAmount.CalculateCurrentValue();
-        Speed.CalculateCurrentValue();
-        JumpSpeed.CalculateCurrentValue();
-        JumpTime.CalculateCurrentValue();
-        JumpReloadTime.CalculateCurrentValue();
-        WeaponSpread.CalculateCurrentValue();
-        WeaponDamage.CalculateCurrentValue();
-        BulletPerShootCount.CalculateCurrentValue();
-        WeaponBulletReloadTime.CalculateCurrentValue();
-        WeaponRechargingTime.CalculateCurrentValue();
-        WeaponMagazineSize.CalculateCurrentValue();
-        MagnetRange.CalculateCurrentValue();
-        MagnetForce.CalculateCurrentValue();
-    }
+            Health.CalculateCurrentValue();
+            ShieldAmount.CalculateCurrentValue();
+            Health.Initialize(ShieldAmount);
+            HealthRegenerateAmount.CalculateCurrentValue();
+            Speed.CalculateCurrentValue();
+            JumpSpeed.CalculateCurrentValue();
+            JumpTime.CalculateCurrentValue();
+            JumpReloadTime.CalculateCurrentValue();
+            WeaponSpread.CalculateCurrentValue();
+            WeaponDamage.CalculateCurrentValue();
+            BulletPerShootCount.CalculateCurrentValue();
+            WeaponBulletReloadTime.CalculateCurrentValue();
+            WeaponRechargingTime.CalculateCurrentValue();
+            WeaponMagazineSize.CalculateCurrentValue();
+            MagnetRange.CalculateCurrentValue();
+            MagnetForce.CalculateCurrentValue();
+        }
     
-    public void Update()
-    {
-        HealthRegenerateAmount.Update();
-        ShieldAmount.Update();
-        Health.Update();
-        Speed.Update();
-        JumpSpeed.Update();
-        JumpTime.Update();
-        JumpReloadTime.Update();
-        WeaponSpread.Update();
-        WeaponDamage.Update();
-        BulletPerShootCount.Update();
-        WeaponBulletReloadTime.Update();
-        WeaponRechargingTime.Update();
-        WeaponMagazineSize.Update();
-        MagnetRange.Update();
-        MagnetForce.Update();
+        public void Update()
+        {
+            HealthRegenerateAmount.Update();
+            ShieldAmount.Update();
+            Health.Update();
+            Speed.Update();
+            JumpSpeed.Update();
+            JumpTime.Update();
+            JumpReloadTime.Update();
+            WeaponSpread.Update();
+            WeaponDamage.Update();
+            BulletPerShootCount.Update();
+            WeaponBulletReloadTime.Update();
+            WeaponRechargingTime.Update();
+            WeaponMagazineSize.Update();
+            MagnetRange.Update();
+            MagnetForce.Update();
+        }
     }
 }

@@ -1,26 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
-using System;
 
-public class UnpauseButton : MonoBehaviour
+namespace Project.Scripts.UI
 {
-    private Button _button;
+    public class UnpauseButton : MonoBehaviour
+    {
+        private Button _button;
 
-    public event Action OnUnpause;
+        public event Action OnUnpause;
     
-    private void OnEnable()
-    {
-        _button = GetComponent<Button>();
-        _button.onClick.AddListener(Unpause);
-    }
+        private void OnEnable()
+        {
+            _button = GetComponent<Button>();
+            _button.onClick.AddListener(Unpause);
+        }
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(Unpause);
-    }
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(Unpause);
+        }
 
-    private void Unpause()
-    {
-        OnUnpause?.Invoke();
+        private void Unpause()
+        {
+            OnUnpause?.Invoke();
+        }
     }
 }

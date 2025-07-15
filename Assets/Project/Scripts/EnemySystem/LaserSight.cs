@@ -1,43 +1,45 @@
-using Project.Scripts.EnemySystem;
 using Project.Scripts.EnemySystem.AttackTypes;
 using Project.Scripts.Weapon;
 using UnityEngine;
 
-public class LaserSight : MonoBehaviour
+namespace Project.Scripts.EnemySystem
 {
-    [SerializeField] private Transform _originPosition;
-    [SerializeField] private Weapon _weapon;
-    [SerializeField] private EnemyShootAttacker _attacker;
-    [SerializeField] private EnemyTargetProvider _targetProvider;
-    [SerializeField] private LineRenderer _lineRenderer;
-
-    private void OnEnable()
+    public class LaserSight : MonoBehaviour
     {
-        _attacker.AttackStarted += OnAttackStarted;
-        _weapon.Shot += OnShot;
+        [SerializeField] private Transform _originPosition;
+        [SerializeField] private Weapon.Weapon _weapon;
+        [SerializeField] private EnemyShootAttacker _attacker;
+        [SerializeField] private EnemyTargetProvider _targetProvider;
+        [SerializeField] private LineRenderer _lineRenderer;
+
+        private void OnEnable()
+        {
+            _attacker.AttackStarted += OnAttackStarted;
+            _weapon.Shot += OnShot;
         
-        _lineRenderer.enabled = false;
-    }
+            _lineRenderer.enabled = false;
+        }
 
-    private void FixedUpdate()
-    {
-        _lineRenderer.SetPosition(0, _originPosition.position);
-        _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _targetProvider.Player.Position);
-    }
+        private void FixedUpdate()
+        {
+            _lineRenderer.SetPosition(0, _originPosition.position);
+            _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _targetProvider.Player.Position);
+        }
 
-    private void OnDisable()
-    {
-        _attacker.AttackStarted -= OnAttackStarted;
-        _weapon.Shot -= OnShot;
-    }
+        private void OnDisable()
+        {
+            _attacker.AttackStarted -= OnAttackStarted;
+            _weapon.Shot -= OnShot;
+        }
 
-    private void OnAttackStarted()
-    {
-        _lineRenderer.enabled = true;
-    }
+        private void OnAttackStarted()
+        {
+            _lineRenderer.enabled = true;
+        }
 
-    private void OnShot(Bullet bullet)
-    {
-        _lineRenderer.enabled = false;
+        private void OnShot(Bullet bullet)
+        {
+            _lineRenderer.enabled = false;
+        }
     }
 }

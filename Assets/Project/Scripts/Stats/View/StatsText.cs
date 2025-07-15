@@ -1,14 +1,17 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class StatsText : StatsView
+namespace Project.Scripts.Stats.View
 {
-    [SerializeField] protected TextMeshProUGUI CurrentValueText;
-    [SerializeField] protected TextMeshProUGUI MaxValueText;
-
-    protected override void ShowStats(float currentValue, float maxValue)
+    public class StatsText : StatsView
     {
-        CurrentValueText.text = currentValue.ToString("0");
-        MaxValueText.text = maxValue.ToString("0");
+        [SerializeField] protected TextMeshProUGUI CurrentValueText;
+        [SerializeField] protected TextMeshProUGUI MaxValueText;
+
+        protected override void ShowStats(float currentValue, float maxValue)
+        {
+            CurrentValueText.text = currentValue.ToString("0");
+            MaxValueText.text = maxValue.ToString("0");
+        }
     }
 }

@@ -1,19 +1,24 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using UnityEngine;
 
-public class SummonInstance : ISkillInstance
+namespace Project.Prefabs.Configs.Skills.Summon
 {
-    private Summon _summonInstance;
+    public class SummonInstance : ISkillInstance
+    {
+        private Summon _summonInstance;
     
-    public SummonInstance(SkillData skillData, SummonSkill skill)
-    {
-        Transform weaponHolderTransform = skillData.WeaponHolder.transform;
+        public SummonInstance(SkillData skillData, SummonSkill skill)
+        {
+            Transform weaponHolderTransform = skillData.WeaponHolder.transform;
         
-        var summon = Object.Instantiate(skill.SummonPrefab, weaponHolderTransform.position, weaponHolderTransform.rotation);
-        summon.Initialize(weaponHolderTransform);
-    }
+            var summon = Object.Instantiate(skill.SummonPrefab, weaponHolderTransform.position, weaponHolderTransform.rotation);
+            summon.Initialize(weaponHolderTransform);
+        }
 
-    public void Disable()
-    {
-        Object.Destroy(_summonInstance);
+        public void Disable()
+        {
+            Object.Destroy(_summonInstance);
+        }
     }
 }

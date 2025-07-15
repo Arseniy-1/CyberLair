@@ -1,14 +1,21 @@
 using System;
 using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using Project.Scripts.Weapon;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-namespace Project.Scripts.Weapon.ActiveSkills
+namespace Project.Prefabs.Configs.Skills.Thunder
 {
     public class Thunder : ISkillInstance
     {
+        private const int MaxHits = 12;
+        
+        private readonly Collider2D[] _results = new Collider2D[MaxHits];
+        
         private readonly float _actionRadius;
         private readonly LayerMask _layerMask;
         private readonly int _damage;
@@ -63,14 +70,14 @@ namespace Project.Scripts.Weapon.ActiveSkills
 
         private void Strike()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(_holder.position, _actionRadius, _layerMask);
+            int hitCount = Physics2D.OverlapCircleNonAlloc(_holder.position, _actionRadius, _results, _layerMask);
 
             for (int i = 0; i < _strikesCount; i++)
             {
-                if (colliders.Length == 0)
+                if (hitCount == 0)
                     return;
 
-                Collider2D strickenCollider = colliders[Random.Range(0, colliders.Length)];
+                Collider2D strickenCollider = _results[Random.Range(0, hitCount)];
 
                 if (strickenCollider.TryGetComponent(out Enemy affected) == false)
                     continue;

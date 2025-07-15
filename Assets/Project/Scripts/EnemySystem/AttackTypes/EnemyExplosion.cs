@@ -1,4 +1,4 @@
-using Project.Scripts.Servises;
+using Project.Scripts.Services;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.AttackTypes

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Project.Scripts.EnemySystem.Bosses.Attacks;
 
 namespace Project.Scripts.EnemySystem.Bosses
 {
@@ -9,7 +10,8 @@ namespace Project.Scripts.EnemySystem.Bosses
     {
         private readonly Queue<BossAttack> _attacksOrder;
         private readonly List<BossAttack> _attacks;
-        private  CancellationTokenSource _cancellationToken;
+        
+        private CancellationTokenSource _cancellationToken;
 
         public AttackPerformer(Queue<BossAttack> attacksOrder, List<BossAttack> attacks)
         {
@@ -32,7 +34,7 @@ namespace Project.Scripts.EnemySystem.Bosses
         
         private async UniTask PerformingAttack(CancellationToken token)
         {
-            while(_cancellationToken.IsCancellationRequested == false)
+            while (_cancellationToken.IsCancellationRequested == false)
             {
                 foreach (BossAttack attack in _attacks)
                 {

@@ -1,47 +1,53 @@
 using Project.Scripts.ArenaSystem;
+using Project.Scripts.MessageBroker;
 using UnityEngine;
 using YG;
 
-public class WinScreenHandler : ISubscribable
+namespace Project.Scripts.CompositionRoot
 {
-    private readonly Timer _timer;
-    private readonly Arena _arena;
-    
-    private readonly Canvas _winGameCanvas;
-    private readonly Canvas _gameCanvas;
-
-    public WinScreenHandler(Timer timer, Arena arena, Canvas winGameCanvas, Canvas gameCanvas)
+    public class WinScreenHandler : ISubscribable
     {
-        _timer = timer;
-        _arena = arena;
+        private const string LeaderboardName = "time";
         
-        _winGameCanvas = winGameCanvas;
-        _gameCanvas = gameCanvas;
-    }
+        private readonly Timer _timer;
+        private readonly Arena _arena;
     
-    public void Subscribe()
-    {
-        _arena.WavesDone += ShowWinScreen;
-    }
+        private readonly Canvas _winGameCanvas;
+        private readonly Canvas _gameCanvas;
 
-    public void Unsubscribe()
-    {
-        _arena.WavesDone -= ShowWinScreen;
-    }
+        public WinScreenHandler(Timer timer, Arena arena, Canvas winGameCanvas, Canvas gameCanvas)
+        {
+            _timer = timer;
+            _arena = arena;
+        
+            _winGameCanvas = winGameCanvas;
+            _gameCanvas = gameCanvas;
+        }
     
-    private void ShowWinScreen()
-    {
-        _gameCanvas.gameObject.SetActive(false);
-        _winGameCanvas.gameObject.SetActive(true);
+        public void Subscribe()
+        {
+            _arena.WavesDone += ShowWinScreen;
+        }
 
-        MessageBrokerHolder.Game
-            .Publish(new M_GamePaused());
+        public void Unsubscribe()
+        {
+            _arena.WavesDone -= ShowWinScreen;
+        }
+    
+        private void ShowWinScreen()
+        {
+            _gameCanvas.gameObject.SetActive(false);
+            _winGameCanvas.gameObject.SetActive(true);
 
-        if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
-            return;
+            MessageBrokerHolder.Game
+                .Publish(default(M_GamePaused));
 
-        YandexGame.savesData.BestTime = _timer.CurrentSeconds;
-        YandexGame.SaveProgress();
-        YandexGame.NewLBScoreTimeConvert("Leaderboard", YandexGame.savesData.BestTime);
+            if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
+                return;
+
+            YandexGame.savesData.BestTime = _timer.CurrentSeconds;
+            YandexGame.SaveProgress();
+            YandexGame.NewLBScoreTimeConvert(LeaderboardName, YandexGame.savesData.BestTime);
+        }
     }
 }

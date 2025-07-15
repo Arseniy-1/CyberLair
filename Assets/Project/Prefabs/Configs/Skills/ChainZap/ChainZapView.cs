@@ -1,14 +1,18 @@
 using System;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-public class ChainZapView : MonoBehaviour, IDestoyable<ChainZapView>
+namespace Project.Prefabs.Configs.Skills.ChainZap
 {
-    [field: SerializeField] public LineRenderer ZapView { get; private set; }
-
-    public event Action<ChainZapView> OnDestroyed;
-
-    public void Disable()
+    public class ChainZapView : MonoBehaviour, IDestoyable<ChainZapView>
     {
-        OnDestroyed?.Invoke(this);
+        [field: SerializeField] public LineRenderer ZapView { get; private set; }
+
+        public event Action<ChainZapView> OnDestroyed;
+
+        public void Disable()
+        {
+            OnDestroyed?.Invoke(this);
+        }
     }
 }

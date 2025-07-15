@@ -1,11 +1,11 @@
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-namespace StateMashineSytem.EnemyStates
+namespace Project.Scripts.StateMashine.EnemyStates
 {
     public class EnemyIdleState : IState
     {
-        private readonly Enemy _enemy;
         private readonly EnemyMover _mover;
         private readonly EnemyTargetProvider _enemyTargetProvider;
         private IStateSwitcher _stateSwitcher;
@@ -14,9 +14,8 @@ namespace StateMashineSytem.EnemyStates
         private readonly int _attackAnimation = Animator.StringToHash("IsAttacking");
         private  Animator _animator;
 
-        public EnemyIdleState(Enemy enemy, EnemyMover mover, EnemyTargetProvider enemyTargetProvider)
+        public EnemyIdleState(EnemyMover mover, EnemyTargetProvider enemyTargetProvider)
         {
-            _enemy = enemy;
             _mover = mover;
             _enemyTargetProvider = enemyTargetProvider;
         }
@@ -31,7 +30,7 @@ namespace StateMashineSytem.EnemyStates
 
         public void Update()
         {
-            if(_enemyTargetProvider.HasPlayer)
+            if (_enemyTargetProvider.HasPlayer)
                 _stateSwitcher.SwitchState<EnemyMoveState>();
         }
 

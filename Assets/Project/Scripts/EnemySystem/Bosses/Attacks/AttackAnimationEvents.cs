@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses
+namespace Project.Scripts.EnemySystem.Bosses.Attacks
 {
     public class AttackAnimationEvents : MonoBehaviour
     {

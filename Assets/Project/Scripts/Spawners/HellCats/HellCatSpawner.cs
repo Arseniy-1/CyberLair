@@ -1,8 +1,13 @@
-﻿public class HellCatSpawner : Spawner<HellCat>
+﻿using Project.Prefabs.Configs.Skills.HellCats;
+
+namespace Project.Scripts.Spawners.HellCats
 {
-    public HellCatSpawner(HellCat prefab)
+    public class HellCatSpawner : Spawner<HellCat>
     {
-        Prefab = prefab;
-        Pool = new HellCatPool(Prefab, StartAmount);
+        public HellCatSpawner(HellCat prefab)
+        {
+            Prefab = prefab;
+            Pool = new HellCatPool(Prefab, StartAmount);
+        }
     }
 }

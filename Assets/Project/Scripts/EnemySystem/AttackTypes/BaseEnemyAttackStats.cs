@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.AttackTypes

@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 
-public class ExplosionEffectsPool : Pool<Effect>
+namespace Project.Scripts.Spawners.ParticleEffects
 {
-    public ExplosionEffectsPool(Effect prefab, int startAmount) : base(prefab, startAmount) { }
-        
-    protected override Effect Create()
+    public class ExplosionEffectsPool : Pool<Effect>
     {
-        var effect =  Object.Instantiate(Prefab);
-        effect.gameObject.SetActive(false);
+        public ExplosionEffectsPool(Effect prefab, int startAmount) : base(prefab, startAmount) { }
+        
+        protected override Effect Create()
+        {
+            var effect =  Object.Instantiate(Prefab);
+            effect.gameObject.SetActive(false);
             
-        return effect;
+            return effect;
+        }
     }
 }

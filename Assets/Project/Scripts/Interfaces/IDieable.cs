@@ -1,4 +1,7 @@
-﻿public interface IDieable
+﻿namespace Project.Scripts.Interfaces
 {
-    void Die();
+    public interface IDieable
+    {
+        public void Die();
+    }
 }

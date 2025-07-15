@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public interface IMoveable
+namespace Project.Scripts.Interfaces
 {
-    Rigidbody2D Rigidbody2D { get; }
+    public interface IMoveable
+    {
+        public Rigidbody2D Rigidbody2D { get; }
+    }
 }

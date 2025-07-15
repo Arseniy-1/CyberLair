@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Project.Scripts.Servises;
+using Project.Scripts.Services;
 using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -17,7 +17,7 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
         [SerializeField] private Tilemap _targetTilemap;
         [SerializeField] private Tilemap[] _obstacleTilemaps;
         [SerializeField] private List<ObjectWeightPair<MapEnvironment>> _tileObjects;
-        [SerializeField, Range(0f, 1f)] private float _objectFillPercentage;
+        [SerializeField] [Range(0f, 1f)] private float _objectFillPercentage;
 
         private List<Vector3> _bannedPositions = new();
         private List<Vector2> _placedObjectsPositions = new();
@@ -36,10 +36,10 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
             
             foreach (Vector3 position in availablePositions)
             {
-                if(_bannedPositions.Contains(position) && _bannedPositions.IsNullOrEmpty() == false)
+                if (_bannedPositions.Contains(position) && _bannedPositions.IsNullOrEmpty() == false)
                     continue;
                 
-                if(Random.value > _objectFillPercentage)
+                if (Random.value > _objectFillPercentage)
                     continue;
             
                 var picker = new WeightedRandomPicker<MapEnvironment>(_tileObjects.Select(pair => pair.Prefab).ToList(),
@@ -51,10 +51,11 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
 
         private void PlaceIndividual(MapEnvironment prefab, Vector3 position)
         {
-            if(_placedObjectsPositions.Contains(position))
+            if (_placedObjectsPositions.Contains(position))
                 return;
                 
             Object.Instantiate(prefab, position, Quaternion.identity);
+            
             _placedObjectsPositions.Add(position);
         }
     }

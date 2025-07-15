@@ -1,8 +1,8 @@
 using System;
-using Project.Scripts.Services;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-namespace Project.Scripts.Servises
+namespace Project.Scripts.Services
 {
     public class SkillCollisionHandler : CollisionHandler
     {
@@ -20,7 +20,8 @@ namespace Project.Scripts.Servises
 
         protected override void HandleCollision(Collider2D collider)
         {
-            if (!collider.TryGetComponent(out IDamageable damagable)) return;
+            if (collider.TryGetComponent(out IDamageable damagable) == false)
+                return;
             
             damagable.TakeDamage(_collisionDamage);
 
@@ -30,7 +31,7 @@ namespace Project.Scripts.Servises
         
         private void HandleContactLimit()
         {
-            if(_contactCount >= _contactLimit)
+            if (_contactCount >= _contactLimit)
                 ContactLimitExpired?.Invoke();
         }
     }

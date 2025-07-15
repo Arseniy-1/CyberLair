@@ -1,19 +1,24 @@
-﻿using Project.Scripts.Services;
+﻿using Project.Scripts.Interfaces;
+using Project.Scripts.PlayerSystem;
+using Project.Scripts.Services;
 using UnityEngine;
 
-public class EnemyCollisionHandler : CollisionHandler
+namespace Project.Scripts.EnemySystem
 {
-    [SerializeField] private float _pushForce;
-    [SerializeField] private float _collisionDamage;
-    
-    protected override void HandleCollision(Collider2D collider)
+    public class EnemyCollisionHandler : CollisionHandler
     {
-        if (collider.TryGetComponent(out Player player) == false)
-            return;
-
-        if (player is IDamageable damagable)
+        [SerializeField] private float _pushForce;
+        [SerializeField] private float _collisionDamage;
+    
+        protected override void HandleCollision(Collider2D collider)
         {
-            damagable.TakeDamage(_collisionDamage);
+            if (collider.TryGetComponent(out Player player) == false)
+                return;
+
+            if (player is IDamageable damagable)
+            {
+                damagable.TakeDamage(_collisionDamage);
+            }
         }
     }
 }

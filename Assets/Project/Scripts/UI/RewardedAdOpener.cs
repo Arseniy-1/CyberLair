@@ -2,23 +2,26 @@
 using UnityEngine.UI;
 using YG;
 
-public class RewardedAdOpener : MonoBehaviour
+namespace Project.Scripts.UI
 {
-    [SerializeField] private Button _rewardedAdButton;
-    [SerializeField] private RewardedAdType _rewardedAdType;
-    
-    private void OnEnable()
+    public class RewardedAdOpener : MonoBehaviour
     {
-        _rewardedAdButton.onClick.AddListener(OpenRewardedAd);
-    }
+        [SerializeField] private Button _rewardedAdButton;
+        [SerializeField] private RewardedAdType _rewardedAdType;
+    
+        private void OnEnable()
+        {
+            _rewardedAdButton.onClick.AddListener(OpenRewardedAd);
+        }
 
-    private void OnDisable()
-    {
-        _rewardedAdButton.onClick.RemoveListener(OpenRewardedAd);
-    }
+        private void OnDisable()
+        {
+            _rewardedAdButton.onClick.RemoveListener(OpenRewardedAd);
+        }
     
-    private void OpenRewardedAd()
-    {
-        YandexGame.RewVideoShow((int)_rewardedAdType);
+        private void OpenRewardedAd()
+        {
+            YandexGame.RewVideoShow((int)_rewardedAdType);
+        }
     }
 }

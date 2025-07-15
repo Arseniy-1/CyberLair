@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
+using Project.Scripts.Interfaces;
 using Project.Scripts.Services;
-using Project.Scripts.Servises;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.DeathReaper
 {
     public class SoulOrbital : Orbital, IDestoyable<SoulOrbital>, IReturnable
     {

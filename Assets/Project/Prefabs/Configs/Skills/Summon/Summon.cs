@@ -1,30 +1,36 @@
+using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services;
 using UnityEngine;
 
-public class Summon : MonoBehaviour
+namespace Project.Prefabs.Configs.Skills.Summon
 {
-    [SerializeField] private WeaponHolder _weaponHolder;
-    [SerializeField] private SummonMover _mover;
-    [SerializeField] private SummonStats _summonStats;
-    [SerializeField] private TargetScanner _targetScanner;
-    
-    private void FixedUpdate()
+    public class Summon : MonoBehaviour
     {
-        ITarget target = _targetScanner.ClosestTarget;
-
-        if (target != null)
+        [SerializeField] private WeaponHolder _weaponHolder;
+        [SerializeField] private SummonMover _mover;
+        [SerializeField] private SummonStats _summonStats;
+        [SerializeField] private TargetScanner _targetScanner;
+    
+        private void FixedUpdate()
         {
-            _weaponHolder.SpotTarget(target);
-            _weaponHolder.Shoot();
+            ITarget target = _targetScanner.ClosestTarget;
+
+            if (target != null)
+            {
+                _weaponHolder.SpotTarget(target);
+                _weaponHolder.Shoot();
+            }
+
+            _mover.MoveToNextPosition();
         }
 
-        _mover.MoveToNextPosition();
-    }
-
-    public void Initialize(Transform targetTransform)
-    {
-        _mover.Initialize(targetTransform, _summonStats);
-        _summonStats.Initialize();
+        public void Initialize(Transform targetTransform)
+        {
+            _mover.Initialize(targetTransform, _summonStats);
+            _summonStats.Initialize();
         
-        _weaponHolder.Weapon.Initialize(_summonStats);
+            _weaponHolder.Weapon.Initialize(_summonStats);
+        }
     }
 }

@@ -2,32 +2,35 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MobileShootZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+namespace Project.Scripts.PlayerSystem
 {
-    public event Action OnShootButtonPressed;
-    
-    private bool _isButtonPressed;
-
-    private void OnDisable()
+    public class MobileShootZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        _isButtonPressed = false;
-    }
+        private bool _isButtonPressed;
     
-    private void Update()
-    {
-        if (_isButtonPressed)
+        public event Action OnShootButtonPressed;
+    
+        private void OnDisable()
         {
-            OnShootButtonPressed?.Invoke();
+            _isButtonPressed = false;
         }
-    }
     
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        _isButtonPressed = true;
-    }
+        private void Update()
+        {
+            if (_isButtonPressed)
+            {
+                OnShootButtonPressed?.Invoke();
+            }
+        }
+    
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            _isButtonPressed = true;
+        }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        _isButtonPressed = false;
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            _isButtonPressed = false;
+        }
     }
 }

@@ -1,16 +1,18 @@
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-namespace StateMashineSytem.EnemyStates
+namespace Project.Scripts.StateMashine.EnemyStates
 {
     public class EnemyMoveState : IState
     {
-        private IStateSwitcher _stateSwitcher;
         private readonly EnemyMover _mover;
         private readonly EnemyTargetProvider _enemyTargetProvider;
         private readonly EnemyAttackCooldown _cooldown;
         
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
+        
+        private IStateSwitcher _stateSwitcher;
         private  Animator _animator;
 
         public EnemyMoveState(EnemyMover mover, EnemyTargetProvider enemyTargetProvider, EnemyAttackCooldown cooldown)
@@ -29,10 +31,10 @@ namespace StateMashineSytem.EnemyStates
 
         public void Update()
         {
-            if(_enemyTargetProvider.HasPlayer == false)
+            if (_enemyTargetProvider.HasPlayer == false)
                 _stateSwitcher.SwitchState<EnemyIdleState>();
             
-            if(_enemyTargetProvider.IsPlayerInRange && _cooldown.IsOnCooldown == false)
+            if (_enemyTargetProvider.IsPlayerInRange && _cooldown.IsOnCooldown == false)
                 _stateSwitcher.SwitchState<EnemyAttackState>();
         }
 

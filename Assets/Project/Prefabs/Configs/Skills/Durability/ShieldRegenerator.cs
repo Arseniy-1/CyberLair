@@ -1,76 +1,80 @@
 ﻿using System.Collections;
+using Project.Scripts.Stats;
 using UnityEngine;
 
-public class ShieldRegenerator : MonoBehaviour
+namespace Project.Prefabs.Configs.Skills.Durability
 {
-    [SerializeField] private float _regenerateInterval = 1f;
-    [SerializeField] private float _afterDamagePause = 3f;
-
-    private ShieldAmount _shield;
-    private Health _health;
-
-    private float ShieldRegenerateAmount => _shield.MaxShield * 0.1f;
-    private WaitForSeconds _regenerateWait;
-    private WaitForSeconds _pauseWait;
-
-    private Coroutine _regenerationCoroutine;
-    private Coroutine _resumeCoroutine;
-
-    private void OnDisable()
+    public class ShieldRegenerator : MonoBehaviour
     {
-        _health.DamageTaken -= OnDamageTaken;
+        [SerializeField] private float _regenerateInterval = 1f;
+        [SerializeField] private float _afterDamagePause = 3f;
 
-        if (_regenerationCoroutine == null)
-            return;
-        
-        StopCoroutine(_regenerationCoroutine);
-        _regenerationCoroutine = null;
+        private ShieldAmount _shield;
+        private Health _health;
 
-        if (_resumeCoroutine == null)
-            return;
-        
-        StopCoroutine(_resumeCoroutine);
-        _resumeCoroutine = null;
-    }
+        private float ShieldRegenerateAmount => _shield.MaxShield * 0.1f;
+        private WaitForSeconds _regenerateWait;
+        private WaitForSeconds _pauseWait;
 
-    public void Initialize(ShieldAmount shield, Health health)
-    {
-        _health = health;
-        _health.DamageTaken += OnDamageTaken;
+        private Coroutine _regenerationCoroutine;
+        private Coroutine _resumeCoroutine;
 
-        _shield = shield;
-        _regenerateWait = new WaitForSeconds(_regenerateInterval);
-        _pauseWait = new WaitForSeconds(_afterDamagePause);
-        _regenerationCoroutine = StartCoroutine(RegenerateShield());
-    }
-
-    private IEnumerator RegenerateShield()
-    {
-        while (enabled)
+        private void OnDisable()
         {
-            yield return _regenerateWait;
-            _shield.RepairShield(ShieldRegenerateAmount);
-        }
-    }
+            _health.DamageTaken -= OnDamageTaken;
 
-    private void OnDamageTaken(float amount)
-    {
-        if (_regenerationCoroutine != null)
-        {
+            if (_regenerationCoroutine == null)
+                return;
+        
             StopCoroutine(_regenerationCoroutine);
             _regenerationCoroutine = null;
+
+            if (_resumeCoroutine == null)
+                return;
+        
+            StopCoroutine(_resumeCoroutine);
+            _resumeCoroutine = null;
         }
 
-        if (_resumeCoroutine != null)
-            StopCoroutine(_resumeCoroutine);
+        public void Initialize(ShieldAmount shield, Health health)
+        {
+            _health = health;
+            _health.DamageTaken += OnDamageTaken;
 
-        _resumeCoroutine = StartCoroutine(ResumeRegenerationAfterDelay());
-    }
+            _shield = shield;
+            _regenerateWait = new WaitForSeconds(_regenerateInterval);
+            _pauseWait = new WaitForSeconds(_afterDamagePause);
+            _regenerationCoroutine = StartCoroutine(RegenerateShield());
+        }
 
-    private IEnumerator ResumeRegenerationAfterDelay()
-    {
-        yield return _pauseWait;
-        _regenerationCoroutine = StartCoroutine(RegenerateShield());
-        _resumeCoroutine = null;
+        private IEnumerator RegenerateShield()
+        {
+            while (enabled)
+            {
+                yield return _regenerateWait;
+                _shield.RepairShield(ShieldRegenerateAmount);
+            }
+        }
+
+        private void OnDamageTaken(float amount)
+        {
+            if (_regenerationCoroutine != null)
+            {
+                StopCoroutine(_regenerationCoroutine);
+                _regenerationCoroutine = null;
+            }
+
+            if (_resumeCoroutine != null)
+                StopCoroutine(_resumeCoroutine);
+
+            _resumeCoroutine = StartCoroutine(ResumeRegenerationAfterDelay());
+        }
+
+        private IEnumerator ResumeRegenerationAfterDelay()
+        {
+            yield return _pauseWait;
+            _regenerationCoroutine = StartCoroutine(RegenerateShield());
+            _resumeCoroutine = null;
+        }
     }
 }

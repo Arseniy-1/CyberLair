@@ -1,7 +1,8 @@
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-namespace StateMashineSytem.EnemyStates
+namespace Project.Scripts.StateMashine.EnemyStates
 {
     public class EnemyStunnedState : IState
     {

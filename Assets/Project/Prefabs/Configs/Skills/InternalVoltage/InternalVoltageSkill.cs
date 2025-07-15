@@ -1,4 +1,5 @@
-using Project.Scripts.Weapon.ActiveSkills;
+using Project.Prefabs.Configs.Skills.Thunder;
+using Project.Scripts.Skill;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.InternalVoltage

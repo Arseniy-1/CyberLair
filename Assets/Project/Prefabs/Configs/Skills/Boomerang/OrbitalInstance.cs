@@ -1,4 +1,6 @@
-using Project.Scripts.Servises;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services;
+using Project.Scripts.Skill;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.Boomerang

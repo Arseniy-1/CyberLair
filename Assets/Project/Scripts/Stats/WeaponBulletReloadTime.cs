@@ -1,4 +1,9 @@
 ﻿using System;
 
-[Serializable]
-public class WeaponBulletReloadTime : BaseStat { }
+namespace Project.Scripts.Stats
+{
+    [Serializable]
+    public class WeaponBulletReloadTime : BaseStat
+    {
+    }
+}

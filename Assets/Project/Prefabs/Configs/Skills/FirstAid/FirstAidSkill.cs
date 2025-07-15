@@ -1,6 +1,7 @@
+using Project.Scripts.Skill;
 using UnityEngine;
 
-namespace Project.Prefabs.Configs.Skills
+namespace Project.Prefabs.Configs.Skills.FirstAid
 {
     [CreateAssetMenu(fileName = "FirstAidSkill", menuName = "Skill/Simple/FirstAid", order = 51)]
     public class FirstAidSkill : Skill

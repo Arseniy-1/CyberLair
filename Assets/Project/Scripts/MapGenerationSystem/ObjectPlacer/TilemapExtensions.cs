@@ -9,11 +9,12 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
         public static List<Vector3> GetTileWorldPositionsWithTiles(this Tilemap tilemap)
         {
             var tilesWorldPositions = new List<Vector3>();
+            
             BoundsInt.PositionEnumerator tilesLocalPositions = tilemap.cellBounds.allPositionsWithin;
 
             foreach (Vector3Int localPosition in tilesLocalPositions)
             {
-                if(tilemap.HasTile(localPosition))
+                if (tilemap.HasTile(localPosition))
                     tilesWorldPositions.Add(tilemap.CellToWorld(localPosition));
             }
 

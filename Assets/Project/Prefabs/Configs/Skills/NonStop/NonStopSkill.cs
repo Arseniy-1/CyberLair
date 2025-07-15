@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Skill;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "NonStopSkill", menuName = "Skill/Mutant/NonStop", order = 51)]
-public class NonStopSkill : MutantSkill
+namespace Project.Prefabs.Configs.Skills.NonStop
 {
-    [field: SerializeField] public LandMine LandMinePrefab { get; private set; }
-    [field: SerializeField] public int NeededDiedEnemyCount { get; private set; }
+    [CreateAssetMenu(fileName = "NonStopSkill", menuName = "Skill/Mutant/NonStop", order = 51)]
+    public class NonStopSkill : MutantSkill
+    {
+        [field: SerializeField] public LandMine LandMinePrefab { get; private set; }
+        [field: SerializeField] public int NeededDiedEnemyCount { get; private set; }
+    }
 }

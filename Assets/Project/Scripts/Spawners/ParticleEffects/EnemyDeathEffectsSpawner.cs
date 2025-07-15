@@ -1,26 +1,31 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Project.Scripts.MessageBroker;
+using Project.Scripts.MessageBroker.EnemyMessageBrokers;
 using UniRx;
 using UnityEngine;
 
-[Serializable]
-public class EnemyDeathEffectsSpawner : Spawner<Effect>
+namespace Project.Scripts.Spawners.ParticleEffects
 {
-    public EnemyDeathEffectsSpawner(Effect effect, CancellationToken token)
+    [Serializable]
+    public class EnemyDeathEffectsSpawner : Spawner<Effect>
     {
-        Prefab = effect;
-        Pool = new DeathEffectsPool(Prefab, StartAmount);
+        public EnemyDeathEffectsSpawner(Effect effect, CancellationToken token)
+        {
+            Prefab = effect;
+            Pool = new DeathEffectsPool(Prefab, StartAmount);
         
-        MessageBrokerHolder.Enemy
-            .Receive<M_EnemyDeath>()
-            .Subscribe(message => HandleEnemyDeath(message.Position))
-            .AddTo(token);
-    }
+            MessageBrokerHolder.Enemy
+                .Receive<M_EnemyDeath>()
+                .Subscribe(message => HandleEnemyDeath(message.Position))
+                .AddTo(token);
+        }
 
-    private void HandleEnemyDeath(Vector2 position)
-    {
-        Effect effect = Spawn();
-        effect.transform.position = position;
+        private void HandleEnemyDeath(Vector2 position)
+        {
+            Effect effect = Spawn();
+            effect.transform.position = position;
+        }
     }
 }

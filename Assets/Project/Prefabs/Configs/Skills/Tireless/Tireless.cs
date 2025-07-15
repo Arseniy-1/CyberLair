@@ -1,19 +1,26 @@
-﻿public class Tireless : ISkillInstance
+﻿using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using Project.Scripts.Stats;
+
+namespace Project.Prefabs.Configs.Skills.Tireless
 {
-    private readonly SkillData _data;
-    private readonly StatModifier _jumpReloadTimeModifier;
-
-    public Tireless(SkillData skillData, TirelessSkill skill)
+    public class Tireless : ISkillInstance
     {
-        _data = skillData;
+        private readonly SkillData _data;
+        private readonly StatModifier _jumpReloadTimeModifier;
 
-        _jumpReloadTimeModifier = skill.JumpReloadTimeModifier.Copy();
+        public Tireless(SkillData skillData, TirelessSkill skill)
+        {
+            _data = skillData;
 
-        _data.PlayerStats.WeaponDamage.AddModifier(_jumpReloadTimeModifier);
-    }
+            _jumpReloadTimeModifier = skill.JumpReloadTimeModifier.Copy();
 
-    public  void Disable()
-    {
-        _data.PlayerStats.WeaponDamage.RemoveModifier(_jumpReloadTimeModifier);
+            _data.PlayerStats.WeaponDamage.AddModifier(_jumpReloadTimeModifier);
+        }
+
+        public  void Disable()
+        {
+            _data.PlayerStats.WeaponDamage.RemoveModifier(_jumpReloadTimeModifier);
+        }
     }
 }

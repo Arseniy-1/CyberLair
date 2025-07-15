@@ -1,26 +1,31 @@
 ﻿using System;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
 
-[Serializable]
-public class PainHealer : ISkillInstance
+namespace Project.Prefabs.Configs.Skills.RecoveryPain
 {
-    private SkillData _data;
-    private RecoveryPainSkill _skill;
+    [Serializable]
+    public class PainHealer : ISkillInstance
+    {
+        private SkillData _data;
+        private RecoveryPainSkill _skill;
     
-    public PainHealer(SkillData skillData, RecoveryPainSkill skill)
-    {
-        _data = skillData;
-        _skill = skill;
+        public PainHealer(SkillData skillData, RecoveryPainSkill skill)
+        {
+            _data = skillData;
+            _skill = skill;
         
-        _data.PlayerStats.Health.DamageTaken += Heal;
-    }
+            _data.PlayerStats.Health.DamageTaken += Heal;
+        }
 
-    private void Heal(float amount)
-    {
-        _data.PlayerStats.HealthRegenerateAmount.AddModifier(_skill.RegenerateModifier.Copy());
-    }
+        private void Heal(float amount)
+        {
+            _data.PlayerStats.HealthRegenerateAmount.AddModifier(_skill.RegenerateModifier.Copy());
+        }
 
-    public void Disable()
-    {
-        _data.PlayerStats.Health.DamageTaken -= Heal;
+        public void Disable()
+        {
+            _data.PlayerStats.Health.DamageTaken -= Heal;
+        }
     }
 }

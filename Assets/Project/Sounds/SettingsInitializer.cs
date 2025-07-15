@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Project.Scripts.Settings;
 using UnityEngine;
 using YG;
 

@@ -1,3 +1,7 @@
+using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using Project.Scripts.Weapon;
+
 namespace Project.Prefabs.Configs.Skills.BulletonsLast
 {
     public class BulletonsLast : ISkillInstance
@@ -19,7 +23,8 @@ namespace Project.Prefabs.Configs.Skills.BulletonsLast
 
         private void InnerSubscribe(Bullet bullet)
         {
-            if (_weapon.CurrentMagazineSize != 0) return;
+            if (_weapon.CurrentMagazineSize != 0) 
+                return;
             
             bullet.OnDamagableCollided += DealCriticalDamage;
             bullet.OnDestroyed += Unsubscribe;

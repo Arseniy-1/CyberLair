@@ -1,18 +1,21 @@
 using System.Linq;
-using Project.Scripts.Spawners.Audio;
+using Project.Scripts.Services.Enum;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SoundSettings", menuName = "Sound/SoundSettings", order = 51)]
-public class SoundSettings : ScriptableObject
+namespace Project.Scripts.Services.Audio
 {
-    [SerializeField] private AudioData[] _audioData;
-    
-    [field: SerializeField] public Audio AudioPrefab { get; private set; }
-
-    public bool TryGet(AudioID audioID, out AudioData audioData)
+    [CreateAssetMenu(fileName = "SoundSettings", menuName = "Sound/SoundSettings", order = 51)]
+    public class SoundSettings : ScriptableObject
     {
-        audioData = _audioData.FirstOrDefault(data => data.AudioID == audioID);
+        [SerializeField] private AudioData[] _audioData;
+    
+        [field: SerializeField] public Spawners.Audio.Audio AudioPrefab { get; private set; }
 
-        return audioData != null;
+        public bool TryGet(AudioID audioID, out AudioData audioData)
+        {
+            audioData = _audioData.FirstOrDefault(data => data.AudioID == audioID);
+
+            return audioData != null;
+        }
     }
 }

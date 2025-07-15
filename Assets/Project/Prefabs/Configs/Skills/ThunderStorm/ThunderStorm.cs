@@ -1,6 +1,7 @@
 using System;
 using Project.Scripts.EnemySystem;
-using Project.Scripts.Weapon.ActiveSkills;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Enum;
 using Random = UnityEngine.Random;
 
 namespace Project.Prefabs.Configs.Skills.ThunderStorm
@@ -8,9 +9,9 @@ namespace Project.Prefabs.Configs.Skills.ThunderStorm
     public class ThunderStorm : ISkillInstance
     {
         private readonly float _chance;
-        private readonly Thunder _thunder;
+        private readonly Thunder.Thunder _thunder;
 
-        public ThunderStorm(ThunderStormSkill skill, Thunder thunder)
+        public ThunderStorm(ThunderStormSkill skill, Thunder.Thunder thunder)
         {
             _chance = skill.Chance;
             _thunder = thunder;

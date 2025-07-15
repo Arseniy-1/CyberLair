@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.MapGenerationSystem.Configs;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

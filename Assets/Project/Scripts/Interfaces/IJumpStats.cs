@@ -1,6 +1,11 @@
-﻿public interface IJumpStats
+﻿using Project.Scripts.Stats;
+
+namespace Project.Scripts.Interfaces
 {
-    public JumpSpeed JumpSpeed { get;}
-    public JumpTime JumpTime { get;}
-    public JumpReloadTime JumpReloadTime { get;}
+    public interface IJumpStats
+    {
+        public JumpSpeed JumpSpeed { get;}
+        public JumpTime JumpTime { get;}
+        public JumpReloadTime JumpReloadTime { get;}
+    }
 }

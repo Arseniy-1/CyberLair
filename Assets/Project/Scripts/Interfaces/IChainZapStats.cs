@@ -1,13 +1,18 @@
-﻿using UnityEngine;
+﻿using Project.Prefabs.Configs.Skills.ChainZap;
+using Project.Scripts.Stats;
+using UnityEngine;
 
-public interface IChainZapStats
+namespace Project.Scripts.Interfaces
 {
-    float ChainRadius { get; }
-    int MaxBounces { get; }
-    float DamageFalloff { get; }
-    ChainZapView ZapView { get; }
-    LayerMask EnemyLayer { get; }
-    int Segments { get; }
-    public float Chance { get; }
-    StatModifier EnemySpeedModifier { get; }
+    public interface IChainZapStats
+    {
+        public float ChainRadius { get; }
+        public int MaxBounces { get; }
+        public float DamageFalloff { get; }
+        public ChainZapView ZapView { get; }
+        public LayerMask EnemyLayer { get; }
+        public int Segments { get; }
+        public float Chance { get; }
+        public StatModifier EnemySpeedModifier { get; }
+    }
 }

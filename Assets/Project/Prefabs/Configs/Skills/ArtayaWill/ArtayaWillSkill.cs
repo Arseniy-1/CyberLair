@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Skill;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "ArtayaWillSkill", menuName = "Skill/Mutant/ArtayaWill", order = 51)]
-public class ArtayaWillSkill : MutantSkill
+namespace Project.Prefabs.Configs.Skills.ArtayaWill
 {
-    [field: SerializeField] public float ShieldMultiplier { get; private set; } = 3;
+    [CreateAssetMenu(fileName = "ArtayaWillSkill", menuName = "Skill/Mutant/ArtayaWill", order = 51)]
+    public class ArtayaWillSkill : MutantSkill
+    {
+        [field: SerializeField] public float ShieldMultiplier { get; private set; } = 3;
+    }
 }

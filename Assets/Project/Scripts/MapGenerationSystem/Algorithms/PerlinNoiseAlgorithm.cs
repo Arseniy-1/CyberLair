@@ -1,3 +1,5 @@
+using Project.Scripts.Interfaces;
+using Project.Scripts.MapGenerationSystem.Configs;
 using UnityEngine;
 
 namespace Project.Scripts.MapGenerationSystem.Algorithms
@@ -24,9 +26,12 @@ namespace Project.Scripts.MapGenerationSystem.Algorithms
             {
                 for (int y = 0; y < _mapConfig.Height; y++)
                 {
+                    float randomOffsetX = Random.Range(_mapConfig.NoiseOffsetX.x, _mapConfig.NoiseOffsetX.y);
+                    float randomOffsetY = Random.Range(_mapConfig.NoiseOffsetY.x, _mapConfig.NoiseOffsetY.y);
+                    
                     float randomScale = Random.Range(_mapConfig.NoiseScale.x, _mapConfig.NoiseScale.y);
-                    float xCoord = (x - halfWidth) / _mapConfig.Width * randomScale + Random.Range(_mapConfig.NoiseOffsetX.x, _mapConfig.NoiseOffsetX.y);
-                    float yCoord = (y - halfHeight) / _mapConfig.Height * randomScale + Random.Range(_mapConfig.NoiseOffsetY.x, _mapConfig.NoiseOffsetY.y);
+                    float xCoord = (x - halfWidth) / _mapConfig.Width * randomScale + randomOffsetX;
+                    float yCoord = (y - halfHeight) / _mapConfig.Height * randomScale + randomOffsetY;
             
                     float noiseValue = Mathf.PerlinNoise(xCoord, yCoord);
                     noiseMap[x, y] = noiseValue;

@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class SettingSlider : MonoBehaviour
+namespace Project.Scripts.Settings
 {
-    [SerializeField] protected Slider Slider; 
+    public abstract class SettingSlider : MonoBehaviour
+    {
+        [SerializeField] protected Slider Slider; 
     
-    public virtual void Initialize()
-    {
-        Slider.onValueChanged.AddListener(HandleSliderValueChanged);  
-    }
+        public virtual void Initialize()
+        {
+            Slider.onValueChanged.AddListener(HandleSliderValueChanged);  
+        }
 
-    private void OnDisable()
-    {
-        Slider.onValueChanged.RemoveListener(HandleSliderValueChanged);
-    }
+        private void OnDisable()
+        {
+            Slider.onValueChanged.RemoveListener(HandleSliderValueChanged);
+        }
 
-    protected abstract void HandleSliderValueChanged(float amount);
+        protected abstract void HandleSliderValueChanged(float amount);
+    }
 }

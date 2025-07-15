@@ -1,36 +1,40 @@
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.MessageBroker;
 using UnityEngine;
 
-public class SkillUIHandler
+namespace Project.Scripts.Skill
 {
-    private readonly GameObject _gameUI;
-    private readonly SkillSelector _skillSelector;
-
-    public SkillUIHandler(GameObject gameUI, SkillSelector skillSelector)
+    public class SkillUIHandler
     {
-        _gameUI = gameUI;
-        _skillSelector = skillSelector;
-    }
+        private readonly GameObject _gameUI;
+        private readonly SkillSelector _skillSelector;
 
-    public void ShowSkillSelection(IReadOnlyList<Skill> skills, int inputCount, int outputCount)
-    {
-        if (skills.Any() == false)
-            return;
+        public SkillUIHandler(GameObject gameUI, SkillSelector skillSelector)
+        {
+            _gameUI = gameUI;
+            _skillSelector = skillSelector;
+        }
 
-        MessageBrokerHolder.Game
-            .Publish(new M_GamePaused());
-        
-        _gameUI.SetActive(false);
-        
-        _skillSelector.ShowSkills(skills, inputCount, outputCount);
-    }
+        public void ShowSkillSelection(IReadOnlyList<global::Project.Scripts.Skill.Skill> skills, int inputCount, int outputCount)
+        {
+            if (skills.Any() == false)
+                return;
 
-    public void CloseSkillSelection()
-    {
-        MessageBrokerHolder.Game
-            .Publish(new M_GameUnpaused());
+            MessageBrokerHolder.Game
+                .Publish(new M_GamePaused());
         
-        _gameUI.SetActive(true);
+            _gameUI.SetActive(false);
+        
+            _skillSelector.ShowSkills(skills, inputCount, outputCount);
+        }
+
+        public void CloseSkillSelection()
+        {
+            MessageBrokerHolder.Game
+                .Publish(new M_GameUnpaused());
+        
+            _gameUI.SetActive(true);
+        }
     }
 }

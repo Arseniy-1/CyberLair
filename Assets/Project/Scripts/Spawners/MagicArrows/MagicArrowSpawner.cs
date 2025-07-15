@@ -1,16 +1,23 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using UnityEngine;
 using Cysharp.Threading.Tasks;
+using Project.Prefabs.Configs.Skills.MagicArrow;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
+namespace Project.Scripts.Spawners.MagicArrows
 {
     [Serializable]
     public class MagicArrowSpawner : Spawner<MagicArrow>, ISkillInstance
     {
+        private const int MaxHits = 8;
+        
+        private readonly Collider2D[] _results = new Collider2D[MaxHits];
+        
         private float _radius;
         private float _delay;
         private LayerMask _layerMask;
@@ -32,6 +39,7 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
             _transform = skillData.WeaponHolder.transform;
             
             _cancellationToken = new CancellationTokenSource();
+            
             SpawnIterating(_cancellationToken.Token).Forget();
         }
 
@@ -44,10 +52,10 @@ namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
 
         private Vector3 FindEnemyPosition()
         {
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(_transform.position, _radius, _layerMask);
+            int hitCount = Physics2D.OverlapCircleNonAlloc(_transform.position, _radius, _results, _layerMask);
 
-            if (enemies != null && enemies.Length != 0)
-                return enemies[Random.Range(0, enemies.Length)].transform.position;
+            if (_results != null && hitCount != 0)
+                return _results[Random.Range(0, _results.Length)].transform.position;
             
             Vector3 randomOffset = Random.insideUnitCircle;
                 

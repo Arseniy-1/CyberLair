@@ -1,16 +1,20 @@
 ﻿using YG;
 
-public class SoundSlider : SettingSlider
+namespace Project.Scripts.Settings
 {
-    public override void Initialize()
+    public class SoundSlider : SettingSlider
     {
-        base.Initialize();
-        Slider.value = YandexGame.savesData.SoundsVolume;
-    }
+        public override void Initialize()
+        {
+            base.Initialize();
+        
+            Slider.value = YandexGame.savesData.SoundsVolume;
+        }
 
-    protected override void HandleSliderValueChanged(float amount)
-    {
-        YandexGame.savesData.SoundsVolume = amount;
-        YandexGame.SaveProgress();
+        protected override void HandleSliderValueChanged(float amount)
+        {
+            YandexGame.savesData.SoundsVolume = amount;
+            YandexGame.SaveProgress();
+        }
     }
 }

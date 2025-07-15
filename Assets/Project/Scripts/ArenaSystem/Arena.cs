@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Cysharp.Threading.Tasks;
+using Project.Scripts.Props;
+using Project.Scripts.Spawners.Enemies;
+using Project.Scripts.Spawners.Exp;
+using Project.Scripts.Spawners.Health;
+using Project.Scripts.Spawners.ParticleEffects;
 using UnityEngine;
 
 namespace Project.Scripts.ArenaSystem
@@ -14,7 +18,7 @@ namespace Project.Scripts.ArenaSystem
 
         [SerializeField] private HealthSpawner _healthSpawner;
         [SerializeField] private HealingHeart _heartPrefab;
-        [SerializeField, Range(1, 100)] private int _heartSpawnChance;
+        [SerializeField] [Range(1, 100)] private int _heartSpawnChance;
         [SerializeField] private int _healAmount;
         
         [SerializeField] private List<WaveConfig> _wavesConfigs;

@@ -1,8 +1,9 @@
 using System.Collections;
-using Project.Scripts.Servises;
+using Project.Scripts.Services;
+using Project.Scripts.Spawners.AttackInstances;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.DeathReaper
 {
     public class OrbitalAttack : SpawnAttack<SoulOrbital>
     {

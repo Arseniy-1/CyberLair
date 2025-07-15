@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
-using Project.Scripts.Servises;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services;
 using UnityEngine;
 
-namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
+namespace Project.Prefabs.Configs.Skills.MagicArrow
 {
     public class MagicArrow : MonoBehaviour, IDestoyable<MagicArrow>
     {

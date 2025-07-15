@@ -1,24 +1,28 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using Project.Scripts.MessageBroker;
 using UniRx;
 using UnityEngine;
 
-public class ExplosionEffectsSpawner : Spawner<Effect>
+namespace Project.Scripts.Spawners.ParticleEffects
 {
-    public ExplosionEffectsSpawner(Effect effect, CancellationToken token)
+    public class ExplosionEffectsSpawner : Spawner<Effect>
     {
-        Prefab = effect;
-        Pool = new ExplosionEffectsPool(Prefab, StartAmount);
+        public ExplosionEffectsSpawner(Effect effect, CancellationToken token)
+        {
+            Prefab = effect;
+            Pool = new ExplosionEffectsPool(Prefab, StartAmount);
 
-        MessageBrokerHolder.Game
-            .Receive<M_Exploded>()
-            .Subscribe(message => SpawnEffect(message.Position))
-            .AddTo(token);
-    }
+            MessageBrokerHolder.Game
+                .Receive<M_Exploded>()
+                .Subscribe(message => SpawnEffect(message.Position))
+                .AddTo(token);
+        }
 
-    private void SpawnEffect(Vector2 position)
-    {
-        Effect effect = Spawn();
-        effect.transform.position = position;
+        private void SpawnEffect(Vector2 position)
+        {
+            Effect effect = Spawn();
+            effect.transform.position = position;
+        }
     }
 }

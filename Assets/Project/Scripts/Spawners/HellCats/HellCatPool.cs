@@ -1,14 +1,18 @@
-﻿using UnityEngine;
+﻿using Project.Prefabs.Configs.Skills.HellCats;
+using UnityEngine;
 
-public class HellCatPool : Pool<HellCat>
+namespace Project.Scripts.Spawners.HellCats
 {
-    public HellCatPool(HellCat prefab, int startAmount) : base(prefab, startAmount) { }
-
-    protected override HellCat Create()
+    public class HellCatPool : Pool<HellCat>
     {
-        var hellCat = Object.Instantiate(Prefab);
-        hellCat.gameObject.SetActive(false);
+        public HellCatPool(HellCat prefab, int startAmount) : base(prefab, startAmount) { }
+
+        protected override HellCat Create()
+        {
+            var hellCat = Object.Instantiate(Prefab);
+            hellCat.gameObject.SetActive(false);
         
-        return hellCat;
+            return hellCat;
+        }
     }
 }

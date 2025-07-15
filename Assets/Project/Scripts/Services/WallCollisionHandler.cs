@@ -1,23 +1,27 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Interfaces;
+using UnityEngine;
 
-public class WallCollisionHandler : MonoBehaviour
+namespace Project.Scripts.Services
 {
-    [SerializeField] private float _pushForce;
-    [SerializeField] private float _stunTime;
-
-    private void OnCollisionStay2D(Collision2D other)
+    public class WallCollisionHandler : MonoBehaviour
     {
-        HandleCollision(other.collider);
-    }
+        [SerializeField] private float _pushForce;
+        [SerializeField] private float _stunTime;
 
-    private void HandleCollision(Collider2D collider)
-    {
-        if (collider.TryGetComponent(out IStunable stunable) == false)
-            return;
+        private void OnCollisionStay2D(Collision2D other)
+        {
+            HandleCollision(other.collider);
+        }
 
-        stunable.TakeStun(_stunTime);
-        Vector3 pushDirection = transform.up.normalized;
+        private void HandleCollision(Collider2D collider)
+        {
+            if (collider.TryGetComponent(out IStunable stunable) == false)
+                return;
 
-        stunable.Rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
+            stunable.TakeStun(_stunTime);
+            Vector3 pushDirection = transform.up.normalized;
+
+            stunable.Rigidbody2D.AddForce(pushDirection * _pushForce, ForceMode2D.Force);
+        }
     }
 }

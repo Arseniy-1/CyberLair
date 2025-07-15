@@ -1,4 +1,7 @@
-﻿public interface IDamageable
+﻿namespace Project.Scripts.Interfaces
 {
-    void TakeDamage(float amount);
+    public interface IDamageable
+    {
+        public void TakeDamage(float amount);
+    }
 }

@@ -1,14 +1,17 @@
 ﻿using Object = UnityEngine.Object;
 
-public class DeathEffectsPool: Pool<Effect>
+namespace Project.Scripts.Spawners.ParticleEffects
 {
-    public DeathEffectsPool(Effect prefab, int startAmount) : base(prefab, startAmount) { }
-        
-    protected override Effect Create()
+    public class DeathEffectsPool: Pool<Effect>
     {
-        var effect =  Object.Instantiate(Prefab);
-        effect.gameObject.SetActive(false);
+        public DeathEffectsPool(Effect prefab, int startAmount) : base(prefab, startAmount) { }
+        
+        protected override Effect Create()
+        {
+            var effect =  Object.Instantiate(Prefab);
+            effect.gameObject.SetActive(false);
             
-        return effect;
+            return effect;
+        }
     }
 }

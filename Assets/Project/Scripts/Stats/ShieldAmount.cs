@@ -1,38 +1,41 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class ShieldAmount : BaseStat
+namespace Project.Scripts.Stats
 {
-    public float MaxShield => CalculateValue();
-
-    public void ReduceShield(float amount)
+    [Serializable]
+    public class ShieldAmount : BaseStat
     {
-        if (amount <= 0)
-            return;
+        public float MaxShield => CalculateValue();
 
-        CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxShield);
+        public void ReduceShield(float amount)
+        {
+            if (amount <= 0)
+                return;
+
+            CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxShield);
         
-        OnAmountChanged(CurrentValue, MaxShield);
-    }
+            OnAmountChanged(CurrentValue, MaxShield);
+        }
 
-    public void RepairShield(float repairAmount)
-    {
-        if (repairAmount <= 0)
-            return;
+        public void RepairShield(float repairAmount)
+        {
+            if (repairAmount <= 0)
+                return;
 
-        CurrentValue = Mathf.Clamp(CurrentValue + repairAmount, 0f, MaxShield);
+            CurrentValue = Mathf.Clamp(CurrentValue + repairAmount, 0f, MaxShield);
         
-        OnAmountChanged(CurrentValue, MaxShield);
-    }
+            OnAmountChanged(CurrentValue, MaxShield);
+        }
 
-    public void SetMaxShield(float amount)
-    {
-        if (amount <= 0)
-            return;
+        public void SetMaxShield(float amount)
+        {
+            if (amount <= 0)
+                return;
 
-        BaseValue = amount;
+            BaseValue = amount;
         
-        OnAmountChanged(CurrentValue, MaxShield);
+            OnAmountChanged(CurrentValue, MaxShield);
+        }
     }
 }

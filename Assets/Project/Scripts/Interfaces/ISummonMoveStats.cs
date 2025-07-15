@@ -1,5 +1,8 @@
-﻿public interface ISummonMoveStats : IMoverStats
+﻿namespace Project.Scripts.Interfaces
 {
-    float MoveRadius { get; }
-    float MoveDelay { get; }
+    public interface ISummonMoveStats : IMoverStats
+    {
+        public float MoveRadius { get; }
+        public float MoveDelay { get; }
+    }
 }

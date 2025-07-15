@@ -1,9 +1,16 @@
 using System.Collections.Generic;
-using StateMashineSytem;
-using StateMashineSytem.EnemyStates;
 using UnityEngine;
 using System;
 using System.Collections;
+using Project.Scripts.Interfaces;
+using Project.Scripts.MessageBroker;
+using Project.Scripts.MessageBroker.EnemyMessageBrokers;
+using Project.Scripts.PlayerSystem;
+using Project.Scripts.Services;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
+using Project.Scripts.StateMashine;
+using Project.Scripts.StateMashine.EnemyStates;
 
 namespace Project.Scripts.EnemySystem
 {
@@ -51,7 +58,7 @@ namespace Project.Scripts.EnemySystem
             
             var states = new List<IState>
             {
-                new EnemyIdleState(this, _mover, _enemyTargetProvider),
+                new EnemyIdleState(_mover, _enemyTargetProvider),
                 new EnemyMoveState(_mover, _enemyTargetProvider, _cooldown),
                 new EnemyAttackState(_mover, _attacker, _cooldown),
                 new EnemyStunnedState(_mover)
@@ -82,7 +89,7 @@ namespace Project.Scripts.EnemySystem
         
         public void TakeStun(float time)
         {
-            if(isActiveAndEnabled)
+            if (isActiveAndEnabled)
                 StartCoroutine(TakingStun(time));
         }
 

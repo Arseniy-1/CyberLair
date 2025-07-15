@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Skill;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "ArtayaShieldSkill", menuName = "Skill/Hard/ArtayaShield", order = 51)]
-public class ArtayaShieldSkill : HardSkill
+namespace Project.Prefabs.Configs.Skills.ArtayaShield
 {
-    [field: SerializeField] public float ShieldRepairAmount { get; private set; }
+    [CreateAssetMenu(fileName = "ArtayaShieldSkill", menuName = "Skill/Hard/ArtayaShield", order = 51)]
+    public class ArtayaShieldSkill : HardSkill
+    {
+        [field: SerializeField] public float ShieldRepairAmount { get; private set; }
+    }
 }

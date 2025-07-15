@@ -1,4 +1,9 @@
 ﻿using System;
 
-[Serializable]
-public class JumpSpeed : BaseStat { }
+namespace Project.Scripts.Stats
+{
+    [Serializable]
+    public class JumpSpeed : BaseStat
+    {
+    }
+}

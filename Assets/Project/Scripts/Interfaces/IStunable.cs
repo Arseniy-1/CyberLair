@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 
-public interface IStunable
+namespace Project.Scripts.Interfaces
 {
-    public Rigidbody2D Rigidbody2D { get; }
+    public interface IStunable
+    {
+        public Rigidbody2D Rigidbody2D { get; }
     
-    void TakeStun(float stunTime);
+        public void TakeStun(float stunTime);
+    }
 }

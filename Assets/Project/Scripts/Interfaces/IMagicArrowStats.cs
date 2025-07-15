@@ -1,10 +1,13 @@
-using Project.Scripts.Weapon.ActiveSkills.MagicArrow;
+using Project.Prefabs.Configs.Skills.MagicArrow;
 using UnityEngine;
 
-public interface IMagicArrowStats
+namespace Project.Scripts.Interfaces
 {
-    public float Radius { get; }
-    public float Delay { get; }
-    public LayerMask LayerMask { get; }
-    public MagicArrow MagicArrowPrefab { get; }
+    public interface IMagicArrowStats
+    {
+        public float Radius { get; }
+        public float Delay { get; }
+        public LayerMask LayerMask { get; }
+        public MagicArrow MagicArrowPrefab { get; }
+    }
 }

@@ -1,57 +1,62 @@
 using System.Collections;
+using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class SummonMover : MonoBehaviour
+namespace Project.Prefabs.Configs.Skills.Summon
 {
-    [SerializeField] private Animator _animator;
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class SummonMover : MonoBehaviour
+    {
+        [SerializeField] private Animator _animator;
     
-    private readonly int _walkAnimation = Animator.StringToHash("Walk");
+        private readonly int _walkAnimation = Animator.StringToHash("Walk");
     
-    private ISummonMoveStats _summonStats;
+        private ISummonMoveStats _summonStats;
     
-    private Rigidbody2D _rigidbody;
-    private Transform _selfTransform;
-    private Vector2 _targetMovePosition;
-    private Transform _targetTransform;
+        private Rigidbody2D _rigidbody;
+        private Transform _selfTransform;
+        private Vector2 _targetMovePosition;
+        private Transform _targetTransform;
     
-    private Vector2 SelfPosition => transform.position;
-    private Vector2 TargetPosition => _targetTransform.position;
-    private Vector2 RandomPointAroundTarget => TargetPosition + Random.insideUnitCircle.normalized * _summonStats.MoveRadius;
+        private Vector2 SelfPosition => transform.position;
+        private Vector2 TargetPosition => _targetTransform.position;
+        private Vector2 RandomPointAroundTarget => TargetPosition + Random.insideUnitCircle.normalized * _summonStats.MoveRadius;
 
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
-
-    public void Initialize(Transform targetTransform, SummonStats summonStats)
-    {
-        _targetTransform = targetTransform;
-        _summonStats = summonStats;
-        
-        StartCoroutine(ChangePosition());
-    }
-    
-    public void MoveToNextPosition()
-    {
-        _animator.SetBool(_walkAnimation, (SelfPosition == _targetMovePosition) == false);
-        
-        var newPosition = Vector2.MoveTowards(SelfPosition, _targetMovePosition,
-            _summonStats.Speed.CurrentValue * Time.fixedDeltaTime);
-
-        _rigidbody.MovePosition(newPosition);
-    }
-    
-    private IEnumerator ChangePosition()
-    {
-        var wait = new WaitForSeconds(_summonStats.MoveDelay);
-        
-        while (isActiveAndEnabled)
+        private void Awake()
         {
-            _targetMovePosition = RandomPointAroundTarget;
+            _rigidbody = GetComponent<Rigidbody2D>();
+        }
 
-            yield return wait;
+        public void Initialize(Transform targetTransform, SummonStats summonStats)
+        {
+            _targetTransform = targetTransform;
+            _summonStats = summonStats;
+        
+            StartCoroutine(ChangePosition());
+        }
+    
+        public void MoveToNextPosition()
+        {
+            _animator.SetBool(_walkAnimation, (SelfPosition == _targetMovePosition) == false);
+        
+            var newPosition = Vector2.MoveTowards(SelfPosition, _targetMovePosition,
+                _summonStats.Speed.CurrentValue * Time.fixedDeltaTime);
+
+            _rigidbody.MovePosition(newPosition);
+        }
+    
+        private IEnumerator ChangePosition()
+        {
+            var wait = new WaitForSeconds(_summonStats.MoveDelay);
+        
+            while (isActiveAndEnabled)
+            {
+                _targetMovePosition = RandomPointAroundTarget;
+
+                yield return wait;
+            }
         }
     }
 }

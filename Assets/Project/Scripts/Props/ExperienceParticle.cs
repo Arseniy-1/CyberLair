@@ -1,31 +1,33 @@
 using System;
-using System.Collections.Generic;
+using Project.Scripts.Interfaces;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class ExperienceParticle : MonoBehaviour, IInteractable, IMoveable, IDestoyable<ExperienceParticle>
+namespace Project.Scripts.Props
 {
-    public event Action<ExperienceParticle> OnDestroyed;
-
-    [field: SerializeField] public int ExperienceAmount { get; private set; } = 10;
-    public Rigidbody2D Rigidbody2D { get; private set; }
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class ExperienceParticle : MonoBehaviour, IInteractable, IMoveable, IDestoyable<ExperienceParticle>
     {
-        Rigidbody2D = GetComponent<Rigidbody2D>();
-    }
+        public event Action<ExperienceParticle> OnDestroyed;
 
-    public void Initialize(int experienceAmount)
-    {
-        if (experienceAmount <= 0)
-            return;
+        [field: SerializeField] public int ExperienceAmount { get; private set; } = 10;
+        public Rigidbody2D Rigidbody2D { get; private set; }
 
-        ExperienceAmount = experienceAmount;
-    }
+        private void Awake()
+        {
+            Rigidbody2D = GetComponent<Rigidbody2D>();
+        }
 
-    public void Interact()
-    {
-        OnDestroyed?.Invoke(this);
+        public void Initialize(int experienceAmount)
+        {
+            if (experienceAmount <= 0)
+                return;
+
+            ExperienceAmount = experienceAmount;
+        }
+
+        public void Interact()
+        {
+            OnDestroyed?.Invoke(this);
+        }
     }
 }

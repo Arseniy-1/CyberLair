@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Sirenix.Utilities;
 using UnityEngine;
 
-namespace Project.Scripts.Servises
+namespace Project.Scripts.Services
 {
     public class OrbitalHandler
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.Spawners.Enemies;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,16 +9,18 @@ namespace Project.Scripts.EnemySystem.AttackTypes
 {
     public class EnemySummonAttacker : EnemyAttacker
     {
+        private readonly List<Enemy> _imps = new();
+        
         [SerializeField] private Enemy _impPrefab;
         [SerializeField, MinMaxSlider(0.1f, 0.5f)] private Vector2 _spawnPeriod;
         [SerializeField] private int _startCount;
         
         private EnemySpawner _impSpawner;
-        private readonly List<Enemy> _imps = new();
 
         private void OnDisable()
         {
             var temporaryImps = new Enemy[_imps.Count];
+            
             _imps.CopyTo(temporaryImps);
             
             temporaryImps.ToList().ForEach(RemoveImp);

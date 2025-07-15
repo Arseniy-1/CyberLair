@@ -1,27 +1,32 @@
 using System;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-[Serializable]
-public class Spawner<T> where T : MonoBehaviour, IDestoyable<T>
+namespace Project.Scripts.Spawners
 {
-    protected T Prefab;
-    [SerializeField] protected int StartAmount = 5;
-
-    protected Pool<T> Pool;
-
-    public T Spawn()
+    [Serializable]
+    public class Spawner<T> 
+        where T : MonoBehaviour, IDestoyable<T>
     {
-        T spawnedObject = Pool.Get();
-        
-        spawnedObject.OnDestroyed += OnSpawnedDestroyed;
+        [SerializeField] protected int StartAmount = 5;
 
-        return spawnedObject;
-    }
+        protected T Prefab;
+        protected Pool<T> Pool;
 
-    protected void OnSpawnedDestroyed(T spawnableObject)
-    {
-        spawnableObject.OnDestroyed -= OnSpawnedDestroyed;
+        public T Spawn()
+        {
+            T spawnedObject = Pool.Get();
         
-        Pool.Release(spawnableObject);
+            spawnedObject.OnDestroyed += OnSpawnedDestroyed;
+
+            return spawnedObject;
+        }
+
+        protected void OnSpawnedDestroyed(T spawnableObject)
+        {
+            spawnableObject.OnDestroyed -= OnSpawnedDestroyed;
+        
+            Pool.Release(spawnableObject);
+        }
     }
 }

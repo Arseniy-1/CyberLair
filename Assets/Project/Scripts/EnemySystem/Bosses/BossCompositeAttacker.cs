@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.EnemySystem.AttackTypes;
+using Project.Scripts.EnemySystem.Bosses.Attacks;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -9,12 +10,13 @@ namespace Project.Scripts.EnemySystem.Bosses
 {
     public class BossCompositeAttacker : EnemyAttacker
     {
+        private readonly Queue<BossAttack> _attacksOrder = new();
+        
         [SerializeField] private Animator _bossAnimator;
         [SerializeField] private AttackAnimationEvents _bossAnimationEvents;
         [SerializeField] private List<BossAttack> _generalAttacks;
         [SerializeField] private List<BossAttack> _specialAttacks;
 
-        private readonly Queue<BossAttack> _attacksOrder = new();
         private BossAttack _currentAttack;
         private bool _isAttacking;
         
@@ -43,10 +45,10 @@ namespace Project.Scripts.EnemySystem.Bosses
 
             allAttacks.ForEach(attack => attack.Initialize());
             
-            if(_generalAttacks.IsNullOrEmpty() == false)
+            if (_generalAttacks.IsNullOrEmpty() == false)
                 _generalAttacksPerformer = new AttackPerformer(_attacksOrder, _generalAttacks);
             
-            if(_specialAttacks.IsNullOrEmpty() == false)
+            if (_specialAttacks.IsNullOrEmpty() == false)
                 _specialAttacksPerformer = new AttackPerformer(_attacksOrder, _specialAttacks);
             
             base.Initialize(enemyTargetProvider);

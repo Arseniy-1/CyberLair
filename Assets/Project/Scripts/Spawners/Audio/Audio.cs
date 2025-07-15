@@ -1,5 +1,8 @@
 using System;
 using System.Collections;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Audio;
+using Project.Scripts.Services.Enum;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -49,6 +52,7 @@ namespace Project.Scripts.Spawners.Audio
                 return;
             
             StopCoroutine(_timer);
+            
             _timer = null;
         } 
 

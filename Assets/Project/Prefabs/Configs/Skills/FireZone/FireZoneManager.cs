@@ -1,4 +1,8 @@
 using System;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using Project.Scripts.Spawners.FireZones;
+using Project.Scripts.Weapon;
 using Random = UnityEngine.Random;
 
 namespace Project.Prefabs.Configs.Skills.FireZone
@@ -40,7 +44,7 @@ namespace Project.Prefabs.Configs.Skills.FireZone
                 return;
 
             var fireZone = _fireZoneSpawner.Spawn();
-            fireZone.transform.position = bullet.transform.position;
+            fireZone.transform.position = bullet.Position;
             
             FireZoneSpawned?.Invoke(fireZone);
         }

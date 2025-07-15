@@ -1,7 +1,12 @@
+using Project.Scripts.Skill;
+using Project.Scripts.Stats;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HardingSkill", menuName = "Skill/Simple/Harding", order = 51)]
-public class HardingSkill : Skill
+namespace Project.Prefabs.Configs.Skills.Harding
 {
-    [field: SerializeField] public StatModifier JumpReloadTimeModifier { get; private set; }
+    [CreateAssetMenu(fileName = "HardingSkill", menuName = "Skill/Simple/Harding", order = 51)]
+    public class HardingSkill : Skill
+    {
+        [field: SerializeField] public StatModifier JumpReloadTimeModifier { get; private set; }
+    }
 }

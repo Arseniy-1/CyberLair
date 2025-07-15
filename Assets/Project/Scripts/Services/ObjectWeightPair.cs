@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Project.Scripts.Servises
+namespace Project.Scripts.Services
 {
     [Serializable]
     public class ObjectWeightPair<T> where T : class

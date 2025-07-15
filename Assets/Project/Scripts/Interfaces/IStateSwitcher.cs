@@ -1,7 +1,8 @@
-﻿namespace StateMashineSytem
+﻿namespace Project.Scripts.Interfaces
 {
     public interface IStateSwitcher
     {
-        void SwitchState<T>() where T : IState;
+        public void SwitchState<T>() 
+            where T : IState;
     }
 }

@@ -32,17 +32,29 @@ namespace Project.Scripts.CompositionRoot
 
             var edges = new (Vector2 start, Vector2 end, int count)[]
             {
-                (new Vector2(_cameraCenter.x - _width, _cameraCenter.y + _height),
-                    new Vector2(_cameraCenter.x + _width, _cameraCenter.y + _height), _horizontalObjectCount),
+                (
+                    new Vector2(_cameraCenter.x - _width, _cameraCenter.y + _height),
+                    new Vector2(_cameraCenter.x + _width, _cameraCenter.y + _height), 
+                    _horizontalObjectCount
+                ),
                 
-                (new Vector2(_cameraCenter.x - _width, _cameraCenter.y - _height),
-                    new Vector2(_cameraCenter.x + _width, _cameraCenter.y - _height), _horizontalObjectCount),
+                (
+                    new Vector2(_cameraCenter.x - _width, _cameraCenter.y - _height),
+                    new Vector2(_cameraCenter.x + _width, _cameraCenter.y - _height), 
+                    _horizontalObjectCount
+                ),
                 
-                (new Vector2(_cameraCenter.x - _width, _cameraCenter.y - _height),
-                    new Vector2(_cameraCenter.x - _width, _cameraCenter.y + _height), _verticalObjectCount),
+                (
+                    new Vector2(_cameraCenter.x - _width, _cameraCenter.y - _height),
+                    new Vector2(_cameraCenter.x - _width, _cameraCenter.y + _height), 
+                    _verticalObjectCount
+                ),
                 
-                (new Vector2(_cameraCenter.x + _width, _cameraCenter.y - _height), 
-                    new Vector2(_cameraCenter.x + _width, _cameraCenter.y + _height), _verticalObjectCount)
+                (
+                    new Vector2(_cameraCenter.x + _width, _cameraCenter.y - _height), 
+                    new Vector2(_cameraCenter.x + _width, _cameraCenter.y + _height), 
+                    _verticalObjectCount
+                )
             };
 
             foreach ((Vector2 start, Vector2 end, int count) edge in edges)

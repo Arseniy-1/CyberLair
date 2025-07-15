@@ -1,28 +1,31 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using YG;
 
-public class LanguageSelector : MonoBehaviour
+namespace Project.Scripts.Settings
 {
-    [SerializeField] private List<LanguageSelectorButton> _languageSelectorButtons;
-
-    private void OnDestroy()
+    public class LanguageSelector : MonoBehaviour
     {
-        foreach (var languageSelectorButton in _languageSelectorButtons)
-            languageSelectorButton.OnLanguageChanged -= HandleButtonClick;   
-    }
+        [SerializeField] private List<LanguageSelectorButton> _languageSelectorButtons;
+
+        private void OnDestroy()
+        {
+            foreach (var languageSelectorButton in _languageSelectorButtons)
+                languageSelectorButton.OnLanguageChanged -= HandleButtonClick;   
+        }
     
-    public void Initialize()
-    {
-        foreach (var languageSelectorButton in _languageSelectorButtons)
-            languageSelectorButton.OnLanguageChanged += HandleButtonClick;
-    }
+        public void Initialize()
+        {
+            foreach (var languageSelectorButton in _languageSelectorButtons)
+                languageSelectorButton.OnLanguageChanged += HandleButtonClick;
+        }
 
-    private void HandleButtonClick(string language)
-    {
-        YandexGame.savesData.language = language;   
-        YandexGame.SaveProgress();
+        private void HandleButtonClick(string language)
+        {
+            YandexGame.savesData.language = language;   
+            YandexGame.SaveProgress();
         
-        YandexGame.SwitchLanguage(YandexGame.savesData.language);
+            YandexGame.SwitchLanguage(YandexGame.savesData.language);
+        }
     }
 }

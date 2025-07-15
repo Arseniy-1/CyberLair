@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project.Scripts.Servises
+namespace Project.Scripts.Services
 {
     public class WeightedRandomPicker<T> where T : class
     {
@@ -29,7 +29,7 @@ namespace Project.Scripts.Servises
             {
                 partialWeight += _weights[i];
                 
-                if(partialWeight > pickedWeight)
+                if (partialWeight > pickedWeight)
                     return _prefabs[i];
             }
             

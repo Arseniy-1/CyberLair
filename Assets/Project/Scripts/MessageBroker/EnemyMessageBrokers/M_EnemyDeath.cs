@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-public struct M_EnemyDeath
+namespace Project.Scripts.MessageBroker.EnemyMessageBrokers
 {
-    public M_EnemyDeath(Vector2 position)
+    public struct M_EnemyDeath
     {
-        Position = position;
-    }
+        public M_EnemyDeath(Vector2 position)
+        {
+            Position = position;
+        }
     
-    public Vector2 Position { get; private set; }
+        public Vector2 Position { get; private set; }
+    }
 }

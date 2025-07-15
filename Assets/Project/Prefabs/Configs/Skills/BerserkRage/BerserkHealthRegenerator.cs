@@ -1,32 +1,38 @@
-﻿
-public class BerserkHealthRegenerator : ISkillInstance
+﻿using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using Project.Scripts.Stats;
+
+namespace Project.Prefabs.Configs.Skills.BerserkRage
 {
-    private readonly float _criticalHealthLevel;
-    private readonly StatModifier _healthRegeneratorModifier;
-    private readonly HealthRegenerateAmount _healthRegenerateAmount;
-    
-    private readonly SkillData _skillData;
-    
-    public BerserkHealthRegenerator(SkillData skillData, BerserkRageSkill skill)
+    public class BerserkHealthRegenerator : ISkillInstance
     {
-        _criticalHealthLevel = skill.CriticalHealthLevel;
-        _healthRegeneratorModifier = skill.HealthRegeneratorModifier.Copy();
-        _skillData = skillData;
-        _healthRegenerateAmount = _skillData.PlayerStats.HealthRegenerateAmount;
+        private readonly float _criticalHealthLevel;
+        private readonly StatModifier _healthRegeneratorModifier;
+        private readonly HealthRegenerateAmount _healthRegenerateAmount;
+    
+        private readonly SkillData _skillData;
+    
+        public BerserkHealthRegenerator(SkillData skillData, BerserkRageSkill skill)
+        {
+            _criticalHealthLevel = skill.CriticalHealthLevel;
+            _healthRegeneratorModifier = skill.HealthRegeneratorModifier.Copy();
+            _skillData = skillData;
+            _healthRegenerateAmount = _skillData.PlayerStats.HealthRegenerateAmount;
         
-        _skillData.PlayerStats.Health.AmountChanged += OnHealthChanged;
-    }
+            _skillData.PlayerStats.Health.AmountChanged += OnHealthChanged;
+        }
     
-    public void Disable()
-    {
-        _skillData.PlayerStats.Health.AmountChanged -= OnHealthChanged;
-    }
+        public void Disable()
+        {
+            _skillData.PlayerStats.Health.AmountChanged -= OnHealthChanged;
+        }
     
-    private void OnHealthChanged(float maxHealth, float currentHealth)
-    {
-        if (currentHealth / maxHealth <= _criticalHealthLevel)
-            _healthRegenerateAmount.AddModifier(_healthRegeneratorModifier);
-        else
-            _healthRegenerateAmount.RemoveModifier(_healthRegeneratorModifier);
+        private void OnHealthChanged(float maxHealth, float currentHealth)
+        {
+            if (currentHealth / maxHealth <= _criticalHealthLevel)
+                _healthRegenerateAmount.AddModifier(_healthRegeneratorModifier);
+            else
+                _healthRegenerateAmount.RemoveModifier(_healthRegeneratorModifier);
+        }
     }
 }

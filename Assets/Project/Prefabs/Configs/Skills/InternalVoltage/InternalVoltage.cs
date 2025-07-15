@@ -1,6 +1,10 @@
 using System;
+using Project.Prefabs.Configs.Skills.Thunder;
 using Project.Scripts.EnemySystem;
-using Project.Scripts.Weapon.ActiveSkills;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Skill;
+using Project.Scripts.Stats;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;

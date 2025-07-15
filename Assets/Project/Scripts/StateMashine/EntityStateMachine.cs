@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.Interfaces;
 
-namespace StateMashineSytem
+namespace Project.Scripts.StateMashine
 {
     public class EntityStateMachine : IStateSwitcher
     {

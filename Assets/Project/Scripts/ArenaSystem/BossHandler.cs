@@ -1,8 +1,9 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Scripts.EnemySystem;
 using Project.Scripts.MessageBroker;
+using Project.Scripts.MessageBroker.EnemyMessageBrokers;
+using Project.Scripts.Stats.View;
 using UniRx;
 using UnityEngine;
 
@@ -10,10 +11,10 @@ namespace Project.Scripts.ArenaSystem
 {
     public class BossHandler : MonoBehaviour
     {
-        [SerializeField, Header("Prefabs")] private Cage _cagePrefab;
+        [SerializeField] [Header("Prefabs")] private Cage _cagePrefab;
         [SerializeField] private BossChest _bossChestPrefab;
         
-        [SerializeField, Header("BossViews")] private StatsBar _bossHealthBar;
+        [SerializeField] [Header("BossViews")] private StatsBar _bossHealthBar;
         [SerializeField] private StatsText _bossHealthText;
         
         private Cage _cageInstance;

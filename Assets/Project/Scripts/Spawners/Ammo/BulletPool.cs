@@ -1,14 +1,18 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Weapon;
+using UnityEngine;
 
-public class BulletPool : Pool<Bullet>
+namespace Project.Scripts.Spawners.Ammo
 {
-    public BulletPool(Bullet prefab, int startAmount) : base(prefab, startAmount) { }
-
-    protected override Bullet Create()
+    public class BulletPool : Pool<Bullet>
     {
-        Bullet template = Object.Instantiate(Prefab);
-        template.gameObject.SetActive(false);
+        public BulletPool(Bullet prefab, int startAmount) : base(prefab, startAmount) { }
 
-        return template;
+        protected override Bullet Create()
+        {
+            Bullet template = Object.Instantiate(Prefab);
+            template.gameObject.SetActive(false);
+
+            return template;
+        }
     }
 }

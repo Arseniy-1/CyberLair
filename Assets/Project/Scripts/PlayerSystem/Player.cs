@@ -1,175 +1,178 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Project.Prefabs.Configs.Skills.Durability;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services;
+using Project.Scripts.StateMashine;
+using Project.Scripts.StateMashine.PlayerStates;
+using Project.Scripts.Stats;
+using Project.Scripts.UI;
 using UnityEngine;
-using System;
-using Sirenix.OdinInspector;
-using StateMashineSytem;
-using StateMashineSytem.PlayerStateMashine;
-using IState = StateMashineSytem.IState;
+using IState = Project.Scripts.Interfaces.IState;
 
-[RequireComponent(typeof(Collider2D))]
-public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
+namespace Project.Scripts.PlayerSystem
 {
-    [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
-    [SerializeField] private PlayerMover _playerMover;
-    [SerializeField] private WeaponHolder _weaponHolder;
-    [SerializeField] private PlayerInputProvider playerInputProvider;
-    [SerializeField] private Rigidbody2D _rigidbody2D;
-    [SerializeField] private Jumper _jumper;
-    [SerializeField] private TargetScanner _targetScanner;
-    [SerializeField] private Destroyer _destroyer;
-    [SerializeField] private Magnet _magnet;
-    [SerializeField] private InjuredScreenView _injuredScreenView;
-
-    [SerializeField] private Animator _animator;
-
-    [SerializeField] private HealthRegenerator _healthRegenerator;
-    [SerializeField] private ShieldRegenerator _shieldRegenerator;
-
-    [SerializeField] private Collider2D _collider;
-
-    private bool _isDamaged;
-    private Coroutine _immortalityCoroutine;
-    private Coroutine _stunCoroutine;
-    private EntityStateMachine _entityStateMachine;
-
-    public event Action OnDeath;
-    public event Action OnTakeDamage;
-
-    [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
+    [RequireComponent(typeof(Collider2D))]
+    public class Player : MonoBehaviour, ITarget, IDamageable, IStunable, IDieable
+    {
+        private const float TakeDamageImmortalityTime = 0.7f;
     
-    public Rigidbody2D Rigidbody2D => _rigidbody2D;
-    public Vector2 Position => transform.position;
+        [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
+        [SerializeField] private PlayerMover _playerMover;
+        [SerializeField] private WeaponHolder _weaponHolder;
+        [SerializeField] private PlayerInputProvider playerInputProvider;
+        [SerializeField] private Rigidbody2D _rigidbody2D;
+        [SerializeField] private Jumper _jumper;
+        [SerializeField] private TargetScanner _targetScanner;
+        [SerializeField] private Destroyer _destroyer;
+        [SerializeField] private Magnet _magnet;
+        [SerializeField] private InjuredScreenView _injuredScreenView;
+
+        [SerializeField] private Animator _animator;
+
+        [SerializeField] private HealthRegenerator _healthRegenerator;
+        [SerializeField] private ShieldRegenerator _shieldRegenerator;
+
+        [SerializeField] private Collider2D _collider;
+
+        private bool _isDamaged;
+        private Coroutine _immortalityCoroutine;
+        private Coroutine _stunCoroutine;
+        private EntityStateMachine _entityStateMachine;
+
+        public event Action OnDeath;
     
-    public ExperienceStorage ExperienceStorage { get; } = new();
-
-    private void Awake()
-    {
-        InitializeComponents();
-    }
-
-    private void OnEnable()
-    {
-        playerInputProvider.OnShootButtonPressed += Shoot;
-    }
-
-    private void Update()
-    {
-        PlayerStats.Update();
-        _entityStateMachine.Update();
-    }
+        public Rigidbody2D Rigidbody2D => _rigidbody2D;
+        public Vector2 Position => transform.position;
     
-    private void OnDisable()
-    {
-        playerInputProvider.OnShootButtonPressed -= Shoot;
-    }
+        public ExperienceStorage ExperienceStorage { get; } = new();
+        [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
 
-    private void InitializeComponents()
-    {
-        var playerStates = new List<IState>
+        private void Awake()
         {
-            new PlayerIdleState(_playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
-            new PlayerMoveState(playerInputProvider, _playerMover, _weaponHolder, _targetScanner, _jumper),
-            new PlayerJumpState(playerInputProvider, _collider, _jumper),
-            new PlayerStunnedState(_playerMover, _jumper)
-        };
-
-        _entityStateMachine = new EntityStateMachine(playerStates);
-
-        foreach (IState state in playerStates)
-        {
-            state.Initialize(_entityStateMachine, _animator);
+            InitializeComponents();
         }
 
-        _entityStateMachine.Initialize();
-        PlayerStats.Initialize();
-        _destroyer.Initialize(PlayerStats.Health, this);
-        _playerMover.Initialize(playerInputProvider, _rigidbody2D, PlayerStats);
-        _playerCollisionHandler.Initialize(PlayerStats.Health, ExperienceStorage);
-        _jumper.Initialize(PlayerStats);
-        _magnet.Initialize(PlayerStats, transform);
+        private void OnEnable()
+        {
+            playerInputProvider.OnShootButtonPressed += Shoot;
+        }
 
-        _healthRegenerator.Initialize(PlayerStats.Health, PlayerStats.HealthRegenerateAmount);
-        _shieldRegenerator.Initialize(PlayerStats.ShieldAmount, PlayerStats.Health);
-
-        _weaponHolder.Weapon.Initialize(PlayerStats);
-        _injuredScreenView.Initialize(PlayerStats.Health);
-    }
-
-    [Button]
-    public void TakeDamage(float amount)
-    {
-        if (_isDamaged == false)
-            PlayerStats.Health.TakeDamage(amount);
-
-        float immortalityTime = 0.7f;
-
-        TakeImmortality(immortalityTime);
-    }
-
-    public void TakeStun(float time)
-    {
-        _stunCoroutine ??= StartCoroutine(TakingStun(time));
-    }
+        private void Update()
+        {
+            PlayerStats.Update();
+            _entityStateMachine.Update();
+        }
     
-    public void Die()
-    {
-        OnDeath?.Invoke();
-    }
+        private void OnDisable()
+        {
+            playerInputProvider.OnShootButtonPressed -= Shoot;
+        }
 
-    public void Revive(float immortalityTime)
-    {
-        EndCoroutine(ref _immortalityCoroutine);
-        EndCoroutine(ref _stunCoroutine);
-        
-        PlayerStats.Health.Heal(PlayerStats.Health.MaxHealth);
-        TakeImmortality(immortalityTime);
-        
-        _entityStateMachine.SwitchState<PlayerIdleState>();
-    }
+        private void InitializeComponents()
+        {
+            var playerStates = new List<IState>
+            {
+                new PlayerIdleState(_playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
+                new PlayerMoveState(playerInputProvider, _playerMover, _weaponHolder, _targetScanner, _jumper),
+                new PlayerJumpState(playerInputProvider, _collider, _jumper),
+                new PlayerStunnedState(_playerMover, _jumper)
+            };
+
+            _entityStateMachine = new EntityStateMachine(playerStates);
+
+            foreach (IState state in playerStates)
+            {
+                state.Initialize(_entityStateMachine, _animator);
+            }
+
+            _entityStateMachine.Initialize();
+            PlayerStats.Initialize();
+            _destroyer.Initialize(PlayerStats.Health, this);
+            _playerMover.Initialize(playerInputProvider, _rigidbody2D, PlayerStats);
+            _playerCollisionHandler.Initialize(PlayerStats.Health, ExperienceStorage);
+            _jumper.Initialize(PlayerStats);
+            _magnet.Initialize(PlayerStats, transform);
+
+            _healthRegenerator.Initialize(PlayerStats.Health, PlayerStats.HealthRegenerateAmount);
+            _shieldRegenerator.Initialize(PlayerStats.ShieldAmount, PlayerStats.Health);
+
+            _weaponHolder.Weapon.Initialize(PlayerStats);
+            _injuredScreenView.Initialize(PlayerStats.Health);
+        }
+
+        public void TakeDamage(float amount)
+        {
+            if (_isDamaged == false)
+                PlayerStats.Health.TakeDamage(amount);
+
+            TakeImmortality(TakeDamageImmortalityTime);
+        }
+
+        public void TakeStun(float time)
+        {
+            _stunCoroutine ??= StartCoroutine(TakingStun(time));
+        }
     
-    private void TakeImmortality(float time)
-    {
-        _immortalityCoroutine ??= StartCoroutine(TakingImmortality(time));
-    }
+        public void Die()
+        {
+            OnDeath?.Invoke();
+        }
 
-    private void EndCoroutine(ref Coroutine coroutine)
-    {
-        if(coroutine != null)
-            StopCoroutine(coroutine);
+        public void Revive(float immortalityTime)
+        {
+            EndCoroutine(ref _immortalityCoroutine);
+            EndCoroutine(ref _stunCoroutine);
+        
+            PlayerStats.Health.Heal(PlayerStats.Health.MaxHealth);
+            TakeImmortality(immortalityTime);
+        
+            _entityStateMachine.SwitchState<PlayerIdleState>();
+        }
     
-        coroutine = null;
-    }
+        private void TakeImmortality(float time)
+        {
+            _immortalityCoroutine ??= StartCoroutine(TakingImmortality(time));
+        }
 
-    private IEnumerator TakingStun(float time)
-    {
-        var waitForStunTime = new WaitForSeconds(time);
+        private void EndCoroutine(ref Coroutine coroutine)
+        {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+    
+            coroutine = null;
+        }
+
+        private IEnumerator TakingStun(float time)
+        {
+            var waitForStunTime = new WaitForSeconds(time);
         
-        _entityStateMachine.SwitchState<PlayerStunnedState>();
+            _entityStateMachine.SwitchState<PlayerStunnedState>();
 
-        yield return waitForStunTime;
+            yield return waitForStunTime;
 
-        _entityStateMachine.SwitchState<PlayerIdleState>();
+            _entityStateMachine.SwitchState<PlayerIdleState>();
         
-        EndCoroutine(ref _stunCoroutine);
-    }
+            EndCoroutine(ref _stunCoroutine);
+        }
 
-    private IEnumerator TakingImmortality(float time)
-    {
-        var waitForImmortalityTime = new WaitForSeconds(time);
+        private IEnumerator TakingImmortality(float time)
+        {
+            var waitForImmortalityTime = new WaitForSeconds(time);
         
-        _isDamaged = true;
-        OnTakeDamage?.Invoke();
+            _isDamaged = true;
         
-        yield return waitForImmortalityTime;
+            yield return waitForImmortalityTime;
         
-        _isDamaged = false;
+            _isDamaged = false;
 
-        EndCoroutine(ref _immortalityCoroutine);
-    }
+            EndCoroutine(ref _immortalityCoroutine);
+        }
 
-    private void Shoot()
-    {
-        _weaponHolder.Shoot();
+        private void Shoot()
+        {
+            _weaponHolder.Shoot();
+        }
     }
 }

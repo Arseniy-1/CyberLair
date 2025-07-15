@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.DeathReaper
 {
     public class SlashAttack : ColliderAttack
     {

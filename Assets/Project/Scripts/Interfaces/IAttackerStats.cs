@@ -1,6 +1,9 @@
-public interface IAttackerStats
+namespace Project.Scripts.Interfaces
 {
-    public float AttackDelay { get;}
-    public float AttackRecovery { get;}
-    public int AttackCount {  get;}
+    public interface IAttackerStats
+    {
+        public float AttackDelay { get;}
+        public float AttackRecovery { get;}
+        public int AttackCount {  get;}
+    }
 }

@@ -2,12 +2,15 @@
 using System.Linq;
 using UnityEngine;
 
-public abstract class HardSkill : Skill
+namespace Project.Scripts.Skill
 {
-    [SerializeField] protected List<Skill> NeededSkills;
-
-    public bool IsAvailable(List<Skill> skills)
+    public abstract class HardSkill : global::Project.Scripts.Skill.Skill
     {
-        return NeededSkills.All(skills.Contains);
+        [SerializeField] protected List<global::Project.Scripts.Skill.Skill> NeededSkills;
+
+        public bool IsAvailable(List<global::Project.Scripts.Skill.Skill> skills)
+        {
+            return NeededSkills.All(skills.Contains);
+        }
     }
 }

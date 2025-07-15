@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsBar : StatsView
+namespace Project.Scripts.Stats.View
 {
-    [SerializeField] protected Image StatsBarView;
-
-    protected override void ShowStats(float currentValue, float maxValue)
+    public class StatsBar : StatsView
     {
-        StatsBarView.fillAmount = currentValue / maxValue;
+        [SerializeField] protected Image StatsBarView;
+
+        protected override void ShowStats(float currentValue, float maxValue)
+        {
+            StatsBarView.fillAmount = currentValue / maxValue;
+        }
     }
 }

@@ -1,6 +1,9 @@
-public interface ISubscribable
+namespace Project.Scripts.CompositionRoot
 {
-    public void Subscribe();
+    public interface ISubscribable
+    {
+        public void Subscribe();
     
-    public void Unsubscribe();
+        public void Unsubscribe();
+    }
 }

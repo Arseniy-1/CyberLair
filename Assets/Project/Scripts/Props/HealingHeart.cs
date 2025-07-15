@@ -1,29 +1,32 @@
 ﻿using System;
+using Project.Scripts.Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class HealingHeart : MonoBehaviour, IMoveable, IInteractable, IDestoyable<HealingHeart>
+namespace Project.Scripts.Props
 {
-    public event Action<HealingHeart> OnDestroyed;
+    public class HealingHeart : MonoBehaviour, IMoveable, IInteractable, IDestoyable<HealingHeart>
+    {
+        public event Action<HealingHeart> OnDestroyed;
 
-    [field: SerializeField] public int HealAmount { get; private set; }
-    public Rigidbody2D Rigidbody2D { get; private set; }
+        [field: SerializeField] public int HealAmount { get; private set; }
+        public Rigidbody2D Rigidbody2D { get; private set; }
     
-    private void Awake()
-    {
-        Rigidbody2D = GetComponent<Rigidbody2D>();
-    }
+        private void Awake()
+        {
+            Rigidbody2D = GetComponent<Rigidbody2D>();
+        }
 
-    public void Initialize(int amount)
-    {
-        if(amount <= 0)
-            return; 
+        public void Initialize(int amount)
+        {
+            if (amount <= 0)
+                return; 
         
-        HealAmount = amount;
-    }
+            HealAmount = amount;
+        }
     
-    public void Interact()
-    {
-        Destroy(gameObject);
+        public void Interact()
+        {
+            Destroy(gameObject);
+        }
     }
 }

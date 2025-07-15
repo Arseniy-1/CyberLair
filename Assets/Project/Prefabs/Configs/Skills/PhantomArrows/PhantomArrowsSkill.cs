@@ -1,11 +1,15 @@
-using Project.Scripts.Weapon.ActiveSkills.MagicArrow;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PhantomArrowsSkill", menuName = "Skill/Hard/PhantomArrows", order = 51)]
-public class PhantomArrowsSkill : HardSkill, IMagicArrowStats
+namespace Project.Prefabs.Configs.Skills.PhantomArrows
 {
-    [field: SerializeField]public float Radius { get; private set; }
-    [field: SerializeField]public float Delay { get; private set; }
-    [field: SerializeField]public LayerMask LayerMask { get; private set; }
-    [field: SerializeField]public MagicArrow MagicArrowPrefab { get; private set; }
+    [CreateAssetMenu(fileName = "PhantomArrowsSkill", menuName = "Skill/Hard/PhantomArrows", order = 51)]
+    public class PhantomArrowsSkill : HardSkill, IMagicArrowStats
+    {
+        [field: SerializeField]public float Radius { get; private set; }
+        [field: SerializeField]public float Delay { get; private set; }
+        [field: SerializeField]public LayerMask LayerMask { get; private set; }
+        [field: SerializeField]public MagicArrow.MagicArrow MagicArrowPrefab { get; private set; }
+    }
 }

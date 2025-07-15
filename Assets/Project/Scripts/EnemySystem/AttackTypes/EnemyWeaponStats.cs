@@ -1,4 +1,6 @@
 using System;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Stats;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.AttackTypes

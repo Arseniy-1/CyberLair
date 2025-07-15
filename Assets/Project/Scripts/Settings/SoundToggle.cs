@@ -1,16 +1,20 @@
 ﻿using YG;
 
-public class SoundToggle : SettingToggle
+namespace Project.Scripts.Settings
 {
-    public override void Initialize()
+    public class SoundToggle : SettingToggle
     {
-        base.Initialize();
-        Toggle.isOn = YandexGame.savesData.IsSoundsMuted;
-    }
+        public override void Initialize()
+        {
+            base.Initialize();
+        
+            Toggle.isOn = YandexGame.savesData.IsSoundsMuted;
+        }
     
-    protected override void HandleToggle(bool isOn)
-    {
-        YandexGame.savesData.IsSoundsMuted = isOn;
-        YandexGame.SaveProgress();
+        protected override void HandleToggle(bool isOn)
+        {
+            YandexGame.savesData.IsSoundsMuted = isOn;
+            YandexGame.SaveProgress();
+        }
     }
 }

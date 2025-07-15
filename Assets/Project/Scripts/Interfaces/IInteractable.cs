@@ -1,4 +1,7 @@
-﻿public interface IInteractable
+﻿namespace Project.Scripts.Interfaces
 {
-    void Interact();
+    public interface IInteractable
+    {
+        public void Interact();
+    }
 }

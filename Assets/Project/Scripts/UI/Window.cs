@@ -1,3 +1,8 @@
 ﻿using UnityEngine;
 
-public class Window : MonoBehaviour { }
+namespace Project.Scripts.UI
+{
+    public class Window : MonoBehaviour
+    {
+    }
+}

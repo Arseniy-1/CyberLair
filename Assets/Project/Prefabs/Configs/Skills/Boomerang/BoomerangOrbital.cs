@@ -1,4 +1,4 @@
-using Project.Scripts.Servises;
+using Project.Scripts.Services;
 
 namespace Project.Prefabs.Configs.Skills.Boomerang
 {

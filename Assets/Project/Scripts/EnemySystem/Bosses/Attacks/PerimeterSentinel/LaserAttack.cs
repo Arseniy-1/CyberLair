@@ -3,19 +3,19 @@ using Project.Scripts.Services.Enum;
 using Project.Scripts.Services.Extensions;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.PerimeterSentinel
 {
     public class LaserAttack : BossAttack
     {
-        [SerializeField, Header("Laser Attack Settings")] private EnemyCollisionHandler _laser;
+        [SerializeField] [Header("Laser Attack Settings")] private EnemyCollisionHandler _laser;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private ShakeID _shakeID = ShakeID.LongLight;
         [SerializeField] private EnemyTargetProvider _targetProvider;
         
-        [SerializeField, Header("Spring Settings")] private float _stiffness = 2f;
+        [SerializeField] [Header("Spring Settings")] private float _stiffness = 2f;
         [SerializeField] private float _damping = 0.3f;
 
-        [SerializeField, Header("Rotation Settings")] private float _maxRotationSpeed = 360f;
+        [SerializeField] [Header("Rotation Settings")] private float _maxRotationSpeed = 360f;
     
         private Transform _laserOrigin;
         private float _currentAngularVelocity;

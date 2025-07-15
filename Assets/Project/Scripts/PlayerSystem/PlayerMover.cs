@@ -1,33 +1,38 @@
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Enum;
 using UnityEngine;
 
-public class PlayerMover : MonoBehaviour
+namespace Project.Scripts.PlayerSystem
 {
-    private PlayerInputProvider _playerInputProvider;
-    private Rigidbody2D _rigidbody2D;
-    private IMoverStats _moverStats;
-
-    [field: SerializeField] public AudioID WalkSound { get; private set; } = AudioID.PlayerWalk;
-    public bool IsRunning => _playerInputProvider.InputDirection != Vector2.zero;
-
-    private void OnEnable()
+    public class PlayerMover : MonoBehaviour
     {
-        _playerInputProvider.OnMoveButtonPressed += Run;
-    }
+        private PlayerInputProvider _playerInputProvider;
+        private Rigidbody2D _rigidbody2D;
+        private IMoverStats _moverStats;
 
-    private void OnDisable()
-    {
-        _playerInputProvider.OnMoveButtonPressed -= Run;
-    }
+        [field: SerializeField] public AudioID WalkSound { get; private set; } = AudioID.PlayerWalk;
+        public bool IsRunning => _playerInputProvider.InputDirection != Vector2.zero;
 
-    public void Initialize(PlayerInputProvider playerInputProvider, Rigidbody2D rigidbody2D, IMoverStats moverStats)
-    {
-        _playerInputProvider = playerInputProvider;
-        _rigidbody2D = rigidbody2D;
-        _moverStats = moverStats;
-    }
+        private void OnEnable()
+        {
+            _playerInputProvider.OnMoveButtonPressed += Run;
+        }
+
+        private void OnDisable()
+        {
+            _playerInputProvider.OnMoveButtonPressed -= Run;
+        }
+
+        public void Initialize(PlayerInputProvider playerInputProvider, Rigidbody2D rigidbody2D, IMoverStats moverStats)
+        {
+            _playerInputProvider = playerInputProvider;
+            _rigidbody2D = rigidbody2D;
+            _moverStats = moverStats;
+        }
     
-    private void Run()
-    {
-        _rigidbody2D.velocity = _playerInputProvider.InputDirection.normalized * _moverStats.Speed.CurrentValue;
+        private void Run()
+        {
+            _rigidbody2D.velocity = _playerInputProvider.InputDirection.normalized * _moverStats.Speed.CurrentValue;
+        }
     }
 }

@@ -1,3 +1,8 @@
 ﻿using UnityEngine;
 
-public class DeviceControlls : MonoBehaviour { }
+namespace Project.Scripts.PlayerSystem
+{
+    public class DeviceControlls : MonoBehaviour
+    {
+    }
+}

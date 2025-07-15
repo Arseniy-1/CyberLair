@@ -1,4 +1,9 @@
-﻿public interface IMoverStats
+﻿using Project.Scripts.Stats;
+
+namespace Project.Scripts.Interfaces
 {
-    Speed Speed { get; }
+    public interface IMoverStats
+    {
+        public Speed Speed { get; }
+    }
 }

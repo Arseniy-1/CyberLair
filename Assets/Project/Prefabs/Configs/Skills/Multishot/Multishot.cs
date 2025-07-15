@@ -1,18 +1,24 @@
-﻿public class Multishot : ISkillInstance
-{
-    private readonly SkillData _data;
-    private readonly MultishotSkill _multishotSkill;
-        
-    public Multishot(SkillData data, MultishotSkill multishotSkill)
-    {
-        _data = data;
-        _multishotSkill = multishotSkill;
-            
-        _data.PlayerStats.BulletPerShootCount.AddModifier(_multishotSkill.BulletsPerShootModifier);
-    }
+﻿using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
 
-    public void Disable()
+namespace Project.Prefabs.Configs.Skills.Multishot
+{
+    public class Multishot : ISkillInstance
     {
-        _data.PlayerStats.BulletPerShootCount.RemoveModifier(_multishotSkill.BulletsPerShootModifier);
+        private readonly SkillData _data;
+        private readonly MultishotSkill _multishotSkill;
+        
+        public Multishot(SkillData data, MultishotSkill multishotSkill)
+        {
+            _data = data;
+            _multishotSkill = multishotSkill;
+            
+            _data.PlayerStats.BulletPerShootCount.AddModifier(_multishotSkill.BulletsPerShootModifier);
+        }
+
+        public void Disable()
+        {
+            _data.PlayerStats.BulletPerShootCount.RemoveModifier(_multishotSkill.BulletsPerShootModifier);
+        }
     }
 }

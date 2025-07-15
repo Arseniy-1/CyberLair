@@ -1,12 +1,15 @@
-﻿using Project.Scripts.Weapon.ActiveSkills;
+﻿using Project.Prefabs.Configs.Skills.Thunder;
 using UnityEngine;
 
-public interface IThunderStats
+namespace Project.Scripts.Interfaces
 {
-    float ActionRadius { get; }
-    LayerMask LayerMask { get; }
-    int Damage { get; }
-    float StrikesCount { get; }
-    float ShootsNeeded { get; }
-    CommonSkillView CommonSkillView { get; }
+    public interface IThunderStats
+    {
+        public float ActionRadius { get; }
+        public LayerMask LayerMask { get; }
+        public int Damage { get; }
+        public float StrikesCount { get; }
+        public float ShootsNeeded { get; }
+        public CommonSkillView CommonSkillView { get; }
+    }
 }

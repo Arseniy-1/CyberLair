@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public abstract class Skill : ScriptableObject
+namespace Project.Scripts.Skill
 {
-    [field: SerializeField] public SkillInfo SkillInfo { get; protected set; }
+    public abstract class Skill : ScriptableObject
+    {
+        [field: SerializeField] public SkillInfo SkillInfo { get; protected set; }
+    }
 }

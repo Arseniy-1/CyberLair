@@ -14,13 +14,13 @@ namespace Project.Scripts.PlayerSystem.TakeDamageEffect
     {
         private const string MasterLowPassCutoff = "MasterLowPassCutoff";
         
-        [SerializeField, MinMaxSlider(400, 22000f, showFields: true)] private Vector2 _frequencyCutoff;
+        [SerializeField] [MinMaxSlider(400, 22000f, showFields: true)] private Vector2 _frequencyCutoff;
         [SerializeField] private float _cutoffDuration = 0.2f;
         
         [SerializeField, MinMaxSlider(1, 4, showFields: true)] 
         private Vector2 _cutoffDurationRange = new (1, 4);
         
-        [SerializeField, MinMaxSlider(20f, 70f, showFields: true)] 
+        [SerializeField] [MinMaxSlider(20f, 70f, showFields: true)] 
         private Vector2 _damageThresholdRange = new (20, 70);
         
         [SerializeField] private AudioMixer _audioMixer;
@@ -32,11 +32,11 @@ namespace Project.Scripts.PlayerSystem.TakeDamageEffect
         {
             CancelCutoff();
             
-            float normalizedDamage = Mathf
-                .Clamp01((damageAmount - _damageThresholdRange.x) / (_damageThresholdRange.y - _damageThresholdRange.x));
+            float damageThresholdRangeDelta = _damageThresholdRange.y - _damageThresholdRange.x;
+            float damageThreshold = damageAmount - _damageThresholdRange.x;
+            float normalizedDamage = Mathf.Clamp01(damageThreshold / damageThresholdRangeDelta);
             
-            float calculatedDuration = Mathf
-                .Lerp(_cutoffDurationRange.x, _cutoffDurationRange.y, normalizedDamage);
+            float calculatedDuration = Mathf.Lerp(_cutoffDurationRange.x, _cutoffDurationRange.y, normalizedDamage);
             
             Cutoffing(calculatedDuration, _cancellationToken.Token).Forget();
         }
@@ -45,6 +45,8 @@ namespace Project.Scripts.PlayerSystem.TakeDamageEffect
         {
             _cancellationToken?.Cancel();
             _cancellationToken = new CancellationTokenSource();
+            
+            _audioMixer.SetFloat(MasterLowPassCutoff, _frequencyCutoff.y);
         }
         
         private void CutoffSound(float endValue)
@@ -52,7 +54,7 @@ namespace Project.Scripts.PlayerSystem.TakeDamageEffect
             _frequencyCutoffTween?.Kill();
             
             _frequencyCutoffTween = _audioMixer
-                .DOSetFloat(MasterLowPassCutoff, endValue, _cutoffDuration);
+                .DoSetFloat(MasterLowPassCutoff, endValue, _cutoffDuration);
         }
         
         private async UniTaskVoid Cutoffing(float duration, CancellationToken token)

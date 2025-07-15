@@ -1,62 +1,65 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class Health : BaseStat
+namespace Project.Scripts.Stats
 {
-    public event Action LostHealth;
-    public event Action<float> DamageTaken;
-
-    public float MaxHealth => CalculateValue();
-    public ShieldAmount ShieldAmount { get; private set; }
-
-    public void Initialize(ShieldAmount shieldAmount)
+    [Serializable]
+    public class Health : BaseStat
     {
-        ShieldAmount = shieldAmount;
-    }
+        public event Action LostHealth;
+        public event Action<float> DamageTaken;
 
-    public void Heal(float amount)
-    {
-        if (amount < 0)
-            throw new ArgumentOutOfRangeException(nameof(amount));
+        public float MaxHealth => CalculateValue();
+        public ShieldAmount ShieldAmount { get; private set; }
 
-        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0f, MaxHealth);
-        OnAmountChanged(CurrentValue, MaxHealth);
-    }
-
-    public void TakeDamage(float amount)
-    {
-        if (amount < 0)
-            throw new ArgumentOutOfRangeException(nameof(amount));
-
-        if (ShieldAmount != null)
+        public void Initialize(ShieldAmount shieldAmount)
         {
-            float shieldDamage = Mathf.Min(ShieldAmount.CurrentValue, amount);
-            ShieldAmount.ReduceShield(shieldDamage);
-            amount -= shieldDamage;
+            ShieldAmount = shieldAmount;
         }
 
-        if (amount > 0)
-            CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxHealth);
+        public void Heal(float amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException(nameof(amount));
 
-        OnAmountChanged(CurrentValue, MaxHealth);
+            CurrentValue = Mathf.Clamp(CurrentValue + amount, 0f, MaxHealth);
+            OnAmountChanged(CurrentValue, MaxHealth);
+        }
 
-        if (CurrentValue <= 0)
-            HandleDeath();
+        public void TakeDamage(float amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException(nameof(amount));
+
+            if (ShieldAmount != null)
+            {
+                float shieldDamage = Mathf.Min(ShieldAmount.CurrentValue, amount);
+                ShieldAmount.ReduceShield(shieldDamage);
+                amount -= shieldDamage;
+            }
+
+            if (amount > 0)
+                CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxHealth);
+
+            OnAmountChanged(CurrentValue, MaxHealth);
+
+            if (CurrentValue <= 0)
+                HandleDeath();
         
-        DamageTaken?.Invoke(amount);
-    }
+            DamageTaken?.Invoke(amount);
+        }
 
-    public void SetMaxHealth(float amount)
-    {
-        if (amount <= 0)
-            return;
+        public void SetMaxHealth(float amount)
+        {
+            if (amount <= 0)
+                return;
 
-        OnAmountChanged(CurrentValue, MaxHealth);
-    }
+            OnAmountChanged(CurrentValue, MaxHealth);
+        }
 
-    private void HandleDeath()
-    {
-        LostHealth?.Invoke();
+        private void HandleDeath()
+        {
+            LostHealth?.Invoke();
+        }
     }
 }

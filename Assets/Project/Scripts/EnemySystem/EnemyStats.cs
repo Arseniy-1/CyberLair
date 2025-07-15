@@ -1,22 +1,27 @@
 ﻿using System;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Stats;
 using UnityEngine;
 
-[Serializable]
-public class EnemyStats : IMoverStats
+namespace Project.Scripts.EnemySystem
 {
-    [field: SerializeField] public int Experience { get; private set; }
-    [field: SerializeField] public Speed Speed { get; private set; }
-    [field: SerializeField] public Health Health {get; private set; }
-
-    public void Initialize()
+    [Serializable]
+    public class EnemyStats : IMoverStats
     {
-        Speed.CalculateCurrentValue();
-        Health.CalculateCurrentValue();
-    }
+        [field: SerializeField] public int Experience { get; private set; }
+        [field: SerializeField] public Speed Speed { get; private set; }
+        [field: SerializeField] public Health Health {get; private set; }
 
-    public void Update()
-    {
-        Speed.Update();
-        Health.Update();
+        public void Initialize()
+        {
+            Speed.CalculateCurrentValue();
+            Health.CalculateCurrentValue();
+        }
+
+        public void Update()
+        {
+            Speed.Update();
+            Health.Update();
+        }
     }
 }

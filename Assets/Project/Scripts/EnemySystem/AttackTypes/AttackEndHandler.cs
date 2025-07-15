@@ -18,7 +18,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
 
         private void OnPerforming(bool isContinuing)
         {
-            if(isContinuing)
+            if (isContinuing)
                 return;
 
             EndAttack();

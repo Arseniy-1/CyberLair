@@ -1,14 +1,18 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Props;
+using UnityEngine;
 
-public class HealthPool : Pool<HealingHeart>
+namespace Project.Scripts.Spawners.Health
 {
-    public HealthPool(HealingHeart prefab, int startAmount) : base(prefab, startAmount) { }
-        
-    protected override HealingHeart Create()
+    public class HealthPool : Pool<HealingHeart>
     {
-        var health =  Object.Instantiate(Prefab);
-        health.gameObject.SetActive(false);
+        public HealthPool(HealingHeart prefab, int startAmount) : base(prefab, startAmount) { }
         
-        return health;
+        protected override HealingHeart Create()
+        {
+            var health =  Object.Instantiate(Prefab);
+            health.gameObject.SetActive(false);
+        
+            return health;
+        }
     }
 }

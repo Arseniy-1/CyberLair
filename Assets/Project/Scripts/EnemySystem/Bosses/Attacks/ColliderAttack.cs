@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.Interfaces;
 using Project.Scripts.Services.Enum;
 using Project.Scripts.Services.Extensions;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses
+namespace Project.Scripts.EnemySystem.Bosses.Attacks
 {
     public abstract class ColliderAttack : BossAttack
     {
+        private const int MaxHits = 4;
+        
+        private readonly Collider2D[] _results = new Collider2D[MaxHits];
+        
         [SerializeField] private Vector2 _offset;
         [SerializeField] private Vector2 _size;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private ShakeID _shakeID;
-        
         [SerializeField] private Transform _bossViewScale;
 
         public override void Disable()
@@ -23,15 +27,27 @@ namespace Project.Scripts.EnemySystem.Bosses
 
         protected override IEnumerator Attack()
         {
-            List<Collider2D> affectedColliders = Physics2D
-                .OverlapBoxAll((Vector2)transform.position + _offset * _bossViewScale.localScale.x, _size, _layerMask).ToList();
+            Vector2 overlapCenter = (Vector2)transform.position + _offset * _bossViewScale.localScale.x;
+            
+            int hitCount = Physics2D.OverlapBoxNonAlloc(overlapCenter, _size, 0f, _results, _layerMask);
+            
+            List<IDamageable> affected = _results
+                .Take(hitCount)
+                .Select(hit =>
+                {
+                    hit.TryGetComponent(out IDamageable health);
+                    
+                    return health;
+                })
+                .Where(health => health != null)
+                .ToList();
+                
             
             _shakeID.Shake();
 
-            foreach (Collider2D collider in affectedColliders)
+            foreach (IDamageable hit in affected)
             {
-                if (collider.TryGetComponent(out IDamageable damageable))
-                    damageable.TakeDamage(Damage);
+                hit.TakeDamage(Damage);
             }
             
             Disable();

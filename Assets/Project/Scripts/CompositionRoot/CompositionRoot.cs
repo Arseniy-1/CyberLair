@@ -1,10 +1,15 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using Assets.SimpleLocalization.Scripts;
 using Project.Scripts.ArenaSystem;
 using Project.Scripts.MapGenerationSystem;
+using Project.Scripts.MessageBroker;
+using Project.Scripts.PlayerSystem;
 using Project.Scripts.Services;
+using Project.Scripts.Skill;
+using Project.Scripts.Spawners.Enemies;
+using Project.Scripts.Stats.View;
+using Project.Scripts.UI;
 using UnityEngine;
 using YG;
 
@@ -49,10 +54,26 @@ namespace Project.Scripts.CompositionRoot
             _cancellationToken = new CancellationTokenSource();
             _gamePauser = new GamePauser(_cancellationToken.Token);
 
+            var playerDeathHandler = new PlayerDeathHandler(
+                _player, 
+                _timer, 
+                _endGameCanvas, 
+                _continueScreenCanvas, 
+                _gameCanvas, 
+                _triesCount
+                );
+            
+            var winScreenHandler = new WinScreenHandler(
+                _timer, 
+                _arena, 
+                _winGameCanvas, 
+                _gameCanvas
+                );
+            
             _subscribables = new List<ISubscribable>
             {
-                new PlayerDeathHandler(_player, _timer, _endGameCanvas, _continueScreenCanvas, _gameCanvas, _triesCount),
-                new WinScreenHandler(_timer, _arena, _winGameCanvas, _gameCanvas)
+                playerDeathHandler,
+                winScreenHandler,
             };
             
             _edgeSpawner.SpawnOnEdges();

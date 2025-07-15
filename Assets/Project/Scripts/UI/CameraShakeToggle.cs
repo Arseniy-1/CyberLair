@@ -1,17 +1,22 @@
-﻿using YG;
+﻿using Project.Scripts.Settings;
+using YG;
 
-public class CameraShakeToggle : SettingToggle
+namespace Project.Scripts.UI
 {
-    public override void Initialize()
+    public class CameraShakeToggle : SettingToggle
     {
-        base.Initialize();
-        Toggle.isOn = YandexGame.savesData.IsCameraShakeEnabled;
-    }
-    
-    protected override void HandleToggle(bool isOn)
-    {
-        YandexGame.savesData.IsCameraShakeEnabled = isOn;
+        public override void Initialize()
+        {
+            base.Initialize();
         
-        YandexGame.SaveProgress();
+            Toggle.isOn = YandexGame.savesData.IsCameraShakeEnabled;
+        }
+    
+        protected override void HandleToggle(bool isOn)
+        {
+            YandexGame.savesData.IsCameraShakeEnabled = isOn;
+        
+            YandexGame.SaveProgress();
+        }
     }
 }

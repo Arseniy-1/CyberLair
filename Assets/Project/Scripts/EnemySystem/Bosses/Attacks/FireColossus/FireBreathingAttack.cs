@@ -1,8 +1,10 @@
 using System.Collections;
 using Project.Prefabs.Configs.Skills.FireZone;
+using Project.Scripts.Spawners.AttackInstances;
+using Project.Scripts.Spawners.FireZones;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.FireColossus
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.FireColossus
 {
     public class FireBreathingAttack : SpawnAttack<FireZone>
     {

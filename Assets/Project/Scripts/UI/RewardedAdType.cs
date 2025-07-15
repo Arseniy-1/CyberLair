@@ -1,5 +1,8 @@
-﻿public enum RewardedAdType
+﻿namespace Project.Scripts.UI
 {
-    SecondChance = 1,
-    ExtraHealth = 2
+    public enum RewardedAdType
+    {
+        SecondChance = 1,
+        ExtraHealth = 2,
+    }
 }

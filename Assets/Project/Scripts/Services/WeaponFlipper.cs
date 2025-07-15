@@ -1,4 +1,4 @@
-namespace Project.Scripts.Servises
+namespace Project.Scripts.Services
 {
     public class WeaponFlipper : Flipper
     {

@@ -1,4 +1,5 @@
 using System.Collections;
+using Project.Scripts.Services;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.AttackTypes
@@ -25,13 +26,16 @@ namespace Project.Scripts.EnemySystem.AttackTypes
             _jumpStats.JumpReloadTime.CalculateCurrentValue();
             
             _jumper.Initialize(_jumpStats);
+            
             _waitForJump = new WaitForSeconds(_jumpStats.JumpTime.CurrentValue);
+            
             base.Initialize(enemyTargetProvider);
         }
         
         protected override IEnumerator Attack()
         {
             _jumper.Jump(Direction);
+            
             yield return _waitForJump;
         }
     }

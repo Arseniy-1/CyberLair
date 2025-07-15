@@ -1,27 +1,31 @@
+using Project.Scripts.Services;
 using UnityEngine;
 
-public class PlayerSight : MonoBehaviour
+namespace Project.Scripts.PlayerSystem
 {
-    [SerializeField] private TargetScanner _targetScanner;
-    [SerializeField] private SpriteRenderer _view;
+    public class PlayerSight : MonoBehaviour
+    {
+        [SerializeField] private TargetScanner _targetScanner;
+        [SerializeField] private SpriteRenderer _view;
 
-    private Transform _transform;
+        private Transform _transform;
     
-    private void Awake()
-    {
-        _transform = transform;
-    }
-
-    private void FixedUpdate()
-    {
-        if (_targetScanner.HasTarget)
+        private void Awake()
         {
-            _transform.position = _targetScanner.ClosestTarget.Position;
-            _view.enabled = true;
+            _transform = transform;
         }
-        else
+
+        private void FixedUpdate()
         {
-            _view.enabled = false;
+            if (_targetScanner.HasTarget)
+            {
+                _transform.position = _targetScanner.ClosestTarget.Position;
+                _view.enabled = true;
+            }
+            else
+            {
+                _view.enabled = false;
+            }
         }
     }
 }

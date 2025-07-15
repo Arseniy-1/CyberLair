@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
-using Project.Scripts.ArenaSystem;
+using Project.Scripts.Spawners.Enemies;
 
-public class WaveQueueFactory
+namespace Project.Scripts.ArenaSystem
 {
-    public Queue<Wave> Create(List<WaveConfig> configs, MainEnemySpawner mainEnemySpawner)
+    public class WaveQueueFactory
     {
-        return new Queue<Wave>(configs
-            .Select(config => new Wave(config, mainEnemySpawner))
-            .ToList());
+        public Queue<Wave> Create(List<WaveConfig> configs, MainEnemySpawner mainEnemySpawner)
+        {
+            List<Wave> waves = configs.Select(config => new Wave(config, mainEnemySpawner)).ToList();
+        
+            return new Queue<Wave>(waves);
+        }
     }
 }

@@ -1,4 +1,6 @@
-namespace Project.Prefabs.Configs.Skills.Zap
+using Project.Prefabs.Configs.Skills.ChainZap;
+
+namespace Project.Scripts.Spawners.ChainZap
 {
     public class ChainZapViewSpawner : Spawner<ChainZapView>
     {

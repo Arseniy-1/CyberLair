@@ -1,9 +1,10 @@
 using System.Collections;
 using Project.Scripts.Services.Enum;
 using Project.Scripts.Services.Extensions;
+using Project.Scripts.Spawners.AttackInstances;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.DeathReaper
 {
     public class SoulClotsAttack : SpawnAttack<SoulClot>
     {

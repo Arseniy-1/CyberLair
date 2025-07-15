@@ -1,7 +1,12 @@
-﻿public interface IWeaponStats
+﻿using Project.Scripts.Stats;
+
+namespace Project.Scripts.Interfaces
 {
-    WeaponDamage WeaponDamage { get; }
-    BulletPerShootCount BulletPerShootCount { get; }
-    WeaponSpread WeaponSpread { get; }
-    WeaponBulletReloadTime WeaponBulletReloadTime { get; }
+    public interface IWeaponStats
+    {
+        public WeaponDamage WeaponDamage { get; }
+        public BulletPerShootCount BulletPerShootCount { get; }
+        public WeaponSpread WeaponSpread { get; }
+        public WeaponBulletReloadTime WeaponBulletReloadTime { get; }
+    }
 }

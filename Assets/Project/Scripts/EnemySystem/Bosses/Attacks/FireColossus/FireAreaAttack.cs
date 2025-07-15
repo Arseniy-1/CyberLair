@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.FireColossus
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.FireColossus
 {
     public class FireAreaAttack : ColliderAttack
     {

@@ -1,3 +1,5 @@
+using Project.Scripts.Skill;
+using Project.Scripts.Stats;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.MercuryBless

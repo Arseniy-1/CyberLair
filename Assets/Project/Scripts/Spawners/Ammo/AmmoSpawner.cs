@@ -1,11 +1,15 @@
 ﻿using System;
+using Project.Scripts.Weapon;
 
-[Serializable]
-public class AmmoSpawner : Spawner<Bullet>
+namespace Project.Scripts.Spawners.Ammo
 {
-    public AmmoSpawner(Bullet bulletPrefab)
+    [Serializable]
+    public class AmmoSpawner : Spawner<Bullet>
     {
-        Prefab = bulletPrefab;
-        Pool = new BulletPool(Prefab, StartAmount);
+        public AmmoSpawner(Bullet bulletPrefab)
+        {
+            Prefab = bulletPrefab;
+            Pool = new BulletPool(Prefab, StartAmount);
+        }
     }
 }

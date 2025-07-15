@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class SettingToggle : MonoBehaviour
+namespace Project.Scripts.Settings
 {
-    [SerializeField] protected Toggle Toggle;
-
-    public virtual void Initialize()
+    public abstract class SettingToggle : MonoBehaviour
     {
-        Toggle.onValueChanged.AddListener(HandleToggle);
-    }
+        [SerializeField] protected Toggle Toggle;
 
-    private void OnDisable()
-    {
-        Toggle.onValueChanged.RemoveListener(HandleToggle);
-    }
+        public virtual void Initialize()
+        {
+            Toggle.onValueChanged.AddListener(HandleToggle);
+        }
 
-    protected abstract void HandleToggle(bool isOn);
+        private void OnDisable()
+        {
+            Toggle.onValueChanged.RemoveListener(HandleToggle);
+        }
+
+        protected abstract void HandleToggle(bool isOn);
+    }
 }

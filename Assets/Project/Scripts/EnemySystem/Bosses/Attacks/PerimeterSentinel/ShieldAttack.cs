@@ -1,8 +1,8 @@
 using System.Collections;
-using Project.Scripts.Servises;
+using Project.Scripts.Services;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.PerimeterSentinel
 {
     public class ShieldAttack : BossAttack
     {
@@ -11,7 +11,7 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         [SerializeField] private Collider2D _shieldCollider;
         [SerializeField] private float _duration;
         
-        [SerializeField, Header("Boss")] private Enemy _boss;
+        [SerializeField] [Header("Boss")] private Enemy _boss;
         [SerializeField] private EnemyCollisionHandler _enemyCollisionHandler;
         [SerializeField] private float _bossStunTime;
         

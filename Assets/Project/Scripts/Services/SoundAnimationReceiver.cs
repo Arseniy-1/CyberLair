@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.Services.Extensions;
 using UnityEngine;
 
 namespace Project.Scripts.Services
@@ -21,7 +22,8 @@ namespace Project.Scripts.Services
 
         private void OnSoundInvoked(string soundAnimationName)
         {
-            SoundAnimation sound = _soundAnimations.FirstOrDefault(soundAnimation => soundAnimation.Name == soundAnimationName);
+            SoundAnimation sound = _soundAnimations
+                .FirstOrDefault(soundAnimation => soundAnimation.Name == soundAnimationName);
 
             sound?.Audio.Play();
         }

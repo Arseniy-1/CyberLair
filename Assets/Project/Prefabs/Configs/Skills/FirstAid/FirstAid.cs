@@ -1,4 +1,8 @@
-namespace Project.Prefabs.Configs.Skills
+using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using Project.Scripts.Stats;
+
+namespace Project.Prefabs.Configs.Skills.FirstAid
 {
     public class FirstAid : ISkillInstance
     {

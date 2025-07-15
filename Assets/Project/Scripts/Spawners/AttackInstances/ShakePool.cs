@@ -1,6 +1,7 @@
+using Project.Scripts.EnemySystem.Bosses.Attacks.PerimeterSentinel;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
+namespace Project.Scripts.Spawners.AttackInstances
 {
     public class ShakePool : Pool<Shake>
     {

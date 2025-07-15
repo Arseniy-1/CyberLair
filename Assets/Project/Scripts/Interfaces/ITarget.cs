@@ -1,9 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-public interface ITarget
+namespace Project.Scripts.Interfaces
 {
-    public event Action OnDeath;
+    public interface ITarget
+    {
+        public event Action OnDeath;
     
-    public Vector2 Position { get; }
+        public Vector2 Position { get; }
+    }
 }

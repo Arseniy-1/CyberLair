@@ -1,11 +1,14 @@
 using Project.Scripts.EnemySystem;
 
-public struct M_BossSpawned
+namespace Project.Scripts.MessageBroker.EnemyMessageBrokers
 {
-    public M_BossSpawned(Enemy enemy)
+    public struct M_BossSpawned
     {
-        Boss = enemy;
-    }
+        public M_BossSpawned(Enemy enemy)
+        {
+            Boss = enemy;
+        }
     
-    public Enemy Boss { get; private set; }
+        public Enemy Boss { get; private set; }
+    }
 }

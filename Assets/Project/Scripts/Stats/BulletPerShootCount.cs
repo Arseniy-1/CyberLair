@@ -1,4 +1,7 @@
 ﻿using System;
 
-[Serializable]
-public class BulletPerShootCount : BaseStat { }
+namespace Project.Scripts.Stats
+{
+    [Serializable]
+    public class BulletPerShootCount : BaseStat { }
+}

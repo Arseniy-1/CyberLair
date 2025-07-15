@@ -1,7 +1,8 @@
 using Project.Scripts.EnemySystem;
+using Project.Scripts.PlayerSystem;
 using UnityEngine;
 
-namespace Project.Scripts.CompositionRoot
+namespace Project.Scripts.Spawners.Enemies
 {
     public class EnemyFabric
     {

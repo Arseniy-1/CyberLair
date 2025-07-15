@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 
-public abstract class StatsView : MonoBehaviour
+namespace Project.Scripts.Stats.View
 {
-    private BaseStat _stats;
+    public abstract class StatsView : MonoBehaviour
+    {
+        private BaseStat _stats;
 
-    private void OnDestroy()
-    {
-        if(_stats != null)
-            _stats.AmountChanged -= ShowStats;
-    }
+        private void OnDestroy()
+        {
+            if (_stats != null)
+                _stats.AmountChanged -= ShowStats;
+        }
     
-    public void Initialize(BaseStat stats)
-    {
-        _stats = stats;
-        _stats.AmountChanged += ShowStats;
-    }
+        public void Initialize(BaseStat stats)
+        {
+            _stats = stats;
+            _stats.AmountChanged += ShowStats;
+        }
     
-    protected abstract void ShowStats(float currentValue, float maxValue);
+        protected abstract void ShowStats(float currentValue, float maxValue);
+    }
 }

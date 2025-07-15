@@ -1,15 +1,17 @@
-using Project.Scripts.Weapon;
-
-public class SimpleWeapon : Weapon
+namespace Project.Scripts.Weapon
 {
-    public override bool TryAttack()
+    public class SimpleWeapon : Weapon
     {
-        if (IsReloaded == false)
-            return false;
+        public override bool TryAttack()
+        {
+            if (IsReloaded == false)
+                return false;
 
-        Attack();
-        IsReloaded = false;
+            Attack();
+            
+            IsReloaded = false;
 
-        return true;
+            return true;
+        }
     }
 }

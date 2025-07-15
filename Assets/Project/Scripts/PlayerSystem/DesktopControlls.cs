@@ -1,3 +1,8 @@
 ﻿using UnityEngine;
 
-public class DesktopControlls : MonoBehaviour { }
+namespace Project.Scripts.PlayerSystem
+{
+    public class DesktopControlls : MonoBehaviour
+    {
+    }
+}

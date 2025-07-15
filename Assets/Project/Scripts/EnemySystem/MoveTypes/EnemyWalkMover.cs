@@ -4,7 +4,7 @@ namespace Project.Scripts.EnemySystem.MoveTypes
     {
         protected override void Move()
         {
-            if(EnemyTargetProvider.HasPlayer == false)
+            if (EnemyTargetProvider.HasPlayer == false)
                 return;
 
             EnemyRigidbody.velocity = Direction.normalized * MoverStats.Speed.CurrentValue;

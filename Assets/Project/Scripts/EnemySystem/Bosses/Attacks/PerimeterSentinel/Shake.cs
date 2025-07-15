@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.PerimeterSentinel
 {
     public class Shake : MonoBehaviour, IDestoyable<Shake>, IReturnable
     {
+        private readonly int _shake = Animator.StringToHash("Shake");
+        
         [SerializeField] private AttackAnimationEvents _animationEvents;
         [SerializeField] private Animator _animator;
         
-        private readonly int _shake = Animator.StringToHash("Shake");
         private int _damage;
         private List<IDamageable> _collides;
         
@@ -18,13 +20,13 @@ namespace Project.Scripts.EnemySystem.Bosses.PerimeterSentinel
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(other.TryGetComponent(out IDamageable damageable))
+            if (other.TryGetComponent(out IDamageable damageable))
                 _collides.Add(damageable);
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if(other.TryGetComponent(out IDamageable damageable))
+            if (other.TryGetComponent(out IDamageable damageable))
                 _collides.Remove(damageable);
         }
         

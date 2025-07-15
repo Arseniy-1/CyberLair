@@ -1,3 +1,8 @@
 using UnityEngine;
 
-public class Wall : MonoBehaviour { }
+namespace Project.Scripts.Props
+{
+    public class Wall : MonoBehaviour
+    {
+    }
+}

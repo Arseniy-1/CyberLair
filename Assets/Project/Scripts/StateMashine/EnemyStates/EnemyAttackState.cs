@@ -1,18 +1,20 @@
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-namespace StateMashineSytem.EnemyStates
+namespace Project.Scripts.StateMashine.EnemyStates
 {
     public class EnemyAttackState : IState
     {
         private readonly EnemyMover _mover;
         private readonly EnemyAttacker _attacker;
         private readonly EnemyAttackCooldown _cooldown;
-        private IStateSwitcher _stateSwitcher;
 
         private readonly int _attackAnimation = Animator.StringToHash("IsAttacking");
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
         private readonly int _attackTrigger = Animator.StringToHash("StartAttack");
+        
+        private IStateSwitcher _stateSwitcher;
         private  Animator _animator;
         
         public EnemyAttackState(EnemyMover mover, EnemyAttacker attacker, EnemyAttackCooldown cooldown)

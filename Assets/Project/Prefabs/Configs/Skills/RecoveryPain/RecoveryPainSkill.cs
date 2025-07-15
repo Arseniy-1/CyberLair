@@ -1,7 +1,12 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Skill;
+using Project.Scripts.Stats;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "RecoveryPainSkill", menuName = "Skill/Hard/RecoveryPain", order = 51)]
-public class RecoveryPainSkill : HardSkill
+namespace Project.Prefabs.Configs.Skills.RecoveryPain
 {
-    [field: SerializeField] public StatModifier RegenerateModifier { get; private set; }
+    [CreateAssetMenu(fileName = "RecoveryPainSkill", menuName = "Skill/Hard/RecoveryPain", order = 51)]
+    public class RecoveryPainSkill : HardSkill
+    {
+        [field: SerializeField] public StatModifier RegenerateModifier { get; private set; }
+    }
 }

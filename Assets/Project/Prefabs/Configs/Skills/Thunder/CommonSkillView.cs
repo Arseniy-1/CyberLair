@@ -1,7 +1,9 @@
 using System.Collections;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
 using UnityEngine;
 
-namespace Project.Scripts.Weapon.ActiveSkills
+namespace Project.Prefabs.Configs.Skills.Thunder
 {
     public class CommonSkillView : MonoBehaviour
     {

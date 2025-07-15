@@ -1,12 +1,15 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class EndGameCanvas : MonoBehaviour
+namespace Project.Scripts.UI
 {
-    [SerializeField] private TextMeshProUGUI _timeView;
-
-    public void ShowStats(string playTime)
+    public class EndGameCanvas : MonoBehaviour
     {
-        _timeView.text = playTime;
+        [SerializeField] private TextMeshProUGUI _timeView;
+
+        public void ShowStats(string playTime)
+        {
+            _timeView.text = playTime;
+        }
     }
 }

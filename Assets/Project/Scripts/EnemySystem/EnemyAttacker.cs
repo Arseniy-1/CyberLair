@@ -22,7 +22,7 @@ namespace Project.Scripts.EnemySystem
 
         private void OnDisable()
         {
-            if(_attackCoroutine != null)
+            if (_attackCoroutine != null)
                 StopCoroutine(_attackCoroutine);
         }
 

@@ -1,7 +1,10 @@
 using System.Collections;
+using Project.Scripts.Spawners.Ammo;
+using Project.Scripts.Spawners.AttackInstances;
+using Project.Scripts.Weapon;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.FireColossus
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.FireColossus
 {
     public class LavaWaveAttack : SpawnAttack<Bullet>
     {
@@ -22,7 +25,7 @@ namespace Project.Scripts.EnemySystem.Bosses.FireColossus
                 Quaternion rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
                 
                 Bullet lavaWave = Spawner.Spawn();
-                lavaWave.Init(transform.position, rotation, Damage);
+                lavaWave.Initialize(transform.position, rotation, Damage);
                 lavaWave.Activate();
                 
                 lavaWave.OnDestroyed += UnsubscribeObject;

@@ -1,4 +1,7 @@
-    public interface ISkillInstance
+    namespace Project.Scripts.Interfaces
     {
-        public void Disable();
+        public interface ISkillInstance
+        {
+            public void Disable();
+        }
     }

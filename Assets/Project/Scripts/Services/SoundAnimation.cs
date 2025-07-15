@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.Services.Enum;
 using UnityEngine;
 
 namespace Project.Scripts.Services

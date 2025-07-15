@@ -1,3 +1,5 @@
+using Project.Scripts.Interfaces;
+using Project.Scripts.MapGenerationSystem.Configs;
 using UnityEngine;
 
 namespace Project.Scripts.MapGenerationSystem.Algorithms
@@ -60,10 +62,13 @@ namespace Project.Scripts.MapGenerationSystem.Algorithms
             {
                 for (var neighbourY = gridY - 1; neighbourY <= gridY + 1; neighbourY++)
                 {
-                    if (neighbourX >= 0 && neighbourX < _mapConfig.Width && neighbourY >= 0 &&
-                        neighbourY < _mapConfig.Height)
+                    bool isNeighborX = neighbourX >= 0 && neighbourX < _mapConfig.Width;
+                    bool isNeighborY = neighbourY >= 0 && neighbourY < _mapConfig.Height;
+                    
+                    if (isNeighborX && isNeighborY)
                     {
-                        if (neighbourX != gridX || neighbourY != gridY) wallCount += terrainMap[neighbourX, neighbourY];
+                        if (neighbourX != gridX || neighbourY != gridY) 
+                            wallCount += terrainMap[neighbourX, neighbourY];
                     }
                     else
                     {

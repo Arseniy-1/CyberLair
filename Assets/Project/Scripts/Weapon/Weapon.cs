@@ -1,5 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
+using Project.Scripts.Spawners.Ammo;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,20 +10,21 @@ namespace Project.Scripts.Weapon
 {
     public abstract class Weapon : MonoBehaviour
     {
-        [SerializeField] private AudioID _shootSound = AudioID.PlayerShoot;
-            
         [SerializeField] protected Bullet BulletPrefab;
         [SerializeField] protected Transform ShootPoint;
         [SerializeField] protected AmmoSpawner AmmoSpawner;
+        
+        [SerializeField] private AudioID _shootSound = AudioID.PlayerShoot;
 
-        private float CurrentTime;
         protected bool IsReloaded;
         protected IWeaponStats _weaponStats;
-
-        public IWeaponStats WeaponStats => _weaponStats;
+        private float CurrentTime;
+        
         public event Action<Bullet> Shot;
+        
+        public IWeaponStats WeaponStats => _weaponStats;
 
-        protected virtual void Awake()
+        private void Awake()
         {
             AmmoSpawner = new AmmoSpawner(BulletPrefab);
         }
@@ -48,7 +52,7 @@ namespace Project.Scripts.Weapon
             for (int i = 0; i < _weaponStats.BulletPerShootCount.CurrentValue; i++)
             {
                 Bullet bullet = AmmoSpawner.Spawn();
-                bullet.Init(ShootPoint.position, GetBulletDirection(), (int)_weaponStats.WeaponDamage.CurrentValue);
+                bullet.Initialize(ShootPoint.position, GetBulletDirection(), (int)_weaponStats.WeaponDamage.CurrentValue);
 
                 Shot?.Invoke(bullet);
 

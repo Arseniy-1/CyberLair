@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Interfaces;
+using Project.Scripts.PlayerSystem;
+using Project.Scripts.Services;
+using UnityEngine;
 
-namespace StateMashineSytem.PlayerStateMashine
+namespace Project.Scripts.StateMashine.PlayerStates
 {
     public class PlayerStunnedState : IState
     {

@@ -1,7 +1,11 @@
 using System;
-using Project.Scripts.EnemySystem;
+using System.Linq;
+using Project.Scripts.Interfaces;
 using Project.Scripts.Services.Enum;
 using Project.Scripts.Services.Extensions;
+using Project.Scripts.Skill;
+using Project.Scripts.Weapon;
+using Sirenix.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,6 +14,10 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
     [Serializable]
     public class AffectedArea : ISkillInstance
     {
+        private const int MaxHits = 12;
+        
+        private readonly Collider2D[] _results = new Collider2D[MaxHits];
+        
         private float _radius;
         private LayerMask _layerMask;
         private float _damageProportion;
@@ -50,15 +58,15 @@ namespace Project.Prefabs.Configs.Skills.AffectedArea
             if (Random.value > _chance)
                 return;
 
-            Collider2D[] results = Physics2D.OverlapCircleAll(bullet.transform.position, _radius, _layerMask);
+            int hitCount = Physics2D.OverlapCircleNonAlloc(bullet.Position, _radius, _results, _layerMask);
 
-            foreach (Collider2D affected in results)
-            {
-                if (affected.TryGetComponent(out Enemy affectedEnemy))
+            _results
+                .Take(hitCount)
+                .ForEach(hit =>
                 {
-                    affectedEnemy.TakeDamage(_weaponStats.WeaponDamage.CurrentValue * _damageProportion);
-                }
-            }
+                    if(hit.TryGetComponent(out IDamageable affectedEnemy))
+                        affectedEnemy.TakeDamage(_weaponStats.WeaponDamage.CurrentValue * _damageProportion);
+                });
             
             _shakeID.Shake();
         }

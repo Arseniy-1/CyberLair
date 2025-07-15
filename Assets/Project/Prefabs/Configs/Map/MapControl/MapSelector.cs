@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Assets.SimpleLocalization.Scripts;
+using Project.Scripts.UI;
 using TMPro;
 using UnityEngine.UI;
 using YG;

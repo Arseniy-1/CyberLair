@@ -1,4 +1,9 @@
 ﻿using System;
 
-[Serializable]
-public class WeaponSpread : BaseStat { }
+namespace Project.Scripts.Stats
+{
+    [Serializable]
+    public class WeaponSpread : BaseStat
+    {
+    }
+}

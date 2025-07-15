@@ -1,1 +1,6 @@
-﻿public struct M_GamePaused { }
+﻿namespace Project.Scripts.MessageBroker
+{
+    public struct M_GamePaused
+    {
+    }
+}

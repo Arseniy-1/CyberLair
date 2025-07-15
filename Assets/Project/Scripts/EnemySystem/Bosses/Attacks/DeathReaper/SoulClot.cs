@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using DG.Tweening;
+using Project.Scripts.Interfaces;
 using Project.Scripts.Services;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.DeathReaper
 {
     public class SoulClot : MonoBehaviour, IDestoyable<SoulClot>, IReturnable
     {
@@ -61,21 +62,21 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
                 .DOPath(CalculatePath(), _duration)
                 .SetEase(Ease.Linear)
                 .OnUpdate(() => 
-            {
-                Vector3 direction = _transform.position - _previousPosition;
-                
-                if (direction.sqrMagnitude > 0) 
                 {
-                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    Vector3 direction = _transform.position - _previousPosition;
                     
-                    _rotationTween?.Kill();
-                    _rotationTween = _transform
-                        .DORotate(new Vector3(0, 0, angle), 0.1f)
-                        .SetEase(Ease.OutSine);
-                }
-                
-                _previousPosition = _transform.position;
-            });
+                    if (direction.sqrMagnitude > 0) 
+                    {
+                        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                        
+                        _rotationTween?.Kill();
+                        _rotationTween = _transform
+                            .DORotate(new Vector3(0, 0, angle), 0.1f)
+                            .SetEase(Ease.OutSine);
+                    }
+                    
+                    _previousPosition = _transform.position;
+                });
         }
 
         private Vector3[] CalculatePath()
@@ -110,6 +111,7 @@ namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
         private IEnumerator WaitForDestroy()
         {
             var wait = new WaitForSeconds(_timeToDestroy);
+            
             yield return wait;
 
             ReturnToPool();

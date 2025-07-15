@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class LevelConfig
+namespace Project.Scripts.Skill
 {
-    [SerializeField] private List<int> _experienceValues;
+    [Serializable]
+    public class LevelConfig
+    {
+        [SerializeField] private List<int> _experienceValues;
     
-    public IReadOnlyList<int> ExperienceValues => _experienceValues;
+        public IReadOnlyList<int> ExperienceValues => _experienceValues;
+    }
 }

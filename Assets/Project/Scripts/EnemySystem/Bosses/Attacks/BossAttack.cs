@@ -2,21 +2,23 @@ using System.Collections;
 using Project.Scripts.EnemySystem.AttackTypes;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses
+namespace Project.Scripts.EnemySystem.Bosses.Attacks
 {
     public abstract class BossAttack : MonoBehaviour
     {
+        private readonly int _attackTrigger = Animator.StringToHash("Attack");
+        
         [SerializeField] protected AttackAnimationEvents AnimatorEvents;
         [SerializeField] protected Animator AttackAnimator;
         [SerializeField] protected SpriteRenderer View;
 
-        private readonly int _attackTrigger = Animator.StringToHash("Attack");
         protected bool IsAttacking;
         private EnemyTargetProvider _provider;
         
         [field: SerializeField] public float Range { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
         [field: SerializeField] public BaseEnemyAttackStats AttackStats { get; private set; }
+        
         public int BossAttackAnimationTrigger { get; protected set; }
 
         public abstract void Initialize();

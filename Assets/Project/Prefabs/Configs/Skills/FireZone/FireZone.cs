@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Project.Scripts.EnemySystem.Bosses;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.FireZone

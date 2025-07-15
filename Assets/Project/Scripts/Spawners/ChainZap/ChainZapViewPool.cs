@@ -1,6 +1,7 @@
+using Project.Prefabs.Configs.Skills.ChainZap;
 using UnityEngine;
 
-namespace Project.Prefabs.Configs.Skills.Zap
+namespace Project.Scripts.Spawners.ChainZap
 {
     public class ChainZapViewPool : Pool<ChainZapView>
     {

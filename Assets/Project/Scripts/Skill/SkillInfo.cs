@@ -1,11 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class SkillInfo
+namespace Project.Scripts.Skill
 {
-    [field: SerializeField] public string SkillName {get; private set;}    
-    [field: SerializeField] public string Description {get; private set;}    
-    [field: SerializeField] public Sprite Icon {get; private set;}
+    [Serializable]
+    public class SkillInfo
+    {
+        [field: SerializeField] public string SkillName {get; private set;}    
+        [field: SerializeField] public string Description {get; private set;}    
+        [field: SerializeField] public Sprite Icon {get; private set;}
     
+    }
 }

@@ -1,38 +1,42 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Interfaces;
+using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D), typeof(PointEffector2D))]
-public class Magnet : MonoBehaviour
+namespace Project.Scripts.Services
 {
-    [SerializeField] private LayerMask _attractionLayer;
-
-    private CircleCollider2D _collider;
-    private PointEffector2D _effector;
-    private Transform _player;
-
-    public void Initialize(IMagnetStats magnetStats, Transform player)
+    [RequireComponent(typeof(CircleCollider2D), typeof(PointEffector2D))]
+    public class Magnet : MonoBehaviour
     {
-        _player = player;
-        _collider = GetComponent<CircleCollider2D>();
-        _effector = GetComponent<PointEffector2D>();
+        [SerializeField] private LayerMask _attractionLayer;
 
-        _collider.isTrigger = true;
-        _collider.radius = magnetStats.MagnetRange.CurrentValue;
+        private CircleCollider2D _collider;
+        private PointEffector2D _effector;
+        private Transform _player;
 
-        _effector.forceMagnitude = -magnetStats.MagnetForce.CurrentValue;
-        _effector.forceVariation = 0f;
-        _effector.distanceScale = 1f;
-        _effector.drag = 0f;
-        _effector.angularDrag = 0f;
-        _effector.forceSource = EffectorSelection2D.Collider;
-        _effector.forceTarget = EffectorSelection2D.Rigidbody;
-        _effector.forceMode = EffectorForceMode2D.Constant;
-    }
-
-    private void FixedUpdate()
-    {
-        if (_player)
+        public void Initialize(IMagnetStats magnetStats, Transform player)
         {
-            transform.position = _player.position;
+            _player = player;
+            _collider = GetComponent<CircleCollider2D>();
+            _effector = GetComponent<PointEffector2D>();
+
+            _collider.isTrigger = true;
+            _collider.radius = magnetStats.MagnetRange.CurrentValue;
+
+            _effector.forceMagnitude = -magnetStats.MagnetForce.CurrentValue;
+            _effector.forceVariation = 0f;
+            _effector.distanceScale = 1f;
+            _effector.drag = 0f;
+            _effector.angularDrag = 0f;
+            _effector.forceSource = EffectorSelection2D.Collider;
+            _effector.forceTarget = EffectorSelection2D.Rigidbody;
+            _effector.forceMode = EffectorForceMode2D.Constant;
+        }
+
+        private void FixedUpdate()
+        {
+            if (_player)
+            {
+                transform.position = _player.position;
+            }
         }
     }
 }

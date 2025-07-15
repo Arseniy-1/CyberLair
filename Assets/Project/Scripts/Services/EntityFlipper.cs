@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project.Scripts.Servises
+namespace Project.Scripts.Services
 {
     public class EntityFlipper : Flipper
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace StateMashineSytem
+namespace Project.Scripts.Interfaces
 {
     public interface IState
     {

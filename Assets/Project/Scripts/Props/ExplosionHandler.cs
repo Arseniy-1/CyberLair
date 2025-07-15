@@ -1,33 +1,36 @@
-﻿using UnityEngine;
-using Project.Scripts.MessageBroker.CameraMessageBrokers;
+﻿using Project.Scripts.MessageBroker;
 using Project.Scripts.Services.Enum;
 using Project.Scripts.Services.Extensions;
 using UniRx;
+using UnityEngine;
 
-public class ExplosionHandler : MonoBehaviour
+namespace Project.Scripts.Props
 {
-    [SerializeField] private AudioID _explosionSound = AudioID.Explosion;
-    [SerializeField] private ShakeID _shakeID = ShakeID.Medium;
+    public class ExplosionHandler : MonoBehaviour
+    {
+        [SerializeField] private AudioID _explosionSound = AudioID.Explosion;
+        [SerializeField] private ShakeID _shakeID = ShakeID.Medium;
 
-    private readonly CompositeDisposable _disposable = new();
+        private readonly CompositeDisposable _disposable = new();
     
-    private void Awake()
-    {
-        MessageBrokerHolder.Game
-            .Receive<M_Exploded>()
-            .Subscribe(_ => HandleExplosion())
-            .AddTo(_disposable);
-    }
+        private void Awake()
+        {
+            MessageBrokerHolder.Game
+                .Receive<M_Exploded>()
+                .Subscribe(_ => HandleExplosion())
+                .AddTo(_disposable);
+        }
 
-    private void OnDisable()
-    {
-        _disposable?.Clear();
-    }
+        private void OnDisable()
+        {
+            _disposable?.Clear();
+        }
 
-    private void HandleExplosion()
-    {
-        _shakeID.Shake();
+        private void HandleExplosion()
+        {
+            _shakeID.Shake();
         
-        _explosionSound.Play();
+            _explosionSound.Play();
+        }
     }
 }

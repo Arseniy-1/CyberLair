@@ -1,85 +1,91 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
+using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class Jumper : MonoBehaviour
+namespace Project.Scripts.Services
 {
-    [SerializeField] private AudioID _jumpSound = AudioID.PlayerJump;
-    [SerializeField] private ParticleSystem _jumpEffector;
-    
-    private Rigidbody2D _rigidbody;
-    
-    private bool _isMoving;
-    private float _elapsedTime;
-
-    private Vector3 _jumpDirection;
-
-    public event Action JumpPerformed;
-
-    public bool IsOnCooldown { get; private set; } = false;
-    public float CooldownTimer { get; private set; } = 0f;
-    public IJumpStats JumpStats { get; private set; }
-    public bool CanJump => !_isMoving && !IsOnCooldown;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class Jumper : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
+        [SerializeField] private AudioID _jumpSound = AudioID.PlayerJump;
+        [SerializeField] private ParticleSystem _jumpEffector;
+    
+        private Rigidbody2D _rigidbody;
+    
+        private bool _isMoving;
+        private float _elapsedTime;
 
-    private void FixedUpdate()
-    {
-        if (_isMoving)
+        private Vector3 _jumpDirection;
+
+        public event Action JumpPerformed;
+
+        public bool IsOnCooldown { get; private set; }
+        public float CooldownTimer { get; private set; }
+        public IJumpStats JumpStats { get; private set; }
+        public bool CanJump => !_isMoving && !IsOnCooldown;
+
+        private void Awake()
         {
-            _elapsedTime += Time.fixedDeltaTime;
-
-            if (_elapsedTime < JumpStats.JumpTime.CurrentValue)
-            {
-                Vector3 movement = _jumpDirection * JumpStats.JumpSpeed.CurrentValue;
-                _rigidbody.velocity = movement;
-            }
-            else
-            {
-                _isMoving = false;
-                JumpPerformed?.Invoke();
-                StartCooldown();
-            }
+            _rigidbody = GetComponent<Rigidbody2D>();
         }
 
-        if (IsOnCooldown == false) 
-            return;
-        
-        CooldownTimer += Time.deltaTime;
+        private void FixedUpdate()
+        {
+            if (_isMoving)
+            {
+                _elapsedTime += Time.fixedDeltaTime;
 
-        if (CooldownTimer < JumpStats.JumpReloadTime.CurrentValue) 
-            return;
+                if (_elapsedTime < JumpStats.JumpTime.CurrentValue)
+                {
+                    Vector3 movement = _jumpDirection * JumpStats.JumpSpeed.CurrentValue;
+                    _rigidbody.velocity = movement;
+                }
+                else
+                {
+                    _isMoving = false;
+                    JumpPerformed?.Invoke();
+                    StartCooldown();
+                }
+            }
+
+            if (IsOnCooldown == false) 
+                return;
+        
+            CooldownTimer += Time.deltaTime;
+
+            if (CooldownTimer < JumpStats.JumpReloadTime.CurrentValue) 
+                return;
             
-        IsOnCooldown = false;
-        CooldownTimer = 0f;
-    }
+            IsOnCooldown = false;
+            CooldownTimer = 0f;
+        }
 
-    public void Initialize(IJumpStats jumpStats)
-    {
-        JumpStats = jumpStats;
-    }
+        public void Initialize(IJumpStats jumpStats)
+        {
+            JumpStats = jumpStats;
+        }
 
-    public void Jump(Vector3 direction)
-    {
-        if (CanJump == false)
-            return;
+        public void Jump(Vector3 direction)
+        {
+            if (CanJump == false)
+                return;
         
-        if (direction == Vector3.zero)
-            return;
+            if (direction == Vector3.zero)
+                return;
 
-        _jumpSound.Play();
-        _jumpEffector.Play();
-        _jumpDirection = direction.normalized;
-        _elapsedTime = 0f;
-        _isMoving = true;
-    }
+            _jumpSound.Play();
+            _jumpEffector.Play();
+            _jumpDirection = direction.normalized;
+            _elapsedTime = 0f;
+            _isMoving = true;
+        }
 
-    private void StartCooldown()
-    {
-        IsOnCooldown = true;
-        CooldownTimer = 0f;
+        private void StartCooldown()
+        {
+            IsOnCooldown = true;
+            CooldownTimer = 0f;
+        }
     }
 }

@@ -1,47 +1,51 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.MessageBroker;
+using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class PauseButton : MonoBehaviour
+namespace Project.Scripts.UI
 {
-    [SerializeField] private Window _pauseWindow;
-    [SerializeField] private Window _currentWindow;
+    [RequireComponent(typeof(Button))]
+    public class PauseButton : MonoBehaviour
+    {
+        [SerializeField] private Window _pauseWindow;
+        [SerializeField] private Window _currentWindow;
     
-    [SerializeField] private UnpauseButton _unpauseButton;
+        [SerializeField] private UnpauseButton _unpauseButton;
     
-    private Button _button;
+        private Button _button;
 
-    private void OnEnable()
-    {
-        _button = GetComponent<Button>();
+        private void OnEnable()
+        {
+            _button = GetComponent<Button>();
         
-        _button.onClick.AddListener(PauseGame);
-    }
+            _button.onClick.AddListener(PauseGame);
+        }
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(PauseGame);
-    }
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(PauseGame);
+        }
     
-    private void PauseGame()
-    {
-        _pauseWindow.gameObject.SetActive(true);
-        _currentWindow.gameObject.SetActive(false);
+        private void PauseGame()
+        {
+            _pauseWindow.gameObject.SetActive(true);
+            _currentWindow.gameObject.SetActive(false);
         
-        MessageBrokerHolder.Game
-            .Publish(new M_GamePaused());
+            MessageBrokerHolder.Game
+                .Publish(default(M_GamePaused));
         
-        _unpauseButton.OnUnpause += ResumeGame;
-    }
+            _unpauseButton.OnUnpause += ResumeGame;
+        }
 
-    private void ResumeGame()
-    {
-        _pauseWindow.gameObject.SetActive(false);
-        _currentWindow.gameObject.SetActive(true);
+        private void ResumeGame()
+        {
+            _pauseWindow.gameObject.SetActive(false);
+            _currentWindow.gameObject.SetActive(true);
         
-        MessageBrokerHolder.Game
-            .Publish(new M_GameUnpaused());
+            MessageBrokerHolder.Game
+                .Publish(default(M_GameUnpaused));
         
-        _unpauseButton.OnUnpause += ResumeGame;
+            _unpauseButton.OnUnpause += ResumeGame;
+        }
     }
 }

@@ -1,4 +1,7 @@
 using System;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Skill;
+using Project.Scripts.Stats;
 
 namespace Project.Prefabs.Configs.Skills.MercuryMimicry
 {

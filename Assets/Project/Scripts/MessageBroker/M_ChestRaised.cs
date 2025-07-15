@@ -1,1 +1,6 @@
-﻿public struct M_ChestRaised { }
+﻿namespace Project.Scripts.MessageBroker
+{
+    public struct M_ChestRaised
+    {
+    }
+}

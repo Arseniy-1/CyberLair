@@ -1,5 +1,8 @@
 using System;
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Skill;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.JumpSwirl

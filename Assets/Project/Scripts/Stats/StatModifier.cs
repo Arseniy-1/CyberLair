@@ -1,47 +1,48 @@
 ﻿using System;
+using Project.Scripts.Services.Enum;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[Serializable]
-public class StatModifier
+namespace Project.Scripts.Stats
 {
-    private float _elapsedTime;
-    
-    public StatModifier(float value, ModifierType type, float duration)
+    [Serializable]
+    public class StatModifier
     {
-        Value = value;
-        Type = type;
-        Duration = duration;
-    }
+        private float _elapsedTime;
     
-    public event Action<StatModifier> ValueExpired;
-
-    [field: SerializeField] public float Value { get; private set; }
-    [field: SerializeField] public ModifierType Type { get; private set; }
-    [field: SerializeField, MinValue(0)] public float Duration { get; private set; }
-    
-    public void Update()
-    {
-        if (Duration > 0f)
+        public StatModifier(float value, ModifierType type, float duration)
         {
-            _elapsedTime += Time.deltaTime;
+            Value = value;
+            Type = type;
+            Duration = duration;
+        }
+    
+        public event Action<StatModifier> ValueExpired;
+
+        [field: SerializeField] public float Value { get; private set; }
+        [field: SerializeField] public ModifierType Type { get; private set; }
+        [field: SerializeField] [field: MinValue(0)] public float Duration { get; private set; }
+    
+        public void Update()
+        {
+            if (Duration > 0f)
+            {
+                _elapsedTime += Time.deltaTime;
+            }
+
+            if (HasExpired())
+            {
+                ValueExpired?.Invoke(this);
+            }
         }
 
-        if (HasExpired())
+        public bool HasExpired() => _elapsedTime > Duration;
+
+        public StatModifier Copy()
         {
-            ValueExpired?.Invoke(this);
+            var copy = new StatModifier(Value, Type, Duration);
+
+            return copy;
         }
-    }
-
-    public bool HasExpired()
-    {
-        return _elapsedTime > Duration;
-    }
-
-    public StatModifier Copy()
-    {
-        var copy = new StatModifier(Value, Type, Duration);
-
-        return copy;
     }
 }

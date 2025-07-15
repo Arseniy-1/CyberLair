@@ -1,5 +1,10 @@
-﻿public interface IMagnetStats
+﻿using Project.Scripts.Stats;
+
+namespace Project.Scripts.Interfaces
 {
-    MagnetRange MagnetRange { get; }
-    MagnetForce MagnetForce { get; }
+    public interface IMagnetStats
+    {
+        public MagnetRange MagnetRange { get; }
+        public MagnetForce MagnetForce { get; }
+    }
 }

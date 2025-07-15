@@ -1,3 +1,4 @@
+using Project.Scripts.Skill;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.ThunderStorm

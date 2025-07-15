@@ -1,4 +1,6 @@
 namespace Project.Scripts.MessageBroker
 {
-    public struct M_CameraZoomOut { }
+    public struct M_CameraZoomOut
+    {
+    }
 }

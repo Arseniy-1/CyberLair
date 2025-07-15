@@ -2,7 +2,7 @@ using System.Linq;
 using Project.Scripts.Services.Enum;
 using UnityEngine;
 
-namespace Project.Scripts.MessageBroker.CameraMessageBrokers
+namespace Project.Scripts.Services.CameraShake
 {
     [CreateAssetMenu(fileName = "CameraShakeSettings", menuName = "CameraShake/CameraShakeSettings", order = 51)]
     public class CameraShakeSettings : ScriptableObject

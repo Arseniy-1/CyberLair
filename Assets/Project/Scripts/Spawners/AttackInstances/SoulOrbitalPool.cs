@@ -1,6 +1,7 @@
+using Project.Scripts.EnemySystem.Bosses.Attacks.DeathReaper;
 using UnityEngine;
 
-namespace Project.Scripts.EnemySystem.Bosses.DeathReaper
+namespace Project.Scripts.Spawners.AttackInstances
 {
     public class SoulOrbitalPool : Pool<SoulOrbital>
     {

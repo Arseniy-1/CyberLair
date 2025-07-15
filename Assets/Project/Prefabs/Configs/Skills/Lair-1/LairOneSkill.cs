@@ -1,3 +1,4 @@
+using Project.Prefabs.Configs.Skills.Boomerang;
 using UnityEngine;
 
 namespace Project.Prefabs.Configs.Skills.Lair_1

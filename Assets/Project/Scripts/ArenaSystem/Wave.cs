@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Project.Scripts.EnemySystem;
 using Cysharp.Threading.Tasks;
-using Project.Scripts.Servises;
+using Project.Scripts.EnemySystem;
+using Project.Scripts.MessageBroker;
+using Project.Scripts.MessageBroker.EnemyMessageBrokers;
+using Project.Scripts.Services;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Spawners.Enemies;
 using Sirenix.Utilities;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.ArenaSystem
@@ -14,10 +17,9 @@ namespace Project.Scripts.ArenaSystem
     public class Wave
     {
         private readonly WaveConfig _config;
-
         private readonly MainEnemySpawner _mainEnemySpawner;
-
         private readonly List<ObjectWeightPair<Enemy>> _enemyWeights;
+        
         private CancellationTokenSource _cancellationToken;
 
         public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner)
@@ -25,9 +27,6 @@ namespace Project.Scripts.ArenaSystem
             _config = config;
             _mainEnemySpawner = mainEnemySpawner;
             _enemyWeights = new List<ObjectWeightPair<Enemy>>();
-            
-            if(config == false)
-                Debug.Log("config not setted");
             
             _enemyWeights.AddRange(_config.EnemyWeights);
         }

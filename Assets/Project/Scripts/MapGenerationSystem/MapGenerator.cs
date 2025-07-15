@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Project.Scripts.Interfaces;
 using Project.Scripts.MapGenerationSystem.Algorithms;
+using Project.Scripts.MapGenerationSystem.Configs;
 using Project.Scripts.MapGenerationSystem.ObjectPlacer;
 using UnityEngine;
 

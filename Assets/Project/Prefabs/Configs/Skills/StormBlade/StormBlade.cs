@@ -2,39 +2,42 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Prefabs.Configs.Skills.Boomerang;
-using Project.Prefabs.Configs.Skills.StormBlade;
-using Project.Scripts.Servises;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services;
 using UnityEngine;
 
-[Serializable]
-public class StormBlade : ISkillInstance
+namespace Project.Prefabs.Configs.Skills.StormBlade
 {
-    private float _maxRadius;
-    private float _minRadius;
-    private float _changingSpeed;
-
-    private BoomerangOrbital _boomerang;
-
-    public StormBlade(StormBladeSkill stormBladeSkill, Orbital boomerang, CancellationToken token)
+    [Serializable]
+    public class StormBlade : ISkillInstance
     {
-        _maxRadius = stormBladeSkill.MaxRadius;
-        _minRadius = stormBladeSkill.MinRadius;
-        _changingSpeed = stormBladeSkill.ChangingSpeed;
-        _boomerang = boomerang as BoomerangOrbital;
-        
-        RadiusChanging(token).Forget();
-    }
+        private float _maxRadius;
+        private float _minRadius;
+        private float _changingSpeed;
 
-    public void Disable() { }
-    
-    private async UniTaskVoid RadiusChanging(CancellationToken token)
-    {
-        while (token.IsCancellationRequested == false)
+        private BoomerangOrbital _boomerang;
+
+        public StormBlade(StormBladeSkill stormBladeSkill, Orbital boomerang, CancellationToken token)
         {
-            _boomerang.ApplyRadius(
-                Mathf.PingPong(Time.fixedTime * _changingSpeed, _maxRadius - _minRadius) + _minRadius);
+            _maxRadius = stormBladeSkill.MaxRadius;
+            _minRadius = stormBladeSkill.MinRadius;
+            _changingSpeed = stormBladeSkill.ChangingSpeed;
+            _boomerang = boomerang as BoomerangOrbital;
+        
+            RadiusChanging(token).Forget();
+        }
 
-            await UniTask.Yield(PlayerLoopTiming.FixedUpdate, cancellationToken: token);
+        public void Disable() { }
+    
+        private async UniTaskVoid RadiusChanging(CancellationToken token)
+        {
+            while (token.IsCancellationRequested == false)
+            {
+                _boomerang.ApplyRadius(
+                    Mathf.PingPong(Time.fixedTime * _changingSpeed, _maxRadius - _minRadius) + _minRadius);
+
+                await UniTask.Yield(PlayerLoopTiming.FixedUpdate, cancellationToken: token);
+            }
         }
     }
 }

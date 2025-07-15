@@ -1,4 +1,4 @@
-using System;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem
@@ -20,7 +20,7 @@ namespace Project.Scripts.EnemySystem
 
         private void OnDisable()
         {
-            if(EnemyRigidbody)
+            if (EnemyRigidbody)
                 EnemyRigidbody.velocity = Vector2.zero;
         }
 

@@ -1,6 +1,7 @@
+using Project.Prefabs.Configs.Skills.MagicArrow;
 using UnityEngine;
 
-namespace Project.Scripts.Weapon.ActiveSkills.MagicArrow
+namespace Project.Scripts.Spawners.MagicArrows
 {
     public class MagicArrowPool : Pool<MagicArrow>
     {

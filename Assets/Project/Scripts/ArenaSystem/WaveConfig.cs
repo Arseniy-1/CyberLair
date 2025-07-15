@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Project.Scripts.EnemySystem;
-using Project.Scripts.Servises;
+using Project.Scripts.Services;
+using Project.Scripts.Stats;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

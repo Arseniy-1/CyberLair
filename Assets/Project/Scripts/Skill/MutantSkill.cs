@@ -1,1 +1,6 @@
-﻿public abstract class MutantSkill : HardSkill { }
+﻿namespace Project.Scripts.Skill
+{
+    public abstract class MutantSkill : HardSkill
+    {
+    }
+}

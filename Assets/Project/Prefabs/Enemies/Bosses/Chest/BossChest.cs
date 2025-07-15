@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.MessageBroker;
+using Project.Scripts.PlayerSystem;
+using UnityEngine;
 
 public class BossChest : MonoBehaviour
 {
