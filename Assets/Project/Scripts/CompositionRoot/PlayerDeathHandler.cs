@@ -9,8 +9,8 @@ namespace Project.Scripts.CompositionRoot
     public class PlayerDeathHandler : ISubscribable
     {
         private const float InvulnerabilityTime = 2.5f;
-        private const string LeaderboardName = "time";
-    
+
+        private readonly string _leaderboardName;
         private readonly Player _player;
         private readonly Timer _timer;
     
@@ -21,8 +21,14 @@ namespace Project.Scripts.CompositionRoot
     
         private int _currentTriesCount;
     
-        public PlayerDeathHandler(Player player, Timer timer, EndGameCanvas endGameCanvas, EndGameCanvas continueScreenCanvas,
-            Canvas gameCanvas, int triesCount)
+        public PlayerDeathHandler(
+            Player player,
+            Timer timer,
+            EndGameCanvas endGameCanvas,
+            EndGameCanvas continueScreenCanvas,
+            Canvas gameCanvas,
+            int triesCount,
+            string leaderboardName)
         {
             _player = player;
             _timer = timer;
@@ -32,6 +38,7 @@ namespace Project.Scripts.CompositionRoot
             _gameCanvas = gameCanvas;
         
             _triesCount = triesCount;
+            _leaderboardName = leaderboardName;
         }
     
         public void Subscribe()
@@ -70,7 +77,7 @@ namespace Project.Scripts.CompositionRoot
             YandexGame.savesData.BestTime = _timer.CurrentSeconds;
         
             YandexGame.SaveProgress();
-            YandexGame.NewLBScoreTimeConvert(LeaderboardName, YandexGame.savesData.BestTime);
+            YandexGame.NewLBScoreTimeConvert(_leaderboardName, YandexGame.savesData.BestTime);
         }
     
         private void ShowEndGameScreen()

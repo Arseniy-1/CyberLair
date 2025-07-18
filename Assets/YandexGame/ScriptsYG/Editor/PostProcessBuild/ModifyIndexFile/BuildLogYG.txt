@@ -1,2 +1,2 @@
-Build path: /Users/ilakorzevoj/Documents/My Games/CyberLair/CyberLair-final-16
-Build number: 20
+Build path: /Users/ilakorzevoj/Documents/My Games/CyberLair/CyberLair-beta-26
+Build number: 30

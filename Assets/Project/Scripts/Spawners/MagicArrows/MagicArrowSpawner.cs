@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Prefabs.Configs.Skills.MagicArrow;
@@ -53,9 +54,13 @@ namespace Project.Scripts.Spawners.MagicArrows
         private Vector3 FindEnemyPosition()
         {
             int hitCount = Physics2D.OverlapCircleNonAlloc(_transform.position, _radius, _results, _layerMask);
+            
+            Collider2D randomTarget = _results
+                .Take(hitCount)
+                .FirstOrDefault(collider => collider);
 
-            if (_results != null && hitCount != 0)
-                return _results[Random.Range(0, _results.Length)].transform.position;
+            if (randomTarget)
+                return randomTarget.transform.position;
             
             Vector3 randomOffset = Random.insideUnitCircle;
                 

@@ -259,7 +259,7 @@ MonoBehaviour:
       <BaseValue>k__BackingField: 4
       <CurrentValue>k__BackingField: 0
     <MoveRadius>k__BackingField: 3
-    <MoveDelay>k__BackingField: 3
+    <MoveDelay>k__BackingField: 2
     <WeaponSpread>k__BackingField:
       <BaseValue>k__BackingField: 0
       <CurrentValue>k__BackingField: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08e7a98f660e474da3b510920e26fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scanRadius: 6
+  _scanRadius: 15
   _targetLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -474,7 +474,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &2667866192767152567
 Animator:
   serializedVersion: 5

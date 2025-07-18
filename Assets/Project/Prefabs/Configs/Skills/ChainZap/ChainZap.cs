@@ -73,12 +73,12 @@ namespace Project.Prefabs.Configs.Skills.ChainZap
             var hitTargets = new List<Enemy>();
             Vector2 currentPosition = bullet.Position;
             Enemy currentTarget = FindClosestTarget(currentPosition, hitTargets);
-
-            if (currentTarget == false)
-                return;
-
+            
             for (int bounce = 0; bounce <= _maxBounces && currentTarget; bounce++)
             {
+                if (currentTarget == false)
+                    break;
+                
                 hitTargets.Add(currentTarget);
 
                 currentTarget.TakeDamage(_weapon.WeaponStats.WeaponDamage.CurrentValue * Mathf.Pow(_damageFalloff, bounce));

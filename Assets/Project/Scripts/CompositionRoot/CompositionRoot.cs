@@ -17,6 +17,8 @@ namespace Project.Scripts.CompositionRoot
 {
     public class CompositionRoot : MonoBehaviour
     {
+        private const string LeaderboardName = "time";
+        
         [SerializeField] private Arena _arena;
         [SerializeField] private MapGenerator _mapGenerator;
         [SerializeField] private BossHandler _bossHandler;
@@ -60,14 +62,16 @@ namespace Project.Scripts.CompositionRoot
                 _endGameCanvas, 
                 _continueScreenCanvas, 
                 _gameCanvas, 
-                _triesCount
+                _triesCount,
+                LeaderboardName
                 );
             
             var winScreenHandler = new WinScreenHandler(
                 _timer, 
                 _arena, 
                 _winGameCanvas, 
-                _gameCanvas
+                _gameCanvas,
+                LeaderboardName
                 );
             
             _subscribables = new List<ISubscribable>

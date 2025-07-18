@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Services
 {
-    public class BackgroundMusic : MonoBehaviour
+    public class BackgroundMusicFilter : MonoBehaviour
     {
         [SerializeField] private AudioLowPassFilter _lowPassFilter;
         [SerializeField, MinMaxSlider(0, 22000, true)] private Vector2Int _musicCutoffRange;

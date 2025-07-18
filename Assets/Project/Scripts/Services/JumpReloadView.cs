@@ -29,6 +29,10 @@ namespace Project.Scripts.Services
             {
                 _cooldownImage.fillAmount = jumper.CooldownTimer / jumper.JumpStats.JumpReloadTime.CurrentValue;
             }
+            else
+            {
+                _cooldownImage.fillAmount = 1f;
+            }
         }
 
         private void OnDisable()

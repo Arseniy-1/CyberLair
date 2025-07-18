@@ -201,11 +201,21 @@ MonoBehaviour:
       score: 11000
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 000
-    - rank: 2
+    - rank: 8
       name: Player6
-      score: 340000
+      score: 340001
       photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
+      uniqueID: 322
+    - rank: 9
+      name: Player6
+      score: 340002
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 322
+    - rank: 10
+      name: Player6
+      score: 340003
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 322
     thisPlayer:
       rank: 2
       score: 10

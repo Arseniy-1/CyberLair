@@ -7,7 +7,7 @@ namespace Project.Scripts.CompositionRoot
 {
     public class WinScreenHandler : ISubscribable
     {
-        private const string LeaderboardName = "time";
+        private readonly string _leaderboardName;
         
         private readonly Timer _timer;
         private readonly Arena _arena;
@@ -15,13 +15,20 @@ namespace Project.Scripts.CompositionRoot
         private readonly Canvas _winGameCanvas;
         private readonly Canvas _gameCanvas;
 
-        public WinScreenHandler(Timer timer, Arena arena, Canvas winGameCanvas, Canvas gameCanvas)
+        public WinScreenHandler(
+            Timer timer, 
+            Arena arena, 
+            Canvas winGameCanvas, 
+            Canvas gameCanvas, 
+            string leaderboardName)
         {
             _timer = timer;
             _arena = arena;
         
             _winGameCanvas = winGameCanvas;
             _gameCanvas = gameCanvas;
+
+            _leaderboardName = leaderboardName;
         }
     
         public void Subscribe()
@@ -47,7 +54,7 @@ namespace Project.Scripts.CompositionRoot
 
             YandexGame.savesData.BestTime = _timer.CurrentSeconds;
             YandexGame.SaveProgress();
-            YandexGame.NewLBScoreTimeConvert(LeaderboardName, YandexGame.savesData.BestTime);
+            YandexGame.NewLBScoreTimeConvert(_leaderboardName, YandexGame.savesData.BestTime);
         }
     }
 }

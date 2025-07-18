@@ -9,24 +9,27 @@ namespace Project.Prefabs.Configs.Skills.Summon
     [RequireComponent(typeof(Rigidbody2D))]
     public class SummonMover : MonoBehaviour
     {
+        private const float MinDistanceToTarget = 1f;
+        
+        private readonly int _walkAnimation = Animator.StringToHash("Walk");
+        
         [SerializeField] private Animator _animator;
     
-        private readonly int _walkAnimation = Animator.StringToHash("Walk");
-    
         private ISummonMoveStats _summonStats;
-    
         private Rigidbody2D _rigidbody;
         private Transform _selfTransform;
         private Vector2 _targetMovePosition;
         private Transform _targetTransform;
     
-        private Vector2 SelfPosition => transform.position;
+        private Vector2 SelfPosition => _selfTransform.position;
         private Vector2 TargetPosition => _targetTransform.position;
-        private Vector2 RandomPointAroundTarget => TargetPosition + Random.insideUnitCircle.normalized * _summonStats.MoveRadius;
+        private Vector2 RandomPointAroundTarget =>
+            TargetPosition + Random.insideUnitCircle.normalized * _summonStats.MoveRadius;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _selfTransform = transform;
         }
 
         public void Initialize(Transform targetTransform, SummonStats summonStats)
@@ -39,12 +42,21 @@ namespace Project.Prefabs.Configs.Skills.Summon
     
         public void MoveToNextPosition()
         {
-            _animator.SetBool(_walkAnimation, (SelfPosition == _targetMovePosition) == false);
-        
-            var newPosition = Vector2.MoveTowards(SelfPosition, _targetMovePosition,
-                _summonStats.Speed.CurrentValue * Time.fixedDeltaTime);
+            _animator.SetBool(
+                _walkAnimation, 
+                (Vector2.Distance(SelfPosition, _targetMovePosition) < MinDistanceToTarget) == false
+                );
 
-            _rigidbody.MovePosition(newPosition);
+            if (Vector2.Distance(SelfPosition, _targetMovePosition) < MinDistanceToTarget)
+            {
+                _rigidbody.velocity = Vector2.zero;
+                
+                return;
+            }
+
+            var direction = (_targetMovePosition - SelfPosition).normalized;
+            
+            _rigidbody.velocity = direction * _summonStats.Speed.CurrentValue;
         }
     
         private IEnumerator ChangePosition()
