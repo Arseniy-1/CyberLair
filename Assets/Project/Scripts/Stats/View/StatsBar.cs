@@ -7,7 +7,7 @@ namespace Project.Scripts.Stats.View
     {
         [SerializeField] protected Image StatsBarView;
 
-        protected override void ShowStats(float currentValue, float maxValue)
+        public override void ShowStats(float currentValue, float maxValue)
         {
             StatsBarView.fillAmount = currentValue / maxValue;
         }

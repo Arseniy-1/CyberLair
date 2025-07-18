@@ -49,12 +49,14 @@ namespace Project.Scripts.CompositionRoot
             MessageBrokerHolder.Game
                 .Publish(default(M_GamePaused));
 
-            if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
+            if (_timer.CurrentSeconds <= YG2.saves.BestTime)
                 return;
-
-            YandexGame.savesData.BestTime = _timer.CurrentSeconds;
-            YandexGame.SaveProgress();
-            YandexGame.NewLBScoreTimeConvert(_leaderboardName, YandexGame.savesData.BestTime);
+            
+            YG2.saves.BestTime = _timer.CurrentSeconds;
+            
+            YG2.SaveProgress();
+            
+            YG2.SetLBTimeConvert(_leaderboardName, YG2.saves.BestTime);
         }
     }
 }

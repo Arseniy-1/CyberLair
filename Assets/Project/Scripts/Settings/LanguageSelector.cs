@@ -22,10 +22,7 @@ namespace Project.Scripts.Settings
 
         private void HandleButtonClick(string language)
         {
-            YandexGame.savesData.language = language;   
-            YandexGame.SaveProgress();
-        
-            YandexGame.SwitchLanguage(YandexGame.savesData.language);
+            YG2.SwitchLanguage(language);
         }
     }
 }

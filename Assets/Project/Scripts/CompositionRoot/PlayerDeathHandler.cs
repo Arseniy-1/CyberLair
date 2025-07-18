@@ -44,13 +44,13 @@ namespace Project.Scripts.CompositionRoot
         public void Subscribe()
         {
             _player.OnDeath += OnPlayerDied;
-            YandexGame.RewardVideoEvent += OnRewarded;
+            YG2.onRewardAdv += OnRewarded;
         }
 
         public void Unsubscribe()
         {
             _player.OnDeath -= OnPlayerDied;
-            YandexGame.RewardVideoEvent -= OnRewarded;
+            YG2.onRewardAdv -= OnRewarded;
         }
     
         private void OnPlayerDied()
@@ -71,13 +71,13 @@ namespace Project.Scripts.CompositionRoot
             _continueScreenCanvas.gameObject.SetActive(true);
             _continueScreenCanvas.ShowStats(_timer.CurrentTime);
         
-            if (_timer.CurrentSeconds <= YandexGame.savesData.BestTime)
+            if (_timer.CurrentSeconds <= YG2.saves.BestTime)
                 return;
-
-            YandexGame.savesData.BestTime = _timer.CurrentSeconds;
-        
-            YandexGame.SaveProgress();
-            YandexGame.NewLBScoreTimeConvert(_leaderboardName, YandexGame.savesData.BestTime);
+            
+            YG2.saves.BestTime = _timer.CurrentSeconds;
+            
+            YG2.SaveProgress();
+            YG2.SetLBTimeConvert(_leaderboardName, YG2.saves.BestTime);
         }
     
         private void ShowEndGameScreen()
@@ -99,9 +99,9 @@ namespace Project.Scripts.CompositionRoot
             _continueScreenCanvas.gameObject.SetActive(false);
         }
     
-        private void OnRewarded(int id)
+        private void OnRewarded(string id)
         {
-            if (id == (int)RewardedAdType.SecondChance)
+            if (id == nameof(RewardedAdType.SecondChance))
                 BringBackPlayer();
         }
     }

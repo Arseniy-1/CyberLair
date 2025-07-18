@@ -99,14 +99,14 @@ namespace Project.Scripts.CompositionRoot
             _experienceBar.Initialize(_player.ExperienceStorage);
 
             LocalizationManager.Read();
-            LocalizationManager.Language = YandexGame.lang;
+            LocalizationManager.Language = YG2.lang;
         }
 
         private void OnEnable()
         {
             _subscribables.ForEach(subscribable => subscribable.Subscribe());
             
-            if (YandexGame.savesData.isFirstSession == false) 
+            if (YG2.saves.isFirstSession == false) 
                 return;
             
             _tutorialView.gameObject.SetActive(true);
@@ -115,8 +115,9 @@ namespace Project.Scripts.CompositionRoot
             MessageBrokerHolder.Game
                 .Publish(new M_GamePaused());
 
-            YandexGame.savesData.isFirstSession = false;
-            YandexGame.SaveProgress();
+            YG2.saves.isFirstSession = false;
+            
+            YG2.SaveProgress();
         }
 
         private void OnDisable()

@@ -59,6 +59,16 @@ namespace Project.Scripts.ArenaSystem
             _bossHealthBar.Initialize(_bossInstance.EnemyStats.Health);
             _bossHealthText.Initialize(_bossInstance.EnemyStats.Health);
             
+            _bossHealthBar.ShowStats(
+                _bossInstance.EnemyStats.Health.MaxHealth, 
+                _bossInstance.EnemyStats.Health.MaxHealth
+                );
+            
+            _bossHealthText.ShowStats(
+                _bossInstance.EnemyStats.Health.MaxHealth, 
+                _bossInstance.EnemyStats.Health.MaxHealth
+                );
+            
             _bossHealthBar.gameObject.SetActive(true);
             
             MessageBrokerHolder.Camera

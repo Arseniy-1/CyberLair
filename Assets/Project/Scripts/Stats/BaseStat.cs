@@ -21,7 +21,7 @@ namespace Project.Scripts.Stats
             CurrentValue = CalculateValue();
         }
 
-        public virtual void Update()
+        public void Update()
         {
             foreach (var modifier in _modifiers.ToList()) 
             {
@@ -45,7 +45,7 @@ namespace Project.Scripts.Stats
             CalculateCurrentValue();
         }
 
-        protected virtual float CalculateValue()
+        protected float CalculateValue()
         {
             float finalValue = BaseValue;
 

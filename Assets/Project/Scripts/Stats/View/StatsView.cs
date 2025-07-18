@@ -18,6 +18,6 @@ namespace Project.Scripts.Stats.View
             _stats.AmountChanged += ShowStats;
         }
     
-        protected abstract void ShowStats(float currentValue, float maxValue);
+        public abstract void ShowStats(float currentValue, float maxValue);
     }
 }

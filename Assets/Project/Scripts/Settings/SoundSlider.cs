@@ -8,13 +8,14 @@ namespace Project.Scripts.Settings
         {
             base.Initialize();
         
-            Slider.value = YandexGame.savesData.SoundsVolume;
+            Slider.value = YG2.saves.SoundsVolume;
         }
 
         protected override void HandleSliderValueChanged(float amount)
         {
-            YandexGame.savesData.SoundsVolume = amount;
-            YandexGame.SaveProgress();
+            YG2.saves.SoundsVolume = amount;
+            
+            YG2.SaveProgress();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Project.Scripts.UI
     
         private void OpenRewardedAd()
         {
-            YandexGame.RewVideoShow((int)_rewardedAdType);
+            YG2.RewardedAdvShow(_rewardedAdType.ToString());
         }
     }
 }

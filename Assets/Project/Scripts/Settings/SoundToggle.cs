@@ -8,13 +8,14 @@ namespace Project.Scripts.Settings
         {
             base.Initialize();
         
-            Toggle.isOn = YandexGame.savesData.IsSoundsMuted;
+            Toggle.isOn = YG2.saves.IsSoundsMuted;
         }
     
         protected override void HandleToggle(bool isOn)
         {
-            YandexGame.savesData.IsSoundsMuted = isOn;
-            YandexGame.SaveProgress();
+            YG2.saves.IsSoundsMuted = isOn;
+            
+            YG2.SaveProgress();
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Project.Scripts.Services.CameraShake
 
         private void Shake(ShakeID shakeID)
         {
-            if (YandexGame.savesData.IsCameraShakeEnabled == false)
+            if (YG2.saves.IsCameraShakeEnabled == false)
                 return;
 
             if (_settings.TryGet(shakeID, out CameraShakeData shake) == false)

@@ -9,14 +9,14 @@ namespace Project.Scripts.UI
         {
             base.Initialize();
         
-            Toggle.isOn = YandexGame.savesData.IsCameraShakeEnabled;
+            Toggle.isOn = YG2.saves.IsCameraShakeEnabled;
         }
     
         protected override void HandleToggle(bool isOn)
         {
-            YandexGame.savesData.IsCameraShakeEnabled = isOn;
-        
-            YandexGame.SaveProgress();
+            YG2.saves.IsCameraShakeEnabled = isOn;
+            
+            YG2.SaveProgress();
         }
     }
 }
