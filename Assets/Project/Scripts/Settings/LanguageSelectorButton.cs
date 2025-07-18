@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.Settings
 {
+    [RequireComponent(typeof(Button))]
     public class LanguageSelectorButton : MonoBehaviour
     {
         [SerializeField] private Languages _language;

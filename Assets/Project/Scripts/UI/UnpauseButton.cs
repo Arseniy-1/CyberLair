@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.UI
 {
+    [RequireComponent(typeof(Button))]
     public class UnpauseButton : MonoBehaviour
     {
         private Button _button;

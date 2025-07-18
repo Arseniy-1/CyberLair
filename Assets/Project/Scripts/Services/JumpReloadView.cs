@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.Services
 {
+    [RequireComponent(typeof(Image))]
     public class JumpReloadView : MonoBehaviour
     {
         [SerializeField] private Jumper jumper;

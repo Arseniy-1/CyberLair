@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Props
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class HealingHeart : MonoBehaviour, IMoveable, IInteractable, IDestoyable<HealingHeart>
     {
         public event Action<HealingHeart> OnDestroyed;
