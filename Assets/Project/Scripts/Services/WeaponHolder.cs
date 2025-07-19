@@ -11,7 +11,7 @@ namespace Project.Scripts.Services
     
         public void Shoot()
         {
-            if(_currentWeapon.TryAttack() == false);
+            if(_currentWeapon.TryAttack() == false)
                 return;
         }
 
