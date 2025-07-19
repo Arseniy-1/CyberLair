@@ -1,10 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Project.Scripts.CompositionRoot;
-using Project.Scripts.EnemySystem;
-using UnityEngine;
+using System.Threading;
 using Cysharp.Threading.Tasks;
+using Project.Scripts.EnemySystem;
+using Project.Scripts.MessageBroker;
+using Project.Scripts.MessageBroker.EnemyMessageBrokers;
+using Project.Scripts.Services;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Spawners.Enemies;
+using Sirenix.Utilities;
 using Random = UnityEngine.Random;
 
 namespace Project.Scripts.ArenaSystem
@@ -12,54 +17,79 @@ namespace Project.Scripts.ArenaSystem
     public class Wave
     {
         private readonly WaveConfig _config;
-        private readonly EnemyFabric _fabric;
+        private readonly MainEnemySpawner _mainEnemySpawner;
+        private readonly List<ObjectWeightPair<Enemy>> _enemyWeights;
+        
+        private CancellationTokenSource _cancellationToken;
 
-        private int _enemyCounter;
-
-        public Wave(WaveConfig config, EnemyFabric fabric)
+        public Wave(WaveConfig config, MainEnemySpawner mainEnemySpawner)
         {
             _config = config;
-            _fabric = fabric;
+            _mainEnemySpawner = mainEnemySpawner;
+            _enemyWeights = new List<ObjectWeightPair<Enemy>>();
+            
+            _enemyWeights.AddRange(_config.EnemyWeights);
         }
         
         public event Action<Wave> OnWaveFinished;
 
         public void Begin()
         {
-            WaitUntilEnd();
+            if(_config.EnemyStatModifiers.Value > 0)
+                _mainEnemySpawner.ApplyModifier(_config.EnemyStatModifiers);
             
-            var enemies = new List<Enemy>();
-                
-            foreach (KeyValuePair<Enemy, int> pair in _config.Enemies)
+            _cancellationToken?.Cancel();
+            _cancellationToken = new CancellationTokenSource();
+
+            if (_config.Boss != false)
             {
-                for (var i = 0; i < pair.Value; i++)
+                MessageBrokerHolder.Enemy
+                    .Publish(new M_BossSpawned(_mainEnemySpawner.Spawn(_config.Boss.EnemyType)));
+            }
+
+            if (_enemyWeights.IsNullOrEmpty())
+            {
+                OnWaveFinished?.Invoke(this);
+                
+                return;
+            }
+
+            WaitingEnd(_cancellationToken.Token).Forget();
+            
+            SpawningEnemies(_enemyWeights, _cancellationToken.Token).Forget();
+        }
+
+        public void Disable()
+        {
+            _cancellationToken?.Cancel();
+        }
+
+        private async UniTaskVoid SpawningEnemies(List<ObjectWeightPair<Enemy>> enemies, CancellationToken token)
+        {
+            var picker = new WeightedRandomPicker<Enemy>(enemies.Select(pair => pair.Prefab).ToList(),
+                enemies.Select(pair => pair.Weight).ToList());
+            
+            while(token.IsCancellationRequested == false)
+            { 
+                await UniTask.Delay(TimeSpan.FromSeconds(_config.SpawnDuration), cancellationToken: token);
+
+                EnemyTypes preferredEnemy = picker.Pick().EnemyType;
+                int enemyCount = Random.Range(_config.SpawnClusterSize.x, _config.SpawnClusterSize.y + 1);
+
+                for (int i = 0; i < enemyCount; i++)
                 {
-                    enemies.Add(pair.Key);
+                    Enemy enemy = _mainEnemySpawner.Spawn(preferredEnemy);
+                    
+                    enemy.ResetState();
                 }
             }
-            
-            _enemyCounter = enemies.Count;
-            enemies = enemies.OrderBy(x=> Random.value).ToList();
+        } 
 
-            foreach (Enemy enemy in enemies.Select(en => _fabric.Create(en)))
-            {
-                enemy.OnDeath += HandleDeath;
-            }
-        }
-
-        private async UniTaskVoid WaitUntilEnd()
+        private async UniTaskVoid WaitingEnd(CancellationToken token)
         {
-            await UniTask.Delay(_config.Duration);
+            await UniTask.Delay(TimeSpan.FromSeconds(_config.WaveDuration), cancellationToken: token);
+            
             OnWaveFinished?.Invoke(this);
-        }
-
-        private void HandleDeath(Enemy enemy)
-        {
-            _enemyCounter--;
-            enemy.OnDeath -= HandleDeath;
-            
-            if(_enemyCounter <= 0)
-                OnWaveFinished?.Invoke(this);
         }
     }
 }

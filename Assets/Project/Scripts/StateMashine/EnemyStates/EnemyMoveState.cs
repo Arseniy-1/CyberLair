@@ -1,35 +1,40 @@
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
+using UnityEngine;
 
-namespace StateMashineSytem.EnemyStates
+namespace Project.Scripts.StateMashine.EnemyStates
 {
     public class EnemyMoveState : IState
     {
-        private IStateSwitcher _stateSwitcher;
         private readonly EnemyMover _mover;
-        private readonly Enemy _enemy;
         private readonly EnemyTargetProvider _enemyTargetProvider;
+        private readonly EnemyAttackCooldown _cooldown;
+        
+        private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
+        
+        private IStateSwitcher _stateSwitcher;
+        private  Animator _animator;
 
-        public EnemyMoveState(Enemy enemy, EnemyMover mover, EnemyTargetProvider enemyTargetProvider)
+        public EnemyMoveState(EnemyMover mover, EnemyTargetProvider enemyTargetProvider, EnemyAttackCooldown cooldown)
         {
-            _enemy = enemy;
             _mover = mover;
             _enemyTargetProvider = enemyTargetProvider;
+            _cooldown = cooldown;
         }
         
         public void Enter()
         {
             _mover.enabled = true;
+            
+            _animator.SetBool(_moveAnimation, _mover.enabled);
         }
 
         public void Update()
         {
-            if (_enemy.IsStunned)
-                _stateSwitcher.SwitchState<EnemyStunnedState>();
-            
-            if(_enemyTargetProvider.HasPlayer == false)
+            if (_enemyTargetProvider.HasPlayer == false)
                 _stateSwitcher.SwitchState<EnemyIdleState>();
             
-            if(_enemyTargetProvider.IsPlayerInRange)
+            if (_enemyTargetProvider.IsPlayerInRange && _cooldown.IsOnCooldown == false)
                 _stateSwitcher.SwitchState<EnemyAttackState>();
         }
 
@@ -38,9 +43,10 @@ namespace StateMashineSytem.EnemyStates
             _mover.enabled = false;
         }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
     }
 }

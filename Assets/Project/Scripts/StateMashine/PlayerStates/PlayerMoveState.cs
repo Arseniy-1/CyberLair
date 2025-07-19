@@ -1,57 +1,71 @@
-﻿namespace StateMashineSytem.PlayerStateMashine
+﻿using Project.Scripts.Interfaces;
+using Project.Scripts.PlayerSystem;
+using Project.Scripts.Services;
+using Project.Scripts.Services.Extensions;
+using UnityEngine;
+
+namespace Project.Scripts.StateMashine.PlayerStates
 {
     public class PlayerMoveState : IState
     {
-        private Player _player;
-        private PlayerMover _playerMover;
-        private PlayerInputController _playerInputController;
-        private WeaponHolder _weaponHolder;
-        private TargetScanner _targetScanner;
+        private readonly PlayerMover _playerMover;
+        private readonly PlayerInputProvider _playerInputProvider;
+        private readonly WeaponHolder _weaponHolder;
+        private readonly TargetScanner _targetScanner;
+        private readonly Jumper _jumper;
+
+        private readonly int _walkAnimation = Animator.StringToHash("IsMoving");
         
         private IStateSwitcher _stateSwitcher;
+        private Animator _animator;
 
-        public PlayerMoveState(Player player, PlayerInputController playerInputController, PlayerMover playerMover,
-            WeaponHolder weaponHolder, TargetScanner targetScanner)
+        public PlayerMoveState(PlayerInputProvider playerInputProvider, PlayerMover playerMover,
+            WeaponHolder weaponHolder, TargetScanner targetScanner, Jumper jumper)
         {
-            _player = player;
             _playerMover = playerMover;
-            _playerInputController = playerInputController;
+            _playerInputProvider = playerInputProvider;
             _weaponHolder = weaponHolder;
             _targetScanner = targetScanner;
+            _jumper = jumper;
         }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
 
-        public virtual void Enter()
+        public void Enter()
         {
             _playerMover.enabled = true;
-            _playerInputController.OnJumpButtonPressed += OnJumpButtonPressed;
+            _playerMover.WalkSound.Play();
+            _playerInputProvider.OnJumpButtonPressed += OnJumpButtonPressed;
+            
+            _animator.SetBool(_walkAnimation, _playerMover.enabled);
         }
 
-        public virtual void Exit()
+        public void Exit()
         {
             _playerMover.enabled = false;
-            _playerInputController.OnJumpButtonPressed -= OnJumpButtonPressed;
+            _playerMover.WalkSound.Stop();
+            _playerInputProvider.OnJumpButtonPressed -= OnJumpButtonPressed;
+            
+            _animator.SetBool(_walkAnimation, _playerMover.enabled);
         }
 
-        public virtual void Update()
+        public void Update()
         {
             if (_targetScanner.HasTarget)
                 _weaponHolder.SpotTarget(_targetScanner.ClosestTarget);
-            
-            if (_player.IsStunned)
-                _stateSwitcher.SwitchState<PlayerStunnedState>();
 
             if (_playerMover.IsRunning == false)
                 _stateSwitcher.SwitchState<PlayerIdleState>();
         }
 
-        public void OnJumpButtonPressed()
+        private void OnJumpButtonPressed()
         {
-            _stateSwitcher.SwitchState<PlayerJumpState>();
+            if (_jumper.CanJump)
+                _stateSwitcher.SwitchState<PlayerJumpState>();
         }
     }
 }

@@ -1,40 +1,65 @@
 using System;
 using UnityEngine;
 
-public class Health : Stats
+namespace Project.Scripts.Stats
 {
-    public event Action LostHealth;
-
-    private void Awake()
+    [Serializable]
+    public class Health : BaseStat
     {
-        CurrentValue = MaxValue;
-    }
+        public event Action LostHealth;
+        public event Action<float> DamageTaken;
 
-    public void Heal(int amount)
-    {
-        if (amount <= 0)
-            return;
+        public float MaxHealth => CalculateValue();
+        public ShieldAmount ShieldAmount { get; private set; }
 
-        CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, MaxValue);
+        public void Initialize(ShieldAmount shieldAmount)
+        {
+            ShieldAmount = shieldAmount;
+        }
 
-        RaiseAmountChanged();
-    }
+        public void Heal(float amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException(nameof(amount));
 
-    public float TakeDamage(int amount)
-    {
-        if (amount <= 0)
-            return 0;
+            CurrentValue = Mathf.Clamp(CurrentValue + amount, 0f, MaxHealth);
+            OnAmountChanged(CurrentValue, MaxHealth);
+        }
 
-        CurrentValue = Mathf.Clamp(CurrentValue - amount, 0, MaxValue);
+        public void TakeDamage(float amount)
+        {
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException(nameof(amount));
 
-        if (CurrentValue == 0)
+            if (ShieldAmount != null)
+            {
+                float shieldDamage = Mathf.Min(ShieldAmount.CurrentValue, amount);
+                ShieldAmount.ReduceShield(shieldDamage);
+                amount -= shieldDamage;
+            }
+
+            if (amount > 0)
+                CurrentValue = Mathf.Clamp(CurrentValue - amount, 0f, MaxHealth);
+
+            OnAmountChanged(CurrentValue, MaxHealth);
+
+            if (CurrentValue <= 0)
+                HandleDeath();
+        
+            DamageTaken?.Invoke(amount);
+        }
+
+        public void SetMaxHealth(float amount)
+        {
+            if (amount <= 0)
+                return;
+
+            OnAmountChanged(CurrentValue, MaxHealth);
+        }
+
+        private void HandleDeath()
+        {
             LostHealth?.Invoke();
-
-        RaiseAmountChanged();
-
-        if (CurrentValue < amount)
-            return CurrentValue;
-        else
-            return amount;
+        }
     }
 }

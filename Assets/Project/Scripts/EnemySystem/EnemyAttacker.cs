@@ -1,54 +1,69 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using Project.Scripts.EnemySystem.AttackTypes;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem
 {
     public abstract class EnemyAttacker : MonoBehaviour
     {
-        [SerializeField] protected int Damage;
-        [SerializeField] private float _attackDelay;
-        [SerializeField] private float _attackRecovery;
-        [SerializeField] private int _attackCount;
+        [SerializeField] private BaseEnemyAttackStats _stats;
         
         protected EnemyTargetProvider EnemyTargetProvider;
         private Transform _transform;
-        
+        private Coroutine _attackCoroutine;
+
+        public event Action AttackStarted;
+        public event Action<bool> AttackPerforming;
         public event Action AttackPerformed;
         
+        public virtual BaseEnemyAttackStats Stats => _stats;
         protected Vector2 Position => _transform.position;
+
+        private void OnDisable()
+        {
+            if (_attackCoroutine != null)
+                StopCoroutine(_attackCoroutine);
+        }
 
         public void PerformAttack()
         {
-            StartCoroutine(Performing());
+            _attackCoroutine = StartCoroutine(Performing());
         }
         
-        public void Initialize(EnemyTargetProvider enemyTargetProvider)
+        public virtual void Initialize(EnemyTargetProvider enemyTargetProvider)
         {
             EnemyTargetProvider = enemyTargetProvider;
             _transform = transform;
         }
         
-        protected abstract void Attack();
+        protected abstract IEnumerator Attack();
         
-        protected virtual void EndAttack()
+        private void EndAttack()
         {
             AttackPerformed?.Invoke();
         }
 
         private IEnumerator Performing()
         {
-            WaitForSeconds waitDelay = new WaitForSeconds(_attackDelay);
-            WaitForSeconds waitRecovery = new WaitForSeconds(_attackRecovery);
+            var waitDelay = new WaitForSeconds(_stats.AttackDelay);
+            var waitRecovery = new WaitForSeconds(_stats.AttackRecovery);
             
-            for (int i = 0; i < _attackCount; i++)
-            {
-                yield return waitDelay;
-                Attack();
-            }
+            yield return waitDelay;
 
-            yield return waitRecovery;
+            for (int i = 0; i < _stats.AttackCount; i++)
+            {
+                AttackStarted?.Invoke();
+                yield return waitRecovery;
+
+                AttackPerforming?.Invoke(true);
+                yield return Attack();
+
+                AttackPerforming?.Invoke(false);
+            }
+            
+            yield return waitDelay;
+
             EndAttack();
         }
     }

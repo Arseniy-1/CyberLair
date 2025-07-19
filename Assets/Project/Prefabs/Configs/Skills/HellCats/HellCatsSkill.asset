@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f203816f3db47629976693b4dc1d4cc, type: 3}
+  m_Name: HellCatsSkill
+  m_EditorClassIdentifier: 
+  <SkillInfo>k__BackingField:
+    <SkillName>k__BackingField: HellCatsSkill
+    <Description>k__BackingField: HellCatsSkillDescription
+    <Icon>k__BackingField: {fileID: 21300000, guid: 8e059703de521487ba32460a6d9d44d2, type: 3}
+  NeededSkills:
+  - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
+  - {fileID: 11400000, guid: cc1a59bfccf404c6dbfe4c854ce60637, type: 2}
+  - {fileID: 11400000, guid: 4b28fee20e298b94683ca76b257b742c, type: 2}
+  <HellCatPrefab>k__BackingField: {fileID: 8377941412824711740, guid: 127113c9db8b941118f56ce2959c3600, type: 3}
+  <MaxSummonCount>k__BackingField: 3
+  <MinSummonCount>k__BackingField: 1

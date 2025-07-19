@@ -1,66 +1,77 @@
-using Sirenix.OdinInspector;
+﻿using System;
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Enum;
+using Project.Scripts.Services.Extensions;
+using Project.Scripts.Spawners.Ammo;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Weapon : MonoBehaviour
+namespace Project.Scripts.Weapon
 {
-    [SerializeField, Range(0.01f, 20)] private float _reloadTime;
-    [SerializeField] private Transform _shootPoint;
-    [SerializeField, Range(0, 1)] private float _spread;
-    [SerializeField] private Animator _weaponAnimator;
-
-    [SerializeField] private AmmoSpawner _ammoSpawner;
-
-    private float _currentTime = 0;
-
-    public bool IsReloaded { get; private set; }
-
-    private void FixedUpdate()
+    public abstract class Weapon : MonoBehaviour
     {
-        if (_currentTime < _reloadTime && IsReloaded == false)
-            _currentTime += Time.deltaTime;
+        [SerializeField] protected Bullet BulletPrefab;
+        [SerializeField] protected Transform ShootPoint;
+        [SerializeField] protected AmmoSpawner AmmoSpawner;
+        
+        [SerializeField] private AudioID _shootSound = AudioID.PlayerShoot;
 
-        if (_currentTime >= _reloadTime)
-            Reload();
-    }
+        protected bool IsReloaded;
+        protected IWeaponStats _weaponStats;
+        private float CurrentTime;
+        
+        public event Action<Bullet> Shot;
+        
+        public IWeaponStats WeaponStats => _weaponStats;
 
-    [Button]
-    public void TryAttack()
-    {
-        if (IsReloaded == false)
-            return;
+        private void Awake()
+        {
+            AmmoSpawner = new AmmoSpawner(BulletPrefab);
+        }
 
-        Attack();
+        private void FixedUpdate()
+        {
+            if (CurrentTime < _weaponStats.WeaponBulletReloadTime.CurrentValue && !IsReloaded)
+                CurrentTime += Time.deltaTime;
 
-        IsReloaded = false;
-    }
+            if (CurrentTime >= _weaponStats.WeaponBulletReloadTime.CurrentValue)
+                Reload();
+        }
+        
+        public virtual void Initialize(IWeaponStats weaponStats)
+        {
+            _weaponStats = weaponStats;
+        }
 
-    private void Attack()
-    {
-        Bullet bullet = _ammoSpawner.Spawn();
-        bullet.Init(_shootPoint.transform.position, GetBulletDirection());
+        public abstract bool TryAttack();
 
-        bullet.Activate();
-    }
+        protected void Attack()
+        {
+            _shootSound.Play();
+            
+            for (int i = 0; i < _weaponStats.BulletPerShootCount.CurrentValue; i++)
+            {
+                Bullet bullet = AmmoSpawner.Spawn();
+                bullet.Initialize(ShootPoint.position, GetBulletDirection(), (int)_weaponStats.WeaponDamage.CurrentValue);
 
-    private Quaternion GetBulletDirection()
-    {
-        Quaternion rotation = transform.rotation;
+                Shot?.Invoke(bullet);
 
-        rotation.z += Random.Range(-_spread, _spread);
+                bullet.Activate();
+            }
+        }
+        
+        private void Reload()
+        {
+            CurrentTime = 0;
+            IsReloaded = true;
+        }
 
-        return rotation;
-    }
-
-    private void Reload()
-    {
-        _currentTime = 0;
-        IsReloaded = true;
-    }
-   
-    private void ShowAttackAnimation()
-    {
-        int attackAnim = Animator.StringToHash("Attack"); //TODO: �������
-        _weaponAnimator.Play(attackAnim);
+        private Quaternion GetBulletDirection()
+        {
+            Quaternion rotation = transform.rotation;
+            rotation.z += Random.Range(-_weaponStats.WeaponSpread.CurrentValue, _weaponStats.WeaponSpread.CurrentValue);
+            
+            return rotation;
+        }
     }
 }

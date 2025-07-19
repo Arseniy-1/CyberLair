@@ -70,3 +70,18 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# macOS
+.DS_Store
+
+# Visual Studio / Rider / JetBrains
+.idea/
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# Rider-specific
+*.DotSettings
+*.sln.iml

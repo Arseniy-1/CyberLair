@@ -1,3 +1,5 @@
+using System.Collections;
+using Project.Scripts.Services;
 using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.AttackTypes
@@ -5,7 +7,10 @@ namespace Project.Scripts.EnemySystem.AttackTypes
     [RequireComponent(typeof(Jumper))]
     public class EnemyJumpAttacker : EnemyAttacker
     {
+        [SerializeField] private EnemyJumpStats _jumpStats;
+        
         private Jumper _jumper;
+        private WaitForSeconds _waitForJump;
         
         private Vector2 Direction => (EnemyTargetProvider.Player.Position - Position).normalized;
 
@@ -13,10 +18,25 @@ namespace Project.Scripts.EnemySystem.AttackTypes
         {
             _jumper = GetComponent<Jumper>();
         }
+
+        public override void Initialize(EnemyTargetProvider enemyTargetProvider)
+        {
+            _jumpStats.JumpTime.CalculateCurrentValue();
+            _jumpStats.JumpSpeed.CalculateCurrentValue();
+            _jumpStats.JumpReloadTime.CalculateCurrentValue();
+            
+            _jumper.Initialize(_jumpStats);
+            
+            _waitForJump = new WaitForSeconds(_jumpStats.JumpTime.CurrentValue);
+            
+            base.Initialize(enemyTargetProvider);
+        }
         
-        protected override void Attack()
+        protected override IEnumerator Attack()
         {
             _jumper.Jump(Direction);
+            
+            yield return _waitForJump;
         }
     }
 }

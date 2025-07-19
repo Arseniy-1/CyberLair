@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8550108228541669086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1799805955240469252}
+  - component: {fileID: 3788297459816807445}
+  m_Layer: 0
+  m_Name: Mediator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1799805955240469252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550108228541669086}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3788297459816807445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550108228541669086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb061a729cc24cc1a24b0482f33515af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mutantSkills:
+  - {fileID: 11400000, guid: 0298fc551f9fd8f40821b7d21529c4da, type: 2}
+  - {fileID: 11400000, guid: eebdbdb46d309534a965e16d801b4d98, type: 2}
+  - {fileID: 11400000, guid: 2a4edcbe756454041af699b21bac2094, type: 2}
+  - {fileID: 11400000, guid: 4340b016f1b35dc418f57dab399ecf5c, type: 2}
+  - {fileID: 11400000, guid: 1acf96a4457101644849f20040ba52bd, type: 2}
+  - {fileID: 11400000, guid: 0e18fc28f448b422da981b19141748fa, type: 2}
+  - {fileID: 11400000, guid: dc1c60e5f743960438ccfee1e8f3a559, type: 2}
+  - {fileID: 11400000, guid: 6a7d2fffa90f3b940b6b841129a9dd6e, type: 2}
+  - {fileID: 11400000, guid: 48f6466c7ace74ec7b973c0dfe405a61, type: 2}
+  - {fileID: 11400000, guid: ff5365072c241e84c94d1b3495d6f781, type: 2}
+  _hardSkills:
+  - {fileID: 11400000, guid: 6905c2a18270a4f2cbe3207b9ba397ac, type: 2}
+  - {fileID: 11400000, guid: d16a69bdeace14699a431fba9e04422f, type: 2}
+  - {fileID: 11400000, guid: bf251ced181c14387a8fa232d9e98efb, type: 2}
+  - {fileID: 11400000, guid: 25109efcdd00d47d5866813024fca4d3, type: 2}
+  - {fileID: 11400000, guid: 9ce8a5582cc0d7742abb30d70fd4365a, type: 2}
+  - {fileID: 11400000, guid: 89f4f5a49f8f76d4f98d206f1ceb82ec, type: 2}
+  - {fileID: 11400000, guid: 7c7820f278f9e4c118179d32c953e301, type: 2}
+  - {fileID: 11400000, guid: 675f30507dc22494b890595cd2b14de4, type: 2}
+  - {fileID: 11400000, guid: 8c52f3ad6cb114752878cc3ba0d9a9f2, type: 2}
+  - {fileID: 11400000, guid: a31c6b4aec55248d4a9186519821345a, type: 2}
+  - {fileID: 11400000, guid: cc1a59bfccf404c6dbfe4c854ce60637, type: 2}
+  - {fileID: 11400000, guid: 223557b8524044eddb9d4638a7b6fdd4, type: 2}
+  - {fileID: 11400000, guid: 4b28fee20e298b94683ca76b257b742c, type: 2}
+  _simpleSkills:
+  - {fileID: 11400000, guid: e18572bf8d0b7d24cb7dae87a156099e, type: 2}
+  - {fileID: 11400000, guid: 0be651a97b60446b2a7eaa2ca6c159af, type: 2}
+  - {fileID: 11400000, guid: 666a77861a2264f459e2cf6d143436d5, type: 2}
+  - {fileID: 11400000, guid: 11fe661258bfa4567883781da551b0ae, type: 2}
+  - {fileID: 11400000, guid: 402d13ebca1704f3bae60254036af829, type: 2}
+  - {fileID: 11400000, guid: 79bbb4527739b4428b0f0eba3d54714f, type: 2}
+  - {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
+  - {fileID: 11400000, guid: 95fd6710fc5784a98914846ca07ba1cc, type: 2}
+  - {fileID: 11400000, guid: 7e744e911534341beaa4115d5a89b81e, type: 2}
+  - {fileID: 11400000, guid: 28fc9838c81b24ed18d68d5f4b66ff3a, type: 2}
+  - {fileID: 11400000, guid: 9851e9ee22e964e829bee3742b9e9ba2, type: 2}
+  - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
+  - {fileID: 11400000, guid: 6d1f0578fffbf4c8da482e210616bc7a, type: 2}
+  - {fileID: 11400000, guid: 842f4efc91dcff14583f3faaa88efa46, type: 2}
+  _player: {fileID: 0}
+  _gameUI: {fileID: 0}
+  _level: {fileID: 0}
+  _playerWeaponHolder: {fileID: 0}
+  _playerJumper: {fileID: 0}
+  _skillSelector: {fileID: 0}
+  _startInputSkillsCount: 5
+  _startOutputSkillsCount: 3

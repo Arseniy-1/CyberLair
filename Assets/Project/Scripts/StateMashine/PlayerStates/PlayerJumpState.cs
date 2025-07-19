@@ -1,46 +1,56 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Interfaces;
+using Project.Scripts.PlayerSystem;
+using Project.Scripts.Services;
+using UnityEngine;
 
-namespace StateMashineSytem.PlayerStateMashine
+namespace Project.Scripts.StateMashine.PlayerStates
 {
     public class PlayerJumpState : IState
     {
-        private Jumper _jumper;
-        private PlayerInputController _playerInputController;
-        private Collider2D _collider2D;
+        private readonly Jumper _jumper;
+        private readonly PlayerInputProvider _playerInputProvider;
+        private readonly Collider2D _collider2D;
 
+        private readonly int _jumpTrigger = Animator.StringToHash("Jump");
+        
         private IStateSwitcher _stateSwitcher;
+        private Animator _animator;
 
-        public PlayerJumpState(PlayerInputController playerInputController, Collider2D collider2D, Jumper jumper)
+        public PlayerJumpState(PlayerInputProvider playerInputProvider, Collider2D collider2D, Jumper jumper)
         {
-            _playerInputController = playerInputController;
+            _playerInputProvider = playerInputProvider;
             _collider2D = collider2D;
             _jumper = jumper;
         }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
 
-        public virtual void Enter()
+        public void Enter()
         {
+            _playerInputProvider.enabled = false;
             _collider2D.enabled = false;
-            _jumper.Jump(_playerInputController.InputDirection);
+            _jumper.Jump(_playerInputProvider.InputDirection);
             _jumper.JumpPerformed += OnJumpPerformed;
+            
+            _animator.SetTrigger(_jumpTrigger);
         }
 
-        public virtual void Exit()
+        public void Exit()
         {
+            _playerInputProvider.enabled = true;
             _collider2D.enabled = true;
             _jumper.JumpPerformed -= OnJumpPerformed;
+            
+            _animator.ResetTrigger(_jumpTrigger);
         }
 
-        public virtual void Update()
-        {
+        public void Update() {}
 
-        }
-
-        public void OnJumpPerformed()
+        private void OnJumpPerformed()
         {
             _stateSwitcher.SwitchState<PlayerIdleState>();
         }

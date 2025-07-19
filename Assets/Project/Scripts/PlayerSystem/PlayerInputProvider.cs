@@ -1,0 +1,103 @@
+using System;
+using Project.Scripts.MessageBroker;
+using UniRx;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace Project.Scripts.PlayerSystem
+{
+    public class PlayerInputProvider : MonoBehaviour
+    {
+        private readonly CompositeDisposable _disposable = new ();
+        
+        [SerializeField] private DeviceControlls _deviceControlls;
+        [SerializeField] private DesktopControlls _desktopControlls;
+        [SerializeField] private MobileShootZone _shootZone;
+        
+        private PlayerInput _playerInput;
+        private bool _isDevice;
+    
+        public event Action OnJumpButtonPressed;
+        public event Action OnMoveButtonPressed;
+        public event Action OnShootButtonPressed;
+
+        public Vector2 InputDirection => _playerInput.Land.Move.ReadValue<Vector2>();
+        private bool IsUsingTouchInput => Input.touchSupported && Input.touchCount > 0;
+
+        private void Awake()
+        {
+            _isDevice = IsUsingTouchInput;
+        
+            _playerInput = new PlayerInput();
+            _playerInput.Enable();
+
+            SelectControlScheme();
+        }
+
+        private void OnEnable()
+        {
+            _shootZone.OnShootButtonPressed += Shoot;
+            _playerInput.Land.Jump.performed += OnJumpPerformed;
+        
+            MessageBrokerHolder.Game
+                .Receive<M_GamePaused>()
+                .Subscribe(_ => DisableControlScheme())
+                .AddTo(_disposable);
+        
+            MessageBrokerHolder.Game
+                .Receive<M_GameUnpaused>()
+                .Subscribe(_ => EnableControlScheme())
+                .AddTo(_disposable);
+        }
+    
+        private void Update()
+        {
+            ReadMovementInput();
+        
+            if (_isDevice == false && _playerInput.Land.Shoot.IsPressed())
+                Shoot();
+        }
+
+        private void OnDisable()
+        {
+            _shootZone.OnShootButtonPressed -= Shoot;
+            _playerInput.Land.Jump.performed -= OnJumpPerformed;
+        
+            _disposable?.Clear();
+        }
+
+        private void EnableControlScheme()
+        {
+            _playerInput.Enable();
+        }
+
+        private void DisableControlScheme()
+        {
+            _playerInput.Disable();
+        }
+    
+        private void SelectControlScheme()
+        {
+            if (_isDevice)
+                _deviceControlls.gameObject.SetActive(true);
+            else
+                _desktopControlls.gameObject.SetActive(true);
+        }
+        
+        private void OnJumpPerformed(InputAction.CallbackContext callbackContext)
+        {
+            OnJumpButtonPressed?.Invoke();
+        }
+
+        private void ReadMovementInput()
+        {
+            if (InputDirection != Vector2.zero)
+                OnMoveButtonPressed?.Invoke();
+        }
+
+        private void Shoot()
+        {
+            OnShootButtonPressed?.Invoke();
+        }
+    }
+}

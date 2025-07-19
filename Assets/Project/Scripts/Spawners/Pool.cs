@@ -1,57 +1,52 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool<T> where T : MonoBehaviour
+namespace Project.Scripts.Spawners
 {
-    private readonly List<T> _templates = new();
-    private readonly T _prefab;
-    private readonly Transform _container;
-    private readonly Transform _spawnPoint;
-    private readonly int _startAmount;
-    private Stack<T> _stack = new();
-
-    private int _entitiesCount = 0;
-
-    public int EntitiesCount => _entitiesCount;
-    private int PoolCount => _templates.Count;
-
-    public Pool(T prefab, Transform container, Transform spawnPoint, int startAmount)
+    [Serializable]
+    public abstract class Pool<T>
+        where T : MonoBehaviour
     {
-        _prefab = prefab;
-        _container = container;
-        _spawnPoint = spawnPoint;
-        _startAmount = startAmount;
+        private int _startAmount;
 
-        for (int i = 0; i < _startAmount; i++)
+        protected T Prefab;
+        protected Stack<T> Stack = new();
+
+        protected Pool(T prefab, int startAmount)
         {
-            Create();
-        }
-    }
-
-    public void Release(T template)
-    {
-        _stack.Push(template);
-    }
-
-    public T Get()
-    {
-        if (_stack.TryPop(out T template) == false)
-        {
-            Create();
-            template = _stack.Pop();
+            Prefab = prefab;
+            _startAmount = startAmount;
         }
 
-        return template;
-    }
+        public void Release(T template)
+        {
+            template.gameObject.SetActive(false); 
+            Stack.Push(template);
+        }
 
-    private T Create()
-    {
-        T template = UnityEngine.Object.Instantiate(_prefab, _container, _spawnPoint);
-        _entitiesCount++;
-        template.gameObject.SetActive(false);
-        _templates.Add(template);
-        _stack.Push(template);
+        public T Get()
+        {
+            if (Stack.TryPop(out T template) == false)
+            {
+                Stack.Push(Create());
+                template = Stack.Pop();
+            }
+        
+            template.gameObject.SetActive(true);
 
-        return template;
+            return template;
+        }
+    
+        protected void CreateStartCount()
+        {
+            for (int i = 0; i < _startAmount; i++)
+            {
+                T obj = Create();
+                Release(obj);
+            }
+        }
+
+        protected abstract T Create();
     }
 }

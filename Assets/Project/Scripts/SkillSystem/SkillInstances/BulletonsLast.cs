@@ -1,0 +1,43 @@
+using Project.Scripts.Interfaces;
+using Project.Scripts.Weapon;
+
+namespace Project.Scripts.SkillSystem.SkillInstances
+{
+    public class BulletonsLast : ISkillInstance
+    {
+        private readonly IncrementalReloadWeapon _weapon;
+
+        public BulletonsLast(SkillData skillData)
+        {
+            _weapon = skillData.WeaponHolder.Weapon as IncrementalReloadWeapon;
+            
+            if (_weapon)
+                _weapon.Shot += InnerSubscribe;
+        }
+        
+        public void Disable()
+        {
+            _weapon.Shot -= InnerSubscribe;
+        }
+
+        private void InnerSubscribe(Bullet bullet)
+        {
+            if (_weapon.CurrentMagazineSize != 0) 
+                return;
+            
+            bullet.OnDamagableCollided += DealCriticalDamage;
+            bullet.OnDestroyed += Unsubscribe;
+        }
+
+        private void DealCriticalDamage(IDamageable damageable)
+        {
+            damageable.TakeDamage(_weapon.WeaponStats.WeaponDamage.CurrentValue);
+        }
+
+        private void Unsubscribe(Bullet bullet)
+        {
+            bullet.OnDamagableCollided -= DealCriticalDamage;
+            bullet.OnDestroyed -= Unsubscribe;
+        }
+    }
+}

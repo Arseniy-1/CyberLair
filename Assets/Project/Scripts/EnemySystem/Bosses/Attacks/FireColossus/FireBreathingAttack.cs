@@ -1,0 +1,39 @@
+using System.Collections;
+using Project.Scripts.SkillSystem.SkillInstances;
+using Project.Scripts.Spawners.AttackInstances;
+using Project.Scripts.Spawners.FireZones;
+using UnityEngine;
+
+namespace Project.Scripts.EnemySystem.Bosses.Attacks.FireColossus
+{
+    public class FireBreathingAttack : SpawnAttack<FireZone>
+    {
+        public override void Initialize()
+        {
+            BossAttackAnimationTrigger = Animator.StringToHash("FireBreathingAttack");
+            
+            Spawner = new AttackInstancesSpawner<FireZone>(new FireZonePool(Prefab, ObjectCount));
+            
+            Disable();
+        }
+
+        protected override IEnumerator Attack()
+        {
+            for (int i = 0; i < ObjectCount; i++)
+            {
+                FireZone soulClot = Spawner.Spawn();
+                soulClot.transform.position = transform.position;
+                
+                soulClot.OnDestroyed += UnsubscribeObject;
+                
+                SpawnedObjects.Add(soulClot);
+                
+                var wait = new WaitForSeconds(Random.Range(SpawnPeriodLimits.x, SpawnPeriodLimits.y));
+                
+                yield return wait;
+            }
+            
+            yield return null;
+        }
+    }
+}

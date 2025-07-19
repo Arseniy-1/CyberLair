@@ -11,17 +11,17 @@ TagManager:
   - Enemy
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ActiveUpgrades
+  - EnemyCollision
+  - Attractable
+  - Player
+  - FriendlyBullet
+  - EnemyBullet
+  - Magnet
+  - Chest
+  - Cage
+  - PlayerHurtBox
+  - EnemyDespawner
   - 
   - 
   - 

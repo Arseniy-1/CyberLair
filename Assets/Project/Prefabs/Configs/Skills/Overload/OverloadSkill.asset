@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aeba1f9cda24999bd4091e95253acd3, type: 3}
+  m_Name: OverloadSkill
+  m_EditorClassIdentifier: 
+  <SkillInfo>k__BackingField:
+    <SkillName>k__BackingField: OverloadSkill
+    <Description>k__BackingField: OverloadSkillDescription
+    <Icon>k__BackingField: {fileID: 21300000, guid: b0eb412a832984f75b83936b806017dd, type: 3}
+  NeededSkills:
+  - {fileID: 11400000, guid: c8239507b53d4407e95f32fff36fd877, type: 2}
+  - {fileID: 11400000, guid: d25b65348b66d4673a74efd8df8c0782, type: 2}
+  <ActionRadius>k__BackingField: 20
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8
+  <Damage>k__BackingField: 30
+  <StrikesCount>k__BackingField: 2
+  <ShootsNeeded>k__BackingField: 2
+  <CommonSkillView>k__BackingField: {fileID: 6088791159437934664, guid: 2b56ce0bc03964d5d8e5d285824cf1d9, type: 3}

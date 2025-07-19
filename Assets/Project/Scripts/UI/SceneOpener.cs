@@ -1,0 +1,41 @@
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+namespace Project.Scripts.UI
+{
+    public class SceneOpener : MonoBehaviour
+    {
+        [SerializeField] private string _sceneName;
+        [SerializeField] private Button _button;
+    
+        private string _currentScene;
+
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OpenScene);
+        }
+
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OpenScene);
+        }
+
+        public void SetScene(string sceneName)
+        {
+            _sceneName = sceneName;    
+        } 
+
+        private void OpenScene()
+        {
+            if (string.IsNullOrEmpty(_sceneName) == false)
+            {
+                SceneManager.LoadScene(_sceneName);
+            }
+            else
+            {
+                Debug.LogWarning("Scene name is empty! Укажи сцену в инспекторе.");
+            }
+        }
+    }
+}

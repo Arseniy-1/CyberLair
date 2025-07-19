@@ -1,30 +1,33 @@
 using System;
+using UnityEngine;
 
-public class ExperienceStorage : Stats
+namespace Project.Scripts.Stats
 {
-    public event Action LevelRaised;
-
-    public void AddExperience()
+    public class ExperienceStorage : BaseStat
     {
-        CurrentValue++;
+        public event Action LevelRaised;
 
-        if (CurrentValue >= MaxValue)
-            LevelRaised?.Invoke();
+        private float _maxValue;
 
-        RaiseAmountChanged();
-    }
+        public void AddExperience(int amount)
+        {
+            if (amount <= 0)
+                return;
 
-    public bool TrySpendExperience(int amount)
-    {
-        if(amount <= 0 )
-            return false;
+            CurrentValue = Mathf.Clamp(CurrentValue + amount, 0, _maxValue);
 
-        if (CurrentValue - amount < 0)
-            return false;
+            if (CurrentValue >= _maxValue)
+                LevelRaised?.Invoke();
 
-        CurrentValue -= amount;
-        RaiseAmountChanged();
+            OnAmountChanged(CurrentValue, _maxValue);
+        }
 
-        return true;
+        public void ResetExperience(int maxValue)
+        {
+            CurrentValue = 0;
+            _maxValue = maxValue;
+
+            OnAmountChanged(CurrentValue, _maxValue);
+        }
     }
 }

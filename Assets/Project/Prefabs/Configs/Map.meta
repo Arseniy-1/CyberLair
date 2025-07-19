@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Project/Scripts/GameSceneEntryPoint.meta
+guid: 6b9e417e1528d40a2beca0378968a9e5
+========
+guid: ae2b7ba06819d4318a91c18ce9937d7a
+>>>>>>>> MapGeneration&RandomSeed:Assets/Project/Prefabs/Configs/Map.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,41 +1,45 @@
 using Project.Scripts.EnemySystem;
+using Project.Scripts.Interfaces;
 using UnityEngine;
 
-namespace StateMashineSytem.EnemyStates
+namespace Project.Scripts.StateMashine.EnemyStates
 {
     public class EnemyIdleState : IState
     {
+        private readonly EnemyMover _mover;
+        private readonly EnemyTargetProvider _enemyTargetProvider;
         private IStateSwitcher _stateSwitcher;
-        private Enemy _enemy;
-        private Rigidbody2D _rigidbody;
-        private EnemyTargetProvider _enemyTargetProvider;
+        
+        private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
+        private readonly int _attackAnimation = Animator.StringToHash("IsAttacking");
+        private  Animator _animator;
 
-        public EnemyIdleState(Enemy enemy, Rigidbody2D rigidbody, EnemyTargetProvider enemyTargetProvider)
+        public EnemyIdleState(EnemyMover mover, EnemyTargetProvider enemyTargetProvider)
         {
-            _enemy = enemy;
-            _rigidbody = rigidbody;
+            _mover = mover;
             _enemyTargetProvider = enemyTargetProvider;
         }
         
         public void Enter()
         {
-            _rigidbody.velocity = Vector2.zero;
+            _mover.enabled = false;
+            
+            _animator.SetBool(_moveAnimation, _mover.enabled);
+            _animator.SetBool(_attackAnimation, false);
         }
 
         public void Update()
         {
-            if (_enemy.IsStunned)
-                _stateSwitcher.SwitchState<EnemyStunnedState>();
-            
-            if(_enemyTargetProvider.HasPlayer)
+            if (_enemyTargetProvider.HasPlayer)
                 _stateSwitcher.SwitchState<EnemyMoveState>();
         }
 
         public void Exit() { }
 
-        public void Initialize(IStateSwitcher stateSwitcher)
+        public void Initialize(IStateSwitcher stateSwitcher, Animator animator)
         {
             _stateSwitcher = stateSwitcher;
+            _animator = animator;
         }
     }
 }

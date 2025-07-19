@@ -4,12 +4,15 @@ namespace Project.Scripts.EnemySystem.MoveTypes
 {
     public class EnemyFlightMover : EnemyMover
     {
+        [SerializeField] private float _maxSpeed;
+        
         protected override void Move()
         {
-            if(EnemyTargetProvider.HasPlayer == false)
+            if (EnemyTargetProvider.HasPlayer == false)
                 return;
             
-            EnemyRigidbody.velocity += Direction * (Speed * Time.fixedDeltaTime);
+            EnemyRigidbody.velocity += (Direction * (MoverStats.Speed.CurrentValue * Time.fixedDeltaTime)).normalized;
+            EnemyRigidbody.velocity = Vector2.ClampMagnitude(EnemyRigidbody.velocity, _maxSpeed);
         }
     }
 }

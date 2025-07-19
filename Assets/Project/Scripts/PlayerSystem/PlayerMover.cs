@@ -1,32 +1,38 @@
+using Project.Scripts.Interfaces;
+using Project.Scripts.Services.Enum;
 using UnityEngine;
 
-public class PlayerMover : MonoBehaviour
+namespace Project.Scripts.PlayerSystem
 {
-    [SerializeField] private float _speed;
-
-    private PlayerInputController _playerInputController;
-    private Rigidbody2D _rigidbody2D;
-
-    public bool IsRunning => _playerInputController.InputDirection != Vector2.zero;
-
-    private void OnEnable()
+    public class PlayerMover : MonoBehaviour
     {
-        _playerInputController.OnMoveButtonPressed += Run;
-    }
+        private PlayerInputProvider _playerInputProvider;
+        private Rigidbody2D _rigidbody2D;
+        private IMoverStats _moverStats;
 
-    private void OnDisable()
-    {
-        _playerInputController.OnMoveButtonPressed -= Run;
-    }
+        [field: SerializeField] public AudioID WalkSound { get; private set; } = AudioID.PlayerWalk;
+        public bool IsRunning => _playerInputProvider.InputDirection != Vector2.zero;
 
-    public void Initialize(PlayerInputController playerInputController, Rigidbody2D rigidbody2D)
-    {
-        _playerInputController = playerInputController;
-        _rigidbody2D = rigidbody2D;
-    }
+        private void OnEnable()
+        {
+            _playerInputProvider.OnMoveButtonPressed += Run;
+        }
 
-    public void Run()
-    {
-        _rigidbody2D.velocity = _playerInputController.InputDirection.normalized * _speed;
+        private void OnDisable()
+        {
+            _playerInputProvider.OnMoveButtonPressed -= Run;
+        }
+
+        public void Initialize(PlayerInputProvider playerInputProvider, Rigidbody2D rigidbody2D, IMoverStats moverStats)
+        {
+            _playerInputProvider = playerInputProvider;
+            _rigidbody2D = rigidbody2D;
+            _moverStats = moverStats;
+        }
+    
+        private void Run()
+        {
+            _rigidbody2D.velocity = _playerInputProvider.InputDirection.normalized * _moverStats.Speed.CurrentValue;
+        }
     }
 }

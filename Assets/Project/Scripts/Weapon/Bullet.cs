@@ -1,77 +1,82 @@
 ﻿using System;
 using System.Collections;
-using Unity.VisualScripting;
+using Project.Scripts.Interfaces;
 using UnityEngine;
-public class Bullet : MonoBehaviour, IDestoyable<Bullet>
+
+namespace Project.Scripts.Weapon
 {
-    [SerializeField] private int _damage;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _lifeTime;
-
-    private Rigidbody2D _rigidbody2D;
-    private Coroutine _coroutine;
-    private WaitForSeconds _waitLife;
-
-    public event Action<Bullet> OnDestroyed;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class Bullet : MonoBehaviour, IDestoyable<Bullet>, IMoveable, IReturnable
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _waitLife = new WaitForSeconds(_lifeTime);
-    }
+        [SerializeField] protected float Speed;
+        [SerializeField] protected float LifeTime;
+        [SerializeField] private int _damage;
+        [SerializeField] private TrailRenderer _trail;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out IDamagable damagable))
+        private Coroutine _coroutine;
+        private WaitForSeconds _waitLife;
+        private Transform _transform;
+
+        public event Action<Bullet> OnDestroyed;
+        public event Action<IDamageable> OnDamagableCollided;
+
+        public Rigidbody2D Rigidbody2D { get; private set; }
+        public Vector3 Position => _transform.position;
+
+        private void Awake()
         {
-            damagable.TakeDamage(_damage);
-
-            Destory();
+            Rigidbody2D = GetComponent<Rigidbody2D>();
+            _transform = transform;
+            
+            _waitLife = new WaitForSeconds(LifeTime);
         }
-    }
 
-    public void Activate()
-    {
-        _rigidbody2D.velocity = transform.right * _speed;
-    }
-
-    public void Init(Vector3 startPosition, Quaternion rotation)
-    {
-        transform.position = startPosition;
-        transform.rotation = rotation;
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(WaitDestroy());
-    }
-
-    private void Destory()
-    {
-        OnDestroyed?.Invoke(this);
-    }
-
-    private IEnumerator WaitDestroy()
-    {
-        yield return _waitLife;
-        Destory();
-    }
-}
-
-public abstract class Destroyable<T> : MonoBehaviour
-{
-    public event Action<T> OnDestroyed;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        HandleCollision(collision);
-    }
-
-    private void HandleCollision(Collider2D collider2D)
-    {
-        if (collider2D.TryGetComponent(out IDamagable damagable))
+        private void OnTriggerEnter2D(Collider2D collision)
         {
+            ReturnToPool();
 
+            if (collision.TryGetComponent(out IDamageable damagable) == false) 
+                return;
+        
+            OnDamagableCollided?.Invoke(damagable);
+        
+            damagable.TakeDamage(_damage);
+        }
+    
+        private void OnDisable()
+        {
+            ReturnToPool();
+        }
+    
+        public void Activate()
+        {
+            Rigidbody2D.velocity = transform.right * Speed;
+        }
+
+        public void Initialize(Vector3 startPosition, Quaternion rotation, int damage)
+        {
+            _damage = damage;
+            _transform.position = startPosition;
+            _transform.rotation = rotation;
+            
+            _trail.Clear();
+
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(WaitDestroy());
+        }
+        
+        public void ReturnToPool()
+        {
+            OnDestroyed?.Invoke(this);
+        }
+
+        private IEnumerator WaitDestroy()
+        {
+            yield return _waitLife;
+
+            ReturnToPool();
         }
     }
 }

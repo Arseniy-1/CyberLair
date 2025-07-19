@@ -1,18 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project.Scripts.Interfaces;
 
-namespace StateMashineSytem
+namespace Project.Scripts.StateMashine
 {
     public class EntityStateMachine : IStateSwitcher
     {
-        private List<IState> _states;
+        private readonly List<IState> _states;
         private IState _currentState;
 
         public EntityStateMachine(List<IState> states)
         {
             _states = states;
+        }
 
+        public void Initialize()
+        {
             _currentState = _states[0];
             _currentState.Enter();
         }

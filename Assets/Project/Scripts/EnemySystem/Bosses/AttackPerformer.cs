@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using Project.Scripts.EnemySystem.Bosses.Attacks;
+
+namespace Project.Scripts.EnemySystem.Bosses
+{
+    public class AttackPerformer
+    {
+        private readonly Queue<BossAttack> _attacksOrder;
+        private readonly List<BossAttack> _attacks;
+        
+        private CancellationTokenSource _cancellationToken;
+
+        public AttackPerformer(Queue<BossAttack> attacksOrder, List<BossAttack> attacks)
+        {
+            _attacksOrder = attacksOrder;
+            _attacks = attacks;
+        }
+
+        public void Start()
+        {
+            _cancellationToken?.Cancel();
+            _cancellationToken = new CancellationTokenSource();
+            
+            PerformingAttack(_cancellationToken.Token).Forget();
+        }
+
+        public void Disable()
+        {
+            _cancellationToken?.Cancel();
+        }
+        
+        private async UniTask PerformingAttack(CancellationToken token)
+        {
+            while (_cancellationToken.IsCancellationRequested == false)
+            {
+                foreach (BossAttack attack in _attacks)
+                {
+                    await UniTask.WaitUntil(() => _attacksOrder.Contains(attack) == false, cancellationToken: token);
+
+                    await UniTask.Delay(TimeSpan.FromSeconds(attack.AttackStats.Cooldown), cancellationToken: token);
+                    
+                    _attacksOrder.Enqueue(attack);
+                }
+                
+                await UniTask.Yield(cancellationToken: token);
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9dc53a503a4622b281e30e881d7435, type: 3}
+  m_Name: MercuryMimicrySkill
+  m_EditorClassIdentifier: 
+  <SkillInfo>k__BackingField:
+    <SkillName>k__BackingField: MercuryMimicrySkill
+    <Description>k__BackingField: MercuryMimicrySkillDescription
+    <Icon>k__BackingField: {fileID: 21300000, guid: fb72472d2d9bd4712a317db56bdc0847, type: 3}
+  NeededSkills:
+  - {fileID: 11400000, guid: e18572bf8d0b7d24cb7dae87a156099e, type: 2}
+  - {fileID: 11400000, guid: 79bbb4527739b4428b0f0eba3d54714f, type: 2}
+  <SpeedModifier>k__BackingField:
+    <Value>k__BackingField: 1
+    <Type>k__BackingField: 0
+    <Duration>k__BackingField: 1.5
+    _elapsedTime: 0
