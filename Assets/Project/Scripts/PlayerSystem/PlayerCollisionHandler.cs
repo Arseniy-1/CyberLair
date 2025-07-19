@@ -33,9 +33,9 @@ namespace Project.Scripts.PlayerSystem
                 _health.Heal(sphere.HealAmount);
             }
         
-            if (collider.TryGetComponent(out IInteractable IInteractable))
+            if (collider.TryGetComponent(out IInteractable interactable))
             {
-                IInteractable.Interact();
+                interactable.Interact();
             }
         }
     }

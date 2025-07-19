@@ -1,5 +1,5 @@
 using System.Collections;
-using Project.Prefabs.Configs.Skills.FireZone;
+using Project.Scripts.SkillSystem.SkillInstances;
 using Project.Scripts.Spawners.AttackInstances;
 using Project.Scripts.Spawners.FireZones;
 using UnityEngine;

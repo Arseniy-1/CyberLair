@@ -1,4 +1,4 @@
-﻿using Project.Prefabs.Configs.Skills.StreamingEnergy;
+﻿using Project.Scripts.SkillSystem.SkillInstances;
 using UnityEngine;
 
 namespace Project.Scripts.Spawners.StreamingEnergies

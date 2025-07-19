@@ -803,7 +803,7 @@ MonoBehaviour:
   _attacker: {fileID: 2726904778991220204}
   _destroyer: {fileID: 225613228993504980}
   _enemyTargetProvider: {fileID: 4443314086097051585}
-  _attackDistance: 6
+  _attackDistance: 12
   _view:
     _spriteRenderer: {fileID: 6160653832846540280}
     _blinkMaterial: {fileID: 2100000, guid: 0e724b758034443cca7758c07a2547ab, type: 2}

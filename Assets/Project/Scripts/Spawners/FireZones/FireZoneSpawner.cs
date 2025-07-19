@@ -1,5 +1,5 @@
 ﻿using System;
-using Project.Prefabs.Configs.Skills.FireZone;
+using Project.Scripts.SkillSystem.SkillInstances;
 
 namespace Project.Scripts.Spawners.FireZones
 {

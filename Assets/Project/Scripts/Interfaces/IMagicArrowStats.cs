@@ -1,4 +1,4 @@
-using Project.Prefabs.Configs.Skills.MagicArrow;
+using Project.Scripts.SkillSystem.SkillViews;
 using UnityEngine;
 
 namespace Project.Scripts.Interfaces

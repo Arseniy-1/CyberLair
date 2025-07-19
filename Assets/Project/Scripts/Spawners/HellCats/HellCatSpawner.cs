@@ -1,4 +1,4 @@
-﻿using Project.Prefabs.Configs.Skills.HellCats;
+﻿using Project.Scripts.SkillSystem.SkillViews;
 
 namespace Project.Scripts.Spawners.HellCats
 {

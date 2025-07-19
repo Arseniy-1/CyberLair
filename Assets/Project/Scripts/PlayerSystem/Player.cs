@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Project.Prefabs.Configs.Skills.Durability;
 using Project.Scripts.Interfaces;
 using Project.Scripts.Services;
+using Project.Scripts.SkillSystem.SkillViews;
 using Project.Scripts.StateMashine;
 using Project.Scripts.StateMashine.PlayerStates;
 using Project.Scripts.Stats;

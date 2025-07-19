@@ -1,0 +1,12 @@
+using UnityEngine;
+
+namespace Project.Scripts.SkillSystem.SkillSOClasses
+{
+    [CreateAssetMenu(fileName = "StormBladeSkill", menuName = "Skill/Hard/StormBlade", order = 51)]
+    public class StormBladeSkill : HardSkill
+    {
+        [field: SerializeField] public float MaxRadius { get; private set; }
+        [field: SerializeField] public float MinRadius { get; private set; }
+        [field: SerializeField] public float ChangingSpeed { get; private set; }
+    }
+}

@@ -1,4 +1,4 @@
-﻿using Project.Prefabs.Configs.Skills.FireZone;
+﻿using Project.Scripts.SkillSystem.SkillInstances;
 using UnityEngine;
 
 namespace Project.Scripts.Spawners.FireZones

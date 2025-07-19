@@ -11,7 +11,6 @@ using Project.Scripts.Services.Enum;
 using Project.Scripts.Services.Extensions;
 using Project.Scripts.StateMashine;
 using Project.Scripts.StateMashine.EnemyStates;
-using Sirenix.OdinInspector;
 
 namespace Project.Scripts.EnemySystem
 {
@@ -99,7 +98,6 @@ namespace Project.Scripts.EnemySystem
             _stateMachine.SwitchState<EnemyIdleState>();
         }
 
-        [Button]
         public void Die()
         {
             MessageBrokerHolder.Enemy

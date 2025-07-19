@@ -1,9 +1,10 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Project.Prefabs.Configs.Skills.StreamingEnergy;
 using Project.Scripts.Interfaces;
 using Project.Scripts.MessageBroker;
 using Project.Scripts.MessageBroker.EnemyMessageBrokers;
+using Project.Scripts.SkillSystem.SkillInstances;
+using Project.Scripts.SkillSystem.SkillSOClasses;
 using UniRx;
 using UnityEngine;
 

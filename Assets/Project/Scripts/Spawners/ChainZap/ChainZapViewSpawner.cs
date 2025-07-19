@@ -1,4 +1,4 @@
-using Project.Prefabs.Configs.Skills.ChainZap;
+using Project.Scripts.SkillSystem.SkillViews;
 
 namespace Project.Scripts.Spawners.ChainZap
 {

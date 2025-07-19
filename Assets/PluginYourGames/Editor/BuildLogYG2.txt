@@ -1,3 +1,3 @@
-Build path: /Users/ilakorzevoj/Documents/My Games/CyberLair/CyberLair-beta-27
-Build number: 1
+Build path: /Users/ilakorzevoj/Documents/My Games/CyberLair/CyberLair-final-28
+Build number: 2
 PluginYG version: 2.0041
