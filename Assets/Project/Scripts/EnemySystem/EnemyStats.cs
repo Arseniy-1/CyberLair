@@ -10,7 +10,7 @@ namespace Project.Scripts.EnemySystem
     {
         [field: SerializeField] public int Experience { get; private set; }
         [field: SerializeField] public Speed Speed { get; private set; }
-        [field: SerializeField] public Health Health {get; private set; }
+        [field: SerializeField] public Health Health { get; private set; }
 
         public void Initialize()
         {

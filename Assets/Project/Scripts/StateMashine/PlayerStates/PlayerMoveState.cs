@@ -19,8 +19,12 @@ namespace Project.Scripts.StateMashine.PlayerStates
         private IStateSwitcher _stateSwitcher;
         private Animator _animator;
 
-        public PlayerMoveState(PlayerInputProvider playerInputProvider, PlayerMover playerMover,
-            WeaponHolder weaponHolder, TargetScanner targetScanner, Jumper jumper)
+        public PlayerMoveState(
+            PlayerInputProvider playerInputProvider, 
+            PlayerMover playerMover,
+            WeaponHolder weaponHolder, 
+            TargetScanner targetScanner, 
+            Jumper jumper)
         {
             _playerMover = playerMover;
             _playerInputProvider = playerInputProvider;

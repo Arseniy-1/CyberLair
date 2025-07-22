@@ -58,7 +58,7 @@ namespace Project.Scripts.SkillSystem
             if (inputSkillsCount == 0)
                 return;
         
-            List<Skill> shuffledSkills = skills.OrderBy( _ => Random.value ).ToList( );
+            List<Skill> shuffledSkills = skills.OrderBy(_ => Random.value).ToList();
     
             for (int i = 0; i < inputSkillsCount; i++)
             {

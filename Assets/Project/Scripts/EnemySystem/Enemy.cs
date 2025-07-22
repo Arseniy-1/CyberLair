@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using Project.Scripts.Interfaces;
 using Project.Scripts.MessageBroker;
 using Project.Scripts.MessageBroker.EnemyMessageBrokers;
@@ -61,7 +61,7 @@ namespace Project.Scripts.EnemySystem
                 new EnemyIdleState(_mover, _enemyTargetProvider),
                 new EnemyMoveState(_mover, _enemyTargetProvider, _cooldown),
                 new EnemyAttackState(_mover, _attacker, _cooldown),
-                new EnemyStunnedState(_mover)
+                new EnemyStunnedState(_mover),
             };
             
             _stateMachine = new EntityStateMachine(states);
@@ -117,5 +117,4 @@ namespace Project.Scripts.EnemySystem
             _stateMachine.SwitchState<EnemyIdleState>();
         }
     }
-    
 }

@@ -10,7 +10,7 @@ namespace Project.Scripts.Services
         {
             float horizontalSpeed = _rigidbody.velocity.x;
             
-            if(horizontalSpeed != 0)
+            if (horizontalSpeed != 0)
                 SelfTransform.localScale = horizontalSpeed > 0 ? DefaultScale : FlipScale;
         }
     }

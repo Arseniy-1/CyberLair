@@ -9,7 +9,7 @@ namespace Project.Scripts.SkillSystem.SkillSOClasses
         [field: SerializeField] public float ActionRadius { get; private set; }
         [field: SerializeField] public float StunTime { get; private set; }
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
-        [field: SerializeField, Range(0f, 1f)] public float Chance { get; private set; }
+        [field: SerializeField] [field: Range(0f, 1f)] public float Chance { get; private set; }
         [field: SerializeField] public CommonSkillView SkillView { get; private set; }
     }
 }

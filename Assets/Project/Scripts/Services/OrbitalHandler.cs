@@ -6,7 +6,7 @@ namespace Project.Scripts.Services
 {
     public class OrbitalHandler
     {
-        private readonly List<Orbital> _orbitals = new();
+        private readonly List<Orbital> _orbitals = new ();
 
         public void AddOrbital(Orbital orbital, Transform holder)
         {

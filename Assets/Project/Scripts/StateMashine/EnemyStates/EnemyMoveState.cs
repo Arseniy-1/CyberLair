@@ -13,7 +13,7 @@ namespace Project.Scripts.StateMashine.EnemyStates
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
         
         private IStateSwitcher _stateSwitcher;
-        private  Animator _animator;
+        private Animator _animator;
 
         public EnemyMoveState(EnemyMover mover, EnemyTargetProvider enemyTargetProvider, EnemyAttackCooldown cooldown)
         {

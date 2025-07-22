@@ -21,7 +21,7 @@ namespace Project.Scripts.PlayerSystem
         [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
         [SerializeField] private PlayerMover _playerMover;
         [SerializeField] private WeaponHolder _weaponHolder;
-        [SerializeField] private PlayerInputProvider playerInputProvider;
+        [SerializeField] private PlayerInputProvider _playerInputProvider;
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private Jumper _jumper;
         [SerializeField] private TargetScanner _targetScanner;
@@ -46,7 +46,7 @@ namespace Project.Scripts.PlayerSystem
         public Rigidbody2D Rigidbody2D => _rigidbody2D;
         public Vector2 Position => transform.position;
     
-        public ExperienceStorage ExperienceStorage { get; } = new();
+        public ExperienceStorage ExperienceStorage { get; } = new ();
         [field: SerializeField] public PlayerStats PlayerStats { get; private set; }
 
         private void Awake()
@@ -56,7 +56,7 @@ namespace Project.Scripts.PlayerSystem
 
         private void OnEnable()
         {
-            playerInputProvider.OnShootButtonPressed += Shoot;
+            _playerInputProvider.OnShootButtonPressed += Shoot;
         }
 
         private void Update()
@@ -67,7 +67,7 @@ namespace Project.Scripts.PlayerSystem
     
         private void OnDisable()
         {
-            playerInputProvider.OnShootButtonPressed -= Shoot;
+            _playerInputProvider.OnShootButtonPressed -= Shoot;
         }
 
         private void InitializeComponents()
@@ -75,9 +75,9 @@ namespace Project.Scripts.PlayerSystem
             var playerStates = new List<IState>
             {
                 new PlayerIdleState(_playerMover, _rigidbody2D, _weaponHolder, _targetScanner),
-                new PlayerMoveState(playerInputProvider, _playerMover, _weaponHolder, _targetScanner, _jumper),
-                new PlayerJumpState(playerInputProvider, _collider, _jumper),
-                new PlayerStunnedState(_playerMover, _jumper)
+                new PlayerMoveState(_playerInputProvider, _playerMover, _weaponHolder, _targetScanner, _jumper),
+                new PlayerJumpState(_playerInputProvider, _collider, _jumper),
+                new PlayerStunnedState(_playerMover, _jumper),
             };
 
             _entityStateMachine = new EntityStateMachine(playerStates);
@@ -90,7 +90,7 @@ namespace Project.Scripts.PlayerSystem
             _entityStateMachine.Initialize();
             PlayerStats.Initialize();
             _destroyer.Initialize(PlayerStats.Health, this);
-            _playerMover.Initialize(playerInputProvider, _rigidbody2D, PlayerStats);
+            _playerMover.Initialize(_playerInputProvider, _rigidbody2D, PlayerStats);
             _playerCollisionHandler.Initialize(PlayerStats.Health, ExperienceStorage);
             _jumper.Initialize(PlayerStats);
             _magnet.Initialize(PlayerStats, transform);

@@ -15,7 +15,7 @@ namespace Project.Scripts.StateMashine.EnemyStates
         private readonly int _attackTrigger = Animator.StringToHash("StartAttack");
         
         private IStateSwitcher _stateSwitcher;
-        private  Animator _animator;
+        private Animator _animator;
         
         public EnemyAttackState(EnemyMover mover, EnemyAttacker attacker, EnemyAttackCooldown cooldown)
         {

@@ -9,12 +9,13 @@ namespace Project.Scripts.SkillSystem.SkillInstances
 {
     public class FireZone : MonoBehaviour, IDestoyable<FireZone>, IReturnable
     {
+        private readonly List<IDamageable> _damageableTargets = new ();
+        
         [SerializeField] private int _damagePerIteration = 2;
         [SerializeField] private float _burnInterval = 1f;
         [SerializeField] private LayerMask _targetLayer;
         [SerializeField] private float _lifeTime = 10f;
 
-        private readonly List<IDamageable> _damageableTargets = new();
         private float _currentTime;
 
         private Coroutine _waitingDestroy;

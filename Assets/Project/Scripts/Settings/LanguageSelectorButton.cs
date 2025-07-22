@@ -30,7 +30,7 @@ namespace Project.Scripts.Settings
 
         private void HandleLanguageChanged()
         {
-            OnLanguageChanged?.Invoke(_language.ToString());
+            OnLanguageChanged?.Invoke(_language.ToString().ToLower());
         }
     }
 }

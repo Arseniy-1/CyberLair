@@ -24,7 +24,7 @@ namespace Project.Scripts.SkillSystem.SkillInstances
 
         private readonly Transform _holder;
         private readonly Weapon.Weapon _weapon;
-        private readonly List<CommonSkillView> _views = new();
+        private readonly List<CommonSkillView> _views = new ();
         
         private float _shootsPassed;
 

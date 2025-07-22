@@ -19,12 +19,12 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
         [SerializeField] private List<ObjectWeightPair<MapEnvironment>> _tileObjects;
         [SerializeField] [Range(0f, 1f)] private float _objectFillPercentage;
 
-        private List<Vector3> _bannedPositions = new();
-        private List<Vector2> _placedObjectsPositions = new();
+        private List<Vector3> _bannedPositions = new ();
+        private List<Vector2> _placedObjectsPositions = new ();
 
         public void Place()
         {
-            if(_tileObjects.Count <= 0)
+            if (_tileObjects.Count <= 0)
                 return;
             
             List<Vector3> availablePositions = _targetTilemap.GetTileWorldPositionsWithTiles();
@@ -42,7 +42,8 @@ namespace Project.Scripts.MapGenerationSystem.ObjectPlacer
                 if (Random.value > _objectFillPercentage)
                     continue;
             
-                var picker = new WeightedRandomPicker<MapEnvironment>(_tileObjects.Select(pair => pair.Prefab).ToList(),
+                var picker = new WeightedRandomPicker<MapEnvironment>(
+                    _tileObjects.Select(pair => pair.Prefab).ToList(),
                     _tileObjects.Select(pair => pair.Weight).ToList());
                 
                 PlaceIndividual(picker.Pick(), position);

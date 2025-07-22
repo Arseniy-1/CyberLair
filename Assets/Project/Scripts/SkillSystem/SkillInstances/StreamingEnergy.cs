@@ -13,6 +13,8 @@ namespace Project.Scripts.SkillSystem.SkillInstances
 {
     public class StreamingEnergy : MonoBehaviour, IDestoyable<StreamingEnergy>
     {
+        private readonly List<Enemy> _enemies = new();
+        
         [SerializeField] private float _stunDuration = 0.2f;
         [SerializeField] private StatModifier _speedModifier;
         [SerializeField] private float _stunInterval = 1.5f;
@@ -20,8 +22,6 @@ namespace Project.Scripts.SkillSystem.SkillInstances
         [SerializeField] private float _lifeTime = 3.5f;
     
         [SerializeField] private AudioID _audio = AudioID.StreamingEnergy;
-
-        private readonly List<Enemy> _enemies = new();
 
         private Coroutine _waitingDestroy;
         private Coroutine _stunIterating;

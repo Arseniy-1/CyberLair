@@ -48,6 +48,6 @@ namespace Project.Scripts.Services.Enum
         Thunder = 36,
         InternalVoltage = 37,
         HamsterWeapon = 38,
-        ChestArrived = 39
+        ChestArrived = 39,
     }
 }

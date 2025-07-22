@@ -8,6 +8,6 @@ namespace Project.Scripts.Services.Enum
         
         LongLight = 3,
         LongMedium = 4,
-        LongHard = 5
+        LongHard = 5,
     }
 }

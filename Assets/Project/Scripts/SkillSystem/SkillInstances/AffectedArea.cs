@@ -64,7 +64,7 @@ namespace Project.Scripts.SkillSystem.SkillInstances
                 .Take(hitCount)
                 .ForEach(hit =>
                 {
-                    if(hit.TryGetComponent(out IDamageable affectedEnemy))
+                    if (hit.TryGetComponent(out IDamageable affectedEnemy))
                         affectedEnemy.TakeDamage(_weaponStats.WeaponDamage.CurrentValue * _damageProportion);
                 });
             

@@ -7,9 +7,10 @@ namespace Project.Scripts.StateMashine.PlayerStates
 {
     public class PlayerStunnedState : IState
     {
-        private Player _player;
         private readonly PlayerMover _playerMover;
         private readonly Jumper _playerJumper;
+        
+        private Player _player;
 
         public PlayerStunnedState(PlayerMover playerMover, Jumper playerJumper)
         {

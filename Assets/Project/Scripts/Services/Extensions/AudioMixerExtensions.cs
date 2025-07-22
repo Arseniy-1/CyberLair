@@ -1,5 +1,5 @@
-using UnityEngine.Audio;
 using DG.Tweening;
+using UnityEngine.Audio;
 
 namespace Project.Scripts.Services.Extensions
 {
@@ -13,8 +13,7 @@ namespace Project.Scripts.Services.Extensions
                 () => startValue,
                 value => mixer.SetFloat(name, value),
                 endValue,
-                duration
-            );
+                duration);
         }
     }
 }

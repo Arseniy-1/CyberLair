@@ -7,12 +7,13 @@ namespace Project.Scripts.SkillSystem.SkillViews
 {
     public class CommonSkillView : MonoBehaviour
     {
+        private readonly int _playingTrigger = Animator.StringToHash("Playing");
+        
         [SerializeField] private Animator _animator;
         [SerializeField] private float _lifeTime = 0.4f;
         [SerializeField] private AudioID _audio;
         [SerializeField] private SpriteRenderer _sprite;
         
-        private readonly int _playingTrigger = Animator.StringToHash("Playing");
         private Coroutine _playingCoroutine;
 
         private void OnDisable()
@@ -33,7 +34,7 @@ namespace Project.Scripts.SkillSystem.SkillViews
         {
             _animator.ResetTrigger(_playingTrigger);
             
-            if(_playingCoroutine != null)
+            if (_playingCoroutine != null)
                 StopCoroutine(_playingCoroutine);
             
             _playingCoroutine = null;

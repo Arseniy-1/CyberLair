@@ -4,7 +4,7 @@ using Project.Scripts.Stats;
 
 namespace Project.Scripts.SkillSystem.SkillInstances
 {
-    public class TeleportationJump: ISkillInstance
+    public class TeleportationJump : ISkillInstance
     {
         private readonly StatModifier _jumpTimeModifier;
         private readonly StatModifier _jumpSpeedModifier;

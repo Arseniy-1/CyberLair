@@ -44,8 +44,7 @@ namespace Project.Scripts.SkillSystem
             _uiHandler.ShowSkillSelection(
                 _skillHandler.AvailableSkills,
                 _startInputSkillsCount,
-                _startOutputSkillsCount
-            );
+                _startOutputSkillsCount);
         }
 
         private void OnDisable()
@@ -66,8 +65,7 @@ namespace Project.Scripts.SkillSystem
         
             _playerSkillHolder = new SkillHolder(
                 new SkillData(_playerWeaponHolder, _player.PlayerStats, _playerJumper),
-                _cancellationToken.Token
-            );
+                _cancellationToken.Token);
         }
 
         private void SubscribeToEvents()
@@ -85,8 +83,7 @@ namespace Project.Scripts.SkillSystem
             _uiHandler.ShowSkillSelection(
                 _skillHandler.AvailableSkills, 
                 DefaultInputSkillsCount, 
-                DefaultOutputSkillsCount
-                );
+                DefaultOutputSkillsCount);
 
         private void OnSkillsApplied(List<Skill> skills)
         {

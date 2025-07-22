@@ -23,8 +23,6 @@ namespace Project.Scripts.SkillSystem.SkillInstances
 
         private readonly CommonSkillView _view;
 
-        private Vector2 Position => _holder.position;
-
         public InternalVoltage(SkillData skillData, InternalVoltageSkill skill)
         {
             _actionRadius = skill.ActionRadius;
@@ -40,6 +38,8 @@ namespace Project.Scripts.SkillSystem.SkillInstances
             
             _health.DamageTaken += Shock;
         }
+        
+        private Vector2 Position => _holder.position;
 
         public void Disable()
         {
@@ -48,19 +48,19 @@ namespace Project.Scripts.SkillSystem.SkillInstances
         
         private void Shock(float damage)
         {
-            if(Random.value >= _chance)
+            if (Random.value >= _chance)
                 return;
             
             Collider2D[] colliders = Physics2D.OverlapCircleAll(Position, _actionRadius, _layerMask);
             _view.transform.position = Position;
             _view.Initialize();
 
-            if(colliders.Length == 0)
+            if (colliders.Length == 0)
                     return;
 
             foreach (Collider2D strickenCollider in colliders)
             {
-                if (!strickenCollider.TryGetComponent(out Enemy enemy))
+                if (strickenCollider.TryGetComponent(out Enemy enemy) == false)
                     continue;
                 
                 if (Enum.IsDefined(typeof(BossTypes), (BossTypes)(int)enemy.EnemyType))

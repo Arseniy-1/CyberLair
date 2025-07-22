@@ -22,7 +22,7 @@ namespace Project.Scripts.SkillSystem
                 return;
 
             MessageBrokerHolder.Game
-                .Publish(new M_GamePaused());
+                .Publish(default(M_GamePaused));
         
             _gameUI.SetActive(false);
         
@@ -32,7 +32,7 @@ namespace Project.Scripts.SkillSystem
         public void CloseSkillSelection()
         {
             MessageBrokerHolder.Game
-                .Publish(new M_GameUnpaused());
+                .Publish(default(M_GameUnpaused));
         
             _gameUI.SetActive(true);
         }

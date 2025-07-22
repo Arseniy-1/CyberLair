@@ -12,7 +12,7 @@ namespace Project.Scripts.EnemySystem.AttackTypes
         private readonly List<Enemy> _imps = new();
         
         [SerializeField] private Enemy _impPrefab;
-        [SerializeField, MinMaxSlider(0.1f, 0.5f)] private Vector2 _spawnPeriod;
+        [SerializeField] [MinMaxSlider(0.1f, 0.5f)] private Vector2 _spawnPeriod;
         [SerializeField] private int _startCount;
         
         private EnemySpawner _impSpawner;

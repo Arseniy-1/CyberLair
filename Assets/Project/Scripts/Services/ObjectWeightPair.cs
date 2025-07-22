@@ -4,10 +4,11 @@ using UnityEngine;
 namespace Project.Scripts.Services
 {
     [Serializable]
-    public class ObjectWeightPair<T> where T : class
+    public class ObjectWeightPair<T> 
+        where T : class
     {
         [SerializeField] private T _prefab;
-        [SerializeField, Range(0f, 1f)] private float _weight;
+        [SerializeField] [Range(0f, 1f)] private float _weight;
         
         public T Prefab => _prefab;
         public float Weight => _weight;

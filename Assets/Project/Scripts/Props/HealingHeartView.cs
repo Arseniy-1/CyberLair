@@ -27,15 +27,15 @@ namespace Project.Scripts.Props
         
             _pulseTween = DOTween
                 .To(
-                    () =>  _heart.color.a,
-                    alpha => {
+                    () => _heart.color.a,
+                    alpha => 
+                    {
                         var color = _heart.color;
                         color.a = alpha;
                         _heart.color = color;
                     },
                     _minAlpha,
-                    _pulseDuration / 2
-                )
+                    _pulseDuration / 2)
                 .SetLoops(-1, LoopType.Yoyo);
         }
     }

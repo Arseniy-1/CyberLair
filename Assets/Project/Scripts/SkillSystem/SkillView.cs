@@ -14,11 +14,11 @@ namespace Project.Scripts.SkillSystem
         [SerializeField] private Image _skillIcon;
         [SerializeField] private Image _skillBanner;
         [SerializeField] private Material _selectedMaterial;
-
-        public Skill Skill { get; private set; }
-
+        
         public event Action<SkillView> OnClicked;
 
+        public Skill Skill { get; private set; }
+        
         private void OnEnable()
         {
             _button.onClick.AddListener(HandleClick);

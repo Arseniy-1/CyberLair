@@ -10,7 +10,7 @@ namespace Project.Scripts.EnemySystem.Bosses
 {
     public class BossCompositeAttacker : EnemyAttacker
     {
-        private readonly Queue<BossAttack> _attacksOrder = new();
+        private readonly Queue<BossAttack> _attacksOrder = new ();
         
         [SerializeField] private Animator _bossAnimator;
         [SerializeField] private AttackAnimationEvents _bossAnimationEvents;

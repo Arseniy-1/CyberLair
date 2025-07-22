@@ -61,18 +61,16 @@ namespace Project.Scripts.ArenaSystem
             
             _bossHealthBar.ShowStats(
                 _bossInstance.EnemyStats.Health.MaxHealth, 
-                _bossInstance.EnemyStats.Health.MaxHealth
-                );
+                _bossInstance.EnemyStats.Health.MaxHealth);
             
             _bossHealthText.ShowStats(
                 _bossInstance.EnemyStats.Health.MaxHealth, 
-                _bossInstance.EnemyStats.Health.MaxHealth
-                );
+                _bossInstance.EnemyStats.Health.MaxHealth);
             
             _bossHealthBar.gameObject.SetActive(true);
             
             MessageBrokerHolder.Camera
-                .Publish(new M_CameraZoomOut());
+                .Publish(default(M_CameraZoomOut));
         }
         
         private void HandleBossDeath(Enemy enemy)
@@ -87,7 +85,7 @@ namespace Project.Scripts.ArenaSystem
             _bossHealthBar.gameObject.SetActive(false);
 
             MessageBrokerHolder.Camera
-                .Publish(new M_CameraZoomIn());
+                .Publish(default(M_CameraZoomIn));
         }
 
         private void HandleChestRaised()

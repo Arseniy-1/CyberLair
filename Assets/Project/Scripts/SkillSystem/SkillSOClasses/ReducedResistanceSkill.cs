@@ -14,7 +14,7 @@ namespace Project.Scripts.SkillSystem.SkillSOClasses
         [field: SerializeField] public ChainZapView ZapView { get; private set; }
         [field: SerializeField] public LayerMask EnemyLayer { get; private set; }
         [field: SerializeField] public int Segments { get; private set; }
-        [field: SerializeField, Range(0f, 1f)] public float Chance { get; private set; }
+        [field: SerializeField] [field: Range(0f, 1f)] public float Chance { get; private set; }
         [field: SerializeField] public StatModifier EnemySpeedModifier { get; private set; }
     }
 }

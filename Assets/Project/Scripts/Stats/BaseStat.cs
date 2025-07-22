@@ -9,12 +9,12 @@ namespace Project.Scripts.Stats
     [Serializable]
     public abstract class BaseStat
     {
+        private readonly List<StatModifier> _modifiers = new ();
+        
+        public event Action<float, float> AmountChanged;
+        
         [field: SerializeField] public float BaseValue { get; protected set; }
         [field: SerializeField] public float CurrentValue { get; protected set; }
-    
-        private readonly List<StatModifier> _modifiers = new();
-
-        public event Action<float, float> AmountChanged;
     
         public void CalculateCurrentValue()
         {

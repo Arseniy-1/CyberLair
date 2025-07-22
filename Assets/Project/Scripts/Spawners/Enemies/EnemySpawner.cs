@@ -10,9 +10,7 @@ namespace Project.Scripts.Spawners.Enemies
     public class EnemySpawner : Spawner<Enemy>
     {
         private List<Transform> _spawnPoints;
-
-        public EnemyTypes EnemyType => Prefab.EnemyType;
-
+        
         public EnemySpawner(Enemy enemyPrefab, Player player, int startCount)
         {
             StartAmount = startCount;
@@ -22,6 +20,8 @@ namespace Project.Scripts.Spawners.Enemies
 
             Pool = new EnemyPool(Prefab, fabric, StartAmount);
         }
+        
+        public EnemyTypes EnemyType => Prefab.EnemyType;
 
         public void ApplyModifier(StatModifier statModifier)
         {

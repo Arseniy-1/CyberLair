@@ -58,7 +58,7 @@ namespace Project.Scripts.SkillSystem.SkillViews
 
         private void DisableInvincibility()
         {
-            if(_invincibilityCoroutine == null)
+            if (_invincibilityCoroutine == null)
                 return;
         
             StopCoroutine(_invincibilityCoroutine);

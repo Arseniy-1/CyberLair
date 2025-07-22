@@ -44,8 +44,7 @@ namespace Project.Scripts.SkillSystem.SkillViews.SummonSystem
         {
             _animator.SetBool(
                 _walkAnimation, 
-                Vector2.Distance(SelfPosition, _targetMovePosition) < MinDistanceToTarget == false
-                );
+                Vector2.Distance(SelfPosition, _targetMovePosition) < MinDistanceToTarget == false);
 
             if (Vector2.Distance(SelfPosition, _targetMovePosition) < MinDistanceToTarget)
             {

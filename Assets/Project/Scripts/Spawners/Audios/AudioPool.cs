@@ -4,7 +4,8 @@ namespace Project.Scripts.Spawners.Audios
     {
         private readonly AudioFabric _audioFabric;
         
-        public AudioPool(AudioFabric fabric, Audio prefab, int startAmount) : base(prefab, startAmount)
+        public AudioPool(AudioFabric fabric, Audio prefab, int startAmount) 
+            : base(prefab, startAmount)
         {
             _audioFabric = fabric;
         }

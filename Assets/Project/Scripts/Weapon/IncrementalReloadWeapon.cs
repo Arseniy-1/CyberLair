@@ -20,15 +20,15 @@ namespace Project.Scripts.Weapon
         private Coroutine _reloadCoroutine;
         private WaitForSeconds _waitForDelay;
         private WaitForSeconds _waitForRechargingTime;
+        
+        public event Action<int, int> OnAmmoUpdated;
 
         private int MagazineSize => (int)((IIncrementalWeaponStats)_weaponStats).WeaponMagazineSize.CurrentValue;
         private float CurrentRechargingTime => ((IIncrementalWeaponStats)_weaponStats).WeaponRechargingTime.CurrentValue;
         public int CurrentMagazineSize => _currentMagazineSize;
 
         public bool IsReloading { get; private set; }
-    
-        public event Action<int, int> OnAmmoUpdated;
-
+        
         public override void Initialize(IWeaponStats weaponStats)
         {
             base.Initialize(weaponStats);
@@ -64,7 +64,6 @@ namespace Project.Scripts.Weapon
             IsReloaded = false;
 
             return true;
-
         }
 
         private IEnumerator ReloadCoroutine()

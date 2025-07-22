@@ -59,7 +59,7 @@ namespace Project.Scripts.SkillSystem.SkillViews
 
         private void EndLifetime()
         {
-            if(_lifetimeCoroutine != null)
+            if (_lifetimeCoroutine != null)
                 StopCoroutine(_lifetimeCoroutine);
         }
     }

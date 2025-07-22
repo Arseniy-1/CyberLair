@@ -11,7 +11,7 @@ namespace Project.Scripts.Spawners
         private int _startAmount;
 
         protected T Prefab;
-        protected Stack<T> Stack = new();
+        protected Stack<T> Stack = new ();
 
         protected Pool(T prefab, int startAmount)
         {

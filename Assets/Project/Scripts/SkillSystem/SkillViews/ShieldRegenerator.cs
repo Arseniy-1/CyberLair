@@ -12,12 +12,13 @@ namespace Project.Scripts.SkillSystem.SkillViews
         private ShieldAmount _shield;
         private Health _health;
 
-        private float ShieldRegenerateAmount => _shield.MaxShield * 0.1f;
         private WaitForSeconds _regenerateWait;
         private WaitForSeconds _pauseWait;
 
         private Coroutine _regenerationCoroutine;
         private Coroutine _resumeCoroutine;
+        
+        private float ShieldRegenerateAmount => _shield.MaxShield * 0.1f;
 
         private void OnDisable()
         {

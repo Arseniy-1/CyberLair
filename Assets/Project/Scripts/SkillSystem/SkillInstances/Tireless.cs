@@ -18,7 +18,7 @@ namespace Project.Scripts.SkillSystem.SkillInstances
             _data.PlayerStats.WeaponDamage.AddModifier(_jumpReloadTimeModifier);
         }
 
-        public  void Disable()
+        public void Disable()
         {
             _data.PlayerStats.WeaponDamage.RemoveModifier(_jumpReloadTimeModifier);
         }

@@ -12,15 +12,15 @@ namespace Project.Scripts.Spawners.Enemies
 {
     public class MainEnemySpawner : MonoBehaviour
     {
+        private readonly Dictionary<EnemyTypes, EnemySpawner> _spawners = new ();
+        
         [SerializeField] private List<Enemy> _enemyPrefabs;
         [SerializeField] private int _startPoolCount;
         [SerializeField] private float _spawnOffset;
 
         private IReadOnlyList<Transform> _spawnPoints;
         private List<EnemyDespawner> _despawners;
-
-        private readonly Dictionary<EnemyTypes, EnemySpawner> _spawners = new();
-
+        
         private void OnDestroy()
         {
             foreach (var despawner in _despawners)

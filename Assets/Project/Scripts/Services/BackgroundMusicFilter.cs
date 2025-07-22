@@ -8,11 +8,12 @@ namespace Project.Scripts.Services
 {
     public class BackgroundMusicFilter : MonoBehaviour
     {
+        private readonly CompositeDisposable _disposable = new ();
+        
         [SerializeField] private AudioLowPassFilter _lowPassFilter;
-        [SerializeField, MinMaxSlider(0, 22000, true)] private Vector2Int _musicCutoffRange;
+        [SerializeField] [MinMaxSlider(0, 22000, true)] private Vector2Int _musicCutoffRange;
         [SerializeField] private float _musicCutoffDuration;
 
-        private readonly CompositeDisposable _disposable = new();
         private Tween _cutoffTween;
         
         private void Awake()

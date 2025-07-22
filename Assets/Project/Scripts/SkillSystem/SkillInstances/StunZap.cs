@@ -13,7 +13,7 @@ namespace Project.Scripts.SkillSystem.SkillInstances
     {
         private readonly float _stunDuration;
         private readonly SkillData _data;
-        private readonly List<Bullet> _subscribedBullets = new();
+        private readonly List<Bullet> _subscribedBullets = new ();
     
         public StunZap(SkillData skillData, StunZapSkill skill)
         {
@@ -33,7 +33,7 @@ namespace Project.Scripts.SkillSystem.SkillInstances
     
         private void InnerSubscribe(Bullet bullet)
         {
-            if(_subscribedBullets.Contains(bullet))
+            if (_subscribedBullets.Contains(bullet))
                 return;
         
             bullet.OnDamagableCollided += StunEnemy;

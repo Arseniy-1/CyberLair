@@ -16,8 +16,6 @@ namespace Project.Scripts.SkillSystem.SkillViews
 
         private SkillData _skillData;
         
-        public event Action<FireZone> FireZoneSpawned;
-        
         public FireZoneManager(SkillData skillData, FireZoneSkill fireZoneSkill)
         {
             _skillData = skillData;
@@ -26,6 +24,8 @@ namespace Project.Scripts.SkillSystem.SkillViews
             _fireZoneSpawner = new FireZoneSpawner(fireZoneSkill.FireZonePrefab);
             skillData.WeaponHolder.Weapon.Shot += OnShot;
         }
+        
+        public event Action<FireZone> FireZoneSpawned;
         
         public void Disable()
         {
@@ -41,7 +41,7 @@ namespace Project.Scripts.SkillSystem.SkillViews
         {
             bullet.OnDestroyed -= Explode;
             
-            if(Random.value >= _chance)
+            if (Random.value >= _chance)
                 return;
 
             var fireZone = _fireZoneSpawner.Spawn();

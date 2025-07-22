@@ -17,7 +17,7 @@ namespace Project.Scripts.PlayerSystem.TakeDamageEffect
         [SerializeField] [MinMaxSlider(400, 22000f, showFields: true)] private Vector2 _frequencyCutoff;
         [SerializeField] private float _cutoffDuration = 0.2f;
         
-        [SerializeField, MinMaxSlider(1, 4, showFields: true)] 
+        [SerializeField] [MinMaxSlider(1, 4, showFields: true)] 
         private Vector2 _cutoffDurationRange = new (1, 4);
         
         [SerializeField] [MinMaxSlider(20f, 70f, showFields: true)] 

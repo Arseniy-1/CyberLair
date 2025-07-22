@@ -23,7 +23,7 @@ namespace Project.Scripts.Spawners.MagicArrows
         private float _delay;
         private LayerMask _layerMask;
 
-        private List<MagicArrow> _magicArrows = new();
+        private List<MagicArrow> _magicArrows = new ();
         private CancellationTokenSource _cancellationToken;
         
         private Transform _transform;

@@ -2,7 +2,7 @@ namespace YG
 {
     public partial class SavesYG
     {
-        public bool isFirstSession = true;
+        public bool IsFirstSession = true;
         
         public int BestTime = 0;
         public bool IsCameraShakeEnabled = true;

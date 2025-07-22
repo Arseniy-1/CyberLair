@@ -2,8 +2,8 @@
 {
     public enum Languages
     {
-        en,
-        tr,
-        ru,
+        En,
+        Tr,
+        Ru,
     }
 }

@@ -5,7 +5,8 @@ namespace Project.Scripts.Spawners.StreamingEnergies
 {
     public class StreamingEnergyPool : Pool<StreamingEnergy>
     {
-        public StreamingEnergyPool(StreamingEnergy prefab, int startAmount) : base(prefab, startAmount) { }
+        public StreamingEnergyPool(StreamingEnergy prefab, int startAmount) 
+            : base(prefab, startAmount) { }
 
         protected override StreamingEnergy Create()
         {

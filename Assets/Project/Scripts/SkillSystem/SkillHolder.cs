@@ -13,7 +13,7 @@ namespace Project.Scripts.SkillSystem
     public class SkillHolder
     {
         private readonly SkillData _skillData;
-        private readonly List<ISkillInstance> _skillInstances = new();
+        private readonly List<ISkillInstance> _skillInstances = new ();
         private readonly CancellationToken _token;
 
         public SkillHolder(SkillData skillData, CancellationToken token)

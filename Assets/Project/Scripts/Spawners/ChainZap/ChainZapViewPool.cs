@@ -5,7 +5,8 @@ namespace Project.Scripts.Spawners.ChainZap
 {
     public class ChainZapViewPool : Pool<ChainZapView>
     {
-        public ChainZapViewPool(ChainZapView prefab, int startAmount) : base(prefab, startAmount) { }
+        public ChainZapViewPool(ChainZapView prefab, int startAmount) 
+            : base(prefab, startAmount) { }
 
         protected override ChainZapView Create()
         {

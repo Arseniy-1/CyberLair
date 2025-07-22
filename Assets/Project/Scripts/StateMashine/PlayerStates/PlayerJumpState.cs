@@ -48,7 +48,7 @@ namespace Project.Scripts.StateMashine.PlayerStates
             _animator.ResetTrigger(_jumpTrigger);
         }
 
-        public void Update() {}
+        public void Update() { }
 
         private void OnJumpPerformed()
         {

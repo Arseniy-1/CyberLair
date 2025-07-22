@@ -5,10 +5,10 @@ namespace Project.Scripts.Stats
 {
     public class ExperienceStorage : BaseStat
     {
-        public event Action LevelRaised;
-
         private float _maxValue;
-
+        
+        public event Action LevelRaised;
+        
         public void AddExperience(int amount)
         {
             if (amount <= 0)

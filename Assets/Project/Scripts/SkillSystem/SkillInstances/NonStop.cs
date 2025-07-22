@@ -13,10 +13,10 @@ namespace Project.Scripts.SkillSystem.SkillInstances
     public class NonStop : ISkillInstance
     {
         private readonly int _neededDiedEnemyCount;
-        private int _currentDiedEnemyCount;
-
         private readonly LandMineSpawner _landMineSpawner;
         private readonly SkillData _data;
+        
+        private int _currentDiedEnemyCount;
 
         public NonStop(SkillData skillData, NonStopSkill skill, CancellationToken token)
         {

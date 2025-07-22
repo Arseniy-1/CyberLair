@@ -8,8 +8,8 @@ namespace Project.Scripts.SkillSystem.SkillSOClasses
     {
         [field: SerializeField] public float Radius { get; private set; }
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
-        [field: SerializeField, Range(0f, 1f)] public float DamageProportion { get; private set; }
-        [field: SerializeField, Range(0f, 1f)] public float Chance { get; private set; }
+        [field: SerializeField] [field: Range(0f, 1f)] public float DamageProportion { get; private set; }
+        [field: SerializeField] [field: Range(0f, 1f)] public float Chance { get; private set; }
         [field: SerializeField] public ShakeID ShakeID { get; private set; } = ShakeID.Medium;
     }
 }

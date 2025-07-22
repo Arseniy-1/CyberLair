@@ -21,7 +21,8 @@ namespace Project.Scripts.StateMashine
             _currentState.Enter();
         }
 
-        public void SwitchState<T>() where T : IState
+        public void SwitchState<T>() 
+            where T : IState
         {
             IState state = _states.FirstOrDefault(state => state is T);
 

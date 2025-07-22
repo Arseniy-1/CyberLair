@@ -7,6 +7,9 @@ namespace Project.Scripts.Services
 {
     public class TargetScanner : MonoBehaviour
     {
+        private readonly HashSet<ITarget> _targets = new ();
+        private readonly List<ITarget> _sortedTargets = new ();
+        
         [SerializeField] private float _scanRadius = 150f;
         [SerializeField] private LayerMask _targetLayer;
         [SerializeField] private float _scanDelay = 1f;
@@ -15,8 +18,6 @@ namespace Project.Scripts.Services
         private WaitForSeconds _delay;
 
         private Collider2D[] _hitsBuffer;
-        private readonly HashSet<ITarget> _targets = new ();
-        private readonly List<ITarget> _sortedTargets = new ();
 
         public ITarget ClosestTarget { get; private set; }
         public bool HasTarget => ClosestTarget != null;

@@ -8,10 +8,10 @@ namespace Project.Scripts.Props
 {
     public class ExplosionHandler : MonoBehaviour
     {
+        private readonly CompositeDisposable _disposable = new ();
+        
         [SerializeField] private AudioID _explosionSound = AudioID.Explosion;
         [SerializeField] private ShakeID _shakeID = ShakeID.Medium;
-
-        private readonly CompositeDisposable _disposable = new();
     
         private void Awake()
         {

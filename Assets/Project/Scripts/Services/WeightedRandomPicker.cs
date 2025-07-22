@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Project.Scripts.Services
 {
-    public class WeightedRandomPicker<T> where T : class
+    public class WeightedRandomPicker<T> 
+        where T : class
     {
         private readonly List<T> _prefabs;
         private readonly List<float> _weights;

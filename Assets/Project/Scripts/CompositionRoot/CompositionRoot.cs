@@ -64,16 +64,14 @@ namespace Project.Scripts.CompositionRoot
                 _continueScreenCanvas, 
                 _gameCanvas, 
                 _triesCount,
-                LeaderboardName
-                );
+                LeaderboardName);
             
             var winScreenHandler = new WinScreenHandler(
                 _timer, 
                 _arena, 
                 _winGameCanvas, 
                 _gameCanvas,
-                LeaderboardName
-                );
+                LeaderboardName);
             
             _subscribables = new List<ISubscribable>
             {
@@ -107,16 +105,16 @@ namespace Project.Scripts.CompositionRoot
         {
             _subscribables.ForEach(subscribable => subscribable.Subscribe());
             
-            if (YG2.saves.isFirstSession == false) 
+            if (YG2.saves.IsFirstSession == false) 
                 return;
             
             _tutorialView.gameObject.SetActive(true);
             _tutorialView.OnFinished += OnTutorialFinished;
             
             MessageBrokerHolder.Game
-                .Publish(new M_GamePaused());
+                .Publish(default(M_GamePaused));
 
-            YG2.saves.isFirstSession = false;
+            YG2.saves.IsFirstSession = false;
             
             YG2.SaveProgress();
         }

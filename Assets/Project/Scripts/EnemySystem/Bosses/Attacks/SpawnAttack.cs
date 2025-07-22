@@ -8,14 +8,16 @@ using UnityEngine;
 
 namespace Project.Scripts.EnemySystem.Bosses.Attacks
 {
-    public abstract class SpawnAttack<T> : BossAttack where T : MonoBehaviour, IDestoyable<T>, IReturnable
+    public abstract class SpawnAttack<T> : BossAttack 
+        where T : MonoBehaviour, IDestoyable<T>, IReturnable
     {
+        protected readonly List<T> SpawnedObjects = new ();
+        
         [SerializeField] protected T Prefab;
         [SerializeField] protected int ObjectCount;
         [SerializeField] [MinMaxSlider(0.1f, 0.5f)] protected Vector2 SpawnPeriodLimits;
         
         protected AttackInstancesSpawner<T> Spawner;
-        protected readonly List<T> SpawnedObjects = new();
 
         public override void Disable()
         {

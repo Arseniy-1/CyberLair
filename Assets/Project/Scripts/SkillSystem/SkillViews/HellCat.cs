@@ -18,7 +18,7 @@ namespace Project.Scripts.SkillSystem.SkillViews
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private AudioID _audio = AudioID.HellCat;
     
-        [SerializeField, Header("Hell Cat Stats")] private float _speed;
+        [SerializeField] [Header("Hell Cat Stats")] private float _speed;
         [SerializeField] private float _damage;
         [SerializeField] private float _scanRadius = 150;
         [SerializeField] private float _timeToDespawn = 6f;
@@ -52,7 +52,7 @@ namespace Project.Scripts.SkillSystem.SkillViews
     
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out IDamageable damageable))
+            if (other.TryGetComponent(out IDamageable damageable))
                 damageable.TakeDamage(_damage);
         
             OnDestroyed?.Invoke(this);
@@ -94,7 +94,7 @@ namespace Project.Scripts.SkillSystem.SkillViews
 
         private void EndTimer()
         {
-            if(_timer != null)
+            if (_timer != null)
                 StopCoroutine(_timer);
         
             _timer = null;

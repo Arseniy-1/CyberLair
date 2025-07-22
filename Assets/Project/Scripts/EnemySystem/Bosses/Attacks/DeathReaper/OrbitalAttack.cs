@@ -7,7 +7,7 @@ namespace Project.Scripts.EnemySystem.Bosses.Attacks.DeathReaper
 {
     public class OrbitalAttack : SpawnAttack<SoulOrbital>
     {
-        private readonly OrbitalHandler _orbitalHandler = new();
+        private readonly OrbitalHandler _orbitalHandler = new ();
         
         private Transform _transform;
         

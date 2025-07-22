@@ -5,7 +5,8 @@ namespace Project.Scripts.Spawners.AttackInstances
 {
     public class SoulOrbitalPool : Pool<SoulOrbital>
     {
-        public SoulOrbitalPool(SoulOrbital prefab, int startAmount) : base(prefab, startAmount) { }
+        public SoulOrbitalPool(SoulOrbital prefab, int startAmount) 
+            : base(prefab, startAmount) { }
         
         protected override SoulOrbital Create()
         {

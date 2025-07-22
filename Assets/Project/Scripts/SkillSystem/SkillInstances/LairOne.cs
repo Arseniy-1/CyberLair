@@ -4,6 +4,7 @@ namespace Project.Scripts.SkillSystem.SkillInstances
 {
     public class LairOne : OrbitalInstance
     {
-        public LairOne(SkillData skillData, OrbitalSkill orbitalSkill) : base(skillData, orbitalSkill) { }
+        public LairOne(SkillData skillData, OrbitalSkill orbitalSkill) 
+            : base(skillData, orbitalSkill) { }
     }
 }

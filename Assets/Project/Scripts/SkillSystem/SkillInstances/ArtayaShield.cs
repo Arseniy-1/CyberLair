@@ -26,7 +26,7 @@ namespace Project.Scripts.SkillSystem.SkillInstances
                 .AddTo(token);
         }
 
-        public void Disable() {}
+        public void Disable() { }
         
         private void HandleEnemyDeath()
         {

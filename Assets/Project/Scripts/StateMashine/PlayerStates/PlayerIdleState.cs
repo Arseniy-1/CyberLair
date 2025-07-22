@@ -17,8 +17,11 @@ namespace Project.Scripts.StateMashine.PlayerStates
         private IStateSwitcher _stateSwitcher;
         private Animator _animator;
 
-        public PlayerIdleState(PlayerMover playerMover, Rigidbody2D rigidbody2D,
-            WeaponHolder weaponHolder, TargetScanner targetScanner)
+        public PlayerIdleState(
+            PlayerMover playerMover, 
+            Rigidbody2D rigidbody2D,
+            WeaponHolder weaponHolder, 
+            TargetScanner targetScanner)
         {
             _playerMover = playerMover;
             _rigidbody2D = rigidbody2D;

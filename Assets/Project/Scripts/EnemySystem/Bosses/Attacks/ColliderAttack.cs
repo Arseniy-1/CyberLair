@@ -41,7 +41,6 @@ namespace Project.Scripts.EnemySystem.Bosses.Attacks
                 })
                 .Where(health => health != null)
                 .ToList();
-                
             
             _shakeID.Shake();
 

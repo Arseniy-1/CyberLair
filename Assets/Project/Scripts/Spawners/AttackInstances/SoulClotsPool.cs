@@ -5,7 +5,8 @@ namespace Project.Scripts.Spawners.AttackInstances
 {
     public class SoulClotsPool : Pool<SoulClot>
     {
-        public SoulClotsPool(SoulClot prefab, int startAmount) : base(prefab, startAmount) { }
+        public SoulClotsPool(SoulClot prefab, int startAmount) 
+            : base(prefab, startAmount) { }
         
         protected override SoulClot Create()
         {

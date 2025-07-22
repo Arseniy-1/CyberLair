@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Project.Scripts.EnemySystem
 {
     [Serializable]
-    public class SummonStats :  IWeaponStats, ISummonMoveStats
+    public class SummonStats : IWeaponStats, ISummonMoveStats
     {
         [field: SerializeField] public Speed Speed { get; private set; }
         [field: SerializeField] public float MoveRadius { get; private set; }

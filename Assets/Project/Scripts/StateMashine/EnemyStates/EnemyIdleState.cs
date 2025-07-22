@@ -8,11 +8,12 @@ namespace Project.Scripts.StateMashine.EnemyStates
     {
         private readonly EnemyMover _mover;
         private readonly EnemyTargetProvider _enemyTargetProvider;
-        private IStateSwitcher _stateSwitcher;
         
         private readonly int _moveAnimation = Animator.StringToHash("IsMoving");
         private readonly int _attackAnimation = Animator.StringToHash("IsAttacking");
-        private  Animator _animator;
+        
+        private IStateSwitcher _stateSwitcher;
+        private Animator _animator;
 
         public EnemyIdleState(EnemyMover mover, EnemyTargetProvider enemyTargetProvider)
         {

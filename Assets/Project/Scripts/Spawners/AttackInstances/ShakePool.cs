@@ -5,7 +5,8 @@ namespace Project.Scripts.Spawners.AttackInstances
 {
     public class ShakePool : Pool<Shake>
     {
-        public ShakePool(Shake prefab, int startAmount) : base(prefab, startAmount) { }
+        public ShakePool(Shake prefab, int startAmount) 
+            : base(prefab, startAmount) { }
         
         protected override Shake Create()
         {

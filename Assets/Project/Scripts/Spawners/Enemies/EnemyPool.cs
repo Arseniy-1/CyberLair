@@ -7,10 +7,11 @@ namespace Project.Scripts.Spawners.Enemies
     public class EnemyPool : Pool<Enemy>
     {
         private readonly EnemyFabric _enemyFabric;
-        private readonly List<Enemy> _enemies = new();
-        private readonly List<StatModifier> _modifiers = new();
+        private readonly List<Enemy> _enemies = new ();
+        private readonly List<StatModifier> _modifiers = new ();
 
-        public EnemyPool(Enemy prefab, EnemyFabric enemyFabric, int startAmount) : base(prefab, startAmount)
+        public EnemyPool(Enemy prefab, EnemyFabric enemyFabric, int startAmount) 
+            : base(prefab, startAmount)
         {
             _enemyFabric = enemyFabric;
         

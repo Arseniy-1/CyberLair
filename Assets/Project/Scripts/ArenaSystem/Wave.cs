@@ -35,7 +35,7 @@ namespace Project.Scripts.ArenaSystem
 
         public void Begin()
         {
-            if(_config.EnemyStatModifiers.Value > 0)
+            if (_config.EnemyStatModifiers.Value > 0)
                 _mainEnemySpawner.ApplyModifier(_config.EnemyStatModifiers);
             
             _cancellationToken?.Cancel();
@@ -66,10 +66,11 @@ namespace Project.Scripts.ArenaSystem
 
         private async UniTaskVoid SpawningEnemies(List<ObjectWeightPair<Enemy>> enemies, CancellationToken token)
         {
-            var picker = new WeightedRandomPicker<Enemy>(enemies.Select(pair => pair.Prefab).ToList(),
+            var picker = new WeightedRandomPicker<Enemy>(
+                enemies.Select(pair => pair.Prefab).ToList(),
                 enemies.Select(pair => pair.Weight).ToList());
             
-            while(token.IsCancellationRequested == false)
+            while (token.IsCancellationRequested == false)
             { 
                 await UniTask.Delay(TimeSpan.FromSeconds(_config.SpawnDuration), cancellationToken: token);
 
